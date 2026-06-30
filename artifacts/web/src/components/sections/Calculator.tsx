@@ -38,6 +38,7 @@ export function Calculator({
     en: {
       titlePart1: "Live ",
       titlePart2: "Return Calculator",
+      subhead: "Move the slider and watch a cost turn into a return — your real number, in seconds.",
       empLabel: "Number of employees",
       tierLabel: "Select Tier",
       tiers: { Growth: "Growth", Pro: "Pro", Suite: "Suite" },
@@ -53,6 +54,7 @@ export function Calculator({
     ar: {
       titlePart1: "حاسبة ",
       titlePart2: "العائد المباشرة",
+      subhead: "حرّك المؤشر وشاهد التكلفة تتحول إلى عائد — رقمك الحقيقي، في ثوانٍ.",
       empLabel: "عدد الموظفين",
       tierLabel: "اختر الباقة",
       tiers: { Growth: "نمو", Pro: "احترافي", Suite: "جناح" },
@@ -72,10 +74,13 @@ export function Calculator({
   return (
     <section id="calculator" className="py-24 bg-background scroll-mt-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl text-center mb-16 leading-tight">
+        <h2 className="text-4xl text-center mb-6 leading-tight">
           <span className="text-foreground">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
         </h2>
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+          {t.subhead}
+        </p>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Controls */}

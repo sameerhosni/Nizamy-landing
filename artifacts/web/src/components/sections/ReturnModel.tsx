@@ -9,6 +9,7 @@ export function ReturnModel() {
       titlePart1: "Three layers. ",
       titlePart2: "Up to 30% returned",
       titlePart3: ", every year.",
+      subhead: "No gimmicks, no cashback tricks. Here is exactly where every riyal comes back from — and why it compounds the longer you stay.",
       layers: [
         {
           num: "01",
@@ -34,6 +35,7 @@ export function ReturnModel() {
       titlePart1: "ثلاث طبقات. ",
       titlePart2: "حتى ٣٠٪ عائد",
       titlePart3: "، كل عام.",
+      subhead: "بدون حيل أو خدع استرداد. إليك بالضبط من أين يعود كل ريال — ولماذا يتضاعف كلما طالت مدة بقائك.",
       layers: [
         {
           num: "٠١",
@@ -62,11 +64,14 @@ export function ReturnModel() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl text-center mb-20 max-w-4xl mx-auto leading-tight">
+        <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-4xl mx-auto leading-tight">
           <span className="text-foreground">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
           <span className="text-foreground">{t.titlePart3}</span>
         </h2>
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-20 max-w-2xl mx-auto leading-relaxed">
+          {t.subhead}
+        </p>
 
         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
           {/* Connecting line for desktop */}

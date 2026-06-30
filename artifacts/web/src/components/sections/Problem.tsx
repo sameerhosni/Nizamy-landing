@@ -10,6 +10,7 @@ export function Problem() {
     en: {
       headingPart1: "Every other HR system bills you. ",
       headingPart2: "Yours should pay you back.",
+      subhead: "Same monthly fee. Completely different math. One drains your budget every month — the other puts money back in it.",
       legacy: {
         title: "What exists today",
         points: ["Pure software cost", "Penalties and deductions", "Chasing employees to use it", "Time wasted on admin"]
@@ -22,6 +23,7 @@ export function Problem() {
     ar: {
       headingPart1: "الأنظمة الأخرى تفوتر لك. ",
       headingPart2: "نظامك يجب أن يدفع لك.",
+      subhead: "نفس الرسوم الشهرية. حسبة مختلفة تماماً. أحدهما يستنزف ميزانيتك كل شهر — والآخر يعيد المال إليها.",
       legacy: {
         title: "الوضع الحالي",
         points: ["تكلفة برمجيات بحتة", "غرامات وخصومات", "ملاحقة الموظفين لاستخدامه", "إهدار الوقت في الإدارة"]
@@ -38,10 +40,13 @@ export function Problem() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-4xl md:text-5xl text-center mb-16 max-w-3xl mx-auto leading-tight">
+        <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-3xl mx-auto leading-tight">
           <span className="text-foreground">{t.headingPart1}</span>
           <span className="text-gradient-primary">{t.headingPart2}</span>
         </h2>
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+          {t.subhead}
+        </p>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Legacy HR Card */}

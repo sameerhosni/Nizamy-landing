@@ -9,6 +9,7 @@ export function Advantages() {
     en: {
       titlePart1: "The 5 ",
       titlePart2: "Advantages",
+      subhead: "Every feature is built to do one thing: turn HR from a cost you tolerate into an edge you compound.",
       items: [
         {
           icon: <Bot size={28} />,
@@ -40,6 +41,7 @@ export function Advantages() {
     ar: {
       titlePart1: "المزايا ",
       titlePart2: "الخمس",
+      subhead: "كل ميزة صُممت لهدف واحد: تحويل الموارد البشرية من تكلفة تتحملها إلى ميزة تتضاعف لصالحك.",
       items: [
         {
           icon: <Bot size={28} />,
@@ -75,10 +77,13 @@ export function Advantages() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl text-center mb-16 leading-tight">
+        <h2 className="text-4xl text-center mb-6 leading-tight">
           <span className="text-foreground">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
         </h2>
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+          {t.subhead}
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {t.items.map((item, idx) => (

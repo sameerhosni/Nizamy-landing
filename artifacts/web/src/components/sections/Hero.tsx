@@ -8,9 +8,10 @@ export function Hero() {
 
   const content = {
     en: {
+      eyebrow: "AI-powered HR, built for Saudi SMEs",
       headlinePart1: "Every other HR system is a cost. ",
       headlinePart2: "Mr-Hr is a return.",
-      subtitle: "Mr-Hr returns up to 30% of your subscription back to you, every year — through performance gains, top-achiever rewards, and a points loop your team actually uses.",
+      subtitle: "Stop paying for software that only takes. Mr-Hr returns up to 30% of your subscription back to you, every year — through performance gains, top-achiever rewards, and a points loop your team actually uses.",
       primaryCta: "Calculate my return",
       secondaryCta: "Become a Design Partner",
       chips: [
@@ -31,9 +32,10 @@ export function Hero() {
       }
     },
     ar: {
+      eyebrow: "موارد بشرية بالذكاء الاصطناعي، صُممت للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تكلفة. ",
       headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "مستر إتش آر يعيد لك حتى ٣٠٪ من قيمة اشتراكك سنوياً — من خلال تحسين الأداء، ومكافآت المتميزين، وحلقة نقاط يستخدمها فريقك فعلياً.",
+      subtitle: "توقّف عن الدفع لبرنامج لا يأخذ إلا منك. مستر إتش آر يعيد لك حتى ٣٠٪ من قيمة اشتراكك سنوياً — من خلال تحسين الأداء، ومكافآت المتميزين، وحلقة نقاط يستخدمها فريقك فعلياً.",
       primaryCta: "احسب العائد",
       secondaryCta: "كن شريك تصميم",
       chips: [
@@ -67,6 +69,10 @@ export function Hero() {
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-border/60 px-4 py-2 text-sm font-semibold text-primary shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            {t.eyebrow}
+          </div>
           <h1 className="text-5xl md:text-7xl leading-[1.1] md:leading-[1.15]">
             <span className="text-foreground">{t.headlinePart1}</span>
             <span className="text-gradient-primary">{t.headlinePart2}</span>

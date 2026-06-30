@@ -30,10 +30,16 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const content = {
     en: {
-      headingPart1: "Be one of our founding ",
-      headingPart2: "Design Partners",
+      headingPart1: "Only 7 seats. ",
+      headingPart2: "Founding Design Partners",
       headingPart3: ".",
-      sub: "12 months free in exchange for weekly feedback. Limited to 7 companies.",
+      sub: "Lock in 12 months free in exchange for weekly feedback. Once the 7 seats are taken, this closes.",
+      valuePoints: [
+        "12 months completely free — no card required",
+        "Founding-partner pricing locked in for life",
+        "Shape the roadmap with a direct line to the team"
+      ],
+      note: "No commitment. Just a conversation about your return.",
       labels: {
         name: "Full Name",
         company: "Company Name",
@@ -49,10 +55,16 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       error: "Something went wrong. Please try again."
     },
     ar: {
-      headingPart1: "كن أحد ",
-      headingPart2: "شركاء التصميم",
-      headingPart3: " المؤسسين.",
-      sub: "١٢ شهراً مجاناً مقابل ملاحظات أسبوعية. مقتصر على ٧ شركات فقط.",
+      headingPart1: "٧ مقاعد فقط. ",
+      headingPart2: "شركاء التصميم المؤسسون",
+      headingPart3: ".",
+      sub: "احجز ١٢ شهراً مجاناً مقابل ملاحظات أسبوعية. وبمجرد امتلاء المقاعد السبعة، يُغلق الباب.",
+      valuePoints: [
+        "١٢ شهراً مجاناً بالكامل — بدون بطاقة",
+        "سعر الشريك المؤسس مثبّت مدى الحياة",
+        "شارك في رسم خارطة الطريق بتواصل مباشر مع الفريق"
+      ],
+      note: "بدون التزام. مجرد محادثة حول العائد الذي يخصك.",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
@@ -95,6 +107,14 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
             <span className="text-foreground">{t.headingPart3}</span>
           </h2>
           <p className="text-xl text-muted-foreground">{t.sub}</p>
+          <ul className="mt-8 space-y-3 max-w-md mx-auto text-start">
+            {t.valuePoints.map((point, idx) => (
+              <li key={idx} className="flex items-start gap-3">
+                <CheckCircle2 className="text-primary w-5 h-5 mt-1 shrink-0" />
+                <span className="text-base text-foreground">{point}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {mutation.isSuccess ? (
@@ -170,6 +190,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                   {mutation.isPending && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
                   {mutation.isPending ? t.loading : t.submit}
                 </Button>
+
+                <p className="text-sm text-muted-foreground text-center">{t.note}</p>
               </form>
             </CardContent>
           </Card>

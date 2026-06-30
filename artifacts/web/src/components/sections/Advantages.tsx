@@ -115,15 +115,36 @@ export function Advantages() {
           {t.subhead}
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {t.items.map((item, idx) => (
-            <Card key={idx} className="bg-background border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 group">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-xl bg-accent text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform origin-left">
+            <Card
+              key={idx}
+              className={`border-0 transition-all duration-300 group ${
+                idx === 0
+                  ? "md:col-span-2 bg-gradient-to-br from-primary to-violet-700 shadow-glow"
+                  : "bg-background border border-border/50 hover:border-primary/30 hover:shadow-glow"
+              }`}
+            >
+              <CardContent className="p-8 h-full flex flex-col">
+                <div
+                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform origin-left ${
+                    idx === 0
+                      ? "bg-white/20 text-white"
+                      : "bg-accent text-primary"
+                  }`}
+                >
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h3
+                  className={`text-xl font-bold mb-3 ${idx === 0 ? "text-white" : ""}`}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className={`leading-relaxed ${idx === 0 ? "text-white/75" : "text-muted-foreground"}`}
+                >
+                  {item.desc}
+                </p>
               </CardContent>
             </Card>
           ))}

@@ -62,33 +62,33 @@ export function ReturnModel() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#0A0B14]">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-4xl mx-auto leading-tight">
-          <span className="text-foreground">{t.titlePart1}</span>
+          <span className="text-white">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
-          <span className="text-foreground">{t.titlePart3}</span>
+          <span className="text-white">{t.titlePart3}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-20 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-white/60 text-center mb-20 max-w-2xl mx-auto leading-relaxed">
           {t.subhead}
         </p>
 
         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
           {/* Connecting line for desktop */}
-          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-border/50 z-0" />
+          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-white/15 z-0" />
 
           {t.layers.map((layer, idx) => (
             <div key={idx} className="relative z-10">
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-background border border-border flex items-center justify-center mb-8 shrink-0 relative shadow-sm">
-                  <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-accent px-3 py-1 rounded-full border border-primary/20">
+                <div className="w-24 h-24 rounded-full bg-white/8 border border-white/20 flex items-center justify-center mb-8 shrink-0 relative shadow-lg backdrop-blur-sm">
+                  <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">
                     {layer.num}
                   </div>
-                  <span className="text-3xl font-bold text-foreground">{layer.pct}</span>
+                  <span className="text-3xl font-bold text-white">{layer.pct}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-4">{layer.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-xl font-bold mb-4 text-white">{layer.title}</h3>
+                <p className="text-white/60 leading-relaxed">
                   {layer.desc}
                 </p>
               </div>

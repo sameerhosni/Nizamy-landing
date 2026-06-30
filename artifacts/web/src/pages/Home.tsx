@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
+import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
@@ -47,6 +48,7 @@ export function Home() {
       <Navbar />
       <main>
         <Hero />
+        <StatsBar />
         <Problem />
         <ReturnModel />
         <Calculator 

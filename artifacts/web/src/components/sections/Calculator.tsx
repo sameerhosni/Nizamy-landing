@@ -128,10 +128,13 @@ export function Calculator({
             <CardContent className="p-8 md:p-10 space-y-8">
               <div className="text-center pb-8 border-b border-border">
                 <div className="text-muted-foreground font-medium mb-3">{t.results.annualReturn}</div>
-                <div className="text-5xl md:text-6xl font-bold text-primary tracking-tight">
-                  {formatCurrency(totalReturn, "SAR", language)}
+                <div className="relative inline-block py-4">
+                  <div className="absolute inset-0 bg-primary/15 blur-2xl rounded-full scale-150 pointer-events-none" />
+                  <div className="text-5xl md:text-6xl font-bold text-primary tracking-tight relative">
+                    {formatCurrency(totalReturn, "SAR", language)}
+                  </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-3">{t.results.sampleNote}</p>
+                <p className="text-xs text-muted-foreground mt-2">{t.results.sampleNote}</p>
               </div>
 
               <div className="space-y-6">

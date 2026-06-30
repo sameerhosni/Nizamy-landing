@@ -60,25 +60,26 @@ export function Hero() {
   const t = content[language];
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center pt-24 pb-16 overflow-hidden bg-background">
+    <section className="relative min-h-[90vh] flex flex-col justify-center pt-24 pb-16 overflow-hidden bg-[#0A0B14]">
       {/* Background soft gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-accent/60 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[100px] rounded-full" />
+        <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] bg-violet-600/25 blur-[140px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-indigo-500/20 blur-[120px] rounded-full" />
+        <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-primary/10 blur-[100px] rounded-full" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-border/60 px-4 py-2 text-sm font-semibold text-primary shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-primary" />
             {t.eyebrow}
           </div>
           <h1 className="text-5xl md:text-7xl leading-[1.1] md:leading-[1.15]">
-            <span className="text-foreground">{t.headlinePart1}</span>
+            <span className="text-white">{t.headlinePart1}</span>
             <span className="text-gradient-primary">{t.headlinePart2}</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/65 max-w-3xl mx-auto leading-relaxed">
             {t.subtitle}
           </p>
 
@@ -95,7 +96,7 @@ export function Hero() {
 
           <div className="flex flex-wrap justify-center gap-3 pt-12">
             {t.chips.map((chip, idx) => (
-              <div key={idx} className="bg-white border border-border/60 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${idx * 100}ms` }}>
+              <div key={idx} className="bg-white/10 border border-white/15 rounded-full px-4 py-2 text-sm font-medium text-white/70 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${idx * 100}ms` }}>
                 {chip}
               </div>
             ))}

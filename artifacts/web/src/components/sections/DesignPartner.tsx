@@ -30,24 +30,24 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const content = {
     en: {
-      headingPart1: "Only 7 seats. ",
-      headingPart2: "Founding Design Partners",
-      headingPart3: ".",
-      sub: "Lock in 12 months free in exchange for weekly feedback. Once the 7 seats are taken, this closes.",
+      headingPart1: "Early Adopter ",
+      headingPart2: "Limited Access.",
+      headingPart3: "",
+      sub: "We are opening a limited number of early-access spots. Claim yours before they are gone.",
       valuePoints: [
-        "12 months completely free — no card required",
-        "Founding-partner pricing locked in for life",
-        "Shape the roadmap with a direct line to the team"
+        "Free early access",
+        "Limited spots available",
+        "Be first to shape the product"
       ],
-      note: "No commitment. Just a conversation about your return.",
+      note: "No commitment. Just a conversation.",
       labels: {
         name: "Full Name",
         company: "Company Name",
         email: "Work Email",
         whatsapp: "WhatsApp Number"
       },
-      submit: "Apply to Partner Program",
-      loading: "Applying...",
+      submit: "Request Early Access",
+      loading: "Sending...",
       success: {
         title: "Application Received",
         desc: "Thank you for applying. We will reach out to you on WhatsApp within 24 hours."
@@ -55,24 +55,24 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       error: "Something went wrong. Please try again."
     },
     ar: {
-      headingPart1: "٧ مقاعد فقط. ",
-      headingPart2: "شركاء التصميم المؤسسون",
-      headingPart3: ".",
-      sub: "احجز ١٢ شهراً مجاناً مقابل ملاحظات أسبوعية. وبمجرد امتلاء المقاعد السبعة، يُغلق الباب.",
+      headingPart1: "وصول مبكر ",
+      headingPart2: "محدود.",
+      headingPart3: "",
+      sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
       valuePoints: [
-        "١٢ شهراً مجاناً بالكامل — بدون بطاقة",
-        "سعر الشريك المؤسس مثبّت مدى الحياة",
-        "شارك في رسم خارطة الطريق بتواصل مباشر مع الفريق"
+        "وصول مبكر مجاني",
+        "مقاعد محدودة",
+        "كن أول من يشكّل المنتج"
       ],
-      note: "بدون التزام. مجرد محادثة حول العائد الذي يخصك.",
+      note: "بدون التزام. مجرد محادثة.",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
         email: "البريد الإلكتروني للعمل",
         whatsapp: "رقم الواتساب"
       },
-      submit: "قدم للبرنامج",
-      loading: "جاري التقديم...",
+      submit: "اطلب وصولاً مبكراً",
+      loading: "جارٍ الإرسال...",
       success: {
         title: "تم استلام طلبك",
         desc: "شكراً لتقديمك. سنتواصل معك عبر الواتساب خلال ٢٤ ساعة."

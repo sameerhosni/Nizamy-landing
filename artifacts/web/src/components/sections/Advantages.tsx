@@ -7,60 +7,62 @@ export function Advantages() {
 
   const content = {
     en: {
-      title: "The 5 Advantages",
+      titlePart1: "The 5 ",
+      titlePart2: "Advantages",
       items: [
         {
-          icon: <Bot size={32} />,
+          icon: <Bot size={28} />,
           title: "Saudi-dialect AI",
           desc: "AI HR agent + Muntej voice/text in Saudi Arabic"
         },
         {
-          icon: <Smartphone size={32} />,
+          icon: <Smartphone size={28} />,
           title: "Mobile-first",
           desc: "Built for the phone, not the desk"
         },
         {
-          icon: <Fingerprint size={32} />,
+          icon: <Fingerprint size={28} />,
           title: "Multi-modal verification",
           desc: "GPS + fingerprint + face + voice"
         },
         {
-          icon: <ShieldCheck size={32} />,
+          icon: <ShieldCheck size={28} />,
           title: "Saudi-native compliance",
           desc: "WPS, GOSI, Mudad, EOSB, ZATCA, Sun–Thu"
         },
         {
-          icon: <HeartHandshake size={32} />,
+          icon: <HeartHandshake size={28} />,
           title: "Motivational, not punitive",
           desc: "The only Saudi HR system where employees are never penalized"
         }
       ]
     },
     ar: {
-      title: "المزايا الخمس",
+      titlePart1: "المزايا ",
+      titlePart2: "الخمس",
       items: [
         {
-          icon: <Bot size={32} />,
+          icon: <Bot size={28} />,
           title: "ذكاء اصطناعي باللهجة السعودية",
           desc: "وكيل موارد بشرية ذكي + مساعد مُنتج صوتي/نصي بالعربية السعودية"
         },
         {
-          icon: <Smartphone size={32} />,
+          icon: <Smartphone size={28} />,
           title: "صُمم للجوال أولاً",
           desc: "صُمم للهاتف، وليس للمكتب"
         },
         {
-          icon: <Fingerprint size={32} />,
+          icon: <Fingerprint size={28} />,
           title: "تحقق متعدد الوسائط",
           desc: "موقع جغرافي + بصمة إصبع + وجه + صوت"
         },
         {
-          icon: <ShieldCheck size={32} />,
+          icon: <ShieldCheck size={28} />,
           title: "توافق محلي سعودي",
           desc: "نظام حماية الأجور، التأمينات الاجتماعية، مدد، مكافأة نهاية الخدمة، هيئة الزكاة، الأحد-الخميس"
         },
         {
-          icon: <HeartHandshake size={32} />,
+          icon: <HeartHandshake size={28} />,
           title: "تحفيزي، ليس عقابياً",
           desc: "نظام الموارد البشرية السعودي الوحيد الذي لا يعاقب الموظفين أبداً"
         }
@@ -71,15 +73,18 @@ export function Advantages() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-center mb-16">{t.title}</h2>
+        <h2 className="text-4xl text-center mb-16 leading-tight">
+          <span className="text-foreground">{t.titlePart1}</span>
+          <span className="text-gradient-primary">{t.titlePart2}</span>
+        </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {t.items.map((item, idx) => (
-            <Card key={idx} className="bg-card hover:bg-muted/30 transition-colors border-border/50 group">
+            <Card key={idx} className="bg-background border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 group">
               <CardContent className="p-8">
-                <div className="text-primary mb-6 group-hover:scale-110 transition-transform origin-left">
+                <div className="w-14 h-14 rounded-xl bg-accent text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform origin-left">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>

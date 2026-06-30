@@ -29,14 +29,13 @@ export function WhoWeServe() {
   const t = content[language];
 
   return (
-    <section className="py-20 bg-primary text-primary-foreground overflow-hidden relative">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+    <section className="py-20 bg-background overflow-hidden relative border-y border-border/50">
+      <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-background to-primary/5 pointer-events-none"></div>
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 max-w-5xl mx-auto text-lg md:text-2xl font-serif text-center">
+        <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 max-w-5xl mx-auto">
           {t.tags.map((tag, idx) => (
-            <div key={idx} className="flex items-center gap-6">
-              <span>{tag}</span>
-              {idx < t.tags.length - 1 && <span className="text-primary-foreground/30">·</span>}
+            <div key={idx} className="bg-white border border-border/60 rounded-full px-6 py-3 text-base md:text-lg font-medium text-foreground shadow-sm">
+              {tag}
             </div>
           ))}
         </div>

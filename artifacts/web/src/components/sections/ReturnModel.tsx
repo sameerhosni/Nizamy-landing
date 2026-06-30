@@ -6,7 +6,9 @@ export function ReturnModel() {
 
   const content = {
     en: {
-      title: "Three layers. Up to 30% returned, every year.",
+      titlePart1: "Three layers. ",
+      titlePart2: "Up to 30% returned",
+      titlePart3: ", every year.",
       layers: [
         {
           num: "01",
@@ -29,7 +31,9 @@ export function ReturnModel() {
       ]
     },
     ar: {
-      title: "ثلاث طبقات. حتى ٣٠٪ عائد، كل عام.",
+      titlePart1: "ثلاث طبقات. ",
+      titlePart2: "حتى ٣٠٪ عائد",
+      titlePart3: "، كل عام.",
       layers: [
         {
           num: "٠١",
@@ -56,28 +60,30 @@ export function ReturnModel() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-foreground text-background">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-serif text-center mb-20 max-w-4xl mx-auto leading-tight">
-          {t.title}
+        <h2 className="text-4xl md:text-5xl text-center mb-20 max-w-4xl mx-auto leading-tight">
+          <span className="text-foreground">{t.titlePart1}</span>
+          <span className="text-gradient-primary">{t.titlePart2}</span>
+          <span className="text-foreground">{t.titlePart3}</span>
         </h2>
 
         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
           {/* Connecting line for desktop */}
-          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-border/20 z-0" />
+          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-border/50 z-0" />
 
           {t.layers.map((layer, idx) => (
             <div key={idx} className="relative z-10">
               <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-background/5 border border-primary/30 flex items-center justify-center mb-8 shrink-0 backdrop-blur-sm relative shadow-[0_0_30px_rgba(232,179,58,0.15)]">
-                  <div className="absolute -top-3 -right-3 text-sm font-mono text-primary bg-foreground px-2 py-1 rounded">
+                <div className="w-24 h-24 rounded-full bg-background border border-border flex items-center justify-center mb-8 shrink-0 relative shadow-sm">
+                  <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-accent px-3 py-1 rounded-full border border-primary/20">
                     {layer.num}
                   </div>
-                  <span className="text-3xl font-serif text-primary">{layer.pct}</span>
+                  <span className="text-3xl font-bold text-foreground">{layer.pct}</span>
                 </div>
                 
                 <h3 className="text-xl font-bold mb-4">{layer.title}</h3>
-                <p className="text-muted/80 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {layer.desc}
                 </p>
               </div>

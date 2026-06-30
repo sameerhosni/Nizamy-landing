@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Tajawal:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -41,53 +41,9 @@
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-destructive-border: var(--destructive-border);
 
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-
-  --color-sidebar: hsl(var(--sidebar));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-primary-border: var(--sidebar-primary-border);
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-accent-border: var(--sidebar-accent-border);
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
-
   --font-sans: var(--app-font-sans);
-  --font-serif: var(--app-font-serif);
+  --font-serif: var(--app-font-sans); /* Use sans everywhere */
   --font-mono: var(--app-font-mono);
-
-  --text-xs: 0.75rem;
-  --text-xs--line-height: calc(1 / 0.75);
-  --text-sm: 0.875rem;
-  --text-sm--line-height: calc(1.25 / 0.875);
-  --text-base: 1rem;
-  --text-base--line-height: calc(1.5 / 1);
-  --text-lg: 1.125rem;
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 1.25rem;
-  --text-xl--line-height: calc(1.75 / 1.25);
-  --text-2xl: 1.5rem;
-  --text-2xl--line-height: calc(2 / 1.5);
-  --text-3xl: 1.875rem;
-  --text-3xl--line-height: calc(2.25 / 1.875);
-  --text-4xl: 2.25rem;
-  --text-4xl--line-height: calc(2.5 / 2.25);
-  --text-5xl: 3rem;
-  --text-5xl--line-height: 1;
-  --text-6xl: 3.75rem;
-  --text-6xl--line-height: 1;
-  --text-7xl: 4.5rem;
-  --text-7xl--line-height: 1;
-  --text-8xl: 6rem;
-  --text-8xl--line-height: 1;
-  --text-9xl: 8rem;
-  --text-9xl--line-height: 1;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -96,49 +52,43 @@
 }
 
 :root {
-  /* Colors */
-  /* Charcoal #0E1116 */
-  /* Gold #E8B33A */
-  /* Paper #F6F2EA */
-  /* Emerald #2BB673 */
-
-  --background: 40 33% 94%; /* Paper */
-  --foreground: 218 22% 7%; /* Charcoal */
-  --border: 40 10% 85%;
-  --input: 40 10% 85%;
-  --ring: 42 79% 57%; /* Gold */
+  /* Muntej app aesthetic */
+  --background: 220 20% 97%; /* #F6F7F9 */
+  --foreground: 226 25% 15%; /* Dark slate */
+  --border: 220 15% 90%;
+  --input: 220 15% 90%;
+  --ring: 240 100% 68%; /* Vivid indigo-violet #5B5CFF */
 
   --card: 0 0% 100%;
-  --card-foreground: 218 22% 7%;
-  --card-border: 40 10% 85%;
+  --card-foreground: 226 25% 15%;
+  --card-border: 220 15% 93%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 218 22% 7%;
-  --popover-border: 40 10% 85%;
+  --popover-foreground: 226 25% 15%;
+  --popover-border: 220 15% 90%;
 
-  --primary: 42 79% 57%; /* Gold */
-  --primary-foreground: 218 22% 7%; /* Charcoal */
+  --primary: 240 100% 68%; /* #5B5CFF */
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 218 22% 7%; /* Charcoal */
-  --secondary-foreground: 40 33% 94%; /* Paper */
+  --secondary: 220 10% 90%;
+  --secondary-foreground: 226 25% 15%;
 
-  --muted: 40 15% 90%;
-  --muted-foreground: 218 15% 40%;
+  --muted: 220 15% 93%;
+  --muted-foreground: 220 10% 45%;
 
-  --accent: 151 62% 44%; /* Emerald */
-  --accent-foreground: 0 0% 100%;
+  --accent: 280 80% 95%; /* Soft lilac */
+  --accent-foreground: 240 100% 68%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-serif: 'Playfair Display', serif;
+  --app-font-sans: 'IBM Plex Sans Arabic', sans-serif;
   --app-font-mono: Menlo, monospace;
-  --radius: 0.5rem;
+  --radius: 0.625rem; /* ~10px */
 }
 
 [dir="rtl"] {
-  --app-font-sans: 'Tajawal', sans-serif;
+  --app-font-sans: 'IBM Plex Sans Arabic', sans-serif;
 }
 
 @layer base {
@@ -149,9 +99,19 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-  }
-  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
-    @apply font-sans font-bold; /* Arabic typography uses sans for headings */
+    @apply font-sans font-bold tracking-tight;
   }
 }
+
+.text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500;
+}
+
+.shadow-glow {
+  box-shadow: 0 10px 25px -5px rgba(91, 92, 255, 0.4);
+}
+
+.glassmorphic {
+  @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-xl;
+}
+

@@ -5,9 +5,9 @@ import { formatCurrency } from "@/lib/utils";
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
-    <div className="h-2 w-full overflow-hidden rounded-full bg-background/20">
+    <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
       <div
-        className="h-full rounded-full bg-primary transition-all duration-500"
+        className="h-full rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 transition-all duration-500"
         style={{ width: `${(value / max) * 100}%` }}
       />
     </div>
@@ -36,7 +36,8 @@ export function Calculator({
 
   const content = {
     en: {
-      title: "Live Return Calculator",
+      titlePart1: "Live ",
+      titlePart2: "Return Calculator",
       empLabel: "Number of employees",
       tierLabel: "Select Tier",
       tiers: { Growth: "Growth", Pro: "Pro", Suite: "Suite" },
@@ -50,7 +51,8 @@ export function Calculator({
       }
     },
     ar: {
-      title: "حاسبة العائد المباشرة",
+      titlePart1: "حاسبة ",
+      titlePart2: "العائد المباشرة",
       empLabel: "عدد الموظفين",
       tierLabel: "اختر الباقة",
       tiers: { Growth: "نمو", Pro: "احترافي", Suite: "جناح" },
@@ -70,7 +72,10 @@ export function Calculator({
   return (
     <section id="calculator" className="py-24 bg-background scroll-mt-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-serif text-center mb-16">{t.title}</h2>
+        <h2 className="text-4xl text-center mb-16 leading-tight">
+          <span className="text-foreground">{t.titlePart1}</span>
+          <span className="text-gradient-primary">{t.titlePart2}</span>
+        </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Controls */}
@@ -78,7 +83,7 @@ export function Calculator({
             <div className="space-y-6">
               <div className="flex justify-between items-center">
                 <label className="text-lg font-medium">{t.empLabel}</label>
-                <span className="text-2xl font-bold text-primary">{employees}</span>
+                <span className="text-3xl font-bold text-primary">{employees}</span>
               </div>
               <Slider 
                 value={[employees]} 
@@ -99,8 +104,8 @@ export function Calculator({
                     onClick={() => setTier(tOption)}
                     className={`py-4 px-2 border-2 rounded-xl text-center transition-all ${
                       tier === tOption 
-                        ? "border-primary bg-primary/5 text-foreground shadow-sm" 
-                        : "border-border/50 text-muted-foreground hover:border-border"
+                        ? "border-primary bg-primary/5 text-primary shadow-sm" 
+                        : "border-border/50 text-muted-foreground hover:border-border bg-white"
                     }`}
                   >
                     <div className="font-bold mb-1">{t.tiers[tOption]}</div>
@@ -112,10 +117,10 @@ export function Calculator({
           </div>
 
           {/* Results */}
-          <Card className="bg-foreground text-background border-none shadow-2xl">
+          <Card className="bg-white border-primary/10 shadow-glow">
             <CardContent className="p-8 md:p-10 space-y-8">
-              <div className="text-center pb-8 border-b border-border/10">
-                <div className="text-primary font-serif text-xl mb-2">{t.results.annualReturn}</div>
+              <div className="text-center pb-8 border-b border-border">
+                <div className="text-muted-foreground font-medium mb-3">{t.results.annualReturn}</div>
                 <div className="text-5xl md:text-6xl font-bold text-primary tracking-tight">
                   {formatCurrency(totalReturn, "SAR", language)}
                 </div>
@@ -123,7 +128,7 @@ export function Calculator({
 
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted/80">{t.results.subscription}</span>
+                  <span className="text-muted-foreground">{t.results.subscription}</span>
                   <span className="font-mono text-xl">{formatCurrency(subscription, "SAR", language)}</span>
                 </div>
                 
@@ -133,23 +138,23 @@ export function Calculator({
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-border/10 space-y-6">
+              <div className="pt-8 border-t border-border space-y-6">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted/80">
+                  <div className="flex justify-between text-sm text-muted-foreground">
                     <span>{t.results.performance} (15%)</span>
                     <span>{formatCurrency(layer1, "SAR", language)}</span>
                   </div>
                   <LayerBar value={15} max={30} />
                 </div>
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted/80">
+                  <div className="flex justify-between text-sm text-muted-foreground">
                     <span>{t.results.rewards} (10%)</span>
                     <span>{formatCurrency(layer2, "SAR", language)}</span>
                   </div>
                   <LayerBar value={10} max={30} />
                 </div>
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted/80">
+                  <div className="flex justify-between text-sm text-muted-foreground">
                     <span>{t.results.points} (5%)</span>
                     <span>{formatCurrency(layer3, "SAR", language)}</span>
                   </div>

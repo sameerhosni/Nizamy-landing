@@ -1,0 +1,1 @@
+- [Bilingual i18n after design restyles](bilingual-design-subagent.md) — design subagent injects hardcoded English microcopy; route new strings through the i18n content object.

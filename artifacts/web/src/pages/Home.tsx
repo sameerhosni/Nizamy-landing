@@ -5,6 +5,7 @@ import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
+import { Features } from "@/components/sections/Features";
 import { Advantages } from "@/components/sections/Advantages";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { DesignPartner } from "@/components/sections/DesignPartner";
@@ -64,6 +65,7 @@ export function Home() {
           layer3={layer3}
           effectiveCost={effectiveCost}
         />
+        <Features />
         <Advantages />
         <WhoWeServe />
         <DesignPartner snapshot={snapshot} />

@@ -1,6 +1,6 @@
-# [Project name]
+# Mr-Hr
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A bilingual (EN/AR, full RTL) high-converting landing page for Mr-Hr — an AI-powered HR system for Saudi SMEs that returns up to 30% of subscription back to the customer. Includes a live return calculator and a Design Partner lead capture form backed by Postgres.
 
 ## Run & Operate
 

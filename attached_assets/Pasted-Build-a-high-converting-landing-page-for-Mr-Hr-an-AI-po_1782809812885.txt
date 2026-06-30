@@ -1,0 +1,94 @@
+Build a high-converting landing page for Mr-Hr — an AI-powered HR system 
+for Saudi SMEs that returns up to 30% of subscription back to the customer.
+
+STACK
+- Next.js 14 (App Router) + TypeScript + Tailwind CSS
+- next-intl for bilingual EN/AR with RTL support
+- Vercel-ready, mobile-first
+
+BRAND
+- Charcoal #0E1116, Gold #E8B33A, Paper #F6F2EA, Emerald #2BB673
+- Fonts: serif display (Bookman/Playfair), sans body (Inter), Tajawal for Arabic
+- Use gold italic for emphasis on the proposition
+
+CORE PROPOSITION (use verbatim, never translate)
+EN: "Every other HR system is a cost. Mr-Hr is a return."
+AR: "كل أنظمة الموارد البشرية تكلفة. مستر إتش آر عائد."
+
+SECTIONS (in this order)
+
+1. HERO
+   - Headline (proposition)
+   - Subtitle: "Mr-Hr returns up to 30% of your subscription back to you, 
+     every year — through performance gains, top-achiever rewards, 
+     and a points loop your team actually uses."
+   - Primary CTA: "Calculate my return →"
+   - Secondary CTA: "Become a Design Partner"
+   - 4 stat chips: 30% Maximum annual return / SAR 5 starting price per employee /
+     10 min from signup to first check-in / 0 penalties or chasing
+
+2. THE PROBLEM
+   "Every other HR system bills you. Yours should pay you back."
+   Two cards side-by-side: "What exists today" (legacy HR — costs, penalties, chasing)
+   vs "What Mr-Hr is" (return, rewards, motivation).
+
+3. THE 3-LAYER RETURN MODEL
+   Title: "Three layers. Up to 30% returned, every year."
+   - 01 Performance converted to money (15%) — less lateness, less turnover, 
+     more focus → hours saved → riyals saved
+   - 02 Top-achiever rewards (10%) — Mr-Hr funds rewards for your best 
+     people at no extra cost to you
+   - 03 Points & redemption loop (5%) — employees earn through engagement; 
+     you redeem the value back into the system
+   Show as 3 cards or rows with the percentage prominent.
+
+4. LIVE RETURN CALCULATOR
+   - Slider: number of employees (5-300, default 100)
+   - Segmented control: tier (Growth SAR 5 / Pro SAR 8 / Suite SAR 12)
+   - Live results panel:
+     * Annual return (big number, gold)
+     * Annual subscription
+     * Effective annual cost
+     * 3 progress bars showing each layer's contribution
+   Math:
+     subscription = employees × tier_price × 12
+     layer1 = subscription × 0.15
+     layer2 = subscription × 0.10
+     layer3 = subscription × 0.05
+     total_return = layer1 + layer2 + layer3
+   Default state (100 emp × SAR 8): subscription = SAR 9,600, return = SAR 2,880
+
+5. THE 5 ADVANTAGES
+   Five cards, equal weight:
+   - 01 Saudi-dialect AI (AI HR agent + Muntej voice/text in Saudi Arabic)
+   - 02 Mobile-first (built for the phone, not the desk)
+   - 03 Multi-modal biometric verification (GPS + fingerprint + face + voice)
+   - 04 Saudi-native compliance (WPS, GOSI, Mudad, EOSB, ZATCA, Sun-Thu)
+   - 05 Motivational, not punitive (the only Saudi HR system where employees 
+     are never penalized)
+
+6. WHO WE SERVE (STP)
+   "Saudi Micro & Small SMEs · 5–300 employees · Retail · Hospitality · 
+   Services · Where the owner is still the buyer."
+
+7. DESIGN PARTNER CTA
+   "Be one of our founding Design Partners."
+   "12 months free in exchange for weekly feedback. Limited to 7 companies."
+   Form: Name, Company, Email, WhatsApp (+966). Submit → success message.
+
+8. FOOTER
+   Built in Riyadh · صُنع في الرياض · contact link · social links
+
+REQUIREMENTS
+- Bilingual toggle in top-right (EN / العربية) — full RTL flip when Arabic
+- Calculator updates live (no submit button)
+- Lead form posts to /api/lead with all fields + calculator snapshot
+- Mobile-first responsive design
+- Lighthouse score ≥ 90 on mobile
+- No login, no dashboard — pure marketing site
+
+WHAT NOT TO INCLUDE
+- No stock photos of generic office workers
+- No fake testimonials
+- No pricing comparison tables
+- No "trusted by" logos until we have real ones

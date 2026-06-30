@@ -1,0 +1,94 @@
+import { useLanguage } from "@/lib/i18n";
+import { Card, CardContent } from "@/components/ui/card";
+import { Bot, Smartphone, Fingerprint, ShieldCheck, HeartHandshake } from "lucide-react";
+
+export function Advantages() {
+  const { language, dir } = useLanguage();
+
+  const content = {
+    en: {
+      title: "The 5 Advantages",
+      items: [
+        {
+          icon: <Bot size={32} />,
+          title: "Saudi-dialect AI",
+          desc: "AI HR agent + Muntej voice/text in Saudi Arabic"
+        },
+        {
+          icon: <Smartphone size={32} />,
+          title: "Mobile-first",
+          desc: "Built for the phone, not the desk"
+        },
+        {
+          icon: <Fingerprint size={32} />,
+          title: "Multi-modal verification",
+          desc: "GPS + fingerprint + face + voice"
+        },
+        {
+          icon: <ShieldCheck size={32} />,
+          title: "Saudi-native compliance",
+          desc: "WPS, GOSI, Mudad, EOSB, ZATCA, Sun–Thu"
+        },
+        {
+          icon: <HeartHandshake size={32} />,
+          title: "Motivational, not punitive",
+          desc: "The only Saudi HR system where employees are never penalized"
+        }
+      ]
+    },
+    ar: {
+      title: "المزايا الخمس",
+      items: [
+        {
+          icon: <Bot size={32} />,
+          title: "ذكاء اصطناعي باللهجة السعودية",
+          desc: "وكيل موارد بشرية ذكي + مساعد مُنتج صوتي/نصي بالعربية السعودية"
+        },
+        {
+          icon: <Smartphone size={32} />,
+          title: "صُمم للجوال أولاً",
+          desc: "صُمم للهاتف، وليس للمكتب"
+        },
+        {
+          icon: <Fingerprint size={32} />,
+          title: "تحقق متعدد الوسائط",
+          desc: "موقع جغرافي + بصمة إصبع + وجه + صوت"
+        },
+        {
+          icon: <ShieldCheck size={32} />,
+          title: "توافق محلي سعودي",
+          desc: "نظام حماية الأجور، التأمينات الاجتماعية، مدد، مكافأة نهاية الخدمة، هيئة الزكاة، الأحد-الخميس"
+        },
+        {
+          icon: <HeartHandshake size={32} />,
+          title: "تحفيزي، ليس عقابياً",
+          desc: "نظام الموارد البشرية السعودي الوحيد الذي لا يعاقب الموظفين أبداً"
+        }
+      ]
+    }
+  };
+
+  const t = content[language];
+
+  return (
+    <section className="py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-serif text-center mb-16">{t.title}</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {t.items.map((item, idx) => (
+            <Card key={idx} className="bg-card hover:bg-muted/30 transition-colors border-border/50 group">
+              <CardContent className="p-8">
+                <div className="text-primary mb-6 group-hover:scale-110 transition-transform origin-left">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

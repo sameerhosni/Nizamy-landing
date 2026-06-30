@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: leads
+    description: Design partner lead capture
 paths:
   /healthz:
     get:
@@ -24,6 +26,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /lead:
+    post:
+      operationId: createLead
+      tags: [leads]
+      summary: Submit a design partner lead
+      description: Captures a design partner application with a calculator snapshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +60,72 @@ components:
           type: string
       required:
         - status
-
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    LeadInput:
+      type: object
+      required:
+        - name
+        - company
+        - email
+        - whatsapp
+      properties:
+        name:
+          type: string
+          minLength: 1
+        company:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 1
+        whatsapp:
+          type: string
+          minLength: 1
+        employees:
+          type: ["integer", "null"]
+        tier:
+          type: ["string", "null"]
+        tierPrice:
+          type: ["number", "null"]
+        subscription:
+          type: ["number", "null"]
+        totalReturn:
+          type: ["number", "null"]
+    Lead:
+      type: object
+      required:
+        - id
+        - name
+        - company
+        - email
+        - whatsapp
+        - createdAt
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        company:
+          type: string
+        email:
+          type: string
+        whatsapp:
+          type: string
+        employees:
+          type: ["integer", "null"]
+        tier:
+          type: ["string", "null"]
+        tierPrice:
+          type: ["number", "null"]
+        subscription:
+          type: ["number", "null"]
+        totalReturn:
+          type: ["number", "null"]
+        createdAt:
+          type: string

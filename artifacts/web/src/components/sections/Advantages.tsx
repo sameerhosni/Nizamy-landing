@@ -111,18 +111,9 @@ export function Advantages() {
           <span className="text-foreground">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
           {t.subhead}
         </p>
-
-        <div className="max-w-4xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-lg border border-border/40">
-          <img
-            src="/images/dashboard.png"
-            alt=""
-            className="w-full object-cover"
-            aria-hidden="true"
-          />
-        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {t.items.map((item, idx) => (

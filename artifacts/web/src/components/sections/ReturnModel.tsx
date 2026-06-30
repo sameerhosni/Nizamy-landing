@@ -69,9 +69,18 @@ export function ReturnModel() {
           <span className="text-gradient-primary">{t.titlePart2}</span>
           <span className="text-foreground">{t.titlePart3}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-20 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-12 max-w-2xl mx-auto leading-relaxed">
           {t.subhead}
         </p>
+
+        <div className="max-w-sm mx-auto mb-16">
+          <img
+            src="/images/return-layers.png"
+            alt=""
+            className="w-full object-contain drop-shadow-md"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
           {/* Connecting line for desktop */}

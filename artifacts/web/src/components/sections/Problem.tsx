@@ -44,9 +44,18 @@ export function Problem() {
           <span className="text-foreground">{t.headingPart1}</span>
           <span className="text-gradient-primary">{t.headingPart2}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-12 max-w-2xl mx-auto leading-relaxed">
           {t.subhead}
         </p>
+
+        <div className="max-w-3xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-sm border border-border/40">
+          <img
+            src="/images/cost-vs-return.png"
+            alt=""
+            className="w-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Legacy HR Card */}

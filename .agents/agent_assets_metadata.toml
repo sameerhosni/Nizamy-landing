@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "cMnxCAERi6HmKpZfAzf6E"
+uri = "file://artifacts/web/public/images/dashboard.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "y0Yw-m-pYSytZkkneYgJJ"
+uri = "file://artifacts/web/public/images/return-layers.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "rVyzDAmnRJXTCqy3L0pWF"
+uri = "file://artifacts/web/public/images/cost-vs-return.png"
+type = "image"
+title = "generated_image"

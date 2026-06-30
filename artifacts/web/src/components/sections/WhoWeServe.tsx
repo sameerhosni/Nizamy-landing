@@ -5,29 +5,23 @@ export function WhoWeServe() {
 
   const content = {
     en: {
-      headingPart1: "Built for the Saudi ",
-      headingPart2: "owner-operator.",
-      subhead: "If you sign the invoices and feel every cost, Mr-Hr was designed for you.",
+      headingPart1: "Built for any ",
+      headingPart2: "growing business.",
+      subhead: "If you want HR that works for your budget instead of against it, Mr-Hr was built for you.",
       tags: [
-        "Saudi Micro & Small SMEs",
-        "5–300 employees",
-        "Retail",
-        "Hospitality",
-        "Services",
-        "Where the owner is still the buyer"
+        "Private sector",
+        "Any industry",
+        "Any team size"
       ]
     },
     ar: {
-      headingPart1: "صُمم لصاحب العمل ",
-      headingPart2: "السعودي.",
-      subhead: "إذا كنت أنت من يوقّع الفواتير ويشعر بكل تكلفة، فقد صُمم مستر إتش آر لك.",
+      headingPart1: "لأي منشأة ",
+      headingPart2: "تريد نمواً حقيقياً.",
+      subhead: "إذا كنت تريد نظام موارد بشرية يوفّر لك بدلاً من أن يستنزفك، فقد صُمم مستر إتش آر لك.",
       tags: [
-        "المنشآت السعودية متناهية الصغر والصغيرة",
-        "٥-٣٠٠ موظف",
-        "التجزئة",
-        "الضيافة",
-        "الخدمات",
-        "حيث يكون المالك هو المشتري"
+        "القطاع الخاص",
+        "جميع القطاعات",
+        "أي حجم فريق"
       ]
     }
   };

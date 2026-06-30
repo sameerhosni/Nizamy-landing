@@ -7,7 +7,7 @@ export function Advantages() {
 
   const content = {
     en: {
-      titlePart1: "The 5 ",
+      titlePart1: "Key ",
       titlePart2: "Advantages",
       subhead: "Every feature is built to do one thing: turn HR from a cost you tolerate into an edge you compound.",
       items: [
@@ -35,12 +35,27 @@ export function Advantages() {
           icon: <HeartHandshake size={28} />,
           title: "Motivational, not punitive",
           desc: "The only Saudi HR system where employees are never penalized"
+        },
+        {
+          icon: <Bot size={28} />,
+          title: "AI HR Self-Service",
+          desc: "Employees submit leave, check payslips, and get HR answers through AI — no manager overhead"
+        },
+        {
+          icon: <ShieldCheck size={28} />,
+          title: "Automated Payroll & WPS",
+          desc: "One-click payroll with automatic WPS filing and salary transfer"
+        },
+        {
+          icon: <Fingerprint size={28} />,
+          title: "Smart Scheduling",
+          desc: "AI-optimized shift scheduling that reduces overtime costs and fills gaps automatically"
         }
       ]
     },
     ar: {
       titlePart1: "المزايا ",
-      titlePart2: "الخمس",
+      titlePart2: "الرئيسية",
       subhead: "كل ميزة صُممت لهدف واحد: تحويل الموارد البشرية من تكلفة تتحملها إلى ميزة تتضاعف لصالحك.",
       items: [
         {
@@ -67,6 +82,21 @@ export function Advantages() {
           icon: <HeartHandshake size={28} />,
           title: "تحفيزي، ليس عقابياً",
           desc: "نظام الموارد البشرية السعودي الوحيد الذي لا يعاقب الموظفين أبداً"
+        },
+        {
+          icon: <Bot size={28} />,
+          title: "الخدمة الذاتية بالذكاء الاصطناعي",
+          desc: "الموظفون يقدمون طلباتهم، يراجعون مستحقاتهم، ويحصلون على إجابات عبر الذكاء الاصطناعي — بدون تدخل المدير"
+        },
+        {
+          icon: <ShieldCheck size={28} />,
+          title: "كشوف رواتب تلقائية وحماية أجور",
+          desc: "معالجة الرواتب بنقرة واحدة مع إيداع تلقائي لنظام حماية الأجور"
+        },
+        {
+          icon: <Fingerprint size={28} />,
+          title: "جدولة ذكية للوردية",
+          desc: "جدولة مُحسَّنة بالذكاء الاصطناعي تقلل تكاليف الوقت الإضافي وتملأ الفراغات تلقائياً"
         }
       ]
     }

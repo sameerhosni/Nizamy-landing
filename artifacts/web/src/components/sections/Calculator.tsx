@@ -44,6 +44,7 @@ export function Calculator({
       tiers: { Growth: "Growth", Pro: "Pro", Suite: "Suite" },
       results: {
         annualReturn: "Annual Return",
+        sampleNote: "Illustrative estimate based on your inputs",
         subscription: "Annual Subscription",
         effective: "Effective Annual Cost",
         performance: "Performance",
@@ -60,6 +61,7 @@ export function Calculator({
       tiers: { Growth: "نمو", Pro: "احترافي", Suite: "جناح" },
       results: {
         annualReturn: "العائد السنوي",
+        sampleNote: "أرقام تقديرية توضيحية بناءً على مدخلاتك",
         subscription: "الاشتراك السنوي",
         effective: "التكلفة السنوية الفعلية",
         performance: "الأداء",
@@ -129,6 +131,7 @@ export function Calculator({
                 <div className="text-5xl md:text-6xl font-bold text-primary tracking-tight">
                   {formatCurrency(totalReturn, "SAR", language)}
                 </div>
+                <p className="text-xs text-muted-foreground mt-3">{t.results.sampleNote}</p>
               </div>
 
               <div className="space-y-6">

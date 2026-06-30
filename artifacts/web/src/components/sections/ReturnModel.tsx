@@ -26,15 +26,15 @@ export function ReturnModel() {
         {
           num: "03",
           pct: "5%",
-          title: "Points & redemption loop",
+          title: "Motivation & Rewards System",
           desc: "Employees earn through engagement; you redeem the value back into the system."
         }
       ]
     },
     ar: {
-      titlePart1: "ثلاث طبقات. ",
-      titlePart2: "حتى ٣٠٪ عائد",
-      titlePart3: "، كل عام.",
+      titlePart1: "توفير وميزانية مستردة تصل الى ",
+      titlePart2: "30%",
+      titlePart3: "",
       subhead: "بدون حيل أو خدع استرداد. إليك بالضبط من أين يعود كل ريال — ولماذا يتضاعف كلما طالت مدة بقائك.",
       layers: [
         {
@@ -52,7 +52,7 @@ export function ReturnModel() {
         {
           num: "٠٣",
           pct: "٥٪",
-          title: "دورة النقاط والاسترداد",
+          title: "نظام التحفيز والمكافئات",
           desc: "يكتسب الموظفون النقاط من خلال التفاعل؛ وتسترد أنت القيمة في النظام."
         }
       ]

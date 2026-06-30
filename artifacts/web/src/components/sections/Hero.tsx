@@ -11,17 +11,17 @@ export function Hero() {
       eyebrow: "AI-powered HR, built for Saudi SMEs",
       headlinePart1: "Every other HR system is a cost. ",
       headlinePart2: "Mr-Hr is a return.",
-      subtitle: "Stop paying for software that only takes. Mr-Hr returns up to 30% of your subscription back to you, every year — through performance gains, top-achiever rewards, and a points loop your team actually uses.",
+      subtitle: "Mr-Hr returns up to 30% of your annual subscription cost back to you — every year.",
       primaryCta: "Calculate my return",
       secondaryCta: "Become a Design Partner",
       chips: [
         "30% Maximum annual return",
         "SAR 5 starting price per employee",
-        "10 min from signup to first check-in",
+        "2 min from signup to first check-in",
         "0 penalties or chasing"
       ],
       mockup: {
-        summary: "Return Summary",
+        summary: "Return Summary (Sample)",
         period: "Q3 2024",
         vsLast: "vs last quarter",
         performance: "Performance Return",
@@ -35,22 +35,22 @@ export function Hero() {
       eyebrow: "موارد بشرية بالذكاء الاصطناعي، صُممت للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تكلفة. ",
       headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "توقّف عن الدفع لبرنامج لا يأخذ إلا منك. مستر إتش آر يعيد لك حتى ٣٠٪ من قيمة اشتراكك سنوياً — من خلال تحسين الأداء، ومكافآت المتميزين، وحلقة نقاط يستخدمها فريقك فعلياً.",
+      subtitle: "مستر إتش آر يعيد لك حتى ٣٠٪ من تكلفة اشتراكك — كل عام.",
       primaryCta: "احسب العائد",
       secondaryCta: "كن شريك تصميم",
       chips: [
         "٣٠٪ الحد الأقصى للعائد السنوي",
         "SAR 5 سعر البدء لكل موظف",
-        "١٠ دقائق من التسجيل لأول تسجيل حضور",
+        "دقيقتان من التسجيل لأول تسجيل حضور",
         "٠ غرامات أو ملاحقة"
       ],
       mockup: {
-        summary: "ملخص العائد",
+        summary: "ملخص العائد (توضيحي)",
         period: "الربع الثالث ٢٠٢٤",
         vsLast: "مقارنة بالربع الماضي",
         performance: "عائد الأداء",
         achievers: "المتميزون",
-        points: "دورة النقاط",
+        points: "نظام التحفيز",
         returnBadge: "عائد ٣٠٪+",
         active: "نشط"
       }
@@ -90,14 +90,6 @@ export function Hero() {
             >
               {t.primaryCta}
               {isRtl ? <ArrowLeft className="ml-0 mr-2 group-hover:-translate-x-1 transition-transform" /> : <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
-            </Button>
-            <Button 
-              size="lg" 
-              variant="secondary" 
-              className="w-full sm:w-auto text-lg h-14 px-8 rounded-full hover:bg-secondary/80"
-              onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              {t.secondaryCta}
             </Button>
           </div>
 

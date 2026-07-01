@@ -1,6 +1,8 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, BarChart3, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, TrendingUp, Users, Zap } from "lucide-react";
+
+const chartBars = [32, 44, 38, 57, 52, 68, 61, 77, 72, 85, 80, 95];
 
 export function Hero() {
   const { language, dir } = useLanguage();
@@ -9,50 +11,58 @@ export function Hero() {
   const content = {
     en: {
       eyebrow: "AI-powered HR, built for Saudi SMEs",
-      headlinePart1: "Every other HR system is a cost. ",
+      headlinePart1: "Every other HR system is a cost.",
       headlinePart2: "Mr-Hr is a return.",
       subtitle: "Mr-Hr returns up to 30% of your annual subscription cost back to you — every year.",
       primaryCta: "Calculate my return",
       secondaryCta: "Become a Design Partner",
       chips: [
-        "30% Maximum annual return",
-        "SAR 5 starting price per employee",
-        "2 min from signup to first check-in",
-        "0 penalties or chasing"
+        "Up to 30% annual return",
+        "SAR 5 per employee / month",
+        "One-minute onboarding",
+        "Zero penalties or chasing"
       ],
       mockup: {
-        summary: "Return Summary (Sample)",
-        period: "Q3 2024",
-        vsLast: "vs last quarter",
-        performance: "Performance Return",
-        achievers: "Top Achievers",
-        points: "Points Loop",
+        label: "Annual Return Dashboard",
+        period: "2024 · Live estimate",
+        returnLabel: "Estimated annual return",
+        rateLabel: "Of subscription returned",
+        trend: "+15% vs last year",
+        chart: "Monthly return trend",
+        breakdown: [
+          { label: "Performance", value: "SAR 6,200" },
+          { label: "Rewards", value: "SAR 4,150" },
+          { label: "Points", value: "SAR 2,100" },
+        ],
         returnBadge: "+30% Return",
-        active: "Active"
       }
     },
     ar: {
-      eyebrow: "",
-      headlinePart1: "كل أنظمة الموارد البشرية تكلفة. ",
+      eyebrow: "موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
+      headlinePart1: "كل أنظمة الموارد البشرية تكلفة.",
       headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "مستر اتش ار يساعدك على تقليل الانفاق وزيادة الانتاجية حتى 30% من تكلفة اشتراكك سنويا",
+      subtitle: "يُعيد إليك مستر إتش آر ما يصل إلى ٣٠٪ من تكلفة اشتراكك السنوي — كل عام.",
       primaryCta: "احسب العائد",
       secondaryCta: "كن شريك تصميم",
       chips: [
-        "٣٠٪ الحد الأقصى للعائد السنوي",
-        "SAR 5 سعر البدء لكل موظف",
-        "دقيقتان من التسجيل لأول تسجيل حضور",
-        "٠ غرامات أو ملاحقة"
+        "حتى ٣٠٪ عائد سنوي",
+        "٥ ريالات للموظف شهرياً",
+        "تسجيل في دقيقة واحدة",
+        "صفر غرامات أو ملاحقة"
       ],
       mockup: {
-        summary: "ملخص العائد (توضيحي)",
-        period: "الربع الثالث ٢٠٢٤",
-        vsLast: "مقارنة بالربع الماضي",
-        performance: "عائد الأداء",
-        achievers: "المتميزون",
-        points: "نظام التحفيز",
+        label: "لوحة العائد السنوي",
+        period: "٢٠٢٤ · تقدير مباشر",
+        returnLabel: "العائد السنوي التقديري",
+        rateLabel: "من الاشتراك يعود إليك",
+        trend: "+١٥٪ مقارنة بالعام الماضي",
+        chart: "اتجاه العائد الشهري",
+        breakdown: [
+          { label: "الأداء", value: "٦٬٢٠٠ ريال" },
+          { label: "المكافآت", value: "٤٬١٥٠ ريال" },
+          { label: "النقاط", value: "٢٬١٠٠ ريال" },
+        ],
         returnBadge: "عائد ٣٠٪+",
-        active: "نشط"
       }
     }
   };
@@ -60,115 +70,146 @@ export function Hero() {
   const t = content[language];
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center pt-24 pb-16 overflow-hidden bg-[#0A0B14]">
-      {/* Background soft gradients */}
+    <section className="relative min-h-[88vh] flex flex-col justify-center pt-20 pb-12 overflow-hidden bg-[#0A0B14]">
+      {/* Background gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] bg-violet-600/25 blur-[140px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-indigo-500/20 blur-[120px] rounded-full" />
-        <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-primary/10 blur-[100px] rounded-full" />
+        <div className="absolute top-[-15%] left-[-5%] w-[50%] h-[60%] bg-violet-600/20 blur-[160px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[50%] bg-indigo-500/15 blur-[140px] rounded-full" />
+        <div className="absolute top-[35%] right-[25%] w-[25%] h-[30%] bg-primary/8 blur-[80px] rounded-full" />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          {t.eyebrow && (
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              {t.eyebrow}
-            </div>
-          )}
-          <h1 className="text-5xl md:text-7xl leading-[1.1] md:leading-[1.15]">
-            <span className="text-white">{t.headlinePart1}</span>
-            <span className="text-gradient-primary">{t.headlinePart2}</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-white/65 max-w-3xl mx-auto leading-relaxed">
-            {t.subtitle}
-          </p>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-[1fr_430px] gap-12 items-center max-w-6xl mx-auto">
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto text-lg h-14 px-8 shadow-glow rounded-xl group"
-              onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              {t.primaryCta}
-              {isRtl ? <ArrowLeft className="ml-0 mr-2 group-hover:-translate-x-1 transition-transform" /> : <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />}
-            </Button>
-          </div>
+          {/* Left: copy */}
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            {t.eyebrow && (
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/8 border border-white/15 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                {t.eyebrow}
+              </div>
+            )}
 
-          <div className="flex flex-wrap justify-center gap-3 pt-12">
-            {t.chips.map((chip, idx) => (
-              <div key={idx} className="bg-white/10 border border-white/15 rounded-full px-4 py-2 text-sm font-medium text-white/70 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${idx * 100}ms` }}>
-                {chip}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Abstract UI Mockup */}
-        <div className="w-full max-w-5xl mt-20 relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
-          <div className="glassmorphic rounded-2xl p-4 md:p-8 relative">
-            {/* Header */}
-            <div className="flex justify-between items-center mb-8 border-b border-border/50 pb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <TrendingUp size={20} />
-                </div>
-                <div>
-                  <div className="font-bold text-lg">{t.mockup.summary}</div>
-                  <div className="text-sm text-muted-foreground">{t.mockup.period}</div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold text-primary">SAR 12,450</div>
-                <div className="text-sm text-emerald-500 font-medium">+15% {t.mockup.vsLast}</div>
-              </div>
+            <div className="space-y-3">
+              <p className="text-2xl md:text-3xl text-white/50 font-medium leading-snug">
+                {t.headlinePart1}
+              </p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-gradient-primary">
+                {t.headlinePart2}
+              </h1>
             </div>
 
-            {/* Dashboard content */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-background rounded-xl p-5 border border-border/50">
-                <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <BarChart3 size={16} />
-                  <span className="text-sm font-medium">{t.mockup.performance}</span>
+            <p className="text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
+              {t.subtitle}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto text-base h-12 px-7 shadow-glow rounded-xl group"
+                onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                {t.primaryCta}
+                {isRtl
+                  ? <ArrowLeft className="ms-2 group-hover:-translate-x-1 transition-transform" size={18} />
+                  : <ArrowRight className="ms-2 group-hover:translate-x-1 transition-transform" size={18} />}
+              </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl text-white/70 hover:text-white hover:bg-white/10 border border-white/15"
+                onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                {t.secondaryCta}
+              </Button>
+            </div>
+
+            {/* Checkmark proof points */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
+              {t.chips.map((chip, idx) => (
+                <div key={idx} className="flex items-center gap-2.5 text-sm text-white/60">
+                  <div className="w-4 h-4 rounded-full bg-primary/25 border border-primary/40 flex items-center justify-center shrink-0">
+                    <Check size={9} className="text-primary" strokeWidth={3} />
+                  </div>
+                  {chip}
                 </div>
-                <div className="text-2xl font-bold mb-2">SAR 6,200</div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-orange-400 to-pink-500 w-[60%]"></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: return dashboard mockup */}
+          <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
+            <div className="relative rounded-2xl bg-white/[0.06] border border-white/[0.12] backdrop-blur-2xl p-6 shadow-2xl">
+
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <TrendingUp size={16} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white/90">{t.mockup.label}</div>
+                    <div className="text-xs text-white/40">{t.mockup.period}</div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="bg-background rounded-xl p-5 border border-border/50">
-                <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <Users size={16} />
-                  <span className="text-sm font-medium">{t.mockup.achievers}</span>
-                </div>
-                <div className="text-2xl font-bold mb-2">SAR 4,150</div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-pink-500 to-indigo-500 w-[40%]"></div>
+                <div className="bg-emerald-500/15 border border-emerald-500/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-400">
+                  {t.mockup.trend}
                 </div>
               </div>
 
-              <div className="bg-background rounded-xl p-5 border border-border/50">
-                <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <TrendingUp size={16} />
-                  <span className="text-sm font-medium">{t.mockup.points}</span>
-                </div>
-                <div className="text-2xl font-bold mb-2">SAR 2,100</div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[20%]"></div>
+              {/* Big return number */}
+              <div className="mb-6">
+                <div className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">{t.mockup.returnLabel}</div>
+                <div className="text-4xl font-black text-white mb-1">SAR 12,450</div>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full w-[30%] bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full" />
+                  </div>
+                  <span className="text-xs font-semibold text-white/50">30% {t.mockup.rateLabel}</span>
                 </div>
               </div>
+
+              {/* Bar chart */}
+              <div className="mb-6">
+                <div className="text-xs font-medium text-white/30 mb-2">{t.mockup.chart}</div>
+                <div className="flex items-end gap-1 h-14">
+                  {chartBars.map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 rounded-sm transition-all duration-500"
+                      style={{
+                        height: `${h}%`,
+                        background: i === chartBars.length - 1
+                          ? 'linear-gradient(to top, #f97316, #ec4899)'
+                          : 'rgba(255,255,255,0.1)'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Breakdown */}
+              <div className="grid grid-cols-3 gap-3">
+                {t.mockup.breakdown.map((item, i) => (
+                  <div key={i} className="bg-white/[0.05] border border-white/[0.08] rounded-xl p-3">
+                    <div className="text-xs text-white/40 mb-1">{item.label}</div>
+                    <div className="text-sm font-bold text-white/90">{item.value}</div>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* Floating badge */}
+            <div className="absolute -top-4 -right-4 rtl:-right-auto rtl:-left-4 bg-primary text-white text-xs font-bold rounded-full px-3 py-1.5 shadow-glow animate-bounce" style={{ animationDuration: '3s' }}>
+              {t.mockup.returnBadge}
+            </div>
+
+            {/* Decorative glow behind card */}
+            <div className="absolute inset-0 -z-10 bg-primary/10 blur-[60px] rounded-3xl scale-95" />
           </div>
-          
-          {/* Floating decorative elements */}
-          <div className="absolute -top-6 -right-6 bg-white shadow-lg rounded-full px-4 py-2 border border-border/50 text-sm font-bold text-primary animate-bounce" style={{ animationDuration: '3s' }}>
-            {t.mockup.returnBadge}
-          </div>
-          <div className="absolute -bottom-6 -left-6 bg-white shadow-lg rounded-full px-4 py-2 border border-border/50 text-sm font-bold text-emerald-500 animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
-            {t.mockup.active}
-          </div>
+
         </div>
       </div>
     </section>

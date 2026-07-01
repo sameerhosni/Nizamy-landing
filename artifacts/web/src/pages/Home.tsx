@@ -13,7 +13,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export function Home() {
   const [employees, setEmployees] = useState(100);
-  const [tier, setTier] = useState<"Growth" | "Pro" | "Suite">("Pro");
+  const [tier, setTier] = useState<"Standard" | "Growth" | "Pro">("Growth");
 
   useEffect(() => {
     document.title = "Mr-Hr — The HR system that pays you back";
@@ -28,7 +28,7 @@ export function Home() {
     }
   }, []);
 
-  const tierPrice = tier === "Growth" ? 5 : tier === "Pro" ? 8 : 12;
+  const tierPrice = tier === "Standard" ? 5 : tier === "Growth" ? 8 : 12;
   const subscription = employees * tierPrice * 12;
   const layer1 = subscription * 0.15;
   const layer2 = subscription * 0.10;

@@ -17,8 +17,8 @@ function LayerBar({ value, max }: { value: number; max: number }) {
 interface CalculatorProps {
   employees: number;
   setEmployees: (val: number) => void;
-  tier: "Growth" | "Pro" | "Suite";
-  setTier: (val: "Growth" | "Pro" | "Suite") => void;
+  tier: "Standard" | "Growth" | "Pro";
+  setTier: (val: "Standard" | "Growth" | "Pro") => void;
   tierPrice: number;
   subscription: number;
   totalReturn: number;
@@ -41,7 +41,7 @@ export function Calculator({
       subhead: "Move the slider and watch a cost turn into a return — your real number, in seconds.",
       empLabel: "Number of employees",
       tierLabel: "Select Tier",
-      tiers: { Growth: "Growth", Pro: "Pro", Suite: "Suite" },
+      tiers: { Standard: "Standard", Growth: "Growth", Pro: "Pro" },
       results: {
         annualReturn: "Annual Return",
         sampleNote: "Illustrative estimate based on your inputs",
@@ -58,7 +58,7 @@ export function Calculator({
       subhead: "حرّك المؤشر وشاهد التكلفة تتحول إلى عائد — رقمك الحقيقي، في ثوانٍ.",
       empLabel: "عدد الموظفين",
       tierLabel: "اختر الباقة",
-      tiers: { Growth: "نمو", Pro: "احترافي", Suite: "جناح" },
+      tiers: { Standard: "أساسي", Growth: "نمو", Pro: "احترافي" },
       results: {
         annualReturn: "العائد السنوي",
         sampleNote: "أرقام تقديرية توضيحية بناءً على مدخلاتك",
@@ -105,7 +105,7 @@ export function Calculator({
             <div className="space-y-6">
               <label className="text-lg font-medium block">{t.tierLabel}</label>
               <div className="grid grid-cols-3 gap-4">
-                {(["Growth", "Pro", "Suite"] as const).map((tOption) => (
+                {(["Standard", "Growth", "Pro"] as const).map((tOption) => (
                   <button
                     key={tOption}
                     onClick={() => setTier(tOption)}
@@ -116,7 +116,7 @@ export function Calculator({
                     }`}
                   >
                     <div className="font-bold mb-1">{t.tiers[tOption]}</div>
-                    <div className="text-sm">SAR {tOption === "Growth" ? 5 : tOption === "Pro" ? 8 : 12}</div>
+                    <div className="text-sm">SAR {tOption === "Standard" ? 5 : tOption === "Growth" ? 8 : 12}</div>
                   </button>
                 ))}
               </div>

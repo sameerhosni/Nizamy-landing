@@ -32,10 +32,10 @@ export function Hero() {
       }
     },
     ar: {
-      eyebrow: "موارد بشرية بالذكاء الاصطناعي، صُممت للمنشآت السعودية",
+      eyebrow: "",
       headlinePart1: "كل أنظمة الموارد البشرية تكلفة. ",
       headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "مستر إتش آر يعيد لك حتى ٣٠٪ من تكلفة اشتراكك — كل عام.",
+      subtitle: "مستر اتش ار يساعدك على تقليل الانفاق وزيادة الانتاجية حتى 30% من تكلفة اشتراكك سنويا",
       primaryCta: "احسب العائد",
       secondaryCta: "كن شريك تصميم",
       chips: [
@@ -70,10 +70,12 @@ export function Hero() {
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-primary" />
-            {t.eyebrow}
-          </div>
+          {t.eyebrow && (
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              {t.eyebrow}
+            </div>
+          )}
           <h1 className="text-5xl md:text-7xl leading-[1.1] md:leading-[1.15]">
             <span className="text-white">{t.headlinePart1}</span>
             <span className="text-gradient-primary">{t.headlinePart2}</span>

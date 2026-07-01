@@ -13,15 +13,34 @@ import { useLanguage } from "@/lib/i18n";
 const content = {
   en: {
     eyebrow: "The Platform",
-    titlePart1: "Full HR operations,",
-    titlePart2: " not just a calculator.",
-    subtitle:
-      "Mr-Hr runs the day-to-day HR work so your team leads can lead — not push paperwork.",
+    titlePart1: "HR that runs",
+    titlePart2: " in the background.",
+    subtitle: "Your team stays focused. Mr-Hr handles the rest.",
     services: [
+      {
+        icon: <Clock size={22} />,
+        title: "Attendance & Time",
+        desc: "Mobile or biometric check-in linked directly to payroll.",
+      },
+      {
+        icon: <Target size={22} />,
+        title: "Incentives & KPIs",
+        desc: "Structured review cycles, goal setting, and performance-linked rewards.",
+      },
+      {
+        icon: <UserCircle size={22} />,
+        title: "AI Self-Service",
+        desc: "Employees update their own data, view payslips, and request documents — no HR queue.",
+      },
       {
         icon: <Banknote size={22} />,
         title: "Payroll & WPS",
         desc: "Automated monthly payroll with SAMA-compliant WPS file generation.",
+      },
+      {
+        icon: <UserPlus size={22} />,
+        title: "Digital Onboarding",
+        desc: "Hire and onboard new employees fully digitally in under two minutes.",
       },
       {
         icon: <CalendarCheck size={22} />,
@@ -29,29 +48,9 @@ const content = {
         desc: "Digital leave requests, manager approvals, and balance tracking.",
       },
       {
-        icon: <Clock size={22} />,
-        title: "Attendance & Time",
-        desc: "Mobile or biometric check-in linked directly to payroll.",
-      },
-      {
-        icon: <UserCircle size={22} />,
-        title: "Employee Self-Service",
-        desc: "Staff update their own data, view payslips, and request documents — no HR queue.",
-      },
-      {
         icon: <ShieldCheck size={22} />,
         title: "GOSI & HRDF",
         desc: "Automatic contribution calculations and compliance filings, every month.",
-      },
-      {
-        icon: <Target size={22} />,
-        title: "Performance & KPIs",
-        desc: "Structured review cycles, goal setting, and performance tracking.",
-      },
-      {
-        icon: <UserPlus size={22} />,
-        title: "Digital Onboarding",
-        desc: "Hire and onboard new employees fully digitally in under two minutes.",
       },
       {
         icon: <BarChart3 size={22} />,
@@ -62,15 +61,34 @@ const content = {
   },
   ar: {
     eyebrow: "المنصة",
-    titlePart1: "عمليات الموارد البشرية الكاملة،",
-    titlePart2: " وليس مجرد حاسبة.",
-    subtitle:
-      "مستر إتش آر يدير العمليات اليومية للموارد البشرية — حتى يتفرغ فريقك لما يهم.",
+    titlePart1: "موارد بشرية تعمل",
+    titlePart2: " بلا ضوضاء.",
+    subtitle: "فريقك يركّز على العمل. مستر إتش آر يتولّى الباقي.",
     services: [
+      {
+        icon: <Clock size={22} />,
+        title: "الحضور والوقت",
+        desc: "تسجيل الحضور عبر الجوال أو البصمة مرتبط مباشرة بالراتب.",
+      },
+      {
+        icon: <Target size={22} />,
+        title: "الحوافز ومؤشرات الإنجاز",
+        desc: "دورات تقييم منظمة، وضع الأهداف، وربط المكافآت بالأداء.",
+      },
+      {
+        icon: <UserCircle size={22} />,
+        title: "الخدمة الذاتية بالذكاء الاصطناعي",
+        desc: "الموظف يحدث بياناته ويتصفح قسائم الراتب ويطلب المستندات دون انتظار.",
+      },
       {
         icon: <Banknote size={22} />,
         title: "الرواتب ونظام حماية الأجور",
         desc: "رواتب شهرية آلية مع توليد ملف WPS المتوافق مع متطلبات ساما.",
+      },
+      {
+        icon: <UserPlus size={22} />,
+        title: "الإعداد الرقمي للموظف",
+        desc: "استقطاب وتهيئة الموظفين الجدد رقمياً بالكامل في أقل من دقيقتين.",
       },
       {
         icon: <CalendarCheck size={22} />,
@@ -78,29 +96,9 @@ const content = {
         desc: "طلبات الإجازة الرقمية، موافقة المدير، وتتبع الرصيد في مكان واحد.",
       },
       {
-        icon: <Clock size={22} />,
-        title: "الحضور والوقت",
-        desc: "تسجيل الحضور عبر الجوال أو البصمة مرتبط مباشرة بالراتب.",
-      },
-      {
-        icon: <UserCircle size={22} />,
-        title: "الخدمة الذاتية للموظف",
-        desc: "الموظف يحدث بياناته وتصفح قسائم الراتب وطلب المستندات دون انتظار.",
-      },
-      {
         icon: <ShieldCheck size={22} />,
         title: "التأمينات الاجتماعية وهدف",
         desc: "احتساب الاشتراكات تلقائياً والإيداع الإلزامي كل شهر بدون أخطاء.",
-      },
-      {
-        icon: <Target size={22} />,
-        title: "الأداء ومؤشرات الإنجاز",
-        desc: "دورات تقييم منظمة، وضع الأهداف، ومتابعة الأداء الوظيفي.",
-      },
-      {
-        icon: <UserPlus size={22} />,
-        title: "الإعداد الرقمي للموظف",
-        desc: "استقطاب وتهيئة الموظفين الجدد رقمياً بالكامل في أقل من دقيقتين.",
       },
       {
         icon: <BarChart3 size={22} />,

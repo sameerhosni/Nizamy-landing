@@ -145,7 +145,7 @@ export function Hero() {
               {/* Big return number */}
               <div className="mb-6">
                 <div className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">{t.mockup.returnLabel}</div>
-                <div className="text-4xl font-black text-white mb-1">SAR 12,450</div>
+                <div className="text-4xl font-black text-white mb-1">SAR 1,440</div>
                 <div className="flex items-center gap-2">
                   <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
                     <div className="h-full w-[30%] bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full" />
@@ -157,7 +157,7 @@ export function Hero() {
               {/* Subscription comparison */}
               <div className="flex items-center justify-between rounded-xl bg-white/[0.05] border border-white/[0.08] px-4 py-3.5">
                 <span className="text-sm text-white/50">{t.mockup.subscriptionLabel}</span>
-                <span className="text-sm font-bold text-white/90">SAR 41,500</span>
+                <span className="text-sm font-bold text-white/90">SAR 4,800</span>
               </div>
             </div>
 

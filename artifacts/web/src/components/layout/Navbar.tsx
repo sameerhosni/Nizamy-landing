@@ -48,7 +48,7 @@ export function Navbar() {
               document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            {isRtl ? "شريك تصميم" : "Design Partner"}
+            {isRtl ? "كن أول المبادرين" : "Design Partner"}
           </Button>
         </div>
       </div>

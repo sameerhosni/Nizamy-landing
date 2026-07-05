@@ -1,110 +1,88 @@
-import { useState } from "react";
-import {
-  Clock,
-  Target,
-  Bot,
-  UserCog,
-  BarChart3,
-  ArrowRight,
-  Sparkles,
-  TrendingUp,
-} from "lucide-react";
+import { Clock, Target, Bot, UserCog, BarChart3, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-import attendanceImg from "@/assets/services/attendance.png";
-import incentivesImg from "@/assets/services/incentives.png";
-import aiImg from "@/assets/services/ai.png";
-import selfServiceImg from "@/assets/services/selfservice.png";
-import analyticsImg from "@/assets/services/analytics.png";
 
 const moduleIcons = [Clock, Target, Bot, UserCog, BarChart3];
-const moduleImages = [attendanceImg, incentivesImg, aiImg, selfServiceImg, analyticsImg];
 
 const moduleColors = [
-  { bg: "bg-blue-50",    text: "text-blue-600",    dot: "bg-blue-500"    },
-  { bg: "bg-amber-50",   text: "text-amber-600",   dot: "bg-amber-500"   },
-  { bg: "bg-violet-50",  text: "text-violet-600",  dot: "bg-violet-500"  },
-  { bg: "bg-sky-50",     text: "text-sky-600",     dot: "bg-sky-500"     },
-  { bg: "bg-indigo-50",  text: "text-indigo-600",  dot: "bg-indigo-500"  },
+  { bg: "bg-blue-50",   text: "text-blue-600",   ring: "group-hover:border-blue-200"   },
+  { bg: "bg-amber-50",  text: "text-amber-600",  ring: "group-hover:border-amber-200"  },
+  { bg: "bg-violet-50", text: "text-violet-600", ring: "group-hover:border-violet-200" },
+  { bg: "bg-sky-50",    text: "text-sky-600",    ring: "group-hover:border-sky-200"    },
+  { bg: "bg-indigo-50", text: "text-indigo-600", ring: "group-hover:border-indigo-200" },
 ];
 
 const content = {
   en: {
     eyebrow: "How Mr-Hr Works",
     title: "A performance system first. A return because of it.",
-    subtitle: "Mr-Hr is a performance management platform — five services that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
-    howLabel: "How it works",
-    returnsLabel: "What it achieves",
-    outro: "Better performance, naturally, means a bigger return.",
+    subtitle: "Five services that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
     modules: [
       {
         name: "Attendance & Time",
         tagline: "No more manual timesheets.",
-        how: "Employees clock in via mobile app or biometric device. Every check-in flows directly into the system — no manual reconciliation, no data re-entry.",
-        returns: "Punctuality becomes a habit, not a headache. Clean, real-time attendance data your whole team can rely on.",
+        desc: "Employees clock in via mobile or biometric device, and every check-in flows straight into payroll — no manual reconciliation, ever.",
+        highlight: "Real-time, always accurate",
       },
       {
         name: "Incentives & Success KPIs",
         tagline: "Performance tied to results, not paperwork.",
-        how: "Set goals, run structured review cycles, and link performance outcomes directly to rewards — all inside one system, with no spreadsheets.",
-        returns: "Employees chase clear goals instead of chasing paperwork — and every achievement is tracked, visible, and rewarded.",
+        desc: "Set goals, run structured review cycles, and link outcomes directly to rewards — all inside one system, no spreadsheets.",
+        highlight: "Every win tracked & rewarded",
       },
       {
         name: "AI Self-Service",
         tagline: "HR queue reduced to zero.",
-        how: "A conversational AI handles employee requests around the clock — payslip queries, document requests, policy questions — without involving HR.",
-        returns: "Employees get instant answers any hour of the day, freeing your HR team to focus on what actually drives performance.",
+        desc: "A Saudi-dialect AI agent handles payslip questions, document requests, and policy questions around the clock — no HR involved.",
+        highlight: "Instant answers, 24/7",
       },
       {
         name: "Employee Self-Service",
         tagline: "Every employee, fully in control.",
-        how: "Employees update their own data, view leave balances, access payslips, and submit requests through a clean self-service dashboard — no paper, no waiting.",
-        returns: "A more engaged, self-sufficient workforce — employees who feel in control show up and perform better.",
+        desc: "Employees update their data, check leave balances, and submit requests from a clean dashboard — no paper, no waiting.",
+        highlight: "Self-sufficient by design",
       },
       {
         name: "HR Analytics",
         tagline: "See performance before it slips.",
-        how: "Live dashboards aggregate attendance, goals, and engagement data in real time — accessible to managers without needing IT.",
-        returns: "Managers spot performance trends the moment they emerge, and act early instead of reacting late.",
+        desc: "Live dashboards surface attendance, goals, and engagement in real time, so managers can act early instead of reacting late.",
+        highlight: "Trends, not surprises",
       },
     ],
   },
   ar: {
     eyebrow: "كيف يعمل مستر إتش آر",
     title: "نظام لإدارة الأداء أولاً، والعائد نتيجة طبيعية له.",
-    subtitle: "مستر إتش آر منصة لإدارة الأداء — خمس خدمات تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
-    howLabel: "كيف تعمل",
-    returnsLabel: "ما الذي تحققه",
-    outro: "أداء أفضل يعني، بشكل طبيعي، عائداً أكبر.",
+    subtitle: "خمس خدمات تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
     modules: [
       {
         name: "الحضور والانصراف",
         tagline: "لا مزيد من الجداول اليدوية.",
-        how: "يسجّل الموظفون حضورهم عبر التطبيق أو البصمة. كل تسجيل يتدفق مباشرة إلى النظام — دون مطابقة يدوية أو إدخال بيانات مكرر.",
-        returns: "الانضباط في الحضور يصبح عادة لا عبئاً — بيانات دقيقة ولحظية يعتمد عليها فريقك بالكامل.",
+        desc: "يسجّل الموظفون حضورهم عبر التطبيق أو البصمة، وكل تسجيل يتدفق مباشرة إلى الرواتب — دون مطابقة يدوية على الإطلاق.",
+        highlight: "بيانات لحظية ودقيقة دائماً",
       },
       {
         name: "الحوافز ومؤشرات النجاح",
         tagline: "الأداء مرتبط بالنتائج لا بالأوراق.",
-        how: "ضع الأهداف، وأدِر دورات تقييم منظمة، واربط نتائج الأداء بالمكافآت مباشرة — كل ذلك داخل منصة واحدة دون جداول بيانات.",
-        returns: "يتنافس الموظفون على أهداف واضحة بدلاً من الأوراق — وكل إنجاز يُرصد، ويُرى، ويُكافأ.",
+        desc: "ضع الأهداف، وأدِر دورات تقييم منظمة، واربط نتائج الأداء بالمكافآت مباشرة — كل ذلك داخل منصة واحدة دون جداول بيانات.",
+        highlight: "كل إنجاز يُرصد ويُكافأ",
       },
       {
         name: "الخدمات الذاتية بالذكاء الاصطناعي",
         tagline: "طابور الموارد البشرية وصل الصفر.",
-        how: "يتولى الذكاء الاصطناعي معالجة طلبات الموظفين على مدار الساعة — استفسارات الراتب، طلبات المستندات، أسئلة السياسات — دون الحاجة لتدخل الموارد البشرية.",
-        returns: "يحصل الموظفون على إجابات فورية في أي وقت، ليتفرغ فريق الموارد البشرية لما يرفع الأداء فعلياً.",
+        desc: "وكيل ذكاء اصطناعي باللهجة السعودية يتولى استفسارات الراتب وطلبات المستندات وأسئلة السياسات على مدار الساعة — دون تدخل الموارد البشرية.",
+        highlight: "إجابات فورية على مدار الساعة",
       },
       {
         name: "الخدمات الذاتية",
         tagline: "كل موظف في تحكم كامل.",
-        how: "يحدّث الموظفون بياناتهم، ويطلعون على أرصدة إجازاتهم، ويصلون إلى قسائم رواتبهم، ويقدمون طلباتهم عبر لوحة خدمة ذاتية واضحة — دون أوراق أو انتظار.",
-        returns: "فريق أكثر تفاعلاً واستقلالية — فالموظف الذي يشعر بالتحكم يقدّم أداءً أفضل.",
+        desc: "يحدّث الموظفون بياناتهم، ويطلعون على أرصدة إجازاتهم، ويقدمون طلباتهم عبر لوحة خدمة ذاتية واضحة — دون أوراق أو انتظار.",
+        highlight: "استقلالية بالتصميم",
       },
       {
         name: "تحليلات الموارد البشرية",
         tagline: "شاهد الأداء قبل أن يتراجع.",
-        how: "لوحات معلومات حية تجمع بيانات الحضور والأهداف والتفاعل فورياً — يصل إليها المديرون مباشرة دون الحاجة لتقنية معلومات.",
-        returns: "يرى المديرون اتجاهات الأداء لحظة ظهورها، ويتصرفون مبكراً بدلاً من التأخر في الاستجابة.",
+        desc: "لوحات معلومات حية تجمع بيانات الحضور والأهداف والتفاعل فورياً، لتصرّف المديرون مبكراً بدلاً من التأخر في الاستجابة.",
+        highlight: "اتجاهات لا مفاجآت",
       },
     ],
   },
@@ -114,14 +92,9 @@ export function Features() {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
   const t = content[language];
-  const [active, setActive] = useState(0);
-
-  const ActiveIcon = moduleIcons[active];
-  const activeColor = moduleColors[active];
-  const activeModule = t.modules[active];
 
   return (
-    <section className="py-24 bg-[#F8F9FE] border-y border-border/30">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
@@ -132,125 +105,33 @@ export function Features() {
           <p className="text-lg text-muted-foreground leading-relaxed">{t.subtitle}</p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Mobile: horizontal scrollable tab bar */}
-          <div className="flex gap-2 overflow-x-auto pb-4 mb-6 lg:hidden">
-            {t.modules.map((mod, idx) => {
-              const Icon = moduleIcons[idx];
-              const c = moduleColors[idx];
-              const isActive = active === idx;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setActive(idx)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium whitespace-nowrap shrink-0 transition-all ${
-                    isActive
-                      ? `${c.bg} ${c.text} shadow-sm`
-                      : "bg-white border border-border/60 text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Icon size={14} />
-                  {mod.name}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Desktop: sidebar + detail panel */}
-          <div className="grid lg:grid-cols-[260px_1fr] gap-4 items-start">
-            {/* Sidebar */}
-            <div className="hidden lg:flex flex-col gap-1 bg-white rounded-2xl border border-border/40 p-2 shadow-sm">
-              {t.modules.map((mod, idx) => {
-                const Icon = moduleIcons[idx];
-                const c = moduleColors[idx];
-                const isActive = active === idx;
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => setActive(idx)}
-                    className={`relative flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-start transition-all duration-150 group ${
-                      isActive
-                        ? `${c.bg} ${c.text} font-semibold shadow-sm`
-                        : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
-                    }`}
-                  >
-                    {isActive && (
-                      <div className={`absolute ${isRtl ? "right-2" : "left-2"} top-1/2 -translate-y-1/2 w-1 h-6 rounded-full ${c.dot}`} />
-                    )}
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all ${
-                      isActive ? "bg-white shadow-sm" : "bg-muted group-hover:bg-white"
-                    }`}>
-                      <Icon size={16} className={isActive ? c.text : "text-muted-foreground"} />
-                    </div>
-                    <span className={`leading-snug ${isRtl ? "pe-2" : "ps-2"}`}>
-                      {mod.name}
-                    </span>
-                    {isActive && (
-                      <ArrowRight
-                        size={14}
-                        className={`ms-auto shrink-0 opacity-60 ${isRtl ? "rotate-180" : ""}`}
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Detail panel — dark */}
-            <div className="bg-[#0A0B14] rounded-2xl p-8 md:p-10 min-h-[380px] border border-white/[0.08] relative overflow-hidden">
-              <div className={`absolute top-0 ${isRtl ? "right-0" : "left-0"} w-48 h-48 blur-[80px] rounded-full opacity-25 ${activeColor.dot}`} />
-
-              <div className="relative z-10 grid md:grid-cols-[1.1fr_1fr] gap-8 items-start">
-                <div>
-                  <div className="flex items-start gap-4 mb-8">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${activeColor.bg}`}>
-                      <ActiveIcon size={30} className={activeColor.text} />
-                    </div>
-                    <div className="pt-1">
-                      <h3 className="text-xl font-bold text-white mb-1">{activeModule.name}</h3>
-                      <p className={`text-sm font-medium ${activeColor.text}`}>{activeModule.tagline}</p>
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <div className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
-                      {t.howLabel}
-                    </div>
-                    <p className="text-white/70 leading-relaxed text-[15px]">{activeModule.how}</p>
-                  </div>
-
-                  <div className="relative rounded-xl overflow-hidden">
-                    <div className={`absolute inset-0 ${activeColor.bg} opacity-[0.07]`} />
-                    <div className="absolute inset-0 border border-white/10 rounded-xl" />
-                    <div className="relative p-5">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Sparkles size={14} className={activeColor.text} />
-                        <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
-                          {t.returnsLabel}
-                        </div>
-                      </div>
-                      <p className="text-white font-medium leading-relaxed">{activeModule.returns}</p>
-                    </div>
-                  </div>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          {t.modules.map((mod, idx) => {
+            const Icon = moduleIcons[idx];
+            const c = moduleColors[idx];
+            const isFeatured = idx === 0;
+            return (
+              <div
+                key={idx}
+                className={`group relative rounded-2xl border border-border/50 bg-[#F8F9FE] p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${c.ring} ${
+                  isFeatured ? "md:col-span-2" : ""
+                }`}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${c.bg}`}>
+                  <Icon size={22} className={c.text} />
                 </div>
 
-                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg self-stretch min-h-[220px]">
-                  <img
-                    key={active}
-                    src={moduleImages[active]}
-                    alt={activeModule.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B14]/70 via-transparent to-transparent" />
+                <h3 className="text-xl font-bold mb-1.5">{mod.name}</h3>
+                <p className={`text-sm font-semibold mb-3 ${c.text}`}>{mod.tagline}</p>
+                <p className="text-muted-foreground leading-relaxed mb-6">{mod.desc}</p>
+
+                <div className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground bg-white border border-border/60 rounded-full px-3 py-1.5">
+                  <ArrowUpRight size={14} className={`${c.text} ${isRtl ? "rotate-90" : ""}`} />
+                  {mod.highlight}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-2 mt-8 text-muted-foreground">
-            <TrendingUp size={16} className="text-primary" />
-            <p className="text-sm font-medium">{t.outro}</p>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

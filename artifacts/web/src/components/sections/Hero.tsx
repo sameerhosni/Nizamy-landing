@@ -21,15 +21,11 @@ export function Hero() {
         "Zero penalties or chasing"
       ],
       mockup: {
-        label: "Where Your Return Comes From",
+        label: "Your Return Estimate",
         period: "Example: 50 employees, Growth plan",
         returnLabel: "Total annual return",
         rateLabel: "of your subscription, back to you",
-        breakdown: [
-          { label: "Performance", pct: 15, value: "SAR 6,200", desc: "Less lateness, less turnover" },
-          { label: "Rewards", pct: 10, value: "SAR 4,150", desc: "Funded rewards for top performers" },
-          { label: "Points", pct: 5, value: "SAR 2,100", desc: "Earned through engagement" },
-        ],
+        subscriptionLabel: "Annual subscription",
         returnBadge: "+30% Return",
       }
     },
@@ -47,15 +43,11 @@ export function Hero() {
         "صفر غرامات أو ملاحقة"
       ],
       mockup: {
-        label: "من أين يأتي عائدك",
+        label: "تقدير عائدك",
         period: "مثال: 50 موظفاً، باقة النمو",
         returnLabel: "إجمالي العائد السنوي",
         rateLabel: "من قيمة اشتراكك، يعود إليك",
-        breakdown: [
-          { label: "الأداء", pct: 15, value: "٦٬٢٠٠ ريال", desc: "تأخير أقل، تسرب وظيفي أقل" },
-          { label: "المكافآت", pct: 10, value: "٤٬١٥٠ ريال", desc: "مكافآت ممولة لأفضل موظفيك" },
-          { label: "النقاط", pct: 5, value: "٢٬١٠٠ ريال", desc: "تُكتسب من خلال التفاعل" },
-        ],
+        subscriptionLabel: "الاشتراك السنوي",
         returnBadge: "عائد ٣٠٪+",
       }
     }
@@ -154,29 +146,18 @@ export function Hero() {
               <div className="mb-6">
                 <div className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">{t.mockup.returnLabel}</div>
                 <div className="text-4xl font-black text-white mb-1">SAR 12,450</div>
-                <div className="text-xs font-semibold text-white/50">30% {t.mockup.rateLabel}</div>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full w-[30%] bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full" />
+                  </div>
+                  <span className="text-xs font-semibold text-white/50 whitespace-nowrap">30% {t.mockup.rateLabel}</span>
+                </div>
               </div>
 
-              {/* Breakdown by layer */}
-              <div className="space-y-4">
-                {t.mockup.breakdown.map((item, i) => (
-                  <div key={i}>
-                    <div className="flex items-baseline justify-between mb-1.5">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-sm font-semibold text-white/90">{item.label}</span>
-                        <span className="text-xs text-white/40">{item.pct}%</span>
-                      </div>
-                      <span className="text-sm font-bold text-white/90">{item.value}</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden mb-1">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500"
-                        style={{ width: `${(item.pct / 30) * 100}%` }}
-                      />
-                    </div>
-                    <div className="text-xs text-white/40">{item.desc}</div>
-                  </div>
-                ))}
+              {/* Subscription comparison */}
+              <div className="flex items-center justify-between rounded-xl bg-white/[0.05] border border-white/[0.08] px-4 py-3.5">
+                <span className="text-sm text-white/50">{t.mockup.subscriptionLabel}</span>
+                <span className="text-sm font-bold text-white/90">SAR 41,500</span>
               </div>
             </div>
 

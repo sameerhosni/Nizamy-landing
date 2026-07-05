@@ -2,6 +2,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
+import { Check } from "lucide-react";
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
@@ -33,6 +34,74 @@ export function Calculator({
 }: CalculatorProps) {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
+
+  const featureContent = {
+    en: {
+      includedLabel: "What's included",
+      basic: [
+        "Fingerprint attendance",
+        "Traditional self-service",
+        "Discount codes",
+        "Standard reporting with 1-month data history",
+      ],
+      growthAdd: [
+        "AI HR self-service",
+        "Limited vouchers for top achievers",
+        "6-month data history",
+        "Face matching + liveness detection",
+        "Basic payroll reporting",
+        "Priority support",
+        "AI task management (limited usage)",
+      ],
+      proAdd: [
+        "Advanced AI reporting",
+        "Full access to advanced web features (e.g. notifications)",
+        "12-month data history",
+        "Voice matching",
+        "Offline mode",
+        "Wider, more open discounts",
+        "E-gift cards",
+        "Priority support within 24 hours",
+        "AI task management, unlimited",
+      ],
+    },
+    ar: {
+      includedLabel: "ما الذي يشمله",
+      basic: [
+        "حضور بالبصمة",
+        "خدمة ذاتية تقليدية",
+        "أكواد خصم",
+        "تقارير تقليدية مع حفظ البيانات لمدة شهر واحد",
+      ],
+      growthAdd: [
+        "خدمة ذاتية للموارد البشرية بالذكاء الاصطناعي",
+        "قسائم محدودة لأصحاب الأداء الأعلى",
+        "حفظ بيانات لمدة 6 أشهر",
+        "مطابقة الوجه + كشف الحيوية",
+        "تقارير رواتب أساسية",
+        "دعم ذو أولوية",
+        "إدارة مهام بالذكاء الاصطناعي (استخدام محدود)",
+      ],
+      proAdd: [
+        "تقارير ذكاء اصطناعي متقدمة",
+        "وصول كامل للميزات المتقدمة في المنصة (مثل الإشعارات)",
+        "حفظ بيانات لمدة سنة كاملة",
+        "مطابقة الصوت",
+        "وضع العمل بدون اتصال (Offline)",
+        "خصومات أوسع وأكثر انفتاحاً",
+        "بطاقات هدايا إلكترونية",
+        "دعم ذو أولوية خلال 24 ساعة",
+        "إدارة مهام بالذكاء الاصطناعي بلا حدود",
+      ],
+    },
+  };
+
+  const ft = featureContent[language];
+  const tierFeatures: Record<"Standard" | "Growth" | "Pro", string[]> = {
+    Standard: ft.basic,
+    Growth: [...ft.basic, ...ft.growthAdd],
+    Pro: [...ft.basic, ...ft.growthAdd, ...ft.proAdd],
+  };
 
   const content = {
     en: {
@@ -120,6 +189,22 @@ export function Calculator({
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="rounded-2xl border border-border/50 bg-white p-6">
+              <div className="text-sm font-semibold text-primary mb-4">
+                {ft.includedLabel} — {t.tiers[tier]}
+              </div>
+              <ul className="space-y-2.5">
+                {tierFeatures[tier].map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <div className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={10} className="text-primary" />
+                    </div>
+                    <span className="text-sm text-foreground/90 leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 

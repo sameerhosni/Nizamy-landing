@@ -2,7 +2,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
-import { Check } from "lucide-react";
+import { Check, HeartHandshake } from "lucide-react";
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
@@ -140,6 +140,18 @@ export function Calculator({
     }
   };
 
+  const closingContent = {
+    en: {
+      quote: "We just built it so we only do well when you do.",
+      footnote: "No fine print. Your team's growth genuinely benefits us too — that's the whole idea.",
+    },
+    ar: {
+      quote: "لا نستفيد إلا حين تستفيد أنت.",
+      footnote: "بدون شروط خفية. نمو فريقك يفيدنا نحن أيضاً بشكل حقيقي — هذه هي الفكرة كلها.",
+    },
+  };
+  const ct = closingContent[language];
+
   const t = content[language];
 
   return (
@@ -259,6 +271,18 @@ export function Calculator({
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="max-w-2xl mx-auto text-center mt-16 pt-16 border-t border-border/50">
+          <div className="w-11 h-11 rounded-2xl bg-accent text-primary flex items-center justify-center mx-auto mb-6">
+            <HeartHandshake size={20} />
+          </div>
+          <p className="text-xl md:text-2xl font-bold leading-snug text-gradient-primary mb-3">
+            {ct.quote}
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            {ct.footnote}
+          </p>
         </div>
       </div>
     </section>

@@ -6,7 +6,6 @@ import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
-import { Differentiation } from "@/components/sections/Differentiation";
 import { Advantages } from "@/components/sections/Advantages";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
@@ -65,7 +64,6 @@ export function Home() {
           layer3={layer3}
           effectiveCost={effectiveCost}
         />
-        <Differentiation />
         <Features />
         <Advantages />
         <DesignPartner snapshot={snapshot} />

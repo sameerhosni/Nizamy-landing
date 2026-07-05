@@ -66,8 +66,8 @@ export function Home() {
           layer3={layer3}
           effectiveCost={effectiveCost}
         />
-        <Features />
         <Differentiation />
+        <Features />
         <Advantages />
         <WhoWeServe />
         <DesignPartner snapshot={snapshot} />

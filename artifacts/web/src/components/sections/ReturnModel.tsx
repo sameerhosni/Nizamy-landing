@@ -1,4 +1,7 @@
 import { useLanguage } from "@/lib/i18n";
+import { TrendingUp, Gift, Sparkles } from "lucide-react";
+
+const layerIcons = [TrendingUp, Gift, Sparkles];
 
 export function ReturnModel() {
   const { language, dir } = useLanguage();
@@ -77,23 +80,27 @@ export function ReturnModel() {
           {/* Connecting line for desktop */}
           <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-px bg-white/15 z-0" />
 
-          {t.layers.map((layer, idx) => (
-            <div key={idx} className="relative z-10">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white/8 border border-white/20 flex items-center justify-center mb-8 shrink-0 relative shadow-lg backdrop-blur-sm">
-                  <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">
-                    {layer.num}
+          {t.layers.map((layer, idx) => {
+            const Icon = layerIcons[idx];
+            return (
+              <div key={idx} className="relative z-10">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-24 h-24 rounded-full bg-white/8 border border-white/20 flex flex-col items-center justify-center gap-0.5 mb-8 shrink-0 relative shadow-lg backdrop-blur-sm">
+                    <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">
+                      {layer.num}
+                    </div>
+                    <Icon size={18} className="text-primary" />
+                    <span className="text-2xl font-bold text-white">{layer.pct}</span>
                   </div>
-                  <span className="text-3xl font-bold text-white">{layer.pct}</span>
+
+                  <h3 className="text-xl font-bold mb-4 text-white">{layer.title}</h3>
+                  <p className="text-white/60 leading-relaxed">
+                    {layer.desc}
+                  </p>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-4 text-white">{layer.title}</h3>
-                <p className="text-white/60 leading-relaxed">
-                  {layer.desc}
-                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

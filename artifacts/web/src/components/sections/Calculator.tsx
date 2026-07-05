@@ -2,7 +2,9 @@ import { useLanguage } from "@/lib/i18n";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
-import { Check, HeartHandshake } from "lucide-react";
+import { Check, HeartHandshake, TrendingUp, Gift, Sparkles } from "lucide-react";
+
+const layerIcons = [TrendingUp, Gift, Sparkles];
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
@@ -254,27 +256,22 @@ export function Calculator({
               </div>
 
               <div className="pt-8 border-t border-border space-y-6">
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{t.results.performance} (15%)</span>
-                    <span>{formatCurrency(layer1, "SAR", language)}</span>
+                {([
+                  { label: `${t.results.performance} (15%)`, value: layer1, pct: 15, Icon: layerIcons[0] },
+                  { label: `${t.results.rewards} (10%)`, value: layer2, pct: 10, Icon: layerIcons[1] },
+                  { label: `${t.results.points} (5%)`, value: layer3, pct: 5, Icon: layerIcons[2] },
+                ]).map((row, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex justify-between items-center text-sm text-muted-foreground">
+                      <span className="flex items-center gap-2">
+                        <row.Icon size={14} className="text-primary" />
+                        {row.label}
+                      </span>
+                      <span>{formatCurrency(row.value, "SAR", language)}</span>
+                    </div>
+                    <LayerBar value={row.pct} max={30} />
                   </div>
-                  <LayerBar value={15} max={30} />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{t.results.rewards} (10%)</span>
-                    <span>{formatCurrency(layer2, "SAR", language)}</span>
-                  </div>
-                  <LayerBar value={10} max={30} />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{t.results.points} (5%)</span>
-                    <span>{formatCurrency(layer3, "SAR", language)}</span>
-                  </div>
-                  <LayerBar value={5} max={30} />
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>

@@ -36,10 +36,10 @@ const content = {
         highlight: "Instant answers, 24/7",
       },
       {
-        name: "Employee Self-Service",
-        tagline: "Every employee, fully in control.",
-        desc: "Employees update their data, check leave balances, and submit requests from a clean dashboard — no paper, no waiting.",
-        highlight: "Self-sufficient by design",
+        name: "AI Task Management",
+        tagline: "Every task, handled before you ask.",
+        desc: "An AI assistant organizes tasks, follows up on approvals, and keeps requests moving — so nothing sits waiting in someone's inbox.",
+        highlight: "Work that moves itself",
       },
       {
         name: "HR Analytics",
@@ -73,10 +73,10 @@ const content = {
         highlight: "إجابات فورية على مدار الساعة",
       },
       {
-        name: "الخدمات الذاتية",
-        tagline: "كل موظف في تحكم كامل.",
-        desc: "يحدّث الموظفون بياناتهم، ويطلعون على أرصدة إجازاتهم، ويقدمون طلباتهم عبر لوحة خدمة ذاتية واضحة — دون أوراق أو انتظار.",
-        highlight: "استقلالية بالتصميم",
+        name: "إدارة المهام بالذكاء الاصطناعي",
+        tagline: "كل مهمة تُنجز قبل أن تسأل عنها.",
+        desc: "مساعد ذكاء اصطناعي ينظّم المهام، ويتابع الموافقات، ويبقي الطلبات في حركة مستمرة — فلا يبقى شيء عالقاً في صندوق أحد.",
+        highlight: "عمل يتحرك من تلقاء نفسه",
       },
       {
         name: "تحليلات الموارد البشرية",

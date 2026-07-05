@@ -13,7 +13,7 @@ export function Hero() {
       eyebrow: "AI-powered HR, built for Saudi SMEs",
       headlinePart1: "Every other HR system is a cost.",
       headlinePart2: "Mr-Hr is a return.",
-      subtitle: "The more efficiently your team performs, the more Mr-Hr returns — up to 30% of your annual subscription cost, every year.",
+      subtitle: "More efficient use = bigger return — up to 30% back on your subscription, every year.",
       primaryCta: "Calculate my return",
       secondaryCta: "Become a Design Partner",
       chips: [
@@ -41,7 +41,7 @@ export function Hero() {
       eyebrow: "موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تكلفة.",
       headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "كلما استخدمت مستر إتش آر بكفاءة أكبر، زاد ما يعود إليك — حتى ٣٠٪ من تكلفة اشتراكك السنوي، كل عام.",
+      subtitle: "استخدام أكثر فاعلية = عائد أكبر — حتى ٣٠٪ من قيمة اشتراكك، كل عام.",
       primaryCta: "احسب العائد",
       secondaryCta: "وصول مبكر مجاني",
       chips: [

@@ -8,7 +8,6 @@ import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
 import { Differentiation } from "@/components/sections/Differentiation";
 import { Advantages } from "@/components/sections/Advantages";
-import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 
@@ -69,7 +68,6 @@ export function Home() {
         <Differentiation />
         <Features />
         <Advantages />
-        <WhoWeServe />
         <DesignPartner snapshot={snapshot} />
       </main>
       <Footer />

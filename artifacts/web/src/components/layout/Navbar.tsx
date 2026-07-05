@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/layout/Logo";
 
 export function Navbar() {
   const { language, toggleLanguage, dir } = useLanguage();
@@ -22,13 +23,7 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div
-          className={`font-bold text-2xl tracking-tight transition-colors duration-300 ${
-            scrolled ? "text-foreground" : "text-white"
-          }`}
-        >
-          {isRtl ? "مستر إتش آر" : "Mr-Hr"}
-        </div>
+        <Logo variant={scrolled ? "dark" : "light"} />
 
         <div className="flex items-center gap-4">
           <Button

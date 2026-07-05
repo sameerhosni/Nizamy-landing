@@ -1,8 +1,6 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Check, TrendingUp, Users, Zap } from "lucide-react";
-
-const chartBars = [32, 44, 38, 57, 52, 68, 61, 77, 72, 85, 80, 95];
+import { ArrowRight, ArrowLeft, Check, TrendingUp } from "lucide-react";
 
 export function Hero() {
   const { language, dir } = useLanguage();
@@ -23,16 +21,14 @@ export function Hero() {
         "Zero penalties or chasing"
       ],
       mockup: {
-        label: "Annual Return Dashboard",
-        period: "2024 · Live estimate",
-        returnLabel: "Estimated annual return",
-        rateLabel: "Of subscription returned",
-        trend: "+15% vs last year",
-        chart: "Monthly return trend",
+        label: "Where Your Return Comes From",
+        period: "Example: 50 employees, Growth plan",
+        returnLabel: "Total annual return",
+        rateLabel: "of your subscription, back to you",
         breakdown: [
-          { label: "Performance", value: "SAR 6,200" },
-          { label: "Rewards", value: "SAR 4,150" },
-          { label: "Points", value: "SAR 2,100" },
+          { label: "Performance", pct: 15, value: "SAR 6,200", desc: "Less lateness, less turnover" },
+          { label: "Rewards", pct: 10, value: "SAR 4,150", desc: "Funded rewards for top performers" },
+          { label: "Points", pct: 5, value: "SAR 2,100", desc: "Earned through engagement" },
         ],
         returnBadge: "+30% Return",
       }
@@ -51,16 +47,14 @@ export function Hero() {
         "صفر غرامات أو ملاحقة"
       ],
       mockup: {
-        label: "لوحة العائد السنوي",
-        period: "٢٠٢٤ · تقدير مباشر",
-        returnLabel: "العائد السنوي التقديري",
-        rateLabel: "من الاشتراك يعود إليك",
-        trend: "+١٥٪ مقارنة بالعام الماضي",
-        chart: "اتجاه العائد الشهري",
+        label: "من أين يأتي عائدك",
+        period: "مثال: 50 موظفاً، باقة النمو",
+        returnLabel: "إجمالي العائد السنوي",
+        rateLabel: "من قيمة اشتراكك، يعود إليك",
         breakdown: [
-          { label: "الأداء", value: "٦٬٢٠٠ ريال" },
-          { label: "المكافآت", value: "٤٬١٥٠ ريال" },
-          { label: "النقاط", value: "٢٬١٠٠ ريال" },
+          { label: "الأداء", pct: 15, value: "٦٬٢٠٠ ريال", desc: "تأخير أقل، تسرب وظيفي أقل" },
+          { label: "المكافآت", pct: 10, value: "٤٬١٥٠ ريال", desc: "مكافآت ممولة لأفضل موظفيك" },
+          { label: "النقاط", pct: 5, value: "٢٬١٠٠ ريال", desc: "تُكتسب من خلال التفاعل" },
         ],
         returnBadge: "عائد ٣٠٪+",
       }
@@ -154,48 +148,33 @@ export function Hero() {
                     <div className="text-xs text-white/40">{t.mockup.period}</div>
                   </div>
                 </div>
-                <div className="bg-emerald-500/15 border border-emerald-500/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-400">
-                  {t.mockup.trend}
-                </div>
               </div>
 
               {/* Big return number */}
               <div className="mb-6">
                 <div className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">{t.mockup.returnLabel}</div>
                 <div className="text-4xl font-black text-white mb-1">SAR 12,450</div>
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full w-[30%] bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full" />
-                  </div>
-                  <span className="text-xs font-semibold text-white/50">30% {t.mockup.rateLabel}</span>
-                </div>
+                <div className="text-xs font-semibold text-white/50">30% {t.mockup.rateLabel}</div>
               </div>
 
-              {/* Bar chart */}
-              <div className="mb-6">
-                <div className="text-xs font-medium text-white/30 mb-2">{t.mockup.chart}</div>
-                <div className="flex items-end gap-1 h-14">
-                  {chartBars.map((h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 rounded-sm transition-all duration-500"
-                      style={{
-                        height: `${h}%`,
-                        background: i === chartBars.length - 1
-                          ? 'linear-gradient(to top, #f97316, #ec4899)'
-                          : 'rgba(255,255,255,0.1)'
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Breakdown */}
-              <div className="grid grid-cols-3 gap-3">
+              {/* Breakdown by layer */}
+              <div className="space-y-4">
                 {t.mockup.breakdown.map((item, i) => (
-                  <div key={i} className="bg-white/[0.05] border border-white/[0.08] rounded-xl p-3">
-                    <div className="text-xs text-white/40 mb-1">{item.label}</div>
-                    <div className="text-sm font-bold text-white/90">{item.value}</div>
+                  <div key={i}>
+                    <div className="flex items-baseline justify-between mb-1.5">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-sm font-semibold text-white/90">{item.label}</span>
+                        <span className="text-xs text-white/40">{item.pct}%</span>
+                      </div>
+                      <span className="text-sm font-bold text-white/90">{item.value}</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden mb-1">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500"
+                        style={{ width: `${(item.pct / 30) * 100}%` }}
+                      />
+                    </div>
+                    <div className="text-xs text-white/40">{item.desc}</div>
                   </div>
                 ))}
               </div>

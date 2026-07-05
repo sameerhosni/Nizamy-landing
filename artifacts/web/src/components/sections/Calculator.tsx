@@ -37,61 +37,65 @@ export function Calculator({
 
   const featureContent = {
     en: {
-      includedLabel: "What's included",
+      includedLabel: "What you get",
+      plusFromStandard: "Everything in Standard, plus:",
+      plusFromGrowth: "Everything in Growth, plus:",
       basic: [
-        "Fingerprint attendance",
-        "Traditional self-service",
-        "Discount codes",
-        "Standard reporting with 1-month data history",
+        "Simple fingerprint check-in",
+        "Self-service tools your team already gets",
+        "Handy discount codes",
+        "Clear monthly reports, kept for a month",
       ],
       growthAdd: [
-        "AI HR self-service",
-        "Limited vouchers for top achievers",
-        "6-month data history",
-        "Face matching + liveness detection",
-        "Basic payroll reporting",
-        "Priority support",
-        "AI task management (limited usage)",
+        "An AI assistant that handles HR requests instantly",
+        "A few nice rewards for your top performers",
+        "Half a year of history, always on hand",
+        "Face check-in with liveness — no more buddy punching",
+        "Payroll reports that actually make sense",
+        "A support line that picks up first",
+        "An AI helper for tasks, with a gentle usage limit",
       ],
       proAdd: [
-        "Advanced AI reporting",
-        "Full access to advanced web features (e.g. notifications)",
-        "12-month data history",
-        "Voice matching",
-        "Offline mode",
-        "Wider, more open discounts",
-        "E-gift cards",
-        "Priority support within 24 hours",
-        "AI task management, unlimited",
+        "Sharper AI reporting that spots what matters",
+        "Every advanced tool unlocked, notifications included",
+        "A full year of history, always at hand",
+        "Hands-free voice check-in",
+        "Works even when the internet doesn't",
+        "More generous, wide-open discounts",
+        "Digital gift cards your team will love",
+        "Priority support, answered within 24 hours",
+        "Unlimited AI task management — let it handle the busywork",
       ],
     },
     ar: {
-      includedLabel: "ما الذي يشمله",
+      includedLabel: "ما الذي تحصل عليه",
+      plusFromStandard: "كل مزايا الباقة الأساسية، بالإضافة إلى:",
+      plusFromGrowth: "كل مزايا باقة النمو، بالإضافة إلى:",
       basic: [
-        "حضور بالبصمة",
-        "خدمة ذاتية تقليدية",
-        "أكواد خصم",
-        "تقارير تقليدية مع حفظ البيانات لمدة شهر واحد",
+        "تسجيل حضور بسيط بالبصمة",
+        "أدوات خدمة ذاتية يعرفها فريقك جيداً",
+        "أكواد خصم عملية",
+        "تقارير شهرية واضحة، محفوظة لمدة شهر",
       ],
       growthAdd: [
-        "خدمة ذاتية للموارد البشرية بالذكاء الاصطناعي",
-        "قسائم محدودة لأصحاب الأداء الأعلى",
-        "حفظ بيانات لمدة 6 أشهر",
-        "مطابقة الوجه + كشف الحيوية",
-        "تقارير رواتب أساسية",
-        "دعم ذو أولوية",
-        "إدارة مهام بالذكاء الاصطناعي (استخدام محدود)",
+        "مساعد ذكاء اصطناعي يحل طلبات الموارد البشرية فوراً",
+        "مكافآت لطيفة لأصحاب الأداء الأعلى",
+        "نصف عام من السجلات دائماً بمتناول يدك",
+        "تسجيل حضور بالوجه مع كشف الحيوية — وداعاً لتسجيل الحضور نيابة عن الزميل",
+        "تقارير رواتب واضحة وبسيطة",
+        "دعم يرد عليك أولاً",
+        "مساعد ذكاء اصطناعي لإدارة المهام، باستخدام محدود بلطف",
       ],
       proAdd: [
-        "تقارير ذكاء اصطناعي متقدمة",
-        "وصول كامل للميزات المتقدمة في المنصة (مثل الإشعارات)",
-        "حفظ بيانات لمدة سنة كاملة",
-        "مطابقة الصوت",
-        "وضع العمل بدون اتصال (Offline)",
+        "تقارير ذكاء اصطناعي أعمق تكشف ما يهم فعلاً",
+        "كل الأدوات المتقدمة مفتوحة، بما فيها الإشعارات الفورية",
+        "سنة كاملة من السجلات دائماً بمتناول يدك",
+        "تسجيل حضور بالصوت، بدون لمس",
+        "يعمل حتى بدون إنترنت",
         "خصومات أوسع وأكثر انفتاحاً",
-        "بطاقات هدايا إلكترونية",
-        "دعم ذو أولوية خلال 24 ساعة",
-        "إدارة مهام بالذكاء الاصطناعي بلا حدود",
+        "بطاقات هدايا إلكترونية يحبها فريقك",
+        "دعم ذو أولوية، خلال 24 ساعة",
+        "إدارة مهام بالذكاء الاصطناعي بلا حدود — دعه يتولى الأعمال الروتينية",
       ],
     },
   };
@@ -99,8 +103,13 @@ export function Calculator({
   const ft = featureContent[language];
   const tierFeatures: Record<"Standard" | "Growth" | "Pro", string[]> = {
     Standard: ft.basic,
-    Growth: [...ft.basic, ...ft.growthAdd],
-    Pro: [...ft.basic, ...ft.growthAdd, ...ft.proAdd],
+    Growth: ft.growthAdd,
+    Pro: ft.proAdd,
+  };
+  const tierFeaturesLabel: Record<"Standard" | "Growth" | "Pro", string> = {
+    Standard: ft.includedLabel,
+    Growth: ft.plusFromStandard,
+    Pro: ft.plusFromGrowth,
   };
 
   const content = {
@@ -203,11 +212,11 @@ export function Calculator({
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/50 bg-white p-6">
-              <div className="text-sm font-semibold text-primary mb-4">
-                {ft.includedLabel} — {t.tiers[tier]}
+            <div className="rounded-2xl border border-border/50 bg-white p-5">
+              <div className="text-sm font-semibold text-primary mb-3">
+                {tierFeaturesLabel[tier]}
               </div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2">
                 {tierFeatures[tier].map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center shrink-0 mt-0.5">

@@ -18,3 +18,33 @@ id = "rVyzDAmnRJXTCqy3L0pWF"
 uri = "file://artifacts/web/public/images/cost-vs-return.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "4kOKUS3drWFsKPbKAakP7"
+uri = "file://attached_assets/generated_images/service_attendance.png"
+type = "image"
+title = "attendance dashboard illustration"
+
+[[generated]]
+id = "y1CxqLaFT5Bk8kKOihS2-"
+uri = "file://attached_assets/generated_images/service_incentives.png"
+type = "image"
+title = "incentives dashboard illustration"
+
+[[generated]]
+id = "ufEbc5ByVd2b5vKMtqk6a"
+uri = "file://attached_assets/generated_images/service_ai.png"
+type = "image"
+title = "ai self service illustration"
+
+[[generated]]
+id = "ayOUy1H8byhj897QO2h5f"
+uri = "file://attached_assets/generated_images/service_selfservice.png"
+type = "image"
+title = "self service portal illustration"
+
+[[generated]]
+id = "fG-xbk4ipX_FHnh9-QCmg"
+uri = "file://attached_assets/generated_images/service_analytics.png"
+type = "image"
+title = "analytics dashboard illustration"

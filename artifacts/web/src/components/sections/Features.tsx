@@ -8,8 +8,14 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+import attendanceImg from "@/assets/services/attendance.png";
+import incentivesImg from "@/assets/services/incentives.png";
+import aiImg from "@/assets/services/ai.png";
+import selfServiceImg from "@/assets/services/selfservice.png";
+import analyticsImg from "@/assets/services/analytics.png";
 
 const moduleIcons = [Clock, Target, Bot, UserCog, BarChart3];
+const moduleImages = [attendanceImg, incentivesImg, aiImg, selfServiceImg, analyticsImg];
 
 const moduleColors = [
   { bg: "bg-blue-50",    text: "text-blue-600",    dot: "bg-blue-500"    },
@@ -21,11 +27,11 @@ const moduleColors = [
 
 const content = {
   en: {
-    eyebrow: "The Platform",
-    title: "Every module. One direction.",
-    subtitle: "Five focused modules, each engineered to eliminate a specific source of HR waste and turn it into a measurable return.",
+    eyebrow: "Our Services",
+    title: "Every service. One direction.",
+    subtitle: "Five focused services, each engineered to eliminate a specific source of HR waste and turn it into a measurable return.",
     howLabel: "How it works",
-    returnsLabel: "The return",
+    returnsLabel: "Impact on your system",
     modules: [
       {
         name: "Attendance & Time",
@@ -60,11 +66,11 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "المنصة",
-    title: "كل وحدة. اتجاه واحد.",
-    subtitle: "خمس وحدات مركّزة، كل منها مُصمَّمة للقضاء على مصدر محدد من مصادر هدر الموارد البشرية وتحويله إلى عائد قابل للقياس.",
+    eyebrow: "خدماتنا",
+    title: "كل خدمة. اتجاه واحد.",
+    subtitle: "خمس خدمات مركّزة، كل منها مُصمَّمة للقضاء على مصدر محدد من مصادر هدر الموارد البشرية وتحويله إلى عائد قابل للقياس.",
     howLabel: "كيف تعمل",
-    returnsLabel: "العائد",
+    returnsLabel: "أثرها في النظام",
     modules: [
       {
         name: "الحضور والانصراف",
@@ -190,36 +196,48 @@ export function Features() {
             <div className="bg-[#0A0B14] rounded-2xl p-8 md:p-10 min-h-[380px] border border-white/[0.08] relative overflow-hidden">
               <div className={`absolute top-0 ${isRtl ? "right-0" : "left-0"} w-48 h-48 blur-[80px] rounded-full opacity-25 ${activeColor.dot}`} />
 
-              <div className="relative z-10">
-                <div className="flex items-start gap-4 mb-8">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${activeColor.bg}`}>
-                    <ActiveIcon size={30} className={activeColor.text} />
-                  </div>
-                  <div className="pt-1">
-                    <h3 className="text-xl font-bold text-white mb-1">{activeModule.name}</h3>
-                    <p className={`text-sm font-medium ${activeColor.text}`}>{activeModule.tagline}</p>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <div className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
-                    {t.howLabel}
-                  </div>
-                  <p className="text-white/70 leading-relaxed text-[15px]">{activeModule.how}</p>
-                </div>
-
-                <div className="relative rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-indigo-500/10" />
-                  <div className="absolute inset-0 border border-white/10 rounded-xl" />
-                  <div className="relative p-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-1.5 h-4 rounded-full bg-gradient-to-b from-orange-400 to-indigo-500" />
-                      <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
-                        {t.returnsLabel}
-                      </div>
+              <div className="relative z-10 grid md:grid-cols-[1.1fr_1fr] gap-8 items-start">
+                <div>
+                  <div className="flex items-start gap-4 mb-8">
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${activeColor.bg}`}>
+                      <ActiveIcon size={30} className={activeColor.text} />
                     </div>
-                    <p className="text-white font-medium leading-relaxed">{activeModule.returns}</p>
+                    <div className="pt-1">
+                      <h3 className="text-xl font-bold text-white mb-1">{activeModule.name}</h3>
+                      <p className={`text-sm font-medium ${activeColor.text}`}>{activeModule.tagline}</p>
+                    </div>
                   </div>
+
+                  <div className="mb-6">
+                    <div className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-3">
+                      {t.howLabel}
+                    </div>
+                    <p className="text-white/70 leading-relaxed text-[15px]">{activeModule.how}</p>
+                  </div>
+
+                  <div className="relative rounded-xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-indigo-500/10" />
+                    <div className="absolute inset-0 border border-white/10 rounded-xl" />
+                    <div className="relative p-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-1.5 h-4 rounded-full bg-gradient-to-b from-orange-400 to-indigo-500" />
+                        <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
+                          {t.returnsLabel}
+                        </div>
+                      </div>
+                      <p className="text-white font-medium leading-relaxed">{activeModule.returns}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg self-stretch min-h-[220px]">
+                  <img
+                    key={active}
+                    src={moduleImages[active]}
+                    alt={activeModule.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B14]/70 via-transparent to-transparent" />
                 </div>
               </div>
             </div>

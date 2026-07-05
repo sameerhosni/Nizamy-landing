@@ -6,6 +6,8 @@ import {
   UserCog,
   BarChart3,
   ArrowRight,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import attendanceImg from "@/assets/services/attendance.png";
@@ -27,80 +29,82 @@ const moduleColors = [
 
 const content = {
   en: {
-    eyebrow: "Our Services",
-    title: "Every service. One direction.",
-    subtitle: "Five focused services, each engineered to eliminate a specific source of HR waste and turn it into a measurable return.",
+    eyebrow: "How Mr-Hr Works",
+    title: "A performance system first. A return because of it.",
+    subtitle: "Mr-Hr is a performance management platform — five services that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
     howLabel: "How it works",
-    returnsLabel: "Impact on your system",
+    returnsLabel: "What it achieves",
+    outro: "Better performance, naturally, means a bigger return.",
     modules: [
       {
         name: "Attendance & Time",
         tagline: "No more manual timesheets.",
-        how: "Employees clock in via mobile app or biometric device. Every check-in flows directly into payroll — no manual reconciliation, no data re-entry.",
-        returns: "Eliminates payroll errors from missed or wrong punches. Every minute tracked accurately means every riyal paid correctly.",
+        how: "Employees clock in via mobile app or biometric device. Every check-in flows directly into the system — no manual reconciliation, no data re-entry.",
+        returns: "Punctuality becomes a habit, not a headache. Clean, real-time attendance data your whole team can rely on.",
       },
       {
         name: "Incentives & Success KPIs",
         tagline: "Performance tied to results, not paperwork.",
         how: "Set goals, run structured review cycles, and link performance outcomes directly to rewards — all inside one system, with no spreadsheets.",
-        returns: "Drives results without adding admin overhead. No manual bonus calculations, no separate tools, no HR time wasted on review cycles.",
+        returns: "Employees chase clear goals instead of chasing paperwork — and every achievement is tracked, visible, and rewarded.",
       },
       {
         name: "AI Self-Service",
         tagline: "HR queue reduced to zero.",
         how: "A conversational AI handles employee requests around the clock — payslip queries, document requests, policy questions — without involving HR.",
-        returns: "Your HR team handles strategy, not a queue. The AI resolves repetitive requests instantly, at any hour.",
+        returns: "Employees get instant answers any hour of the day, freeing your HR team to focus on what actually drives performance.",
       },
       {
         name: "Employee Self-Service",
         tagline: "Every employee, fully in control.",
         how: "Employees update their own data, view leave balances, access payslips, and submit requests through a clean self-service dashboard — no paper, no waiting.",
-        returns: "HR spends less time on routine admin. Employees get instant answers without chasing anyone.",
+        returns: "A more engaged, self-sufficient workforce — employees who feel in control show up and perform better.",
       },
       {
         name: "HR Analytics",
-        tagline: "See costs before they grow.",
-        how: "Live dashboards aggregate attendance, headcount, turnover, and cost data in real time — accessible to managers without needing IT.",
-        returns: "Spot cost leaks before they grow. Make workforce decisions with data, not gut feeling.",
+        tagline: "See performance before it slips.",
+        how: "Live dashboards aggregate attendance, goals, and engagement data in real time — accessible to managers without needing IT.",
+        returns: "Managers spot performance trends the moment they emerge, and act early instead of reacting late.",
       },
     ],
   },
   ar: {
-    eyebrow: "خدماتنا",
-    title: "كل خدمة. اتجاه واحد.",
-    subtitle: "خمس خدمات مركّزة، كل منها مُصمَّمة للقضاء على مصدر محدد من مصادر هدر الموارد البشرية وتحويله إلى عائد قابل للقياس.",
+    eyebrow: "كيف يعمل مستر إتش آر",
+    title: "نظام لإدارة الأداء أولاً، والعائد نتيجة طبيعية له.",
+    subtitle: "مستر إتش آر منصة لإدارة الأداء — خمس خدمات تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
     howLabel: "كيف تعمل",
-    returnsLabel: "أثرها في النظام",
+    returnsLabel: "ما الذي تحققه",
+    outro: "أداء أفضل يعني، بشكل طبيعي، عائداً أكبر.",
     modules: [
       {
         name: "الحضور والانصراف",
         tagline: "لا مزيد من الجداول اليدوية.",
-        how: "يسجّل الموظفون حضورهم عبر التطبيق أو البصمة. كل تسجيل يتدفق مباشرة إلى الرواتب — دون مطابقة يدوية أو إدخال بيانات مكرر.",
-        returns: "يلغي أخطاء الرواتب الناجمة عن التسجيل الخاطئ. كل دقيقة تُتتبع بدقة تعني كل ريال يُصرف بشكل صحيح.",
+        how: "يسجّل الموظفون حضورهم عبر التطبيق أو البصمة. كل تسجيل يتدفق مباشرة إلى النظام — دون مطابقة يدوية أو إدخال بيانات مكرر.",
+        returns: "الانضباط في الحضور يصبح عادة لا عبئاً — بيانات دقيقة ولحظية يعتمد عليها فريقك بالكامل.",
       },
       {
         name: "الحوافز ومؤشرات النجاح",
         tagline: "الأداء مرتبط بالنتائج لا بالأوراق.",
         how: "ضع الأهداف، وأدِر دورات تقييم منظمة، واربط نتائج الأداء بالمكافآت مباشرة — كل ذلك داخل منصة واحدة دون جداول بيانات.",
-        returns: "يحقق نتائج دون إضافة عبء إداري. لا حسابات مكافآت يدوية، لا أدوات منفصلة، لا وقت موارد بشرية يُهدَر في دورات التقييم.",
+        returns: "يتنافس الموظفون على أهداف واضحة بدلاً من الأوراق — وكل إنجاز يُرصد، ويُرى، ويُكافأ.",
       },
       {
         name: "الخدمات الذاتية بالذكاء الاصطناعي",
         tagline: "طابور الموارد البشرية وصل الصفر.",
         how: "يتولى الذكاء الاصطناعي معالجة طلبات الموظفين على مدار الساعة — استفسارات الراتب، طلبات المستندات، أسئلة السياسات — دون الحاجة لتدخل الموارد البشرية.",
-        returns: "فريق الموارد البشرية يركز على الاستراتيجية لا على الطابور. الذكاء الاصطناعي يحسم الطلبات المتكررة فورياً، في أي وقت.",
+        returns: "يحصل الموظفون على إجابات فورية في أي وقت، ليتفرغ فريق الموارد البشرية لما يرفع الأداء فعلياً.",
       },
       {
         name: "الخدمات الذاتية",
         tagline: "كل موظف في تحكم كامل.",
         how: "يحدّث الموظفون بياناتهم، ويطلعون على أرصدة إجازاتهم، ويصلون إلى قسائم رواتبهم، ويقدمون طلباتهم عبر لوحة خدمة ذاتية واضحة — دون أوراق أو انتظار.",
-        returns: "تقضي الموارد البشرية وقتاً أقل في الإدارة الاعتيادية. يحصل الموظفون على إجاباتهم فوراً دون ملاحقة أحد.",
+        returns: "فريق أكثر تفاعلاً واستقلالية — فالموظف الذي يشعر بالتحكم يقدّم أداءً أفضل.",
       },
       {
         name: "تحليلات الموارد البشرية",
-        tagline: "شاهد التكاليف قبل أن تتفاقم.",
-        how: "لوحات معلومات حية تجمع بيانات الحضور والقوى العاملة والتكاليف فورياً — يصل إليها المديرون مباشرة دون الحاجة لتقنية معلومات.",
-        returns: "اكتشف تسرب التكاليف قبل أن يتفاقم. اتخذ قرارات القوى العاملة بالبيانات لا بالحدس.",
+        tagline: "شاهد الأداء قبل أن يتراجع.",
+        how: "لوحات معلومات حية تجمع بيانات الحضور والأهداف والتفاعل فورياً — يصل إليها المديرون مباشرة دون الحاجة لتقنية معلومات.",
+        returns: "يرى المديرون اتجاهات الأداء لحظة ظهورها، ويتصرفون مبكراً بدلاً من التأخر في الاستجابة.",
       },
     ],
   },
@@ -216,11 +220,11 @@ export function Features() {
                   </div>
 
                   <div className="relative rounded-xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-indigo-500/10" />
+                    <div className={`absolute inset-0 ${activeColor.bg} opacity-[0.07]`} />
                     <div className="absolute inset-0 border border-white/10 rounded-xl" />
                     <div className="relative p-5">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-1.5 h-4 rounded-full bg-gradient-to-b from-orange-400 to-indigo-500" />
+                        <Sparkles size={14} className={activeColor.text} />
                         <div className="text-xs font-semibold uppercase tracking-widest text-white/50">
                           {t.returnsLabel}
                         </div>
@@ -241,6 +245,11 @@ export function Features() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 mt-8 text-muted-foreground">
+            <TrendingUp size={16} className="text-primary" />
+            <p className="text-sm font-medium">{t.outro}</p>
           </div>
         </div>
       </div>

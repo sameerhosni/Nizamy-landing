@@ -6,6 +6,7 @@ import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
+import { CompetitiveEdge } from "@/components/sections/CompetitiveEdge";
 import { Advantages } from "@/components/sections/Advantages";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { DesignPartner } from "@/components/sections/DesignPartner";
@@ -66,6 +67,7 @@ export function Home() {
           effectiveCost={effectiveCost}
         />
         <Features />
+        <CompetitiveEdge />
         <Advantages />
         <WhoWeServe />
         <DesignPartner snapshot={snapshot} />

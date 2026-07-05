@@ -22,15 +22,15 @@ export function Navbar() {
           : "bg-transparent border-b border-white/10"
       }`}
     >
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Logo variant={scrolled ? "dark" : "light"} />
+      <div className="container mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
+        <Logo variant={scrolled ? "dark" : "light"} className="shrink" />
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1.5 sm:gap-4 shrink-0">
           <Button
             variant="ghost"
             size="sm"
             onClick={toggleLanguage}
-            className={`rounded-full font-medium transition-colors duration-300 ${
+            className={`rounded-full font-medium transition-colors duration-300 px-2.5 sm:px-4 text-xs sm:text-sm ${
               scrolled ? "" : "text-white/80 hover:text-white hover:bg-white/10"
             }`}
           >
@@ -38,12 +38,12 @@ export function Navbar() {
           </Button>
           <Button
             size="sm"
-            className="rounded-full shadow-glow"
+            className="rounded-full shadow-glow px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap"
             onClick={() =>
               document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            {isRtl ? "وصول مبكر مجاني" : "Design Partner"}
+            {isRtl ? "وصول مبكر" : "Design Partner"}
           </Button>
         </div>
       </div>

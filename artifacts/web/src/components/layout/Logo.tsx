@@ -11,14 +11,14 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
   const textColor = variant === "light" ? "text-white" : "text-foreground";
 
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500 flex items-center justify-center shadow-glow-sm shrink-0">
+    <div className={`flex items-center gap-1.5 sm:gap-2.5 select-none min-w-0 ${className}`}>
+      <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500 flex items-center justify-center shadow-glow-sm shrink-0">
         <svg
-          width="18"
-          height="18"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
-          className="text-white"
+          className="text-white sm:w-[18px] sm:h-[18px]"
           aria-hidden="true"
         >
           <path
@@ -38,7 +38,7 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
         </svg>
       </div>
       <div
-        className={`font-extrabold text-2xl tracking-tight leading-none whitespace-nowrap ${textColor}`}
+        className={`font-extrabold text-base sm:text-2xl tracking-tight leading-none whitespace-nowrap truncate ${textColor}`}
       >
         {isRtl ? (
           <>

@@ -48,7 +48,7 @@ export function Navbar() {
               document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            {isRtl ? "كن أول المبادرين" : "Design Partner"}
+            {isRtl ? "وصول مبكر مجاني" : "Design Partner"}
           </Button>
         </div>
       </div>

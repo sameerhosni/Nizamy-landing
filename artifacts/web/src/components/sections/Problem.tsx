@@ -17,7 +17,7 @@ export function Problem() {
       },
       mrhr: {
         title: "What Mr-Hr is",
-        points: ["Guaranteed return on investment", "Rewards and motivation", "Employees engage willingly", "Time saved is money earned"]
+        points: ["Return that grows with performance", "Rewards and motivation", "Employees engage willingly", "Time saved is money earned"]
       }
     },
     ar: {
@@ -30,7 +30,7 @@ export function Problem() {
       },
       mrhr: {
         title: "ما هو مستر إتش آر",
-        points: ["عائد مضمون على الاستثمار", "مكافآت وتحفيز", "تفاعل تلقائي من الموظفين", "الوقت الموفر هو مال مكتسب"]
+        points: ["عائد يكبر مع أداء فريقك", "مكافآت وتحفيز", "تفاعل تلقائي من الموظفين", "الوقت الموفر هو مال مكتسب"]
       }
     }
   };

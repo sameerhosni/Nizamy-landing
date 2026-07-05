@@ -19,11 +19,11 @@ export function Home() {
     document.title = "Mr-Hr — The HR system that pays you back";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute("content", "Mr-Hr returns up to 30% of your subscription back to you, every year.");
+      metaDesc.setAttribute("content", "Mr-Hr returns up to 30% of your subscription back to you based on performance, every year.");
     } else {
       const meta = document.createElement('meta');
       meta.name = "description";
-      meta.content = "Mr-Hr returns up to 30% of your subscription back to you, every year.";
+      meta.content = "Mr-Hr returns up to 30% of your subscription back to you based on performance, every year.";
       document.head.appendChild(meta);
     }
   }, []);

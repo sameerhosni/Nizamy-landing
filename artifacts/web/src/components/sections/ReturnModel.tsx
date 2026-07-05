@@ -6,10 +6,10 @@ export function ReturnModel() {
 
   const content = {
     en: {
-      titlePart1: "Three layers. ",
-      titlePart2: "Up to 30% returned",
+      titlePart1: "Perform well. ",
+      titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
-      subhead: "No gimmicks, no cashback tricks. Here is exactly where every riyal comes back from — and why it compounds the longer you stay.",
+      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Mr-Hr, the more comes back — here's exactly where every riyal comes from.",
       layers: [
         {
           num: "01",
@@ -32,10 +32,10 @@ export function ReturnModel() {
       ]
     },
     ar: {
-      titlePart1: "توفير وميزانية مستردة تصل الى ",
+      titlePart1: "الأداء الجيد يعيد إليك حتى ",
       titlePart2: "30%",
-      titlePart3: "",
-      subhead: "بدون حيل أو خدع استرداد. إليك بالضبط من أين يعود كل ريال — ولماذا يتضاعف كلما طالت مدة بقائك.",
+      titlePart3: " كل عام.",
+      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت مستر إتش آر بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
       layers: [
         {
           num: "٠١",

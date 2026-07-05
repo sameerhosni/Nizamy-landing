@@ -1,3 +1,4 @@
+import { HandCoins } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 interface LogoProps {
@@ -13,29 +14,7 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
   return (
     <div className={`flex items-center gap-1.5 sm:gap-2.5 select-none min-w-0 ${className}`}>
       <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500 flex items-center justify-center shadow-glow-sm shrink-0">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          className="text-white sm:w-[18px] sm:h-[18px]"
-          aria-hidden="true"
-        >
-          <path
-            d="M4 12a8 8 0 1 1 3 6.24"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4 18v-4.5h4.5"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <HandCoins className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-white" strokeWidth={2.5} aria-hidden="true" />
       </div>
       <div
         className={`font-extrabold text-base sm:text-2xl tracking-tight leading-none whitespace-nowrap truncate ${textColor}`}

@@ -7,15 +7,13 @@ const navLinks = {
   en: [
     { id: "problem", label: "The Problem" },
     { id: "return-model", label: "Return Model" },
-    { id: "features", label: "Features" },
-    { id: "advantages", label: "Advantages" },
+    { id: "features", label: "Features & Advantages" },
     { id: "calculator", label: "Calculator" },
   ],
   ar: [
     { id: "problem", label: "المشكلة" },
     { id: "return-model", label: "نموذج العائد" },
-    { id: "features", label: "المزايا" },
-    { id: "advantages", label: "الأفضليات" },
+    { id: "features", label: "المزايا والأفضليات" },
     { id: "calculator", label: "الحاسبة" },
   ],
 };

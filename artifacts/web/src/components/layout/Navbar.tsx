@@ -78,7 +78,7 @@ export function Navbar() {
               className="cta-slide-btn rounded-full px-3.5 sm:px-5 text-xs sm:text-sm whitespace-nowrap border-0"
               onClick={() => scrollTo("partner")}
             >
-              {isRtl ? "كن شريك تصميم" : "Become a Design Partner"}
+              {isRtl ? "وصول مبكر مجانى" : "Become a Design Partner"}
             </Button>
           </div>
         </div>

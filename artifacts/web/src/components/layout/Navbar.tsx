@@ -46,15 +46,15 @@ export function Navbar() {
           : "bg-transparent border-b border-white/10"
       }`}
     >
-      <div className="container mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-2">
         <Logo variant={scrolled ? "dark" : "light"} className="shrink" />
 
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className={`nav-link-underline text-sm font-medium transition-colors duration-300 ${linkColor}`}
+              className={`nav-link-underline text-[15px] font-medium transition-colors duration-300 ${linkColor}`}
             >
               {link.label}
             </button>
@@ -75,7 +75,7 @@ export function Navbar() {
           <div className="btn-border-wrap">
             <Button
               size="sm"
-              className="rounded-full shadow-glow px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap"
+              className="cta-slide-btn rounded-full px-3.5 sm:px-5 text-xs sm:text-sm whitespace-nowrap border-0"
               onClick={() => scrollTo("partner")}
             >
               {isRtl ? "وصول مبكر" : "Design Partner"}

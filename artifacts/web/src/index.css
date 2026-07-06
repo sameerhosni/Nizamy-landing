@@ -170,23 +170,50 @@ h3 {
   position: relative;
   border-radius: 9999px;
   isolation: isolate;
+  padding: 3px;
 }
 .btn-border-wrap::before {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: 0;
   border-radius: 9999px;
-  padding: 2px;
+  padding: 3px;
   background: conic-gradient(from var(--border-angle), #fb923c, #6366f1, #ec4899, #6366f1, #fb923c);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: border-spin 3s linear infinite;
-  z-index: -1;
+  z-index: 0;
 }
+
 @keyframes border-spin {
   to {
     --border-angle: 360deg;
   }
+}
+
+/* CTA with sliding gradient fill on hover */
+.cta-slide-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: #0b0a17;
+  color: #fff;
+  transition: color 0.4s ease;
+}
+.cta-slide-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #fb923c, #ec4899, #6366f1);
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+[dir="rtl"] .cta-slide-btn::after {
+  transform: translateX(100%);
+}
+.cta-slide-btn:hover::after {
+  transform: translateX(0);
 }
 

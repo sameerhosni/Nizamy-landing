@@ -65,7 +65,7 @@ export function ReturnModel() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-[#0A0B14]">
+    <section id="return-model" className="py-24 bg-[#0A0B14] scroll-mt-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-4xl mx-auto leading-tight">
           <span className="text-white">{t.titlePart1}</span>

@@ -139,3 +139,54 @@ h3 {
   color: inherit;
 }
 
+/* Navbar nav-link underline hover */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #fb923c, #ec4899, #6366f1);
+  transform: scaleX(0);
+  transform-origin: inline-start;
+  transition: transform 0.3s ease;
+}
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animated rotating gradient border for CTA button */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.btn-border-wrap {
+  position: relative;
+  border-radius: 9999px;
+  isolation: isolate;
+}
+.btn-border-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), #fb923c, #6366f1, #ec4899, #6366f1, #fb923c);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 3s linear infinite;
+  z-index: -1;
+}
+@keyframes border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+

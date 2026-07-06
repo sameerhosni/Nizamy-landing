@@ -94,7 +94,7 @@ export function Features() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="features" className="py-24 bg-white scroll-mt-16">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">

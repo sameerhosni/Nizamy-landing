@@ -3,6 +3,23 @@ import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
 
+const navLinks = {
+  en: [
+    { id: "problem", label: "The Problem" },
+    { id: "return-model", label: "Return Model" },
+    { id: "features", label: "Features" },
+    { id: "advantages", label: "Advantages" },
+    { id: "calculator", label: "Calculator" },
+  ],
+  ar: [
+    { id: "problem", label: "المشكلة" },
+    { id: "return-model", label: "نموذج العائد" },
+    { id: "features", label: "المزايا" },
+    { id: "advantages", label: "الأفضليات" },
+    { id: "calculator", label: "الحاسبة" },
+  ],
+};
+
 export function Navbar() {
   const { language, toggleLanguage, dir } = useLanguage();
   const isRtl = dir === "rtl";
@@ -13,6 +30,13 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const links = navLinks[language];
+  const linkColor = scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/85 hover:text-white";
 
   return (
     <nav
@@ -25,6 +49,18 @@ export function Navbar() {
       <div className="container mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
         <Logo variant={scrolled ? "dark" : "light"} className="shrink" />
 
+        <div className="hidden lg:flex items-center gap-7">
+          {links.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className={`nav-link-underline text-sm font-medium transition-colors duration-300 ${linkColor}`}
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
+
         <div className="flex items-center gap-1.5 sm:gap-4 shrink-0">
           <Button
             variant="ghost"
@@ -36,15 +72,15 @@ export function Navbar() {
           >
             {language === "en" ? "العربية" : "EN"}
           </Button>
-          <Button
-            size="sm"
-            className="rounded-full shadow-glow px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap"
-            onClick={() =>
-              document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            {isRtl ? "وصول مبكر" : "Design Partner"}
-          </Button>
+          <div className="btn-border-wrap">
+            <Button
+              size="sm"
+              className="rounded-full shadow-glow px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap"
+              onClick={() => scrollTo("partner")}
+            >
+              {isRtl ? "وصول مبكر" : "Design Partner"}
+            </Button>
+          </div>
         </div>
       </div>
     </nav>

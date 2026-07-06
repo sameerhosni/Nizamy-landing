@@ -105,7 +105,7 @@ export function Advantages() {
   const t = content[language];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="advantages" className="py-24 bg-white scroll-mt-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl text-center mb-6 leading-tight">
           <span className="text-foreground">{t.titlePart1}</span>

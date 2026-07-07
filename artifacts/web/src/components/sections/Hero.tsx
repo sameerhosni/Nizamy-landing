@@ -1,6 +1,6 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Check, TrendingUp } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 
 export function Hero() {
   const { language, dir } = useLanguage();
@@ -125,45 +125,99 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: return dashboard mockup */}
+          {/* Right: positioning chart */}
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
-            <div className="relative rounded-2xl bg-white/[0.06] border border-white/[0.12] backdrop-blur-2xl p-6 shadow-2xl">
+            <div className="relative rounded-2xl bg-white/[0.04] border border-white/[0.10] backdrop-blur-2xl p-6 shadow-2xl">
 
-              {/* Header */}
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                    <TrendingUp size={16} className="text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white/90">{t.mockup.label}</div>
-                    <div className="text-xs text-white/40">{t.mockup.period}</div>
+              {/* Chart title */}
+              <div className="text-center mb-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/35">
+                  {isRtl ? "خريطة الموقع التنافسي" : "Market Positioning"}
+                </p>
+              </div>
+
+              {/* Quadrant chart */}
+              <div className="relative w-full aspect-square max-w-[340px] mx-auto">
+
+                {/* Grid lines */}
+                <div className="absolute inset-0 border border-white/10 rounded-xl overflow-hidden">
+                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+                    <div className="border-e border-b border-white/[0.07]" />
+                    <div className="border-b border-white/[0.07]" />
+                    <div className="border-e border-white/[0.07]" />
+                    <div />
                   </div>
                 </div>
+
+                {/* Y-axis label top */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-white/40 whitespace-nowrap">
+                  {isRtl ? "↑ ذكاء اصطناعي" : "↑ AI-Powered"}
+                </div>
+                {/* Y-axis label bottom */}
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-white/25 whitespace-nowrap">
+                  {isRtl ? "يدوي ↓" : "Manual ↓"}
+                </div>
+                {/* X-axis label right */}
+                <div className="absolute top-1/2 -translate-y-1/2 -right-2 text-[10px] font-semibold text-white/40 whitespace-nowrap" style={{ writingMode: 'vertical-rl', transform: 'translateY(-50%) rotate(180deg)' }}>
+                  {isRtl ? "عائد مالي →" : "Returns to You →"}
+                </div>
+                {/* X-axis label left */}
+                <div className="absolute top-1/2 -translate-y-1/2 -left-2 text-[10px] font-semibold text-white/25 whitespace-nowrap" style={{ writingMode: 'vertical-rl', transform: 'translateY(-50%) rotate(180deg)' }}>
+                  {isRtl ? "← تكلفة فقط" : "← Pure Cost"}
+                </div>
+
+                {/* Competitor dot — Traditional HR (bottom-left: Manual + Cost) */}
+                <div className="absolute" style={{ left: '18%', top: '72%' }}>
+                  <div className="relative flex flex-col items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-white/20 border border-white/30" />
+                    <span className="text-[9px] text-white/30 text-center leading-tight whitespace-nowrap">
+                      {isRtl ? "أنظمة HR التقليدية" : "Traditional HR"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Competitor dot — Modern SaaS HR (bottom-right: slightly modern + still cost) */}
+                <div className="absolute" style={{ left: '55%', top: '62%' }}>
+                  <div className="relative flex flex-col items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-white/20 border border-white/30" />
+                    <span className="text-[9px] text-white/30 text-center leading-tight whitespace-nowrap">
+                      {isRtl ? "SaaS الحديثة" : "Modern HR SaaS"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Competitor dot — Payroll-only (bottom-left cluster) */}
+                <div className="absolute" style={{ left: '28%', top: '58%' }}>
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/15 border border-white/20" />
+                </div>
+
+                {/* Mr-Hr dot — top-right: AI + Returns */}
+                <div className="absolute" style={{ left: '68%', top: '16%' }}>
+                  <div className="relative flex flex-col items-center gap-2">
+                    {/* Glow ring */}
+                    <div className="absolute w-10 h-10 rounded-full bg-gradient-to-br from-orange-400/30 via-pink-500/30 to-indigo-500/30 blur-md -translate-x-1/4 -translate-y-1/4" />
+                    {/* Main dot */}
+                    <div className="relative w-5 h-5 rounded-full bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500 shadow-glow border-2 border-white/30 z-10" />
+                    {/* Label */}
+                    <div className="bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 text-white text-[10px] font-black rounded-full px-2.5 py-0.5 shadow-glow whitespace-nowrap z-10">
+                      {isRtl ? "مستر إتش آر" : "Mr-Hr"}
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
-              {/* Big return number */}
-              <div className="mb-6">
-                <div className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">{t.mockup.returnLabel}</div>
-                <div className="text-4xl font-black text-white mb-1">SAR 1,440</div>
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full w-[30%] bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full" />
-                  </div>
-                  <span className="text-xs font-semibold text-white/50 whitespace-nowrap">30% {t.mockup.rateLabel}</span>
+              {/* Legend row */}
+              <div className="mt-8 flex items-center justify-center gap-6">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/20 border border-white/30" />
+                  <span className="text-[10px] text-white/35">{isRtl ? "المنافسون" : "Competitors"}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500" />
+                  <span className="text-[10px] text-white/60 font-semibold">{isRtl ? "مستر إتش آر" : "Mr-Hr"}</span>
                 </div>
               </div>
-
-              {/* Subscription comparison */}
-              <div className="flex items-center justify-between rounded-xl bg-white/[0.05] border border-white/[0.08] px-4 py-3.5">
-                <span className="text-sm text-white/50">{t.mockup.subscriptionLabel}</span>
-                <span className="text-sm font-bold text-white/90">SAR 4,800</span>
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <div className="absolute -top-4 -right-4 rtl:-right-auto rtl:-left-4 bg-primary text-white text-xs font-bold rounded-full px-3 py-1.5 shadow-glow animate-bounce" style={{ animationDuration: '3s' }}>
-              {t.mockup.returnBadge}
             </div>
 
             {/* Decorative glow behind card */}

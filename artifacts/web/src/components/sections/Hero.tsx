@@ -16,7 +16,7 @@ export function Hero() {
       secondaryCta: "Become a Design Partner",
       chips: [
         "Up to 30% annual return",
-        "SAR 5 per employee / month",
+        "Starting from SAR 5 per employee / month",
         "One-minute onboarding",
         "Zero penalties or chasing"
       ],
@@ -38,7 +38,7 @@ export function Hero() {
       secondaryCta: "وصول مبكر مجاني",
       chips: [
         "حتى ٣٠٪ عائد سنوي",
-        "٥ ريالات للموظف شهرياً",
+        "ابدأ من ٥ ريال للموظف شهرياً",
         "تسجيل في دقيقة واحدة",
         "صفر غرامات أو ملاحقة"
       ],

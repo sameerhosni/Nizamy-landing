@@ -146,25 +146,13 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Full bar — split 70% / 30% */}
+              {/* Full bar — split cost / return */}
               <div className="space-y-2">
                 <div className="flex h-8 rounded-xl overflow-hidden gap-0.5">
                   {/* 70% net cost */}
-                  <div className="h-full bg-white/10 border border-white/10 rounded-s-xl flex items-center px-3" style={{ width: '70%' }}>
-                    <span className="text-xs font-bold text-white/40">70%</span>
-                  </div>
-                  {/* 15% performance */}
-                  <div className="h-full bg-orange-500/70 flex items-center justify-center" style={{ width: '15%' }}>
-                    <TrendingUp size={12} className="text-white" />
-                  </div>
-                  {/* 10% rewards */}
-                  <div className="h-full bg-pink-500/70 flex items-center justify-center" style={{ width: '10%' }}>
-                    <Gift size={12} className="text-white" />
-                  </div>
-                  {/* 5% time saved */}
-                  <div className="h-full bg-indigo-500/70 flex items-center justify-center rounded-e-xl" style={{ width: '5%' }}>
-                    <Clock size={10} className="text-white" />
-                  </div>
+                  <div className="h-full bg-white/10 border border-white/10 rounded-s-xl" style={{ width: '70%' }} />
+                  {/* 30% return — single gradient segment */}
+                  <div className="h-full rounded-e-xl bg-gradient-to-r from-orange-500 via-pink-500 to-indigo-500 opacity-80" style={{ width: '30%' }} />
                 </div>
 
                 {/* Bar labels */}
@@ -177,29 +165,26 @@ export function Hero() {
               {/* Three source cards */}
               <div className="grid grid-cols-3 gap-2">
                 <div className="rounded-xl bg-orange-500/10 border border-orange-500/20 p-3 text-center">
-                  <div className="w-7 h-7 rounded-lg bg-orange-500/20 flex items-center justify-center mx-auto mb-2">
-                    <TrendingUp size={14} className="text-orange-400" />
+                  <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center mx-auto mb-2">
+                    <TrendingUp size={16} className="text-orange-400" />
                   </div>
-                  <p className="text-orange-400 text-lg font-black leading-none">15%</p>
-                  <p className="text-[10px] text-white/45 mt-1 leading-tight">
+                  <p className="text-[10px] text-white/55 leading-tight">
                     {isRtl ? "الأداء والحضور" : "Performance"}
                   </p>
                 </div>
                 <div className="rounded-xl bg-pink-500/10 border border-pink-500/20 p-3 text-center">
-                  <div className="w-7 h-7 rounded-lg bg-pink-500/20 flex items-center justify-center mx-auto mb-2">
-                    <Gift size={14} className="text-pink-400" />
+                  <div className="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center mx-auto mb-2">
+                    <Gift size={16} className="text-pink-400" />
                   </div>
-                  <p className="text-pink-400 text-lg font-black leading-none">10%</p>
-                  <p className="text-[10px] text-white/45 mt-1 leading-tight">
+                  <p className="text-[10px] text-white/55 leading-tight">
                     {isRtl ? "المكافآت والهدايا" : "Rewards & Gifts"}
                   </p>
                 </div>
                 <div className="rounded-xl bg-indigo-500/10 border border-indigo-500/20 p-3 text-center">
-                  <div className="w-7 h-7 rounded-lg bg-indigo-500/20 flex items-center justify-center mx-auto mb-2">
-                    <Clock size={14} className="text-indigo-400" />
+                  <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center mx-auto mb-2">
+                    <Clock size={16} className="text-indigo-400" />
                   </div>
-                  <p className="text-indigo-400 text-lg font-black leading-none">5%</p>
-                  <p className="text-[10px] text-white/45 mt-1 leading-tight">
+                  <p className="text-[10px] text-white/55 leading-tight">
                     {isRtl ? "وقت المدير" : "Manager Time"}
                   </p>
                 </div>

@@ -16,19 +16,16 @@ export function ReturnModel() {
       layers: [
         {
           num: "01",
-          pct: "15%",
           title: "Performance converted to money",
           desc: "Less lateness, less turnover, more focus → hours saved → riyals saved."
         },
         {
           num: "02",
-          pct: "10%",
           title: "Top-achiever rewards",
           desc: "Mr-Hr funds rewards for your best people at no extra cost to you."
         },
         {
           num: "03",
-          pct: "5%",
           title: "Motivation & Rewards System",
           desc: "Employees earn through engagement; you redeem the value back into the system."
         }
@@ -42,19 +39,16 @@ export function ReturnModel() {
       layers: [
         {
           num: "٠١",
-          pct: "١٥٪",
           title: "تحويل الأداء إلى أموال",
           desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر ← ساعات موفرة ← ريالات موفرة."
         },
         {
           num: "٠٢",
-          pct: "١٠٪",
           title: "مكافآت المتميزين",
           desc: "مستر إتش آر يمول مكافآت لأفضل موظفيك دون أي تكلفة إضافية عليك."
         },
         {
           num: "٠٣",
-          pct: "٥٪",
           title: "نظام التحفيز والمكافئات",
           desc: "يكتسب الموظفون النقاط من خلال التفاعل؛ وتسترد أنت القيمة في النظام."
         }
@@ -89,8 +83,7 @@ export function ReturnModel() {
                     <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">
                       {layer.num}
                     </div>
-                    <Icon size={18} className="text-primary" />
-                    <span className="text-2xl font-bold text-white">{layer.pct}</span>
+                    <Icon size={24} className="text-primary" />
                   </div>
 
                   <h3 className="text-xl font-bold mb-4 text-white">{layer.title}</h3>

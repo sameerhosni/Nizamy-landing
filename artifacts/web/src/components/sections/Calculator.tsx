@@ -257,9 +257,9 @@ export function Calculator({
 
               <div className="pt-8 border-t border-border space-y-6">
                 {([
-                  { label: `${t.results.performance} (15%)`, value: layer1, pct: 15, Icon: layerIcons[0] },
-                  { label: `${t.results.rewards} (10%)`, value: layer2, pct: 10, Icon: layerIcons[1] },
-                  { label: `${t.results.points} (5%)`, value: layer3, pct: 5, Icon: layerIcons[2] },
+                  { label: t.results.performance, value: layer1, pct: 15, Icon: layerIcons[0] },
+                  { label: t.results.rewards, value: layer2, pct: 10, Icon: layerIcons[1] },
+                  { label: t.results.points, value: layer3, pct: 5, Icon: layerIcons[2] },
                 ]).map((row, idx) => (
                   <div key={idx} className="space-y-2">
                     <div className="flex justify-between items-center text-sm text-muted-foreground">

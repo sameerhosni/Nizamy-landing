@@ -114,38 +114,42 @@ export function Calculator({
 
   const content = {
     en: {
-      titlePart1: "Live ",
-      titlePart2: "Return Calculator",
-      subhead: "Move the slider and watch a cost turn into a return — your real number, in seconds.",
+      titlePart1: "Estimate Your ",
+      titlePart2: "Return",
+      subhead: "Move the slider to see a sample estimate — actual results vary based on your team's performance and how you use the system.",
+      sampleBadge: "Sample estimate — not actual data",
       empLabel: "Number of employees",
       tierLabel: "Select Tier",
       tiers: { Standard: "Standard", Growth: "Growth", Pro: "Pro" },
       results: {
-        annualReturn: "Annual Return",
-        sampleNote: "Illustrative estimate based on your inputs",
+        annualReturn: "Estimated Annual Return",
+        sampleNote: "Illustrative only — actual return depends on usage & performance",
         subscription: "Annual Subscription",
         effective: "Effective Annual Cost",
         performance: "Performance",
         rewards: "Rewards",
         points: "Points"
-      }
+      },
+      disclaimer: "These numbers are for illustration purposes only. Your actual return will vary depending on your team size, performance levels, and how effectively you use Mr-Hr."
     },
     ar: {
-      titlePart1: "حاسبة ",
-      titlePart2: "العائد المباشرة",
-      subhead: "حرّك المؤشر وشاهد التكلفة تتحول إلى عائد — رقمك الحقيقي، في ثوانٍ.",
+      titlePart1: "قدّر ",
+      titlePart2: "عائدك",
+      subhead: "حرّك المؤشر لترى تقديراً توضيحياً — النتائج الفعلية تتفاوت حسب أداء فريقك وطريقة استخدامك للنظام.",
+      sampleBadge: "أرقام توضيحية — ليست بيانات حقيقية",
       empLabel: "عدد الموظفين",
       tierLabel: "اختر الباقة",
       tiers: { Standard: "أساسي", Growth: "نمو", Pro: "احترافي" },
       results: {
-        annualReturn: "العائد السنوي",
-        sampleNote: "أرقام تقديرية توضيحية بناءً على مدخلاتك",
+        annualReturn: "العائد السنوي التقديري",
+        sampleNote: "توضيحي فقط — العائد الفعلي يعتمد على الاستخدام والأداء",
         subscription: "الاشتراك السنوي",
         effective: "التكلفة السنوية الفعلية",
         performance: "الأداء",
         rewards: "المكافآت",
         points: "النقاط"
-      }
+      },
+      disclaimer: "هذه الأرقام توضيحية فقط. عائدك الفعلي يتفاوت حسب حجم فريقك ومستويات الأداء ومدى فاعلية استخدامك لمستر إتش آر."
     }
   };
 
@@ -166,6 +170,12 @@ export function Calculator({
   return (
     <section id="calculator" className="py-24 bg-background scroll-mt-16">
       <div className="container mx-auto px-4">
+        <div className="flex justify-center mb-4">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-amber-500/10 text-amber-600 border border-amber-500/25 rounded-full px-3 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+            {t.sampleBadge}
+          </span>
+        </div>
         <h2 className="text-4xl text-center mb-6 leading-tight">
           <span className="text-foreground">{t.titlePart1}</span>
           <span className="text-gradient-primary">{t.titlePart2}</span>
@@ -272,6 +282,13 @@ export function Calculator({
                     <LayerBar value={row.pct} max={30} />
                   </div>
                 ))}
+              </div>
+
+              {/* Disclaimer */}
+              <div className="pt-4 border-t border-border/50">
+                <p className="text-[11px] text-muted-foreground/60 leading-relaxed text-center">
+                  ⚠ {t.disclaimer}
+                </p>
               </div>
             </CardContent>
           </Card>

@@ -1,6 +1,6 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, TrendingUp, Gift, Clock } from "lucide-react";
 
 export function Hero() {
   const { language, dir } = useLanguage();
@@ -125,99 +125,107 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: positioning chart */}
+          {/* Right: return flow visualization */}
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
-            <div className="relative rounded-2xl bg-white/[0.04] border border-white/[0.10] backdrop-blur-2xl p-6 shadow-2xl">
+            <div className="relative rounded-2xl bg-white/[0.05] border border-white/[0.10] backdrop-blur-2xl shadow-2xl overflow-hidden">
 
-              {/* Chart title */}
-              <div className="text-center mb-5">
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/35">
-                  {isRtl ? "خريطة الموقع التنافسي" : "Market Positioning"}
+              {/* Header row */}
+              <div className="px-5 pt-5 pb-4 border-b border-white/[0.08]">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-white/35 mb-1">
+                  {isRtl ? "كيف يولّد مستر إتش آر العائد؟" : "How Mr-Hr generates your return"}
+                </p>
+                <p className="text-white/60 text-sm leading-snug">
+                  {isRtl
+                    ? "ثلاث آليات داخل النظام تحوّل الاشتراك إلى عائد حقيقي"
+                    : "3 activities inside the system convert your subscription into real money back"}
                 </p>
               </div>
 
-              {/* Quadrant chart */}
-              <div className="relative w-full aspect-square max-w-[340px] mx-auto">
+              {/* Activity rows */}
+              <div className="divide-y divide-white/[0.06]">
 
-                {/* Grid lines */}
-                <div className="absolute inset-0 border border-white/10 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-                    <div className="border-e border-b border-white/[0.07]" />
-                    <div className="border-b border-white/[0.07]" />
-                    <div className="border-e border-white/[0.07]" />
-                    <div />
+                {/* Activity 1: Performance */}
+                <div className="flex items-center gap-4 px-5 py-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center shrink-0">
+                    <TrendingUp size={18} className="text-orange-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white/90">
+                      {isRtl ? "الأداء والحضور" : "Performance & Attendance"}
+                    </p>
+                    <p className="text-xs text-white/45 leading-snug mt-0.5">
+                      {isRtl
+                        ? "تقليل التأخير والغياب = ساعات موفرة = ريالات ترجع"
+                        : "Less lateness & turnover → hours saved → riyals back"}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-end">
+                    <span className="text-lg font-black text-orange-400">15%</span>
+                    <p className="text-[10px] text-white/30">{isRtl ? "عائد" : "back"}</p>
                   </div>
                 </div>
 
-                {/* Y-axis label top */}
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-white/40 whitespace-nowrap">
-                  {isRtl ? "↑ ذكاء اصطناعي" : "↑ AI-Powered"}
-                </div>
-                {/* Y-axis label bottom */}
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-semibold text-white/25 whitespace-nowrap">
-                  {isRtl ? "يدوي ↓" : "Manual ↓"}
-                </div>
-                {/* X-axis label right */}
-                <div className="absolute top-1/2 -translate-y-1/2 -right-2 text-[10px] font-semibold text-white/40 whitespace-nowrap" style={{ writingMode: 'vertical-rl', transform: 'translateY(-50%) rotate(180deg)' }}>
-                  {isRtl ? "عائد مالي →" : "Returns to You →"}
-                </div>
-                {/* X-axis label left */}
-                <div className="absolute top-1/2 -translate-y-1/2 -left-2 text-[10px] font-semibold text-white/25 whitespace-nowrap" style={{ writingMode: 'vertical-rl', transform: 'translateY(-50%) rotate(180deg)' }}>
-                  {isRtl ? "← تكلفة فقط" : "← Pure Cost"}
-                </div>
-
-                {/* Competitor dot — Traditional HR (bottom-left: Manual + Cost) */}
-                <div className="absolute" style={{ left: '18%', top: '72%' }}>
-                  <div className="relative flex flex-col items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-white/20 border border-white/30" />
-                    <span className="text-[9px] text-white/30 text-center leading-tight whitespace-nowrap">
-                      {isRtl ? "أنظمة HR التقليدية" : "Traditional HR"}
-                    </span>
+                {/* Activity 2: Rewards */}
+                <div className="flex items-center gap-4 px-5 py-4">
+                  <div className="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/25 flex items-center justify-center shrink-0">
+                    <Gift size={18} className="text-pink-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white/90">
+                      {isRtl ? "المكافآت والتقدير" : "Rewards & Top Achievers"}
+                    </p>
+                    <p className="text-xs text-white/45 leading-snug mt-0.5">
+                      {isRtl
+                        ? "مستر إتش آر يموّل مكافآت الأعلى أداءً — بدون تكلفة إضافية"
+                        : "Mr-Hr funds gifts for top performers at no extra cost to you"}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-end">
+                    <span className="text-lg font-black text-pink-400">10%</span>
+                    <p className="text-[10px] text-white/30">{isRtl ? "عائد" : "back"}</p>
                   </div>
                 </div>
 
-                {/* Competitor dot — Modern SaaS HR (bottom-right: slightly modern + still cost) */}
-                <div className="absolute" style={{ left: '55%', top: '62%' }}>
-                  <div className="relative flex flex-col items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-white/20 border border-white/30" />
-                    <span className="text-[9px] text-white/30 text-center leading-tight whitespace-nowrap">
-                      {isRtl ? "SaaS الحديثة" : "Modern HR SaaS"}
-                    </span>
+                {/* Activity 3: Time saved */}
+                <div className="flex items-center gap-4 px-5 py-4">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center shrink-0">
+                    <Clock size={18} className="text-indigo-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white/90">
+                      {isRtl ? "وقت المدير الموفَّر" : "Manager Time Saved"}
+                    </p>
+                    <p className="text-xs text-white/45 leading-snug mt-0.5">
+                      {isRtl
+                        ? "كل إجراء يديره النظام تلقائياً = وقت يُحوَّل لإنتاجية"
+                        : "Every action handled automatically = time converted to productivity"}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-end">
+                    <span className="text-lg font-black text-indigo-400">5%</span>
+                    <p className="text-[10px] text-white/30">{isRtl ? "عائد" : "back"}</p>
                   </div>
                 </div>
-
-                {/* Competitor dot — Payroll-only (bottom-left cluster) */}
-                <div className="absolute" style={{ left: '28%', top: '58%' }}>
-                  <div className="w-2.5 h-2.5 rounded-full bg-white/15 border border-white/20" />
-                </div>
-
-                {/* Mr-Hr dot — top-right: AI + Returns */}
-                <div className="absolute" style={{ left: '68%', top: '16%' }}>
-                  <div className="relative flex flex-col items-center gap-2">
-                    {/* Glow ring */}
-                    <div className="absolute w-10 h-10 rounded-full bg-gradient-to-br from-orange-400/30 via-pink-500/30 to-indigo-500/30 blur-md -translate-x-1/4 -translate-y-1/4" />
-                    {/* Main dot */}
-                    <div className="relative w-5 h-5 rounded-full bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500 shadow-glow border-2 border-white/30 z-10" />
-                    {/* Label */}
-                    <div className="bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 text-white text-[10px] font-black rounded-full px-2.5 py-0.5 shadow-glow whitespace-nowrap z-10">
-                      {isRtl ? "مستر إتش آر" : "Mr-Hr"}
-                    </div>
-                  </div>
-                </div>
-
               </div>
 
-              {/* Legend row */}
-              <div className="mt-8 flex items-center justify-center gap-6">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-white/20 border border-white/30" />
-                  <span className="text-[10px] text-white/35">{isRtl ? "المنافسون" : "Competitors"}</span>
+              {/* Total footer */}
+              <div className="mx-5 mb-5 mt-3 rounded-xl bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-indigo-500/10 border border-white/[0.09] px-5 py-3.5 flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-white/45">{isRtl ? "إجمالي العائد السنوي" : "Total annual return"}</p>
+                  <p className="text-sm text-white/60 mt-0.5">
+                    {isRtl ? "من قيمة اشتراكك — يعود إليك كل عام" : "of your subscription — back every year"}
+                  </p>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-orange-400 via-pink-500 to-indigo-500" />
-                  <span className="text-[10px] text-white/60 font-semibold">{isRtl ? "مستر إتش آر" : "Mr-Hr"}</span>
+                <div className="text-end shrink-0">
+                  <span className="text-3xl font-black text-gradient-primary">30%</span>
                 </div>
               </div>
+
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -top-3 -right-3 rtl:-right-auto rtl:-left-3 bg-primary text-white text-[11px] font-bold rounded-full px-3 py-1.5 shadow-glow">
+              {isRtl ? "ليس تكلفة — عائد" : "Not a cost — a return"}
             </div>
 
             {/* Decorative glow behind card */}

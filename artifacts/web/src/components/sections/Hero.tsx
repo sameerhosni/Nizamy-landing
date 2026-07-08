@@ -13,50 +13,62 @@ export function Hero() {
       eyebrow: "AI-powered HR · for Saudi SMEs",
       headlinePart1: "Every HR system costs you.",
       headlinePart2: "Mr-Hr gives it back.",
-      subtitle: "More efficient use = bigger return — up to 30% of your subscription back, every year.",
+      subtitleMuted: "More efficient use = bigger return. ",
+      subtitleBold: "We give you up to 30% of your subscription back every year — the only performance system that pays you, not the other way around.",
       primaryCta: "Book my early access",
       secondaryCta: "Calculate my return",
       chips: [
         "Up to 30% annual return",
-        "Starting from SAR 3 per employee / month",
         "One-minute onboarding",
-        "Zero penalties or chasing"
+        "Starting from SAR 3 per employee",
+        "No penalties or chasing"
       ],
       card: {
+        exampleLabel: "Example: 50 employees / month",
         toggleCost: "Cost",
         toggleReturn: "Return",
+        activation: "70% activation",
+        returnsTo: "30% back to you",
         subscriptionLabel: "Annual subscription",
         netCostLabel: "Your net cost",
         performance: "Performance & Attendance",
         rewards: "Rewards & Gifts",
         managerTime: "Manager Time",
-        totalReturn: "Total return",
-        totalReturnNote: "SAR 1,440 back every year",
+        totalReturn: "Total annual return",
+        totalReturnSub: "Back to you every year",
+        totalReturnAmount: "+SAR 1,440",
+        totalReturnPercent: "30% back",
       }
     },
     ar: {
       eyebrow: "موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
       headlinePart2: "مستر إتش آر يعيد لك.",
-      subtitle: "استخدام أكثر فاعلية = عائد أكبر — حتى ٣٠٪ من قيمة اشتراكك، يعود إليك كل عام.",
+      subtitleMuted: "استخدام أكثر فاعلية = عائد أكبر. ",
+      subtitleBold: "نعيد إليك حق ٪30 من قيمة اشتراكك كل عام — نظام إدارة الأداء الوحيد الذي يدفع لك، لا عليك.",
       primaryCta: "احجز وصولك المبكر",
       secondaryCta: "احسب عائدك",
       chips: [
-        "حتى ٣٠٪ عائد سنوي",
-        "ابدأ من ٣ ريال للموظف شهرياً",
+        "حق ٪30 عائد سنوي",
         "تسجيل في دقيقة واحدة",
-        "صفر غرامات أو ملاحقة"
+        "يبدأ من ٣ ريال للموظف",
+        "بدون غرامات أو ملاحظة"
       ],
       card: {
+        exampleLabel: "مثال: ٥٠ موظفاً شهرياً",
         toggleCost: "تكلفة",
         toggleReturn: "عائد",
+        activation: "تفعيل ٪70",
+        returnsTo: "يعود إليك ٪30",
         subscriptionLabel: "الاشتراك السنوي",
         netCostLabel: "تكلفتك الفعلية",
         performance: "الأداء والحضور",
         rewards: "المكافآت والهدايا",
         managerTime: "وقت المدير",
-        totalReturn: "إجمالي العائد",
-        totalReturnNote: "١,٤٤٠ ر.س يعود إليك كل عام",
+        totalReturn: "إجمالي العائد السنوي",
+        totalReturnSub: "يعود إليك كل عام",
+        totalReturnAmount: "+١,٤٤٠ ر.س",
+        totalReturnPercent: "٪30 استرداد",
       }
     }
   };
@@ -88,8 +100,9 @@ export function Hero() {
               <span className="text-gradient-primary">{t.headlinePart2}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
-              {t.subtitle}
+            <p className="text-lg md:text-xl max-w-lg leading-relaxed">
+              <span className="text-white/50">{t.subtitleMuted}</span>
+              <span className="text-white/90 font-medium">{t.subtitleBold}</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
@@ -114,7 +127,7 @@ export function Hero() {
             </div>
 
             {/* Checkmark proof points */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
               {t.chips.map((chip, idx) => (
                 <div key={idx} className="flex items-center gap-2.5 text-sm text-white/60">
                   <div className="w-4 h-4 rounded-full bg-[#6D4AFF]/25 border border-[#6D4AFF]/40 flex items-center justify-center shrink-0">
@@ -130,22 +143,24 @@ export function Hero() {
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
             <div className="relative rounded-2xl bg-white/[0.05] border border-white/[0.10] backdrop-blur-2xl shadow-2xl p-5 space-y-5">
 
-              {/* Toggle */}
-              <div className="flex items-center justify-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 w-fit mx-auto">
-                <button
-                  onClick={() => setShowReturn(false)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${!showReturn ? "bg-white/15 text-white" : "text-white/40"}`}
-                >
-                  {c.toggleCost}
-                </button>
-                <ArrowRight size={12} className={`text-white/30 ${isRtl ? "rotate-180" : ""}`} />
-                <button
-                  onClick={() => setShowReturn(true)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${showReturn ? "text-white" : "text-white/40"}`}
-                  style={showReturn ? { background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" } : undefined}
-                >
-                  {c.toggleReturn}
-                </button>
+              {/* Example label + toggle */}
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-white/35">{c.exampleLabel}</span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => setShowReturn(false)}
+                    className={`font-semibold transition-colors ${!showReturn ? "text-white" : "text-white/35"}`}
+                  >
+                    {c.toggleCost}
+                  </button>
+                  <ArrowLeft size={11} className={`text-white/30 ${isRtl ? "" : "rotate-180"}`} />
+                  <button
+                    onClick={() => setShowReturn(true)}
+                    className={`font-semibold transition-colors ${showReturn ? "text-white" : "text-white/35"}`}
+                  >
+                    {c.toggleReturn}
+                  </button>
+                </div>
               </div>
 
               {/* Big subscription amount */}
@@ -181,9 +196,15 @@ export function Hero() {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between text-[11px] text-white/35">
-                  <span>0%</span>
-                  <span className="font-semibold text-gradient-primary">30%</span>
+                <div className="flex justify-between items-center text-[11px] text-white/35">
+                  <span className="flex items-center gap-1">
+                    {c.activation}
+                    <ArrowLeft size={10} className={isRtl ? "" : "rotate-180"} />
+                  </span>
+                  <span className="flex items-center gap-1 font-semibold text-gradient-primary">
+                    <ArrowRight size={10} className={isRtl ? "rotate-180" : ""} />
+                    {c.returnsTo}
+                  </span>
                 </div>
               </div>
 
@@ -209,12 +230,13 @@ export function Hero() {
                 style={{ background: "linear-gradient(90deg, rgba(255,77,141,0.12), rgba(255,162,58,0.12))" }}
               >
                 <div>
-                  <p className="text-xs text-white/45">{c.totalReturn}</p>
-                  <p className="text-sm font-semibold text-white/70 mt-0.5">
-                    {isRtl ? "١,٤٤٠ ر.س = ٣٠٪ استرداد" : "+SAR 1,440 = 30% back"}
-                  </p>
+                  <p className="text-sm font-semibold text-white/80">{c.totalReturn}</p>
+                  <p className="text-xs text-white/40 mt-0.5">{c.totalReturnSub}</p>
                 </div>
-                <span className="text-3xl font-heading font-black text-gradient-primary shrink-0">30%</span>
+                <div className="text-end shrink-0">
+                  <p className="text-2xl font-heading font-black text-[#FF4D8D]">{c.totalReturnAmount}</p>
+                  <p className="text-xs font-semibold text-[#FFA23A] mt-0.5">{c.totalReturnPercent}</p>
+                </div>
               </div>
 
             </div>

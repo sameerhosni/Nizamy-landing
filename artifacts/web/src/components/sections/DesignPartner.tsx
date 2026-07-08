@@ -40,12 +40,17 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         "Be first to shape the product",
         "No commitment — just a conversation"
       ],
-      note: "No commitment. Just a conversation.",
+      note: "No commitment · Just a conversation.",
       labels: {
         name: "Full Name",
         company: "Company Name",
         email: "Work Email",
         whatsapp: "WhatsApp Number"
+      },
+      placeholders: {
+        name: "e.g. Abdullah Al-Mohammed",
+        company: "Your company name",
+        email: "name@company.com"
       },
       submit: "Request Early Access",
       loading: "Sending...",
@@ -66,12 +71,17 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         "كن أول من يشكّل المنتج",
         "بدون التزام — مجرد محادثة"
       ],
-      note: "بدون التزام — مجرد محادثة",
+      note: "بدون التزام · مجرد محادثة",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
         email: "البريد الإلكتروني للعمل",
         whatsapp: "رقم الواتساب"
+      },
+      placeholders: {
+        name: "مثال: عبدالله المحمد",
+        company: "اسم منشأتك",
+        email: "name@company.com"
       },
       submit: "اطلب وصولاً مبكراً",
       loading: "جارٍ الإرسال...",
@@ -147,6 +157,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       <Input
                         id="name"
                         required
+                        placeholder={t.placeholders.name}
                         className="bg-white"
                         value={formData.name}
                         onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
@@ -158,6 +169,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       <Input
                         id="company"
                         required
+                        placeholder={t.placeholders.company}
                         className="bg-white"
                         value={formData.company}
                         onChange={e => setFormData(p => ({ ...p, company: e.target.value }))}
@@ -170,6 +182,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                         id="email"
                         type="email"
                         required
+                        placeholder={t.placeholders.email}
                         className="bg-white"
                         value={formData.email}
                         onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}

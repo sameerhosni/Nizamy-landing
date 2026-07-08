@@ -1,19 +1,5 @@
 import { useLanguage } from "@/lib/i18n";
-import {
-  Ban,
-  AlertOctagon,
-  UserX,
-  Clock3,
-  TrendingUp,
-  Gift,
-  Heart,
-  Coins,
-  ArrowRight,
-  ArrowLeft,
-} from "lucide-react";
-
-const legacyIcons = [Ban, AlertOctagon, UserX, Clock3];
-const mrhrIcons = [TrendingUp, Gift, Heart, Coins];
+import { Check, X, ArrowRight, ArrowLeft } from "lucide-react";
 
 export function Problem() {
   const { language, dir } = useLanguage();
@@ -22,32 +8,32 @@ export function Problem() {
 
   const content = {
     en: {
-      headingPart1: "Every other HR system bills you. ",
-      headingPart2: "Yours should pay you back.",
+      headingPart1: "Other systems drain your money. ",
+      headingPart2: "Mr-Hr saves it for you.",
       subhead: "Same monthly fee. Completely different math. One drains your budget every month — the other puts money back in it.",
       legacy: {
-        title: "The current state",
-        tag: "The old way",
+        title: "The old way",
+        tag: "Pure cost",
         points: ["Pure software cost", "Penalties and deductions", "Chasing employees to use it", "Time wasted on admin"]
       },
       mrhr: {
-        title: "What Mr-Hr is",
-        tag: "The Mr-Hr way",
+        title: "The Mr-Hr way",
+        tag: "A source of return",
         points: ["Return that grows with your team's performance", "Rewards and motivation", "Employees engage automatically", "Time saved is money earned"]
       }
     },
     ar: {
-      headingPart1: "الأنظمة الأخرى تستنزف أموالك باشتراكات. ",
-      headingPart2: "مستر أتش ار يوفر لك.",
+      headingPart1: "الأنظمة الأخرى تستنزف أموالك. ",
+      headingPart2: "مستر إتش آر يوفّرها لك.",
       subhead: "نفس الرسوم الشهرية. حسبة مختلفة تماماً. أحدهما يستنزف ميزانيتك كل شهر — والآخر يعيد المال إليها.",
       legacy: {
-        title: "الوضع الحالي",
-        tag: "الطريقة القديمة",
+        title: "الطريقة القديمة",
+        tag: "تكلفة بحتة",
         points: ["تكلفة برمجيات بحتة", "غرامات وخصومات", "ملاحقة الموظفين لاستخدامه", "إهدار الوقت في الإدارة"]
       },
       mrhr: {
-        title: "ما هو مستر إتش آر",
-        tag: "طريقة مستر إتش آر",
+        title: "طريقة مستر إتش آر",
+        tag: "مصدر عائد",
         points: ["عائد يكبر مع أداء فريقك", "مكافآت وتحفيز", "تفاعل تلقائي من الموظفين", "الوقت الموفر هو مال مكتسب"]
       }
     }
@@ -69,18 +55,17 @@ export function Problem() {
         <div className="relative max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-6 items-center">
 
-            {/* Legacy — no card, blends into the page */}
+            {/* Legacy — muted, borderless */}
             <div className="px-2 md:px-6 py-6">
               <span className="inline-block text-xs font-semibold text-muted-foreground bg-muted rounded-full px-3.5 py-1.5 mb-5">
                 {t.legacy.tag}
               </span>
-              <h3 className="text-2xl md:text-[28px] font-bold mb-8 text-foreground">{t.legacy.title}</h3>
+              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-foreground">{t.legacy.title}</h3>
               <ul className="space-y-6">
                 {t.legacy.points.map((point, idx) => {
-                  const Icon = legacyIcons[idx];
                   const iconEl = (
                     <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center shrink-0">
-                      <Icon size={16} className="text-muted-foreground" />
+                      <X size={16} className="text-muted-foreground" strokeWidth={2.5} />
                     </div>
                   );
                   const textEl = <span className="text-muted-foreground text-base md:text-lg">{point}</span>;
@@ -111,17 +96,19 @@ export function Problem() {
             </div>
 
             {/* Mr-Hr Card — elevated, glowing */}
-            <div className="relative rounded-3xl bg-white p-8 md:p-10" style={{ boxShadow: "0 30px 60px -20px rgba(91, 92, 255, 0.25), 0 10px 30px -10px rgba(236, 72, 153, 0.15)" }}>
-              <span className="inline-block text-xs font-semibold text-white bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 rounded-full px-3.5 py-1.5 mb-5">
+            <div className="relative rounded-3xl bg-white p-8 md:p-10" style={{ boxShadow: "0 30px 60px -20px rgba(109, 74, 255, 0.25), 0 10px 30px -10px rgba(255, 77, 141, 0.15)" }}>
+              <span
+                className="inline-block text-xs font-semibold text-white rounded-full px-3.5 py-1.5 mb-5"
+                style={{ background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
+              >
                 {t.mrhr.tag}
               </span>
-              <h3 className="text-2xl md:text-[28px] font-bold mb-8 text-gradient-primary">{t.mrhr.title}</h3>
+              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-gradient-primary">{t.mrhr.title}</h3>
               <ul className="space-y-6">
                 {t.mrhr.points.map((point, idx) => {
-                  const Icon = mrhrIcons[idx];
                   const iconEl = (
-                    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Icon size={16} className="text-primary" />
+                    <div className="w-9 h-9 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+                      <Check size={16} className="text-emerald-500" strokeWidth={2.5} />
                     </div>
                   );
                   const textEl = <span className="text-foreground text-base md:text-lg font-medium">{point}</span>;

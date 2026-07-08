@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@700;800;900&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -44,6 +44,7 @@
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-sans); /* Use sans everywhere */
   --font-mono: var(--app-font-mono);
+  --font-heading: var(--app-font-heading);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -52,39 +53,48 @@
 }
 
 :root {
-  /* Muntej app aesthetic */
-  --background: 220 20% 97%; /* #F6F7F9 */
-  --foreground: 226 25% 15%; /* Dark slate */
-  --border: 220 15% 90%;
-  --input: 220 15% 90%;
-  --ring: 240 100% 68%; /* Vivid indigo-violet #5B5CFF */
+  /* Mr-Hr brand aesthetic */
+  --background: 252 24% 96%; /* #F4F3F8 */
+  --foreground: 253 33% 13%; /* #16122B */
+  --border: 252 15% 88%;
+  --input: 252 15% 88%;
+  --ring: 249 100% 65%; /* #6D4AFF */
 
   --card: 0 0% 100%;
-  --card-foreground: 226 25% 15%;
-  --card-border: 220 15% 93%;
+  --card-foreground: 253 33% 13%;
+  --card-border: 252 15% 91%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 226 25% 15%;
-  --popover-border: 220 15% 90%;
+  --popover-foreground: 253 33% 13%;
+  --popover-border: 252 15% 88%;
 
-  --primary: 240 100% 68%; /* #5B5CFF */
+  --primary: 249 100% 65%; /* #6D4AFF */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 220 10% 90%;
-  --secondary-foreground: 226 25% 15%;
+  --secondary: 252 12% 90%;
+  --secondary-foreground: 253 33% 13%;
 
-  --muted: 220 15% 93%;
-  --muted-foreground: 220 10% 45%;
+  --muted: 252 15% 91%;
+  --muted-foreground: 249 8% 46%; /* #6E6A85 */
 
-  --accent: 280 80% 95%; /* Soft lilac */
-  --accent-foreground: 240 100% 68%;
+  --accent: 249 60% 95%; /* Soft violet tint */
+  --accent-foreground: 249 100% 65%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
   --app-font-sans: 'IBM Plex Sans Arabic', sans-serif;
+  --app-font-heading: 'Tajawal', sans-serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0.625rem; /* ~10px */
+
+  /* Mr-Hr palette tokens */
+  --mrhr-dark-bg: #0B0817;
+  --mrhr-dark-nav: rgba(11, 8, 23, 0.72);
+  --mrhr-violet: #6D4AFF;
+  --mrhr-violet-light: #8B6BFF;
+  --mrhr-pink: #FF4D8D;
+  --mrhr-orange: #FFA23A;
 }
 
 [dir="rtl"] {
@@ -99,20 +109,43 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold tracking-tight;
+    font-family: var(--app-font-heading);
+    @apply font-extrabold tracking-tight;
+  }
+  button {
+    font-family: var(--app-font-heading);
   }
 }
 
+.font-heading {
+  font-family: var(--app-font-heading);
+}
+
+.tabular-nums, .font-mono {
+  font-family: var(--app-font-heading);
+}
+
 .text-gradient-primary {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500;
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(90deg, var(--mrhr-pink), var(--mrhr-orange));
+  -webkit-background-clip: text;
+}
+
+.bg-mrhr-dark {
+  background-color: var(--mrhr-dark-bg);
+}
+
+.bg-hero-radial {
+  background-color: var(--mrhr-dark-bg);
+  background-image: radial-gradient(120% 90% at 85% -10%, #2A1B57, #150E31 42%, #0B0817);
 }
 
 .shadow-glow {
-  box-shadow: 0 8px 32px -4px rgba(91, 92, 255, 0.45), 0 0 0 1px rgba(91, 92, 255, 0.1);
+  box-shadow: 0 8px 32px -4px rgba(109, 74, 255, 0.45), 0 0 0 1px rgba(109, 74, 255, 0.1);
 }
 
 .shadow-glow-sm {
-  box-shadow: 0 4px 16px -2px rgba(91, 92, 255, 0.3);
+  box-shadow: 0 4px 16px -2px rgba(109, 74, 255, 0.3);
 }
 
 .glassmorphic {
@@ -135,7 +168,7 @@ h3 {
 
 /* Selection highlight */
 ::selection {
-  background: rgba(91, 92, 255, 0.2);
+  background: rgba(109, 74, 255, 0.2);
   color: inherit;
 }
 
@@ -150,7 +183,7 @@ h3 {
   inset-inline-start: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, #fb923c, #ec4899, #6366f1);
+  background: linear-gradient(to right, #FF4D8D, #FFA23A);
   transform: scaleX(0);
   transform-origin: inline-start;
   transition: transform 0.3s ease;
@@ -178,7 +211,7 @@ h3 {
   inset: 0;
   border-radius: 9999px;
   padding: 3px;
-  background: conic-gradient(from var(--border-angle), #fb923c, #6366f1, #ec4899, #6366f1, #fb923c);
+  background: conic-gradient(from var(--border-angle), #6D4AFF, #FF4D8D, #FFA23A, #FF4D8D, #6D4AFF);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -197,7 +230,7 @@ h3 {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background: #0b0a17;
+  background: var(--mrhr-violet);
   color: #fff;
   transition: color 0.4s ease;
 }
@@ -205,7 +238,7 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, #fb923c, #ec4899, #6366f1);
+  background: linear-gradient(to right, #FF4D8D, #FFA23A);
   transform: translateX(-100%);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: -1;

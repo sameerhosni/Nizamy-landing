@@ -8,10 +8,10 @@ const layerIcons = [TrendingUp, Gift, Sparkles];
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
-    <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
+    <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
       <div
-        className="h-full rounded-full bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 transition-all duration-500"
-        style={{ width: `${(value / max) * 100}%` }}
+        className="h-full rounded-full transition-all duration-500"
+        style={{ width: `${(value / max) * 100}%`, background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
       />
     </div>
   );
@@ -196,7 +196,7 @@ export function Calculator({
                 value={[employees]} 
                 onValueChange={(vals) => setEmployees(vals[0])} 
                 min={5} 
-                max={300} 
+                max={500} 
                 step={1} 
                 dir={dir}
               />
@@ -239,54 +239,55 @@ export function Calculator({
             </div>
           </div>
 
-          {/* Results */}
-          <Card className="bg-white border-primary/10 shadow-glow">
+          {/* Results — dark panel */}
+          <Card className="bg-mrhr-dark border-white/10 shadow-glow overflow-hidden">
             <CardContent className="p-8 md:p-10 space-y-8">
-              <div className="text-center pb-8 border-b border-border">
-                <div className="text-muted-foreground font-medium mb-3">{t.results.annualReturn}</div>
+              <div className="text-center pb-8 border-b border-white/10">
+                <div className="text-white/50 font-medium mb-3">{t.results.annualReturn}</div>
                 <div className="relative inline-block py-4">
-                  <div className="absolute inset-0 bg-primary/15 blur-2xl rounded-full scale-150 pointer-events-none" />
-                  <div className="text-5xl md:text-6xl font-bold text-primary tracking-tight relative">
+                  <div className="absolute inset-0 bg-[#6D4AFF]/20 blur-2xl rounded-full scale-150 pointer-events-none" />
+                  <div className="text-5xl md:text-6xl font-heading font-black text-gradient-primary tracking-tight relative">
                     {formatCurrency(totalReturn, "SAR", language)}
                   </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">{t.results.sampleNote}</p>
+                <p className="text-xs text-white/40 mt-2">{t.results.sampleNote}</p>
               </div>
 
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">{t.results.subscription}</span>
-                  <span className="font-mono text-xl">{formatCurrency(subscription, "SAR", language)}</span>
+                  <span className="text-white/50">{t.results.subscription}</span>
+                  <span className="font-mono text-xl text-white">{formatCurrency(subscription, "SAR", language)}</span>
                 </div>
                 
                 <div className="flex justify-between items-center text-lg font-bold">
-                  <span>{t.results.effective}</span>
-                  <span className="font-mono text-2xl">{formatCurrency(effectiveCost, "SAR", language)}</span>
+                  <span className="text-white">{t.results.effective}</span>
+                  <span className="font-mono text-2xl text-white">{formatCurrency(effectiveCost, "SAR", language)}</span>
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-border space-y-6">
+              <div className="pt-8 border-t border-white/10 space-y-6">
                 {([
-                  { label: t.results.performance, value: layer1, pct: 15, Icon: layerIcons[0] },
-                  { label: t.results.rewards, value: layer2, pct: 10, Icon: layerIcons[1] },
-                  { label: t.results.points, value: layer3, pct: 5, Icon: layerIcons[2] },
+                  { label: t.results.performance, value: layer1, pct: 50, Icon: layerIcons[0] },
+                  { label: t.results.rewards, value: layer2, pct: 33, Icon: layerIcons[1] },
+                  { label: t.results.points, value: layer3, pct: 17, Icon: layerIcons[2] },
                 ]).map((row, idx) => (
                   <div key={idx} className="space-y-2">
-                    <div className="flex justify-between items-center text-sm text-muted-foreground">
+                    <div className="flex justify-between items-center text-sm text-white/50">
                       <span className="flex items-center gap-2">
-                        <row.Icon size={14} className="text-primary" />
+                        <row.Icon size={14} className="text-[#8B6BFF]" />
                         {row.label}
+                        <span className="text-white/30">· {row.pct}%</span>
                       </span>
-                      <span>{formatCurrency(row.value, "SAR", language)}</span>
+                      <span className="text-white/80">{formatCurrency(row.value, "SAR", language)}</span>
                     </div>
-                    <LayerBar value={row.pct} max={30} />
+                    <LayerBar value={row.pct} max={100} />
                   </div>
                 ))}
               </div>
 
               {/* Disclaimer */}
-              <div className="pt-4 border-t border-border/50">
-                <p className="text-[11px] text-muted-foreground/60 leading-relaxed text-center">
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-[11px] text-white/30 leading-relaxed text-center">
                   ⚠ {t.disclaimer}
                 </p>
               </div>

@@ -16,17 +16,17 @@ export function ReturnModel() {
       layers: [
         {
           num: "01",
-          title: "Performance converted to money",
+          title: "Activate your team",
           desc: "Less lateness, less turnover, more focus → hours saved → riyals saved."
         },
         {
           num: "02",
-          title: "Top-achiever rewards",
+          title: "Reward performance",
           desc: "Mr-Hr funds rewards for your best people at no extra cost to you."
         },
         {
           num: "03",
-          title: "Motivation & Rewards System",
+          title: "Recover your value",
           desc: "Employees earn through engagement; you redeem the value back into the system."
         }
       ]
@@ -39,17 +39,17 @@ export function ReturnModel() {
       layers: [
         {
           num: "٠١",
-          title: "تحويل الأداء إلى أموال",
+          title: "فعّل فريقك",
           desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر ← ساعات موفرة ← ريالات موفرة."
         },
         {
           num: "٠٢",
-          title: "مكافآت المتميزين",
+          title: "كافئ الأداء",
           desc: "مستر إتش آر يمول مكافآت لأفضل موظفيك دون أي تكلفة إضافية عليك."
         },
         {
           num: "٠٣",
-          title: "نظام التحفيز والمكافئات",
+          title: "استرد قيمتك",
           desc: "يكتسب الموظفون النقاط من خلال التفاعل؛ وتسترد أنت القيمة في النظام."
         }
       ]
@@ -59,7 +59,7 @@ export function ReturnModel() {
   const t = content[language];
 
   return (
-    <section id="return-model" className="py-24 bg-[#0A0B14] scroll-mt-16">
+    <section id="return-model" className="py-24 bg-mrhr-dark scroll-mt-16">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-4xl mx-auto leading-tight">
           <span className="text-white">{t.titlePart1}</span>

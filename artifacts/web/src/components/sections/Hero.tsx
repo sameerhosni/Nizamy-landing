@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Check, TrendingUp, Gift, Clock } from "lucide-react";
@@ -5,65 +6,71 @@ import { ArrowRight, ArrowLeft, Check, TrendingUp, Gift, Clock } from "lucide-re
 export function Hero() {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
+  const [showReturn, setShowReturn] = useState(true);
 
   const content = {
     en: {
-      eyebrow: "AI-powered HR, built for Saudi SMEs",
-      headlinePart1: "Every other HR system is a cost.",
-      headlinePart2: "Mr-Hr is a return.",
-      subtitle: "More efficient use = bigger return — up to 30% back on your subscription, every year.",
-      primaryCta: "Calculate my return",
-      secondaryCta: "Become a Design Partner",
+      eyebrow: "AI-powered HR · for Saudi SMEs",
+      headlinePart1: "Every HR system costs you.",
+      headlinePart2: "Mr-Hr gives it back.",
+      subtitle: "More efficient use = bigger return — up to 30% of your subscription back, every year.",
+      primaryCta: "Book my early access",
+      secondaryCta: "Calculate my return",
       chips: [
         "Up to 30% annual return",
         "Starting from SAR 3 per employee / month",
         "One-minute onboarding",
         "Zero penalties or chasing"
       ],
-      mockup: {
-        label: "Your Return Estimate",
-        period: "Example: 50 employees, Growth plan",
-        returnLabel: "Total annual return",
-        rateLabel: "of your subscription, back to you",
+      card: {
+        toggleCost: "Cost",
+        toggleReturn: "Return",
         subscriptionLabel: "Annual subscription",
-        returnBadge: "+30% Return",
+        netCostLabel: "Your net cost",
+        performance: "Performance & Attendance",
+        rewards: "Rewards & Gifts",
+        managerTime: "Manager Time",
+        totalReturn: "Total return",
+        totalReturnNote: "SAR 1,440 back every year",
       }
     },
     ar: {
-      eyebrow: "موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
-      headlinePart1: "كل أنظمة الموارد البشرية تكلفة.",
-      headlinePart2: "مستر إتش آر عائد.",
-      subtitle: "استخدام أكثر فاعلية = عائد أكبر — حتى ٣٠٪ من قيمة اشتراكك، كل عام.",
-      primaryCta: "احسب العائد",
-      secondaryCta: "وصول مبكر مجاني",
+      eyebrow: "موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية",
+      headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
+      headlinePart2: "مستر إتش آر يعيد لك.",
+      subtitle: "استخدام أكثر فاعلية = عائد أكبر — حتى ٣٠٪ من قيمة اشتراكك، يعود إليك كل عام.",
+      primaryCta: "احجز وصولك المبكر",
+      secondaryCta: "احسب عائدك",
       chips: [
         "حتى ٣٠٪ عائد سنوي",
         "ابدأ من ٣ ريال للموظف شهرياً",
         "تسجيل في دقيقة واحدة",
         "صفر غرامات أو ملاحقة"
       ],
-      mockup: {
-        label: "تقدير عائدك",
-        period: "مثال: 50 موظفاً، باقة النمو",
-        returnLabel: "إجمالي العائد السنوي",
-        rateLabel: "من قيمة اشتراكك، يعود إليك",
+      card: {
+        toggleCost: "تكلفة",
+        toggleReturn: "عائد",
         subscriptionLabel: "الاشتراك السنوي",
-        returnBadge: "عائد ٣٠٪+",
+        netCostLabel: "تكلفتك الفعلية",
+        performance: "الأداء والحضور",
+        rewards: "المكافآت والهدايا",
+        managerTime: "وقت المدير",
+        totalReturn: "إجمالي العائد",
+        totalReturnNote: "١,٤٤٠ ر.س يعود إليك كل عام",
       }
     }
   };
 
   const t = content[language];
+  const c = t.card;
 
   return (
-    <section className="relative min-h-[88vh] flex flex-col justify-center pt-20 pb-12 overflow-hidden bg-[#0A0B14]">
-      {/* Background gradients */}
+    <section className="relative min-h-[92vh] flex flex-col justify-center pt-24 pb-16 overflow-hidden bg-hero-radial">
+      {/* Floating blurred gradient orbs */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-15%] left-[-5%] w-[50%] h-[60%] bg-violet-600/20 blur-[160px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[50%] bg-indigo-500/15 blur-[140px] rounded-full" />
-        <div className="absolute top-[35%] right-[25%] w-[25%] h-[30%] bg-primary/8 blur-[80px] rounded-full" />
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute top-[-15%] left-[-5%] w-[50%] h-[60%] bg-[#6D4AFF]/25 blur-[160px] rounded-full animate-pulse" style={{ animationDuration: "6s" }} />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[50%] bg-[#FF4D8D]/15 blur-[140px] rounded-full animate-pulse" style={{ animationDuration: "8s" }} />
+        <div className="absolute top-[35%] right-[25%] w-[25%] h-[30%] bg-[#FFA23A]/10 blur-[100px] rounded-full" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -71,21 +78,15 @@ export function Hero() {
 
           {/* Left: copy */}
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            {t.eyebrow && (
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/8 border border-white/15 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                {t.eyebrow}
-              </div>
-            )}
-
-            <div className="space-y-3">
-              <p className="text-2xl md:text-3xl text-white/50 font-medium leading-snug">
-                {t.headlinePart1}
-              </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-gradient-primary">
-                {t.headlinePart2}
-              </h1>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/8 border border-white/15 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              {t.eyebrow}
             </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black leading-[1.15]">
+              <span className="text-white">{t.headlinePart1}</span>{" "}
+              <span className="text-gradient-primary">{t.headlinePart2}</span>
+            </h1>
 
             <p className="text-lg md:text-xl text-white/60 max-w-lg leading-relaxed">
               {t.subtitle}
@@ -94,8 +95,8 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
               <Button
                 size="lg"
-                className="w-full sm:w-auto text-base h-12 px-7 shadow-glow rounded-xl group"
-                onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
+                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl group bg-[#6D4AFF] hover:bg-[#8B6BFF] text-white shadow-glow border-0"
+                onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {t.primaryCta}
                 {isRtl
@@ -106,7 +107,7 @@ export function Hero() {
                 size="lg"
                 variant="ghost"
                 className="w-full sm:w-auto text-base h-12 px-7 rounded-xl text-white/70 hover:text-white hover:bg-white/10 border border-white/15"
-                onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {t.secondaryCta}
               </Button>
@@ -116,8 +117,8 @@ export function Hero() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-2">
               {t.chips.map((chip, idx) => (
                 <div key={idx} className="flex items-center gap-2.5 text-sm text-white/60">
-                  <div className="w-4 h-4 rounded-full bg-primary/25 border border-primary/40 flex items-center justify-center shrink-0">
-                    <Check size={9} className="text-primary" strokeWidth={3} />
+                  <div className="w-4 h-4 rounded-full bg-[#6D4AFF]/25 border border-[#6D4AFF]/40 flex items-center justify-center shrink-0">
+                    <Check size={9} className="text-[#8B6BFF]" strokeWidth={3} />
                   </div>
                   {chip}
                 </div>
@@ -125,95 +126,112 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: return breakdown visualization */}
+          {/* Right: return card */}
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
             <div className="relative rounded-2xl bg-white/[0.05] border border-white/[0.10] backdrop-blur-2xl shadow-2xl p-5 space-y-5">
 
-              {/* Eyebrow */}
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-white/35">
-                {isRtl ? "اشتراكك السنوي: مثال ٥٠ موظفاً" : "Your annual subscription — 50 employees"}
-              </p>
+              {/* Toggle */}
+              <div className="flex items-center justify-center gap-1 bg-white/5 border border-white/10 rounded-full p-1 w-fit mx-auto">
+                <button
+                  onClick={() => setShowReturn(false)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${!showReturn ? "bg-white/15 text-white" : "text-white/40"}`}
+                >
+                  {c.toggleCost}
+                </button>
+                <ArrowRight size={12} className={`text-white/30 ${isRtl ? "rotate-180" : ""}`} />
+                <button
+                  onClick={() => setShowReturn(true)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${showReturn ? "text-white" : "text-white/40"}`}
+                  style={showReturn ? { background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" } : undefined}
+                >
+                  {c.toggleReturn}
+                </button>
+              </div>
 
               {/* Big subscription amount */}
               <div className="flex items-end justify-between">
                 <div>
-                  <p className="text-white/40 text-xs mb-0.5">{isRtl ? "الاشتراك السنوي" : "Annual subscription"}</p>
-                  <p className="text-3xl font-black text-white/60 line-through decoration-white/20">SAR 4,800</p>
+                  <p className="text-white/40 text-xs mb-0.5">{c.subscriptionLabel}</p>
+                  <p className="text-2xl font-heading font-black text-white/50 line-through decoration-white/20">
+                    {isRtl ? "٤,٨٠٠ ر.س" : "SAR 4,800"}
+                  </p>
                 </div>
                 <div className="text-end">
-                  <p className="text-white/40 text-xs mb-0.5">{isRtl ? "تكلفتك الفعلية" : "Your net cost"}</p>
-                  <p className="text-3xl font-black text-white">SAR 3,360</p>
+                  <p className="text-white/40 text-xs mb-0.5">{c.netCostLabel}</p>
+                  <p className="text-3xl font-heading font-black text-white">
+                    {isRtl ? "٣,٣٦٠ ر.س" : "SAR 3,360"}
+                  </p>
                 </div>
               </div>
 
-              {/* Full bar — split cost / return */}
+              {/* Shimmering return meter */}
               <div className="space-y-2">
-                <div className="flex h-8 rounded-xl overflow-hidden gap-0.5">
-                  {/* 70% net cost */}
-                  <div className="h-full bg-white/10 border border-white/10 rounded-s-xl" style={{ width: '70%' }} />
-                  {/* 30% return — single gradient segment */}
-                  <div className="h-full rounded-e-xl bg-gradient-to-r from-orange-500 via-pink-500 to-indigo-500 opacity-80" style={{ width: '30%' }} />
+                <div className="h-3 w-full rounded-full bg-white/10 overflow-hidden relative">
+                  <div
+                    className="h-full rounded-full relative overflow-hidden"
+                    style={{ width: "30%", background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
+                  >
+                    <div
+                      className="absolute inset-0 opacity-40"
+                      style={{
+                        background: "linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%)",
+                        animation: "shimmer 2.2s infinite",
+                        backgroundSize: "200% 100%",
+                      }}
+                    />
+                  </div>
                 </div>
-
-                {/* Bar labels */}
-                <div className="flex justify-between items-start">
-                  <span className="text-[11px] text-white/30">{isRtl ? "← تبقى تكلفة" : "Stays as cost →"}</span>
-                  <span className="text-[11px] font-semibold text-gradient-primary">{isRtl ? "← يعود إليك" : "Returns to you →"}</span>
+                <div className="flex justify-between text-[11px] text-white/35">
+                  <span>0%</span>
+                  <span className="font-semibold text-gradient-primary">30%</span>
                 </div>
               </div>
 
-              {/* Three source cards */}
+              {/* Three source chips */}
               <div className="grid grid-cols-3 gap-2">
-                <div className="rounded-xl bg-orange-500/10 border border-orange-500/20 p-3 text-center">
-                  <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center mx-auto mb-2">
-                    <TrendingUp size={16} className="text-orange-400" />
+                {[
+                  { icon: TrendingUp, label: c.performance },
+                  { icon: Gift, label: c.rewards },
+                  { icon: Clock, label: c.managerTime },
+                ].map(({ icon: Icon, label }, idx) => (
+                  <div key={idx} className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
+                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mx-auto mb-2">
+                      <Icon size={16} className="text-[#8B6BFF]" />
+                    </div>
+                    <p className="text-[10px] text-white/55 leading-tight">{label}</p>
                   </div>
-                  <p className="text-[10px] text-white/55 leading-tight">
-                    {isRtl ? "الأداء والحضور" : "Performance"}
-                  </p>
-                </div>
-                <div className="rounded-xl bg-pink-500/10 border border-pink-500/20 p-3 text-center">
-                  <div className="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center mx-auto mb-2">
-                    <Gift size={16} className="text-pink-400" />
-                  </div>
-                  <p className="text-[10px] text-white/55 leading-tight">
-                    {isRtl ? "المكافآت والهدايا" : "Rewards & Gifts"}
-                  </p>
-                </div>
-                <div className="rounded-xl bg-indigo-500/10 border border-indigo-500/20 p-3 text-center">
-                  <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center mx-auto mb-2">
-                    <Clock size={16} className="text-indigo-400" />
-                  </div>
-                  <p className="text-[10px] text-white/55 leading-tight">
-                    {isRtl ? "وقت المدير" : "Manager Time"}
-                  </p>
-                </div>
+                ))}
               </div>
 
               {/* Total return callout */}
-              <div className="flex items-center justify-between rounded-xl bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-indigo-500/10 border border-white/[0.09] px-4 py-3">
+              <div
+                className="flex items-center justify-between rounded-xl border border-white/[0.09] px-4 py-3"
+                style={{ background: "linear-gradient(90deg, rgba(255,77,141,0.12), rgba(255,162,58,0.12))" }}
+              >
                 <div>
-                  <p className="text-xs text-white/45">{isRtl ? "إجمالي العائد" : "Total return"}</p>
+                  <p className="text-xs text-white/45">{c.totalReturn}</p>
                   <p className="text-sm font-semibold text-white/70 mt-0.5">
-                    {isRtl ? "SAR 1,440 — يعود إليك كل عام" : "SAR 1,440 back every year"}
+                    {isRtl ? "١,٤٤٠ ر.س = ٣٠٪ استرداد" : "+SAR 1,440 = 30% back"}
                   </p>
                 </div>
-                <span className="text-3xl font-black text-gradient-primary shrink-0">30%</span>
+                <span className="text-3xl font-heading font-black text-gradient-primary shrink-0">30%</span>
               </div>
 
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -top-3 -right-3 rtl:-right-auto rtl:-left-3 bg-primary text-white text-[11px] font-bold rounded-full px-3 py-1.5 shadow-glow whitespace-nowrap">
-              {isRtl ? "ليس تكلفة — عائد" : "Not a cost — a return"}
-            </div>
-
             {/* Decorative glow */}
-            <div className="absolute inset-0 -z-10 bg-primary/10 blur-[60px] rounded-3xl scale-95" />
+            <div className="absolute inset-0 -z-10 bg-[#6D4AFF]/10 blur-[60px] rounded-3xl scale-95" />
           </div>
 
         </div>
       </div>
+
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+      `}</style>
     </section>
   );
 }

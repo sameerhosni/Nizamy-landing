@@ -30,14 +30,15 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const content = {
     en: {
-      headingPart1: "Early Adopter ",
-      headingPart2: "Limited Access.",
+      headingPart1: "Limited ",
+      headingPart2: "Early Access.",
       headingPart3: "",
       sub: "We are opening a limited number of early-access spots. Claim yours before they are gone.",
       valuePoints: [
         "Free early access",
         "Limited spots available",
-        "Be first to shape the product"
+        "Be first to shape the product",
+        "No commitment, no fees"
       ],
       note: "No commitment. Just a conversation.",
       labels: {
@@ -62,7 +63,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       valuePoints: [
         "وصول مبكر مجاني",
         "مقاعد محدودة",
-        "كن أول من يشكّل المنتج"
+        "كن أول من يشكّل المنتج",
+        "بدون التزام أو رسوم"
       ],
       note: "بدون التزام. مجرد محادثة.",
       labels: {
@@ -94,31 +96,31 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
   };
 
   return (
-    <section id="partner" className="py-24 bg-white scroll-mt-16 relative overflow-hidden">
+    <section id="partner" className="py-24 bg-mrhr-dark scroll-mt-16 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/30 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#6D4AFF]/15 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#FF4D8D]/10 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-start">
 
           {/* Text column */}
           <div className="md:pt-6">
-            <h2 className="text-4xl leading-tight mb-4">
-              <span className="text-foreground">{t.headingPart1}</span>
+            <h2 className="text-4xl font-heading font-extrabold leading-tight mb-4">
+              <span className="text-white">{t.headingPart1}</span>
               <span className="text-gradient-primary">{t.headingPart2}</span>
-              <span className="text-foreground">{t.headingPart3}</span>
+              <span className="text-white">{t.headingPart3}</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">{t.sub}</p>
+            <p className="text-xl text-white/60 mb-8">{t.sub}</p>
             <ul className="space-y-3">
               {t.valuePoints.map((point, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-primary w-5 h-5 mt-1 shrink-0" />
-                  <span className="text-base text-foreground">{point}</span>
+                  <CheckCircle2 className="text-[#8B6BFF] w-5 h-5 mt-1 shrink-0" />
+                  <span className="text-base text-white/85">{point}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-muted-foreground mt-8">{t.note}</p>
+            <p className="text-sm text-white/40 mt-8">{t.note}</p>
           </div>
 
           {/* Form column */}

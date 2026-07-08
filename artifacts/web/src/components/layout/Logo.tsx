@@ -16,7 +16,7 @@ export function Logo({ variant = "light", className = "" }: LogoProps) {
         <img
           src="/images/logo-mascot.png"
           alt="Mr-Hr"
-          className="w-full h-full object-contain drop-shadow-sm"
+          className="w-full h-full object-contain"
         />
       </div>
       <div

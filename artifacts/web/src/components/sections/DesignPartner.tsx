@@ -35,10 +35,10 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       headingPart3: "",
       sub: "We are opening a limited number of early-access spots. Claim yours before they are gone.",
       valuePoints: [
-        "Free early access",
-        "Limited spots available",
+        "Fully free early access",
+        "Limited spots per industry",
         "Be first to shape the product",
-        "No commitment, no fees"
+        "No commitment — just a conversation"
       ],
       note: "No commitment. Just a conversation.",
       labels: {
@@ -61,12 +61,12 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       headingPart3: "",
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
       valuePoints: [
-        "وصول مبكر مجاني",
-        "مقاعد محدودة",
+        "وصول مبكر مجاني بالكامل",
+        "مقاعد محدودة لكل قطاع",
         "كن أول من يشكّل المنتج",
-        "بدون التزام أو رسوم"
+        "بدون التزام — مجرد محادثة"
       ],
-      note: "بدون التزام. مجرد محادثة.",
+      note: "بدون التزام — مجرد محادثة",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
@@ -115,12 +115,11 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
             <ul className="space-y-3">
               {t.valuePoints.map((point, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-[#8B6BFF] w-5 h-5 mt-1 shrink-0" />
+                  <CheckCircle2 className="text-[#22C55E] w-5 h-5 mt-1 shrink-0" />
                   <span className="text-base text-white/85">{point}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-white/40 mt-8">{t.note}</p>
           </div>
 
           {/* Form column */}
@@ -198,6 +197,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       {mutation.isPending && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
                       {mutation.isPending ? t.loading : t.submit}
                     </Button>
+                    <p className="text-sm text-muted-foreground text-center">{t.note}</p>
                   </form>
                 </CardContent>
               </Card>

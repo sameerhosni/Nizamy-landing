@@ -16,8 +16,8 @@ const content = {
       {
         name: "Attendance & Multi-Verification",
         desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate, fraud-proof, and effortless, with every record tied to a verified identity.",
-        image: "/images/94697_1783520815575.jpeg",
-        imageAlt: "Biometric attendance check-in screen",
+        images: ["/images/94697_1783520815575.jpeg", "/images/face-id-checkin.png"],
+        imageAlts: ["Biometric attendance check-in screen", "Face ID verification check-in with XP points"],
         bullets: [
           "Fingerprint, face, or voice — whichever suits your workplace",
           "Impossible to fake or check in on someone else's behalf",
@@ -70,8 +70,8 @@ const content = {
       {
         name: "حضور وتحقّق متعدد",
         desc: "لمسة واحدة، بلا أي شك. يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وكل سجل مرتبط بهوية موثّقة.",
-        image: "/images/94697_1783520815575.jpeg",
-        imageAlt: "شاشة تسجيل الحضور بالتحقق البيومتري",
+        images: ["/images/94697_1783520815575.jpeg", "/images/face-id-checkin.png"],
+        imageAlts: ["شاشة تسجيل الحضور بالتحقق البيومتري", "تحقق تسجيل الحضور بالوجه مع نقاط الخبرة"],
         bullets: [
           "بصمة الإصبع أو الوجه أو الصوت — بحسب ما يناسب بيئة عملك",
           "يستحيل تزويره أو تسجيل الحضور نيابة عن موظف آخر",

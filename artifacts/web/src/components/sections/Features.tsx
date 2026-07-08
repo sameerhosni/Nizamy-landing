@@ -1,4 +1,4 @@
-import { Fingerprint, Target, Bot, ShieldCheck, Sparkles, Heart } from "lucide-react";
+import { Fingerprint, Target, Bot, Sparkles, Heart } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const content = {
@@ -23,10 +23,6 @@ const content = {
       {
         name: "Smart Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — no waiting on HR.",
-      },
-      {
-        name: "Saudi Compliance Built-In",
-        desc: "Native GOSI, social insurance, and Zakat compliance — always up to date with local regulation.",
       },
       {
         name: "Motivational, not punitive",
@@ -58,10 +54,6 @@ const content = {
         desc: "يتولى الموظفون طلباتهم ومستنداتهم وموافقاتهم بأنفسهم — دون انتظار الموارد البشرية.",
       },
       {
-        name: "توافق محلي سعودي",
-        desc: "توافق مدمج مع التأمينات الاجتماعية (GOSI) والزكاة — محدّث دائماً مع الأنظمة المحلية.",
-      },
-      {
         name: "تحفيزي — ليس عقابياً",
         dark: true,
         desc: "كل ميزة في مستر إتش آر مصممة لمكافأة الأداء الجيد — لا لفرض غرامات أو عقوبات على فريقك.",
@@ -70,7 +62,7 @@ const content = {
   },
 };
 
-const icons = [Bot, Fingerprint, Target, Sparkles, ShieldCheck, Heart];
+const icons = [Bot, Fingerprint, Target, Sparkles, Heart];
 
 export function Features() {
   const { language } = useLanguage();

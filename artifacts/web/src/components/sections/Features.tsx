@@ -20,6 +20,11 @@ const content = {
       {
         name: "Smart Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — no waiting on HR.",
+        images: [
+          "/images/94705_1783520815578.jpeg",
+          "/images/94703_1783520815576.jpeg",
+          "/images/94690_1783520815570.jpeg",
+        ],
       },
       {
         name: "Incentives & Performance KPIs",
@@ -50,6 +55,11 @@ const content = {
       {
         name: "خدمات ذاتية ذكية",
         desc: "طلبات ومستندات وأسئلة السياسات تُنجز تلقائياً على مدار الساعة.",
+        images: [
+          "/images/94705_1783520815578.jpeg",
+          "/images/94703_1783520815576.jpeg",
+          "/images/94690_1783520815570.jpeg",
+        ],
       },
       {
         name: "حوافز ومؤشرات أداء",
@@ -130,16 +140,41 @@ export function Features() {
               );
             }
 
+            const images = "images" in card ? card.images : undefined;
+
             return (
               <div
                 key={idx}
-                className="group relative rounded-[28px] border border-slate-200 bg-white p-10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-200"
+                className="group relative rounded-[28px] border border-slate-200 bg-white p-10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-200 overflow-hidden"
               >
                 <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-8 transition-transform group-hover:scale-110 duration-300`}>
                   <Icon size={28} className={iconColor} />
                 </div>
                 <h3 className="text-2xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
                 <p className="text-slate-500 leading-relaxed font-medium">{card.desc}</p>
+                {images && (
+                  <div className="flex items-end gap-3 mt-8 rtl:flex-row-reverse">
+                    {images.map((src, imgIdx) => (
+                      <div
+                        key={imgIdx}
+                        className="relative rounded-2xl overflow-hidden border-4 border-white shadow-lg bg-slate-900 shrink-0 transition-transform duration-500 group-hover:-translate-y-1"
+                        style={{
+                          width: imgIdx === 0 ? "88px" : "72px",
+                          height: imgIdx === 0 ? "176px" : "144px",
+                          marginTop: imgIdx === 0 ? 0 : "24px",
+                          zIndex: images.length - imgIdx,
+                        }}
+                      >
+                        <img
+                          src={src}
+                          alt={`${card.name} screenshot ${imgIdx + 1}`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}

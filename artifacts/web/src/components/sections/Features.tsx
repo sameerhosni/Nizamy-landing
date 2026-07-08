@@ -1,4 +1,4 @@
-import { Fingerprint, Target, Bot, MessageCircle, ShieldCheck, Heart } from "lucide-react";
+import { Fingerprint, Target, Bot, MessageCircle, Heart } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const content = {
@@ -16,10 +16,6 @@ const content = {
       {
         name: "Attendance & Multi-Verification",
         desc: "Fingerprint, face, and voice check-in options — accurate, fraud-proof, and effortless for every employee.",
-      },
-      {
-        name: "Saudi Compliance Built-In",
-        desc: "Native GOSI, social insurance, and Zakat compliance — always up to date with local regulation.",
       },
       {
         name: "Smart Self-Service",
@@ -52,10 +48,6 @@ const content = {
         desc: "تسجيل حضور بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وسهل لكل موظف.",
       },
       {
-        name: "توافق محلي سعودي",
-        desc: "حماية الأجور، التأمينات، مكافأة نهاية الخدمة، وهيئة الزكاة والدخل.",
-      },
-      {
         name: "خدمات ذاتية ذكية",
         desc: "طلبات ومستندات وأسئلة السياسات تُنجز تلقائياً على مدار الساعة.",
       },
@@ -75,7 +67,6 @@ const content = {
 const iconMeta = [
   { icon: Bot },
   { icon: Fingerprint, bg: "bg-[#FF4D8D]/10", color: "text-[#FF4D8D]" },
-  { icon: ShieldCheck, bg: "bg-emerald-500/10", color: "text-emerald-500" },
   { icon: MessageCircle, bg: "bg-primary/10", color: "text-primary" },
   { icon: Target, bg: "bg-[#FFA23A]/10", color: "text-[#FFA23A]" },
   { icon: Heart },

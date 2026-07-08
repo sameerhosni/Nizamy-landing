@@ -9,6 +9,7 @@ export function ReturnModel() {
 
   const content = {
     en: {
+      eyebrow: "Return Model",
       titlePart1: "Perform well. ",
       titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
@@ -32,6 +33,7 @@ export function ReturnModel() {
       ]
     },
     ar: {
+      eyebrow: "نموذج العائد",
       titlePart1: "الأداء الجيد يعيد إليك حتى ",
       titlePart2: "30%",
       titlePart3: " كل عام.",
@@ -61,9 +63,14 @@ export function ReturnModel() {
   return (
     <section id="return-model" className="py-24 bg-mrhr-dark scroll-mt-16">
       <div className="container mx-auto px-4">
+        <div className="text-center mb-6">
+          <span className="inline-block text-xs font-semibold rounded-full px-3.5 py-1.5 bg-[#FF4D8D]/15 text-[#FF4D8D]">
+            {t.eyebrow}
+          </span>
+        </div>
         <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-4xl mx-auto leading-tight">
           <span className="text-white">{t.titlePart1}</span>
-          <span className="text-gradient-primary">{t.titlePart2}</span>
+          <span style={{ color: "#FF4D8D" }}>{t.titlePart2}</span>
           <span className="text-white">{t.titlePart3}</span>
         </h2>
         <p className="text-lg md:text-xl text-white/60 text-center mb-20 max-w-2xl mx-auto leading-relaxed">
@@ -80,7 +87,7 @@ export function ReturnModel() {
               <div key={idx} className="relative z-10">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-24 h-24 rounded-full bg-white/8 border border-white/20 flex flex-col items-center justify-center gap-0.5 mb-8 shrink-0 relative shadow-lg backdrop-blur-sm">
-                    <div className="absolute -top-3 -right-3 text-sm font-bold text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">
+                    <div className="absolute -top-3 -right-3 text-sm font-bold px-3 py-1 rounded-full border" style={{ color: "#FF4D8D", background: "rgba(255,77,141,0.15)", borderColor: "rgba(255,77,141,0.4)" }}>
                       {layer.num}
                     </div>
                     <Icon size={24} className="text-primary" />

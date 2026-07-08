@@ -1,0 +1,25 @@
+Build an Arabic (RTL) landing page for "مستر إتش آر" (Mr-HR) — an AI HR system for Saudi SMEs. Core hook: HR isn't a cost, it's a return — we give back up to 30% of the subscription each year.
+
+Language & direction: Arabic, dir="rtl", lang="ar". Add an "EN" toggle in the nav (decorative is fine for now).
+
+Fonts (Google Fonts): Tajawal (700/800/900) for all headings, numbers, buttons, logo. IBM Plex Sans Arabic (400/500/600) for body.
+
+Color system:
+
+Dark backgrounds: #0B0817, hero radial radial-gradient(120% 90% at 85% -10%,#2A1B57,#150E31 42%,#0B0817)
+Violet primary: #6D4AFF → #8B6BFF
+Signature "return" gradient: linear-gradient(90deg,#FF4D8D,#FFA23A) (pink→orange) — use it on every value/return moment and heading accents
+Light section bg: #F4F3F8; cards #fff; text #16122B; muted #6E6A85
+Use -webkit-background-clip:text for gradient headline words.
+Sections (top to bottom):
+
+Sticky nav — dark translucent (rgba(11,8,23,.72) + backdrop-blur). Logo = rounded gradient tile with a star/spark + gradient wordmark "مستر إتش آر". Links: المشكلة، نموذج العائد، الحاسبة، المزايا. "EN" pill + violet CTA "وصول مبكر مجاني".
+Hero (dark, floating blurred gradient orbs). Left copy: green-dot badge "موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية"; H1 "كل أنظمة الموارد البشرية تُكلّفك." + gradient line "مستر إتش آر يعيد لك."; subtext about returning up to ٣٠٪; two CTAs ("احجز وصولك المبكر", "احسب عائدك"); 4 checkmark trust chips. Right: dark return card — "تكلفة ← عائد" toggle, struck-through 4,800 ر.س → bold 3,360 ر.س, shimmering gradient meter (30% fill), 3 chips (وقت المدير / المكافآت والهدايا / الأداء والحضور), and a gradient highlight box with an animated count-up to +1,440 ر.س = ٣٠٪ استرداد.
+Stat band (dark): 4 stats — ٠ غرامات · 3 ر.س سعر البدء · دقيقة تسجيل · 30% حد أقصى للعائد.
+Problem/comparison (light): heading "الأنظمة الأخرى تستنزف أموالك. مستر إتش آر يوفّرها لك." Two cards side by side — highlighted "طريقة مستر إتش آر / مصدر عائد" (4 green-check benefits) vs muted "الطريقة القديمة / تكلفة بحتة" (4 grey-X items).
+Return model (dark): "الأداء الجيد يعيد إليك حتى ٣٠٪ كل عام." Three numbered steps: 01 فعّل فريقك · 02 كافئ الأداء · 03 استرد قيمتك.
+Interactive calculator (light) "قدّر عائدك": left panel = employee slider (5–500, custom gradient track + violet thumb) and 3 plan buttons (أساسي 3 ر.س / نمو 5 ر.س / احترافي 8 ر.س, selected = violet border). Right dark panel shows live-computed results: annual return = subscription × 30% (subscription = employees × plan price × 12), actual cost after return, and a breakdown bar chart (الأداء 50% / المكافآت 33% / النقاط 17%). Everything recomputes on slider drag or plan change.
+Features bento (light) "نظام لإدارة الأداء أولاً، والعائد نتيجة طبيعية": 3-col grid. Big highlighted violet card "ذكاء اصطناعي باللهجة السعودية" (spans 2), plus cards: حضور وتحقّق متعدد، حوافز ومؤشرات أداء، خدمات ذاتية ذكية، توافق محلي سعودي (GOSI/التأمينات/الزكاة)، and a dark card "تحفيزي — ليس عقابياً". Simple line-icon SVGs, hover lift.
+Early-access form (dark): "وصول مبكر محدود." Left = 4 benefit checkmarks. Right = white card with fields الاسم الكامل / اسم الشركة / البريد الإلكتروني للعمل / رقم الواتساب (+966) + violet button "اطلب وصولاً مبكراً" + "بدون التزام · مجرد محادثة".
+Footer (dark): logo + "الموارد البشرية بالذكاء الاصطناعي — للمنشآت السعودية. © 2026".
+Motion: hero fade-up entrance, floating orbs, shimmering return meter, hero count-up, hover lifts on cards, smooth-scroll anchor nav. Generous rounded corners (14–26px), soft shadows, large type (H2 ~48px). Keep numbers Western (3,360 / 30%) and labels Arabic.

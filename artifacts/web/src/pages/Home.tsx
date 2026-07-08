@@ -6,7 +6,6 @@ import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
-import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 
@@ -50,7 +49,6 @@ export function Home() {
         <Hero />
         <StatsBar />
         <Problem />
-        <ProductShowcase />
         <ReturnModel />
         <Calculator 
           employees={employees}

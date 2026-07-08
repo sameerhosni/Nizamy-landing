@@ -28,8 +28,8 @@ const content = {
       {
         name: "Smart Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — instantly, through an AI chat assistant that speaks their language, so HR never has to be the middleman.",
-        image: "/images/94705_1783520815578.jpeg",
-        imageAlt: "AI self-service chat assistant",
+        images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
+        imageAlts: ["Self-service home screen with quick requests and AI assistant", "AI self-service chat assistant"],
         bullets: [
           "Leave requests, shift changes, and early-leave approvals in seconds",
           "Direct escalation to HR only when it's truly needed",
@@ -83,8 +83,8 @@ const content = {
       {
         name: "خدمات ذاتية ذكية",
         desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً في كل مرة.",
-        image: "/images/94705_1783520815578.jpeg",
-        imageAlt: "مساعد ذكي للخدمة الذاتية عبر المحادثة",
+        images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
+        imageAlts: ["الشاشة الرئيسية للخدمة الذاتية مع طلبات سريعة ومساعد ذكي", "مساعد ذكي للخدمة الذاتية عبر المحادثة"],
         bullets: [
           "طلبات الإجازة وتبديل الورديات والمغادرة المبكرة خلال ثوانٍ",
           "تصعيد مباشر للموارد البشرية فقط عند الحاجة الفعلية",
@@ -170,8 +170,6 @@ export function Features() {
             }
 
             if ("showcase" in card && card.showcase) {
-              const image = "image" in card ? card.image : undefined;
-              const imageAlt = "imageAlt" in card ? card.imageAlt : undefined;
               const images = "images" in card ? card.images : undefined;
               const imageAlts = "imageAlts" in card ? card.imageAlts : undefined;
               const { bullets } = card;
@@ -205,21 +203,6 @@ export function Features() {
                     </div>
                     <div className="relative flex items-center justify-center gap-4 bg-gradient-to-b from-blue-50 to-sky-100 py-12 md:py-16 px-6 order-1 md:order-none">
                       <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 50% 30%, rgba(37,99,235,0.15), transparent 60%)" }} />
-                      {image && (
-                        <div className="relative w-[220px] h-[440px] sm:w-[240px] sm:h-[480px] rounded-[36px] bg-slate-900 p-2.5 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2">
-                          <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20">
-                            <div className="w-28 h-5 bg-slate-900 rounded-b-2xl" />
-                          </div>
-                          <div className="w-full h-full bg-white rounded-[28px] overflow-hidden relative">
-                            <img
-                              src={image}
-                              alt={imageAlt}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        </div>
-                      )}
                       {images && images.length > 0 && (
                         <>
                           {images.map((img, imgIdx) => {

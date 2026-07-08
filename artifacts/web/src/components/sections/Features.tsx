@@ -39,7 +39,15 @@ const content = {
       },
       {
         name: "Incentives & Performance KPIs",
-        desc: "Set goals, run review cycles, and link outcomes directly to rewards — all inside one system.",
+        desc: "Set goals, run review cycles, and link outcomes directly to rewards — turning good performance into points employees can actually redeem.",
+        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png"],
+        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards"],
+        bullets: [
+          "Leaderboards and peer appreciation that keep the whole team engaged",
+          "XP points earned from performance, redeemable in a real rewards marketplace",
+          "Gift cards, early logout, and other perks — no spreadsheets required",
+        ],
+        showcase: true,
       },
       {
         name: "Motivational, not punitive",
@@ -85,7 +93,15 @@ const content = {
       },
       {
         name: "حوافز ومؤشرات أداء",
-        desc: "اربط الأهداف بالنتائج والمكافآت مباشرة — دون جداول بيانات.",
+        desc: "اربط الأهداف بدورات التقييم والمكافآت مباشرة — وحوّل الأداء الجيد إلى نقاط يستبدلها الموظف فعلياً.",
+        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png"],
+        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال"],
+        bullets: [
+          "لوحات صدارة وتقدير بين الزملاء تُبقي الفريق كله متفاعلاً",
+          "نقاط خبرة تُكتسب من الأداء، قابلة للاستبدال في سوق مكافآت حقيقي",
+          "بطاقات هدايا وخروج مبكر ومزايا أخرى — دون أي جداول بيانات",
+        ],
+        showcase: true,
       },
       {
         name: "تحفيزي — ليس عقابياً",
@@ -152,7 +168,11 @@ export function Features() {
             }
 
             if ("showcase" in card && card.showcase) {
-              const { image, imageAlt, bullets } = card;
+              const image = "image" in card ? card.image : undefined;
+              const imageAlt = "imageAlt" in card ? card.imageAlt : undefined;
+              const images = "images" in card ? card.images : undefined;
+              const imageAlts = "imageAlts" in card ? card.imageAlts : undefined;
+              const { bullets } = card;
 
               return (
                 <div
@@ -181,7 +201,7 @@ export function Features() {
                         </ul>
                       )}
                     </div>
-                    <div className="relative flex items-center justify-center bg-gradient-to-b from-blue-50 to-sky-100 py-12 md:py-16 order-1 md:order-none">
+                    <div className="relative flex items-center justify-center gap-4 bg-gradient-to-b from-blue-50 to-sky-100 py-12 md:py-16 px-6 order-1 md:order-none">
                       <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 50% 30%, rgba(37,99,235,0.15), transparent 60%)" }} />
                       {image && (
                         <div className="relative w-[220px] h-[440px] sm:w-[240px] sm:h-[480px] rounded-[36px] bg-slate-900 p-2.5 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2">
@@ -198,6 +218,30 @@ export function Features() {
                           </div>
                         </div>
                       )}
+                      {images && images.length > 0 && (
+                        <>
+                          {images.map((img, imgIdx) => (
+                            <div
+                              key={imgIdx}
+                              className={`relative w-[170px] h-[350px] sm:w-[190px] sm:h-[390px] rounded-[30px] bg-slate-900 p-2 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2 ${
+                                imgIdx === 0 ? "rotate-[-4deg] -mr-4 rtl:mr-0 rtl:-ml-4" : "rotate-[4deg] mt-10"
+                              }`}
+                            >
+                              <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
+                                <div className="w-24 h-4 bg-slate-900 rounded-b-2xl" />
+                              </div>
+                              <div className="w-full h-full bg-white rounded-[24px] overflow-hidden relative">
+                                <img
+                                  src={img}
+                                  alt={imageAlts?.[imgIdx] ?? ""}
+                                  className="w-full h-full object-cover"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -208,14 +252,18 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] md:col-span-2 bg-slate-900 p-10 transition-all duration-500 hover:-translate-y-2 shadow-xl overflow-hidden border border-slate-800"
+                  className="group relative rounded-[28px] md:col-span-3 bg-slate-900 p-10 md:p-12 transition-all duration-500 hover:-translate-y-1 shadow-xl overflow-hidden border border-slate-800"
                 >
-                  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
-                  <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 relative">
-                    <Icon size={28} className="text-blue-400" />
+                  <div className="absolute -bottom-10 -left-10 w-52 h-52 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
+                  <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
+                      <Icon size={28} className="text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-heading font-black mb-2 text-white">{card.name}</h3>
+                      <p className="text-slate-400 leading-relaxed font-medium max-w-2xl">{card.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-heading font-black mb-4 text-white relative">{card.name}</h3>
-                  <p className="text-slate-400 leading-relaxed font-medium relative">{card.desc}</p>
                 </div>
               );
             }

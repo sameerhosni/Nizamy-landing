@@ -19,12 +19,15 @@ const content = {
       },
       {
         name: "Smart Self-Service",
-        desc: "Employees handle requests, documents, and approvals themselves — no waiting on HR.",
-        images: [
-          "/images/94705_1783520815578.jpeg",
-          "/images/94703_1783520815576.jpeg",
-          "/images/94690_1783520815570.jpeg",
+        desc: "Employees handle requests, documents, and approvals themselves — instantly, through an AI chat assistant that speaks their language, so HR never has to be the middleman.",
+        image: "/images/94705_1783520815578.jpeg",
+        imageAlt: "AI self-service chat assistant",
+        bullets: [
+          "Leave requests, shift changes, and early-leave approvals in seconds",
+          "Direct escalation to HR only when it's truly needed",
+          "Available around the clock, in Saudi dialect",
         ],
+        showcase: true,
       },
       {
         name: "Incentives & Performance KPIs",
@@ -54,12 +57,15 @@ const content = {
       },
       {
         name: "خدمات ذاتية ذكية",
-        desc: "طلبات ومستندات وأسئلة السياسات تُنجز تلقائياً على مدار الساعة.",
-        images: [
-          "/images/94705_1783520815578.jpeg",
-          "/images/94703_1783520815576.jpeg",
-          "/images/94690_1783520815570.jpeg",
+        desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً في كل مرة.",
+        image: "/images/94705_1783520815578.jpeg",
+        imageAlt: "مساعد ذكي للخدمة الذاتية عبر المحادثة",
+        bullets: [
+          "طلبات الإجازة وتبديل الورديات والمغادرة المبكرة خلال ثوانٍ",
+          "تصعيد مباشر للموارد البشرية فقط عند الحاجة الفعلية",
+          "متاح على مدار الساعة، باللهجة السعودية",
         ],
+        showcase: true,
       },
       {
         name: "حوافز ومؤشرات أداء",
@@ -124,11 +130,64 @@ export function Features() {
               );
             }
 
+            if ("showcase" in card && card.showcase) {
+              const { image, imageAlt, bullets } = card;
+
+              return (
+                <div
+                  key={idx}
+                  className="group relative rounded-[28px] md:col-span-3 bg-gradient-to-br from-sky-50 to-white border border-slate-200 overflow-hidden transition-all duration-500 hover:shadow-xl"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+                    <div className="p-10 md:p-14 order-2 md:order-none rtl:md:order-2">
+                      <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-8`}>
+                        <Icon size={28} className={iconColor} />
+                      </div>
+                      <h3 className="text-3xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
+                      <p className="text-slate-600 text-lg leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
+                      {bullets && bullets.length > 0 && (
+                        <ul className="space-y-3">
+                          {bullets.map((bullet, bulletIdx) => (
+                            <li key={bulletIdx} className="flex items-start gap-3 rtl:flex-row-reverse rtl:text-right">
+                              <span className="mt-1 shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                                  <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.8 6.8-6.8a1 1 0 011.4 0z" clipRule="evenodd" />
+                                </svg>
+                              </span>
+                              <span className="text-slate-700 font-medium">{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="relative flex items-center justify-center bg-gradient-to-b from-blue-50 to-sky-100 py-12 md:py-16 order-1 md:order-none">
+                      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 50% 30%, rgba(37,99,235,0.15), transparent 60%)" }} />
+                      {image && (
+                        <div className="relative w-[220px] h-[440px] sm:w-[240px] sm:h-[480px] rounded-[36px] bg-slate-900 p-2.5 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2">
+                          <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20">
+                            <div className="w-28 h-5 bg-slate-900 rounded-b-2xl" />
+                          </div>
+                          <div className="w-full h-full bg-white rounded-[28px] overflow-hidden relative">
+                            <img
+                              src={image}
+                              alt={imageAlt}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             if (isDark) {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] bg-slate-900 p-10 transition-all duration-500 hover:-translate-y-2 shadow-xl overflow-hidden border border-slate-800"
+                  className="group relative rounded-[28px] md:col-span-2 bg-slate-900 p-10 transition-all duration-500 hover:-translate-y-2 shadow-xl overflow-hidden border border-slate-800"
                 >
                   <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
                   <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 relative">
@@ -140,8 +199,6 @@ export function Features() {
               );
             }
 
-            const images = "images" in card ? card.images : undefined;
-
             return (
               <div
                 key={idx}
@@ -152,29 +209,6 @@ export function Features() {
                 </div>
                 <h3 className="text-2xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
                 <p className="text-slate-500 leading-relaxed font-medium">{card.desc}</p>
-                {images && (
-                  <div className="flex items-end gap-3 mt-8 rtl:flex-row-reverse">
-                    {images.map((src, imgIdx) => (
-                      <div
-                        key={imgIdx}
-                        className="relative rounded-2xl overflow-hidden border-4 border-white shadow-lg bg-slate-900 shrink-0 transition-transform duration-500 group-hover:-translate-y-1"
-                        style={{
-                          width: imgIdx === 0 ? "88px" : "72px",
-                          height: imgIdx === 0 ? "176px" : "144px",
-                          marginTop: imgIdx === 0 ? 0 : "24px",
-                          zIndex: images.length - imgIdx,
-                        }}
-                      >
-                        <img
-                          src={src}
-                          alt={`${card.name} screenshot ${imgIdx + 1}`}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             );
           })}

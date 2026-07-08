@@ -40,12 +40,13 @@ const content = {
       {
         name: "Incentives & Performance KPIs",
         desc: "Set goals, run review cycles, and link outcomes directly to rewards — turning good performance into points employees can actually redeem.",
-        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png"],
-        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards"],
+        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
+        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards", "Company performance dashboard with attendance and commitment KPIs"],
         bullets: [
           "Leaderboards and peer appreciation that keep the whole team engaged",
           "XP points earned from performance, redeemable in a real rewards marketplace",
           "Gift cards, early logout, and other perks — no spreadsheets required",
+          "Company-wide performance dashboard tracking hours, commitment rate, and absences",
         ],
         showcase: true,
       },
@@ -94,12 +95,13 @@ const content = {
       {
         name: "حوافز ومؤشرات أداء",
         desc: "اربط الأهداف بدورات التقييم والمكافآت مباشرة — وحوّل الأداء الجيد إلى نقاط يستبدلها الموظف فعلياً.",
-        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png"],
-        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال"],
+        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
+        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال", "لوحة أداء الشركة مع مؤشرات الحضور والالتزام"],
         bullets: [
           "لوحات صدارة وتقدير بين الزملاء تُبقي الفريق كله متفاعلاً",
           "نقاط خبرة تُكتسب من الأداء، قابلة للاستبدال في سوق مكافآت حقيقي",
           "بطاقات هدايا وخروج مبكر ومزايا أخرى — دون أي جداول بيانات",
+          "لوحة أداء شاملة للشركة تتابع ساعات العمل ومعدل الالتزام والغياب",
         ],
         showcase: true,
       },
@@ -220,26 +222,39 @@ export function Features() {
                       )}
                       {images && images.length > 0 && (
                         <>
-                          {images.map((img, imgIdx) => (
-                            <div
-                              key={imgIdx}
-                              className={`relative w-[170px] h-[350px] sm:w-[190px] sm:h-[390px] rounded-[30px] bg-slate-900 p-2 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2 ${
-                                imgIdx === 0 ? "rotate-[-4deg] -mr-4 rtl:mr-0 rtl:-ml-4" : "rotate-[4deg] mt-10"
-                              }`}
-                            >
-                              <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
-                                <div className="w-24 h-4 bg-slate-900 rounded-b-2xl" />
+                          {images.map((img, imgIdx) => {
+                            const isTriple = images.length >= 3;
+                            const sizeClass = isTriple
+                              ? "w-[140px] h-[290px] sm:w-[160px] sm:h-[330px]"
+                              : "w-[170px] h-[350px] sm:w-[190px] sm:h-[390px]";
+                            const positionClass = isTriple
+                              ? imgIdx === 0
+                                ? "rotate-[-8deg] -mr-8 rtl:mr-0 rtl:-ml-8 z-10"
+                                : imgIdx === 1
+                                  ? "rotate-0 z-20 -translate-y-3"
+                                  : "rotate-[8deg] -ml-8 rtl:ml-0 rtl:-mr-8 mt-10 z-10"
+                              : imgIdx === 0
+                                ? "rotate-[-4deg] -mr-4 rtl:mr-0 rtl:-ml-4"
+                                : "rotate-[4deg] mt-10";
+                            return (
+                              <div
+                                key={imgIdx}
+                                className={`relative ${sizeClass} rounded-[30px] bg-slate-900 p-2 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2 ${positionClass}`}
+                              >
+                                <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
+                                  <div className="w-24 h-4 bg-slate-900 rounded-b-2xl" />
+                                </div>
+                                <div className="w-full h-full bg-white rounded-[24px] overflow-hidden relative">
+                                  <img
+                                    src={img}
+                                    alt={imageAlts?.[imgIdx] ?? ""}
+                                    className="w-full h-full object-cover"
+                                    loading="lazy"
+                                  />
+                                </div>
                               </div>
-                              <div className="w-full h-full bg-white rounded-[24px] overflow-hidden relative">
-                                <img
-                                  src={img}
-                                  alt={imageAlts?.[imgIdx] ?? ""}
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                />
-                              </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </>
                       )}
                     </div>

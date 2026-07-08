@@ -1,10 +1,11 @@
-import { Fingerprint, Target, Bot, Sparkles, Heart } from "lucide-react";
+import { Fingerprint, Target, Bot, MessageCircle, ShieldCheck, Heart } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const content = {
   en: {
     eyebrow: "How Mr-Hr Works",
-    title: "A performance system first. A return because of it.",
+    titlePart1: "A performance system first. ",
+    titlePart2: "A return because of it.",
     subtitle: "Six pillars that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
     cards: [
       {
@@ -17,12 +18,16 @@ const content = {
         desc: "Fingerprint, face, and voice check-in options — accurate, fraud-proof, and effortless for every employee.",
       },
       {
-        name: "Incentives & Performance KPIs",
-        desc: "Set goals, run review cycles, and link outcomes directly to rewards — all inside one system.",
+        name: "Saudi Compliance Built-In",
+        desc: "Native GOSI, social insurance, and Zakat compliance — always up to date with local regulation.",
       },
       {
         name: "Smart Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — no waiting on HR.",
+      },
+      {
+        name: "Incentives & Performance KPIs",
+        desc: "Set goals, run review cycles, and link outcomes directly to rewards — all inside one system.",
       },
       {
         name: "Motivational, not punitive",
@@ -33,7 +38,8 @@ const content = {
   },
   ar: {
     eyebrow: "كيف يعمل مستر إتش آر",
-    title: "نظام لإدارة الأداء أولاً، والعائد نتيجة طبيعية له.",
+    titlePart1: "نظام لإدارة الأداء أولاً، ",
+    titlePart2: "والعائد نتيجة طبيعية.",
     subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
     cards: [
       {
@@ -46,12 +52,16 @@ const content = {
         desc: "تسجيل حضور بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وسهل لكل موظف.",
       },
       {
-        name: "حوافز ومؤشرات أداء",
-        desc: "ضع الأهداف، وأدِر دورات تقييم منظمة، واربط النتائج بالمكافآت مباشرة — كل ذلك داخل منصة واحدة.",
+        name: "توافق محلي سعودي",
+        desc: "حماية الأجور، التأمينات، مكافأة نهاية الخدمة، وهيئة الزكاة والدخل.",
       },
       {
         name: "خدمات ذاتية ذكية",
-        desc: "يتولى الموظفون طلباتهم ومستنداتهم وموافقاتهم بأنفسهم — دون انتظار الموارد البشرية.",
+        desc: "طلبات ومستندات وأسئلة السياسات تُنجز تلقائياً على مدار الساعة.",
+      },
+      {
+        name: "حوافز ومؤشرات أداء",
+        desc: "اربط الأهداف بالنتائج والمكافآت مباشرة — دون جداول بيانات.",
       },
       {
         name: "تحفيزي — ليس عقابياً",
@@ -62,7 +72,14 @@ const content = {
   },
 };
 
-const icons = [Bot, Fingerprint, Target, Sparkles, Heart];
+const iconMeta = [
+  { icon: Bot },
+  { icon: Fingerprint, bg: "bg-[#FF4D8D]/10", color: "text-[#FF4D8D]" },
+  { icon: ShieldCheck, bg: "bg-emerald-500/10", color: "text-emerald-500" },
+  { icon: MessageCircle, bg: "bg-primary/10", color: "text-primary" },
+  { icon: Target, bg: "bg-[#FFA23A]/10", color: "text-[#FFA23A]" },
+  { icon: Heart },
+];
 
 export function Features() {
   const { language } = useLanguage();
@@ -73,16 +90,19 @@ export function Features() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-primary bg-accent px-3 py-1 rounded-full mb-4">
+          <div className="inline-block text-xs font-semibold text-primary bg-accent px-3.5 py-1.5 rounded-full mb-4">
             {t.eyebrow}
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-4">{t.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-4">
+            <span className="text-foreground">{t.titlePart1}</span>
+            <span className="text-gradient-primary">{t.titlePart2}</span>
+          </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">{t.subtitle}</p>
         </div>
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
           {t.cards.map((card, idx) => {
-            const Icon = icons[idx];
+            const { icon: Icon, bg: iconBg, color: iconColor } = iconMeta[idx];
             const isFeatured = "featured" in card && card.featured;
             const isDark = "dark" in card && card.dark;
 
@@ -123,8 +143,8 @@ export function Features() {
                 key={idx}
                 className="group relative rounded-[22px] border border-border/50 bg-white p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-6">
-                  <Icon size={22} className="text-primary" />
+                <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-6`}>
+                  <Icon size={22} className={iconColor} />
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-2 text-foreground">{card.name}</h3>
                 <p className="text-muted-foreground leading-relaxed">{card.desc}</p>

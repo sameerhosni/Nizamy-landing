@@ -27,7 +27,7 @@ export function Home() {
     }
   }, []);
 
-  const tierPrice = tier === "Standard" ? 5 : tier === "Growth" ? 8 : 12;
+  const tierPrice = tier === "Standard" ? 3 : tier === "Growth" ? 5 : 8;
   const subscription = employees * tierPrice * 12;
   const layer1 = subscription * 0.15;
   const layer2 = subscription * 0.10;

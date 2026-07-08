@@ -10,13 +10,13 @@ export function StatsBar() {
     en: [
       { value: "30%", label: "Max Annual Return" },
       { value: "2 min", label: "Onboarding Time" },
-      { value: "SAR 5", label: "Starting Price / Employee" },
+      { value: "SAR 3", label: "Starting Price / Employee" },
       { value: "0", label: "Penalties or Deductions" },
     ],
     ar: [
       { value: "30%", label: "الحد الاقصى للعائد من تكلفة الاشتراك السنوى" },
       { value: "دقيقة واحدة", label: "من التسجيل حتى أول حركة تسجيل حضور وانصراف" },
-      { value: "٥ ريال", label: "سعر البدء / موظف شهريا" },
+      { value: "٣ ريال", label: "سعر البدء / موظف شهريا" },
       { value: "٠", label: "لا حاجة الى غرامات او ملاحقات للموظفين" },
     ],
   };

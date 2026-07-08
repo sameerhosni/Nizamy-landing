@@ -216,7 +216,7 @@ export function Calculator({
                     }`}
                   >
                     <div className="font-bold mb-1">{t.tiers[tOption]}</div>
-                    <div className="text-sm">SAR {tOption === "Standard" ? 5 : tOption === "Growth" ? 8 : 12}</div>
+                    <div className="text-sm">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
                   </button>
                 ))}
               </div>

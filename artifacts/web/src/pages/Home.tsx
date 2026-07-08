@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
+import { ROIDashboard } from "@/components/sections/ROIDashboard";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
 import { DesignPartner } from "@/components/sections/DesignPartner";
@@ -50,6 +51,7 @@ export function Home() {
         <StatsBar />
         <Problem />
         <ReturnModel />
+        <ROIDashboard />
         <Calculator 
           employees={employees}
           setEmployees={setEmployees}

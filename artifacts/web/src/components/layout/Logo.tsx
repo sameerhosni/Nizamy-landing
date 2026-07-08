@@ -1,4 +1,3 @@
-import { ScanFace } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 interface LogoProps {
@@ -13,8 +12,12 @@ export function Logo({ variant = "light", className = "" }: LogoProps) {
 
   return (
     <div className={`flex items-center gap-2 sm:gap-3 select-none min-w-0 ${className}`}>
-      <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#60A5FA] flex items-center justify-center shadow-glow-sm shrink-0 border-2 border-white/20">
-        <ScanFace className="w-4 h-4 sm:w-5 sm:h-5 text-white" strokeWidth={2} aria-hidden="true" />
+      <div className="relative w-9 h-10 sm:w-11 sm:h-12 shrink-0">
+        <img
+          src="/images/logo-mascot.png"
+          alt="Mr-Hr"
+          className="w-full h-full object-contain drop-shadow-sm"
+        />
       </div>
       <div
         className={`font-heading font-extrabold text-lg sm:text-2xl tracking-tight leading-none whitespace-nowrap truncate ${textColor}`}

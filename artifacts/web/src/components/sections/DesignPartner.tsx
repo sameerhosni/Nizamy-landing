@@ -143,8 +143,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                 </CardContent>
               </Card>
             ) : (
-              <Card className="bg-white/80 backdrop-blur-xl border-border/50 shadow-xl">
-                <CardContent className="p-8">
+              <Card className="bg-white border-0 shadow-2xl rounded-[28px]">
+                <CardContent className="p-10">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {mutation.isError && (
                       <div className="p-4 bg-destructive/10 text-destructive rounded-lg text-sm">
@@ -153,50 +153,50 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                     )}
 
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-muted-foreground">{t.labels.name}</Label>
+                      <Label htmlFor="name" className="text-muted-foreground font-normal">{t.labels.name}</Label>
                       <Input
                         id="name"
                         required
                         placeholder={t.placeholders.name}
-                        className="bg-white"
+                        className="h-14 rounded-xl border-0 bg-[#F4F4F6] px-4 text-base shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-primary/40"
                         value={formData.name}
                         onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="company" className="text-muted-foreground">{t.labels.company}</Label>
+                      <Label htmlFor="company" className="text-muted-foreground font-normal">{t.labels.company}</Label>
                       <Input
                         id="company"
                         required
                         placeholder={t.placeholders.company}
-                        className="bg-white"
+                        className="h-14 rounded-xl border-0 bg-[#F4F4F6] px-4 text-base shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-primary/40"
                         value={formData.company}
                         onChange={e => setFormData(p => ({ ...p, company: e.target.value }))}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-muted-foreground">{t.labels.email}</Label>
+                      <Label htmlFor="email" className="text-muted-foreground font-normal">{t.labels.email}</Label>
                       <Input
                         id="email"
                         type="email"
                         required
                         placeholder={t.placeholders.email}
-                        className="bg-white"
+                        className="h-14 rounded-xl border-0 bg-[#F4F4F6] px-4 text-base shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-primary/40"
                         value={formData.email}
                         onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="whatsapp" className="text-muted-foreground">{t.labels.whatsapp}</Label>
+                      <Label htmlFor="whatsapp" className="text-muted-foreground font-normal">{t.labels.whatsapp}</Label>
                       <Input
                         id="whatsapp"
                         type="tel"
                         required
                         dir="ltr"
-                        className="text-left bg-white"
+                        className="h-14 rounded-xl border-0 bg-[#F4F4F6] px-4 text-base text-left shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-primary/40"
                         value={formData.whatsapp}
                         onChange={e => setFormData(p => ({ ...p, whatsapp: e.target.value }))}
                       />
@@ -204,7 +204,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
                     <Button
                       type="submit"
-                      className="w-full h-14 text-lg shadow-glow rounded-xl"
+                      className="w-full h-14 text-lg font-semibold rounded-xl border-0 bg-gradient-to-r from-[#6D4AFF] to-[#8B6BFF] text-white shadow-glow"
                       disabled={mutation.isPending}
                     >
                       {mutation.isPending && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}

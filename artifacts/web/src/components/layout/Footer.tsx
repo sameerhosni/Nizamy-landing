@@ -9,11 +9,11 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-mrhr-dark py-12 border-t border-white/10">
+    <footer className="bg-slate-900 py-16 border-t border-slate-800">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col justify-center items-center gap-4">
-          <Logo />
-          <p className="text-sm text-white/40">{tagline[language]}</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <Logo variant="light" />
+          <p className="text-sm font-medium text-slate-500">{tagline[language]}</p>
         </div>
       </div>
     </footer>

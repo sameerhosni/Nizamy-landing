@@ -38,19 +38,18 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-xl ${
-        scrolled ? "border-b border-white/10 shadow-lg" : "border-b border-white/5"
+        scrolled ? "border-b border-slate-200/50 bg-white/80 shadow-sm" : "border-b border-transparent bg-transparent"
       }`}
-      style={{ backgroundColor: "rgba(11,8,23,0.72)" }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-2">
-        <Logo variant="light" className="shrink" />
+        <Logo variant={scrolled ? "dark" : "dark"} className="shrink" />
 
         <div className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="nav-link-underline text-[15px] font-medium transition-colors duration-300 text-white/85 hover:text-white"
+              className="nav-link-underline text-[15px] font-semibold transition-colors duration-300 text-slate-600 hover:text-slate-900"
             >
               {link.label}
             </button>
@@ -62,13 +61,13 @@ export function Navbar() {
             variant="ghost"
             size="sm"
             onClick={toggleLanguage}
-            className="rounded-full font-medium transition-colors duration-300 px-2.5 sm:px-4 text-xs sm:text-sm text-white/80 hover:text-white hover:bg-white/10 border border-white/15"
+            className="rounded-full font-bold transition-colors duration-300 px-2.5 sm:px-4 text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/50"
           >
             {language === "en" ? "العربية" : "EN"}
           </Button>
           <Button
             size="sm"
-            className="rounded-full px-3.5 sm:px-5 text-xs sm:text-sm whitespace-nowrap border-0 bg-[#6D4AFF] hover:bg-[#8B6BFF] text-white shadow-glow-sm"
+            className="rounded-full px-4 sm:px-6 text-xs sm:text-sm font-bold whitespace-nowrap border-0 bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-all hover:shadow-lg"
             onClick={() => scrollTo("partner")}
           >
             {isRtl ? "وصول مبكر مجاني" : "Free Early Access"}

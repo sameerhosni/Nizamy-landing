@@ -41,38 +41,37 @@ export function Problem() {
   const t = content[language];
 
   return (
-    <section id="problem" className="py-24 bg-background relative overflow-hidden scroll-mt-16">
+    <section id="problem" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-16">
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-3xl mx-auto leading-tight">
-          <span className="text-foreground">{t.headingPart1}</span>
-          <span className="text-gradient-primary">{t.headingPart2}</span>
+        <h2 className="text-4xl md:text-5xl text-center mb-6 max-w-3xl mx-auto leading-tight font-black font-heading">
+          <span className="text-slate-900">{t.headingPart1}</span>
+          <span className="text-blue-600">{t.headingPart2}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-slate-500 text-center mb-16 max-w-2xl mx-auto leading-relaxed font-medium">
           {t.subhead}
         </p>
 
         <div className="relative max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-6 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-8 items-center">
 
             {/* Mr-Hr Card — elevated, bordered, badge tab overlapping top edge */}
-            <div className="relative rounded-3xl bg-white border border-primary/30 p-8 md:p-10 pt-10 md:pt-10" style={{ boxShadow: "0 30px 60px -20px rgba(109, 74, 255, 0.25), 0 10px 30px -10px rgba(255, 77, 141, 0.15)" }}>
+            <div className="relative rounded-3xl bg-white border-2 border-blue-500 p-8 md:p-10 pt-10 md:pt-10 shadow-soft" style={{ boxShadow: "0 20px 40px -15px rgba(37, 99, 235, 0.15)" }}>
               <span
-                className="absolute -top-3.5 start-8 inline-block text-xs font-semibold text-white rounded-full px-3.5 py-1.5 shadow-md"
-                style={{ background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
+                className="absolute -top-4 start-8 inline-block text-sm font-bold text-white rounded-full px-4 py-1.5 shadow-md bg-blue-600"
               >
                 {t.mrhr.tag}
               </span>
-              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-gradient-primary">{t.mrhr.title}</h3>
+              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-blue-600">{t.mrhr.title}</h3>
               <ul className="space-y-6">
                 {t.mrhr.points.map((point, idx) => {
                   const iconEl = (
-                    <div className="w-9 h-9 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
-                      <Check size={16} className="text-emerald-500" strokeWidth={2.5} />
+                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
+                      <Check size={16} className="text-blue-600" strokeWidth={3} />
                     </div>
                   );
-                  const textEl = <span className="text-foreground text-base md:text-lg font-medium">{point}</span>;
+                  const textEl = <span className="text-slate-800 text-base md:text-lg font-bold">{point}</span>;
                   return (
-                    <li key={idx} className="flex items-center gap-3">
+                    <li key={idx} className="flex items-center gap-3.5">
                       {isRtl ? (
                         <>
                           {textEl}
@@ -91,21 +90,21 @@ export function Problem() {
             </div>
 
             {/* Legacy — muted, borderless */}
-            <div className="px-2 md:px-6 py-6">
-              <span className="inline-block text-xs font-semibold text-muted-foreground bg-muted rounded-full px-3.5 py-1.5 mb-5">
+            <div className="px-4 md:px-8 py-8 rounded-3xl bg-slate-100 border border-slate-200">
+              <span className="inline-block text-sm font-bold text-slate-500 bg-slate-200/50 rounded-full px-4 py-1.5 mb-6">
                 {t.legacy.tag}
               </span>
-              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-foreground">{t.legacy.title}</h3>
+              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-slate-700">{t.legacy.title}</h3>
               <ul className="space-y-6">
                 {t.legacy.points.map((point, idx) => {
                   const iconEl = (
-                    <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center shrink-0">
-                      <X size={16} className="text-muted-foreground" strokeWidth={2.5} />
+                    <div className="w-8 h-8 rounded-full bg-slate-200/50 flex items-center justify-center shrink-0">
+                      <X size={16} className="text-slate-400" strokeWidth={3} />
                     </div>
                   );
-                  const textEl = <span className="text-muted-foreground text-base md:text-lg">{point}</span>;
+                  const textEl = <span className="text-slate-500 font-medium text-base md:text-lg">{point}</span>;
                   return (
-                    <li key={idx} className="flex items-center gap-3">
+                    <li key={idx} className="flex items-center gap-3.5">
                       {isRtl ? (
                         <>
                           {textEl}

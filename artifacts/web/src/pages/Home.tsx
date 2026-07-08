@@ -6,6 +6,7 @@ import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
+import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 
@@ -43,12 +44,13 @@ export function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <div className="min-h-screen bg-background text-foreground selection:bg-blue-200 selection:text-blue-900">
       <Navbar />
       <main>
         <Hero />
         <StatsBar />
         <Problem />
+        <ProductShowcase />
         <ReturnModel />
         <Calculator 
           employees={employees}

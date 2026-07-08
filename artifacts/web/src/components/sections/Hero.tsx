@@ -78,11 +78,10 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-center pt-24 pb-16 overflow-hidden bg-hero-radial">
-      {/* Floating blurred gradient orbs */}
+      {/* Soft blue blurred background accents */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-15%] left-[-5%] w-[50%] h-[60%] bg-[#6D4AFF]/25 blur-[160px] rounded-full animate-pulse" style={{ animationDuration: "6s" }} />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[50%] bg-[#FF4D8D]/15 blur-[140px] rounded-full animate-pulse" style={{ animationDuration: "8s" }} />
-        <div className="absolute top-[35%] right-[25%] w-[25%] h-[30%] bg-[#FFA23A]/10 blur-[100px] rounded-full" />
+        <div className="absolute top-[-15%] left-[-5%] w-[50%] h-[60%] bg-blue-400/10 blur-[120px] rounded-full animate-pulse" style={{ animationDuration: "6s" }} />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[50%] bg-blue-300/10 blur-[100px] rounded-full animate-pulse" style={{ animationDuration: "8s" }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -90,25 +89,25 @@ export function Hero() {
 
           {/* Left: copy */}
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/8 border border-white/15 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 border border-blue-100 px-4 py-2 text-sm font-medium text-blue-800">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               {t.eyebrow}
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black leading-[1.15]">
-              <span className="text-white">{t.headlinePart1}</span>{" "}
+              <span className="text-slate-900">{t.headlinePart1}</span>{" "}
               <span className="text-gradient-primary">{t.headlinePart2}</span>
             </h1>
 
-            <p className="text-lg md:text-xl max-w-lg leading-relaxed">
-              <span className="text-white/50">{t.subtitleMuted}</span>
-              <span className="text-white/90 font-medium">{t.subtitleBold}</span>
+            <p className="text-lg md:text-xl max-w-lg leading-relaxed text-slate-600">
+              <span>{t.subtitleMuted}</span>
+              <span className="font-semibold text-slate-800">{t.subtitleBold}</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-3 pt-2">
               <Button
                 size="lg"
-                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl group bg-[#6D4AFF] hover:bg-[#8B6BFF] text-white shadow-glow border-0"
+                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl group bg-blue-600 hover:bg-blue-700 text-white shadow-glow border-0"
                 onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {t.primaryCta}
@@ -118,8 +117,8 @@ export function Hero() {
               </Button>
               <Button
                 size="lg"
-                variant="ghost"
-                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl text-white/70 hover:text-white hover:bg-white/10 border border-white/15"
+                variant="outline"
+                className="w-full sm:w-auto text-base h-12 px-7 rounded-xl border-slate-200 text-slate-700 hover:bg-slate-50"
                 onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {t.secondaryCta}
@@ -129,9 +128,9 @@ export function Hero() {
             {/* Checkmark proof points */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
               {t.chips.map((chip, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-sm text-white/60">
-                  <div className="w-4 h-4 rounded-full bg-[#6D4AFF]/25 border border-[#6D4AFF]/40 flex items-center justify-center shrink-0">
-                    <Check size={9} className="text-[#8B6BFF]" strokeWidth={3} />
+                <div key={idx} className="flex items-center gap-2.5 text-sm text-slate-500 font-medium">
+                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <Check size={10} className="text-blue-600" strokeWidth={3} />
                   </div>
                   {chip}
                 </div>
@@ -141,22 +140,21 @@ export function Hero() {
 
           {/* Right: return card */}
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 relative">
-            <div className="relative rounded-2xl bg-white/[0.05] border border-white/[0.10] backdrop-blur-2xl shadow-2xl p-5 space-y-5">
+            <div className="relative rounded-[20px] bg-white border border-slate-200 shadow-soft p-6 space-y-6">
 
               {/* Example label + toggle */}
               <div className="flex items-center justify-between text-xs">
-                <span className="text-white/35">{c.exampleLabel}</span>
-                <div className="flex items-center gap-1.5">
+                <span className="text-slate-400 font-medium">{c.exampleLabel}</span>
+                <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-100">
                   <button
                     onClick={() => setShowReturn(false)}
-                    className={`font-semibold transition-colors ${!showReturn ? "text-white" : "text-white/35"}`}
+                    className={`px-2 py-1 rounded-md font-semibold transition-colors ${!showReturn ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                   >
                     {c.toggleCost}
                   </button>
-                  <ArrowLeft size={11} className={`text-white/30 ${isRtl ? "" : "rotate-180"}`} />
                   <button
                     onClick={() => setShowReturn(true)}
-                    className={`font-semibold transition-colors ${showReturn ? "text-white" : "text-white/35"}`}
+                    className={`px-2 py-1 rounded-md font-semibold transition-colors ${showReturn ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                   >
                     {c.toggleReturn}
                   </button>
@@ -166,25 +164,25 @@ export function Hero() {
               {/* Big subscription amount */}
               <div className="flex items-end justify-between">
                 <div>
-                  <p className="text-white/40 text-xs mb-0.5">{c.subscriptionLabel}</p>
-                  <p className="text-2xl font-heading font-black text-white/50 line-through decoration-white/20">
+                  <p className="text-slate-500 font-medium text-xs mb-1">{c.subscriptionLabel}</p>
+                  <p className="text-2xl font-heading font-black text-slate-400 line-through decoration-slate-300">
                     {isRtl ? "٤,٨٠٠ ر.س" : "SAR 4,800"}
                   </p>
                 </div>
                 <div className="text-end">
-                  <p className="text-white/40 text-xs mb-0.5">{c.netCostLabel}</p>
-                  <p className="text-3xl font-heading font-black text-white">
+                  <p className="text-slate-500 font-medium text-xs mb-1">{c.netCostLabel}</p>
+                  <p className="text-3xl font-heading font-black text-slate-900">
                     {isRtl ? "٣,٣٦٠ ر.س" : "SAR 3,360"}
                   </p>
                 </div>
               </div>
 
-              {/* Shimmering return meter */}
-              <div className="space-y-2">
-                <div className="h-3 w-full rounded-full bg-white/10 overflow-hidden relative">
+              {/* Return meter */}
+              <div className="space-y-2.5">
+                <div className="h-3 w-full rounded-full bg-slate-100 overflow-hidden relative">
                   <div
-                    className="h-full rounded-full relative overflow-hidden"
-                    style={{ width: "30%", background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
+                    className="h-full rounded-full relative overflow-hidden bg-blue-600 transition-all duration-1000"
+                    style={{ width: showReturn ? "30%" : "0%" }}
                   >
                     <div
                       className="absolute inset-0 opacity-40"
@@ -196,53 +194,52 @@ export function Hero() {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-[11px] text-white/35">
-                  <span className="flex items-center gap-1">
+                <div className="flex justify-between items-center text-xs text-slate-500 font-medium">
+                  <span className="flex items-center gap-1.5">
                     {c.activation}
-                    <ArrowLeft size={10} className={isRtl ? "" : "rotate-180"} />
+                    <ArrowLeft size={12} className={isRtl ? "" : "rotate-180"} />
                   </span>
-                  <span className="flex items-center gap-1 font-semibold text-gradient-primary">
-                    <ArrowRight size={10} className={isRtl ? "rotate-180" : ""} />
+                  <span className="flex items-center gap-1.5 font-bold text-blue-600">
+                    <ArrowRight size={12} className={isRtl ? "rotate-180" : ""} />
                     {c.returnsTo}
                   </span>
                 </div>
               </div>
 
               {/* Three source chips */}
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-3">
                 {[
                   { icon: TrendingUp, label: c.performance },
                   { icon: Gift, label: c.rewards },
                   { icon: Clock, label: c.managerTime },
                 ].map(({ icon: Icon, label }, idx) => (
-                  <div key={idx} className="rounded-xl bg-white/5 border border-white/10 p-3 text-center">
-                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mx-auto mb-2">
-                      <Icon size={16} className="text-[#8B6BFF]" />
+                  <div key={idx} className="rounded-xl bg-slate-50 border border-slate-100 p-3 text-center transition-transform hover:-translate-y-1 duration-300">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-2">
+                      <Icon size={16} />
                     </div>
-                    <p className="text-[10px] text-white/55 leading-tight">{label}</p>
+                    <p className="text-[10px] font-medium text-slate-600 leading-tight">{label}</p>
                   </div>
                 ))}
               </div>
 
               {/* Total return callout */}
               <div
-                className="flex items-center justify-between rounded-xl border border-white/[0.09] px-4 py-3"
-                style={{ background: "linear-gradient(90deg, rgba(255,77,141,0.12), rgba(255,162,58,0.12))" }}
+                className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 px-4 py-4"
               >
                 <div>
-                  <p className="text-sm font-semibold text-white/80">{c.totalReturn}</p>
-                  <p className="text-xs text-white/40 mt-0.5">{c.totalReturnSub}</p>
+                  <p className="text-sm font-bold text-slate-900">{c.totalReturn}</p>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">{c.totalReturnSub}</p>
                 </div>
                 <div className="text-end shrink-0">
-                  <p className="text-2xl font-heading font-black text-[#FF4D8D]">{c.totalReturnAmount}</p>
-                  <p className="text-xs font-semibold text-[#FFA23A] mt-0.5">{c.totalReturnPercent}</p>
+                  <p className="text-2xl font-heading font-black text-blue-600">{c.totalReturnAmount}</p>
+                  <p className="text-xs font-bold text-blue-500 mt-0.5">{c.totalReturnPercent}</p>
                 </div>
               </div>
 
             </div>
 
-            {/* Decorative glow */}
-            <div className="absolute inset-0 -z-10 bg-[#6D4AFF]/10 blur-[60px] rounded-3xl scale-95" />
+            {/* Decorative glow behind card */}
+            <div className="absolute inset-0 -z-10 bg-blue-400/5 blur-[50px] rounded-3xl scale-95" />
           </div>
 
         </div>

@@ -8,10 +8,10 @@ const layerIcons = [TrendingUp, Gift, Sparkles];
 
 function LayerBar({ value, max }: { value: number; max: number }) {
   return (
-    <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
       <div
-        className="h-full rounded-full transition-all duration-500"
-        style={{ width: `${(value / max) * 100}%`, background: "linear-gradient(90deg,#FF4D8D,#FFA23A)" }}
+        className="h-full rounded-full transition-all duration-500 bg-blue-600"
+        style={{ width: `${(value / max) * 100}%` }}
       />
     </div>
   );
@@ -168,29 +168,29 @@ export function Calculator({
   const t = content[language];
 
   return (
-    <section id="calculator" className="py-24 bg-background scroll-mt-16">
+    <section id="calculator" className="py-24 bg-white scroll-mt-16">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-amber-500/10 text-amber-600 border border-amber-500/25 rounded-full px-3 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+        <div className="flex justify-center mb-6">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-3 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             {t.sampleBadge}
           </span>
         </div>
-        <h2 className="text-4xl text-center mb-6 leading-tight">
-          <span className="text-foreground">{t.titlePart1}</span>
-          <span className="text-gradient-primary">{t.titlePart2}</span>
+        <h2 className="text-4xl text-center mb-4 leading-tight">
+          <span className="text-slate-900">{t.titlePart1}</span>
+          <span className="text-blue-600">{t.titlePart2}</span>
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-slate-500 text-center mb-16 max-w-2xl mx-auto leading-relaxed">
           {t.subhead}
         </p>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Controls */}
-          <div className="space-y-12">
-            <div className="space-y-6">
+          <div className="space-y-10">
+            <div className="space-y-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
               <div className="flex justify-between items-center">
-                <label className="text-lg font-medium">{t.empLabel}</label>
-                <span className="text-3xl font-bold text-primary">{employees}</span>
+                <label className="text-lg font-bold text-slate-800">{t.empLabel}</label>
+                <span className="text-3xl font-black text-blue-600 bg-white px-4 py-1 rounded-lg border border-slate-200 shadow-sm">{employees}</span>
               </div>
               <Slider 
                 value={[employees]} 
@@ -199,110 +199,118 @@ export function Calculator({
                 max={500} 
                 step={1} 
                 dir={dir}
+                className="py-4"
               />
             </div>
 
-            <div className="space-y-6">
-              <label className="text-lg font-medium block">{t.tierLabel}</label>
-              <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-4">
+              <label className="text-lg font-bold block text-slate-800">{t.tierLabel}</label>
+              <div className="grid grid-cols-3 gap-3">
                 {(["Standard", "Growth", "Pro"] as const).map((tOption) => (
                   <button
                     key={tOption}
                     onClick={() => setTier(tOption)}
                     className={`py-4 px-2 border-2 rounded-xl text-center transition-all ${
                       tier === tOption 
-                        ? "border-primary bg-primary/5 text-primary shadow-sm" 
-                        : "border-border/50 text-muted-foreground hover:border-border bg-white"
+                        ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" 
+                        : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50 bg-white"
                     }`}
                   >
                     <div className="font-bold mb-1">{t.tiers[tOption]}</div>
-                    <div className="text-sm">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
+                    <div className="text-sm font-medium">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/50 bg-white p-5">
-              <div className="text-sm font-semibold text-primary mb-3">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Sparkles size={16} className="text-blue-500" />
                 {tierFeaturesLabel[tier]}
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {tierFeatures[tier].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
-                    <div className="w-4 h-4 rounded-full bg-primary/15 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check size={10} className="text-primary" />
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 border border-blue-100">
+                      <Check size={12} className="text-blue-600" strokeWidth={3} />
                     </div>
-                    <span className="text-sm text-foreground/90 leading-relaxed">{feature}</span>
+                    <span className="text-sm font-medium text-slate-700 leading-relaxed">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Results — dark panel */}
-          <Card className="bg-mrhr-dark border-white/10 shadow-glow overflow-hidden">
-            <CardContent className="p-8 md:p-10 space-y-8">
-              <div className="text-center pb-8 border-b border-white/10">
-                <div className="text-white/50 font-medium mb-3">{t.results.annualReturn}</div>
-                <div className="relative inline-block py-4">
-                  <div className="absolute inset-0 bg-[#6D4AFF]/20 blur-2xl rounded-full scale-150 pointer-events-none" />
-                  <div className="text-5xl md:text-6xl font-heading font-black text-gradient-primary tracking-tight relative">
+          {/* Results panel */}
+          <Card className="bg-slate-900 border-0 shadow-2xl overflow-hidden rounded-[24px]">
+            <CardContent className="p-8 md:p-10 space-y-8 relative z-10">
+              <div className="absolute inset-0 bg-blue-900/20 blur-[100px] z-[-1]" />
+              
+              <div className="text-center pb-8 border-b border-slate-800">
+                <div className="text-slate-400 font-semibold mb-2">{t.results.annualReturn}</div>
+                <div className="relative inline-block py-2">
+                  <div className="text-5xl md:text-6xl font-heading font-black text-white tracking-tight">
                     {formatCurrency(totalReturn, "SAR", language)}
                   </div>
                 </div>
-                <p className="text-xs text-white/40 mt-2">{t.results.sampleNote}</p>
+                <p className="text-xs font-medium text-slate-500 mt-3 bg-slate-800/50 inline-block px-3 py-1 rounded-full">{t.results.sampleNote}</p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                  <span className="text-white/50">{t.results.subscription}</span>
-                  <span className="font-mono text-xl text-white">{formatCurrency(subscription, "SAR", language)}</span>
+              <div className="space-y-5">
+                <div className="flex justify-between items-center bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                  <span className="text-slate-300 font-medium">{t.results.subscription}</span>
+                  <span className="font-mono text-xl font-semibold text-slate-200">{formatCurrency(subscription, "SAR", language)}</span>
                 </div>
                 
-                <div className="flex justify-between items-center text-lg font-bold">
-                  <span className="text-white">{t.results.effective}</span>
-                  <span className="font-mono text-2xl text-white">{formatCurrency(effectiveCost, "SAR", language)}</span>
+                <div className="flex justify-between items-center bg-blue-600/10 p-4 rounded-xl border border-blue-500/20">
+                  <span className="text-blue-100 font-bold text-lg">{t.results.effective}</span>
+                  <span className="font-mono text-2xl font-bold text-white">{formatCurrency(effectiveCost, "SAR", language)}</span>
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-white/10 space-y-6">
+              <div className="pt-6 space-y-5">
                 {([
                   { label: t.results.performance, value: layer1, pct: 50, Icon: layerIcons[0] },
                   { label: t.results.rewards, value: layer2, pct: 33, Icon: layerIcons[1] },
                   { label: t.results.points, value: layer3, pct: 17, Icon: layerIcons[2] },
                 ]).map((row, idx) => (
-                  <div key={idx} className="space-y-2">
-                    <div className="flex justify-between items-center text-sm text-white/50">
+                  <div key={idx} className="space-y-2.5">
+                    <div className="flex justify-between items-center text-sm font-medium text-slate-400">
                       <span className="flex items-center gap-2">
-                        <row.Icon size={14} className="text-[#8B6BFF]" />
+                        <row.Icon size={14} className="text-blue-400" />
                         {row.label}
-                        <span className="text-white/30">· {row.pct}%</span>
+                        <span className="text-slate-600 ml-1 bg-slate-800 px-1.5 rounded text-[10px]">{row.pct}%</span>
                       </span>
-                      <span className="text-white/80">{formatCurrency(row.value, "SAR", language)}</span>
+                      <span className="text-slate-200">{formatCurrency(row.value, "SAR", language)}</span>
                     </div>
-                    <LayerBar value={row.pct} max={100} />
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                      <div
+                        className="h-full rounded-full transition-all duration-500 bg-blue-500"
+                        style={{ width: `${row.pct}%` }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
 
               {/* Disclaimer */}
-              <div className="pt-4 border-t border-white/10">
-                <p className="text-[11px] text-white/30 leading-relaxed text-center">
-                  ⚠ {t.disclaimer}
+              <div className="pt-6 border-t border-slate-800">
+                <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+                  {t.disclaimer}
                 </p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="max-w-2xl mx-auto text-center mt-16 pt-16 border-t border-border/50">
-          <div className="w-11 h-11 rounded-2xl bg-accent text-primary flex items-center justify-center mx-auto mb-6">
-            <HeartHandshake size={20} />
+        <div className="max-w-2xl mx-auto text-center mt-20 pt-12 border-t border-slate-100">
+          <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-6 shadow-sm border border-blue-100">
+            <HeartHandshake size={24} />
           </div>
-          <p className="text-xl md:text-2xl font-bold leading-snug text-gradient-primary mb-3">
+          <p className="text-2xl font-bold leading-snug text-slate-900 mb-3">
             {ct.quote}
           </p>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-slate-500 font-medium leading-relaxed">
             {ct.footnote}
           </p>
         </div>

@@ -24,20 +24,20 @@ export function StatsBar() {
   const t = stats[language];
 
   return (
-    <section className="bg-mrhr-dark py-10 border-b border-white/5">
+    <section className="bg-white py-12 border-b border-slate-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto divide-x divide-white/10 rtl:divide-x-reverse">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto divide-x divide-slate-100 rtl:divide-x-reverse">
           {t.map((stat, idx) => {
             const Icon = icons[idx];
             return (
-              <div key={idx} className="text-center px-4 first:ps-0 last:pe-0">
-                <div className="w-10 h-10 rounded-xl bg-white/8 text-[#8B6BFF] flex items-center justify-center mx-auto mb-3">
-                  <Icon size={18} />
+              <div key={idx} className="text-center px-4 first:ps-0 last:pe-0 transition-transform hover:-translate-y-1 duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4 border border-blue-100 shadow-sm">
+                  <Icon size={20} />
                 </div>
-                <div className="text-3xl md:text-4xl font-heading font-black text-white mb-1 tabular-nums">
+                <div className="text-3xl md:text-4xl font-heading font-black text-slate-900 mb-1 tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white/50 leading-snug">{stat.label}</div>
+                <div className="text-sm font-medium text-slate-500 leading-snug">{stat.label}</div>
               </div>
             );
           })}

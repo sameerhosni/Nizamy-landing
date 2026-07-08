@@ -66,9 +66,9 @@ const content = {
 
 const iconMeta = [
   { icon: Bot },
-  { icon: Fingerprint, bg: "bg-[#FF4D8D]/10", color: "text-[#FF4D8D]" },
-  { icon: MessageCircle, bg: "bg-primary/10", color: "text-primary" },
-  { icon: Target, bg: "bg-[#FFA23A]/10", color: "text-[#FFA23A]" },
+  { icon: Fingerprint, bg: "bg-blue-100", color: "text-blue-600" },
+  { icon: MessageCircle, bg: "bg-sky-100", color: "text-sky-600" },
+  { icon: Target, bg: "bg-indigo-100", color: "text-indigo-600" },
   { icon: Heart },
 ];
 
@@ -77,21 +77,21 @@ export function Features() {
   const t = content[language];
 
   return (
-    <section id="features" className="py-24 bg-background scroll-mt-16">
+    <section id="features" className="py-24 bg-white scroll-mt-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-block text-xs font-semibold text-primary bg-accent px-3.5 py-1.5 rounded-full mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-block text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-6 shadow-sm">
             {t.eyebrow}
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-4">
-            <span className="text-foreground">{t.titlePart1}</span>
-            <span className="text-gradient-primary">{t.titlePart2}</span>
+          <h2 className="text-4xl md:text-5xl font-heading font-black leading-tight mb-6">
+            <span className="text-slate-900">{t.titlePart1}</span>
+            <span className="text-blue-600">{t.titlePart2}</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">{t.subtitle}</p>
+          <p className="text-lg text-slate-500 leading-relaxed font-medium">{t.subtitle}</p>
         </div>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.cards.map((card, idx) => {
             const { icon: Icon, bg: iconBg, color: iconColor } = iconMeta[idx];
             const isFeatured = "featured" in card && card.featured;
@@ -101,15 +101,15 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[22px] md:col-span-2 p-8 text-white overflow-hidden transition-all duration-300 hover:-translate-y-1"
-                  style={{ background: "linear-gradient(135deg, #6D4AFF 0%, #4B2FDE 100%)" }}
+                  className="group relative rounded-[28px] md:col-span-2 p-10 text-white overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-xl"
+                  style={{ background: "linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%)" }}
                 >
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-6 relative">
-                    <Icon size={22} className="text-white" />
+                  <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-8 relative border border-white/30 shadow-inner">
+                    <Icon size={28} className="text-white" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold mb-2 relative">{card.name}</h3>
-                  <p className="text-white/75 leading-relaxed relative">{card.desc}</p>
+                  <h3 className="text-3xl font-heading font-black mb-4 relative">{card.name}</h3>
+                  <p className="text-blue-100 text-lg leading-relaxed relative font-medium max-w-md">{card.desc}</p>
                 </div>
               );
             }
@@ -118,13 +118,14 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[22px] bg-mrhr-dark p-8 transition-all duration-300 hover:-translate-y-1"
+                  className="group relative rounded-[28px] bg-slate-900 p-10 transition-all duration-500 hover:-translate-y-2 shadow-xl overflow-hidden border border-slate-800"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
-                    <Icon size={22} className="text-[#8B6BFF]" />
+                  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
+                  <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-8 relative">
+                    <Icon size={28} className="text-blue-400" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold mb-2 text-white">{card.name}</h3>
-                  <p className="text-white/60 leading-relaxed">{card.desc}</p>
+                  <h3 className="text-2xl font-heading font-black mb-4 text-white relative">{card.name}</h3>
+                  <p className="text-slate-400 leading-relaxed font-medium relative">{card.desc}</p>
                 </div>
               );
             }
@@ -132,13 +133,13 @@ export function Features() {
             return (
               <div
                 key={idx}
-                className="group relative rounded-[22px] border border-border/50 bg-white p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group relative rounded-[28px] border border-slate-200 bg-white p-10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-200"
               >
-                <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-6`}>
-                  <Icon size={22} className={iconColor} />
+                <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-8 transition-transform group-hover:scale-110 duration-300`}>
+                  <Icon size={28} className={iconColor} />
                 </div>
-                <h3 className="text-xl font-heading font-bold mb-2 text-foreground">{card.name}</h3>
-                <p className="text-muted-foreground leading-relaxed">{card.desc}</p>
+                <h3 className="text-2xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
+                <p className="text-slate-500 leading-relaxed font-medium">{card.desc}</p>
               </div>
             );
           })}

@@ -15,7 +15,15 @@ const content = {
       },
       {
         name: "Attendance & Multi-Verification",
-        desc: "Fingerprint, face, and voice check-in options — accurate, fraud-proof, and effortless for every employee.",
+        desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate, fraud-proof, and effortless, with every record tied to a verified identity.",
+        image: "/images/94697_1783520815575.jpeg",
+        imageAlt: "Biometric attendance check-in screen",
+        bullets: [
+          "Fingerprint, face, or voice — whichever suits your workplace",
+          "Impossible to fake or check in on someone else's behalf",
+          "Every check-in logged instantly, no manual entry",
+        ],
+        showcase: true,
       },
       {
         name: "Smart Self-Service",
@@ -53,7 +61,15 @@ const content = {
       },
       {
         name: "حضور وتحقّق متعدد",
-        desc: "تسجيل حضور بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وسهل لكل موظف.",
+        desc: "لمسة واحدة، بلا أي شك. يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وكل سجل مرتبط بهوية موثّقة.",
+        image: "/images/94697_1783520815575.jpeg",
+        imageAlt: "شاشة تسجيل الحضور بالتحقق البيومتري",
+        bullets: [
+          "بصمة الإصبع أو الوجه أو الصوت — بحسب ما يناسب بيئة عملك",
+          "يستحيل تزويره أو تسجيل الحضور نيابة عن موظف آخر",
+          "كل تسجيل حضور يُرصد فوراً، دون إدخال يدوي",
+        ],
+        showcase: true,
       },
       {
         name: "خدمات ذاتية ذكية",
@@ -117,15 +133,20 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] md:col-span-2 p-10 text-white overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-xl"
+                  className="group relative rounded-[28px] md:col-span-3 p-10 md:p-12 text-white overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-xl"
                   style={{ background: "linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%)" }}
                 >
                   <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-8 relative border border-white/30 shadow-inner">
-                    <Icon size={28} className="text-white" />
+                  <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+                    <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30 shadow-inner">
+                      <Icon size={28} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-heading font-black mb-3">{card.name}</h3>
+                      <p className="text-blue-100 text-lg leading-relaxed font-medium max-w-2xl">{card.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="text-3xl font-heading font-black mb-4 relative">{card.name}</h3>
-                  <p className="text-blue-100 text-lg leading-relaxed relative font-medium max-w-md">{card.desc}</p>
                 </div>
               );
             }

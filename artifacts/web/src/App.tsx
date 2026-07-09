@@ -7,9 +7,15 @@ import { LanguageProvider } from "@/lib/i18n";
 import { Home } from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 import { Services } from "@/components/sections/Services";
+import { TrustBar } from "@/components/sections/TrustBar";
 
 function ServicesPreview() {
-  return <Services />;
+  return (
+    <>
+      <Services />
+      <TrustBar />
+    </>
+  );
 }
 
 const queryClient = new QueryClient();

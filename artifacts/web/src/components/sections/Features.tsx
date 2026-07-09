@@ -177,57 +177,58 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] md:col-span-3 bg-gradient-to-br from-sky-50 to-white border border-slate-200 overflow-hidden transition-all duration-500 hover:shadow-xl"
+                  className="group relative rounded-[32px] md:col-span-3 bg-white border border-slate-100 overflow-hidden transition-all duration-500 hover:shadow-2xl shadow-md"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-                    <div className="p-10 md:p-14 order-2 md:order-none rtl:md:order-2">
-                      <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-8`}>
-                        <Icon size={28} className={iconColor} />
+                    <div className="p-12 md:p-16 order-2 md:order-none rtl:md:order-2">
+                      <div className={`w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center mb-6`}>
+                        <Icon size={24} className={iconColor} />
                       </div>
-                      <h3 className="text-3xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
-                      <p className="text-slate-600 text-lg leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
+                      <h3 className="text-2xl md:text-3xl font-heading font-black mb-4 text-slate-900 leading-snug">{card.name}</h3>
+                      <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
                       {bullets && bullets.length > 0 && (
                         <ul className="space-y-3">
                           {bullets.map((bullet, bulletIdx) => (
                             <li key={bulletIdx} className="flex items-start gap-3 rtl:flex-row-reverse rtl:text-right">
-                              <span className="mt-1 shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
-                                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                              <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
                                   <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.8 6.8-6.8a1 1 0 011.4 0z" clipRule="evenodd" />
                                 </svg>
                               </span>
-                              <span className="text-slate-700 font-medium">{bullet}</span>
+                              <span className="text-slate-600 text-sm font-medium leading-relaxed">{bullet}</span>
                             </li>
                           ))}
                         </ul>
                       )}
                     </div>
-                    <div className="relative flex items-center justify-center gap-4 bg-gradient-to-b from-blue-50 to-sky-100 py-12 md:py-16 px-6 order-1 md:order-none">
-                      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 50% 30%, rgba(37,99,235,0.15), transparent 60%)" }} />
+                    <div className="relative flex items-center justify-center gap-4 py-14 md:py-20 px-8 order-1 md:order-none overflow-hidden" style={{ background: "linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 55%, #EDE9FE 100%)" }}>
+                      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 60% 20%, rgba(37,99,235,0.12) 0%, transparent 65%), radial-gradient(ellipse at 30% 80%, rgba(99,102,241,0.10) 0%, transparent 60%)" }} />
                       {images && images.length > 0 && (
                         <>
                           {images.map((img, imgIdx) => {
                             const isTriple = images.length >= 3;
                             const sizeClass = isTriple
-                              ? "w-[140px] h-[290px] sm:w-[160px] sm:h-[330px]"
-                              : "w-[170px] h-[350px] sm:w-[190px] sm:h-[390px]";
+                              ? "w-[130px] h-[270px] sm:w-[150px] sm:h-[310px]"
+                              : "w-[160px] h-[335px] sm:w-[185px] sm:h-[385px]";
                             const positionClass = isTriple
                               ? imgIdx === 0
-                                ? "rotate-[-8deg] -mr-8 rtl:mr-0 rtl:-ml-8 z-10"
+                                ? "rotate-[-7deg] -mr-6 rtl:mr-0 rtl:-ml-6 z-10"
                                 : imgIdx === 1
-                                  ? "rotate-0 z-20 -translate-y-3"
-                                  : "rotate-[8deg] -ml-8 rtl:ml-0 rtl:-mr-8 mt-10 z-10"
+                                  ? "rotate-0 z-20 -translate-y-4"
+                                  : "rotate-[7deg] -ml-6 rtl:ml-0 rtl:-mr-6 mt-8 z-10"
                               : imgIdx === 0
-                                ? "rotate-[-4deg] -mr-4 rtl:mr-0 rtl:-ml-4"
-                                : "rotate-[4deg] mt-10";
+                                ? "rotate-[-5deg] -mr-5 rtl:mr-0 rtl:-ml-5 z-10"
+                                : "rotate-[4deg] mt-10 z-20";
                             return (
                               <div
                                 key={imgIdx}
-                                className={`relative ${sizeClass} rounded-[30px] bg-slate-900 p-2 shadow-2xl border border-slate-300 transition-transform duration-500 group-hover:-translate-y-2 ${positionClass}`}
+                                className={`relative ${sizeClass} rounded-[28px] bg-slate-900 p-[7px] transition-transform duration-500 group-hover:-translate-y-2 ${positionClass}`}
+                                style={{ boxShadow: "0 25px 60px rgba(15,23,42,0.30), 0 8px 20px rgba(15,23,42,0.18)" }}
                               >
                                 <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
-                                  <div className="w-24 h-4 bg-slate-900 rounded-b-2xl" />
+                                  <div className="w-20 h-[14px] bg-slate-900 rounded-b-xl" />
                                 </div>
-                                <div className="w-full h-full bg-white rounded-[24px] overflow-hidden relative">
+                                <div className="w-full h-full bg-white rounded-[22px] overflow-hidden relative">
                                   <img
                                     src={img}
                                     alt={imageAlts?.[imgIdx] ?? ""}

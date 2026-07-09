@@ -13,15 +13,15 @@ export function Hero() {
       eyebrow: "AI-powered HR · for Saudi SMEs",
       headlinePart1: "Every HR system costs you.",
       headlinePart2: "Mr-Hr gives it back.",
-      subtitleMuted: "More efficient use = bigger return. ",
-      subtitleBold: "We give you up to 30% of your subscription back every year — the only performance system that pays you, not the other way around.",
+      subtitleMuted: "One system for attendance, employee services, performance, rewards, and HR insights. ",
+      subtitleBold: "And when your team performs better, up to 30% of your subscription comes back to you every year.",
       primaryCta: "Book my early access",
       secondaryCta: "Calculate my return",
       chips: [
         "Up to 30% annual return",
         "One-minute onboarding",
         "Starting from SAR 3 per employee",
-        "No penalties or chasing"
+        "Motivation-first, no penalties"
       ],
       card: {
         exampleLabel: "Example: 50 employees / month",
@@ -44,15 +44,15 @@ export function Hero() {
       eyebrow: "موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
       headlinePart2: "مستر إتش آر يعيد لك.",
-      subtitleMuted: "استخدام أكثر فاعلية = عائد أكبر. ",
-      subtitleBold: "نعيد إليك حق ٪30 من قيمة اشتراكك كل عام — نظام إدارة الأداء الوحيد الذي يدفع لك، لا عليك.",
+      subtitleMuted: "نظام واحد لإدارة الحضور، خدمات الموظفين، الأداء، المكافآت، وتقارير الموارد البشرية. ",
+      subtitleBold: "وكلما تحسّن أداء فريقك، يعود إليك حتى ٪30 من قيمة اشتراكك كل عام.",
       primaryCta: "احجز وصولك المبكر",
       secondaryCta: "احسب عائدك",
       chips: [
         "حق ٪30 عائد سنوي",
         "تسجيل في دقيقة واحدة",
         "يبدأ من ٣ ريال للموظف",
-        "بدون غرامات أو ملاحظة"
+        "نظام يركز على التحفيز بدل العقوبات"
       ],
       card: {
         exampleLabel: "مثال: ٥٠ موظفاً شهرياً",

@@ -5,13 +5,13 @@ import { Logo } from "@/components/layout/Logo";
 
 const navLinks = {
   en: [
-    { id: "problem", label: "The Problem" },
+    { id: "services", label: "What We Manage" },
     { id: "return-model", label: "Return Model" },
     { id: "calculator", label: "Calculator" },
     { id: "features", label: "Features" },
   ],
   ar: [
-    { id: "problem", label: "المشكلة" },
+    { id: "services", label: "خدمات النظام" },
     { id: "return-model", label: "نموذج العائد" },
     { id: "calculator", label: "الحاسبة" },
     { id: "features", label: "المزايا" },

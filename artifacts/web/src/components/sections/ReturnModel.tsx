@@ -14,6 +14,7 @@ export function ReturnModel() {
       titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
       subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Mr-Hr, the more comes back — here's exactly where every riyal comes from.",
+      clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and estimated savings from better performance — not a flat cash refund.",
       layers: [
         {
           num: "01",
@@ -38,6 +39,7 @@ export function ReturnModel() {
       titlePart2: "30%",
       titlePart3: " كل عام.",
       subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت مستر إتش آر بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
+      clarifier: "وش يعني عائد ٪30؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، ووفورات مقدّرة من تحسّن الأداء — وليس استرداداً نقدياً ثابتاً.",
       layers: [
         {
           num: "٠١",
@@ -77,9 +79,14 @@ export function ReturnModel() {
           <span className="text-blue-300">{t.titlePart2}</span>
           <span className="text-white">{t.titlePart3}</span>
         </h2>
-        <p className="text-lg md:text-xl text-blue-100/80 text-center mb-20 max-w-2xl mx-auto leading-relaxed font-medium">
+        <p className="text-lg md:text-xl text-blue-100/80 text-center mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
           {t.subhead}
         </p>
+        <div className="max-w-2xl mx-auto mb-20">
+          <p className="text-sm md:text-base text-blue-100 text-center leading-relaxed font-medium rounded-2xl bg-blue-800/60 border border-blue-700 px-6 py-4">
+            {t.clarifier}
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
           {/* Connecting line for desktop */}

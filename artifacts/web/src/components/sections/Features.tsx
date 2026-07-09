@@ -9,12 +9,12 @@ const content = {
     subtitle: "Six pillars that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
     cards: [
       {
-        name: "Saudi-dialect AI Agent",
+        name: "A Smart HR Assistant that understands Saudi dialect",
         desc: "A conversational AI agent that speaks Saudi dialect, answering payslip, document, and policy questions around the clock — no HR involved.",
         featured: true,
       },
       {
-        name: "Attendance & Multi-Verification",
+        name: "Attendance Management with Trusted Verification",
         desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate, fraud-proof, and effortless, with every record tied to a verified identity.",
         images: ["/images/94697_1783520815575.jpeg", "/images/face-id-checkin.png"],
         imageAlts: ["Biometric attendance check-in screen", "Face ID verification check-in with XP points"],
@@ -26,7 +26,7 @@ const content = {
         showcase: true,
       },
       {
-        name: "Smart Self-Service",
+        name: "Employee Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — instantly, through an AI chat assistant that speaks their language, so HR never has to be the middleman.",
         images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
         imageAlts: ["Self-service home screen with quick requests and AI assistant", "AI self-service chat assistant"],
@@ -38,7 +38,7 @@ const content = {
         showcase: true,
       },
       {
-        name: "Incentives & Performance KPIs",
+        name: "Performance & Rewards Management",
         desc: "Set goals, run review cycles, and link outcomes directly to rewards — turning good performance into points employees can actually redeem.",
         images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
         imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards", "Company performance dashboard with attendance and commitment KPIs"],
@@ -53,7 +53,7 @@ const content = {
       {
         name: "Motivational, not punitive",
         dark: true,
-        desc: "Every feature is designed to reward good performance — never to fine or punish your team.",
+        desc: "A system that focuses on motivation instead of penalties — every feature is designed to reward good performance.",
       },
     ],
   },
@@ -64,13 +64,13 @@ const content = {
     subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
     cards: [
       {
-        name: "ذكاء اصطناعي باللهجة السعودية",
-        desc: "وكيل محادثة بالذكاء الاصطناعي يتحدث اللهجة السعودية، يجيب على استفسارات الراتب والمستندات والسياسات على مدار الساعة — دون تدخل الموارد البشرية.",
+        name: "مساعد موارد بشرية ذكي يفهم اللهجة السعودية",
+        desc: "مساعد يفهم الموظفين والمدراء باللهجة السعودية، ويجاوب على أسئلة الراتب والمستندات والسياسات على مدار الساعة — دون تدخل الموارد البشرية.",
         featured: true,
       },
       {
-        name: "حضور وتحقّق متعدد",
-        desc: "لمسة واحدة، بلا أي شك. يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق، محصّن من الغش، وكل سجل مرتبط بهوية موثّقة.",
+        name: "إدارة الحضور والانصراف بطرق تحقق موثوقة",
+        desc: "يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق، يصعب التلاعب به، وكل سجل مرتبط بهوية موثّقة.",
         images: ["/images/94697_1783520815575.jpeg", "/images/face-id-checkin.png"],
         imageAlts: ["شاشة تسجيل الحضور بالتحقق البيومتري", "تحقق تسجيل الحضور بالوجه مع نقاط الخبرة"],
         bullets: [
@@ -81,7 +81,7 @@ const content = {
         showcase: true,
       },
       {
-        name: "خدمات ذاتية ذكية",
+        name: "خدمات الموظفين الذاتية",
         desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً في كل مرة.",
         images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
         imageAlts: ["الشاشة الرئيسية للخدمة الذاتية مع طلبات سريعة ومساعد ذكي", "مساعد ذكي للخدمة الذاتية عبر المحادثة"],
@@ -93,7 +93,7 @@ const content = {
         showcase: true,
       },
       {
-        name: "حوافز ومؤشرات أداء",
+        name: "إدارة الأداء والمكافآت",
         desc: "اربط الأهداف بدورات التقييم والمكافآت مباشرة — وحوّل الأداء الجيد إلى نقاط يستبدلها الموظف فعلياً.",
         images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
         imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال", "لوحة أداء الشركة مع مؤشرات الحضور والالتزام"],
@@ -106,9 +106,9 @@ const content = {
         showcase: true,
       },
       {
-        name: "تحفيزي — ليس عقابياً",
+        name: "تحفيزي وليس عقابي",
         dark: true,
-        desc: "كل ميزة في مستر إتش آر مصممة لمكافأة الأداء الجيد — لا لفرض غرامات أو عقوبات على فريقك.",
+        desc: "نظام يركز على التحفيز بدل العقوبات — كل ميزة في مستر إتش آر مصممة لمكافأة الأداء الجيد.",
       },
     ],
   },

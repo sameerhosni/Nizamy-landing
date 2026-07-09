@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
+import { Services } from "@/components/sections/Services";
 import { Problem } from "@/components/sections/Problem";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { ROIDashboard } from "@/components/sections/ROIDashboard";
@@ -49,6 +50,7 @@ export function Home() {
       <main>
         <Hero />
         <StatsBar />
+        <Services />
         <Problem />
         <ReturnModel />
         <ROIDashboard />

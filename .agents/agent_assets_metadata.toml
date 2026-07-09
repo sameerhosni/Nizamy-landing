@@ -48,3 +48,45 @@ id = "fG-xbk4ipX_FHnh9-QCmg"
 uri = "file://attached_assets/generated_images/service_analytics.png"
 type = "image"
 title = "analytics dashboard illustration"
+
+[[generated]]
+id = "Ic9eFeeKoqNvF6zrizQBP"
+uri = "file://artifacts/web/public/images/services/attendance.png"
+type = "image"
+title = "3d attendance calendar icon"
+
+[[generated]]
+id = "rn1pEDTpkpUcicFSnnVTA"
+uri = "file://artifacts/web/public/images/services/self-service.png"
+type = "image"
+title = "3d self service document icon"
+
+[[generated]]
+id = "acCS8RW9dxTVmA6-VwyCH"
+uri = "file://artifacts/web/public/images/services/ai-assistant.png"
+type = "image"
+title = "3d ai robot assistant icon"
+
+[[generated]]
+id = "Sff_2dOWotVr2j22fzhLY"
+uri = "file://artifacts/web/public/images/services/performance.png"
+type = "image"
+title = "3d performance chart icon"
+
+[[generated]]
+id = "yApeKOjCl9H7DmjAgDn41"
+uri = "file://artifacts/web/public/images/services/rewards.png"
+type = "image"
+title = "3d rewards gift icon"
+
+[[generated]]
+id = "-fZnHyuAx3FPFIDcw5d2T"
+uri = "file://artifacts/web/public/images/services/reports.png"
+type = "image"
+title = "3d reports dashboard icon"
+
+[[generated]]
+id = "lggR9ebxRLopNxaGshaAz"
+uri = "file://artifacts/web/public/images/services/tasks.png"
+type = "image"
+title = "3d tasks clipboard icon"

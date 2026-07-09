@@ -1,13 +1,20 @@
-import { Fingerprint, CalendarCheck, Bot, Activity, Gift, BarChart3, ListChecks } from "lucide-react";
+import { useState } from "react";
+import { Fingerprint, CalendarCheck, Bot, Activity, Gift, BarChart3, ListChecks, Sparkles } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+
+type Category = "all" | "attendance" | "employees" | "performance";
 
 const content = {
   en: {
-    eyebrow: "What Mr-Hr Helps You Manage",
-    titlePart1: "A practical HR system ",
-    titlePart2: "for your daily operations.",
-    subtitle: "Attendance, employee services, performance, rewards, and insights — everything a Saudi business needs to run its team, in one place.",
+    title: "Our Services",
+    subtitle: "Smart HR solutions that help you manage your team with ease and clarity.",
     comingSoon: "Coming soon",
+    tabs: [
+      { id: "all" as Category, label: "All" },
+      { id: "attendance" as Category, label: "Attendance" },
+      { id: "employees" as Category, label: "Employees" },
+      { id: "performance" as Category, label: "Performance" },
+    ],
     cards: [
       {
         name: "Attendance & Time Tracking",
@@ -19,7 +26,7 @@ const content = {
       },
       {
         name: "Smart HR Assistant",
-        desc: "An assistant that understands employees and managers in Saudi dialect and answers questions and requests.",
+        desc: "Understands employees and managers in Saudi dialect and answers questions and requests.",
       },
       {
         name: "Performance & Commitment",
@@ -41,14 +48,18 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "وش يساعدك مستر إتش آر تدير",
-    titlePart1: "نظام موارد بشرية عملي ",
-    titlePart2: "لعملياتك اليومية.",
-    subtitle: "الحضور، خدمات الموظفين، الأداء، المكافآت، والتقارير — كل ما تحتاجه منشأتك السعودية لإدارة فريقها، في مكان واحد.",
+    title: "خدماتنا",
+    subtitle: "حلول موارد بشرية ذكية تساعدك تدير فريقك بسهولة ووضوح.",
     comingSoon: "قريباً",
+    tabs: [
+      { id: "all" as Category, label: "الكل" },
+      { id: "attendance" as Category, label: "الحضور" },
+      { id: "employees" as Category, label: "الموظفين" },
+      { id: "performance" as Category, label: "الأداء" },
+    ],
     cards: [
       {
-        name: "إدارة الحضور والانصراف",
+        name: "الحضور والانصراف",
         desc: "سجّل حضور الموظفين بطرق تحقق موثوقة مثل الموقع، الوجه، البصمة، أو الصوت.",
       },
       {
@@ -80,42 +91,66 @@ const content = {
   },
 };
 
-const icons = [
-  { icon: Fingerprint, bg: "bg-blue-100", color: "text-blue-600" },
-  { icon: CalendarCheck, bg: "bg-sky-100", color: "text-sky-600" },
-  { icon: Bot, bg: "bg-indigo-100", color: "text-indigo-600" },
-  { icon: Activity, bg: "bg-cyan-100", color: "text-cyan-600" },
-  { icon: Gift, bg: "bg-violet-100", color: "text-violet-600" },
-  { icon: BarChart3, bg: "bg-blue-100", color: "text-blue-600" },
-  { icon: ListChecks, bg: "bg-slate-100", color: "text-slate-500" },
+const cardMeta: { image: string; icon: typeof Fingerprint; category: Category }[] = [
+  { image: "/images/services/attendance.png", icon: Fingerprint, category: "attendance" },
+  { image: "/images/services/self-service.png", icon: CalendarCheck, category: "employees" },
+  { image: "/images/services/ai-assistant.png", icon: Bot, category: "employees" },
+  { image: "/images/services/performance.png", icon: Activity, category: "performance" },
+  { image: "/images/services/rewards.png", icon: Gift, category: "performance" },
+  { image: "/images/services/reports.png", icon: BarChart3, category: "performance" },
+  { image: "/images/services/tasks.png", icon: ListChecks, category: "performance" },
 ];
 
 export function Services() {
   const { language } = useLanguage();
   const t = content[language];
+  const [active, setActive] = useState<Category>("all");
+
+  const visible = t.cards
+    .map((card, idx) => ({ card, meta: cardMeta[idx] }))
+    .filter(({ meta }) => active === "all" || meta.category === active);
 
   return (
-    <section id="services" className="py-24 bg-slate-50 scroll-mt-16">
+    <section id="services" className="py-24 bg-gradient-to-b from-blue-50/60 via-white to-white scroll-mt-16">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-block text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-6 shadow-sm">
-            {t.eyebrow}
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Sparkles size={28} className="text-blue-400" />
+            <h2 className="text-4xl md:text-5xl font-heading font-black text-gradient-primary leading-tight">
+              {t.title}
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-black leading-tight mb-6">
-            <span className="text-slate-900">{t.titlePart1}</span>
-            <span className="text-blue-600">{t.titlePart2}</span>
-          </h2>
+
+          {/* Category tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
+            {t.tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
+                className={`px-5 py-1.5 rounded-full text-sm font-bold border transition-all duration-300 ${
+                  active === tab.id
+                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-blue-300 hover:text-blue-700"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
           <p className="text-lg text-slate-500 leading-relaxed font-medium">{t.subtitle}</p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {t.cards.map((card, idx) => {
-            const { icon: Icon, bg, color } = icons[idx];
+        {/* Compact service cards */}
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-5">
+          {visible.map(({ card, meta }) => {
+            const Icon = meta.icon;
             const soon = "soon" in card && card.soon;
             return (
               <div
-                key={idx}
-                className={`relative rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                key={card.name}
+                className={`relative w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)] rounded-3xl border bg-gradient-to-b from-white to-blue-50/50 p-6 pt-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl ${
                   soon ? "border-dashed border-slate-200" : "border-slate-100 shadow-sm hover:border-blue-200"
                 }`}
               >
@@ -124,10 +159,27 @@ export function Services() {
                     {t.comingSoon}
                   </span>
                 )}
-                <div className={`w-11 h-11 rounded-xl ${bg} flex items-center justify-center mb-4`}>
-                  <Icon size={22} className={color} />
+
+                {/* 3D icon */}
+                <div className="relative w-28 h-28 mx-auto mb-5">
+                  <div className="absolute inset-2 rounded-full bg-blue-100/60 blur-xl" />
+                  <img
+                    src={meta.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="relative w-full h-full object-contain drop-shadow-md"
+                  />
                 </div>
-                <h3 className="text-lg font-heading font-black text-slate-900 mb-2">{card.name}</h3>
+
+                {/* Small icon badge + title */}
+                <div className="flex items-center justify-center gap-2 mb-2.5">
+                  <span className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <Icon size={15} className="text-blue-600" />
+                  </span>
+                  <h3 className="text-base font-heading font-black text-slate-900">{card.name}</h3>
+                </div>
+
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">{card.desc}</p>
               </div>
             );

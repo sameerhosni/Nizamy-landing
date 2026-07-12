@@ -114,11 +114,11 @@ const content = {
   },
 };
 
-const iconMeta = [
+const iconMeta: { icon: typeof Bot; bg?: string; color?: string; titleImage?: string }[] = [
   { icon: Bot },
-  { icon: Fingerprint, bg: "bg-blue-100", color: "text-blue-600" },
-  { icon: MessageCircle, bg: "bg-sky-100", color: "text-sky-600" },
-  { icon: Target, bg: "bg-indigo-100", color: "text-indigo-600" },
+  { icon: Fingerprint, bg: "bg-blue-100", color: "text-blue-600", titleImage: "/images/services/attendance.png" },
+  { icon: MessageCircle, bg: "bg-sky-100", color: "text-sky-600", titleImage: "/images/services/self-service-v2.png" },
+  { icon: Target, bg: "bg-indigo-100", color: "text-indigo-600", titleImage: "/images/services/rewards-v2.png" },
   { icon: Heart },
 ];
 
@@ -143,7 +143,7 @@ export function Features() {
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.cards.map((card, idx) => {
-            const { icon: Icon, bg: iconBg, color: iconColor } = iconMeta[idx];
+            const { icon: Icon, bg: iconBg, color: iconColor, titleImage } = iconMeta[idx];
             const isFeatured = "featured" in card && card.featured;
             const isDark = "dark" in card && card.dark;
 
@@ -181,9 +181,22 @@ export function Features() {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                     <div className="p-12 md:p-16 order-2 md:order-none rtl:md:order-2">
-                      <div className={`w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center mb-6`}>
-                        <Icon size={24} className={iconColor} />
-                      </div>
+                      {titleImage ? (
+                        <div className="relative w-20 h-20 mb-6">
+                          <div className="absolute inset-1 rounded-full bg-blue-100/70 blur-lg" />
+                          <img
+                            src={titleImage}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            className="relative w-full h-full object-contain drop-shadow-md"
+                          />
+                        </div>
+                      ) : (
+                        <div className={`w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center mb-6`}>
+                          <Icon size={24} className={iconColor} />
+                        </div>
+                      )}
                       <h3 className="text-2xl md:text-3xl font-heading font-black mb-4 text-slate-900 leading-snug">{card.name}</h3>
                       <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
                       {bullets && bullets.length > 0 && (

@@ -14,7 +14,7 @@ export function Logo({ variant = "light", className = "" }: LogoProps) {
     <div className={`flex items-center gap-2 sm:gap-3 select-none min-w-0 ${className}`}>
       <div className="relative w-9 h-10 sm:w-11 sm:h-12 shrink-0">
         <img
-          src="/images/logo-nizamy.png"
+          src="/images/logo-mascot-v2.png"
           alt="Nizamy"
           className="w-full h-full object-contain"
         />

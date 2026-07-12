@@ -13,7 +13,7 @@ const content = {
       },
       {
         name: "Employee Self-Service",
-        desc: "Leave, permissions, shift swaps, and daily requests — all from one place.",
+        desc: "Leave, permissions, shift swaps, and daily requests — all from one place, through an AI assistant that saves your time and gets things done for you.",
       },
       {
         name: "Smart HR Assistant",
@@ -49,7 +49,7 @@ const content = {
       },
       {
         name: "خدمات الموظفين الذاتية",
-        desc: "الإجازات، الاستئذان، تبديل الشفتات، والطلبات اليومية من مكان واحد.",
+        desc: "الإجازات، الاستئذان، تبديل الشفتات، والطلبات اليومية من مكان واحد — عبر مساعد ذكاء اصطناعي يوفّر وقتك وينجز لك أعمالك.",
       },
       {
         name: "مساعد موارد بشرية ذكي",

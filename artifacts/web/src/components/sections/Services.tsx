@@ -1,20 +1,11 @@
-import { useState } from "react";
 import { Fingerprint, CalendarCheck, Bot, Activity, Gift, BarChart3, ListChecks, Sparkles } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
-
-type Category = "all" | "attendance" | "employees" | "performance";
 
 const content = {
   en: {
     title: "Our Services",
     subtitle: "Smart HR solutions that help you manage your team with ease and clarity.",
     comingSoon: "Coming soon",
-    tabs: [
-      { id: "all" as Category, label: "All" },
-      { id: "attendance" as Category, label: "Attendance" },
-      { id: "employees" as Category, label: "Employees" },
-      { id: "performance" as Category, label: "Performance" },
-    ],
     cards: [
       {
         name: "Attendance & Time Tracking",
@@ -51,12 +42,6 @@ const content = {
     title: "خدماتنا",
     subtitle: "حلول موارد بشرية ذكية تساعدك تدير فريقك بسهولة ووضوح.",
     comingSoon: "قريباً",
-    tabs: [
-      { id: "all" as Category, label: "الكل" },
-      { id: "attendance" as Category, label: "الحضور" },
-      { id: "employees" as Category, label: "الموظفين" },
-      { id: "performance" as Category, label: "الأداء" },
-    ],
     cards: [
       {
         name: "الحضور والانصراف",
@@ -91,24 +76,19 @@ const content = {
   },
 };
 
-const cardMeta: { image: string; icon: typeof Fingerprint; category: Category }[] = [
-  { image: "/images/services/attendance.png", icon: Fingerprint, category: "attendance" },
-  { image: "/images/services/self-service.png", icon: CalendarCheck, category: "employees" },
-  { image: "/images/services/ai-assistant.png", icon: Bot, category: "employees" },
-  { image: "/images/services/performance.png", icon: Activity, category: "performance" },
-  { image: "/images/services/rewards.png", icon: Gift, category: "performance" },
-  { image: "/images/services/reports.png", icon: BarChart3, category: "performance" },
-  { image: "/images/services/tasks.png", icon: ListChecks, category: "performance" },
+const cardMeta: { image: string; icon: typeof Fingerprint }[] = [
+  { image: "/images/services/attendance.png", icon: Fingerprint },
+  { image: "/images/services/self-service.png", icon: CalendarCheck },
+  { image: "/images/services/ai-assistant.png", icon: Bot },
+  { image: "/images/services/performance.png", icon: Activity },
+  { image: "/images/services/rewards.png", icon: Gift },
+  { image: "/images/services/reports.png", icon: BarChart3 },
+  { image: "/images/services/tasks.png", icon: ListChecks },
 ];
 
 export function Services() {
   const { language } = useLanguage();
   const t = content[language];
-  const [active, setActive] = useState<Category>("all");
-
-  const visible = t.cards
-    .map((card, idx) => ({ card, meta: cardMeta[idx] }))
-    .filter(({ meta }) => active === "all" || meta.category === active);
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-blue-50/60 via-white to-white scroll-mt-16">
@@ -122,29 +102,13 @@ export function Services() {
             </h2>
           </div>
 
-          {/* Category tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
-            {t.tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActive(tab.id)}
-                className={`px-5 py-1.5 rounded-full text-sm font-bold border transition-all duration-300 ${
-                  active === tab.id
-                    ? "bg-blue-600 text-white border-blue-600 shadow-md"
-                    : "bg-white text-slate-600 border-slate-200 hover:border-blue-300 hover:text-blue-700"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
           <p className="text-lg text-slate-500 leading-relaxed font-medium">{t.subtitle}</p>
         </div>
 
         {/* Compact service cards */}
         <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-5">
-          {visible.map(({ card, meta }) => {
+          {t.cards.map((card, idx) => {
+            const meta = cardMeta[idx];
             const Icon = meta.icon;
             const soon = "soon" in card && card.soon;
             return (

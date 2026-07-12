@@ -182,15 +182,13 @@ export function Features() {
                   <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                     <div className="p-12 md:p-16 order-2 md:order-none rtl:md:order-2">
                       {titleImage ? (
-                        <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-6 shadow-sm`}>
-                          <img
-                            src={titleImage}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            className="w-10 h-10 object-contain drop-shadow-sm"
-                          />
-                        </div>
+                        <img
+                          src={titleImage}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                          className="w-24 h-24 md:w-28 md:h-28 object-contain drop-shadow-lg mb-6"
+                        />
                       ) : (
                         <div className={`w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center mb-6`}>
                           <Icon size={24} className={iconColor} />

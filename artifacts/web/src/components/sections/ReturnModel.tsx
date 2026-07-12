@@ -24,7 +24,7 @@ export function ReturnModel() {
         {
           num: "02",
           title: "Reward performance",
-          desc: "Nizamy funds rewards for your best people at no extra cost to you."
+          desc: "Nizamy funds rewards for your employees through motivation points, with gift cards and exclusive discounts on brands inside and outside Saudi Arabia."
         },
         {
           num: "03",
@@ -49,7 +49,7 @@ export function ReturnModel() {
         {
           num: "٠٢",
           title: "كافئ الأداء",
-          desc: "نظامي يمول مكافآت لأفضل موظفيك دون أي تكلفة إضافية عليك."
+          desc: "نظامي يمول مكافآت لموظفيك عبر نقاط التحفيز مع بطاقات هدايا وخصومات حصرية على علامات تجارية داخل وخارج السعودية."
         },
         {
           num: "٠٣",

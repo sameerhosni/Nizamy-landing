@@ -1,5 +1,5 @@
 import { useLanguage } from "@/lib/i18n";
-import { TrendingUp, Smile, Clock, Coins } from "lucide-react";
+import { TrendingUp, Award, LogOut, Coins } from "lucide-react";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -12,120 +12,122 @@ import {
   CartesianGrid,
 } from "recharts";
 
-const performanceData = [
-  { m: 0, performance: 62, satisfaction: 58 },
-  { m: 1, performance: 66, satisfaction: 64 },
-  { m: 2, performance: 71, satisfaction: 70 },
-  { m: 3, performance: 74, satisfaction: 78 },
-  { m: 4, performance: 80, satisfaction: 85 },
-  { m: 5, performance: 84, satisfaction: 92 },
+// Client 3 (featured): Aug–Dec 2025 — on-time check-ins & check-outs (days/employee/month)
+const featuredData = [
+  { m: 0, checkins: 10.6, checkouts: 13.3 },
+  { m: 1, checkins: 11.2, checkouts: 13.5 },
+  { m: 2, checkins: 12.1, checkouts: 14.0 },
+  { m: 3, checkins: 12.8, checkouts: 14.5 },
+  { m: 4, checkins: 13.2, checkouts: 14.8 },
 ];
 
-const latenessData = [
-  { m: 0, v: 420 },
-  { m: 1, v: 340 },
-  { m: 2, v: 250 },
-  { m: 3, v: 190 },
-  { m: 4, v: 130 },
-  { m: 5, v: 95 },
+// Client 1: Jul–Oct 2025 — on-time check-outs (days/employee/month)
+const checkoutData = [
+  { m: 0, v: 8.4 },
+  { m: 1, v: 8.7 },
+  { m: 2, v: 9.2 },
+  { m: 3, v: 9.8 },
 ];
 
-const returnData = [
-  { m: 0, v: 0 },
-  { m: 1, v: 1800 },
-  { m: 2, v: 4200 },
-  { m: 3, v: 7100 },
-  { m: 4, v: 10600 },
-  { m: 5, v: 14400 },
+// Client 2: Jul–Oct 2025 — points accumulated per month
+const pointsData = [
+  { m: 0, v: 2500 },
+  { m: 1, v: 4550 },
+  { m: 2, v: 6300 },
+  { m: 3, v: 29770 },
 ];
 
 const content = {
   en: {
-    eyebrow: "Real use cases",
+    eyebrow: "Real client results · 2025",
     titlePart1: "Proof, not promises. ",
     titlePart2: "Performance that shows in the numbers.",
     subtitle:
-      "Sample ROI reports from teams using Nizamy — employee performance and satisfaction tracked month by month, with the return growing alongside them.",
-    months: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
+      "ROI reports from three real clients using the Nizamy point system — attendance discipline and engagement tracked month by month.",
+    featuredMonths: ["Aug", "Sep", "Oct", "Nov", "Dec"],
+    smallMonths: ["Jul", "Aug", "Sep", "Oct"],
+    daysUnit: "days/mo",
     featured: {
-      tag: "Retail chain · 45 employees",
-      title: "Performance and satisfaction climbing together",
-      desc: "Six months after launch: team performance rose from 62 to 84 points, while employee satisfaction jumped from 58% to 92% — driven by rewards instead of penalties.",
-      legendPerformance: "Performance index",
-      legendSatisfaction: "Employee satisfaction",
+      tag: "Client 3 · Aug–Dec 2025 · 5 months",
+      title: "The highest check-in lift of any client — +24%",
+      desc: "On-time check-ins climbed from 10.6 to 13.2 days per employee each month, and on-time check-outs rose 11% — with 57 employees earning rewards and 130,525 points accumulated along the way.",
+      legendCheckins: "On-time check-ins",
+      legendCheckouts: "On-time check-outs",
       stats: [
-        { icon: TrendingUp, value: "+35%", label: "team performance" },
-        { icon: Smile, value: "92%", label: "employee satisfaction" },
+        { icon: TrendingUp, value: "+24%", label: "on-time check-ins" },
+        { icon: Award, value: "57", label: "employees earned rewards" },
       ],
     },
     cards: [
       {
-        icon: Clock,
-        tag: "Medical clinics · 28 employees",
-        title: "Late minutes down 77%",
-        desc: "Verified check-ins and motivation points cut monthly lateness from 420 minutes to 95.",
-        stat: "-77%",
-        statLabel: "monthly lateness",
+        icon: LogOut,
+        tag: "Client 1 · Jul–Oct 2025",
+        title: "On-time check-outs jumped +17% in 4 months",
+        desc: "With zero manager intervention: check-outs rose from 8.4 to 9.8 days per employee monthly once reward milestones became visible.",
+        stat: "+17%",
+        statLabel: "on-time check-outs",
       },
       {
         icon: Coins,
-        tag: "Logistics company · 60 employees",
-        title: "SAR 14,400 returned in 6 months",
-        desc: "As performance targets were hit, the annual return accumulated automatically — real money back.",
-        stat: "14,400 SAR",
-        statLabel: "accumulated return",
+        tag: "Client 2 · Jul–Oct 2025",
+        title: "Points accumulated grew 12× in 4 months",
+        desc: "Engagement compounded every month — from 2,500 points in month one to 29,770 in month four, with 28 employees hitting reward thresholds.",
+        stat: "12×",
+        statLabel: "points growth",
       },
     ],
-    note: "Sample reports based on pilot deployments with early design partners.",
+    note: "Real results from Nizamy point-system deployments in 2025. Client names withheld for confidentiality.",
     featuredChartSummary:
-      "Line chart: over six months, the performance index rose steadily from 62 to 84 points, and employee satisfaction rose from 58% to 92%.",
+      "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month, and on-time check-outs rose from 13.3 to 14.8.",
     cardChartSummaries: [
-      "Trend chart: monthly lateness fell steadily from 420 minutes to 95 minutes over six months.",
-      "Trend chart: the accumulated return grew from 0 to 14,400 SAR over six months.",
+      "Trend chart: on-time check-outs rose steadily from 8.4 to 9.8 days per employee per month over four months.",
+      "Trend chart: monthly points accumulated grew from 2,500 to 29,770 over four months.",
     ],
   },
   ar: {
-    eyebrow: "حالات استخدام حقيقية",
+    eyebrow: "نتائج عملاء حقيقية · 2025",
     titlePart1: "إثبات، لا وعود. ",
     titlePart2: "أداء يظهر في الأرقام.",
     subtitle:
-      "نماذج من تقارير العائد لفرق تستخدم نظامي — أداء الموظفين ورضاهم يُرصدان شهراً بشهر، والعائد ينمو معهما.",
-    months: ["الشهر 1", "الشهر 2", "الشهر 3", "الشهر 4", "الشهر 5", "الشهر 6"],
+      "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظام النقاط في نظامي — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
+    featuredMonths: ["أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+    smallMonths: ["يوليو", "أغسطس", "سبتمبر", "أكتوبر"],
+    daysUnit: "يوم/شهر",
     featured: {
-      tag: "سلسلة متاجر تجزئة · 45 موظفاً",
-      title: "الأداء والرضا يرتفعان معاً",
-      desc: "بعد ستة أشهر من الإطلاق: ارتفع أداء الفريق من 62 إلى 84 نقطة، وقفز رضا الموظفين من 58% إلى 92% — بالتحفيز بدل العقوبات.",
-      legendPerformance: "مؤشر الأداء",
-      legendSatisfaction: "رضا الموظفين",
+      tag: "العميل 3 · أغسطس–ديسمبر 2025 · 5 أشهر",
+      title: "أعلى تحسّن في الحضور المبكر بين عملائنا — 24%+",
+      desc: "ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط 11% — مع حصول 57 موظفاً على مكافآت وتراكم 130,525 نقطة خلال الفترة.",
+      legendCheckins: "الحضور في الوقت المحدد",
+      legendCheckouts: "الانصراف في الوقت المحدد",
       stats: [
-        { icon: TrendingUp, value: "+35%", label: "أداء الفريق" },
-        { icon: Smile, value: "92%", label: "رضا الموظفين" },
+        { icon: TrendingUp, value: "+24%", label: "الحضور في الوقت المحدد" },
+        { icon: Award, value: "57", label: "موظفاً حصلوا على مكافآت" },
       ],
     },
     cards: [
       {
-        icon: Clock,
-        tag: "مجموعة عيادات طبية · 28 موظفاً",
-        title: "دقائق التأخير انخفضت 77%",
-        desc: "التحقق الموثوق من الحضور ونقاط التحفيز خفّضا التأخير الشهري من 420 دقيقة إلى 95.",
-        stat: "-77%",
-        statLabel: "التأخير الشهري",
+        icon: LogOut,
+        tag: "العميل 1 · يوليو–أكتوبر 2025",
+        title: "الانصراف المنضبط قفز 17%+ خلال 4 أشهر",
+        desc: "دون أي تدخل من المدراء: ارتفع الانصراف في الوقت المحدد من 8.4 إلى 9.8 يوماً لكل موظف شهرياً بمجرد أن أصبحت أهداف المكافآت مرئية.",
+        stat: "+17%",
+        statLabel: "الانصراف المنضبط",
       },
       {
         icon: Coins,
-        tag: "شركة لوجستية · 60 موظفاً",
-        title: "14,400 ر.س عادت خلال 6 أشهر",
-        desc: "مع تحقق أهداف الأداء، تراكم العائد السنوي تلقائياً — أموال حقيقية تعود إليك.",
-        stat: "14,400 ر.س",
-        statLabel: "العائد المتراكم",
+        tag: "العميل 2 · يوليو–أكتوبر 2025",
+        title: "النقاط المكتسبة تضاعفت 12 مرة خلال 4 أشهر",
+        desc: "التفاعل تضاعف شهراً بعد شهر — من 2,500 نقطة في الشهر الأول إلى 29,770 في الشهر الرابع، مع وصول 28 موظفاً لأهداف المكافآت.",
+        stat: "×12",
+        statLabel: "نمو النقاط",
       },
     ],
-    note: "نماذج تقارير مبنية على تجارب تشغيل مع شركاء التصميم الأوائل.",
+    note: "نتائج حقيقية من تطبيقات نظام النقاط في نظامي خلال 2025. أسماء العملاء محجوبة للخصوصية.",
     featuredChartSummary:
-      "رسم بياني خطي: خلال ستة أشهر ارتفع مؤشر الأداء تدريجياً من 62 إلى 84 نقطة، وارتفع رضا الموظفين من 58% إلى 92%.",
+      "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط من 13.3 إلى 14.8.",
     cardChartSummaries: [
-      "رسم بياني: انخفض التأخير الشهري تدريجياً من 420 دقيقة إلى 95 دقيقة خلال ستة أشهر.",
-      "رسم بياني: نما العائد المتراكم من 0 إلى 14,400 ريال خلال ستة أشهر.",
+      "رسم بياني: ارتفع الانصراف في الوقت المحدد تدريجياً من 8.4 إلى 9.8 يوماً لكل موظف شهرياً خلال أربعة أشهر.",
+      "رسم بياني: نمت النقاط الشهرية المكتسبة من 2,500 إلى 29,770 خلال أربعة أشهر.",
     ],
   },
 };
@@ -135,7 +137,7 @@ export function CaseStudies() {
   const isRtl = dir === "rtl";
   const t = content[language];
 
-  const monthLabel = (i: number) => t.months[i] ?? "";
+  const featuredMonthLabel = (i: number) => t.featuredMonths[i] ?? "";
 
   return (
     <section id="use-cases" className="py-24 bg-gradient-to-b from-slate-50 to-white scroll-mt-16 overflow-hidden">
@@ -177,44 +179,45 @@ export function CaseStudies() {
                 </div>
               </div>
               <div className="md:col-span-3 p-6 md:p-10 bg-gradient-to-br from-blue-50/60 to-indigo-50/40">
-                <div className="flex items-center gap-5 mb-4 justify-center text-xs font-semibold text-slate-600">
+                <div className="flex items-center gap-5 mb-4 justify-center text-xs font-semibold text-slate-600 flex-wrap">
                   <span className="flex items-center gap-2">
                     <span className="w-3 h-1.5 rounded-full bg-blue-600 inline-block" />
-                    {t.featured.legendPerformance}
+                    {t.featured.legendCheckins}
                   </span>
                   <span className="flex items-center gap-2">
                     <span className="w-3 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                    {t.featured.legendSatisfaction}
+                    {t.featured.legendCheckouts}
                   </span>
+                  <span className="text-slate-400 font-medium">({t.daysUnit})</span>
                 </div>
                 <p className="sr-only">{t.featuredChartSummary}</p>
                 <div className="h-64 md:h-80" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={performanceData} margin={{ top: 10, right: 16, left: -14, bottom: 0 }}>
+                    <LineChart data={featuredData} margin={{ top: 10, right: 16, left: -14, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
                       <XAxis
                         dataKey="m"
-                        tickFormatter={monthLabel}
+                        tickFormatter={featuredMonthLabel}
                         tick={{ fontSize: 11, fill: "#64748b" }}
                         axisLine={false}
                         tickLine={false}
-                       
                       />
                       <YAxis
-                        domain={[40, 100]}
+                        domain={[8, 16]}
                         tick={{ fontSize: 11, fill: "#64748b" }}
                         axisLine={false}
                         tickLine={false}
                         orientation={isRtl ? "right" : "left"}
                       />
                       <Tooltip
-                        labelFormatter={(v) => monthLabel(Number(v))}
+                        labelFormatter={(v) => featuredMonthLabel(Number(v))}
+                        formatter={(value: number, name: string) => [`${value} ${t.daysUnit}`, name]}
                         contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 12 }}
                       />
                       <Line
                         type="monotone"
-                        dataKey="performance"
-                        name={t.featured.legendPerformance}
+                        dataKey="checkins"
+                        name={t.featured.legendCheckins}
                         stroke="#2563eb"
                         strokeWidth={3}
                         dot={{ r: 4, fill: "#2563eb", strokeWidth: 2, stroke: "#fff" }}
@@ -222,8 +225,8 @@ export function CaseStudies() {
                       />
                       <Line
                         type="monotone"
-                        dataKey="satisfaction"
-                        name={t.featured.legendSatisfaction}
+                        dataKey="checkouts"
+                        name={t.featured.legendCheckouts}
                         stroke="#10b981"
                         strokeWidth={3}
                         dot={{ r: 4, fill: "#10b981", strokeWidth: 2, stroke: "#fff" }}
@@ -239,8 +242,8 @@ export function CaseStudies() {
           {/* Two smaller cards with sparkline areas */}
           {t.cards.map((card, idx) => {
             const Icon = card.icon;
-            const data = idx === 0 ? latenessData : returnData;
-            const color = idx === 0 ? "#f59e0b" : "#2563eb";
+            const data = idx === 0 ? checkoutData : pointsData;
+            const color = idx === 0 ? "#2563eb" : "#f59e0b";
             const gradId = `case-grad-${idx}`;
             return (
               <div

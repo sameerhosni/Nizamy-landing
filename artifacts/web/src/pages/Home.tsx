@@ -7,6 +7,7 @@ import { ReturnModel } from "@/components/sections/ReturnModel";
 import { ROIDashboard } from "@/components/sections/ROIDashboard";
 import { Calculator } from "@/components/sections/Calculator";
 import { Features } from "@/components/sections/Features";
+import { CaseStudies } from "@/components/sections/CaseStudies";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 
@@ -66,6 +67,7 @@ export function Home() {
           effectiveCost={effectiveCost}
         />
         <Features />
+        <CaseStudies />
         <DesignPartner snapshot={snapshot} />
       </main>
       <Footer />

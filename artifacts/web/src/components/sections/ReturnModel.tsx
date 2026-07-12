@@ -29,7 +29,7 @@ export function ReturnModel() {
         {
           num: "03",
           title: "Recover your value",
-          desc: "Employees earn through engagement; you redeem the value back into the system."
+          desc: "Employee commitment rises, late arrivals and early departures drop, and employees earn reward points to redeem in the system — the benefit comes back to you at no extra cost."
         }
       ]
     },
@@ -54,7 +54,7 @@ export function ReturnModel() {
         {
           num: "٠٣",
           title: "استرد قيمتك",
-          desc: "يكتسب الموظفون النقاط من خلال التفاعل؛ وتسترد أنت القيمة في النظام."
+          desc: "يزيد التزام الموظفين وتقل ساعات التأخير أو الانصراف المبكر، ويكتسب الموظفون نقاط المكافآت لاستبدالها بمكافآت من النظام — وتعود الفائدة عليك دون الحاجة إلى دفع أموال أخرى."
         }
       ]
     }

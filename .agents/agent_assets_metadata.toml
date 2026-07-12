@@ -96,3 +96,21 @@ id = "KEWt9nRdZLxmBggxuN8f2"
 uri = "file://artifacts/web/public/images/logo-nizamy.png"
 type = "image"
 title = "Nizamy logo mark"
+
+[[generated]]
+id = "Hb4rycn-DGRwdlidiGZlV"
+uri = "file://artifacts/web/public/images/features-ai-selfservice.png"
+type = "image"
+title = "AI chatbot feature scene"
+
+[[generated]]
+id = "gBgvyQKwg5A_Dxd_Rf8K6"
+uri = "file://artifacts/web/public/images/features-motivation.png"
+type = "image"
+title = "motivation rewards podium scene"
+
+[[generated]]
+id = "-fZk1fJsBclorPx4KikNI"
+uri = "file://artifacts/web/public/images/features-ai-selfservice-v2.png"
+type = "image"
+title = "AI chatbot scene clean"

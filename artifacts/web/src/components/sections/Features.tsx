@@ -28,8 +28,8 @@ const content = {
       {
         name: "Employee Self-Service",
         desc: "Employees handle requests, documents, and approvals themselves — instantly, through an AI chat assistant that speaks their language, so HR never has to be the middleman.",
-        images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
-        imageAlts: ["Self-service home screen with quick requests and AI assistant", "AI self-service chat assistant"],
+        illustration: "/images/features-ai-selfservice-v2.png",
+        illustrationAlt: "AI chat assistant handling employee requests",
         bullets: [
           "Leave requests, shift changes, and early-leave approvals in seconds",
           "Direct escalation to HR only when it's truly needed",
@@ -40,8 +40,8 @@ const content = {
       {
         name: "Performance & Rewards Management",
         desc: "Set goals, run review cycles, and link outcomes directly to rewards — turning good performance into points employees can actually redeem.",
-        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
-        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards", "Company performance dashboard with attendance and commitment KPIs"],
+        illustration: "/images/features-motivation.png",
+        illustrationAlt: "Trophy podium with rewards, coins, and rising performance",
         bullets: [
           "Leaderboards and peer appreciation that keep the whole team engaged",
           "XP points earned from performance, redeemable in a real rewards marketplace",
@@ -83,8 +83,8 @@ const content = {
       {
         name: "خدمات الموظفين الذاتية",
         desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً في كل مرة.",
-        images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
-        imageAlts: ["الشاشة الرئيسية للخدمة الذاتية مع طلبات سريعة ومساعد ذكي", "مساعد ذكي للخدمة الذاتية عبر المحادثة"],
+        illustration: "/images/features-ai-selfservice-v2.png",
+        illustrationAlt: "مساعد ذكاء اصطناعي ينجز طلبات الموظفين",
         bullets: [
           "طلبات الإجازة وتبديل الورديات والمغادرة المبكرة خلال ثوانٍ",
           "تصعيد مباشر للموارد البشرية فقط عند الحاجة الفعلية",
@@ -95,8 +95,8 @@ const content = {
       {
         name: "إدارة الأداء والمكافآت",
         desc: "اربط الأهداف بدورات التقييم والمكافآت مباشرة — وحوّل الأداء الجيد إلى نقاط يستبدلها الموظف فعلياً.",
-        images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
-        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال", "لوحة أداء الشركة مع مؤشرات الحضور والالتزام"],
+        illustration: "/images/features-motivation.png",
+        illustrationAlt: "منصة تتويج مع مكافآت وعملات وأداء متصاعد",
         bullets: [
           "لوحات صدارة وتقدير بين الزملاء تُبقي الفريق كله متفاعلاً",
           "نقاط خبرة تُكتسب من الأداء، قابلة للاستبدال في سوق مكافآت حقيقي",
@@ -172,6 +172,8 @@ export function Features() {
             if ("showcase" in card && card.showcase) {
               const images = "images" in card ? card.images : undefined;
               const imageAlts = "imageAlts" in card ? card.imageAlts : undefined;
+              const illustration = "illustration" in card ? card.illustration : undefined;
+              const illustrationAlt = "illustrationAlt" in card ? card.illustrationAlt : undefined;
               const { bullets } = card;
 
               return (
@@ -203,7 +205,18 @@ export function Features() {
                     </div>
                     <div className="relative flex items-center justify-center gap-4 py-14 md:py-20 px-8 order-1 md:order-none overflow-hidden" style={{ background: "linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 55%, #EDE9FE 100%)" }}>
                       <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 60% 20%, rgba(37,99,235,0.12) 0%, transparent 65%), radial-gradient(ellipse at 30% 80%, rgba(99,102,241,0.10) 0%, transparent 60%)" }} />
-                      {images && images.length > 0 && (
+                      {illustration && (
+                        <div className="relative w-[290px] h-[290px] sm:w-[360px] sm:h-[360px] transition-transform duration-500 group-hover:-translate-y-2">
+                          <div className="absolute inset-8 rounded-full bg-blue-200/50 blur-2xl" />
+                          <img
+                            src={illustration}
+                            alt={illustrationAlt ?? ""}
+                            loading="lazy"
+                            className="relative w-full h-full object-contain drop-shadow-xl"
+                          />
+                        </div>
+                      )}
+                      {!illustration && images && images.length > 0 && (
                         <>
                           {images.map((img, imgIdx) => {
                             const isTriple = images.length >= 3;

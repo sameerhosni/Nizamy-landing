@@ -78,10 +78,10 @@ const content = {
 
 const cardMeta: { image: string; icon: typeof Fingerprint }[] = [
   { image: "/images/services/attendance.png", icon: Fingerprint },
-  { image: "/images/services/self-service.png", icon: CalendarCheck },
+  { image: "/images/services/self-service-v2.png", icon: CalendarCheck },
   { image: "/images/services/ai-assistant.png", icon: Bot },
   { image: "/images/services/performance.png", icon: Activity },
-  { image: "/images/services/rewards.png", icon: Gift },
+  { image: "/images/services/rewards-v2.png", icon: Gift },
   { image: "/images/services/reports.png", icon: BarChart3 },
   { image: "/images/services/tasks.png", icon: ListChecks },
 ];

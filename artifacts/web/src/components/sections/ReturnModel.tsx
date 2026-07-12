@@ -19,7 +19,7 @@ export function ReturnModel() {
         {
           num: "01",
           title: "Activate your team",
-          desc: "Less lateness, less turnover, more focus → hours saved → riyals saved."
+          desc: "Less lateness, less turnover, more focus → hours saved."
         },
         {
           num: "02",
@@ -44,7 +44,7 @@ export function ReturnModel() {
         {
           num: "٠١",
           title: "فعّل فريقك",
-          desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر ← ساعات موفرة ← ريالات موفرة."
+          desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر ← ساعات موفرة."
         },
         {
           num: "٠٢",

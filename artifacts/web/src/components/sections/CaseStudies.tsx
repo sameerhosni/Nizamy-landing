@@ -215,6 +215,7 @@ export function CaseStudies() {
                         contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 12 }}
                       />
                       <Line
+                        isAnimationActive={false}
                         type="monotone"
                         dataKey="checkins"
                         name={t.featured.legendCheckins}
@@ -224,6 +225,7 @@ export function CaseStudies() {
                         activeDot={{ r: 6 }}
                       />
                       <Line
+                        isAnimationActive={false}
                         type="monotone"
                         dataKey="checkouts"
                         name={t.featured.legendCheckouts}
@@ -243,8 +245,9 @@ export function CaseStudies() {
           {t.cards.map((card, idx) => {
             const Icon = card.icon;
             const data = idx === 0 ? checkoutData : pointsData;
-            const color = idx === 0 ? "#2563eb" : "#f59e0b";
+            const color = "#2563eb";
             const gradId = `case-grad-${idx}`;
+            const smallMonthLabel = (i: number) => t.smallMonths[i] ?? "";
             return (
               <div
                 key={idx}
@@ -269,23 +272,32 @@ export function CaseStudies() {
                   </div>
                 </div>
                 <p className="sr-only">{t.cardChartSummaries[idx]}</p>
-                <div className="h-28 mt-auto" dir="ltr" aria-hidden="true">
+                <div className="h-44 mt-auto px-6 pb-6" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={data} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
+                    <AreaChart data={data} margin={{ top: 10, right: 12, left: 12, bottom: 0 }}>
                       <defs>
                         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={color} stopOpacity={0.25} />
+                          <stop offset="0%" stopColor={color} stopOpacity={0.18} />
                           <stop offset="100%" stopColor={color} stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <XAxis dataKey="m" hide />
+                      <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
+                      <XAxis
+                        dataKey="m"
+                        tickFormatter={smallMonthLabel}
+                        tick={{ fontSize: 11, fill: "#64748b" }}
+                        axisLine={false}
+                        tickLine={false}
+                      />
+                      <YAxis hide domain={["dataMin - 0.5", "dataMax + 0.5"]} />
                       <Area
+                        isAnimationActive={false}
                         type="monotone"
                         dataKey="v"
                         stroke={color}
-                        strokeWidth={2.5}
+                        strokeWidth={3}
                         fill={`url(#${gradId})`}
-                        dot={false}
+                        dot={{ r: 4, fill: color, strokeWidth: 2, stroke: "#fff" }}
                       />
                     </AreaChart>
                   </ResponsiveContainer>

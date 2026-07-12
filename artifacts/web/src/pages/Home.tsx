@@ -3,7 +3,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { Services } from "@/components/sections/Services";
-import { TrustBar } from "@/components/sections/TrustBar";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { ROIDashboard } from "@/components/sections/ROIDashboard";
 import { Calculator } from "@/components/sections/Calculator";
@@ -51,7 +50,6 @@ export function Home() {
         <Hero />
         <StatsBar />
         <Services />
-        <TrustBar />
         <ReturnModel />
         <ROIDashboard />
         <Calculator 

@@ -279,7 +279,6 @@ export function Calculator({
                       <span className="flex items-center gap-2">
                         <row.Icon size={14} className="text-blue-400" />
                         {row.label}
-                        <span className="text-slate-600 ml-1 bg-slate-800 px-1.5 rounded text-[10px]">{row.pct}%</span>
                       </span>
                       <span className="text-slate-200">{formatCurrency(row.value, "SAR", language)}</span>
                     </div>

@@ -8,15 +8,15 @@ export function StatsBar() {
 
   const stats = {
     en: [
-      { value: "0", label: "Penalties" },
-      { value: "SAR 3", label: "Starting price" },
-      { value: "1 min", label: "To register" },
+      { value: "0", label: "No penalties for employees" },
+      { value: "SAR 3", label: "Starting price per employee monthly" },
+      { value: "1 min", label: "One minute to your first check-in and check-out" },
       { value: "30%", label: "Max annual return" },
     ],
     ar: [
-      { value: "٠", label: "غرامات" },
-      { value: "٣ ر.س", label: "سعر البدء" },
-      { value: "دقيقة", label: "للتسجيل" },
+      { value: "٠", label: "بدون غرامات للموظفين" },
+      { value: "٣ ر.س", label: "سعر البدء للموظف شهرياً" },
+      { value: "دقيقة", label: "دقيقة واحدة حتى إثبات أول حضور وانصراف" },
       { value: "30%", label: "حد أقصى للعائد" },
     ],
   };

@@ -117,11 +117,11 @@
   --app-font-mono: Menlo, monospace;
   --radius: 1rem; /* ~16px for soft rounded cards */
 
-  /* Mr-Hr brand palette */
-  --mrhr-blue: #2563EB;
-  --mrhr-blue-light: #60A5FA;
-  --mrhr-blue-dark: #1E3A8A;
-  --mrhr-surface: #FFFFFF;
+  /* Nizamy brand palette */
+  --nizamy-blue: #2563EB;
+  --nizamy-blue-light: #60A5FA;
+  --nizamy-blue-dark: #1E3A8A;
+  --nizamy-surface: #FFFFFF;
 }
 
 [dir="rtl"] {
@@ -154,7 +154,7 @@
 
 .text-gradient-primary {
   @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(90deg, var(--mrhr-blue), var(--mrhr-blue-light));
+  background-image: linear-gradient(90deg, var(--nizamy-blue), var(--nizamy-blue-light));
   -webkit-background-clip: text;
 }
 
@@ -211,7 +211,7 @@ h3 {
   inset-inline-start: 0;
   width: 100%;
   height: 2px;
-  background: var(--mrhr-blue);
+  background: var(--nizamy-blue);
   transform: scaleX(0);
   transform-origin: inline-start;
   transition: transform 0.3s ease;

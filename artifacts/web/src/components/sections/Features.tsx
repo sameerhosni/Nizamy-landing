@@ -3,7 +3,7 @@ import { useLanguage } from "@/lib/i18n";
 
 const content = {
   en: {
-    eyebrow: "How Mr-Hr Works",
+    eyebrow: "How Nizamy Works",
     titlePart1: "A performance system first. ",
     titlePart2: "A return because of it.",
     subtitle: "Six pillars that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
@@ -58,7 +58,7 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "كيف يعمل مستر إتش آر",
+    eyebrow: "كيف يعمل نظامي",
     titlePart1: "نظام لإدارة الأداء أولاً، ",
     titlePart2: "والعائد نتيجة طبيعية.",
     subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
@@ -108,7 +108,7 @@ const content = {
       {
         name: "تحفيزي وليس عقابي",
         dark: true,
-        desc: "نظام يركز على التحفيز بدل العقوبات — كل ميزة في مستر إتش آر مصممة لمكافأة الأداء الجيد.",
+        desc: "نظام يركز على التحفيز بدل العقوبات — كل ميزة في نظامي مصممة لمكافأة الأداء الجيد.",
       },
     ],
   },

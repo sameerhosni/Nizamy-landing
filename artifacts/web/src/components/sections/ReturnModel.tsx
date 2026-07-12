@@ -13,7 +13,7 @@ export function ReturnModel() {
       titlePart1: "Perform well. ",
       titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
-      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Mr-Hr, the more comes back — here's exactly where every riyal comes from.",
+      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Nizamy, the more comes back — here's exactly where every riyal comes from.",
       clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and estimated savings from better performance — not a flat cash refund.",
       layers: [
         {
@@ -24,7 +24,7 @@ export function ReturnModel() {
         {
           num: "02",
           title: "Reward performance",
-          desc: "Mr-Hr funds rewards for your best people at no extra cost to you."
+          desc: "Nizamy funds rewards for your best people at no extra cost to you."
         },
         {
           num: "03",
@@ -38,7 +38,7 @@ export function ReturnModel() {
       titlePart1: "الأداء الجيد يعيد إليك حتى ",
       titlePart2: "30%",
       titlePart3: " كل عام.",
-      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت مستر إتش آر بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
+      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت نظامي بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
       clarifier: "وش يعني عائد ٪30؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، ووفورات مقدّرة من تحسّن الأداء — وليس استرداداً نقدياً ثابتاً.",
       layers: [
         {
@@ -49,7 +49,7 @@ export function ReturnModel() {
         {
           num: "٠٢",
           title: "كافئ الأداء",
-          desc: "مستر إتش آر يمول مكافآت لأفضل موظفيك دون أي تكلفة إضافية عليك."
+          desc: "نظامي يمول مكافآت لأفضل موظفيك دون أي تكلفة إضافية عليك."
         },
         {
           num: "٠٣",

@@ -8,30 +8,30 @@ export function Problem() {
   const content = {
     en: {
       headingPart1: "Other systems drain your money. ",
-      headingPart2: "Mr-Hr saves it for you.",
+      headingPart2: "Nizamy saves it for you.",
       subhead: "Same monthly fee. Completely different math. One drains your budget every month — the other puts money back in it.",
       legacy: {
         tag: "The old way",
         title: "Pure cost",
         points: ["Pure software cost", "Penalties and deductions", "Chasing employees to use it", "Time wasted on admin"]
       },
-      mrhr: {
-        tag: "The Mr-Hr way",
+      nizamy: {
+        tag: "The Nizamy way",
         title: "A source of return",
         points: ["Return that grows with your team's performance", "Rewards and motivation", "Employees engage automatically", "Time saved is money earned"]
       }
     },
     ar: {
       headingPart1: "الأنظمة الأخرى تستنزف أموالك. ",
-      headingPart2: "مستر إتش آر يوفّرها لك.",
+      headingPart2: "نظامي يوفّرها لك.",
       subhead: "نفس الرسوم الشهرية. حسبة مختلفة تماماً. أحدهما يستنزف ميزانيتك كل شهر — والآخر يعيد المال إليها.",
       legacy: {
         tag: "الطريقة القديمة",
         title: "تكلفة بحتة",
         points: ["تكلفة برمجيات بحتة تُدفع ولا تعود", "غرامات وخصومات على الموظفين", "ملاحقة الموظفين لاستخدام النظام", "إهدار وقت الإدارة في المتابعة اليدوية"]
       },
-      mrhr: {
-        tag: "طريقة مستر إتش آر",
+      nizamy: {
+        tag: "طريقة نظامي",
         title: "مصدر عائد",
         points: ["عائد يكبر مع أداء فريقك", "مكافآت وتحفيز بدل العقوبات", "تفاعل تلقائي من الموظفين", "الوقت الموفّر هو مال مكتسب"]
       }
@@ -54,16 +54,16 @@ export function Problem() {
         <div className="relative max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-8 items-center">
 
-            {/* Mr-Hr Card — elevated, bordered, badge tab overlapping top edge */}
+            {/* Nizamy Card — elevated, bordered, badge tab overlapping top edge */}
             <div className="relative rounded-3xl bg-white border-2 border-blue-500 p-8 md:p-10 pt-10 md:pt-10 shadow-soft" style={{ boxShadow: "0 20px 40px -15px rgba(37, 99, 235, 0.15)" }}>
               <span
                 className="absolute -top-4 start-8 inline-block text-sm font-bold text-white rounded-full px-4 py-1.5 shadow-md bg-blue-600"
               >
-                {t.mrhr.tag}
+                {t.nizamy.tag}
               </span>
-              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-blue-600">{t.mrhr.title}</h3>
+              <h3 className="text-2xl md:text-[28px] font-heading font-extrabold mb-8 text-blue-600">{t.nizamy.title}</h3>
               <ul className="space-y-6">
-                {t.mrhr.points.map((point, idx) => {
+                {t.nizamy.points.map((point, idx) => {
                   const iconEl = (
                     <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
                       <Check size={16} className="text-blue-600" strokeWidth={3} />

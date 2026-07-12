@@ -1,6 +1,6 @@
-# Mr-Hr
+# Nizamy
 
-A bilingual (EN/AR, full RTL) high-converting landing page for Mr-Hr — an AI-powered HR system for Saudi SMEs that returns up to 30% of subscription back to the customer. Includes a live return calculator and a Design Partner lead capture form backed by Postgres.
+A bilingual (EN/AR, full RTL) high-converting landing page for Nizamy (نظامي, formerly Mr-Hr) — an AI-powered HR system for Saudi SMEs that returns up to 30% of subscription back to the customer. Includes a live return calculator and a Design Partner lead capture form backed by Postgres.
 
 ## Run & Operate
 

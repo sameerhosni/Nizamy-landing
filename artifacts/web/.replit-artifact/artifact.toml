@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "Mr-Hr"
+title = "Nizamy"
 version = "1.0.0"
 id = "artifacts/web"
 router = "path"

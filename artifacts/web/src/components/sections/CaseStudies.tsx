@@ -10,6 +10,7 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  LabelList,
 } from "recharts";
 
 // Client 3 (featured): Aug–Dec 2025 — on-time check-ins & check-outs (days/employee/month)
@@ -193,7 +194,7 @@ export function CaseStudies() {
                 <p className="sr-only">{t.featuredChartSummary}</p>
                 <div className="h-64 md:h-80" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={featuredData} margin={{ top: 10, right: 16, left: -14, bottom: 0 }}>
+                    <LineChart data={featuredData} margin={{ top: 16, right: 24, left: 20, bottom: 8 }}>
                       <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
                       <XAxis
                         dataKey="m"
@@ -223,7 +224,15 @@ export function CaseStudies() {
                         strokeWidth={3}
                         dot={{ r: 4, fill: "#2563eb", strokeWidth: 2, stroke: "#fff" }}
                         activeDot={{ r: 6 }}
-                      />
+                      >
+                        <LabelList
+                          dataKey="checkins"
+                          position="bottom"
+                          offset={10}
+                          formatter={(v: number) => v.toFixed(1)}
+                          style={{ fontSize: 11, fontWeight: 700, fill: "#2563eb" }}
+                        />
+                      </Line>
                       <Line
                         isAnimationActive={false}
                         type="monotone"
@@ -233,7 +242,15 @@ export function CaseStudies() {
                         strokeWidth={3}
                         dot={{ r: 4, fill: "#10b981", strokeWidth: 2, stroke: "#fff" }}
                         activeDot={{ r: 6 }}
-                      />
+                      >
+                        <LabelList
+                          dataKey="checkouts"
+                          position="top"
+                          offset={10}
+                          formatter={(v: number) => v.toFixed(1)}
+                          style={{ fontSize: 11, fontWeight: 700, fill: "#10b981" }}
+                        />
+                      </Line>
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
@@ -274,7 +291,7 @@ export function CaseStudies() {
                 <p className="sr-only">{t.cardChartSummaries[idx]}</p>
                 <div className="h-44 mt-auto px-6 pb-6" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={data} margin={{ top: 10, right: 12, left: 12, bottom: 0 }}>
+                    <AreaChart data={data} margin={{ top: 20, right: 28, left: 28, bottom: 0 }}>
                       <defs>
                         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
                           <stop offset="0%" stopColor={color} stopOpacity={0.18} />
@@ -298,7 +315,17 @@ export function CaseStudies() {
                         strokeWidth={3}
                         fill={`url(#${gradId})`}
                         dot={{ r: 4, fill: color, strokeWidth: 2, stroke: "#fff" }}
-                      />
+                      >
+                        <LabelList
+                          dataKey="v"
+                          position="top"
+                          offset={10}
+                          formatter={(v: number) =>
+                            idx === 0 ? v.toFixed(1) : v.toLocaleString()
+                          }
+                          style={{ fontSize: 11, fontWeight: 700, fill: color }}
+                        />
+                      </Area>
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>

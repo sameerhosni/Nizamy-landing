@@ -14,7 +14,7 @@ export function ReturnModel() {
       titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
       subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Nizamy, the more comes back — here's exactly where every riyal comes from.",
-      clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and estimated savings from better performance — not a flat cash refund.",
+      clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and the value of time saved through better employee performance.",
       layers: [
         {
           num: "01",
@@ -39,7 +39,7 @@ export function ReturnModel() {
       titlePart2: "30%",
       titlePart3: " كل عام.",
       subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت نظامي بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
-      clarifier: "وش يعني عائد ٪30؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، ووفورات مقدّرة من تحسّن الأداء — وليس استرداداً نقدياً ثابتاً.",
+      clarifier: "وش يعني عائد ٪30؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، وقيمة الوقت المتوفر من تحسّن أداء الموظفين.",
       layers: [
         {
           num: "٠١",

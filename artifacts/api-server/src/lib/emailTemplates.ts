@@ -420,6 +420,167 @@ export function getEmailHTML(
 </html>`;
 }
 
+const returningChrome = {
+  ar: {
+    subject: "أهلًا بعودتك إلى نظامي — أنت على القائمة",
+    greeting: "أهلًا بعودتك {{name}}،",
+    intro: "طلبك وصلنا من قبل وأنت محجوز معنا — هذا تذكير سريع بما ينتظرك.",
+    headline1: "نظام موارد بشرية",
+    headline2: "يرجع لك <span style=\"color:#1A6BF5\">قيمة.</span>",
+    sub: "ربط الحضور والأداء والمكافآت يحوّل التشغيل اليومي إلى عائد حقيقي لمنشأتك.",
+    statPill: "عائد سنوي محتمل",
+    statNum: "حتى 30%",
+    statSub: "من اشتراكك يرجع لك",
+    cta: "احجز وصولك المجاني",
+    ctaNote: "بدون التزام · بدون بطاقة ائتمان",
+    features: [
+      ["&#128101;", "الحضور بذكاء"],
+      ["&#128203;", "إدارة الموظفين"],
+      ["&#127873;", "مكافآت تحفّز الفريق"],
+      ["&#9889;", "أتمتة ذكية"],
+    ],
+    footerTag: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
+    website: "الموقع",
+    contact: "تواصل معنا",
+    rights: "© 2026 نظامي. جميع الحقوق محفوظة.",
+  },
+  en: {
+    subject: "Welcome back to Nizamy — you're already on the list",
+    greeting: "Welcome back {{name}},",
+    intro: "We already have your request and your spot is saved — here's a quick reminder of what's waiting for you.",
+    headline1: "An HR system that",
+    headline2: "pays you <span style=\"color:#1A6BF5\">value.</span>",
+    sub: "Connecting attendance, performance, and rewards turns daily operations into real returns for your business.",
+    statPill: "Potential annual return",
+    statNum: "Up to 30%",
+    statSub: "of your subscription back",
+    cta: "Reserve your free access",
+    ctaNote: "No commitment · No credit card",
+    features: [
+      ["&#128101;", "Smart attendance"],
+      ["&#128203;", "Employee management"],
+      ["&#127873;", "Rewards that motivate"],
+      ["&#9889;", "Smart automation"],
+    ],
+    footerTag: "AI-powered HR for Saudi SMEs",
+    website: "Website",
+    contact: "Contact",
+    rights: "© 2026 Nizamy. All rights reserved.",
+  },
+} as const;
+
+export function getReturningEmailHTML(
+  name: string,
+  trialLink: string,
+  lang: EmailLang,
+  hasLogo = true,
+): string {
+  const rtl = lang === "ar";
+  const dir = rtl ? "rtl" : "ltr";
+  const align = rtl ? "right" : "left";
+  const c = returningChrome[lang];
+  const safeLink = escapeHtml(trialLink);
+  const greeting = escapeHtml(c.greeting.replace("{{name}}", name));
+  const logoCell = hasLogo
+    ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="30" height="34" alt="Nizamy" style="display:block;border:0" /></td>`
+    : "";
+
+  const featureCells = c.features
+    .map(
+      ([icon, label]) =>
+        `<td align="center" width="25%" style="padding:6px 4px"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" style="background:${colors.sky};border:1px solid ${colors.rule};border-radius:12px;padding:14px 6px"><div style="font-size:20px;line-height:1">${icon}</div><div style="font-family:${fontStack};font-size:11px;font-weight:bold;color:${colors.navy};margin-top:8px">${escapeHtml(label)}</div></td></tr></table></td>`,
+    )
+    .join("");
+
+  return `<!DOCTYPE html>
+<html dir="${dir}">
+<body style="margin:0;padding:0;background:${colors.pageBg}">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${colors.pageBg}">
+    <tr><td align="center" style="padding:28px 12px">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;border-radius:22px;overflow:hidden;background:#FFFFFF">
+
+        <tr><td dir="${dir}" style="background:${colors.navy};padding:18px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+            ${logoCell}
+            <td style="vertical-align:middle;font-family:${fontStack};font-size:19px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
+          </tr></table>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:#FFFFFF;padding:36px 40px 30px 40px">
+          <p style="margin:0 0 6px 0;${bodyStyle}font-weight:bold;font-size:16px;color:${colors.navy};text-align:${align}">${greeting}</p>
+          <p style="margin:0 0 26px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.intro)}</p>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <td width="52%" style="vertical-align:middle;padding-${rtl ? "left" : "right"}:16px">
+                <div style="font-family:${fontStack};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:${align}">${c.headline1}<br/>${c.headline2}</div>
+                <p style="margin:14px 0 22px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.sub)}</p>
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td>
+                  <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${fontStack};font-size:14px;font-weight:800;text-decoration:none;border-radius:12px;padding:13px 30px">${escapeHtml(c.cta)}</a>
+                </td></tr></table>
+              </td>
+              <td width="48%" align="center" style="vertical-align:middle">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" style="background:linear-gradient(160deg,#F3F6FF,#EAF0FF);background-color:#F0F4FF;border-radius:18px;padding:28px 16px">
+                  <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:11px;font-weight:bold;padding:6px 16px;border-radius:16px">${escapeHtml(c.statPill)}</span>
+                  <div style="font-family:${fontStack};font-size:46px;font-weight:800;color:${colors.blue};margin-top:14px;line-height:1">${escapeHtml(c.statNum)}</div>
+                  <div style="font-family:${fontStack};font-size:12px;color:${colors.muted};margin-top:10px">${escapeHtml(c.statSub)}</div>
+                </td></tr></table>
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:#FFFFFF;padding:0 40px 34px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>${featureCells}</tr></table>
+          <div style="text-align:center;margin-top:18px;font-family:${fontStack};font-size:12px;color:${colors.muted}">${escapeHtml(c.ctaNote)}</div>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:${colors.navy};padding:26px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+            <td align="${align}">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                ${logoCell}
+                <td style="vertical-align:middle;font-family:${fontStack};font-size:16px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
+              </tr></table>
+              <div style="font-family:${fontStack};font-size:11px;color:#AAB8E8;margin-top:6px">${escapeHtml(c.footerTag)}</div>
+            </td>
+            <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
+              <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">${escapeHtml(c.website)}</a>
+              <span style="font-family:${fontStack};font-size:12px;color:#3D5299">&nbsp;·&nbsp;</span>
+              <a href="mailto:sales@muntej.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">${escapeHtml(c.contact)}</a>
+            </td>
+          </tr></table>
+          <div style="text-align:center;font-family:${fontStack};font-size:10px;color:#5A6CB0;margin-top:18px">${escapeHtml(c.rights)}</div>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+export function renderReturningLeadEmail(
+  name: string,
+  trialLink: string,
+  lang: EmailLang,
+  hasLogo = true,
+): RenderedEmail {
+  const c = returningChrome[lang];
+  const html = getReturningEmailHTML(name, trialLink, lang, hasLogo);
+  const text = [
+    c.greeting.replace("{{name}}", name),
+    "",
+    c.intro,
+    "",
+    `${c.statPill}: ${c.statNum} — ${c.statSub}`,
+    "",
+    `${c.cta}: ${trialLink}`,
+    "",
+    "نظامي · Nizamy — www.nizamy.app",
+  ].join("\n");
+  return { subject: c.subject, html, text };
+}
+
 function renderText(content: LangContent, name: string): string {
   const lines: string[] = [content.greeting.replace("{{name}}", name), ""];
   for (const block of content.blocks) {

@@ -3,7 +3,12 @@ import { existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { logger } from "./logger";
-import { renderLeadEmail, resolveTemplateId, type EmailLang } from "./emailTemplates";
+import {
+  renderLeadEmail,
+  renderReturningLeadEmail,
+  resolveTemplateId,
+  type EmailLang,
+} from "./emailTemplates";
 
 const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT ?? "587");
@@ -41,7 +46,10 @@ export interface LeadEmailData {
   language?: EmailLang;
 }
 
-export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
+export async function sendLeadConfirmation(
+  lead: LeadEmailData,
+  isReturning = false,
+): Promise<void> {
   if (!isMailerConfigured()) {
     logger.warn("SMTP not configured; skipping lead confirmation email");
     return;
@@ -64,7 +72,9 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
     logger.warn({ logoCandidates }, "Logo asset not found; sending email without embedded logo");
   }
 
-  const { subject, html, text } = renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo);
+  const { subject, html, text } = isReturning
+    ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo)
+    : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo);
 
   const attachments = hasLogo
     ? [{ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" }]
@@ -81,7 +91,13 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
   });
 
   logger.info(
-    { template: templateId, lang, name: lead.name, email: lead.email, company: lead.company },
+    {
+      template: isReturning ? "returning" : templateId,
+      lang,
+      name: lead.name,
+      email: lead.email,
+      company: lead.company,
+    },
     "Lead confirmation email sent",
   );
 }

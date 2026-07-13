@@ -1,4 +1,5 @@
 import { Router, type IRouter } from "express";
+import { sql } from "drizzle-orm";
 import { CreateLeadBody } from "@workspace/api-zod";
 import { db, leadsTable } from "@workspace/db";
 import { sendLeadConfirmation } from "../lib/mailer";
@@ -30,6 +31,15 @@ router.post("/lead", async (req, res) => {
     })
     .returning();
 
+  const earlier = await db
+    .select({ id: leadsTable.id })
+    .from(leadsTable)
+    .where(
+      sql`lower(${leadsTable.email}) = lower(${lead.email}) and ${leadsTable.id} < ${lead.id}`,
+    )
+    .limit(1);
+  const isReturning = earlier.length > 0;
+
   sendLeadConfirmation({
     name: lead.name,
     company: lead.company,
@@ -42,7 +52,7 @@ router.post("/lead", async (req, res) => {
     totalReturn: lead.totalReturn,
     createdAt: lead.createdAt.toISOString(),
     language: input.language === "en" ? "en" : "ar",
-  }).catch((err) => {
+  }, isReturning).catch((err) => {
     req.log.error({ err }, "Failed to send lead confirmation email");
   });
 

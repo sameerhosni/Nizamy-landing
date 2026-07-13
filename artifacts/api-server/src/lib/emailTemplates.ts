@@ -245,19 +245,23 @@ export function resolveTemplateId(raw: string | undefined): TemplateId {
   return raw === "02" || raw === "03" ? raw : "01";
 }
 
-const fontStack = "'Segoe UI',Tahoma,Arial,Helvetica,sans-serif";
-const bodyStyle = `font-family:${fontStack};font-size:15px;color:#2A3660;line-height:1.8;`;
+const fontStack = "'IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,Helvetica,sans-serif";
+const headingFont = {
+  ar: "'Cairo','IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif",
+  en: "'Tajawal','IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif",
+} as const;
+const fontHead = `<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800;900&display=swap" rel="stylesheet"><style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Cairo:wght@700;800;900&family=Tajawal:wght@700;800;900&display=swap');</style>`;
+const bodyStyle = `font-family:${fontStack};font-size:15px;color:#334155;line-height:1.9;`;
 
 const colors = {
-  pageBg: "#EEF1FF",
-  navy: "#0D1F5C",
-  blue: "#1A6BF5",
-  blueDark: "#1250C4",
-  pink: "#E0339A",
-  sky: "#EEF2FF",
-  muted: "#6B7FBA",
-  rule: "#DDE3F8",
-  headerBg: "#F3F2FF",
+  pageBg: "#F1F5F9",
+  navy: "#0F172A",
+  blue: "#2563EB",
+  blueDark: "#1D4ED8",
+  sky: "#EFF6FF",
+  muted: "#64748B",
+  rule: "#E2E8F0",
+  headerBg: "#F8FAFF",
 };
 
 function renderBlock(block: Block, rtl: boolean): string {
@@ -274,7 +278,7 @@ function renderBlock(block: Block, rtl: boolean): string {
         )
         .join("");
     case "callout":
-      return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0"><tr><td style="background:#FFFFFF;border:1px solid ${colors.rule};border-${side}:4px solid ${colors.blue};border-radius:14px;padding:16px 20px"><div style="font-family:${fontStack};font-size:26px;font-weight:bold;color:${colors.blue};line-height:1">&#8220;</div><div style="${bodyStyle}font-weight:bold;color:${colors.navy};text-align:${align}"><em>${escapeHtml(block.text)}</em></div></td></tr></table>`;
+      return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0"><tr><td style="background:${colors.sky};border-${side}:4px solid ${colors.blue};border-radius:10px;padding:14px 18px"><div style="${bodyStyle}font-weight:bold;color:${colors.navy};text-align:${align}">${escapeHtml(block.text)}</div></td></tr></table>`;
     case "vision":
       return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0"><tr><td style="background:#E6F2EC;border-${side}:4px solid #006B3C;border-radius:10px;padding:14px 18px;font-family:${fontStack};font-size:15px;line-height:1.8;color:#006B3C;text-align:${align}">${escapeHtml(block.text)}</td></tr></table>`;
     case "sign":
@@ -306,30 +310,14 @@ function splitCtaLabel(label: string, lang: EmailLang): string {
 
 const chrome = {
   ar: {
-    pill: "وصول مبكر مجاني",
-    headline1: "كل أنظمة الموارد البشرية <span style=\"color:#1A6BF5\">تُكلّفك.</span>",
-    headline2: "نظامي <span style=\"color:#E0339A\">يعيد لك.</span>",
-    tagline: "مساعدك الذكي في الموارد البشرية. أنت تقود. نظامي يتولى الباقي.",
-    stats: [
-      ["+1,440 ر.س", "عائد سنوي تلقائي"],
-      ["70%", "توفير في وقت الإدارة"],
-      ["حتى 30%", "استرداد من الاشتراك"],
-      ["3 ر.س", "يبدأ من / للموظف"],
-    ],
+    headline: "نظامي <span style=\"color:#2563EB\">يرجّع لك.</span>",
+    banner: "حتى 30% من اشتراكك يرجع لك سنويًا",
     footerSub: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
     ctaNote: "بدون التزام · بدون بطاقة ائتمان",
   },
   en: {
-    pill: "Free early access",
-    headline1: "Every HR system <span style=\"color:#1A6BF5\">costs you.</span>",
-    headline2: "Nizamy <span style=\"color:#E0339A\">pays you back.</span>",
-    tagline: "Your smart HR assistant. You lead. Nizamy handles the rest.",
-    stats: [
-      ["+SAR 1,440", "Automatic annual return"],
-      ["70%", "Less admin time"],
-      ["Up to 30%", "Of subscription back"],
-      ["SAR 3", "Starting / employee"],
-    ],
+    headline: "Nizamy <span style=\"color:#2563EB\">pays you back.</span>",
+    banner: "Up to 30% of your subscription back every year",
     footerSub: "AI-powered HR for Saudi SMEs",
     ctaNote: "No commitment · No credit card",
   },
@@ -346,71 +334,46 @@ export function getEmailHTML(
   const safeLink = escapeHtml(trialLink);
   const rtl = lang === "ar";
   const dir = rtl ? "rtl" : "ltr";
-  const align = rtl ? "right" : "left";
   const c = chrome[lang];
+  const heading = headingFont[lang];
   const body = rtl ? renderLang(t.ar, name, true) : renderLang(t.en, name, false);
   const ctaLabel = splitCtaLabel(t.ctaLabel, lang);
   const wordmark = rtl
     ? `<span style="color:${colors.blue}">نظا</span><span style="color:${colors.navy}">مي</span>`
     : `<span style="color:${colors.navy}">Niza</span><span style="color:${colors.blue}">my</span>`;
 
-  const statCells = c.stats
-    .map(
-      ([num, lbl]) =>
-        `<td align="center" width="25%" style="padding:6px 4px"><div style="font-family:${fontStack};font-size:22px;font-weight:800;color:#FFFFFF;white-space:nowrap">${escapeHtml(num)}</div><div style="font-family:${fontStack};font-size:11px;color:#CFE0FF;margin-top:4px">${escapeHtml(lbl)}</div></td>`,
-    )
-    .join("");
-
   return `<!DOCTYPE html>
 <html dir="${dir}">
+<head>${fontHead}</head>
 <body style="margin:0;padding:0;background:${colors.pageBg}">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${colors.pageBg}">
     <tr><td align="center" style="padding:28px 12px">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;border-radius:22px;overflow:hidden;background:#FFFFFF">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;border-radius:18px;overflow:hidden;background:#FFFFFF">
 
-        <tr><td dir="${dir}" style="background:${colors.headerBg};padding:36px 40px 30px 40px">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-            <tr>
-              <td align="${align}" style="vertical-align:middle">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-                  ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy" style="display:block;border:0" /></td>` : ""}
-                  <td style="vertical-align:middle;font-family:${fontStack};font-size:21px;font-weight:800">${wordmark}</td>
-                </tr></table>
-              </td>
-              <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
-                <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:12px;font-weight:bold;padding:8px 18px;border-radius:20px">${escapeHtml(c.pill)}</span>
-              </td>
-            </tr>
-          </table>
-          <div style="margin-top:32px;font-family:${fontStack};font-size:30px;font-weight:800;line-height:1.3;color:${colors.navy};text-align:${align}">${c.headline1}<br/>${c.headline2}</div>
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px"><tr>
-            <td style="width:24px;height:3px;background:${colors.blue};border-radius:2px;font-size:0;line-height:0">&nbsp;</td>
-            <td style="padding-${rtl ? "right" : "left"}:10px;font-family:${fontStack};font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.tagline)}</td>
+        <tr><td dir="${dir}" align="center" style="background:${colors.headerBg};padding:36px 40px 28px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+            ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy" style="display:block;border:0" /></td>` : ""}
+            <td style="vertical-align:middle;font-family:${heading};font-size:22px;font-weight:800">${wordmark}</td>
           </tr></table>
+          <div style="margin-top:22px;font-family:${heading};font-size:28px;font-weight:800;line-height:1.35;color:${colors.navy};text-align:center">${c.headline}</div>
         </td></tr>
 
-        <tr><td dir="${dir}" style="background:${colors.blue};padding:22px 24px">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>${statCells}</tr></table>
+        <tr><td dir="${dir}" align="center" style="background:${colors.blue};padding:14px 24px">
+          <div style="font-family:${heading};font-size:16px;font-weight:800;color:#FFFFFF;text-align:center">${escapeHtml(c.banner)}</div>
         </td></tr>
 
-        <tr><td dir="${dir}" style="background:#FFFFFF;padding:38px 40px">
+        <tr><td dir="${dir}" style="background:#FFFFFF;padding:34px 40px">
           ${body}
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:32px"><tr><td align="center">
-            <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${fontStack};font-size:17px;font-weight:800;text-decoration:none;border-radius:14px;padding:18px 52px">${escapeHtml(ctaLabel)}</a>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:30px"><tr><td align="center">
+            <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${heading};font-size:16px;font-weight:800;text-decoration:none;border-radius:12px;padding:16px 48px">${escapeHtml(ctaLabel)}</a>
             <div style="margin-top:12px;font-family:${fontStack};font-size:12px;color:${colors.muted}">${escapeHtml(c.ctaNote)}</div>
           </td></tr></table>
         </td></tr>
 
-        <tr><td dir="${dir}" style="background:${colors.navy};padding:26px 40px">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
-            <td align="${align}">
-              <div style="font-family:${fontStack};font-size:16px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#90CAF9">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
-              <div style="font-family:${fontStack};font-size:11px;color:#AAB8E8;margin-top:4px">${escapeHtml(c.footerSub)}</div>
-            </td>
-            <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
-              <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">www.nizamy.app</a>
-            </td>
-          </tr></table>
+        <tr><td dir="${dir}" align="center" style="background:${colors.navy};padding:22px 40px">
+          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#93C5FD">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
+          <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerSub)}</div>
+          <div style="margin-top:8px"><a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">www.nizamy.app</a></div>
         </td></tr>
 
       </table>
@@ -425,20 +388,13 @@ const returningChrome = {
     subject: "أهلًا بعودتك إلى نظامي — أنت على القائمة",
     greeting: "أهلًا بعودتك {{name}}،",
     intro: "طلبك وصلنا من قبل وأنت محجوز معنا — هذا تذكير سريع بما ينتظرك.",
-    headline1: "نظام موارد بشرية",
-    headline2: "يرجع لك <span style=\"color:#1A6BF5\">قيمة.</span>",
+    headline: "نظام موارد بشرية <span style=\"color:#2563EB\">يرجع لك قيمة.</span>",
     sub: "ربط الحضور والأداء والمكافآت يحوّل التشغيل اليومي إلى عائد حقيقي لمنشأتك.",
     statPill: "عائد سنوي محتمل",
     statNum: "حتى 30%",
     statSub: "من اشتراكك يرجع لك",
     cta: "احجز وصولك المجاني",
     ctaNote: "بدون التزام · بدون بطاقة ائتمان",
-    features: [
-      ["&#128101;", "الحضور بذكاء"],
-      ["&#128203;", "إدارة الموظفين"],
-      ["&#127873;", "مكافآت تحفّز الفريق"],
-      ["&#9889;", "أتمتة ذكية"],
-    ],
     footerTag: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
     website: "الموقع",
     contact: "تواصل معنا",
@@ -448,20 +404,13 @@ const returningChrome = {
     subject: "Welcome back to Nizamy — you're already on the list",
     greeting: "Welcome back {{name}},",
     intro: "We already have your request and your spot is saved — here's a quick reminder of what's waiting for you.",
-    headline1: "An HR system that",
-    headline2: "pays you <span style=\"color:#1A6BF5\">value.</span>",
+    headline: "An HR system that <span style=\"color:#2563EB\">pays you value.</span>",
     sub: "Connecting attendance, performance, and rewards turns daily operations into real returns for your business.",
     statPill: "Potential annual return",
     statNum: "Up to 30%",
     statSub: "of your subscription back",
     cta: "Reserve your free access",
     ctaNote: "No commitment · No credit card",
-    features: [
-      ["&#128101;", "Smart attendance"],
-      ["&#128203;", "Employee management"],
-      ["&#127873;", "Rewards that motivate"],
-      ["&#9889;", "Smart automation"],
-    ],
     footerTag: "AI-powered HR for Saudi SMEs",
     website: "Website",
     contact: "Contact",
@@ -479,77 +428,56 @@ export function getReturningEmailHTML(
   const dir = rtl ? "rtl" : "ltr";
   const align = rtl ? "right" : "left";
   const c = returningChrome[lang];
+  const heading = headingFont[lang];
   const safeLink = escapeHtml(trialLink);
   const greeting = escapeHtml(c.greeting.replace("{{name}}", name));
   const logoCell = hasLogo
     ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="30" height="34" alt="Nizamy" style="display:block;border:0" /></td>`
     : "";
 
-  const featureCells = c.features
-    .map(
-      ([icon, label]) =>
-        `<td align="center" width="25%" style="padding:6px 4px"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" style="background:${colors.sky};border:1px solid ${colors.rule};border-radius:12px;padding:14px 6px"><div style="font-size:20px;line-height:1">${icon}</div><div style="font-family:${fontStack};font-size:11px;font-weight:bold;color:${colors.navy};margin-top:8px">${escapeHtml(label)}</div></td></tr></table></td>`,
-    )
-    .join("");
-
   return `<!DOCTYPE html>
 <html dir="${dir}">
+<head>${fontHead}</head>
 <body style="margin:0;padding:0;background:${colors.pageBg}">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${colors.pageBg}">
     <tr><td align="center" style="padding:28px 12px">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;border-radius:22px;overflow:hidden;background:#FFFFFF">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;border-radius:18px;overflow:hidden;background:#FFFFFF">
 
         <tr><td dir="${dir}" style="background:${colors.navy};padding:18px 40px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
             ${logoCell}
-            <td style="vertical-align:middle;font-family:${fontStack};font-size:19px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
+            <td style="vertical-align:middle;font-family:${heading};font-size:19px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
           </tr></table>
         </td></tr>
 
-        <tr><td dir="${dir}" style="background:#FFFFFF;padding:36px 40px 30px 40px">
+        <tr><td dir="${dir}" style="background:#FFFFFF;padding:36px 40px 34px 40px">
           <p style="margin:0 0 6px 0;${bodyStyle}font-weight:bold;font-size:16px;color:${colors.navy};text-align:${align}">${greeting}</p>
-          <p style="margin:0 0 26px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.intro)}</p>
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-            <tr>
-              <td width="52%" style="vertical-align:middle;padding-${rtl ? "left" : "right"}:16px">
-                <div style="font-family:${fontStack};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:${align}">${c.headline1}<br/>${c.headline2}</div>
-                <p style="margin:14px 0 22px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.sub)}</p>
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td>
-                  <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${fontStack};font-size:14px;font-weight:800;text-decoration:none;border-radius:12px;padding:13px 30px">${escapeHtml(c.cta)}</a>
-                </td></tr></table>
-              </td>
-              <td width="48%" align="center" style="vertical-align:middle">
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center" style="background:linear-gradient(160deg,#F3F6FF,#EAF0FF);background-color:#F0F4FF;border-radius:18px;padding:28px 16px">
-                  <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:11px;font-weight:bold;padding:6px 16px;border-radius:16px">${escapeHtml(c.statPill)}</span>
-                  <div style="font-family:${fontStack};font-size:46px;font-weight:800;color:${colors.blue};margin-top:14px;line-height:1">${escapeHtml(c.statNum)}</div>
-                  <div style="font-family:${fontStack};font-size:12px;color:${colors.muted};margin-top:10px">${escapeHtml(c.statSub)}</div>
-                </td></tr></table>
-              </td>
-            </tr>
-          </table>
+          <p style="margin:0 0 24px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.intro)}</p>
+
+          <div style="font-family:${heading};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:center">${c.headline}</div>
+          <p style="margin:12px 0 24px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:center">${escapeHtml(c.sub)}</p>
+
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 26px 0"><tr><td align="center" style="background:${colors.sky};border-radius:16px;padding:26px 16px">
+            <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:11px;font-weight:bold;padding:6px 16px;border-radius:16px">${escapeHtml(c.statPill)}</span>
+            <div style="font-family:${heading};font-size:46px;font-weight:800;color:${colors.blue};margin-top:14px;line-height:1">${escapeHtml(c.statNum)}</div>
+            <div style="font-family:${fontStack};font-size:12px;color:${colors.muted};margin-top:10px">${escapeHtml(c.statSub)}</div>
+          </td></tr></table>
+
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="center">
+            <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${heading};font-size:15px;font-weight:800;text-decoration:none;border-radius:12px;padding:15px 42px">${escapeHtml(c.cta)}</a>
+            <div style="margin-top:12px;font-family:${fontStack};font-size:12px;color:${colors.muted}">${escapeHtml(c.ctaNote)}</div>
+          </td></tr></table>
         </td></tr>
 
-        <tr><td dir="${dir}" style="background:#FFFFFF;padding:0 40px 34px 40px">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>${featureCells}</tr></table>
-          <div style="text-align:center;margin-top:18px;font-family:${fontStack};font-size:12px;color:${colors.muted}">${escapeHtml(c.ctaNote)}</div>
-        </td></tr>
-
-        <tr><td dir="${dir}" style="background:${colors.navy};padding:26px 40px">
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
-            <td align="${align}">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-                ${logoCell}
-                <td style="vertical-align:middle;font-family:${fontStack};font-size:16px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
-              </tr></table>
-              <div style="font-family:${fontStack};font-size:11px;color:#AAB8E8;margin-top:6px">${escapeHtml(c.footerTag)}</div>
-            </td>
-            <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
-              <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">${escapeHtml(c.website)}</a>
-              <span style="font-family:${fontStack};font-size:12px;color:#3D5299">&nbsp;·&nbsp;</span>
-              <a href="mailto:sales@muntej.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">${escapeHtml(c.contact)}</a>
-            </td>
-          </tr></table>
-          <div style="text-align:center;font-family:${fontStack};font-size:10px;color:#5A6CB0;margin-top:18px">${escapeHtml(c.rights)}</div>
+        <tr><td dir="${dir}" align="center" style="background:${colors.navy};padding:22px 40px">
+          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#93C5FD">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
+          <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerTag)}</div>
+          <div style="margin-top:8px">
+            <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.website)}</a>
+            <span style="font-family:${fontStack};font-size:12px;color:#475569">&nbsp;·&nbsp;</span>
+            <a href="mailto:sales@muntej.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.contact)}</a>
+          </div>
+          <div style="font-family:${fontStack};font-size:10px;color:#64748B;margin-top:12px">${escapeHtml(c.rights)}</div>
         </td></tr>
 
       </table>

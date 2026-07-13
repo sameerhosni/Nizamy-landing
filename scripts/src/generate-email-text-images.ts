@@ -109,10 +109,7 @@ function escapeMarkup(text: string): string {
 function markupFor(job: Job): string {
   return job.spans
     .map((span) => {
-      const fontAttrs =
-        job.lang === "ar"
-          ? `font="Cairo ExtraBold ${job.sizePt}"`
-          : `font_family="Tajawal ExtraBold" size="${job.sizePt}pt"`;
+      const fontAttrs = `font_family="IBM Plex Sans Arabic" weight="bold" size="${job.sizePt}pt"`;
       return `<span ${fontAttrs} foreground="${span.color}">${escapeMarkup(span.text)}</span>`;
     })
     .join("");

@@ -5,7 +5,7 @@ description: How to render true brand fonts (incl. Arabic) in Gmail — pre-rend
 
 Rule: Gmail strips `<link>`/`@import`/`@font-face` web fonts. To show true brand fonts in email, pre-render display text as transparent PNGs (2x retina) and embed as CID attachments with alt-text + HTML-text fallback. Keep body copy as real text with a system font stack.
 
-**Why:** User rejected system-font fallbacks for Arabic brand headings (Cairo/Tajawal); inline @font-face only helps Apple Mail etc.
+**Why:** User rejected system-font fallbacks for Arabic brand headings; inline @font-face only helps Apple Mail etc. Later the user also rejected mixing families in one email ("one font like the content") — emails now use IBM Plex Sans Arabic (body font) for everything, including the pre-rendered headline PNGs. Don't reintroduce Cairo/Tajawal into emails.
 
 **How to apply:**
 - Use system `magick` with Pango markup (`magick -background none "pango:@markup.txt" -trim +repage out.png`). Pango handles Arabic shaping/bidi correctly and auto-detects RTL.

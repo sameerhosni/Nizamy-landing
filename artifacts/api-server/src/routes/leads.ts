@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { CreateLeadBody } from "@workspace/api-zod";
 import { db, leadsTable } from "@workspace/db";
-import { sendLeadNotification } from "../lib/mailer";
+import { sendLeadConfirmation } from "../lib/mailer";
 
 const router: IRouter = Router();
 
@@ -30,7 +30,7 @@ router.post("/lead", async (req, res) => {
     })
     .returning();
 
-  sendLeadNotification({
+  sendLeadConfirmation({
     name: lead.name,
     company: lead.company,
     email: lead.email,
@@ -42,7 +42,7 @@ router.post("/lead", async (req, res) => {
     totalReturn: lead.totalReturn,
     createdAt: lead.createdAt.toISOString(),
   }).catch((err) => {
-    req.log.error({ err }, "Failed to send lead notification email");
+    req.log.error({ err }, "Failed to send lead confirmation email");
   });
 
   res.status(201).json({

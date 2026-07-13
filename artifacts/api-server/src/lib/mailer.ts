@@ -6,10 +6,9 @@ const smtpPort = Number(process.env.SMTP_PORT ?? "587");
 const smtpUser = process.env.SMTP_USERNAME;
 const smtpPass = process.env.SMTP_PASSWORD;
 const fromAddress = process.env.SMTP_FROM;
-const notifyEmail = process.env.LEADS_NOTIFY_EMAIL;
 
 export function isMailerConfigured(): boolean {
-  return Boolean(smtpHost && smtpUser && smtpPass && fromAddress && notifyEmail);
+  return Boolean(smtpHost && smtpUser && smtpPass && fromAddress);
 }
 
 function createTransport() {
@@ -45,45 +44,48 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
-export async function sendLeadNotification(lead: LeadEmailData): Promise<void> {
+export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
   if (!isMailerConfigured()) {
-    logger.warn("SMTP not configured; skipping lead notification email");
+    logger.warn("SMTP not configured; skipping lead confirmation email");
     return;
   }
 
-  const rows: Array<[string, string]> = [
-    ["Name", lead.name],
-    ["Company", lead.company],
-    ["Email", lead.email],
-    ["WhatsApp", lead.whatsapp],
-    ["Employees", lead.employees != null ? String(lead.employees) : "—"],
-    ["Tier", lead.tier ?? "—"],
-    ["Tier price (SAR)", lead.tierPrice != null ? String(lead.tierPrice) : "—"],
-    ["Annual subscription (SAR)", lead.subscription != null ? String(lead.subscription) : "—"],
-    ["Estimated annual return (SAR)", lead.totalReturn != null ? String(lead.totalReturn) : "—"],
-    ["Submitted at", lead.createdAt],
-  ];
+  const firstName = lead.name.trim().split(/\s+/)[0] ?? lead.name;
+
+  const subject = "أهلاً بك في نظامي — استلمنا طلبك | Welcome to Nizamy";
 
   const html = `
-    <h2>New Design Partner lead — Nizamy</h2>
-    <table cellpadding="6" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">
-      ${rows
-        .map(
-          ([label, value]) =>
-            `<tr><td style="border:1px solid #e2e8f0;background:#f8fafc;font-weight:bold">${escapeHtml(label)}</td><td style="border:1px solid #e2e8f0">${escapeHtml(value)}</td></tr>`,
-        )
-        .join("")}
-    </table>
+    <div style="font-family:Arial,Tahoma,sans-serif;font-size:15px;line-height:1.8;color:#1e293b;max-width:560px;margin:0 auto">
+      <div dir="rtl" style="text-align:right">
+        <h2 style="color:#1d4ed8;margin-bottom:4px">أهلاً ${escapeHtml(firstName)} 👋</h2>
+        <p>شكراً لتسجيل اهتمامك بالانضمام إلى <strong>نظامي</strong> كشريك تصميم.</p>
+        <p>استلمنا طلبك لشركة <strong>${escapeHtml(lead.company)}</strong> وسيتواصل معك فريقنا قريباً عبر البريد أو الواتساب لإكمال الخطوات التالية.</p>
+      </div>
+      <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0" />
+      <div dir="ltr" style="text-align:left">
+        <h2 style="color:#1d4ed8;margin-bottom:4px">Hi ${escapeHtml(firstName)} 👋</h2>
+        <p>Thank you for your interest in joining <strong>Nizamy</strong> as a Design Partner.</p>
+        <p>We received your request for <strong>${escapeHtml(lead.company)}</strong> and our team will reach out shortly via email or WhatsApp with the next steps.</p>
+        <p style="color:#64748b;font-size:13px;margin-top:24px">Nizamy — AI-powered HR for Saudi SMEs · www.nizamy.app</p>
+      </div>
+    </div>
   `;
 
-  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
+  const text = [
+    `أهلاً ${firstName}،`,
+    `شكراً لتسجيل اهتمامك بالانضمام إلى نظامي كشريك تصميم. استلمنا طلبك لشركة ${lead.company} وسيتواصل معك فريقنا قريباً.`,
+    "",
+    `Hi ${firstName},`,
+    `Thank you for your interest in joining Nizamy as a Design Partner. We received your request for ${lead.company} and our team will reach out shortly.`,
+    "",
+    "Nizamy — www.nizamy.app",
+  ].join("\n");
 
   const transport = createTransport();
   await transport.sendMail({
-    from: `Nizamy Website <${fromAddress}>`,
-    to: notifyEmail,
-    replyTo: lead.email,
-    subject: `New lead: ${lead.name} — ${lead.company}`,
+    from: `Nizamy <${fromAddress}>`,
+    to: lead.email,
+    subject,
     text,
     html,
   });

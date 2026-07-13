@@ -57,7 +57,7 @@ export async function sendLeadConfirmation(
 
   const templateId = resolveTemplateId(process.env.ACTIVE_TEMPLATE);
   const trialLink = process.env.TRIAL_LINK || "https://www.nizamy.app";
-  const senderName = process.env.SENDER_NAME || "فريق نظامي | Nizamy Team";
+  const senderName = process.env.SENDER_NAME || "اتش آر نظامي | Nizamy HR";
   const firstName = lead.name.trim().split(/\s+/)[0] ?? lead.name;
   const lang: EmailLang = lead.language === "en" ? "en" : "ar";
 

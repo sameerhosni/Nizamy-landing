@@ -13,6 +13,17 @@ export interface Error {
   error: string;
 }
 
+/**
+ * Website language the visitor was using; the confirmation email is sent in this language
+ */
+export type LeadInputLanguage = typeof LeadInputLanguage[keyof typeof LeadInputLanguage];
+
+
+export const LeadInputLanguage = {
+  en: 'en',
+  ar: 'ar',
+} as const;
+
 export interface LeadInput {
   /** @minLength 1 */
   name: string;
@@ -32,6 +43,8 @@ export interface LeadInput {
   subscription?: number | null;
   /** @nullable */
   totalReturn?: number | null;
+  /** Website language the visitor was using; the confirmation email is sent in this language */
+  language?: LeadInputLanguage;
 }
 
 export interface Lead {

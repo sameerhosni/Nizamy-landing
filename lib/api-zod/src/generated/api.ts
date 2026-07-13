@@ -25,7 +25,7 @@ export const HealthCheckResponse = zod.object({
 
 
 
-
+export const createLeadBodyLanguageDefault = `ar`;
 
 export const CreateLeadBody = zod.object({
   "name": zod.string().min(1),
@@ -36,7 +36,8 @@ export const CreateLeadBody = zod.object({
   "tier": zod.string().nullish(),
   "tierPrice": zod.number().nullish(),
   "subscription": zod.number().nullish(),
-  "totalReturn": zod.number().nullish()
+  "totalReturn": zod.number().nullish(),
+  "language": zod.enum(['en', 'ar']).default(createLeadBodyLanguageDefault).describe('Website language the visitor was using; the confirmation email is sent in this language')
 })
 
 export const CreateLeadResponse = zod.object({

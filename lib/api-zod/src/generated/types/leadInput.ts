@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { LeadInputLanguage } from './leadInputLanguage';
 
 export interface LeadInput {
   /** @minLength 1 */
@@ -25,4 +26,6 @@ export interface LeadInput {
   subscription?: number | null;
   /** @nullable */
   totalReturn?: number | null;
+  /** Website language the visitor was using; the confirmation email is sent in this language */
+  language?: LeadInputLanguage;
 }

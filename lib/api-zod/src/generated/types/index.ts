@@ -10,3 +10,4 @@ export * from './error';
 export * from './healthStatus';
 export * from './lead';
 export * from './leadInput';
+export * from './leadInputLanguage';

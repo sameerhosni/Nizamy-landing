@@ -1,4 +1,5 @@
 export type TemplateId = "01" | "02" | "03";
+export type EmailLang = "en" | "ar";
 
 type Block =
   | { type: "p"; text: string }
@@ -283,9 +284,20 @@ export interface RenderedEmail {
   text: string;
 }
 
-export function getEmailHTML(templateId: TemplateId, name: string, trialLink: string): string {
+function splitCtaLabel(label: string, lang: EmailLang): string {
+  const parts = label.split(" | ");
+  if (parts.length !== 2) return label;
+  return lang === "ar" ? parts[0] : parts[1];
+}
+
+export function getEmailHTML(templateId: TemplateId, name: string, trialLink: string, lang: EmailLang): string {
   const t = templates[templateId];
   const safeLink = escapeHtml(trialLink);
+  const tagline =
+    lang === "ar" ? "نظام الموارد البشرية اللي يرجّع لك" : "HR that pays you back";
+  const body =
+    lang === "ar" ? renderLang(t.ar, name, true) : renderLang(t.en, name, false);
+  const ctaLabel = splitCtaLabel(t.ctaLabel, lang);
 
   return `<!DOCTYPE html>
 <html>
@@ -294,14 +306,12 @@ export function getEmailHTML(templateId: TemplateId, name: string, trialLink: st
     <div style="background:#FFFFFF;border-radius:8px;overflow:hidden">
       <div style="background:#0A1628;padding:24px;text-align:center">
         <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#FFFFFF">نظامي · Nizamy</div>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#C8A86B;margin-top:6px">نظام الموارد البشرية اللي يرجّع لك · HR that pays you back</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#C8A86B;margin-top:6px">${escapeHtml(tagline)}</div>
       </div>
       <div style="padding:28px 24px">
-        ${renderLang(t.ar, name, true)}
-        <hr style="border:none;border-top:1px solid #D1D5DB;margin:28px 0" />
-        ${renderLang(t.en, name, false)}
+        ${body}
         <div style="text-align:center;margin:32px 0 8px 0">
-          <a href="${safeLink}" style="display:inline-block;background:#166534;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;text-decoration:none;border-radius:6px;padding:14px 32px">${escapeHtml(t.ctaLabel)}</a>
+          <a href="${safeLink}" style="display:inline-block;background:#166534;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;text-decoration:none;border-radius:6px;padding:14px 32px">${escapeHtml(ctaLabel)}</a>
         </div>
       </div>
       <div style="border-top:1px solid #E5E7EB;padding:16px 24px;text-align:center">
@@ -326,18 +336,19 @@ function renderText(content: LangContent, name: string): string {
   return lines.join("\n").trim();
 }
 
-export function renderLeadEmail(templateId: TemplateId, name: string, trialLink: string): RenderedEmail {
+export function renderLeadEmail(
+  templateId: TemplateId,
+  name: string,
+  trialLink: string,
+  lang: EmailLang,
+): RenderedEmail {
   const t = templates[templateId];
-  const subject = `${t.subjectAr} | ${t.subjectEn}`;
-  const html = getEmailHTML(templateId, name, trialLink);
+  const subject = lang === "ar" ? t.subjectAr : t.subjectEn;
+  const html = getEmailHTML(templateId, name, trialLink, lang);
   const text = [
-    renderText(t.ar, name),
+    renderText(lang === "ar" ? t.ar : t.en, name),
     "",
-    "------------------------------",
-    "",
-    renderText(t.en, name),
-    "",
-    `${t.ctaLabel}: ${trialLink}`,
+    `${splitCtaLabel(t.ctaLabel, lang)}: ${trialLink}`,
     "",
     "نظامي · Nizamy — www.nizamy.app",
   ].join("\n");

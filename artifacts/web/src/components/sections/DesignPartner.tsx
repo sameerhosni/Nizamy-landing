@@ -100,7 +100,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
     mutation.mutate({
       data: {
         ...formData,
-        ...snapshot
+        ...snapshot,
+        language
       }
     });
   };

@@ -41,6 +41,7 @@ router.post("/lead", async (req, res) => {
     subscription: lead.subscription,
     totalReturn: lead.totalReturn,
     createdAt: lead.createdAt.toISOString(),
+    language: input.language === "en" ? "en" : "ar",
   }).catch((err) => {
     req.log.error({ err }, "Failed to send lead confirmation email");
   });

@@ -97,6 +97,11 @@ components:
           type: ["number", "null"]
         totalReturn:
           type: ["number", "null"]
+        language:
+          type: string
+          enum: [en, ar]
+          default: ar
+          description: Website language the visitor was using; the confirmation email is sent in this language
     Lead:
       type: object
       required:

@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { logger } from "./logger";
-import { renderLeadEmail, resolveTemplateId } from "./emailTemplates";
+import { renderLeadEmail, resolveTemplateId, type EmailLang } from "./emailTemplates";
 
 const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT ?? "587");
@@ -35,6 +35,7 @@ export interface LeadEmailData {
   subscription?: number | null;
   totalReturn?: number | null;
   createdAt: string;
+  language?: EmailLang;
 }
 
 export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
@@ -47,8 +48,9 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
   const trialLink = process.env.TRIAL_LINK || "https://www.nizamy.app";
   const senderName = process.env.SENDER_NAME || "فريق نظامي | Nizamy Team";
   const firstName = lead.name.trim().split(/\s+/)[0] ?? lead.name;
+  const lang: EmailLang = lead.language === "en" ? "en" : "ar";
 
-  const { subject, html, text } = renderLeadEmail(templateId, firstName, trialLink);
+  const { subject, html, text } = renderLeadEmail(templateId, firstName, trialLink, lang);
 
   const transport = createTransport();
   await transport.sendMail({
@@ -60,7 +62,7 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
   });
 
   logger.info(
-    { template: templateId, name: lead.name, email: lead.email, company: lead.company },
+    { template: templateId, lang, name: lead.name, email: lead.email, company: lead.company },
     "Lead confirmation email sent",
   );
 }

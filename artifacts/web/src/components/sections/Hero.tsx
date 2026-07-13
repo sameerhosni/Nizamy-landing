@@ -28,7 +28,7 @@ export function Hero() {
         toggleCost: "Cost",
         toggleReturn: "Return",
         activation: "70% activation",
-        returnsTo: "30% back to you",
+        returnsTo: "Up to 30% back to you",
         subscriptionLabel: "Annual subscription",
         netCostLabel: "Your net cost",
         performance: "Performance & Attendance",
@@ -37,7 +37,7 @@ export function Hero() {
         totalReturn: "Total annual return",
         totalReturnSub: "Back to you every year",
         totalReturnAmount: "+SAR 1,440",
-        totalReturnPercent: "30% back",
+        totalReturnPercent: "Up to 30% back",
       }
     },
     ar: {
@@ -45,11 +45,11 @@ export function Hero() {
       headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
       headlinePart2: "نظامي يعيد لك.",
       subtitleMuted: "نظام واحد لإدارة الحضور والانصراف، الخدمات الذاتية للموظفين عبر الذكاء الاصطناعي، تحسين الأداء والإنتاجية، مكافآت وبطاقات هدايا. ",
-      subtitleBold: "وكلما تحسّن أداء فريقك، يعود إليك حتى ٪30 من قيمة اشتراكك كل عام.",
+      subtitleBold: "وكلما تحسّن أداء فريقك، يعود إليك حتى 30% من قيمة اشتراكك كل عام.",
       primaryCta: "احجز وصولك المبكر",
       secondaryCta: "احسب عائدك",
       chips: [
-        "حق ٪30 عائد سنوي",
+        "حق عائد سنوي حتى 30%",
         "تسجيل في دقيقة واحدة",
         "يبدأ من ٣ ريال للموظف",
         "نظام يركز على التحفيز بدل العقوبات"
@@ -59,7 +59,7 @@ export function Hero() {
         toggleCost: "تكلفة",
         toggleReturn: "عائد",
         activation: "تفعيل ٪70",
-        returnsTo: "يعود إليك ٪30",
+        returnsTo: "يعود إليك حتى 30%",
         subscriptionLabel: "الاشتراك السنوي",
         netCostLabel: "تكلفتك الفعلية",
         performance: "الأداء والحضور",
@@ -68,7 +68,7 @@ export function Hero() {
         totalReturn: "إجمالي العائد السنوي",
         totalReturnSub: "يعود إليك كل عام",
         totalReturnAmount: "+١,٤٤٠ ر.س",
-        totalReturnPercent: "٪30 استرداد",
+        totalReturnPercent: "حتى 30% استرداد",
       }
     }
   };

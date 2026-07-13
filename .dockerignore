@@ -1,0 +1,17 @@
+.git
+.local
+.agents
+.cache
+.config
+.replit
+.replit-artifact
+node_modules
+**/node_modules
+**/dist
+**/.tsbuildinfo
+**/*.tsbuildinfo
+screenshots
+attached_assets
+Dockerfile
+.dockerignore
+replit.md

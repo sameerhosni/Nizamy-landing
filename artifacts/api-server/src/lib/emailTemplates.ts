@@ -323,12 +323,17 @@ const chrome = {
   },
 } as const;
 
+function stripTags(html: string): string {
+  return html.replace(/<[^>]+>/g, "");
+}
+
 export function getEmailHTML(
   templateId: TemplateId,
   name: string,
   trialLink: string,
   lang: EmailLang,
   hasLogo = true,
+  hasTextImages = false,
 ): string {
   const t = templates[templateId];
   const safeLink = escapeHtml(trialLink);
@@ -341,6 +346,12 @@ export function getEmailHTML(
   const wordmark = rtl
     ? `<span style="color:${colors.blue}">نظا</span><span style="color:${colors.navy}">مي</span>`
     : `<span style="color:${colors.navy}">Niza</span><span style="color:${colors.blue}">my</span>`;
+  const headlineHtml = hasTextImages
+    ? `<div style="margin-top:22px"><img src="cid:nz-headline" width="${rtl ? 261 : 364}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" /></div>`
+    : `<div style="margin-top:22px;font-family:${heading};font-size:28px;font-weight:800;line-height:1.35;color:${colors.navy};text-align:center">${c.headline}</div>`;
+  const bannerHtml = hasTextImages
+    ? `<img src="cid:nz-banner" width="${rtl ? 343 : 440}" alt="${escapeHtml(c.banner)}" style="display:block;border:0;max-width:100%;margin:0 auto" />`
+    : `<div style="font-family:${heading};font-size:16px;font-weight:800;color:#FFFFFF;text-align:center">${escapeHtml(c.banner)}</div>`;
 
   return `<!DOCTYPE html>
 <html dir="${dir}">
@@ -355,11 +366,11 @@ export function getEmailHTML(
             ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy" style="display:block;border:0" /></td>` : ""}
             <td style="vertical-align:middle;font-family:${heading};font-size:22px;font-weight:800">${wordmark}</td>
           </tr></table>
-          <div style="margin-top:22px;font-family:${heading};font-size:28px;font-weight:800;line-height:1.35;color:${colors.navy};text-align:center">${c.headline}</div>
+          ${headlineHtml}
         </td></tr>
 
         <tr><td dir="${dir}" align="center" style="background:${colors.blue};padding:14px 24px">
-          <div style="font-family:${heading};font-size:16px;font-weight:800;color:#FFFFFF;text-align:center">${escapeHtml(c.banner)}</div>
+          ${bannerHtml}
         </td></tr>
 
         <tr><td dir="${dir}" style="background:#FFFFFF;padding:34px 40px">
@@ -423,6 +434,7 @@ export function getReturningEmailHTML(
   trialLink: string,
   lang: EmailLang,
   hasLogo = true,
+  hasTextImages = false,
 ): string {
   const rtl = lang === "ar";
   const dir = rtl ? "rtl" : "ltr";
@@ -434,6 +446,12 @@ export function getReturningEmailHTML(
   const logoCell = hasLogo
     ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="30" height="34" alt="Nizamy" style="display:block;border:0" /></td>`
     : "";
+  const headlineHtml = hasTextImages
+    ? `<img src="cid:nz-headline" width="${rtl ? 497 : 519}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" />`
+    : `<div style="font-family:${heading};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:center">${c.headline}</div>`;
+  const statNumHtml = hasTextImages
+    ? `<img src="cid:nz-stat" width="${rtl ? 228 : 265}" alt="${escapeHtml(c.statNum)}" style="display:block;border:0;max-width:100%;margin:14px auto 0 auto" />`
+    : `<div style="font-family:${heading};font-size:46px;font-weight:800;color:${colors.blue};margin-top:14px;line-height:1">${escapeHtml(c.statNum)}</div>`;
 
   return `<!DOCTYPE html>
 <html dir="${dir}">
@@ -454,12 +472,12 @@ export function getReturningEmailHTML(
           <p style="margin:0 0 6px 0;${bodyStyle}font-weight:bold;font-size:16px;color:${colors.navy};text-align:${align}">${greeting}</p>
           <p style="margin:0 0 24px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.intro)}</p>
 
-          <div style="font-family:${heading};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:center">${c.headline}</div>
+          ${headlineHtml}
           <p style="margin:12px 0 24px 0;${bodyStyle}font-size:13px;color:${colors.muted};text-align:center">${escapeHtml(c.sub)}</p>
 
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 26px 0"><tr><td align="center" style="background:${colors.sky};border-radius:16px;padding:26px 16px">
             <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:11px;font-weight:bold;padding:6px 16px;border-radius:16px">${escapeHtml(c.statPill)}</span>
-            <div style="font-family:${heading};font-size:46px;font-weight:800;color:${colors.blue};margin-top:14px;line-height:1">${escapeHtml(c.statNum)}</div>
+            ${statNumHtml}
             <div style="font-family:${fontStack};font-size:12px;color:${colors.muted};margin-top:10px">${escapeHtml(c.statSub)}</div>
           </td></tr></table>
 
@@ -492,9 +510,10 @@ export function renderReturningLeadEmail(
   trialLink: string,
   lang: EmailLang,
   hasLogo = true,
+  hasTextImages = false,
 ): RenderedEmail {
   const c = returningChrome[lang];
-  const html = getReturningEmailHTML(name, trialLink, lang, hasLogo);
+  const html = getReturningEmailHTML(name, trialLink, lang, hasLogo, hasTextImages);
   const text = [
     c.greeting.replace("{{name}}", name),
     "",
@@ -528,10 +547,11 @@ export function renderLeadEmail(
   trialLink: string,
   lang: EmailLang,
   hasLogo = true,
+  hasTextImages = false,
 ): RenderedEmail {
   const t = templates[templateId];
   const subject = lang === "ar" ? t.subjectAr : t.subjectEn;
-  const html = getEmailHTML(templateId, name, trialLink, lang, hasLogo);
+  const html = getEmailHTML(templateId, name, trialLink, lang, hasLogo, hasTextImages);
   const text = [
     renderText(lang === "ar" ? t.ar : t.en, name),
     "",

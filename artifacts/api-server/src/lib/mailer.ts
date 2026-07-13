@@ -62,23 +62,49 @@ export async function sendLeadConfirmation(
   const lang: EmailLang = lead.language === "en" ? "en" : "ar";
 
   const moduleDir = dirname(fileURLToPath(import.meta.url));
-  const logoCandidates = [
-    resolve(moduleDir, "../assets/logo-mascot.png"),
-    resolve(process.cwd(), "assets/logo-mascot.png"),
-  ];
-  const logoPath = logoCandidates.find((p) => existsSync(p));
+  const resolveAsset = (rel: string): string | undefined =>
+    [resolve(moduleDir, "..", rel), resolve(process.cwd(), rel)].find((p) => existsSync(p));
+
+  const logoPath = resolveAsset("assets/logo-mascot.png");
   const hasLogo = logoPath !== undefined;
   if (!hasLogo) {
-    logger.warn({ logoCandidates }, "Logo asset not found; sending email without embedded logo");
+    logger.warn("Logo asset not found; sending email without embedded logo");
+  }
+
+  const textImageSpecs: { cid: string; file: string }[] = isReturning
+    ? [
+        { cid: "nz-headline", file: `returning-headline-${lang}.png` },
+        { cid: "nz-stat", file: `stat-${lang}.png` },
+      ]
+    : [
+        { cid: "nz-headline", file: `welcome-headline-${lang}.png` },
+        { cid: "nz-banner", file: `banner-${lang}.png` },
+      ];
+  const textImages = textImageSpecs.map((spec) => ({
+    ...spec,
+    path: resolveAsset(`assets/email-text/${spec.file}`),
+  }));
+  const hasTextImages = textImages.every((img) => img.path !== undefined);
+  if (!hasTextImages) {
+    logger.warn(
+      { missing: textImages.filter((img) => !img.path).map((img) => img.file) },
+      "Email text images not found; falling back to HTML text headlines",
+    );
   }
 
   const { subject, html, text } = isReturning
-    ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo)
-    : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo);
+    ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo, hasTextImages)
+    : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo, hasTextImages);
 
-  const attachments = hasLogo
-    ? [{ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" }]
-    : [];
+  const attachments: { filename: string; path: string; cid: string }[] = [];
+  if (hasLogo && logoPath) {
+    attachments.push({ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" });
+  }
+  if (hasTextImages) {
+    for (const img of textImages) {
+      attachments.push({ filename: img.file, path: img.path!, cid: img.cid });
+    }
+  }
 
   const transport = createTransport();
   await transport.sendMail({

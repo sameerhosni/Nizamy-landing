@@ -21,3 +21,11 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "email-smtp.us-east-1.amazonaws.com"
+SMTP_PORT = "587"
+SMTP_FROM = "sales@muntej.app"
+LEADS_NOTIFY_EMAIL = "alerts@t2.sa"

@@ -10,6 +10,8 @@ A bilingual (EN/AR, full RTL) high-converting landing page for Nizamy (نظام�
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env: `DATABASE_URL` — Postgres connection string
+- Email env: `SMTP_HOST`/`SMTP_PORT`/`SMTP_USERNAME`/`SMTP_PASSWORD` (Gmail App Password), `SMTP_FROM`, `SENDER_NAME` (optional), `ACTIVE_TEMPLATE` (01/02/03, picks the lead welcome email template), `TRIAL_LINK` (CTA URL in the email)
+- Lead flow: form POST `/api/lead` → saved to Postgres → bilingual welcome email sent to the lead's own address (templates in `artifacts/api-server/src/lib/emailTemplates.ts`, sender in `src/lib/mailer.ts`)
 
 ## Stack
 

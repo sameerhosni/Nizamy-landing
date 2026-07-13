@@ -1,0 +1,328 @@
+I am building a CRM/onboarding flow for Nizamy, a Saudi B2B HR SaaS product targeting SMEs in Saudi Arabia.
+
+When a prospect fills out the Contact Us form on our website, they should automatically receive a bilingual welcome email (Arabic + English) that:
+
+
+Confirms their submission
+Communicates the Nizamy value proposition clearly
+Includes a free trial / access link
+Feels human and relationship-first — NOT like a generic autoresponder
+
+
+There are 3 email templates to support. The active template is selected via an environment variable (no UI needed), so switching between templates is a one-line config change.
+
+
+WHAT TO BUILD
+
+1. Contact Form Handler (Backend API)
+
+Build a POST endpoint at /api/contact that:
+
+
+Accepts a JSON body:
+
+
+json{
+  "name": "string",
+  "email": "string",
+  "company": "string (optional)",
+  "phone": "string (optional)"
+}
+
+
+Validates that name and email are present
+Reads the active template from env var ACTIVE_TEMPLATE (values: "01", "02", "03")
+Sends the correct bilingual HTML email via the existing Gmail SMTP / Nodemailer setup
+Returns:
+
+
+json{ "success": true, "message": "Email sent" }
+
+or a proper error response if sending fails
+
+
+2. The Three Email Templates
+
+All templates are bilingual HTML emails — Arabic block first, English block below.
+The recipient's name is injected dynamically. The TRIAL_LINK env var is injected as the CTA URL.
+
+Shared email structure for all templates:
+
+
+Subject line (bilingual)
+Arabic body block
+Visual divider
+English body block
+Single CTA button (bilingual label)
+Footer with brand name
+
+
+
+TEMPLATE 01 — صاحب العمل الذكي / The Smart Owner
+
+Best for: All leads. Default template.
+Angle: Financial return + Vision 2030
+
+Subject:
+
+
+AR: أهلًا بك في نظامي — نظام الموارد البشرية اللي يرجّع لك أكثر مما تدفع
+EN: Welcome to Nizamy — the HR system that gives back more than it costs
+
+
+Arabic Body:
+
+السلام عليكم {{name}}،
+
+وصل طلبك — ويسعدنا إنك اخترت نظامي.
+
+خلّنا نكون صريحين معك من البداية:
+كل ريال تدفعه على إدارة الموظفين — المفروض يرجع لك بشكل أو بآخر.
+
+الشركات اللي عندها 50 موظف وراتب شهري بـ 150,000 ريال — تخسر ما يقارب 18,000 ريال سنويًا
+من الإنتاجية الضايعة، دوران الموظفين، والمتابعة اليدوية. نظامي مصمّم يرجّع لك هذا الرقم.
+
+كيف؟
+▸ فريقك يحضر ويشتغل بشوق — لأن الالتزام يساوي نقاط ومكافآت حقيقية.
+▸ أنت توقف المتابعة اليدوية — النظام يتابع بدلك ويرسل تنبيهات ذكية.
+▸ الخصومات والغرامات تتحوّل إلى حوافز — وهذا وحده يغيّر ثقافة الفريق.
+
+نظامي يسير مع رؤية 2030 — يساعدك تبني فريق منتج، محفّز، ومؤهّل للنمو
+في بيئة العمل السعودية الجديدة.
+
+جرّب الحين — مجانًا، بدون التزام.
+
+في أمان الله،
+فريق نظامي
+
+English Body:
+
+Assalamu Alaikum {{name}},
+
+Your request came through — and we're glad you chose Nizamy.
+
+Let's be direct with you from the start:
+Every riyal you spend managing your team should come back to you in one form or another.
+
+A company with 50 employees and a monthly payroll of SAR 150,000 loses approximately
+SAR 18,000 per year to lost productivity, staff turnover, and manual follow-up.
+Nizamy is designed to recover that number for you.
+
+Here's how:
+▸ Your team shows up committed — because consistent attendance earns real rewards, not warnings.
+▸ You stop chasing people daily — the system monitors automatically and sends smart alerts.
+▸ Deductions and penalties become motivation — and that alone changes the culture of your team.
+
+Nizamy is aligned with Vision 2030 — helping you build a productive, motivated Saudi
+workforce ready for the new economy.
+
+Start now — free, no commitment.
+
+With best regards,
+The Nizamy Team
+
+CTA Button Label: ابدأ تجربتك المجانية | Start Your Free Trial
+
+
+TEMPLATE 02 — فريقك هو رأس مالك / Your Team Is Your Asset
+
+Best for: HR managers, progressive owners, Saudization-aware leads
+Angle: People investment + retention cost + Saudization
+
+Subject:
+
+
+AR: أهلًا في نظامي — لأن فريقك يستاهل أكثر من مجرد متابعة
+EN: Welcome to Nizamy — because your team deserves more than just tracking
+
+
+Arabic Body:
+
+السلام عليكم {{name}}،
+
+أهلًا فيك — ويسعدنا إنك هنا.
+
+نحن نؤمن بشيء واحد: الموظف اللي يحسّ بالتقدير، يشتغل بشكل مختلف تمامًا.
+
+في سوق العمل السعودي، الاحتفاظ بالكوادر الوطنية المميزة مش رفاهية — هو ضرورة.
+وتكلفة فقدان موظف سعودي واحد تتجاوز 23,000 ريال لما تحسب التوظيف، التدريب، وفقدان الإنتاجية.
+
+نظامي مبني على فكرة بسيطة: التزام الموظف لازم يُكافأ — مش يُعاقَب.
+
+تخيّل بيئة عمل فيها:
+▸ موظفيك السعوديين يكسبون نقاط على الحضور والإنجاز — مكافآت حقيقية يختارونها بأنفسهم.
+▸ المدير يوقف المتابعة اليدوية ويرجع يركّز على تطوير الفريق.
+▸ معدل دوران الموظفين ينخفض — وأنت توفّر 23,000 ريال في كل موظف تحتفظ فيه.
+
+في إطار رؤية 2030، بناء بيئة عمل جاذبة للكوادر الوطنية هو استثمار استراتيجي —
+ونظامي يساعدك تبني هذه البيئة بدون تعقيد.
+
+مع خالص التحية،
+فريق نظامي
+
+English Body:
+
+Assalamu Alaikum {{name}},
+
+Welcome — and we're genuinely glad you're here.
+
+We believe in one thing: an employee who feels valued works completely differently.
+
+In the Saudi labour market, retaining talented Saudi nationals is not a luxury — it is a business necessity.
+The cost of losing a single Saudi employee exceeds SAR 23,000 when you factor in
+hiring, onboarding, and lost productivity.
+
+Nizamy is built on a simple idea: employee commitment should be rewarded — not just monitored.
+
+Imagine a workplace where:
+▸ Your Saudi employees earn points for attendance and performance — real rewards they choose themselves.
+▸ Managers stop daily follow-up and go back to developing the team.
+▸ Employee turnover drops — and you save SAR 23,000 for every person you keep.
+
+Under Vision 2030, building an attractive environment for Saudi talent is a strategic investment —
+and Nizamy helps you build it without complexity.
+
+With warm regards,
+The Nizamy Team
+
+CTA Button Label: ابدأ تجربتك المجانية الآن | Try Nizamy Free
+
+
+TEMPLATE 03 — قلب المعادلة / Flip the Equation
+
+Best for: Cost-aware owners frustrated with current systems
+Angle: Pain contrast + SAR math + sharp flip
+
+Subject:
+
+
+AR: كل ريال تدفعه على HR — المفروض يرجع لك. هل يرجع؟
+EN: Every riyal you spend on HR should come back. Does it?
+
+
+Arabic Body:
+
+السلام عليكم {{name}}،
+
+سؤال صريح — وأبغى جواب صريح:
+كم تدفع شهريًا على إدارة الموظفين — واشتراكات، ووقت مدراء، وخسائر دوران؟ وكم يرجع منها؟
+
+لو عندك 50 موظف في السعودية، الأرقام الواقعية تقول:
+▸ مدير يقضّي ساعتين يوميًا في متابعة الحضور والغياب = 576 ريال شهريًا ضايعة.
+▸ دوران موظف واحد يكلّفك بين 15,000 و23,000 ريال في التوظيف والتدريب من جديد.
+▸ موظف حاسّ إنه مراقَب بس — إنتاجيته تنزل بدون ما تحسّ.
+
+هذي مش مشكلة نظام. هذا نموذج خاطئ.
+
+نظامي يقلب المعادلة: نفس الموظف، نفس الميزانية — نتيجة معاكسة تمامًا.
+▸ بدل الخصم — نقاط ومكافآت يختارها الموظف بنفسه.
+▸ بدل المتابعة — تنبيهات ذكية تصلك على الجوال بثانية واحدة.
+▸ وفي نهاية السنة — الشركات اللي عندها 50 موظف توفّر ما بين 12,000 و18,000 ريال سنويًا.
+
+هذا النموذج يسير مع رؤية 2030 لرفع الإنتاجية وتطوير بيئة العمل السعودية.
+
+تحياتي،
+فريق نظامي
+
+English Body:
+
+Assalamu Alaikum {{name}},
+
+A direct question — and I want an honest answer:
+How much do you spend monthly managing your team — subscriptions, manager time, turnover losses?
+And how much comes back?
+
+If you have 50 employees in Saudi Arabia, here is what the real numbers say:
+▸ A manager spending two hours daily chasing attendance = SAR 576 per month lost.
+▸ Losing one employee costs you between SAR 15,000 and SAR 23,000 in rehiring and retraining.
+▸ An employee who feels only monitored — loses productivity quietly, steadily, invisibly.
+
+This is not a software problem. It is a broken model.
+
+Nizamy flips the equation: same employee, same budget — completely opposite outcome.
+▸ Instead of deductions — points and rewards the employee chooses themselves.
+▸ Instead of daily follow-up — smart alerts delivered to your phone in seconds.
+▸ And at year end — companies with 50 employees save between SAR 12,000 and SAR 18,000 annually.
+
+This model is aligned with Vision 2030's mandate for higher productivity and a stronger Saudi work environment.
+
+Best regards,
+The Nizamy Team
+
+CTA Button Label: ابدأ الآن — بدون بطاقة ائتمان | Start Free — No Credit Card
+
+
+HTML EMAIL STYLING REQUIREMENTS
+
+Build a single getEmailHTML(templateId, name, trialLink) function that returns a full HTML email string.
+
+Design specs:
+
+
+Max width: 600px, centered
+Background: #F4F6F9 (page), #FFFFFF (email card)
+Header band: background #0A1628 (deep navy), Nizamy logo/name in white, tagline in #C8A86B (gold)
+Body font: Arial or system sans-serif, 15px, #1A1A1A, line-height 1.7
+Callout box: left gold border (#C8A86B), background #FBF4E5, italic bold text
+Vision 2030 callout: left green border (#006B3C), background #E6F2EC, green text
+CTA button: background #166534, white text, bold, 16px, border-radius 6px, centered, padding 14px 32px
+Divider between AR and EN blocks: 1px solid #D1D5DB with spacing
+Footer: centered, small text, muted color #6B7280, brand name
+RTL support: wrap the Arabic block in <div dir="rtl" style="text-align:right">
+Mobile responsive: use inline styles only (no <style> blocks — Gmail strips them)
+
+
+
+FILE STRUCTURE
+
+/
+├── index.js              # Express server + /api/contact route
+├── emailTemplates.js     # getEmailHTML(templateId, name, trialLink) function
+├── .env                  # Environment variables (never commit this)
+├── package.json
+└── README.md             # Setup instructions
+
+
+PACKAGE.JSON DEPENDENCIES
+
+json{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.7",
+    "dotenv": "^16.3.1"
+  }
+}
+
+
+README — SETUP INSTRUCTIONS FOR THE USER
+
+Include a README.md with these steps:
+
+## Setup
+
+1. In Replit Secrets (the lock icon), confirm the following are set:
+   GMAIL_USER        → your Gmail address (already configured)
+   GMAIL_APP_PASSWORD → your App Password (already configured)
+   SENDER_NAME       → فريق نظامي | Nizamy Team
+   ACTIVE_TEMPLATE   → 01  (or 02 or 03)
+   TRIAL_LINK        → your free trial URL
+
+2. Click Run. The server starts on port 3000.
+
+3. To trigger the email, POST to /api/contact:
+   {
+     "name": "اسم العميل",
+     "email": "client@example.com"
+   }
+
+4. To switch templates, change ACTIVE_TEMPLATE in Secrets and restart.
+
+
+ADDITIONAL NOTES FOR REPLIT
+
+
+Use process.env for all sensitive values. Never hardcode credentials.
+The /api/contact endpoint should also log each submission to the console with timestamp, name, email, and which template was sent — useful for early-stage tracking before a CRM is in place.
+Add a simple GET / route that returns { status: "Nizamy Email Service running" } as a health check.
+Error handling: if the email fails to send, return HTTP 500 with { success: false, error: "Email delivery failed" } — do not expose the raw SMTP error to the client.
+Gmail daily sending limit is 500 emails/day via App Password SMTP. This is sufficient for early GTM. Flag this limit in a comment in the code.

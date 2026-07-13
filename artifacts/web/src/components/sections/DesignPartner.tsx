@@ -56,7 +56,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       loading: "Sending...",
       success: {
         title: "Application Received",
-        desc: "Thank you for applying. We will reach out to you on WhatsApp within 24 hours."
+        desc: "Thank you for reaching out. We've sent you an email with all the details — please check your inbox or spam folder."
       },
       error: "Something went wrong. Please try again."
     },
@@ -87,7 +87,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       loading: "جارٍ الإرسال...",
       success: {
         title: "تم استلام طلبك",
-        desc: "شكراً لتقديمك. سنتواصل معك عبر الواتساب خلال ٢٤ ساعة."
+        desc: "شكراً لتواصلك معنا. تم إرسال بريد إلكتروني بكل التفاصيل — يرجى التحقق من بريدك الإلكتروني أو الرسائل المهملة."
       },
       error: "حدث خطأ ما. يرجى المحاولة مرة أخرى."
     }

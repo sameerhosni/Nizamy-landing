@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظامي — احجز وصولك المبكر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #F2F4FF;
+      --white:   #FFFFFF;
+      --blue:    #1A6BF5;
+      --navy:    #0D1F5C;
+      --purple:  #7B5EA7;
+      --pink:    #E0339A;
+      --orange:  #F7A823;
+      --sky:     #EEF2FF;
+      --muted:   #6B7FBA;
+      --rule:    #DDE3F8;
+      --text:    #0D1F5C;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: linear-gradient(160deg, #ECEEFF 0%, #F5F0FF 50%, #EEF4FF 100%);
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 32px auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 4px 24px rgba(26,107,245,.1),
+        0 24px 80px rgba(100,80,200,.12);
+    }
+
+    /* ════════════════════════════════
+       HEADER — editorial bold layout
+    ════════════════════════════════ */
+    .hdr {
+      background: linear-gradient(145deg, #FAFBFF 0%, #EEF0FF 60%, #F5EEFF 100%);
+      padding: 44px 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* decorative blobs */
+    .blob1 {
+      position:absolute; top:-80px; left:-60px;
+      width:280px; height:280px; border-radius:50%;
+      background: radial-gradient(circle, rgba(123,94,167,.1) 0%, transparent 68%);
+      pointer-events:none;
+    }
+    .blob2 {
+      position:absolute; bottom:40px; left:20px;
+      width:180px; height:180px; border-radius:50%;
+      background: radial-gradient(circle, rgba(26,107,245,.08) 0%, transparent 70%);
+      pointer-events:none;
+    }
+
+    /* top micro bar */
+    .microbar {
+      display:flex; align-items:center;
+      justify-content:space-between;
+      margin-bottom:36px;
+      position:relative; z-index:2;
+    }
+
+    .logo-row { display:flex; align-items:center; gap:10px; }
+
+    .logo-icon {
+      width:36px; height:36px; border-radius:10px;
+      background:var(--blue);
+      display:flex; align-items:center; justify-content:center;
+      font-size:17px;
+      box-shadow:0 4px 14px rgba(26,107,245,.3);
+    }
+
+    .logo-txt {
+      font-family:'Cairo',sans-serif;
+      font-size:19px; font-weight:900;
+      color:var(--navy);
+    }
+    .logo-txt span { color:var(--blue); }
+
+    .early-pill {
+      display:flex; align-items:center; gap:6px;
+      background:var(--blue);
+      color:#fff;
+      font-family:'Cairo',sans-serif;
+      font-size:12px; font-weight:700;
+      padding:7px 16px; border-radius:20px;
+      box-shadow:0 4px 14px rgba(26,107,245,.3);
+    }
+
+    .pill-dot {
+      width:7px; height:7px; border-radius:50%;
+      background:#90CAF9;
+      animation:pdot 2s ease-in-out infinite;
+    }
+
+    @keyframes pdot {
+      0%,100%{opacity:1;} 50%{opacity:.4;}
+    }
+
+    /* headline — bold editorial */
+    .hl-block {
+      position:relative; z-index:2;
+      margin-bottom:0;
+    }
+
+    .hl-line {
+      font-family:'Cairo',sans-serif;
+      font-size:42px; font-weight:900;
+      line-height:1.15;
+      display:block;
+    }
+
+    .l1 { color:var(--navy); }
+    .l2 { color:var(--navy); }
+    .l2 .accent { color:var(--blue); }
+    .l3 { color:var(--navy); }
+    .l3 .accent { color:var(--pink); }
+
+    /* tagline under headline */
+    .tagline {
+      margin-top:14px;
+      font-size:14px; color:var(--muted);
+      font-weight:500;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    .tagline-dot {
+      width:24px; height:2px;
+      background: linear-gradient(to left, var(--blue), var(--purple));
+      border-radius:2px;
+    }
+
+    /* quote card — floated visual */
+    .quote-card {
+      background:var(--white);
+      border:1px solid var(--rule);
+      border-radius:18px;
+      padding:20px 22px;
+      margin:28px 0 0;
+      position:relative;
+      box-shadow:0 8px 32px rgba(26,107,245,.1);
+    }
+
+    .quote-mark {
+      font-family:'Cairo',sans-serif;
+      font-size:32px; font-weight:900;
+      color:var(--blue);
+      line-height:1;
+      margin-bottom:6px;
+    }
+
+    .quote-txt {
+      font-size:15px; line-height:1.75;
+      color:var(--text);
+    }
+
+    .quote-txt .qb { color:var(--blue); font-weight:700; }
+    .quote-txt .qp { color:var(--purple); font-weight:700; }
+
+    /* header bottom wave */
+    .wave-wrap {
+      margin-top:32px;
+      line-height:0;
+    }
+
+    /* ════════════════════════════════
+       ROI STRIP
+    ════════════════════════════════ */
+    .roi-strip {
+      background: linear-gradient(135deg, var(--blue) 0%, #1250C4 100%);
+      padding:28px 48px;
+      display:flex; align-items:center;
+      justify-content:space-between;
+      gap:0;
+    }
+
+    .roi-item { text-align:center; flex:1; }
+
+    .roi-num {
+      font-family:'Cairo',sans-serif;
+      font-size:28px; font-weight:900;
+      color:#fff; display:block;
+    }
+
+    .roi-lbl {
+      font-size:11px; color:rgba(255,255,255,.75);
+      font-weight:500; margin-top:4px;
+    }
+
+    .roi-sep {
+      width:1px; height:44px;
+      background:rgba(255,255,255,.2);
+    }
+
+    /* ════════════════════════════════
+       BODY
+    ════════════════════════════════ */
+    .body {
+      background:var(--white);
+      padding:40px 48px;
+    }
+
+    /* feature row */
+    .feats {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:14px;
+      margin-bottom:36px;
+    }
+
+    .feat {
+      background:var(--sky);
+      border:1px solid var(--rule);
+      border-radius:14px;
+      padding:20px 14px;
+      text-align:center;
+      transition:transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .feat:hover {
+      transform:translateY(-4px);
+      box-shadow:0 10px 28px rgba(26,107,245,.13);
+      border-color:rgba(26,107,245,.3);
+    }
+
+    .feat-icon-wrap {
+      width:46px; height:46px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 12px;
+      font-size:20px;
+    }
+
+    .ic-blue   { background:rgba(26,107,245,.12); }
+    .ic-purple { background:rgba(123,94,167,.12); }
+    .ic-pink   { background:rgba(224,51,154,.12); }
+
+    .feat-title {
+      font-family:'Cairo',sans-serif;
+      font-size:12px; font-weight:700;
+      color:var(--navy); margin-bottom:4px;
+    }
+
+    .feat-desc { font-size:11px; color:var(--muted); line-height:1.5; }
+
+    /* checks */
+    .checks { margin-bottom:36px; }
+
+    .chk {
+      display:flex; align-items:flex-start;
+      gap:12px; padding:12px 0;
+      border-bottom:1px solid var(--rule);
+    }
+    .chk:last-child { border-bottom:none; }
+
+    .chk-icon {
+      width:22px; height:22px; border-radius:50%;
+      background:var(--blue);
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; color:#fff;
+      flex-shrink:0; margin-top:1px;
+      box-shadow:0 2px 8px rgba(26,107,245,.3);
+    }
+
+    .chk-body { flex:1; }
+
+    .chk-title {
+      font-family:'Cairo',sans-serif;
+      font-size:14px; font-weight:700;
+      color:var(--navy); margin-bottom:2px;
+    }
+
+    .chk-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+
+    /* sep */
+    .sep { height:1px; background:var(--rule); margin:32px 0; }
+
+    /* CTA */
+    .cta-wrap { text-align:center; }
+
+    .cta-btn {
+      display:inline-flex;
+      align-items:center; gap:10px;
+      background: linear-gradient(135deg, var(--blue) 0%, #1250C4 100%);
+      color:#fff;
+      font-family:'Cairo',sans-serif;
+      font-size:18px; font-weight:800;
+      padding:20px 56px;
+      border-radius:14px;
+      text-decoration:none;
+      box-shadow:0 8px 28px rgba(26,107,245,.35);
+      transition:transform .2s, box-shadow .2s, opacity .2s;
+      letter-spacing:.2px;
+    }
+
+    .cta-btn:hover {
+      transform:translateY(-3px);
+      box-shadow:0 16px 44px rgba(26,107,245,.5);
+      opacity:.93;
+    }
+
+    .cta-arr { font-size:20px; }
+
+    .cta-note {
+      margin-top:14px;
+      font-size:12px; color:var(--muted);
+      line-height:1.9;
+    }
+
+    .cta-note strong { color:var(--blue); }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    .ftr {
+      background: linear-gradient(135deg, #0D1F5C 0%, #1A3A8F 100%);
+      padding:28px 48px;
+      display:flex; align-items:center;
+      justify-content:space-between; gap:16px;
+    }
+
+    .ftr-left {}
+
+    .ftr-brand {
+      font-family:'Cairo',sans-serif;
+      font-size:16px; font-weight:900;
+      color:#fff; margin-bottom:4px;
+    }
+
+    .ftr-brand span { color:#90CAF9; }
+
+    .ftr-sub {
+      font-size:11px; color:rgba(255,255,255,.5);
+    }
+
+    .ftr-links { display:flex; gap:18px; }
+
+    .ftr-links a {
+      font-size:11px; color:rgba(255,255,255,.5);
+      text-decoration:none; transition:color .2s;
+    }
+
+    .ftr-links a:hover { color:#90CAF9; }
+
+    /* MOBILE */
+    @media(max-width:600px){
+      .wrap { margin:0; border-radius:0; }
+      .hdr,.body { padding:28px 22px; }
+      .hl-line { font-size:30px; }
+      .roi-strip { padding:22px; flex-wrap:wrap; gap:16px; }
+      .roi-sep { display:none; }
+      .feats { grid-template-columns:1fr 1fr; }
+      .ftr { flex-direction:column; text-align:center; padding:22px; }
+      .ftr-links { justify-content:center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ══ HEADER ══ -->
+  <div class="hdr">
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+
+    <!-- micro bar -->
+    <div class="microbar">
+      <div class="logo-row">
+        <div class="logo-icon">🏢</div>
+        <div class="logo-txt"><span>نظا</span>مي</div>
+      </div>
+      <div class="early-pill">
+        <div class="pill-dot"></div>
+        وصول مبكر مجاني
+      </div>
+    </div>
+
+    <!-- editorial headline -->
+    <div class="hl-block">
+      <span class="hl-line l1">كل أنظمة الموارد</span>
+      <span class="hl-line l2">البشرية <span class="accent">تُكلّفك.</span></span>
+      <span class="hl-line l3">نظامي <span class="accent">يعيد لك.</span></span>
+
+      <div class="tagline">
+        <div class="tagline-dot"></div>
+        مساعدك الذكي في الموارد البشرية. أنت تقود. نظامي يتولى الباقي.
+      </div>
+    </div>
+
+    <!-- quote card -->
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-txt">
+        أتابع فريقي بـ<span class="qb">ثقة</span> الحين —
+        الحضور، الأداء، والمكافآت في مكان واحد،
+        والنظام <span class="qp">يعيد لي 30%</span> من اشتراكي كل سنة.
+      </p>
+    </div>
+
+    <!-- wave separator -->
+    <div class="wave-wrap">
+      <svg viewBox="0 0 640 32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="32">
+        <path d="M0,20 C160,0 480,40 640,20 L640,32 L0,32 Z" fill="#1A6BF5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ══ ROI STRIP ══ -->
+  <div class="roi-strip">
+    <div class="roi-item">
+      <span class="roi-num">ر.س 1,440+</span>
+      <div class="roi-lbl">عائد سنوي تلقائي</div>
+    </div>
+    <div class="roi-sep"></div>
+    <div class="roi-item">
+      <span class="roi-num">70%</span>
+      <div class="roi-lbl">توفير في وقت الإدارة</div>
+    </div>
+    <div class="roi-sep"></div>
+    <div class="roi-item">
+      <span class="roi-num">30%</span>
+      <div class="roi-lbl">استرداد من الاشتراك</div>
+    </div>
+    <div class="roi-sep"></div>
+    <div class="roi-item">
+      <span class="roi-num">3 ر.س</span>
+      <div class="roi-lbl">يبدأ من / للموظف</div>
+    </div>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div class="body">
+
+    <!-- features -->
+    <div class="feats">
+      <div class="feat">
+        <div class="feat-icon-wrap ic-blue">⏱️</div>
+        <div class="feat-title">وقت المدير</div>
+        <div class="feat-desc">تتبع تلقائي بدون ورق أو واتساب</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon-wrap ic-purple">📊</div>
+        <div class="feat-title">الأداء والتقارير</div>
+        <div class="feat-desc">قرارات مبنية على أرقام حقيقية</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon-wrap ic-pink">🎁</div>
+        <div class="feat-title">مكافآت ونقاط</div>
+        <div class="feat-desc">موظف محفّز يشتغل أفضل</div>
+      </div>
+    </div>
+
+    <!-- value checks -->
+    <div class="checks">
+      <div class="chk">
+        <div class="chk-icon">✓</div>
+        <div class="chk-body">
+          <div class="chk-title">حق 30% عائد سنوي</div>
+          <div class="chk-desc">كلما تحسّن أداء فريقك، يعود إليك 30% من قيمة اشتراكك تلقائياً كل عام.</div>
+        </div>
+      </div>
+      <div class="chk">
+        <div class="chk-icon">✓</div>
+        <div class="chk-body">
+          <div class="chk-title">تسجيل في دقيقة واحدة</div>
+          <div class="chk-desc">بدون أجهزة إضافية، بصمة الوجه من الموبايل مباشرة مع تأكيد الموقع.</div>
+        </div>
+      </div>
+      <div class="chk">
+        <div class="chk-icon">✓</div>
+        <div class="chk-body">
+          <div class="chk-title">نظام تحفيز لا عقوبات</div>
+          <div class="chk-desc">نقاط، مكافآت، وتقييمات تخلي الموظف يلتزم بنفسه.</div>
+        </div>
+      </div>
+      <div class="chk">
+        <div class="chk-icon">✓</div>
+        <div class="chk-body">
+          <div class="chk-title">موارد بشرية بالذكاء الاصطناعي</div>
+          <div class="chk-desc">للمنشآت السعودية. متوافق مع نظام العمل ومدمج مع Mudad.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <a href="https://mr-hr-ai-new.replit.app/" class="cta-btn">
+        احجز وصولك المبكر
+        <span class="cta-arr">←</span>
+      </a>
+      <p class="cta-note">
+        <strong>عدد محدود من المنشآت</strong> &nbsp;·&nbsp;
+        بدون بطاقة ائتمانية &nbsp;·&nbsp; بدون التزام
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="ftr">
+    <div class="ftr-left">
+      <div class="ftr-brand"><span>نظا</span>مي</div>
+      <div class="ftr-sub">موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية</div>
+    </div>
+    <div class="ftr-links">
+      <a href="https://mr-hr-ai-new.replit.app/">الموقع</a>
+      <a href="https://mr-hr-ai-new.replit.app/">تواصل معنا</a>
+      <a href="#">إلغاء الاشتراك</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

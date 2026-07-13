@@ -31,8 +31,8 @@ function escapeHtml(value: string): string {
 
 const templates: Record<TemplateId, TemplateContent> = {
   "01": {
-    subjectAr: "أهلًا بك في نظامي — نظام الموارد البشرية اللي يرجّع لك أكثر مما تدفع",
-    subjectEn: "Welcome to Nizamy — the HR system that gives back more than it costs",
+    subjectAr: "أهلًا بك في نظامي — نظام الموارد البشرية اللي يرجّع لك جزءًا من تكلفته السنوية",
+    subjectEn: "Welcome to Nizamy — the HR system that returns part of its annual cost back to you",
     ctaLabel: "ابدأ تجربتك المجانية | Start Your Free Trial",
     ar: {
       greeting: "السلام عليكم {{name}}،",
@@ -245,10 +245,24 @@ export function resolveTemplateId(raw: string | undefined): TemplateId {
   return raw === "02" || raw === "03" ? raw : "01";
 }
 
-const bodyStyle = "font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1A1A1A;line-height:1.7;";
+const fontStack = "'Segoe UI',Tahoma,Arial,Helvetica,sans-serif";
+const bodyStyle = `font-family:${fontStack};font-size:15px;color:#2A3660;line-height:1.8;`;
+
+const colors = {
+  pageBg: "#EEF1FF",
+  navy: "#0D1F5C",
+  blue: "#1A6BF5",
+  blueDark: "#1250C4",
+  pink: "#E0339A",
+  sky: "#EEF2FF",
+  muted: "#6B7FBA",
+  rule: "#DDE3F8",
+  headerBg: "#F3F2FF",
+};
 
 function renderBlock(block: Block, rtl: boolean): string {
   const align = rtl ? "right" : "left";
+  const side = rtl ? "right" : "left";
   switch (block.type) {
     case "p":
       return `<p style="margin:0 0 14px 0;${bodyStyle}text-align:${align}">${escapeHtml(block.text)}</p>`;
@@ -256,15 +270,15 @@ function renderBlock(block: Block, rtl: boolean): string {
       return block.items
         .map(
           (item) =>
-            `<p style="margin:0 0 8px 0;${bodyStyle}text-align:${align}">&#9656; ${escapeHtml(item)}</p>`,
+            `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 10px 0"><tr><td width="26" valign="top" style="font-family:${fontStack};font-size:15px;color:${colors.blue};line-height:1.8">&#9656;</td><td style="${bodyStyle}text-align:${align}">${escapeHtml(item)}</td></tr></table>`,
         )
         .join("");
     case "callout":
-      return `<div style="border-${rtl ? "right" : "left"}:4px solid #C8A86B;background:#FBF4E5;padding:12px 16px;margin:0 0 16px 0;${bodyStyle}text-align:${align}"><em><strong>${escapeHtml(block.text)}</strong></em></div>`;
+      return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0"><tr><td style="background:#FFFFFF;border:1px solid ${colors.rule};border-${side}:4px solid ${colors.blue};border-radius:14px;padding:16px 20px"><div style="font-family:${fontStack};font-size:26px;font-weight:bold;color:${colors.blue};line-height:1">&#8220;</div><div style="${bodyStyle}font-weight:bold;color:${colors.navy};text-align:${align}"><em>${escapeHtml(block.text)}</em></div></td></tr></table>`;
     case "vision":
-      return `<div style="border-${rtl ? "right" : "left"}:4px solid #006B3C;background:#E6F2EC;padding:12px 16px;margin:0 0 16px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#006B3C;text-align:${align}">${escapeHtml(block.text)}</div>`;
+      return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px 0"><tr><td style="background:#E6F2EC;border-${side}:4px solid #006B3C;border-radius:10px;padding:14px 18px;font-family:${fontStack};font-size:15px;line-height:1.8;color:#006B3C;text-align:${align}">${escapeHtml(block.text)}</td></tr></table>`;
     case "sign":
-      return `<p style="margin:16px 0 0 0;${bodyStyle}text-align:${align}">${escapeHtml(block.text).replace(/\n/g, "<br/>")}</p>`;
+      return `<p style="margin:16px 0 0 0;${bodyStyle}color:${colors.navy};text-align:${align}">${escapeHtml(block.text).replace(/\n/g, "<br/>")}</p>`;
   }
 }
 
@@ -272,7 +286,7 @@ function renderLang(content: LangContent, name: string, rtl: boolean): string {
   const greeting = content.greeting.replace("{{name}}", name);
   const align = rtl ? "right" : "left";
   const inner = [
-    `<p style="margin:0 0 14px 0;${bodyStyle}font-weight:bold;text-align:${align}">${escapeHtml(greeting)}</p>`,
+    `<p style="margin:0 0 16px 0;${bodyStyle}font-weight:bold;font-size:17px;color:${colors.navy};text-align:${align}">${escapeHtml(greeting)}</p>`,
     ...content.blocks.map((b) => renderBlock(b, rtl)),
   ].join("");
   return `<div dir="${rtl ? "rtl" : "ltr"}" style="text-align:${align}">${inner}</div>`;
@@ -290,35 +304,118 @@ function splitCtaLabel(label: string, lang: EmailLang): string {
   return lang === "ar" ? parts[0] : parts[1];
 }
 
-export function getEmailHTML(templateId: TemplateId, name: string, trialLink: string, lang: EmailLang): string {
+const chrome = {
+  ar: {
+    pill: "وصول مبكر مجاني",
+    headline1: "كل أنظمة الموارد البشرية <span style=\"color:#1A6BF5\">تُكلّفك.</span>",
+    headline2: "نظامي <span style=\"color:#E0339A\">يعيد لك.</span>",
+    tagline: "مساعدك الذكي في الموارد البشرية. أنت تقود. نظامي يتولى الباقي.",
+    stats: [
+      ["+1,440 ر.س", "عائد سنوي تلقائي"],
+      ["70%", "توفير في وقت الإدارة"],
+      ["حتى 30%", "استرداد من الاشتراك"],
+      ["3 ر.س", "يبدأ من / للموظف"],
+    ],
+    footerSub: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
+    ctaNote: "بدون التزام · بدون بطاقة ائتمان",
+  },
+  en: {
+    pill: "Free early access",
+    headline1: "Every HR system <span style=\"color:#1A6BF5\">costs you.</span>",
+    headline2: "Nizamy <span style=\"color:#E0339A\">pays you back.</span>",
+    tagline: "Your smart HR assistant. You lead. Nizamy handles the rest.",
+    stats: [
+      ["+SAR 1,440", "Automatic annual return"],
+      ["70%", "Less admin time"],
+      ["Up to 30%", "Of subscription back"],
+      ["SAR 3", "Starting / employee"],
+    ],
+    footerSub: "AI-powered HR for Saudi SMEs",
+    ctaNote: "No commitment · No credit card",
+  },
+} as const;
+
+export function getEmailHTML(
+  templateId: TemplateId,
+  name: string,
+  trialLink: string,
+  lang: EmailLang,
+  hasLogo = true,
+): string {
   const t = templates[templateId];
   const safeLink = escapeHtml(trialLink);
-  const tagline =
-    lang === "ar" ? "نظام الموارد البشرية اللي يرجّع لك" : "HR that pays you back";
-  const body =
-    lang === "ar" ? renderLang(t.ar, name, true) : renderLang(t.en, name, false);
+  const rtl = lang === "ar";
+  const dir = rtl ? "rtl" : "ltr";
+  const align = rtl ? "right" : "left";
+  const c = chrome[lang];
+  const body = rtl ? renderLang(t.ar, name, true) : renderLang(t.en, name, false);
   const ctaLabel = splitCtaLabel(t.ctaLabel, lang);
+  const wordmark = rtl
+    ? `<span style="color:${colors.blue}">نظا</span><span style="color:${colors.navy}">مي</span>`
+    : `<span style="color:${colors.navy}">Niza</span><span style="color:${colors.blue}">my</span>`;
+
+  const statCells = c.stats
+    .map(
+      ([num, lbl]) =>
+        `<td align="center" width="25%" style="padding:6px 4px"><div style="font-family:${fontStack};font-size:22px;font-weight:800;color:#FFFFFF;white-space:nowrap">${escapeHtml(num)}</div><div style="font-family:${fontStack};font-size:11px;color:#CFE0FF;margin-top:4px">${escapeHtml(lbl)}</div></td>`,
+    )
+    .join("");
 
   return `<!DOCTYPE html>
-<html>
-<body style="margin:0;padding:0;background:#F4F6F9">
-  <div style="max-width:600px;margin:0 auto;padding:24px 12px">
-    <div style="background:#FFFFFF;border-radius:8px;overflow:hidden">
-      <div style="background:#0A1628;padding:24px;text-align:center">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:bold;color:#FFFFFF">نظامي · Nizamy</div>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#C8A86B;margin-top:6px">${escapeHtml(tagline)}</div>
-      </div>
-      <div style="padding:28px 24px">
-        ${body}
-        <div style="text-align:center;margin:32px 0 8px 0">
-          <a href="${safeLink}" style="display:inline-block;background:#166534;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;text-decoration:none;border-radius:6px;padding:14px 32px">${escapeHtml(ctaLabel)}</a>
-        </div>
-      </div>
-      <div style="border-top:1px solid #E5E7EB;padding:16px 24px;text-align:center">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6B7280">نظامي · Nizamy — www.nizamy.app</div>
-      </div>
-    </div>
-  </div>
+<html dir="${dir}">
+<body style="margin:0;padding:0;background:${colors.pageBg}">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:${colors.pageBg}">
+    <tr><td align="center" style="padding:28px 12px">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="max-width:640px;width:100%;border-radius:22px;overflow:hidden;background:#FFFFFF">
+
+        <tr><td dir="${dir}" style="background:${colors.headerBg};padding:36px 40px 30px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <td align="${align}" style="vertical-align:middle">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+                  ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy" style="display:block;border:0" /></td>` : ""}
+                  <td style="vertical-align:middle;font-family:${fontStack};font-size:21px;font-weight:800">${wordmark}</td>
+                </tr></table>
+              </td>
+              <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
+                <span style="display:inline-block;background:${colors.blue};color:#FFFFFF;font-family:${fontStack};font-size:12px;font-weight:bold;padding:8px 18px;border-radius:20px">${escapeHtml(c.pill)}</span>
+              </td>
+            </tr>
+          </table>
+          <div style="margin-top:32px;font-family:${fontStack};font-size:30px;font-weight:800;line-height:1.3;color:${colors.navy};text-align:${align}">${c.headline1}<br/>${c.headline2}</div>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px"><tr>
+            <td style="width:24px;height:3px;background:${colors.blue};border-radius:2px;font-size:0;line-height:0">&nbsp;</td>
+            <td style="padding-${rtl ? "right" : "left"}:10px;font-family:${fontStack};font-size:13px;color:${colors.muted};text-align:${align}">${escapeHtml(c.tagline)}</td>
+          </tr></table>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:${colors.blue};padding:22px 24px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>${statCells}</tr></table>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:#FFFFFF;padding:38px 40px">
+          ${body}
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:32px"><tr><td align="center">
+            <a href="${safeLink}" style="display:inline-block;background:${colors.blue};background-image:linear-gradient(135deg,${colors.blue},${colors.blueDark});color:#FFFFFF;font-family:${fontStack};font-size:17px;font-weight:800;text-decoration:none;border-radius:14px;padding:18px 52px">${escapeHtml(ctaLabel)}</a>
+            <div style="margin-top:12px;font-family:${fontStack};font-size:12px;color:${colors.muted}">${escapeHtml(c.ctaNote)}</div>
+          </td></tr></table>
+        </td></tr>
+
+        <tr><td dir="${dir}" style="background:${colors.navy};padding:26px 40px">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+            <td align="${align}">
+              <div style="font-family:${fontStack};font-size:16px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#90CAF9">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
+              <div style="font-family:${fontStack};font-size:11px;color:#AAB8E8;margin-top:4px">${escapeHtml(c.footerSub)}</div>
+            </td>
+            <td align="${rtl ? "left" : "right"}" style="vertical-align:middle">
+              <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#90CAF9;text-decoration:none">www.nizamy.app</a>
+            </td>
+          </tr></table>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
 </body>
 </html>`;
 }
@@ -341,10 +438,11 @@ export function renderLeadEmail(
   name: string,
   trialLink: string,
   lang: EmailLang,
+  hasLogo = true,
 ): RenderedEmail {
   const t = templates[templateId];
   const subject = lang === "ar" ? t.subjectAr : t.subjectEn;
-  const html = getEmailHTML(templateId, name, trialLink, lang);
+  const html = getEmailHTML(templateId, name, trialLink, lang, hasLogo);
   const text = [
     renderText(lang === "ar" ? t.ar : t.en, name),
     "",

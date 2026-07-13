@@ -1,4 +1,7 @@
 import nodemailer from "nodemailer";
+import { existsSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { logger } from "./logger";
 import { renderLeadEmail, resolveTemplateId, type EmailLang } from "./emailTemplates";
 
@@ -50,7 +53,22 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
   const firstName = lead.name.trim().split(/\s+/)[0] ?? lead.name;
   const lang: EmailLang = lead.language === "en" ? "en" : "ar";
 
-  const { subject, html, text } = renderLeadEmail(templateId, firstName, trialLink, lang);
+  const moduleDir = dirname(fileURLToPath(import.meta.url));
+  const logoCandidates = [
+    resolve(moduleDir, "../assets/logo-mascot.png"),
+    resolve(process.cwd(), "assets/logo-mascot.png"),
+  ];
+  const logoPath = logoCandidates.find((p) => existsSync(p));
+  const hasLogo = logoPath !== undefined;
+  if (!hasLogo) {
+    logger.warn({ logoCandidates }, "Logo asset not found; sending email without embedded logo");
+  }
+
+  const { subject, html, text } = renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo);
+
+  const attachments = hasLogo
+    ? [{ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" }]
+    : [];
 
   const transport = createTransport();
   await transport.sendMail({
@@ -59,6 +77,7 @@ export async function sendLeadConfirmation(lead: LeadEmailData): Promise<void> {
     subject,
     text,
     html,
+    attachments,
   });
 
   logger.info(

@@ -8,7 +8,7 @@ export function Problem() {
   const content = {
     en: {
       headingPart1: "Other systems drain your money. ",
-      headingPart2: "Nizamy HR saves it for you.",
+      headingPart2: "Nizamy\u00A0HR saves it for you.",
       subhead: "Same monthly fee. Completely different math. One drains your budget every month — the other puts money back in it.",
       legacy: {
         tag: "The old way",
@@ -23,7 +23,7 @@ export function Problem() {
     },
     ar: {
       headingPart1: "الأنظمة الأخرى تستنزف أموالك. ",
-      headingPart2: "نظامي اتش آر يوفّرها لك.",
+      headingPart2: "نظامي\u00A0اتش\u00A0آر يوفّرها لك.",
       subhead: "نفس الرسوم الشهرية. حسبة مختلفة تماماً. أحدهما يستنزف ميزانيتك كل شهر — والآخر يعيد المال إليها.",
       legacy: {
         tag: "الطريقة القديمة",

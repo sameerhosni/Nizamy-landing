@@ -129,6 +129,14 @@
   --app-font-heading: 'Cairo', sans-serif;
 }
 
+/* Arabic script needs taller line boxes than Latin: tight leading makes
+   stacked headlines collide. Overrides utility leading-* classes in RTL. */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  line-height: 1.4;
+}
+
 @layer base {
   * {
     @apply border-border;

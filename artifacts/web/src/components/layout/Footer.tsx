@@ -4,8 +4,8 @@ import { useLanguage } from "@/lib/i18n";
 export function Footer() {
   const { language } = useLanguage();
   const tagline = {
-    en: "AI-powered HR — for Saudi SMEs. © 2026",
-    ar: "الموارد البشرية بالذكاء الاصطناعي — للمنشآت السعودية. © 2026",
+    en: "AI-powered HR. © 2026",
+    ar: "الموارد البشرية بالذكاء الاصطناعي © 2026",
   };
 
   return (

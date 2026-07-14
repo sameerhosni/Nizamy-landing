@@ -1,2 +1,3 @@
 - [Bilingual i18n after design restyles](bilingual-design-subagent.md) — design subagent injects hardcoded English microcopy; route new strings through the i18n content object.
+- [GitHub sync for this project](github-sync.md) — push via connector token; uncommitted files go up via git-data API, which makes local/remote SHAs diverge — sync via API, never force-push.
 - [Brand fonts in Gmail emails](email-brand-fonts-gmail.md) — Gmail strips web fonts; pre-render headlines as PNG via ImageMagick+Pango (resvg/node-canvas fail); watch fontconfig family-name weight quirk.

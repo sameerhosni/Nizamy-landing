@@ -1,6 +1,6 @@
-# Nizamy
+# Nizamy HR
 
-A bilingual (EN/AR, full RTL) high-converting landing page for Nizamy (نظامي, formerly Mr-Hr) — an AI-powered HR system for Saudi SMEs that returns up to 30% of subscription back to the customer. Includes a live return calculator and a Design Partner lead capture form backed by Postgres.
+A bilingual (EN/AR, full RTL) high-converting landing page for Nizamy HR (نظامي اتش آر, formerly Mr-Hr) — an AI-powered HR system for Saudi SMEs that returns up to 30% of subscription back to the customer. Includes a live return calculator and a Design Partner lead capture form backed by Postgres.
 
 ## Run & Operate
 
@@ -10,6 +10,7 @@ A bilingual (EN/AR, full RTL) high-converting landing page for Nizamy (نظام�
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env: `DATABASE_URL` — Postgres connection string
+- Docker: root `Dockerfile` (multi-stage) builds web + API and serves both from one container on port 3000 (API under `/api`, SPA static via `STATIC_DIR`); run with `docker build -t nizamy . && docker run -p 3000:3000 -e DATABASE_URL=... -e SMTP_HOST=... -e SMTP_PORT=... -e SMTP_USERNAME=... -e SMTP_PASSWORD=... -e SMTP_FROM=... nizamy`
 - Email env: `SMTP_HOST`/`SMTP_PORT`/`SMTP_USERNAME`/`SMTP_PASSWORD` (Gmail App Password), `SMTP_FROM`, `SENDER_NAME` (optional), `ACTIVE_TEMPLATE` (01/02/03, picks the lead welcome email template), `TRIAL_LINK` (CTA URL in the email)
 - Lead flow: form POST `/api/lead` → saved to Postgres → bilingual welcome email sent to the lead's own address (templates in `artifacts/api-server/src/lib/emailTemplates.ts`, sender in `src/lib/mailer.ts`)
 - Email HTML is table-based with fully inline styles (Gmail-safe); the ENTIRE email uses one font family — IBM Plex Sans Arabic (the landing-page body font) for headings and body alike (user explicitly wants a single font, no Cairo/Tajawal mixing in emails) with system fallbacks; brand palette (blue #2563EB, navy #0F172A); logo embedded as CID attachment from `artifacts/api-server/assets/logo-mascot.png` (resolved relative to the built module, graceful text-only fallback if missing)

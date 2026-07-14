@@ -31,20 +31,20 @@ function escapeHtml(value: string): string {
 
 const templates: Record<TemplateId, TemplateContent> = {
   "01": {
-    subjectAr: "أهلًا بك في نظامي — نظام الموارد البشرية اللي يرجّع لك جزءًا من تكلفته السنوية",
-    subjectEn: "Welcome to Nizamy — the HR system that returns part of its annual cost back to you",
+    subjectAr: "أهلًا بك في نظامي اتش آر — نظام الموارد البشرية اللي يرجّع لك جزءًا من تكلفته السنوية",
+    subjectEn: "Welcome to Nizamy HR — the HR system that returns part of its annual cost back to you",
     ctaLabel: "ابدأ تجربتك المجانية | Start Your Free Trial",
     ar: {
       greeting: "السلام عليكم {{name}}،",
       blocks: [
-        { type: "p", text: "وصل طلبك — ويسعدنا إنك اخترت نظامي." },
+        { type: "p", text: "وصل طلبك — ويسعدنا إنك اخترت نظامي اتش آر." },
         {
           type: "callout",
           text: "خلّنا نكون صريحين معك من البداية: كل ريال تدفعه على إدارة الموظفين — المفروض يرجع لك بشكل أو بآخر.",
         },
         {
           type: "p",
-          text: "الشركات اللي عندها 50 موظف وراتب شهري بـ 150,000 ريال — تخسر ما يقارب 18,000 ريال سنويًا من الإنتاجية الضايعة، دوران الموظفين، والمتابعة اليدوية. نظامي مصمّم يرجّع لك هذا الرقم.",
+          text: "الشركات اللي عندها 50 موظف وراتب شهري بـ 150,000 ريال — تخسر ما يقارب 18,000 ريال سنويًا من الإنتاجية الضايعة، دوران الموظفين، والمتابعة اليدوية. نظامي اتش آر مصمّم يرجّع لك هذا الرقم.",
         },
         { type: "p", text: "كيف؟" },
         {
@@ -57,23 +57,23 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "vision",
-          text: "نظامي يسير مع رؤية 2030 — يساعدك تبني فريق منتج، محفّز، ومؤهّل للنمو في بيئة العمل السعودية الجديدة.",
+          text: "نظامي اتش آر يسير مع رؤية 2030 — يساعدك تبني فريق منتج، محفّز، ومؤهّل للنمو في بيئة العمل السعودية الجديدة.",
         },
         { type: "p", text: "جرّب الحين — مجانًا، بدون التزام." },
-        { type: "sign", text: "في أمان الله،\nفريق نظامي" },
+        { type: "sign", text: "في أمان الله،\nفريق نظامي اتش آر" },
       ],
     },
     en: {
       greeting: "Assalamu Alaikum {{name}},",
       blocks: [
-        { type: "p", text: "Your request came through — and we're glad you chose Nizamy." },
+        { type: "p", text: "Your request came through — and we're glad you chose Nizamy HR." },
         {
           type: "callout",
           text: "Let's be direct with you from the start: every riyal you spend managing your team should come back to you in one form or another.",
         },
         {
           type: "p",
-          text: "A company with 50 employees and a monthly payroll of SAR 150,000 loses approximately SAR 18,000 per year to lost productivity, staff turnover, and manual follow-up. Nizamy is designed to recover that number for you.",
+          text: "A company with 50 employees and a monthly payroll of SAR 150,000 loses approximately SAR 18,000 per year to lost productivity, staff turnover, and manual follow-up. Nizamy HR is designed to recover that number for you.",
         },
         { type: "p", text: "Here's how:" },
         {
@@ -86,17 +86,17 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "vision",
-          text: "Nizamy is aligned with Vision 2030 — helping you build a productive, motivated Saudi workforce ready for the new economy.",
+          text: "Nizamy HR is aligned with Vision 2030 — helping you build a productive, motivated Saudi workforce ready for the new economy.",
         },
         { type: "p", text: "Start now — free, no commitment." },
-        { type: "sign", text: "With best regards,\nThe Nizamy Team" },
+        { type: "sign", text: "With best regards,\nThe Nizamy HR Team" },
       ],
     },
   },
   "02": {
-    subjectAr: "أهلًا في نظامي — لأن فريقك يستاهل أكثر من مجرد متابعة",
-    subjectEn: "Welcome to Nizamy — because your team deserves more than just tracking",
-    ctaLabel: "ابدأ تجربتك المجانية الآن | Try Nizamy Free",
+    subjectAr: "أهلًا في نظامي اتش آر — لأن فريقك يستاهل أكثر من مجرد متابعة",
+    subjectEn: "Welcome to Nizamy HR — because your team deserves more than just tracking",
+    ctaLabel: "ابدأ تجربتك المجانية الآن | Try Nizamy HR Free",
     ar: {
       greeting: "السلام عليكم {{name}}،",
       blocks: [
@@ -111,7 +111,7 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "p",
-          text: "نظامي مبني على فكرة بسيطة: التزام الموظف لازم يُكافأ — مش يُعاقَب.",
+          text: "نظامي اتش آر مبني على فكرة بسيطة: التزام الموظف لازم يُكافأ — مش يُعاقَب.",
         },
         { type: "p", text: "تخيّل بيئة عمل فيها:" },
         {
@@ -124,9 +124,9 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "vision",
-          text: "في إطار رؤية 2030، بناء بيئة عمل جاذبة للكوادر الوطنية هو استثمار استراتيجي — ونظامي يساعدك تبني هذه البيئة بدون تعقيد.",
+          text: "في إطار رؤية 2030، بناء بيئة عمل جاذبة للكوادر الوطنية هو استثمار استراتيجي — ونظامي اتش آر يساعدك تبني هذه البيئة بدون تعقيد.",
         },
-        { type: "sign", text: "مع خالص التحية،\nفريق نظامي" },
+        { type: "sign", text: "مع خالص التحية،\nفريق نظامي اتش آر" },
       ],
     },
     en: {
@@ -143,7 +143,7 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "p",
-          text: "Nizamy is built on a simple idea: employee commitment should be rewarded — not just monitored.",
+          text: "Nizamy HR is built on a simple idea: employee commitment should be rewarded — not just monitored.",
         },
         { type: "p", text: "Imagine a workplace where:" },
         {
@@ -156,9 +156,9 @@ const templates: Record<TemplateId, TemplateContent> = {
         },
         {
           type: "vision",
-          text: "Under Vision 2030, building an attractive environment for Saudi talent is a strategic investment — and Nizamy helps you build it without complexity.",
+          text: "Under Vision 2030, building an attractive environment for Saudi talent is a strategic investment — and Nizamy HR helps you build it without complexity.",
         },
-        { type: "sign", text: "With warm regards,\nThe Nizamy Team" },
+        { type: "sign", text: "With warm regards,\nThe Nizamy HR Team" },
       ],
     },
   },
@@ -185,7 +185,7 @@ const templates: Record<TemplateId, TemplateContent> = {
         { type: "p", text: "هذي مش مشكلة نظام. هذا نموذج خاطئ." },
         {
           type: "p",
-          text: "نظامي يقلب المعادلة: نفس الموظف، نفس الميزانية — نتيجة معاكسة تمامًا.",
+          text: "نظامي اتش آر يقلب المعادلة: نفس الموظف، نفس الميزانية — نتيجة معاكسة تمامًا.",
         },
         {
           type: "bullets",
@@ -199,7 +199,7 @@ const templates: Record<TemplateId, TemplateContent> = {
           type: "vision",
           text: "هذا النموذج يسير مع رؤية 2030 لرفع الإنتاجية وتطوير بيئة العمل السعودية.",
         },
-        { type: "sign", text: "تحياتي،\nفريق نظامي" },
+        { type: "sign", text: "تحياتي،\nفريق نظامي اتش آر" },
       ],
     },
     en: {
@@ -221,7 +221,7 @@ const templates: Record<TemplateId, TemplateContent> = {
         { type: "p", text: "This is not a software problem. It is a broken model." },
         {
           type: "p",
-          text: "Nizamy flips the equation: same employee, same budget — completely opposite outcome.",
+          text: "Nizamy HR flips the equation: same employee, same budget — completely opposite outcome.",
         },
         {
           type: "bullets",
@@ -235,7 +235,7 @@ const templates: Record<TemplateId, TemplateContent> = {
           type: "vision",
           text: "This model is aligned with Vision 2030's mandate for higher productivity and a stronger Saudi work environment.",
         },
-        { type: "sign", text: "Best regards,\nThe Nizamy Team" },
+        { type: "sign", text: "Best regards,\nThe Nizamy HR Team" },
       ],
     },
   },
@@ -310,13 +310,13 @@ function splitCtaLabel(label: string, lang: EmailLang): string {
 
 const chrome = {
   ar: {
-    headline: "نظامي <span style=\"color:#2563EB\">يرجّع لك.</span>",
+    headline: "نظامي اتش آر <span style=\"color:#2563EB\">يرجّع لك.</span>",
     banner: "حتى 30% من اشتراكك يرجع لك سنويًا",
     footerSub: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
     ctaNote: "بدون التزام · بدون بطاقة ائتمان",
   },
   en: {
-    headline: "Nizamy <span style=\"color:#2563EB\">pays you back.</span>",
+    headline: "Nizamy HR <span style=\"color:#2563EB\">pays you back.</span>",
     banner: "Up to 30% of your subscription back every year",
     footerSub: "AI-powered HR for Saudi SMEs",
     ctaNote: "No commitment · No credit card",
@@ -344,10 +344,10 @@ export function getEmailHTML(
   const body = rtl ? renderLang(t.ar, name, true) : renderLang(t.en, name, false);
   const ctaLabel = splitCtaLabel(t.ctaLabel, lang);
   const wordmark = rtl
-    ? `<span style="color:${colors.blue}">نظا</span><span style="color:${colors.navy}">مي</span>`
-    : `<span style="color:${colors.navy}">Niza</span><span style="color:${colors.blue}">my</span>`;
+    ? `<span style="color:${colors.blue}">نظا</span><span style="color:${colors.navy}">مي اتش آر</span>`
+    : `<span style="color:${colors.navy}">Niza</span><span style="color:${colors.blue}">my HR</span>`;
   const headlineHtml = hasTextImages
-    ? `<div style="margin-top:22px"><img src="cid:nz-headline" width="${rtl ? 239 : 395}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" /></div>`
+    ? `<div style="margin-top:22px"><img src="cid:nz-headline" width="${rtl ? 344 : 456}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" /></div>`
     : `<div style="margin-top:22px;font-family:${heading};font-size:28px;font-weight:800;line-height:1.35;color:${colors.navy};text-align:center">${c.headline}</div>`;
   const bannerHtml = hasTextImages
     ? `<img src="cid:nz-banner" width="${rtl ? 322 : 470}" alt="${escapeHtml(c.banner)}" style="display:block;border:0;max-width:100%;margin:0 auto" />`
@@ -363,7 +363,7 @@ export function getEmailHTML(
 
         <tr><td dir="${dir}" align="center" style="background:${colors.headerBg};padding:36px 40px 28px 40px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-            ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy" style="display:block;border:0" /></td>` : ""}
+            ${hasLogo ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="34" height="38" alt="Nizamy HR" style="display:block;border:0" /></td>` : ""}
             <td style="vertical-align:middle;font-family:${heading};font-size:22px;font-weight:800">${wordmark}</td>
           </tr></table>
           ${headlineHtml}
@@ -382,7 +382,7 @@ export function getEmailHTML(
         </td></tr>
 
         <tr><td dir="${dir}" align="center" style="background:${colors.navy};padding:22px 40px">
-          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#93C5FD">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
+          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي اتش آر" : "Nizamy HR"} <span style="color:#93C5FD">· ${rtl ? "Nizamy HR" : "نظامي اتش آر"}</span></div>
           <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerSub)}</div>
           <div style="margin-top:8px"><a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">www.nizamy.app</a></div>
         </td></tr>
@@ -396,7 +396,7 @@ export function getEmailHTML(
 
 const returningChrome = {
   ar: {
-    subject: "أهلًا بعودتك إلى نظامي — أنت على القائمة",
+    subject: "أهلًا بعودتك إلى نظامي اتش آر — أنت على القائمة",
     greeting: "أهلًا بعودتك {{name}}،",
     intro: "طلبك وصلنا من قبل وأنت محجوز معنا — هذا تذكير سريع بما ينتظرك.",
     headline: "نظام موارد بشرية <span style=\"color:#2563EB\">يرجع لك قيمة.</span>",
@@ -409,10 +409,10 @@ const returningChrome = {
     footerTag: "نظام موارد بشرية بالذكاء الاصطناعي للمنشآت السعودية",
     website: "الموقع",
     contact: "تواصل معنا",
-    rights: "© 2026 نظامي. جميع الحقوق محفوظة.",
+    rights: "© 2026 نظامي اتش آر. جميع الحقوق محفوظة.",
   },
   en: {
-    subject: "Welcome back to Nizamy — you're already on the list",
+    subject: "Welcome back to Nizamy HR — you're already on the list",
     greeting: "Welcome back {{name}},",
     intro: "We already have your request and your spot is saved — here's a quick reminder of what's waiting for you.",
     headline: "An HR system that <span style=\"color:#2563EB\">pays you value.</span>",
@@ -425,7 +425,7 @@ const returningChrome = {
     footerTag: "AI-powered HR for Saudi SMEs",
     website: "Website",
     contact: "Contact",
-    rights: "© 2026 Nizamy. All rights reserved.",
+    rights: "© 2026 Nizamy HR. All rights reserved.",
   },
 } as const;
 
@@ -444,10 +444,10 @@ export function getReturningEmailHTML(
   const safeLink = escapeHtml(trialLink);
   const greeting = escapeHtml(c.greeting.replace("{{name}}", name));
   const logoCell = hasLogo
-    ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="30" height="34" alt="Nizamy" style="display:block;border:0" /></td>`
+    ? `<td style="vertical-align:middle;padding-${rtl ? "left" : "right"}:10px"><img src="cid:nizamy-logo" width="30" height="34" alt="Nizamy HR" style="display:block;border:0" /></td>`
     : "";
   const headlineHtml = hasTextImages
-    ? `<img src="cid:nz-headline" width="${rtl ? 444 : 520}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" />`
+    ? `<img src="cid:nz-headline" width="${rtl ? 444 : 554}" alt="${escapeHtml(stripTags(c.headline))}" style="display:block;border:0;max-width:100%;margin:0 auto" />`
     : `<div style="font-family:${heading};font-size:26px;font-weight:800;line-height:1.4;color:${colors.navy};text-align:center">${c.headline}</div>`;
   const statNumHtml = hasTextImages
     ? `<img src="cid:nz-stat" width="${rtl ? 246 : 294}" alt="${escapeHtml(c.statNum)}" style="display:block;border:0;max-width:100%;margin:14px auto 0 auto" />`
@@ -464,7 +464,7 @@ export function getReturningEmailHTML(
         <tr><td dir="${dir}" style="background:${colors.navy};padding:18px 40px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
             ${logoCell}
-            <td style="vertical-align:middle;font-family:${heading};font-size:19px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"}</td>
+            <td style="vertical-align:middle;font-family:${heading};font-size:19px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي اتش آر" : "Nizamy HR"}</td>
           </tr></table>
         </td></tr>
 
@@ -488,7 +488,7 @@ export function getReturningEmailHTML(
         </td></tr>
 
         <tr><td dir="${dir}" align="center" style="background:${colors.navy};padding:22px 40px">
-          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي" : "Nizamy"} <span style="color:#93C5FD">· ${rtl ? "Nizamy" : "نظامي"}</span></div>
+          <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي اتش آر" : "Nizamy HR"} <span style="color:#93C5FD">· ${rtl ? "Nizamy HR" : "نظامي اتش آر"}</span></div>
           <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerTag)}</div>
           <div style="margin-top:8px">
             <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.website)}</a>
@@ -523,7 +523,7 @@ export function renderReturningLeadEmail(
     "",
     `${c.cta}: ${trialLink}`,
     "",
-    "نظامي · Nizamy — www.nizamy.app",
+    "نظامي اتش آر · Nizamy HR — www.nizamy.app",
   ].join("\n");
   return { subject: c.subject, html, text };
 }
@@ -557,7 +557,7 @@ export function renderLeadEmail(
     "",
     `${splitCtaLabel(t.ctaLabel, lang)}: ${trialLink}`,
     "",
-    "نظامي · Nizamy — www.nizamy.app",
+    "نظامي اتش آر · Nizamy HR — www.nizamy.app",
   ].join("\n");
   return { subject, html, text };
 }

@@ -15,7 +15,7 @@ export function Logo({ variant = "light", className = "" }: LogoProps) {
       <div className="relative w-9 h-10 sm:w-11 sm:h-12 shrink-0">
         <img
           src="/images/logo-mascot-v2.png"
-          alt="Nizamy"
+          alt="Nizamy HR"
           className="w-full h-full object-contain"
         />
       </div>
@@ -23,10 +23,10 @@ export function Logo({ variant = "light", className = "" }: LogoProps) {
         className={`font-heading font-extrabold text-lg sm:text-2xl tracking-tight leading-none whitespace-nowrap truncate ${textColor}`}
       >
         {isRtl ? (
-          <span className="text-gradient-primary">نظامي</span>
+          <span className="text-gradient-primary">نظامي اتش آر</span>
         ) : (
           <>
-            Niza<span className="text-gradient-primary">my</span>
+            Niza<span className="text-gradient-primary">my HR</span>
           </>
         )}
       </div>

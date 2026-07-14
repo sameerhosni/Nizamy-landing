@@ -13,7 +13,7 @@ export function ReturnModel() {
       titlePart1: "Perform well. ",
       titlePart2: "Get up to 30% back",
       titlePart3: ", every year.",
-      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Nizamy, the more comes back — here's exactly where every riyal comes from.",
+      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Nizamy HR, the more comes back — here's exactly where every riyal comes from.",
       clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and the value of time saved through better employee performance.",
       layers: [
         {
@@ -24,7 +24,7 @@ export function ReturnModel() {
         {
           num: "02",
           title: "Reward performance",
-          desc: "Nizamy funds rewards for your employees through motivation points, with gift cards and exclusive discounts on brands inside and outside Saudi Arabia."
+          desc: "Nizamy HR funds rewards for your employees through motivation points, with gift cards and exclusive discounts on brands inside and outside Saudi Arabia."
         },
         {
           num: "03",
@@ -38,7 +38,7 @@ export function ReturnModel() {
       titlePart1: "الأداء الجيد يعيد إليك حتى ",
       titlePart2: "30%",
       titlePart3: " كل عام.",
-      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت نظامي بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
+      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت نظامي اتش آر بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
       clarifier: "وش يعني عائد حتى 30%؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، وقيمة الوقت المتوفر من تحسّن أداء الموظفين.",
       layers: [
         {
@@ -49,7 +49,7 @@ export function ReturnModel() {
         {
           num: "٠٢",
           title: "كافئ الأداء",
-          desc: "نظامي يمول مكافآت لموظفيك عبر نقاط التحفيز مع بطاقات هدايا وخصومات حصرية على علامات تجارية داخل وخارج السعودية."
+          desc: "نظامي اتش آر يمول مكافآت لموظفيك عبر نقاط التحفيز مع بطاقات هدايا وخصومات حصرية على علامات تجارية داخل وخارج السعودية."
         },
         {
           num: "٠٣",

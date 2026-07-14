@@ -12,7 +12,7 @@ export function Hero() {
     en: {
       eyebrow: "AI-powered HR · for Saudi SMEs",
       headlinePart1: "Every HR system costs you.",
-      headlinePart2: "Nizamy gives it back.",
+      headlinePart2: "Nizamy HR gives it back.",
       subtitleMuted: "One system for attendance, employee services, performance, rewards, and HR insights. ",
       subtitleBold: "And when your team performs better, up to 30% of your subscription comes back to you every year.",
       primaryCta: "Book my early access",
@@ -43,7 +43,7 @@ export function Hero() {
     ar: {
       eyebrow: "موارد بشرية بالذكاء الاصطناعي · للمنشآت السعودية",
       headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
-      headlinePart2: "نظامي يعيد لك.",
+      headlinePart2: "نظامي اتش آر يعيد لك.",
       subtitleMuted: "نظام واحد لإدارة الحضور والانصراف، الخدمات الذاتية للموظفين عبر الذكاء الاصطناعي، تحسين الأداء والإنتاجية، مكافآت وبطاقات هدايا. ",
       subtitleBold: "وكلما تحسّن أداء فريقك، يعود إليك حتى 30% من قيمة اشتراكك كل عام.",
       primaryCta: "احجز وصولك المبكر",

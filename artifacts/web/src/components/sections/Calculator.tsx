@@ -130,7 +130,7 @@ export function Calculator({
         rewards: "Rewards",
         points: "Points"
       },
-      disclaimer: "These numbers are for illustration purposes only. Your actual return will vary depending on your team size, performance levels, and how effectively you use Nizamy."
+      disclaimer: "These numbers are for illustration purposes only. Your actual return will vary depending on your team size, performance levels, and how effectively you use Nizamy HR."
     },
     ar: {
       titlePart1: "قدّر ",
@@ -149,7 +149,7 @@ export function Calculator({
         rewards: "المكافآت",
         points: "النقاط"
       },
-      disclaimer: "هذه الأرقام توضيحية فقط. عائدك الفعلي يتفاوت حسب حجم فريقك ومستويات الأداء ومدى فاعلية استخدامك لنظامي."
+      disclaimer: "هذه الأرقام توضيحية فقط. عائدك الفعلي يتفاوت حسب حجم فريقك ومستويات الأداء ومدى فاعلية استخدامك لنظامي اتش آر."
     }
   };
 

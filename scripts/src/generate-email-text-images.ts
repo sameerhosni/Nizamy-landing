@@ -43,7 +43,7 @@ const jobs: Job[] = [
   {
     file: "welcome-headline-ar",
     spans: [
-      { text: "نظامي ", color: navy },
+      { text: "نظامي اتش آر ", color: navy },
       { text: "يرجّع لك.", color: blue },
     ],
     lang: "ar",
@@ -52,7 +52,7 @@ const jobs: Job[] = [
   {
     file: "welcome-headline-en",
     spans: [
-      { text: "Nizamy ", color: navy },
+      { text: "Nizamy HR ", color: navy },
       { text: "pays you back.", color: blue },
     ],
     lang: "en",

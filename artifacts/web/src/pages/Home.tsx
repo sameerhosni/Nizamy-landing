@@ -16,14 +16,14 @@ export function Home() {
   const [tier, setTier] = useState<"Standard" | "Growth" | "Pro">("Growth");
 
   useEffect(() => {
-    document.title = "Nizamy — The HR system that pays you back";
+    document.title = "Nizamy HR — The HR system that pays you back";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute("content", "Nizamy returns up to 30% of your subscription back to you based on performance, every year.");
+      metaDesc.setAttribute("content", "Nizamy HR returns up to 30% of your subscription back to you based on performance, every year.");
     } else {
       const meta = document.createElement('meta');
       meta.name = "description";
-      meta.content = "Nizamy returns up to 30% of your subscription back to you based on performance, every year.";
+      meta.content = "Nizamy HR returns up to 30% of your subscription back to you based on performance, every year.";
       document.head.appendChild(meta);
     }
   }, []);

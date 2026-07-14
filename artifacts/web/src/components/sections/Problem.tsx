@@ -8,7 +8,7 @@ export function Problem() {
   const content = {
     en: {
       headingPart1: "Other systems drain your money. ",
-      headingPart2: "Nizamy saves it for you.",
+      headingPart2: "Nizamy HR saves it for you.",
       subhead: "Same monthly fee. Completely different math. One drains your budget every month — the other puts money back in it.",
       legacy: {
         tag: "The old way",
@@ -16,14 +16,14 @@ export function Problem() {
         points: ["Pure software cost", "Penalties and deductions", "Chasing employees to use it", "Time wasted on admin"]
       },
       nizamy: {
-        tag: "The Nizamy way",
+        tag: "The Nizamy HR way",
         title: "A source of return",
         points: ["Return that grows with your team's performance", "Rewards and motivation", "Employees engage automatically", "Time saved is money earned"]
       }
     },
     ar: {
       headingPart1: "الأنظمة الأخرى تستنزف أموالك. ",
-      headingPart2: "نظامي يوفّرها لك.",
+      headingPart2: "نظامي اتش آر يوفّرها لك.",
       subhead: "نفس الرسوم الشهرية. حسبة مختلفة تماماً. أحدهما يستنزف ميزانيتك كل شهر — والآخر يعيد المال إليها.",
       legacy: {
         tag: "الطريقة القديمة",
@@ -31,7 +31,7 @@ export function Problem() {
         points: ["تكلفة برمجيات بحتة تُدفع ولا تعود", "غرامات وخصومات على الموظفين", "ملاحقة الموظفين لاستخدام النظام", "إهدار وقت الإدارة في المتابعة اليدوية"]
       },
       nizamy: {
-        tag: "طريقة نظامي",
+        tag: "طريقة نظامي اتش آر",
         title: "مصدر عائد",
         points: ["عائد يكبر مع أداء فريقك", "مكافآت وتحفيز بدل العقوبات", "تفاعل تلقائي من الموظفين", "الوقت الموفّر هو مال مكتسب"]
       }
@@ -54,7 +54,7 @@ export function Problem() {
         <div className="relative max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 md:gap-8 items-center">
 
-            {/* Nizamy Card — elevated, bordered, badge tab overlapping top edge */}
+            {/* Nizamy HR Card — elevated, bordered, badge tab overlapping top edge */}
             <div className="relative rounded-3xl bg-white border-2 border-blue-500 p-8 md:p-10 pt-10 md:pt-10 shadow-soft" style={{ boxShadow: "0 20px 40px -15px rgba(37, 99, 235, 0.15)" }}>
               <span
                 className="absolute -top-4 start-8 inline-block text-sm font-bold text-white rounded-full px-4 py-1.5 shadow-md bg-blue-600"

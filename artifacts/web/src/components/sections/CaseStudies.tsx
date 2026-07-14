@@ -44,7 +44,7 @@ const content = {
     titlePart1: "Proof, not promises. ",
     titlePart2: "Performance that shows in the numbers.",
     subtitle:
-      "ROI reports from three real clients using the Nizamy point system — attendance discipline and engagement tracked month by month.",
+      "ROI reports from three real clients using the Nizamy HR point system — attendance discipline and engagement tracked month by month.",
     featuredMonths: ["Aug", "Sep", "Oct", "Nov", "Dec"],
     smallMonths: ["Jul", "Aug", "Sep", "Oct"],
     daysUnit: "days/mo",
@@ -77,7 +77,7 @@ const content = {
         statLabel: "points growth",
       },
     ],
-    note: "Real results from Nizamy point-system deployments in 2025. Client names withheld for confidentiality.",
+    note: "Real results from Nizamy HR point-system deployments in 2025. Client names withheld for confidentiality.",
     featuredChartSummary:
       "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month, and on-time check-outs rose from 13.3 to 14.8.",
     cardChartSummaries: [
@@ -90,7 +90,7 @@ const content = {
     titlePart1: "إثبات، لا وعود. ",
     titlePart2: "أداء يظهر في الأرقام.",
     subtitle:
-      "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظام النقاط في نظامي — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
+      "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظام النقاط في نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
     featuredMonths: ["أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
     smallMonths: ["يوليو", "أغسطس", "سبتمبر", "أكتوبر"],
     daysUnit: "يوم/شهر",
@@ -123,7 +123,7 @@ const content = {
         statLabel: "نمو النقاط",
       },
     ],
-    note: "نتائج حقيقية من تطبيقات نظام النقاط في نظامي خلال 2025. أسماء العملاء محجوبة للخصوصية.",
+    note: "نتائج حقيقية من تطبيقات نظام النقاط في نظامي اتش آر خلال 2025. أسماء العملاء محجوبة للخصوصية.",
     featuredChartSummary:
       "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط من 13.3 إلى 14.8.",
     cardChartSummaries: [

@@ -77,13 +77,13 @@ const content = {
 };
 
 const cardMeta: { image: string; icon: typeof Fingerprint }[] = [
-  { image: "/images/services/attendance.png", icon: Fingerprint },
-  { image: "/images/services/self-service-v2.png", icon: CalendarCheck },
-  { image: "/images/services/ai-assistant.png", icon: Bot },
-  { image: "/images/services/performance.png", icon: Activity },
-  { image: "/images/services/rewards-v2.png", icon: Gift },
-  { image: "/images/services/reports.png", icon: BarChart3 },
-  { image: "/images/services/tasks.png", icon: ListChecks },
+  { image: "/images/services/attendance-v3.png", icon: Fingerprint },
+  { image: "/images/services/self-service-v3.png", icon: CalendarCheck },
+  { image: "/images/services/ai-assistant-v3.png", icon: Bot },
+  { image: "/images/services/performance-v3.png", icon: Activity },
+  { image: "/images/services/rewards-v3.png", icon: Gift },
+  { image: "/images/services/reports-v3.png", icon: BarChart3 },
+  { image: "/images/services/tasks-v3.png", icon: ListChecks },
 ];
 
 export function Services() {

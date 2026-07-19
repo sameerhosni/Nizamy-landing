@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
@@ -31,7 +32,8 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (id: string, source: "desktop" | "mobile" = "desktop") => {
+    posthog.capture("nav_link_clicked", { section: id, source, language });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileOpen(false);
   };
@@ -70,7 +72,13 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={toggleLanguage}
+              onClick={() => {
+                posthog.capture("language_toggled", {
+                  from: language,
+                  to: language === "en" ? "ar" : "en",
+                });
+                toggleLanguage();
+              }}
               className={`rounded-full font-bold px-3 sm:px-4 text-xs sm:text-sm transition-all ${
                 scrolled
                   ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200"
@@ -82,7 +90,13 @@ export function Navbar() {
             <Button
               size="sm"
               className="rounded-full px-4 sm:px-6 text-xs sm:text-sm font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-500 text-white shadow-glow border-0 transition-all"
-              onClick={() => scrollTo("partner")}
+              onClick={() => {
+                posthog.capture("navbar_cta_clicked", {
+                  source: "navbar",
+                  language,
+                });
+                scrollTo("partner");
+              }}
             >
               {isRtl ? "وصول مبكر مجاني" : "Free Early Access"}
             </Button>
@@ -102,12 +116,17 @@ export function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className={`absolute top-0 ${isRtl ? "left-0" : "right-0"} h-full w-72 bg-[#0a0a0a] border-${isRtl ? "r" : "l"} border-white/10 flex flex-col pt-24 px-6 gap-2`}>
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            className={`absolute top-0 ${isRtl ? "left-0" : "right-0"} h-full w-72 bg-[#0a0a0a] border-${isRtl ? "r" : "l"} border-white/10 flex flex-col pt-24 px-6 gap-2`}
+          >
             {links.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollTo(link.id)}
+                onClick={() => scrollTo(link.id, "mobile")}
                 className="text-white/80 hover:text-white text-lg font-semibold py-3 text-start border-b border-white/5 transition-colors"
               >
                 {link.label}
@@ -116,7 +135,13 @@ export function Navbar() {
             <div className="mt-6">
               <Button
                 className="w-full rounded-full font-bold bg-blue-600 hover:bg-blue-500 text-white h-12"
-                onClick={() => scrollTo("partner")}
+                onClick={() => {
+                  posthog.capture("navbar_cta_clicked", {
+                    source: "mobile_menu",
+                    language,
+                  });
+                  scrollTo("partner", "mobile");
+                }}
               >
                 {isRtl ? "وصول مبكر مجاني" : "Free Early Access"}
               </Button>

@@ -6,7 +6,6 @@ import { Problem } from "@/components/sections/Problem";
 import { Features } from "@/components/sections/Features";
 import { Services } from "@/components/sections/Services";
 import { ReturnModel } from "@/components/sections/ReturnModel";
-import { ROIDashboard } from "@/components/sections/ROIDashboard";
 import { Calculator } from "@/components/sections/Calculator";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { DesignPartner } from "@/components/sections/DesignPartner";
@@ -46,8 +45,7 @@ export function Home() {
         <Features />
         <Services />
         <ReturnModel />
-        <ROIDashboard />
-        <Calculator 
+        <Calculator
           employees={employees}
           setEmployees={setEmployees}
           tier={tier}

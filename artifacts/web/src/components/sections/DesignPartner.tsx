@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import posthog from "posthog-js";
 import { useLanguage } from "@/lib/i18n";
 import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
   const mutation = useCreateLead();
+  const formStartedRef = useRef(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -95,15 +97,42 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const t = content[language];
 
+  const handleFormFocus = () => {
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      posthog.capture("early_access_form_started", { language });
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate({
-      data: {
-        ...formData,
-        ...snapshot,
-        language,
+    mutation.mutate(
+      {
+        data: {
+          ...formData,
+          ...snapshot,
+          language,
+        },
       },
-    });
+      {
+        onSuccess: () => {
+          posthog.identify(formData.email, {
+            name: formData.name,
+            company: formData.company,
+          });
+          posthog.capture("early_access_submitted", {
+            tier: snapshot.tier,
+            employees: snapshot.employees,
+            subscription: snapshot.subscription,
+            total_return: snapshot.totalReturn,
+            language,
+          });
+        },
+        onError: () => {
+          posthog.capture("early_access_submission_failed", { language });
+        },
+      },
+    );
   };
 
   return (
@@ -117,7 +146,6 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-
           {/* Text column */}
           <div className={`space-y-8 ${isRtl ? "md:order-2" : "md:order-1"}`}>
             <div>
@@ -130,14 +158,21 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                 <span className="text-blue-400">{t.headingPart2}</span>
               </h2>
             </div>
-            <p className="text-lg text-white/50 leading-relaxed font-medium">{t.sub}</p>
+            <p className="text-lg text-white/50 leading-relaxed font-medium">
+              {t.sub}
+            </p>
             <ul className="space-y-4">
               {t.valuePoints.map((point, idx) => (
-                <li key={idx} className="flex items-center gap-3 rtl:flex-row-reverse">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 rtl:flex-row-reverse"
+                >
                   <div className="w-6 h-6 rounded-full bg-blue-900/60 border border-blue-700/50 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="text-blue-400 w-3.5 h-3.5" />
                   </div>
-                  <span className="text-base text-white/70 font-medium">{point}</span>
+                  <span className="text-base text-white/70 font-medium">
+                    {point}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -150,8 +185,12 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                 <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6">
                   <CheckCircle2 className="text-green-400 w-10 h-10" />
                 </div>
-                <h3 className="text-2xl font-heading font-black mb-3 text-white">{t.success.title}</h3>
-                <p className="text-white/50 text-base leading-relaxed">{t.success.desc}</p>
+                <h3 className="text-2xl font-heading font-black mb-3 text-white">
+                  {t.success.title}
+                </h3>
+                <p className="text-white/50 text-base leading-relaxed">
+                  {t.success.desc}
+                </p>
               </div>
             ) : (
               <div className="rounded-3xl bg-white p-8 sm:p-10 shadow-2xl">
@@ -163,7 +202,10 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                   )}
 
                   <div className="space-y-1.5">
-                    <Label htmlFor="name" className="text-slate-600 font-semibold text-sm">
+                    <Label
+                      htmlFor="name"
+                      className="text-slate-600 font-semibold text-sm"
+                    >
                       {t.labels.name}
                     </Label>
                     <Input
@@ -172,12 +214,18 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       placeholder={t.placeholders.name}
                       className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
                       value={formData.name}
-                      onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                      onFocus={handleFormFocus}
+                      onChange={(e) =>
+                        setFormData((p) => ({ ...p, name: e.target.value }))
+                      }
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label htmlFor="company" className="text-slate-600 font-semibold text-sm">
+                    <Label
+                      htmlFor="company"
+                      className="text-slate-600 font-semibold text-sm"
+                    >
                       {t.labels.company}
                     </Label>
                     <Input
@@ -186,12 +234,17 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       placeholder={t.placeholders.company}
                       className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
                       value={formData.company}
-                      onChange={(e) => setFormData((p) => ({ ...p, company: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((p) => ({ ...p, company: e.target.value }))
+                      }
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-slate-600 font-semibold text-sm">
+                    <Label
+                      htmlFor="email"
+                      className="text-slate-600 font-semibold text-sm"
+                    >
                       {t.labels.email}
                     </Label>
                     <Input
@@ -201,12 +254,17 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       placeholder={t.placeholders.email}
                       className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
                       value={formData.email}
-                      onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((p) => ({ ...p, email: e.target.value }))
+                      }
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label htmlFor="whatsapp" className="text-slate-600 font-semibold text-sm">
+                    <Label
+                      htmlFor="whatsapp"
+                      className="text-slate-600 font-semibold text-sm"
+                    >
                       {t.labels.whatsapp}
                     </Label>
                     <Input
@@ -216,7 +274,9 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       dir="ltr"
                       className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
                       value={formData.whatsapp}
-                      onChange={(e) => setFormData((p) => ({ ...p, whatsapp: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((p) => ({ ...p, whatsapp: e.target.value }))
+                      }
                     />
                   </div>
 
@@ -241,7 +301,9 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       </>
                     )}
                   </Button>
-                  <p className="text-xs text-slate-400 text-center font-medium">{t.note}</p>
+                  <p className="text-xs text-slate-400 text-center font-medium">
+                    {t.note}
+                  </p>
                 </form>
               </div>
             )}

@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import posthog from "posthog-js";
 import { useLanguage } from "@/lib/i18n";
 import { TrendingUp, Award, LogOut, Coins } from "lucide-react";
 import {
@@ -40,7 +42,8 @@ const content = {
     eyebrow: "Real client results · 2025",
     titlePart1: "Proof, not promises. ",
     titlePart2: "Performance that shows in the numbers.",
-    subtitle: "ROI reports from three real clients using Nizamy HR — attendance discipline and engagement tracked month by month.",
+    subtitle:
+      "ROI reports from three real clients using Nizamy HR — attendance discipline and engagement tracked month by month.",
     featuredMonths: ["Aug", "Sep", "Oct", "Nov", "Dec"],
     smallMonths: ["Jul", "Aug", "Sep", "Oct"],
     daysUnit: "days/mo",
@@ -74,7 +77,8 @@ const content = {
       },
     ],
     note: "Real results from Nizamy HR point-system deployments in 2025. Client names withheld for confidentiality.",
-    featuredChartSummary: "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month.",
+    featuredChartSummary:
+      "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month.",
     cardChartSummaries: [
       "Trend chart: on-time check-outs rose steadily from 8.4 to 9.8 days per employee per month over four months.",
       "Trend chart: monthly points accumulated grew from 2,500 to 29,770 over four months.",
@@ -84,7 +88,8 @@ const content = {
     eyebrow: "نتائج عملاء حقيقية · 2025",
     titlePart1: "إثبات، لا وعود. ",
     titlePart2: "أداء يظهر في الأرقام.",
-    subtitle: "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
+    subtitle:
+      "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
     featuredMonths: ["أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
     smallMonths: ["يوليو", "أغسطس", "سبتمبر", "أكتوبر"],
     daysUnit: "يوم/شهر",
@@ -118,7 +123,8 @@ const content = {
       },
     ],
     note: "نتائج حقيقية من تطبيقات نظام النقاط في نظامي اتش آر خلال 2025. أسماء العملاء محجوبة للخصوصية.",
-    featuredChartSummary: "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً.",
+    featuredChartSummary:
+      "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً.",
     cardChartSummaries: [
       "رسم بياني: ارتفع الانصراف في الوقت المحدد من 8.4 إلى 9.8 يوماً لكل موظف شهرياً خلال أربعة أشهر.",
       "رسم بياني: نمت النقاط الشهرية المكتسبة من 2,500 إلى 29,770 خلال أربعة أشهر.",
@@ -130,11 +136,32 @@ export function CaseStudies() {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
   const t = content[language];
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          posthog.capture("case_studies_section_viewed", { language });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [language]);
 
   const featuredMonthLabel = (i: number) => t.featuredMonths[i] ?? "";
 
   return (
-    <section id="use-cases" className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="use-cases"
+      className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
           <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
@@ -144,7 +171,9 @@ export function CaseStudies() {
             <span>{t.titlePart1}</span>
             <span className="text-blue-600">{t.titlePart2}</span>
           </h2>
-          <p className="text-lg text-slate-500 leading-relaxed font-medium">{t.subtitle}</p>
+          <p className="text-lg text-slate-500 leading-relaxed font-medium">
+            {t.subtitle}
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -159,15 +188,24 @@ export function CaseStudies() {
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-black text-slate-900 mb-4 leading-snug">
                   {t.featured.title}
                 </h3>
-                <p className="text-slate-500 font-medium leading-relaxed mb-8 text-sm sm:text-base">{t.featured.desc}</p>
+                <p className="text-slate-500 font-medium leading-relaxed mb-8 text-sm sm:text-base">
+                  {t.featured.desc}
+                </p>
                 <div className="flex gap-3">
                   {t.featured.stats.map((s, i) => {
                     const Icon = s.icon;
                     return (
-                      <div key={i} className="flex-1 rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                      <div
+                        key={i}
+                        className="flex-1 rounded-2xl bg-slate-50 border border-slate-100 p-4"
+                      >
                         <Icon size={16} className="text-blue-600 mb-2" />
-                        <div className="text-xl sm:text-2xl font-heading font-black text-slate-900 tabular-nums">{s.value}</div>
-                        <div className="text-xs font-medium text-slate-400 mt-0.5">{s.label}</div>
+                        <div className="text-xl sm:text-2xl font-heading font-black text-slate-900 tabular-nums">
+                          {s.value}
+                        </div>
+                        <div className="text-xs font-medium text-slate-400 mt-0.5">
+                          {s.label}
+                        </div>
                       </div>
                     );
                   })}
@@ -187,10 +225,21 @@ export function CaseStudies() {
                   <span className="text-slate-400">({t.daysUnit})</span>
                 </div>
                 <p className="sr-only">{t.featuredChartSummary}</p>
-                <div className="h-60 sm:h-72 md:h-80" dir="ltr" aria-hidden="true">
+                <div
+                  className="h-60 sm:h-72 md:h-80"
+                  dir="ltr"
+                  aria-hidden="true"
+                >
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={featuredData} margin={{ top: 16, right: 24, left: 20, bottom: 8 }}>
-                      <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
+                    <LineChart
+                      data={featuredData}
+                      margin={{ top: 16, right: 24, left: 20, bottom: 8 }}
+                    >
+                      <CartesianGrid
+                        strokeDasharray="4 4"
+                        stroke="#e2e8f0"
+                        vertical={false}
+                      />
                       <XAxis
                         dataKey="m"
                         tickFormatter={featuredMonthLabel}
@@ -207,8 +256,15 @@ export function CaseStudies() {
                       />
                       <Tooltip
                         labelFormatter={(v) => featuredMonthLabel(Number(v))}
-                        formatter={(value: number, name: string) => [`${value} ${t.daysUnit}`, name]}
-                        contentStyle={{ borderRadius: 12, border: "1px solid #e2e8f0", fontSize: 12 }}
+                        formatter={(value: number, name: string) => [
+                          `${value} ${t.daysUnit}`,
+                          name,
+                        ]}
+                        contentStyle={{
+                          borderRadius: 12,
+                          border: "1px solid #e2e8f0",
+                          fontSize: 12,
+                        }}
                       />
                       <Line
                         isAnimationActive={false}
@@ -217,7 +273,12 @@ export function CaseStudies() {
                         name={t.featured.legendCheckins}
                         stroke="#2563eb"
                         strokeWidth={2.5}
-                        dot={{ r: 4, fill: "#2563eb", strokeWidth: 2, stroke: "#fff" }}
+                        dot={{
+                          r: 4,
+                          fill: "#2563eb",
+                          strokeWidth: 2,
+                          stroke: "#fff",
+                        }}
                         activeDot={{ r: 6 }}
                       >
                         <LabelList
@@ -225,7 +286,11 @@ export function CaseStudies() {
                           position="bottom"
                           offset={10}
                           formatter={(v: number) => v.toFixed(1)}
-                          style={{ fontSize: 11, fontWeight: 700, fill: "#2563eb" }}
+                          style={{
+                            fontSize: 11,
+                            fontWeight: 700,
+                            fill: "#2563eb",
+                          }}
                         />
                       </Line>
                       <Line
@@ -235,7 +300,12 @@ export function CaseStudies() {
                         name={t.featured.legendCheckouts}
                         stroke="#10b981"
                         strokeWidth={2.5}
-                        dot={{ r: 4, fill: "#10b981", strokeWidth: 2, stroke: "#fff" }}
+                        dot={{
+                          r: 4,
+                          fill: "#10b981",
+                          strokeWidth: 2,
+                          stroke: "#fff",
+                        }}
                         activeDot={{ r: 6 }}
                       >
                         <LabelList
@@ -243,7 +313,11 @@ export function CaseStudies() {
                           position="top"
                           offset={10}
                           formatter={(v: number) => v.toFixed(1)}
-                          style={{ fontSize: 11, fontWeight: 700, fill: "#10b981" }}
+                          style={{
+                            fontSize: 11,
+                            fontWeight: 700,
+                            fill: "#10b981",
+                          }}
                         />
                       </Line>
                     </LineChart>
@@ -277,23 +351,48 @@ export function CaseStudies() {
                   <h3 className="text-xl sm:text-2xl font-heading font-black text-slate-900 mb-3 leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-slate-500 font-medium leading-relaxed text-sm mb-5">{card.desc}</p>
+                  <p className="text-slate-500 font-medium leading-relaxed text-sm mb-5">
+                    {card.desc}
+                  </p>
                   <div className="flex items-baseline gap-2 rtl:flex-row-reverse rtl:justify-end">
-                    <span className="text-3xl font-heading font-black text-blue-600 tabular-nums">{card.stat}</span>
-                    <span className="text-xs font-semibold text-slate-400">{card.statLabel}</span>
+                    <span className="text-3xl font-heading font-black text-blue-600 tabular-nums">
+                      {card.stat}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-400">
+                      {card.statLabel}
+                    </span>
                   </div>
                 </div>
                 <p className="sr-only">{t.cardChartSummaries[idx]}</p>
-                <div className="h-44 mt-auto px-6 pb-6" dir="ltr" aria-hidden="true">
+                <div
+                  className="h-44 mt-auto px-6 pb-6"
+                  dir="ltr"
+                  aria-hidden="true"
+                >
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={data} margin={{ top: 20, right: 24, left: 24, bottom: 0 }}>
+                    <AreaChart
+                      data={data}
+                      margin={{ top: 20, right: 24, left: 24, bottom: 0 }}
+                    >
                       <defs>
                         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={color} stopOpacity={0.15} />
-                          <stop offset="100%" stopColor={color} stopOpacity={0} />
+                          <stop
+                            offset="0%"
+                            stopColor={color}
+                            stopOpacity={0.15}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor={color}
+                            stopOpacity={0}
+                          />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="4 4" stroke="#f1f5f9" vertical={false} />
+                      <CartesianGrid
+                        strokeDasharray="4 4"
+                        stroke="#f1f5f9"
+                        vertical={false}
+                      />
                       <XAxis
                         dataKey="m"
                         tickFormatter={smallMonthLabel}
@@ -309,13 +408,20 @@ export function CaseStudies() {
                         stroke={color}
                         strokeWidth={2.5}
                         fill={`url(#${gradId})`}
-                        dot={{ r: 4, fill: color, strokeWidth: 2, stroke: "#fff" }}
+                        dot={{
+                          r: 4,
+                          fill: color,
+                          strokeWidth: 2,
+                          stroke: "#fff",
+                        }}
                       >
                         <LabelList
                           dataKey="v"
                           position="top"
                           offset={10}
-                          formatter={(v: number) => idx === 0 ? v.toFixed(1) : v.toLocaleString()}
+                          formatter={(v: number) =>
+                            idx === 0 ? v.toFixed(1) : v.toLocaleString()
+                          }
                           style={{ fontSize: 10, fontWeight: 700, fill: color }}
                         />
                       </Area>
@@ -327,7 +433,9 @@ export function CaseStudies() {
           })}
         </div>
 
-        <p className="text-center text-xs text-slate-400 font-medium mt-8">{t.note}</p>
+        <p className="text-center text-xs text-slate-400 font-medium mt-8">
+          {t.note}
+        </p>
       </div>
     </section>
   );

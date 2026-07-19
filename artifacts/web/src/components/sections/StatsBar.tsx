@@ -5,16 +5,16 @@ export function StatsBar() {
 
   const stats = {
     en: [
-      { value: "SAR 3", label: "Per employee / month — starting price" },
-      { value: "Minutes", label: "To get started, no setup complexity" },
-      { value: "SME", label: "Built specifically for Saudi small & mid-size businesses" },
-      { value: "30%", label: "Max annual return — tied to your team's performance" },
+      { value: "0", label: "Penalties for employees" },
+      { value: "SAR 3", label: "Starting price / employee / month" },
+      { value: "1 min", label: "To your first verified check-in" },
+      { value: "30%", label: "Max annual subscription return" },
     ],
     ar: [
-      { value: "٣ ر.س", label: "للموظف شهرياً — سعر البدء" },
-      { value: "دقائق", label: "وتكون جاهزاً، بلا تعقيد في الإعداد" },
-      { value: "منشآت", label: "صُمم خصيصاً للمنشآت الصغيرة والمتوسطة في السعودية" },
-      { value: "30%", label: "حد أقصى للعائد السنوي — مرتبط بأداء فريقك" },
+      { value: "٠", label: "غرامات على الموظفين" },
+      { value: "٣ ر.س", label: "سعر البدء للموظف شهرياً" },
+      { value: "دقيقة", label: "حتى أول حضور وانصراف موثّق" },
+      { value: "30%", label: "حد أقصى للعائد السنوي" },
     ],
   };
 

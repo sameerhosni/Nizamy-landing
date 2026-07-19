@@ -38,9 +38,9 @@ const pointsData = [
 const content = {
   en: {
     eyebrow: "Real client results · 2025",
-    titlePart1: "Not theory. ",
-    titlePart2: "Real results from clients just like you.",
-    subtitle: "Saudi SMEs faced the same challenges as you. Using Nizamy, they turned daily commitment into measurable financial gains.",
+    titlePart1: "Proof, not promises. ",
+    titlePart2: "Performance that shows in the numbers.",
+    subtitle: "ROI reports from three real clients using Nizamy HR — attendance discipline and engagement tracked month by month.",
     featuredMonths: ["Aug", "Sep", "Oct", "Nov", "Dec"],
     smallMonths: ["Jul", "Aug", "Sep", "Oct"],
     daysUnit: "days/mo",
@@ -81,10 +81,10 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "نتائج فعلية من عملاء · 2025",
-    titlePart1: "ليس كلامًا نظريًا. ",
-    titlePart2: "هذه نتائج فعلية حققها عملاء يشبهونك.",
-    subtitle: "منشآت سعودية صغيرة ومتوسطة واجهت نفس تحدياتك. باستخدام نظامي، حوّلوا الالتزام اليومي إلى مكاسب مالية قابلة للقياس.",
+    eyebrow: "نتائج عملاء حقيقية · 2025",
+    titlePart1: "إثبات، لا وعود. ",
+    titlePart2: "أداء يظهر في الأرقام.",
+    subtitle: "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
     featuredMonths: ["أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
     smallMonths: ["يوليو", "أغسطس", "سبتمبر", "أكتوبر"],
     daysUnit: "يوم/شهر",

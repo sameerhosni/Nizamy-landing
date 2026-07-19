@@ -10,19 +10,29 @@ export function Hero() {
   const content = {
     en: {
       eyebrow: "AI-Powered HR · For Saudi SMEs",
-      headlinePart1: "Every HR system costs you.",
-      headlinePart2: "Nizamy HR gives it back.",
-      subtitle: "The first performance-driven HR platform that returns up to 30% of your subscription cost based on actual team improvement.",
-      primaryCta: "Book Early Access",
-      secondaryCta: "See the Math",
+      headline: "Every riyal you spend on your team — it's time to earn it back.",
+      subtitle: "Even your best team becomes an expensive burden when commitment fades and visibility disappears. Nizamy doesn't just track attendance — it turns daily team behavior into smart operational decisions that raise productivity, cut waste, and return real value on your biggest investment: your people.",
+      primaryCta: "Book a Demo",
+      secondaryCta: "Calculate Your Expected Return",
+      highlights: [
+        { title: "Hidden waste drains your profit", desc: "Track where your team's time and effort disappear before it becomes compounding financial loss." },
+        { title: "High performance starts with smart motivation", desc: "A flexible reward system that links commitment to achievement — turning daily behavior into measurable results." },
+        { title: "Decisions built on certainty, not guesswork", desc: "Real-time data on attendance, commitment, and productivity gives you complete operational visibility." },
+        { title: "Automatically recover part of your subscription", desc: "The more your team's commitment improves on the platform, the lower your effective subscription cost." },
+      ],
     },
     ar: {
       eyebrow: "نظام موارد بشرية بالذكاء الاصطناعي · للشركات السعودية",
-      headlinePart1: "كل أنظمة الموارد البشرية تُكلّفك.",
-      headlinePart2: "نظامي اتش آر يعيد لك.",
-      subtitle: "أول منصة موارد بشرية مبنية على الأداء، تعيد لك حتى 30% من قيمة اشتراكك السنوي بناءً على التحسن الفعلي في أداء فريقك.",
-      primaryCta: "احجز وصولك المبكر",
-      secondaryCta: "اكتشف الحسبة",
+      headline: "كل ريال تصرفه على موظفيك... حان وقت استرداده أرباحًا.",
+      subtitle: "حتى أفضل الفرق تتحول إلى تكلفة باهظة إذا غاب الالتزام وضاعت الرؤية. نظامي لا يدير حضور موظفيك فحسب، بل يحوّل التزامهم اليومي إلى قرارات تشغيلية ذكية ترفع الإنتاجية، تقلّص الهدر، وتُعيد إليك عائدًا حقيقيًا على استثمارك الأكبر: فريق عملك.",
+      primaryCta: "احجز عرضًا توضيحيًا",
+      secondaryCta: "احسب العائد المتوقع لمنشأتك",
+      highlights: [
+        { title: "الهدر الخفي يستنزف أرباحك", desc: "ارصد أين يضيع وقت فريقك وجُهده قبل أن يتحول إلى خسارة مالية تراكمية." },
+        { title: "الأداء العالي يبدأ بتحفيز ذكي", desc: "نظام مكافآت مرن يربط الالتزام بالإنجاز، فيتحول السلوك اليومي إلى نتائج قابلة للقياس." },
+        { title: "قرارات مبنية على يقين، لا تخمين", desc: "بيانات لحظية عن الحضور والالتزام والإنتاجية تمنحك رؤية تشغيلية كاملة لشركتك." },
+        { title: "استرد جزءًا من اشتراكك تلقائيًا", desc: "كلما زاد التزام فريقك وتحسّن أداؤهم على المنصة، انخفضت تكلفة اشتراكك من خلال نموذج العائد السنوي الحصري." },
+      ],
     }
   };
 
@@ -52,16 +62,15 @@ export function Hero() {
             {t.eyebrow}
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-heading font-black leading-[1.1] tracking-tight">
-            <span className="text-white block mb-2">{t.headlinePart1}</span>
-            <span className="text-gradient-primary block">{t.headlinePart2}</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-heading font-black leading-[1.1] tracking-tight text-white">
+            {t.headline}
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
             {t.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Button
               size="lg"
               className="w-full sm:w-auto h-14 px-10 rounded-full text-lg font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-glow border border-blue-500/50 group"
@@ -78,10 +87,20 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="w-full sm:w-auto h-14 px-10 rounded-full text-lg font-bold border-white/20 text-white hover:bg-white/10 hover:text-white glassmorphic-dark"
-              onClick={() => document.getElementById("return-model")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
             >
               {t.secondaryCta}
             </Button>
+          </div>
+
+          {/* Value highlights */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto pt-6 text-start rtl:text-right">
+            {t.highlights.map((h, idx) => (
+              <div key={idx} className="rounded-2xl glassmorphic-dark border border-white/8 p-5 hover:border-white/15 transition-colors duration-300">
+                <p className="text-sm font-heading font-black text-white mb-1">{h.title}</p>
+                <p className="text-xs text-slate-400 leading-relaxed font-medium">{h.desc}</p>
+              </div>
+            ))}
           </div>
           
         </div>

@@ -30,15 +30,15 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const content = {
     en: {
-      eyebrow: "Limited Early Access",
-      headingPart1: "Reserve your",
-      headingPart2: "spot.",
-      sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
+      eyebrow: "Start Your Transformation",
+      headingPart1: "Your team is your biggest investment.",
+      headingPart2: "Make it your highest return.",
+      sub: "Don't wait for waste to compound. In minutes, you can see exactly where your team's time goes — and start turning that into profit.",
       valuePoints: [
-        "Fully free early access",
-        "Limited spots per industry",
-        "Be first to shape the product",
-        "No commitment — just a conversation",
+        "Full visibility into every team member's commitment and productivity",
+        "Immediate discovery of where hidden waste is happening",
+        "A smart motivation system that lifts performance automatically",
+        "A return that is recovered automatically as your team's commitment grows",
       ],
       labels: {
         name: "Full Name",
@@ -51,25 +51,25 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         company: "Your company name",
         email: "name@company.com",
       },
-      submit: "Request Early Access",
+      submit: "Book Your Custom Demo",
       loading: "Sending...",
       success: {
-        title: "Application Received",
+        title: "Request Received",
         desc: "We've sent you an email with all the details — check your inbox.",
       },
       error: "Something went wrong. Please try again.",
       note: "No commitment · Just a conversation.",
     },
     ar: {
-      eyebrow: "وصول مبكر محدود",
-      headingPart1: "احجز",
-      headingPart2: "مقعدك.",
-      sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
+      eyebrow: "ابدأ تحولك الآن",
+      headingPart1: "فريقك أكبر استثمار…",
+      headingPart2: "ابدأ بتحويله إلى أعلى عائد.",
+      sub: "لا تنتظر حتى يتراكم الهدر. خلال دقائق يمكنك أن ترى أين يذهب وقت فريقك، وتبدأ في تحويل ذلك إلى أرباح.",
       valuePoints: [
-        "وصول مبكر مجاني بالكامل",
-        "مقاعد محدودة لكل قطاع",
-        "كن أول من يشكّل المنتج",
-        "بدون التزام — مجرد محادثة",
+        "رؤية شاملة على التزام وإنتاجية كل فرد في الفريق",
+        "اكتشاف فوري لأماكن الهدر الخفي",
+        "نظام تحفيز ذكي يرفع الأداء تلقائياً",
+        "عائد يُسترد تلقائيًا مع ارتفاع التزام فريقك",
       ],
       labels: {
         name: "الاسم الكامل",
@@ -82,7 +82,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         company: "اسم منشأتك",
         email: "name@company.com",
       },
-      submit: "اطلب وصولاً مبكراً",
+      submit: "احجز عرضًا توضيحيًا مخصصًا",
       loading: "جارٍ الإرسال...",
       success: {
         title: "تم استلام طلبك",

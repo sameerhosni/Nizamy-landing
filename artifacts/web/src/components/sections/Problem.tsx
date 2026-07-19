@@ -8,25 +8,25 @@ export function Problem() {
 
   const content = {
     en: {
-      eyebrow: "The real cost of manual HR",
-      heading: "Your team runs on WhatsApp, spreadsheets, and guesswork.",
-      subhead: "Before you can think about performance, you're buried in attendance logs, leave requests, and chasing approvals — manually.",
+      eyebrow: "The real cost of chaos",
+      heading: "You're not running your business… you're managing the chaos.",
+      subhead: "Every morning starts with follow-ups. Who was late today? Why wasn't the project finished? Where did the team's time go? You make decisions based on impressions — and fix problems after it's too late. The result: silent daily waste eating your profits, invisibly.",
       pains: [
-        { title: "Hours lost every week", desc: "Manual attendance reports eat 4–6 hours of HR time that could go anywhere else." },
-        { title: "Approvals live on WhatsApp", desc: "Leave requests, shift changes, early exits — no record, no history, no accountability." },
-        { title: "Zero visibility into performance", desc: "No way to know who's actually delivering without running a report yourself." },
-        { title: "HR is the middleman for everything", desc: "Employees can't do anything without going through HR first — every small request is a task." },
+        { title: "No real-time visibility", desc: "You don't know how your team is performing until month-end — by then the losses have already compounded." },
+        { title: "Decisions based on gut, not data", desc: "You judge commitment and achievement through impressions — not through actual numbers." },
+        { title: "Exhausting follow-up, no real improvement", desc: "Hours spent checking and chasing — with no meaningful change in productivity to show for it." },
+        { title: "Silent waste keeps growing", desc: "Daily tardiness, stuck tasks, meetings with no outcomes — quiet costs that drain your profits." },
       ],
     },
     ar: {
-      eyebrow: "التكلفة الحقيقية للموارد البشرية اليدوية",
-      heading: "فريقك يعمل بالواتساب والجداول والتخمين.",
-      subhead: "قبل أن تفكر في الأداء، أنت تغرق في سجلات الحضور وطلبات الإجازات ومتابعة الموافقات — يدوياً.",
+      eyebrow: "التكلفة الحقيقية للفوضى",
+      heading: "أنت لا تدير شركتك… أنت تدير الفوضى.",
+      subhead: "كل صباح تبدأ بالمتابعة. مَن تأخر اليوم؟ لماذا لم يُنجز المشروع؟ أين ذهب وقت الفريق؟ تصدر قراراتك بناءً على انطباعات، وتصحح المشكلات بعد فوات الأوان. المحصلة: هدر يومي صامت يأكل أرباحك، وأنت لا تراه.",
       pains: [
-        { title: "ساعات تُهدر كل أسبوع", desc: "تقارير الحضور اليدوية تأكل 4–6 ساعات من وقت الموارد البشرية كل أسبوع." },
-        { title: "الموافقات تعيش على الواتساب", desc: "طلبات الإجازة وتبديل الشفتات والمغادرة المبكرة — لا سجل، لا تاريخ، لا محاسبة." },
-        { title: "لا رؤية فعلية للأداء", desc: "لا طريقة لمعرفة من يؤدي فعلاً — إلا بإعداد تقرير بنفسك." },
-        { title: "الموارد البشرية وسيطة في كل شيء", desc: "الموظفون لا يستطيعون إتمام أي طلب دون المرور بالموارد البشرية — كل طلب صغير يصبح مهمة." },
+        { title: "غياب الرؤية اللحظية", desc: "لا تعرف أداء فريقك إلا بعد نهاية الشهر، وحينها تكون الخسائر قد تراكمت." },
+        { title: "قرارات مبنية على الحدس", desc: "تحكم على الالتزام والإنجاز من خلال الانطباعات، لا من خلال الأرقام." },
+        { title: "متابعة مرهقة بلا نتيجة", desc: "تقضي ساعات في التدقيق والمحاسبة، دون تحسن حقيقي في الإنتاجية." },
+        { title: "الهدر الخفي يتضخم", desc: "تأخيرات يومية، مهام عالقة، واجتماعات بلا مخرجات… تكاليف صامتة تستنزف أرباحك." },
       ],
     },
   };

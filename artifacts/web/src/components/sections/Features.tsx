@@ -3,10 +3,10 @@ import { useLanguage } from "@/lib/i18n";
 
 const content = {
   en: {
-    eyebrow: "How Nizamy HR Works",
-    titlePart1: "A performance system first. ",
-    titlePart2: "A return because of it.",
-    subtitle: "Six pillars that make your team sharper and more engaged. The return follows naturally when performance improves.",
+    eyebrow: "The Solution",
+    titlePart1: "Turn hidden waste ",
+    titlePart2: "into visible profit.",
+    subtitle: "You don't need more follow-up. You need clear vision. Nizamy collects your team's daily data — attendance, commitment, performance — and transforms it into a single dashboard that shows where returns are leaking, and where you can recover them.",
     cards: [
       {
         name: "A Smart HR Assistant that understands Saudi dialect",
@@ -58,10 +58,10 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "كيف يعمل نظامي اتش آر",
-    titlePart1: "نظام لإدارة الأداء أولاً، ",
-    titlePart2: "والعائد نتيجة طبيعية.",
-    subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وتفاعلاً. أما العائد المالي، فهو النتيجة الطبيعية لتحسّن هذا الأداء.",
+    eyebrow: "الحل",
+    titlePart1: "حوّل الهدر الخفي ",
+    titlePart2: "إلى أرباح مرئية.",
+    subtitle: "لا تحتاج إلى مزيد من المتابعة. تحتاج إلى رؤية واضحة. نظامي يجمع بيانات فريقك اليومية — الحضور، الالتزام، الأداء — ثم يحولها إلى لوحة تحكم واحدة تكشف لك أين يضيع العائد، وأين يمكنك استعادته.",
     cards: [
       {
         name: "مساعد موارد بشرية ذكي يفهم اللهجة السعودية",

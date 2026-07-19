@@ -3,9 +3,9 @@ import { useLanguage } from "@/lib/i18n";
 
 const content = {
   en: {
-    eyebrow: "What We Manage",
-    title: "Everything your HR team handles — automated.",
-    subtitle: "Seven modules that cover the full employee lifecycle, from first check-in to performance rewards.",
+    eyebrow: "How the Platform Works",
+    title: "From data chaos to decisions that protect your profit.",
+    subtitle: "Nizamy takes you from manual follow-up to intelligent visibility — automatically collecting, analyzing, and acting on your team's daily data.",
     comingSoon: "Coming soon",
     cards: [
       { name: "Attendance & Time Tracking", desc: "Verified check-in via face, fingerprint, or voice — accurate and fraud-proof." },
@@ -18,9 +18,9 @@ const content = {
     ],
   },
   ar: {
-    eyebrow: "خدمات النظام",
-    title: "كل ما تديره فرق الموارد البشرية — مؤتمت.",
-    subtitle: "سبع وحدات تغطي دورة حياة الموظف بالكامل، من أول حضور حتى مكافآت الأداء.",
+    eyebrow: "كيف تعمل المنصة",
+    title: "من فوضى البيانات إلى قرارات تحمي أرباحك.",
+    subtitle: "صُمم نظامي ليأخذك من المتابعة اليدوية إلى الرؤية الذكية — يجمع بيانات فريقك تلقائياً، يحللها فوراً، ويوصي بالإجراء المناسب.",
     comingSoon: "قريباً",
     cards: [
       { name: "الحضور والانصراف", desc: "تحقق موثّق عبر الوجه أو البصمة أو الصوت — دقيق ويصعب التلاعب به." },

@@ -4,8 +4,7 @@ import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, CheckCircle2, ScanFace } from "lucide-react";
+import { Loader2, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 
 interface DesignPartnerProps {
   snapshot: {
@@ -18,79 +17,80 @@ interface DesignPartnerProps {
 }
 
 export function DesignPartner({ snapshot }: DesignPartnerProps) {
-  const { language } = useLanguage();
+  const { language, dir } = useLanguage();
+  const isRtl = dir === "rtl";
   const mutation = useCreateLead();
-  
+
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     email: "",
-    whatsapp: "+966"
+    whatsapp: "+966",
   });
 
   const content = {
     en: {
-      headingPart1: "Limited ",
-      headingPart2: "Early Access.",
-      headingPart3: "",
-      sub: "We are opening a limited number of early-access spots. Claim yours before they are gone.",
+      eyebrow: "Limited Early Access",
+      headingPart1: "Reserve your",
+      headingPart2: "spot.",
+      sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
       valuePoints: [
         "Fully free early access",
         "Limited spots per industry",
         "Be first to shape the product",
-        "No commitment — just a conversation"
+        "No commitment — just a conversation",
       ],
-      note: "No commitment · Just a conversation.",
       labels: {
         name: "Full Name",
         company: "Company Name",
         email: "Work Email",
-        whatsapp: "WhatsApp Number"
+        whatsapp: "WhatsApp Number",
       },
       placeholders: {
         name: "e.g. Abdullah Al-Mohammed",
         company: "Your company name",
-        email: "name@company.com"
+        email: "name@company.com",
       },
       submit: "Request Early Access",
       loading: "Sending...",
       success: {
         title: "Application Received",
-        desc: "Thank you for reaching out. We've sent you an email with all the details — please check your inbox or spam folder."
+        desc: "We've sent you an email with all the details — check your inbox.",
       },
-      error: "Something went wrong. Please try again."
+      error: "Something went wrong. Please try again.",
+      note: "No commitment · Just a conversation.",
     },
     ar: {
-      headingPart1: "وصول مبكر ",
-      headingPart2: "محدود.",
-      headingPart3: "",
+      eyebrow: "وصول مبكر محدود",
+      headingPart1: "احجز",
+      headingPart2: "مقعدك.",
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
       valuePoints: [
         "وصول مبكر مجاني بالكامل",
         "مقاعد محدودة لكل قطاع",
         "كن أول من يشكّل المنتج",
-        "بدون التزام — مجرد محادثة"
+        "بدون التزام — مجرد محادثة",
       ],
-      note: "بدون التزام · مجرد محادثة",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
         email: "البريد الإلكتروني للعمل",
-        whatsapp: "رقم الواتساب"
+        whatsapp: "رقم الواتساب",
       },
       placeholders: {
         name: "مثال: عبدالله المحمد",
         company: "اسم منشأتك",
-        email: "name@company.com"
+        email: "name@company.com",
       },
       submit: "اطلب وصولاً مبكراً",
       loading: "جارٍ الإرسال...",
       success: {
         title: "تم استلام طلبك",
-        desc: "شكراً لتواصلك معنا. تم إرسال بريد إلكتروني بكل التفاصيل — يرجى التحقق من بريدك الإلكتروني أو الرسائل المهملة."
+        desc: "تم إرسال بريد إلكتروني بكل التفاصيل — تحقق من بريدك الوارد.",
       },
-      error: "حدث خطأ ما. يرجى المحاولة مرة أخرى."
-    }
+      error: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      note: "بدون التزام · مجرد محادثة",
+    },
   };
 
   const t = content[language];
@@ -101,130 +101,151 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       data: {
         ...formData,
         ...snapshot,
-        language
-      }
+        language,
+      },
     });
   };
 
   return (
-    <section id="partner" className="py-24 bg-blue-900 scroll-mt-16 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/20 blur-[100px] rounded-full pointer-events-none" />
+    <section
+      id="partner"
+      className="py-24 sm:py-32 scroll-mt-16 relative overflow-hidden bg-[#0a0a0a]"
+    >
+      {/* Glows */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/8 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 max-w-5xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
           {/* Text column */}
-          <div className="md:pt-6">
-            <div className="w-16 h-16 rounded-2xl bg-blue-800 border border-blue-700 flex items-center justify-center mb-8 shadow-lg">
-              <ScanFace className="w-8 h-8 text-blue-300" />
+          <div className={`space-y-8 ${isRtl ? "md:order-2" : "md:order-1"}`}>
+            <div>
+              <span className="inline-block text-xs font-bold text-blue-400 bg-blue-950/60 border border-blue-800/50 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
+                {t.eyebrow}
+              </span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.05]">
+                <span className="text-white">{t.headingPart1}</span>
+                <br />
+                <span className="text-blue-400">{t.headingPart2}</span>
+              </h2>
             </div>
-            <h2 className="text-4xl font-heading font-extrabold leading-tight mb-4">
-              <span className="text-white">{t.headingPart1}</span>
-              <span className="text-blue-300">{t.headingPart2}</span>
-              <span className="text-white">{t.headingPart3}</span>
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">{t.sub}</p>
+            <p className="text-lg text-white/50 leading-relaxed font-medium">{t.sub}</p>
             <ul className="space-y-4">
               {t.valuePoints.map((point, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-800 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="text-blue-300 w-4 h-4" />
+                <li key={idx} className="flex items-center gap-3 rtl:flex-row-reverse">
+                  <div className="w-6 h-6 rounded-full bg-blue-900/60 border border-blue-700/50 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="text-blue-400 w-3.5 h-3.5" />
                   </div>
-                  <span className="text-base text-blue-50 font-medium">{point}</span>
+                  <span className="text-base text-white/70 font-medium">{point}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Form column */}
-          <div>
+          <div className={`${isRtl ? "md:order-1" : "md:order-2"}`}>
             {mutation.isSuccess ? (
-              <Card className="bg-white border-0 shadow-soft rounded-3xl">
-                <CardContent className="p-12 text-center flex flex-col items-center">
-                  <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
-                    <CheckCircle2 className="text-green-500 w-10 h-10" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-slate-900">{t.success.title}</h3>
-                  <p className="text-slate-500 text-lg">{t.success.desc}</p>
-                </CardContent>
-              </Card>
+              <div className="rounded-3xl bg-white/5 border border-white/10 p-10 sm:p-12 text-center flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6">
+                  <CheckCircle2 className="text-green-400 w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-heading font-black mb-3 text-white">{t.success.title}</h3>
+                <p className="text-white/50 text-base leading-relaxed">{t.success.desc}</p>
+              </div>
             ) : (
-              <Card className="bg-white border-0 shadow-2xl rounded-3xl overflow-hidden">
-                <CardContent className="p-8 sm:p-10">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    {mutation.isError && (
-                      <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
-                        {t.error}
-                      </div>
+              <div className="rounded-3xl bg-white p-8 sm:p-10 shadow-2xl">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {mutation.isError && (
+                    <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                      {t.error}
+                    </div>
+                  )}
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name" className="text-slate-600 font-semibold text-sm">
+                      {t.labels.name}
+                    </Label>
+                    <Input
+                      id="name"
+                      required
+                      placeholder={t.placeholders.name}
+                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      value={formData.name}
+                      onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="company" className="text-slate-600 font-semibold text-sm">
+                      {t.labels.company}
+                    </Label>
+                    <Input
+                      id="company"
+                      required
+                      placeholder={t.placeholders.company}
+                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      value={formData.company}
+                      onChange={(e) => setFormData((p) => ({ ...p, company: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email" className="text-slate-600 font-semibold text-sm">
+                      {t.labels.email}
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      placeholder={t.placeholders.email}
+                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      value={formData.email}
+                      onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="whatsapp" className="text-slate-600 font-semibold text-sm">
+                      {t.labels.whatsapp}
+                    </Label>
+                    <Input
+                      id="whatsapp"
+                      type="tel"
+                      required
+                      dir="ltr"
+                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      value={formData.whatsapp}
+                      onChange={(e) => setFormData((p) => ({ ...p, whatsapp: e.target.value }))}
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full h-13 text-base font-bold rounded-xl border-0 bg-blue-600 hover:bg-blue-500 text-white shadow-glow transition-all group mt-2"
+                    disabled={mutation.isPending}
+                  >
+                    {mutation.isPending ? (
+                      <>
+                        <Loader2 className="me-2 h-4 w-4 animate-spin" />
+                        {t.loading}
+                      </>
+                    ) : (
+                      <>
+                        {t.submit}
+                        {isRtl ? (
+                          <ArrowLeft className="ms-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                        ) : (
+                          <ArrowRight className="ms-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        )}
+                      </>
                     )}
-
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-slate-600 font-semibold">{t.labels.name}</Label>
-                      <Input
-                        id="name"
-                        required
-                        placeholder={t.placeholders.name}
-                        className="h-14 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
-                        value={formData.name}
-                        onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="company" className="text-slate-600 font-semibold">{t.labels.company}</Label>
-                      <Input
-                        id="company"
-                        required
-                        placeholder={t.placeholders.company}
-                        className="h-14 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
-                        value={formData.company}
-                        onChange={e => setFormData(p => ({ ...p, company: e.target.value }))}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-slate-600 font-semibold">{t.labels.email}</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        placeholder={t.placeholders.email}
-                        className="h-14 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
-                        value={formData.email}
-                        onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="whatsapp" className="text-slate-600 font-semibold">{t.labels.whatsapp}</Label>
-                      <Input
-                        id="whatsapp"
-                        type="tel"
-                        required
-                        dir="ltr"
-                        className="h-14 rounded-xl border-slate-200 bg-slate-50 px-4 text-base text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
-                        value={formData.whatsapp}
-                        onChange={e => setFormData(p => ({ ...p, whatsapp: e.target.value }))}
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full h-14 text-lg font-bold rounded-xl border-0 bg-blue-600 hover:bg-blue-700 text-white shadow-glow transition-all"
-                      disabled={mutation.isPending}
-                    >
-                      {mutation.isPending && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-                      {mutation.isPending ? t.loading : t.submit}
-                    </Button>
-                    <p className="text-sm text-slate-500 text-center font-medium">{t.note}</p>
-                  </form>
-                </CardContent>
-              </Card>
+                  </Button>
+                  <p className="text-xs text-slate-400 text-center font-medium">{t.note}</p>
+                </form>
+              </div>
             )}
           </div>
-
         </div>
       </div>
     </section>

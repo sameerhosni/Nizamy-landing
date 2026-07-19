@@ -1,46 +1,42 @@
 import { useLanguage } from "@/lib/i18n";
-import { ShieldOff, Wallet, Timer, TrendingUp } from "lucide-react";
-
-const icons = [ShieldOff, Wallet, Timer, TrendingUp];
 
 export function StatsBar() {
   const { language } = useLanguage();
 
   const stats = {
     en: [
-      { value: "0", label: "No penalties for employees" },
-      { value: "SAR 3", label: "Starting price per employee monthly" },
-      { value: "1 min", label: "One minute to your first check-in and check-out" },
-      { value: "30%", label: "Max annual return" },
+      { value: "0", label: "Penalties for employees" },
+      { value: "SAR 3", label: "Starting price / employee / month" },
+      { value: "1 min", label: "To your first verified check-in" },
+      { value: "30%", label: "Max annual subscription return" },
     ],
     ar: [
-      { value: "٠", label: "بدون غرامات للموظفين" },
+      { value: "٠", label: "غرامات على الموظفين" },
       { value: "٣ ر.س", label: "سعر البدء للموظف شهرياً" },
-      { value: "دقيقة", label: "دقيقة واحدة حتى إثبات أول حضور وانصراف" },
-      { value: "30%", label: "حد أقصى للعائد" },
+      { value: "دقيقة", label: "حتى أول حضور وانصراف موثّق" },
+      { value: "30%", label: "حد أقصى للعائد السنوي" },
     ],
   };
 
   const t = stats[language];
 
   return (
-    <section className="bg-white py-12 border-b border-slate-200">
+    <section className="bg-[#0f0f0f] border-t border-white/5 border-b border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto divide-x divide-slate-100 rtl:divide-x-reverse">
-          {t.map((stat, idx) => {
-            const Icon = icons[idx];
-            return (
-              <div key={idx} className="text-center px-4 first:ps-0 last:pe-0 transition-transform hover:-translate-y-1 duration-300">
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4 border border-blue-100 shadow-sm">
-                  <Icon size={20} />
-                </div>
-                <div className="text-3xl md:text-4xl font-heading font-black text-slate-900 mb-1 tabular-nums">
-                  {stat.value}
-                </div>
-                <div className="text-sm font-medium text-slate-500 leading-snug">{stat.label}</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5 rtl:divide-x-reverse">
+          {t.map((stat, idx) => (
+            <div
+              key={idx}
+              className="py-10 px-6 text-center group transition-colors duration-300 hover:bg-white/[0.02]"
+            >
+              <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-black text-white mb-2 tabular-nums tracking-tight">
+                {stat.value}
               </div>
-            );
-          })}
+              <div className="text-xs sm:text-sm font-medium text-white/40 leading-snug max-w-[140px] mx-auto">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

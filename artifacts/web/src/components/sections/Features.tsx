@@ -6,7 +6,7 @@ const content = {
     eyebrow: "How Nizamy HR Works",
     titlePart1: "A performance system first. ",
     titlePart2: "A return because of it.",
-    subtitle: "Six pillars that make your team sharper, faster, and more engaged. The return is simply what follows when performance improves.",
+    subtitle: "Six pillars that make your team sharper and more engaged. The return follows naturally when performance improves.",
     cards: [
       {
         name: "A Smart HR Assistant that understands Saudi dialect",
@@ -15,7 +15,7 @@ const content = {
       },
       {
         name: "Attendance Management with Trusted Verification",
-        desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate, fraud-proof, and effortless, with every record tied to a verified identity.",
+        desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate, fraud-proof, and effortless.",
         images: ["/images/94697_1783520815575.jpeg", "/images/face-id-checkin.png"],
         imageAlts: ["Biometric attendance check-in screen", "Face ID verification check-in with XP points"],
         bullets: [
@@ -27,9 +27,9 @@ const content = {
       },
       {
         name: "Employee Self-Service",
-        desc: "Employees handle requests, documents, and approvals themselves — instantly, through an AI chat assistant that speaks their language, so HR never has to be the middleman.",
+        desc: "Employees handle requests, documents, and approvals themselves — through an AI chat assistant that speaks their language.",
         images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
-        imageAlts: ["Self-service home screen with quick requests and AI assistant", "AI self-service chat assistant"],
+        imageAlts: ["Self-service home screen with quick requests", "AI self-service chat assistant"],
         bullets: [
           "Leave requests, shift changes, and early-leave approvals in seconds",
           "Direct escalation to HR only when it's truly needed",
@@ -41,7 +41,7 @@ const content = {
         name: "Performance & Rewards Management",
         desc: "Set goals, run review cycles, and link outcomes directly to rewards — turning good performance into points employees can actually redeem.",
         images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
-        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards", "Company performance dashboard with attendance and commitment KPIs"],
+        imageAlts: ["Organization leaderboard and peer appreciation", "Rewards marketplace with redeemable gift cards", "Company performance dashboard"],
         bullets: [
           "Leaderboards and peer appreciation that keep the whole team engaged",
           "XP points earned from performance, redeemable in a real rewards marketplace",
@@ -61,7 +61,7 @@ const content = {
     eyebrow: "كيف يعمل نظامي اتش آر",
     titlePart1: "نظام لإدارة الأداء أولاً، ",
     titlePart2: "والعائد نتيجة طبيعية.",
-    subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وسرعة وتفاعلاً. أما العائد المالي، فهو ببساطة النتيجة الطبيعية لتحسّن هذا الأداء.",
+    subtitle: "ست ركائز تجعل فريقك أكثر تركيزاً وتفاعلاً. أما العائد المالي، فهو النتيجة الطبيعية لتحسّن هذا الأداء.",
     cards: [
       {
         name: "مساعد موارد بشرية ذكي يفهم اللهجة السعودية",
@@ -82,9 +82,9 @@ const content = {
       },
       {
         name: "خدمات الموظفين الذاتية",
-        desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً في كل مرة.",
+        desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي يتحدث بلغته — دون أن تكون الموارد البشرية وسيطاً.",
         images: ["/images/self-service-home.png", "/images/94705_1783520815578.jpeg"],
-        imageAlts: ["الشاشة الرئيسية للخدمة الذاتية مع طلبات سريعة ومساعد ذكي", "مساعد ذكي للخدمة الذاتية عبر المحادثة"],
+        imageAlts: ["الشاشة الرئيسية للخدمة الذاتية مع طلبات سريعة", "مساعد ذكي للخدمة الذاتية"],
         bullets: [
           "طلبات الإجازة وتبديل الورديات والمغادرة المبكرة خلال ثوانٍ",
           "تصعيد مباشر للموارد البشرية فقط عند الحاجة الفعلية",
@@ -96,7 +96,7 @@ const content = {
         name: "إدارة الأداء والمكافآت",
         desc: "اربط الأهداف بدورات التقييم والمكافآت مباشرة — وحوّل الأداء الجيد إلى نقاط يستبدلها الموظف فعلياً.",
         images: ["/images/leaderboard.png", "/images/rewards-marketplace.png", "/images/company-performance.png"],
-        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا قابلة للاستبدال", "لوحة أداء الشركة مع مؤشرات الحضور والالتزام"],
+        imageAlts: ["لوحة صدارة المنشأة وتقدير الزملاء", "سوق المكافآت مع بطاقات هدايا", "لوحة أداء الشركة"],
         bullets: [
           "لوحات صدارة وتقدير بين الزملاء تُبقي الفريق كله متفاعلاً",
           "نقاط خبرة تُكتسب من الأداء، قابلة للاستبدال في سوق مكافآت حقيقي",
@@ -114,11 +114,11 @@ const content = {
   },
 };
 
-const iconMeta: { icon: typeof Bot; bg?: string; color?: string; titleImage?: string }[] = [
+const iconMeta: { icon: typeof Bot }[] = [
   { icon: Bot },
-  { icon: Fingerprint, bg: "bg-blue-100", color: "text-blue-600", titleImage: "/images/services/attendance.png" },
-  { icon: MessageCircle, bg: "bg-sky-100", color: "text-sky-600", titleImage: "/images/services/self-service-v2.png" },
-  { icon: Target, bg: "bg-indigo-100", color: "text-indigo-600", titleImage: "/images/services/rewards-v2.png" },
+  { icon: Fingerprint },
+  { icon: MessageCircle },
+  { icon: Target },
   { icon: Heart },
 ];
 
@@ -127,14 +127,13 @@ export function Features() {
   const t = content[language];
 
   return (
-    <section id="features" className="py-24 bg-white scroll-mt-16">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-block text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-6 shadow-sm">
+    <section id="features" className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
             {t.eyebrow}
-          </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-black leading-tight mb-6">
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.1] mb-6">
             <span className="text-slate-900">{t.titlePart1}</span>
             <span className="text-blue-600">{t.titlePart2}</span>
           </h2>
@@ -143,64 +142,56 @@ export function Features() {
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.cards.map((card, idx) => {
-            const { icon: Icon, bg: iconBg, color: iconColor, titleImage } = iconMeta[idx];
+            const { icon: Icon } = iconMeta[idx];
             const isFeatured = "featured" in card && card.featured;
             const isDark = "dark" in card && card.dark;
+            const isShowcase = "showcase" in card && card.showcase;
 
             if (isFeatured) {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] md:col-span-3 p-10 md:p-12 text-white overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-xl"
-                  style={{ background: "linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%)" }}
+                  className="md:col-span-3 rounded-3xl p-10 md:p-12 text-white overflow-hidden relative"
+                  style={{ background: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%)" }}
                 >
-                  <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-                    <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/30 shadow-inner">
-                      <Icon size={28} className="text-white" />
+                  <div className="absolute -top-12 -end-12 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-16 -start-16 w-72 h-72 bg-white/8 rounded-full blur-3xl pointer-events-none" />
+                  <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
+                    <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shrink-0 border border-white/25">
+                      <Icon size={26} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-3xl font-heading font-black mb-3">{card.name}</h3>
-                      <p className="text-blue-100 text-lg leading-relaxed font-medium max-w-2xl">{card.desc}</p>
+                      <h3 className="text-2xl sm:text-3xl font-heading font-black mb-3">{card.name}</h3>
+                      <p className="text-blue-100 text-base sm:text-lg leading-relaxed font-medium max-w-2xl">{card.desc}</p>
                     </div>
                   </div>
                 </div>
               );
             }
 
-            if ("showcase" in card && card.showcase) {
+            if (isShowcase) {
               const images = "images" in card ? card.images : undefined;
               const imageAlts = "imageAlts" in card ? card.imageAlts : undefined;
-              const { bullets } = card;
+              const bullets = "bullets" in card ? card.bullets : undefined;
 
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[32px] md:col-span-3 bg-white border border-slate-100 overflow-hidden transition-all duration-500 hover:shadow-2xl shadow-md"
+                  className="md:col-span-3 rounded-3xl bg-white border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-                    <div className="p-12 md:p-16 order-2 md:order-none rtl:md:order-2">
-                      {titleImage ? (
-                        <img
-                          src={titleImage}
-                          alt=""
-                          aria-hidden="true"
-                          loading="lazy"
-                          className="w-24 h-24 md:w-28 md:h-28 object-contain drop-shadow-lg mb-6"
-                        />
-                      ) : (
-                        <div className={`w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center mb-6`}>
-                          <Icon size={24} className={iconColor} />
-                        </div>
-                      )}
-                      <h3 className="text-2xl md:text-3xl font-heading font-black mb-4 text-slate-900 leading-snug">{card.name}</h3>
-                      <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
+                    {/* Text */}
+                    <div className="p-10 md:p-14 order-2 md:order-none rtl:md:order-2">
+                      <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
+                        <Icon size={22} className="text-blue-600" />
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-heading font-black mb-4 text-slate-900 leading-snug">{card.name}</h3>
+                      <p className="text-slate-500 text-base leading-relaxed font-medium mb-8 max-w-md">{card.desc}</p>
                       {bullets && bullets.length > 0 && (
                         <ul className="space-y-3">
                           {bullets.map((bullet, bulletIdx) => (
                             <li key={bulletIdx} className="flex items-start gap-3 rtl:flex-row-reverse rtl:text-right">
-                              <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                              <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
                                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
                                   <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0l-3.5-3.5a1 1 0 111.4-1.4l2.8 2.8 6.8-6.8a1 1 0 011.4 0z" clipRule="evenodd" />
                                 </svg>
@@ -211,46 +202,35 @@ export function Features() {
                         </ul>
                       )}
                     </div>
-                    <div className="relative flex items-center justify-center gap-4 py-14 md:py-20 px-8 order-1 md:order-none overflow-hidden" style={{ background: "linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 55%, #EDE9FE 100%)" }}>
-                      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 60% 20%, rgba(37,99,235,0.12) 0%, transparent 65%), radial-gradient(ellipse at 30% 80%, rgba(99,102,241,0.10) 0%, transparent 60%)" }} />
-                      {images && images.length > 0 && (
-                        <>
-                          {images.map((img, imgIdx) => {
-                            const isTriple = images.length >= 3;
-                            const sizeClass = isTriple
-                              ? "w-[130px] h-[270px] sm:w-[150px] sm:h-[310px]"
-                              : "w-[160px] h-[335px] sm:w-[185px] sm:h-[385px]";
-                            const positionClass = isTriple
-                              ? imgIdx === 0
-                                ? "rotate-[-7deg] -mr-6 rtl:mr-0 rtl:-ml-6 z-10"
-                                : imgIdx === 1
-                                  ? "rotate-0 z-20 -translate-y-4"
-                                  : "rotate-[7deg] -ml-6 rtl:ml-0 rtl:-mr-6 mt-8 z-10"
-                              : imgIdx === 0
-                                ? "rotate-[-5deg] -mr-5 rtl:mr-0 rtl:-ml-5 z-10"
-                                : "rotate-[4deg] mt-10 z-20";
-                            return (
-                              <div
-                                key={imgIdx}
-                                className={`relative ${sizeClass} rounded-[28px] bg-slate-900 p-[7px] transition-transform duration-500 group-hover:-translate-y-2 ${positionClass}`}
-                                style={{ boxShadow: "0 25px 60px rgba(15,23,42,0.30), 0 8px 20px rgba(15,23,42,0.18)" }}
-                              >
-                                <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
-                                  <div className="w-20 h-[14px] bg-slate-900 rounded-b-xl" />
-                                </div>
-                                <div className="w-full h-full bg-white rounded-[22px] overflow-hidden relative">
-                                  <img
-                                    src={img}
-                                    alt={imageAlts?.[imgIdx] ?? ""}
-                                    className="w-full h-full object-cover"
-                                    loading="lazy"
-                                  />
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </>
-                      )}
+                    {/* Phone mockups */}
+                    <div
+                      className="relative flex items-center justify-center gap-0 py-14 md:py-20 px-8 order-1 md:order-none overflow-hidden"
+                      style={{ background: "linear-gradient(150deg, #eff6ff 0%, #dbeafe 55%, #ede9fe 100%)" }}
+                    >
+                      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 60% 20%, rgba(37,99,235,0.12) 0%, transparent 65%)" }} />
+                      {images && images.map((img, imgIdx) => {
+                        const isTriple = images.length >= 3;
+                        const sizeClass = isTriple
+                          ? "w-[125px] h-[260px] sm:w-[145px] sm:h-[300px]"
+                          : "w-[155px] h-[320px] sm:w-[175px] sm:h-[365px]";
+                        const posClass = isTriple
+                          ? imgIdx === 0 ? "rotate-[-7deg] z-10 -me-4" : imgIdx === 1 ? "rotate-0 z-20 -translate-y-5" : "rotate-[7deg] z-10 -ms-4 mt-8"
+                          : imgIdx === 0 ? "rotate-[-5deg] z-10 -me-4" : "rotate-[4deg] mt-10 z-20";
+                        return (
+                          <div
+                            key={imgIdx}
+                            className={`relative ${sizeClass} ${posClass} rounded-[26px] bg-slate-900 p-[6px] transition-transform duration-500 hover:-translate-y-1`}
+                            style={{ boxShadow: "0 24px 56px rgba(15,23,42,0.28), 0 8px 16px rgba(15,23,42,0.14)" }}
+                          >
+                            <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-20">
+                              <div className="w-16 h-3.5 bg-slate-900 rounded-b-xl" />
+                            </div>
+                            <div className="w-full h-full rounded-[21px] overflow-hidden">
+                              <img src={img} alt={imageAlts?.[imgIdx] ?? ""} className="w-full h-full object-cover" loading="lazy" />
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -261,15 +241,15 @@ export function Features() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-[28px] md:col-span-3 bg-slate-900 p-10 md:p-12 transition-all duration-500 hover:-translate-y-1 shadow-xl overflow-hidden border border-slate-800"
+                  className="md:col-span-3 rounded-3xl bg-slate-900 p-10 md:p-12 shadow-xl overflow-hidden relative border border-slate-800"
                 >
-                  <div className="absolute -bottom-10 -left-10 w-52 h-52 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
-                  <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-                    <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
-                      <Icon size={28} className="text-blue-400" />
+                  <div className="absolute -bottom-10 -start-10 w-52 h-52 bg-blue-500/15 rounded-full blur-2xl pointer-events-none" />
+                  <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+                    <div className="w-13 h-13 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 p-3">
+                      <Icon size={26} className="text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-heading font-black mb-2 text-white">{card.name}</h3>
+                      <h3 className="text-2xl sm:text-3xl font-heading font-black mb-2 text-white">{card.name}</h3>
                       <p className="text-slate-400 leading-relaxed font-medium max-w-2xl">{card.desc}</p>
                     </div>
                   </div>
@@ -278,15 +258,12 @@ export function Features() {
             }
 
             return (
-              <div
-                key={idx}
-                className="group relative rounded-[28px] border border-slate-200 bg-white p-10 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-200 overflow-hidden"
-              >
-                <div className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center mb-8 transition-transform group-hover:scale-110 duration-300`}>
-                  <Icon size={28} className={iconColor} />
+              <div key={idx} className="rounded-3xl border border-slate-200 bg-white p-10 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
+                  <Icon size={22} className="text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-heading font-black mb-4 text-slate-900">{card.name}</h3>
-                <p className="text-slate-500 leading-relaxed font-medium">{card.desc}</p>
+                <h3 className="text-xl font-heading font-black mb-3 text-slate-900">{card.name}</h3>
+                <p className="text-slate-500 leading-relaxed font-medium text-sm">{card.desc}</p>
               </div>
             );
           })}

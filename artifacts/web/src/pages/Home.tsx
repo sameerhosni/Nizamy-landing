@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
+import { Problem } from "@/components/sections/Problem";
+import { Features } from "@/components/sections/Features";
 import { Services } from "@/components/sections/Services";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { ROIDashboard } from "@/components/sections/ROIDashboard";
 import { Calculator } from "@/components/sections/Calculator";
-import { Features } from "@/components/sections/Features";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
@@ -17,15 +18,6 @@ export function Home() {
 
   useEffect(() => {
     document.title = "Nizamy HR — The HR system that pays you back";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute("content", "Nizamy HR returns up to 30% of your subscription back to you based on performance, every year.");
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = "description";
-      meta.content = "Nizamy HR returns up to 30% of your subscription back to you based on performance, every year.";
-      document.head.appendChild(meta);
-    }
   }, []);
 
   const tierPrice = tier === "Standard" ? 3 : tier === "Growth" ? 5 : 8;
@@ -45,11 +37,13 @@ export function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-blue-200 selection:text-blue-900">
+    <div className="min-h-screen bg-background text-foreground selection:bg-blue-600 selection:text-white flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Hero />
         <StatsBar />
+        <Problem />
+        <Features />
         <Services />
         <ReturnModel />
         <ROIDashboard />
@@ -66,7 +60,6 @@ export function Home() {
           layer3={layer3}
           effectiveCost={effectiveCost}
         />
-        <Features />
         <CaseStudies />
         <DesignPartner snapshot={snapshot} />
       </main>

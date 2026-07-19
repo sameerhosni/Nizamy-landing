@@ -9,20 +9,20 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 py-16 border-t border-slate-800">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="bg-[#0a0a0a] border-t border-white/5 py-12">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
           <Logo variant="light" />
           <a
             href="https://www.nizamy.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+            className="text-sm font-semibold text-white/30 hover:text-white/70 transition-colors"
             dir="ltr"
           >
             www.nizamy.app
           </a>
-          <p className="text-sm font-medium text-slate-500">{tagline[language]}</p>
+          <p className="text-sm font-medium text-white/20">{tagline[language]}</p>
         </div>
       </div>
     </footer>

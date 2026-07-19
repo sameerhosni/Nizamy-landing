@@ -52,27 +52,17 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-primary-border: var(--primary-border);
-
+  
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-secondary-border: var(--secondary-border);
-
+  
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-muted-border: var(--muted-border);
-
+  
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-accent-border: var(--accent-border);
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-destructive-border: var(--destructive-border);
 
   --font-sans: var(--app-font-sans);
-  --font-serif: var(--app-font-sans); /* Use sans everywhere */
-  --font-mono: var(--app-font-mono);
   --font-heading: var(--app-font-heading);
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -82,14 +72,11 @@
 }
 
 :root {
-  /* Clean Blue Fintech/SaaS Aesthetic */
-  --background: 210 40% 98%; /* #F8FAFC */
-  --foreground: 222 47% 11%; /* #0F172A */
-  --border: 214 32% 91%; /* #E2E8F0 */
-  --input: 214 32% 91%;
-  --ring: 217 91% 60%; /* #2563EB */
-
-  --card: 0 0% 100%; /* White */
+  /* Premium Dark Editorial Aesthetic */
+  --background: 220 20% 98%;
+  --foreground: 222 47% 11%;
+  
+  --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
   --card-border: 214 32% 91%;
 
@@ -97,31 +84,31 @@
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 91%;
 
-  --primary: 217 91% 60%; /* #2563EB */
+  --primary: 221 83% 53%; /* #2563EB */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 210 40% 96%; /* #F1F5F9 */
+  --secondary: 210 40% 96%;
   --secondary-foreground: 222 47% 11%;
 
   --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%; /* #64748B */
+  --muted-foreground: 215 16% 47%;
 
-  --accent: 214 100% 97%; /* Soft blue tint */
-  --accent-foreground: 217 91% 60%;
+  --accent: 214 100% 97%;
+  --accent-foreground: 221 83% 53%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 53%;
+
   --app-font-sans: 'IBM Plex Sans Arabic', sans-serif;
   --app-font-heading: 'Tajawal', sans-serif;
-  --app-font-mono: Menlo, monospace;
-  --radius: 1rem; /* ~16px for soft rounded cards */
+  --radius: 0.75rem;
 
-  /* Nizamy brand palette */
   --nizamy-blue: #2563EB;
   --nizamy-blue-light: #60A5FA;
-  --nizamy-blue-dark: #1E3A8A;
-  --nizamy-surface: #FFFFFF;
 }
 
 [dir="rtl"] {
@@ -129,12 +116,10 @@
   --app-font-heading: 'Cairo', sans-serif;
 }
 
-/* Arabic script needs taller line boxes than Latin: tight leading makes
-   stacked headlines collide. Overrides utility leading-* classes in RTL. */
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3 {
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 @layer base {
@@ -146,7 +131,7 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--app-font-heading);
-    @apply font-extrabold tracking-tight text-[#0F172A];
+    @apply font-extrabold tracking-tight;
   }
   button {
     font-family: var(--app-font-heading);
@@ -167,21 +152,8 @@
   -webkit-background-clip: text;
 }
 
-.bg-hero-radial {
-  background-color: #F8FAFC;
-  background-image: radial-gradient(120% 90% at 85% -10%, #DBEAFE, #F8FAFC 42%, #F8FAFC);
-}
-
 .shadow-glow {
-  box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.2), 0 0 0 1px rgba(37, 99, 235, 0.05);
-}
-
-.shadow-glow-sm {
-  box-shadow: 0 4px 16px -2px rgba(37, 99, 235, 0.15);
-}
-
-.shadow-soft {
-  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.4), 0 0 0 1px rgba(37, 99, 235, 0.1);
 }
 
 .glassmorphic {
@@ -189,27 +161,21 @@
   box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
 }
 
+.glassmorphic-dark {
+  @apply bg-black/40 backdrop-blur-2xl border border-white/10;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.5);
+}
+
 /* Smooth section transitions */
 section {
   scroll-margin-top: 5rem;
 }
 
-/* Better heading rhythm */
-h1, h2 {
-  letter-spacing: -0.02em;
-}
-
-h3 {
-  letter-spacing: -0.01em;
-}
-
-/* Selection highlight */
 ::selection {
-  background: rgba(37, 99, 235, 0.2);
-  color: inherit;
+  background: rgba(37, 99, 235, 0.3);
+  color: white;
 }
 
-/* Navbar nav-link underline hover */
 .nav-link-underline {
   position: relative;
 }
@@ -229,7 +195,6 @@ h3 {
   transform: scaleX(1);
 }
 
-/* Hide scrollbar for gallery */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -238,4 +203,11 @@ h3 {
   scrollbar-width: none;
 }
 
-
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

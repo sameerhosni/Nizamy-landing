@@ -1,117 +1,117 @@
 import { useLanguage } from "@/lib/i18n";
-import { TrendingUp, Gift, Sparkles } from "lucide-react";
-
-const layerIcons = [TrendingUp, Gift, Sparkles];
 
 export function ReturnModel() {
-  const { language, dir } = useLanguage();
-  const isRtl = dir === "rtl";
+  const { language } = useLanguage();
 
   const content = {
     en: {
       eyebrow: "Return Model",
-      titlePart1: "Perform well. ",
-      titlePart2: "Get up to 30% back",
-      titlePart3: ", every year.",
-      subhead: "No gimmicks, no flat cashback. The better your team performs and the more efficiently you use Nizamy HR, the more comes back — here's exactly where every riyal comes from.",
-      clarifier: "What does the 30% mean? A combination of system credit, funded rewards value for your team, and the value of time saved through better employee performance.",
+      title: "Perform well.",
+      titleAccent: "Get up to 30% back",
+      titleEnd: ", every year.",
+      subhead: "No gimmicks, no flat cashback. The better your team performs, the more comes back. Here's exactly where every riyal comes from.",
+      clarifier: "What does the 30% mean? A mix of system credit, funded rewards value for your team, and the value of time saved through better performance.",
       layers: [
         {
           num: "01",
           title: "Activate your team",
-          desc: "Less lateness, less turnover, more focus → hours saved."
+          desc: "Less lateness, less turnover, more focus — the hours saved accumulate into real money.",
         },
         {
           num: "02",
           title: "Reward performance",
-          desc: "Nizamy HR funds rewards for your employees through motivation points, with gift cards and exclusive discounts on brands inside and outside Saudi Arabia."
+          desc: "Nizamy HR funds rewards for your employees through motivation points — gift cards and exclusive discounts on brands inside and outside Saudi Arabia.",
         },
         {
           num: "03",
           title: "Recover your value",
-          desc: "Employee commitment rises, late arrivals and early departures drop, and employees earn reward points to redeem in the system — the benefit comes back to you at no extra cost."
-        }
-      ]
+          desc: "Commitment rises, idle time drops, employees earn reward points to redeem — the benefit returns to you at zero extra cost.",
+        },
+      ],
     },
     ar: {
       eyebrow: "نموذج العائد",
-      titlePart1: "الأداء الجيد يعيد إليك حتى ",
-      titlePart2: "30%",
-      titlePart3: " كل عام.",
-      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك واستخدمت نظامي اتش آر بكفاءة أكبر، زاد ما يعود إليك — إليك بالضبط من أين يأتي كل ريال.",
-      clarifier: "وش يعني عائد حتى 30%؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، وقيمة الوقت المتوفر من تحسّن أداء الموظفين.",
+      title: "الأداء الجيد يعيد إليك",
+      titleAccent: "حتى 30%",
+      titleEnd: " كل عام.",
+      subhead: "بدون حيل أو استرداد ثابت. كلما تحسّن أداء فريقك، زاد ما يعود إليك. إليك بالضبط من أين يأتي كل ريال.",
+      clarifier: "وش يعني عائد حتى 30%؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، وقيمة الوقت المتوفر من تحسّن الأداء.",
       layers: [
         {
           num: "٠١",
           title: "فعّل فريقك",
-          desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر ← ساعات موفرة."
+          desc: "تأخير أقل، تسرب وظيفي أقل، تركيز أكبر — الساعات الموفرة تتراكم لتصبح مالاً حقيقياً.",
         },
         {
           num: "٠٢",
           title: "كافئ الأداء",
-          desc: "نظامي اتش آر يمول مكافآت لموظفيك عبر نقاط التحفيز مع بطاقات هدايا وخصومات حصرية على علامات تجارية داخل وخارج السعودية."
+          desc: "نظامي اتش آر يمول مكافآت لموظفيك عبر نقاط التحفيز — بطاقات هدايا وخصومات حصرية على علامات تجارية داخل وخارج السعودية.",
         },
         {
           num: "٠٣",
           title: "استرد قيمتك",
-          desc: "يزيد التزام الموظفين وتقل ساعات التأخير أو الانصراف المبكر، ويكتسب الموظفون نقاط المكافآت لاستبدالها بمكافآت من النظام — وتعود الفائدة عليك دون الحاجة إلى دفع أموال أخرى."
-        }
-      ]
-    }
+          desc: "يزيد الالتزام ويقل الوقت الضائع، ويكتسب الموظفون نقاطاً لاستبدالها — وتعود الفائدة إليك دون تكلفة إضافية.",
+        },
+      ],
+    },
   };
 
   const t = content[language];
 
   return (
-    <section id="return-model" className="py-24 bg-blue-900 scroll-mt-16 overflow-hidden relative">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-700/40 via-blue-900/0 to-transparent" />
-      </div>
+    <section
+      id="return-model"
+      className="py-24 sm:py-32 scroll-mt-16 overflow-hidden relative"
+      style={{ background: "linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%)" }}
+    >
+      {/* Radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8">
-          <span className="inline-block text-xs font-bold rounded-full px-4 py-1.5 bg-blue-800 text-blue-200 border border-blue-700 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <span className="inline-block text-xs font-bold text-blue-300 bg-blue-900/60 border border-blue-700/50 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
             {t.eyebrow}
           </span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-heading font-black text-center mb-6 max-w-4xl mx-auto leading-tight">
-          <span className="text-white">{t.titlePart1}</span>
-          <span className="text-blue-300">{t.titlePart2}</span>
-          <span className="text-white">{t.titlePart3}</span>
-        </h2>
-        <p className="text-lg md:text-xl text-blue-100/80 text-center mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
-          {t.subhead}
-        </p>
-        <div className="max-w-2xl mx-auto mb-20">
-          <p className="text-sm md:text-base text-blue-100 text-center leading-relaxed font-medium rounded-2xl bg-blue-800/60 border border-blue-700 px-6 py-4">
-            {t.clarifier}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.1] mb-6">
+            <span className="text-white">{t.title}</span>
+            <br />
+            <span className="text-blue-400">{t.titleAccent}</span>
+            <span className="text-white">{t.titleEnd}</span>
+          </h2>
+          <p className="text-lg text-blue-100/60 leading-relaxed font-medium max-w-2xl mx-auto">
+            {t.subhead}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
-          {/* Connecting line for desktop */}
-          <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-blue-800 z-0" />
-
-          {t.layers.map((layer, idx) => {
-            const Icon = layerIcons[idx];
-            return (
-              <div key={idx} className="relative z-10 group">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 rounded-full bg-blue-800 border-4 border-blue-900 flex flex-col items-center justify-center gap-0.5 mb-8 shrink-0 relative shadow-xl transition-transform group-hover:scale-110 duration-300">
-                    <div className="absolute -top-2 -right-2 text-xs font-black px-2.5 py-1 rounded-full bg-blue-500 text-white shadow-md border border-blue-400">
-                      {layer.num}
-                    </div>
-                    <Icon size={32} className="text-blue-200" />
-                  </div>
-
-                  <h3 className="text-2xl font-bold mb-4 text-white font-heading">{layer.title}</h3>
-                  <p className="text-blue-100/70 leading-relaxed font-medium">
-                    {layer.desc}
-                  </p>
-                </div>
+        {/* Three steps */}
+        <div className="max-w-4xl mx-auto space-y-0">
+          {t.layers.map((layer, idx) => (
+            <div
+              key={idx}
+              className="grid sm:grid-cols-[120px_1fr] gap-4 sm:gap-8 items-start py-10 border-t border-white/8 first:border-t-0 group"
+            >
+              {/* Big number */}
+              <div className="text-6xl sm:text-7xl font-heading font-black text-white/10 group-hover:text-white/20 transition-colors duration-500 leading-none shrink-0 text-start">
+                {layer.num}
               </div>
-            );
-          })}
+              {/* Content */}
+              <div className="pt-1">
+                <h3 className="text-xl sm:text-2xl font-heading font-black text-white mb-3">
+                  {layer.title}
+                </h3>
+                <p className="text-base text-blue-100/60 leading-relaxed font-medium max-w-xl">
+                  {layer.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Clarifier note */}
+        <div className="max-w-2xl mx-auto mt-16 pt-10 border-t border-white/8">
+          <p className="text-sm text-blue-200/40 text-center leading-relaxed font-medium">
+            {t.clarifier}
+          </p>
         </div>
       </div>
     </section>

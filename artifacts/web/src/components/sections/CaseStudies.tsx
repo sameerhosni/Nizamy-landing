@@ -13,7 +13,6 @@ import {
   LabelList,
 } from "recharts";
 
-// Client 3 (featured): Aug–Dec 2025 — on-time check-ins & check-outs (days/employee/month)
 const featuredData = [
   { m: 0, checkins: 10.6, checkouts: 13.3 },
   { m: 1, checkins: 11.2, checkouts: 13.5 },
@@ -22,7 +21,6 @@ const featuredData = [
   { m: 4, checkins: 13.2, checkouts: 14.8 },
 ];
 
-// Client 1: Jul–Oct 2025 — on-time check-outs (days/employee/month)
 const checkoutData = [
   { m: 0, v: 8.4 },
   { m: 1, v: 8.7 },
@@ -30,7 +28,6 @@ const checkoutData = [
   { m: 3, v: 9.8 },
 ];
 
-// Client 2: Jul–Oct 2025 — points accumulated per month
 const pointsData = [
   { m: 0, v: 2500 },
   { m: 1, v: 4550 },
@@ -43,15 +40,14 @@ const content = {
     eyebrow: "Real client results · 2025",
     titlePart1: "Proof, not promises. ",
     titlePart2: "Performance that shows in the numbers.",
-    subtitle:
-      "ROI reports from three real clients using the Nizamy HR point system — attendance discipline and engagement tracked month by month.",
+    subtitle: "ROI reports from three real clients using Nizamy HR — attendance discipline and engagement tracked month by month.",
     featuredMonths: ["Aug", "Sep", "Oct", "Nov", "Dec"],
     smallMonths: ["Jul", "Aug", "Sep", "Oct"],
     daysUnit: "days/mo",
     featured: {
       tag: "Client 3 · Aug–Dec 2025 · 5 months",
       title: "The highest check-in lift of any client — +24%",
-      desc: "On-time check-ins climbed from 10.6 to 13.2 days per employee each month, and on-time check-outs rose 11% — with 57 employees earning rewards and 130,525 points accumulated along the way.",
+      desc: "On-time check-ins climbed from 10.6 to 13.2 days per employee each month, and on-time check-outs rose 11% — with 57 employees earning rewards and 130,525 points accumulated.",
       legendCheckins: "On-time check-ins",
       legendCheckouts: "On-time check-outs",
       stats: [
@@ -72,14 +68,13 @@ const content = {
         icon: Coins,
         tag: "Client 2 · Jul–Oct 2025",
         title: "Points accumulated grew 12× in 4 months",
-        desc: "Engagement compounded every month — from 2,500 points in month one to 29,770 in month four, with 28 employees hitting reward thresholds.",
+        desc: "Engagement compounded every month — from 2,500 points in month one to 29,770 in month four.",
         stat: "12×",
         statLabel: "points growth",
       },
     ],
     note: "Real results from Nizamy HR point-system deployments in 2025. Client names withheld for confidentiality.",
-    featuredChartSummary:
-      "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month, and on-time check-outs rose from 13.3 to 14.8.",
+    featuredChartSummary: "Line chart: over five months, on-time check-ins rose from 10.6 to 13.2 days per employee per month.",
     cardChartSummaries: [
       "Trend chart: on-time check-outs rose steadily from 8.4 to 9.8 days per employee per month over four months.",
       "Trend chart: monthly points accumulated grew from 2,500 to 29,770 over four months.",
@@ -89,15 +84,14 @@ const content = {
     eyebrow: "نتائج عملاء حقيقية · 2025",
     titlePart1: "إثبات، لا وعود. ",
     titlePart2: "أداء يظهر في الأرقام.",
-    subtitle:
-      "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظام النقاط في نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
+    subtitle: "تقارير عائد من ثلاثة عملاء حقيقيين يستخدمون نظامي اتش آر — انضباط الحضور والتفاعل يُرصدان شهراً بشهر.",
     featuredMonths: ["أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
     smallMonths: ["يوليو", "أغسطس", "سبتمبر", "أكتوبر"],
     daysUnit: "يوم/شهر",
     featured: {
       tag: "العميل 3 · أغسطس–ديسمبر 2025 · 5 أشهر",
       title: "أعلى تحسّن في الحضور المبكر بين عملائنا — 24%+",
-      desc: "ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط 11% — مع حصول 57 موظفاً على مكافآت وتراكم 130,525 نقطة خلال الفترة.",
+      desc: "ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط 11% — مع حصول 57 موظفاً على مكافآت وتراكم 130,525 نقطة.",
       legendCheckins: "الحضور في الوقت المحدد",
       legendCheckouts: "الانصراف في الوقت المحدد",
       stats: [
@@ -110,7 +104,7 @@ const content = {
         icon: LogOut,
         tag: "العميل 1 · يوليو–أكتوبر 2025",
         title: "الانصراف المنضبط قفز 17%+ خلال 4 أشهر",
-        desc: "دون أي تدخل من المدراء: ارتفع الانصراف في الوقت المحدد من 8.4 إلى 9.8 يوماً لكل موظف شهرياً بمجرد أن أصبحت أهداف المكافآت مرئية.",
+        desc: "دون أي تدخل من المدراء: ارتفع الانصراف في الوقت المحدد من 8.4 إلى 9.8 يوماً لكل موظف شهرياً.",
         stat: "+17%",
         statLabel: "الانصراف المنضبط",
       },
@@ -118,16 +112,15 @@ const content = {
         icon: Coins,
         tag: "العميل 2 · يوليو–أكتوبر 2025",
         title: "النقاط المكتسبة تضاعفت 12 مرة خلال 4 أشهر",
-        desc: "التفاعل تضاعف شهراً بعد شهر — من 2,500 نقطة في الشهر الأول إلى 29,770 في الشهر الرابع، مع وصول 28 موظفاً لأهداف المكافآت.",
+        desc: "التفاعل تضاعف شهراً بعد شهر — من 2,500 نقطة في الشهر الأول إلى 29,770 في الشهر الرابع.",
         stat: "×12",
         statLabel: "نمو النقاط",
       },
     ],
     note: "نتائج حقيقية من تطبيقات نظام النقاط في نظامي اتش آر خلال 2025. أسماء العملاء محجوبة للخصوصية.",
-    featuredChartSummary:
-      "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً، وارتفع الانصراف المنضبط من 13.3 إلى 14.8.",
+    featuredChartSummary: "رسم بياني خطي: خلال خمسة أشهر ارتفع الحضور في الوقت المحدد من 10.6 إلى 13.2 يوماً لكل موظف شهرياً.",
     cardChartSummaries: [
-      "رسم بياني: ارتفع الانصراف في الوقت المحدد تدريجياً من 8.4 إلى 9.8 يوماً لكل موظف شهرياً خلال أربعة أشهر.",
+      "رسم بياني: ارتفع الانصراف في الوقت المحدد من 8.4 إلى 9.8 يوماً لكل موظف شهرياً خلال أربعة أشهر.",
       "رسم بياني: نمت النقاط الشهرية المكتسبة من 2,500 إلى 29,770 خلال أربعة أشهر.",
     ],
   },
@@ -141,46 +134,48 @@ export function CaseStudies() {
   const featuredMonthLabel = (i: number) => t.featuredMonths[i] ?? "";
 
   return (
-    <section id="use-cases" className="py-24 bg-gradient-to-b from-slate-50 to-white scroll-mt-16 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-xs font-bold rounded-full px-4 py-1.5 bg-blue-50 text-blue-700 border border-blue-100 shadow-sm mb-6">
+    <section id="use-cases" className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
             {t.eyebrow}
           </span>
-          <h2 className="text-4xl md:text-5xl font-heading font-black mb-6 leading-tight text-slate-900">
-            {t.titlePart1}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.1] mb-6 text-slate-900">
+            <span>{t.titlePart1}</span>
             <span className="text-blue-600">{t.titlePart2}</span>
           </h2>
           <p className="text-lg text-slate-500 leading-relaxed font-medium">{t.subtitle}</p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Featured card with big trend chart */}
-          <div className="lg:col-span-2 rounded-[32px] bg-white border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {/* Featured card */}
+          <div className="lg:col-span-2 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-5">
-              <div className="md:col-span-2 p-10 md:p-12 flex flex-col justify-center text-start rtl:text-right">
+              {/* Text */}
+              <div className="md:col-span-2 p-8 sm:p-10 md:p-12 flex flex-col justify-center text-start rtl:text-right">
                 <span className="inline-block self-start text-[11px] font-bold rounded-full px-3 py-1 bg-blue-50 text-blue-700 border border-blue-100 mb-5">
                   {t.featured.tag}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-heading font-black text-slate-900 mb-4 leading-snug">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-black text-slate-900 mb-4 leading-snug">
                   {t.featured.title}
                 </h3>
-                <p className="text-slate-500 font-medium leading-relaxed mb-8">{t.featured.desc}</p>
-                <div className="flex gap-4">
+                <p className="text-slate-500 font-medium leading-relaxed mb-8 text-sm sm:text-base">{t.featured.desc}</p>
+                <div className="flex gap-3">
                   {t.featured.stats.map((s, i) => {
                     const Icon = s.icon;
                     return (
                       <div key={i} className="flex-1 rounded-2xl bg-slate-50 border border-slate-100 p-4">
-                        <Icon size={18} className="text-blue-600 mb-2" />
-                        <div className="text-2xl font-heading font-black text-slate-900 tabular-nums">{s.value}</div>
-                        <div className="text-xs font-medium text-slate-500">{s.label}</div>
+                        <Icon size={16} className="text-blue-600 mb-2" />
+                        <div className="text-xl sm:text-2xl font-heading font-black text-slate-900 tabular-nums">{s.value}</div>
+                        <div className="text-xs font-medium text-slate-400 mt-0.5">{s.label}</div>
                       </div>
                     );
                   })}
                 </div>
               </div>
-              <div className="md:col-span-3 p-6 md:p-10 bg-gradient-to-br from-blue-50/60 to-indigo-50/40">
-                <div className="flex items-center gap-5 mb-4 justify-center text-xs font-semibold text-slate-600 flex-wrap">
+              {/* Chart */}
+              <div className="md:col-span-3 p-6 sm:p-8 md:p-10 bg-gradient-to-br from-blue-50/60 to-slate-50">
+                <div className="flex items-center gap-4 mb-4 justify-center text-xs font-semibold text-slate-600 flex-wrap gap-y-2">
                   <span className="flex items-center gap-2">
                     <span className="w-3 h-1.5 rounded-full bg-blue-600 inline-block" />
                     {t.featured.legendCheckins}
@@ -189,10 +184,10 @@ export function CaseStudies() {
                     <span className="w-3 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     {t.featured.legendCheckouts}
                   </span>
-                  <span className="text-slate-400 font-medium">({t.daysUnit})</span>
+                  <span className="text-slate-400">({t.daysUnit})</span>
                 </div>
                 <p className="sr-only">{t.featuredChartSummary}</p>
-                <div className="h-64 md:h-80" dir="ltr" aria-hidden="true">
+                <div className="h-60 sm:h-72 md:h-80" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={featuredData} margin={{ top: 16, right: 24, left: 20, bottom: 8 }}>
                       <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
@@ -221,7 +216,7 @@ export function CaseStudies() {
                         dataKey="checkins"
                         name={t.featured.legendCheckins}
                         stroke="#2563eb"
-                        strokeWidth={3}
+                        strokeWidth={2.5}
                         dot={{ r: 4, fill: "#2563eb", strokeWidth: 2, stroke: "#fff" }}
                         activeDot={{ r: 6 }}
                       >
@@ -239,7 +234,7 @@ export function CaseStudies() {
                         dataKey="checkouts"
                         name={t.featured.legendCheckouts}
                         stroke="#10b981"
-                        strokeWidth={3}
+                        strokeWidth={2.5}
                         dot={{ r: 4, fill: "#10b981", strokeWidth: 2, stroke: "#fff" }}
                         activeDot={{ r: 6 }}
                       >
@@ -258,7 +253,7 @@ export function CaseStudies() {
             </div>
           </div>
 
-          {/* Two smaller cards with sparkline areas */}
+          {/* Two small cards */}
           {t.cards.map((card, idx) => {
             const Icon = card.icon;
             const data = idx === 0 ? checkoutData : pointsData;
@@ -268,21 +263,21 @@ export function CaseStudies() {
             return (
               <div
                 key={idx}
-                className="rounded-[32px] bg-white border border-slate-100 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col"
+                className="rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col"
               >
-                <div className="p-8 md:p-10 pb-4 text-start rtl:text-right">
+                <div className="p-8 sm:p-10 pb-4 text-start rtl:text-right">
                   <div className="flex items-center justify-between mb-5">
-                    <span className="inline-block text-[11px] font-bold rounded-full px-3 py-1 bg-slate-50 text-slate-600 border border-slate-100">
+                    <span className="inline-block text-[11px] font-bold rounded-full px-3 py-1 bg-slate-50 text-slate-500 border border-slate-100">
                       {card.tag}
                     </span>
-                    <span className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center">
-                      <Icon size={18} className="text-blue-600" />
+                    <span className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center">
+                      <Icon size={16} className="text-blue-600" />
                     </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-heading font-black text-slate-900 mb-3 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-heading font-black text-slate-900 mb-3 leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-slate-500 font-medium leading-relaxed text-sm md:text-base mb-5">{card.desc}</p>
+                  <p className="text-slate-500 font-medium leading-relaxed text-sm mb-5">{card.desc}</p>
                   <div className="flex items-baseline gap-2 rtl:flex-row-reverse rtl:justify-end">
                     <span className="text-3xl font-heading font-black text-blue-600 tabular-nums">{card.stat}</span>
                     <span className="text-xs font-semibold text-slate-400">{card.statLabel}</span>
@@ -291,18 +286,18 @@ export function CaseStudies() {
                 <p className="sr-only">{t.cardChartSummaries[idx]}</p>
                 <div className="h-44 mt-auto px-6 pb-6" dir="ltr" aria-hidden="true">
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={data} margin={{ top: 20, right: 28, left: 28, bottom: 0 }}>
+                    <AreaChart data={data} margin={{ top: 20, right: 24, left: 24, bottom: 0 }}>
                       <defs>
                         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor={color} stopOpacity={0.18} />
+                          <stop offset="0%" stopColor={color} stopOpacity={0.15} />
                           <stop offset="100%" stopColor={color} stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" vertical={false} />
+                      <CartesianGrid strokeDasharray="4 4" stroke="#f1f5f9" vertical={false} />
                       <XAxis
                         dataKey="m"
                         tickFormatter={smallMonthLabel}
-                        tick={{ fontSize: 11, fill: "#64748b" }}
+                        tick={{ fontSize: 10, fill: "#94a3b8" }}
                         axisLine={false}
                         tickLine={false}
                       />
@@ -312,7 +307,7 @@ export function CaseStudies() {
                         type="monotone"
                         dataKey="v"
                         stroke={color}
-                        strokeWidth={3}
+                        strokeWidth={2.5}
                         fill={`url(#${gradId})`}
                         dot={{ r: 4, fill: color, strokeWidth: 2, stroke: "#fff" }}
                       >
@@ -320,10 +315,8 @@ export function CaseStudies() {
                           dataKey="v"
                           position="top"
                           offset={10}
-                          formatter={(v: number) =>
-                            idx === 0 ? v.toFixed(1) : v.toLocaleString()
-                          }
-                          style={{ fontSize: 11, fontWeight: 700, fill: color }}
+                          formatter={(v: number) => idx === 0 ? v.toFixed(1) : v.toLocaleString()}
+                          style={{ fontSize: 10, fontWeight: 700, fill: color }}
                         />
                       </Area>
                     </AreaChart>

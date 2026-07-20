@@ -4,7 +4,7 @@ import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Twitter, Linkedin, MessageCircle } from "lucide-react";
+import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Gift, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { track, identifyLead } from "@/lib/analytics";
 
@@ -16,9 +16,11 @@ interface DesignPartnerProps {
     subscription: number;
     totalReturn: number;
   };
+  tier: "Standard" | "Growth" | "Pro";
+  setTier: (val: "Standard" | "Growth" | "Pro") => void;
 }
 
-export function DesignPartner({ snapshot }: DesignPartnerProps) {
+export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
   const mutation = useCreateLead();
@@ -34,6 +36,9 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
     en: {
       heading: "Contact Us",
       sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
+      offerBadge: "Early-partner gift",
+      offerHighlight: "3 months free",
+      offerNote: "For the first 50 clients only",
       labels: {
         name: "Full Name",
         company: "Company Name",
@@ -45,6 +50,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         company: "Your company name",
         email: "name@company.com",
       },
+      packageLabel: "Which plan are you interested in?",
+      tiers: { Standard: "Standard", Growth: "Growth", Pro: "Pro" },
       submit: "Request Early Access",
       loading: "Sending...",
       success: {
@@ -57,6 +64,9 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
     ar: {
       heading: "تواصــل معنا",
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
+      offerBadge: "هدية الشركاء الأوائل",
+      offerHighlight: "3 أشهر مجانًا",
+      offerNote: "لأول 50 عميل",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
@@ -68,6 +78,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
         company: "اسم منشأتك",
         email: "name@company.com",
       },
+      packageLabel: "أي باقة تهمّك؟",
+      tiers: { Standard: "أساسي", Growth: "نمو", Pro: "احترافي" },
       submit: "اطلب وصولاً مبكراً",
       loading: "جارٍ الإرسال...",
       success: {
@@ -140,22 +152,35 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
               <h2 className="text-[3.5rem] sm:text-6xl lg:text-[5rem] font-heading font-black leading-[1.1] mb-8 tracking-tight">
                 {t.heading}
               </h2>
-              <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-lg">
+              <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-lg mb-8">
                 {t.sub}
               </p>
+
+              {/* Offer card */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative inline-flex items-center gap-5 rounded-[1.5rem] bg-gradient-to-br from-amber-400 via-amber-300 to-yellow-300 text-slate-900 px-7 py-5 shadow-[0_15px_40px_rgba(251,191,36,0.35)] overflow-hidden"
+              >
+                <div className="absolute -top-6 -end-6 w-24 h-24 rounded-full bg-white/30 blur-2xl pointer-events-none" />
+                <div className="w-14 h-14 rounded-[1rem] bg-slate-900 text-amber-300 flex items-center justify-center shrink-0">
+                  <Gift className="w-7 h-7" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-[13px] font-black uppercase tracking-wide text-slate-800/80">
+                    <Sparkles className="w-4 h-4" />
+                    {t.offerBadge}
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-heading font-black leading-tight">
+                    {t.offerHighlight}
+                  </div>
+                  <div className="text-[13px] font-bold text-slate-800/70">{t.offerNote}</div>
+                </div>
+              </motion.div>
             </div>
             
-            <div className="flex items-center gap-5 pt-6">
-              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
-                <MessageCircle className="w-6 h-6" />
-              </a>
-            </div>
           </motion.div>
 
           {/* Form Side */}
@@ -182,6 +207,30 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       {t.error}
                     </div>
                   )}
+
+                  <div className="space-y-3">
+                    <Label className="text-slate-700 font-bold text-[15px]">{t.packageLabel}</Label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {(["Standard", "Growth", "Pro"] as const).map((tOption) => (
+                        <button
+                          key={tOption}
+                          type="button"
+                          onClick={() => {
+                            setTier(tOption);
+                            track("form_package_selected", { tier: tOption, language });
+                          }}
+                          className={`py-3.5 px-2 border-2 rounded-[1rem] text-center transition-all duration-300 ${
+                            tier === tOption
+                              ? "border-blue-600 bg-blue-50/60 text-blue-700 shadow-sm"
+                              : "border-slate-100 text-slate-500 hover:border-slate-200 hover:bg-slate-50 bg-[#FAFAFA]"
+                          }`}
+                        >
+                          <div className="font-heading font-black text-[15px]">{t.tiers[tOption]}</div>
+                          <div className="text-[12px] font-bold opacity-75">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
                   <div className="space-y-3">
                     <Label htmlFor="name" className="text-slate-700 font-bold text-[15px]">

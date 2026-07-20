@@ -1,6 +1,5 @@
 import { useLanguage } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
-import { EyeOff, Compass, Hourglass, TrendingDown, ArrowRight, ArrowLeft } from "lucide-react";
+import { EyeOff, Compass, Hourglass, TrendingDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 const icons = [EyeOff, Compass, Hourglass, TrendingDown];
@@ -14,45 +13,43 @@ export function Problem() {
       eyebrow: "The real cost of manual HR",
       pains: [
         {
-          title: "No real-time visibility",
+          title: "You find out too late",
           desc: "You only learn how your team performed at the end of the month — after the losses have already piled up.",
         },
         {
-          title: "Decisions built on gut feeling",
+          title: "Guesswork, not numbers",
           desc: "You judge commitment and delivery through impressions, not numbers.",
         },
         {
-          title: "Exhausting follow-up with no result",
+          title: "Admin time you never get back",
           desc: "You spend hours auditing and holding people accountable, with no real gain in productivity.",
         },
         {
-          title: "Hidden waste keeps growing",
+          title: "Silent waste, real losses",
           desc: "Daily delays, stuck tasks, meetings with no outcomes… silent costs draining your profits.",
         },
       ],
-      cta: "Discover how to stop the bleeding and take back control",
     },
     ar: {
       eyebrow: "التكلفة الحقيقية للموارد البشرية اليدوية",
       pains: [
         {
-          title: "غياب الرؤية اللحظية",
+          title: "تعرف المشكلة متأخرًا",
           desc: "لا تعرف أداء فريقك إلا بعد نهاية الشهر، وحينها تكون الخسائر قد تراكمت.",
         },
         {
-          title: "قرارات مبنية على الحدس",
+          title: "تخمين… بدل أرقام",
           desc: "تحكم على الالتزام والإنجاز من خلال الانطباعات، لا من خلال الأرقام.",
         },
         {
-          title: "متابعة مرهقة بلا نتيجة",
+          title: "وقت إداري لا يرجع",
           desc: "تقضي ساعات في التدقيق والمحاسبة، دون تحسن حقيقي في الإنتاجية.",
         },
         {
-          title: "الهدر الخفي يتضخم",
+          title: "هدر صامت… وخسائر حقيقية",
           desc: "تأخيرات يومية، مهام عالقة، واجتماعات بلا مخرجات… تكاليف صامتة تستنزف أرباحك.",
         },
       ],
-      cta: "اكتشف كيف توقف هذا النزيف وتستعيد السيطرة",
     },
   };
 
@@ -96,27 +93,6 @@ export function Problem() {
             );
           })}
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-20"
-        >
-          <Button
-            size="lg"
-            className="h-14 px-10 rounded-full text-[17px] font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] group transition-all duration-300"
-            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            {t.cta}
-            {isRtl ? (
-              <ArrowLeft className="ms-2 group-hover:-translate-x-1.5 transition-transform" />
-            ) : (
-              <ArrowRight className="ms-2 group-hover:translate-x-1.5 transition-transform" />
-            )}
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

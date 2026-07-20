@@ -7,16 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = {
   en: [
-    { id: "services", label: "What We Manage" },
+    { id: "features", label: "The System" },
+    { id: "how-it-works", label: "How It Works" },
+    { id: "why-nizamy", label: "Why Nizamy" },
     { id: "return-model", label: "Return Model" },
     { id: "calculator", label: "Calculator" },
-    { id: "features", label: "Features" },
   ],
   ar: [
-    { id: "services", label: "خدمات النظام" },
+    { id: "features", label: "النظام" },
+    { id: "how-it-works", label: "كيف يعمل" },
+    { id: "why-nizamy", label: "لماذا نظامي" },
     { id: "return-model", label: "نموذج العائد" },
     { id: "calculator", label: "الحاسبة" },
-    { id: "features", label: "المزايا" },
   ],
 };
 
@@ -84,6 +86,9 @@ export function Navbar() {
               onClick={() => scrollTo("partner")}
             >
               {isRtl ? "احصل على العرض المبكر" : "Get Early Access"}
+              <span className="ms-2 rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+                {isRtl ? "3 أشهر مجانًا" : "3 months free"}
+              </span>
             </Button>
             <button
               className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"

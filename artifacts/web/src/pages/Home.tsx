@@ -4,7 +4,6 @@ import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { Features } from "@/components/sections/Features";
-import { Services } from "@/components/sections/Services";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyNizamy } from "@/components/sections/WhyNizamy";
 import { ReturnModel } from "@/components/sections/ReturnModel";
@@ -12,6 +11,8 @@ import { Calculator } from "@/components/sections/Calculator";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
+import { ChatWidget } from "@/components/ChatWidget";
+import { ScrollButtons } from "@/components/ScrollButtons";
 
 export function Home() {
   const [employees, setEmployees] = useState(100);
@@ -44,9 +45,8 @@ export function Home() {
         <Hero />
         <StatsBar />
         <Problem />
-        <Services />
-        <HowItWorks />
         <Features />
+        <HowItWorks />
         <WhyNizamy />
         <ReturnModel />
         <Calculator
@@ -63,9 +63,11 @@ export function Home() {
           effectiveCost={effectiveCost}
         />
         <CaseStudies />
-        <DesignPartner snapshot={snapshot} />
+        <DesignPartner snapshot={snapshot} tier={tier} setTier={setTier} />
       </main>
       <Footer />
+      <ChatWidget />
+      <ScrollButtons />
     </div>
   );
 }

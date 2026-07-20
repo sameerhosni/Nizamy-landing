@@ -1,6 +1,6 @@
 import { Logo } from "@/components/layout/Logo";
 import { useLanguage } from "@/lib/i18n";
-import { Mail, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export function Footer() {
   const { language, dir } = useLanguage();
@@ -13,7 +13,6 @@ export function Footer() {
       links: [
         { label: "Home", href: "#" },
         { label: "Features", href: "#features" },
-        { label: "Services", href: "#services" },
         { label: "Return Model", href: "#return-model" },
       ],
       legal: [
@@ -27,7 +26,6 @@ export function Footer() {
       links: [
         { label: "الرئيسية", href: "#" },
         { label: "المميزات", href: "#features" },
-        { label: "الخدمات", href: "#services" },
         { label: "نموذج العائد", href: "#return-model" },
       ],
       legal: [
@@ -40,37 +38,26 @@ export function Footer() {
   const t = content[language];
 
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-slate-200/80">
+    <footer className="bg-white pt-14 pb-8 border-t border-slate-200/80">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-10">
           
           {/* Brand Col */}
           <div className="md:col-span-12 lg:col-span-5">
-            <div className="mb-8">
+            <div className="mb-5">
               <Logo />
             </div>
-            <p className="text-slate-500 font-medium leading-relaxed max-w-md mb-10 text-[17px]">
+            <p className="text-slate-500 font-medium leading-relaxed max-w-md mb-6 text-[16px]">
               {t.tagline}
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50 transition-all duration-300">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50 transition-all duration-300">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50 transition-all duration-300">
-                <Instagram size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Links Col */}
           <div className="md:col-span-6 lg:col-span-3 lg:col-start-7">
-            <h4 className="font-heading font-black text-slate-900 text-xl mb-8">
+            <h4 className="font-heading font-black text-slate-900 text-lg mb-5">
               {language === "en" ? "Quick Links" : "روابط سريعة"}
             </h4>
-            <ul className="space-y-5">
+            <ul className="space-y-3">
               {t.links.map((link, idx) => (
                 <li key={idx}>
                   <a href={link.href} className="text-slate-500 hover:text-blue-600 font-bold transition-colors text-[15px]">
@@ -83,7 +70,7 @@ export function Footer() {
 
           {/* Contact Col */}
           <div className="md:col-span-6 lg:col-span-3">
-            <h4 className="font-heading font-black text-slate-900 text-xl mb-8">
+            <h4 className="font-heading font-black text-slate-900 text-lg mb-5">
               {language === "en" ? "Get in Touch" : "تواصل معنا"}
             </h4>
             <a 
@@ -91,16 +78,16 @@ export function Footer() {
               className="inline-flex items-center gap-4 text-slate-600 font-bold hover:text-blue-600 transition-all group"
               dir="ltr"
             >
-              <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                <Mail size={22} />
+              <div className="w-11 h-11 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                <Mail size={19} />
               </div>
-              <span className="text-[17px]">sales@nizamy.app</span>
+              <span className="text-[15px]">sales@nizamy.app</span>
             </a>
           </div>
 
         </div>
 
-        <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="border-t border-slate-100 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-400 text-[15px] font-bold">
             {t.copyright}
           </p>

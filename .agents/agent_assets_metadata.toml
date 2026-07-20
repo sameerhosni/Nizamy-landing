@@ -156,6 +156,24 @@ uri = "file://artifacts/web/public/images/services/tasks-v3.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "4jbf0-JUUgvg4rHQeVR8t"
+uri = "file://artifacts/web/src/assets/availo/feature-rewards.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "KenJM7axmFxQJP_vwttT6"
+uri = "file://artifacts/web/src/assets/availo/feature-ai-reports.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "pvvntDlYeu0BH33AaWLUj"
+uri = "file://artifacts/web/src/assets/availo/feature-onboarding.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "_r7cLEK3CcqlYOGWojIK_"
 uri = "file://artifacts/web/public/images/hero-bg.jpg"

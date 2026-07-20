@@ -5,6 +5,32 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface OpenaiConversation {
+  id: string;
+  title: string;
+  createdAt: string;
+}
+
+export interface OpenaiMessage {
+  id: number;
+  conversationId: string;
+  role: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface OpenaiConversationInput {
+  title: string;
+}
+
+export interface OpenaiMessageInput {
+  /**
+     * @minLength 1
+     * @maxLength 2000
+     */
+  content: string;
+}
+
 export interface HealthStatus {
   status: string;
 }

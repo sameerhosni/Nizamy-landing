@@ -10,9 +10,9 @@ export function WhyNizamy() {
   const content = {
     en: {
       eyebrow: "Why Nizamy?",
-      heading: "Most systems manage employees. Nizamy manages the return on them.",
+      heading: "More than just an HR system.",
       subhead:
-        "Market tools tell you who showed up and who didn't. Nizamy tells you how much you earned from that attendance — and where you can earn more.",
+        "Any system can organize employee data. Nizamy helps you put it to work — because the goal isn't managing HR, it's improving how your business performs.",
       colTraditional: "Traditional solutions",
       colNizamy: "Nizamy",
       rows: [
@@ -27,9 +27,9 @@ export function WhyNizamy() {
     },
     ar: {
       eyebrow: "لماذا نظامي؟",
-      heading: "معظم الأنظمة تدير الموظفين. نظامي يدير العائد عليهم.",
+      heading: "أكثر من مجرد نظام HR.",
       subhead:
-        "أدوات السوق تخبرك مَن حضر ومَن غاب. نظامي يخبرك كم كسبت من وراء هذا الحضور، وأين يمكنك أن تكسب أكثر.",
+        "أي نظام يقدر ينظم بيانات الموظفين، لكن نظامي يساعدك تستفيد منها. لأن الهدف مو إدارة الموارد البشرية… الهدف هو تحسين أداء العمل.",
       colTraditional: "الحلول التقليدية",
       colNizamy: "نظامي",
       rows: [

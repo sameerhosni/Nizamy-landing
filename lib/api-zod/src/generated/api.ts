@@ -55,3 +55,52 @@ export const CreateLeadResponse = zod.object({
 })
 
 
+/**
+ * @summary Create a new conversation
+ */
+export const CreateOpenaiConversationBody = zod.object({
+  "title": zod.string()
+})
+
+export const CreateOpenaiConversationResponse = zod.object({
+  "id": zod.string().uuid(),
+  "title": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
+ * @summary List messages in a conversation
+ */
+export const ListOpenaiMessagesParams = zod.object({
+  "id": zod.coerce.string().uuid()
+})
+
+export const ListOpenaiMessagesResponseItem = zod.object({
+  "id": zod.number(),
+  "conversationId": zod.string().uuid(),
+  "role": zod.string(),
+  "content": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const ListOpenaiMessagesResponse = zod.array(ListOpenaiMessagesResponseItem)
+
+
+/**
+ * @summary Send a text message and receive a streaming text response
+ */
+export const SendOpenaiMessageParams = zod.object({
+  "id": zod.coerce.string().uuid()
+})
+
+export const sendOpenaiMessageBodyContentMax = 2000;
+
+
+
+export const SendOpenaiMessageBody = zod.object({
+  "content": zod.string().min(1).max(sendOpenaiMessageBodyContentMax)
+})
+
+export const SendOpenaiMessageResponse = zod.unknown()
+
+

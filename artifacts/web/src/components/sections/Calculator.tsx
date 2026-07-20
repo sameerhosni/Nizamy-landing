@@ -228,6 +228,9 @@ export function Calculator({
                   >
                     <div className="font-heading font-black text-[17px] mb-1.5">{t.tiers[tOption]}</div>
                     <div className="text-[13px] font-bold opacity-80">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
+                    <div className="mt-2 inline-block rounded-full bg-amber-100 text-amber-800 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+                      {language === "ar" ? "وصول مبكر" : "Early access"}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -249,6 +252,20 @@ export function Calculator({
                   </li>
                 ))}
               </ul>
+              <button
+                onClick={() => {
+                  track("package_cta_clicked", { tier, employees, language });
+                  document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="mt-6 w-full h-14 rounded-[16px] bg-blue-600 hover:bg-blue-700 text-white text-[16px] font-black flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all"
+              >
+                {language === "ar"
+                  ? `اطلب باقة ${t.tiers[tier]} الآن`
+                  : `Request the ${t.tiers[tier]} plan now`}
+                <span className="rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+                  {language === "ar" ? "3 أشهر مجانًا" : "3 months free"}
+                </span>
+              </button>
             </div>
           </motion.div>
 

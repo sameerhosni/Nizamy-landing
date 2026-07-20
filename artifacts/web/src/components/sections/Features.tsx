@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { CheckCircle2, UserCheck, CalendarDays, Calculator, Clock, Link2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import feature1 from "@/assets/availo/feature-1.png";
+import { CheckCircle2, UserCheck, CalendarDays, Gift, BarChart3, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
 import feature2 from "@/assets/availo/feature-2.png";
-import feature3 from "@/assets/availo/feature-3.png";
-import feature4 from "@/assets/availo/feature-4.png";
-import feature5 from "@/assets/availo/feature-5.png";
+import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual } from "./FeatureVisuals";
 
 export function Features() {
   const { language } = useLanguage();
@@ -14,15 +11,15 @@ export function Features() {
 
   const content = {
     en: {
-      eyebrow: "Features Beyond Expectations",
-      titlePart1: "A performance system first. ",
-      titlePart2: "A return because of it.",
+      eyebrow: "A Complete HR System",
+      titlePart1: "Everything HR needs, in one platform. ",
+      titlePart2: "And it all works together, simply.",
       items: [
         {
           title: "Smart Leave Requests",
           desc: "Employees handle requests, documents, and approvals themselves through an AI assistant.",
           icon: CalendarDays,
-          image: feature1
+          visual: LeaveChatVisual
         },
         {
           title: "Biometric Check-in/out",
@@ -31,35 +28,35 @@ export function Features() {
           image: feature2
         },
         {
-          title: "Automatic Work-Hours Calculation",
-          desc: "Company-wide performance dashboard tracking hours, commitment rate, and absences instantly.",
-          icon: Calculator,
-          image: feature3
+          title: "Employee Engagement via Rewards & Incentives",
+          desc: "Smart rewards and incentives that keep your team committed and turn daily performance into motivation.",
+          icon: Gift,
+          visual: RewardsVisual
         },
         {
-          title: "Attendance From Anywhere",
-          desc: "Flexible attendance options for remote teams with geolocation and smart verification.",
-          icon: Clock,
-          image: feature4
+          title: "AI Report Engine",
+          desc: "Deep AI-generated reports that surface insights spreadsheets can't show you — instantly.",
+          icon: BarChart3,
+          visual: AiReportsVisual
         },
         {
-          title: "Smart HR/Payroll Integration",
-          desc: "Link outcomes directly to rewards and payroll without any manual data entry.",
-          icon: Link2,
-          image: feature5
+          title: "Self-Onboarding, No Tech Experience Needed",
+          desc: "Your team gets started on their own from day one — no training, no technical background required.",
+          icon: Rocket,
+          visual: OnboardingVisual
         }
       ]
     },
     ar: {
-      eyebrow: "مميزات تفوق التوقعات",
-      titlePart1: "نظام لإدارة الأداء أولاً، ",
-      titlePart2: "والعائد نتيجة طبيعية.",
+      eyebrow: "نظام موارد بشرية متكامل",
+      titlePart1: "كل احتياجات الـ HR في منصة واحدة. ",
+      titlePart2: "كل شيء يعمل معًا، ببساطة.",
       items: [
         {
           title: "طلبات إجازة ذكية",
           desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي.",
           icon: CalendarDays,
-          image: feature1
+          visual: LeaveChatVisual
         },
         {
           title: "تسجيل حضور بيومتري",
@@ -68,22 +65,22 @@ export function Features() {
           image: feature2
         },
         {
-          title: "حساب آلي لساعات العمل",
-          desc: "لوحة أداء شاملة للشركة تتابع ساعات العمل ومعدل الالتزام والغياب لحظياً.",
-          icon: Calculator,
-          image: feature3
+          title: "تفاعل الموظفين عبر المكافآت والحوافز",
+          desc: "مكافآت وحوافز ذكية تحافظ على التزام فريقك وتحوّل الأداء اليومي إلى دافع حقيقي.",
+          icon: Gift,
+          visual: RewardsVisual
         },
         {
-          title: "حضور من أي مكان",
-          desc: "خيارات مرنة لتسجيل الحضور للفرق عن بعد مع التحقق الجغرافي الذكي.",
-          icon: Clock,
-          image: feature4
+          title: "محرك تقارير بالذكاء الاصطناعي",
+          desc: "تقارير عميقة يولّدها الذكاء الاصطناعي تكشف لك ما لا تظهره الجداول — فوراً.",
+          icon: BarChart3,
+          visual: AiReportsVisual
         },
         {
-          title: "ربط ذكي بالرواتب والموارد",
-          desc: "اربط النتائج مباشرة بمسيرات الرواتب والمكافآت دون أي إدخال يدوي.",
-          icon: Link2,
-          image: feature5
+          title: "تهيئة ذاتية بدون أي خبرة تقنية",
+          desc: "فريقك يبدأ بنفسه من اليوم الأول — بدون تدريب وبدون أي خلفية تقنية.",
+          icon: Rocket,
+          visual: OnboardingVisual
         }
       ]
     }
@@ -119,20 +116,30 @@ export function Features() {
             transition={{ duration: 0.8 }}
             className="relative aspect-[4/5] lg:aspect-square flex items-center justify-center order-first"
           >
-            <div className="absolute inset-0 bg-slate-100 rounded-[3rem] -rotate-3 scale-95" />
-            <div className="absolute inset-0 bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden flex items-center justify-center p-8 border border-slate-100/80">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeIndex}
-                  src={t.items[activeIndex].image}
-                  alt={t.items[activeIndex].title}
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="absolute max-w-[85%] max-h-[85%] object-contain"
-                />
-              </AnimatePresence>
+            <div className="absolute inset-0">
+              {t.items.map((item, idx) =>
+                "image" in item ? (
+                  <motion.img
+                    key={idx}
+                    src={item.image}
+                    alt={item.title}
+                    initial={false}
+                    animate={{ opacity: idx === activeIndex ? 1 : 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-contain scale-[1.35] [mask-image:radial-gradient(ellipse_75%_75%_at_center,black_60%,transparent_98%)]"
+                  />
+                ) : (
+                  <motion.div
+                    key={idx}
+                    initial={false}
+                    animate={{ opacity: idx === activeIndex ? 1 : 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
+                  >
+                    <item.visual language={language} />
+                  </motion.div>
+                ),
+              )}
             </div>
           </motion.div>
 

@@ -6,11 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/lib/i18n";
 import { Home } from "@/pages/Home";
 import NotFound from "@/pages/not-found";
-import { Services } from "@/components/sections/Services";
-
-function ServicesPreview() {
-  return <Services />;
-}
 
 const queryClient = new QueryClient();
 
@@ -18,7 +13,6 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      {import.meta.env.DEV && <Route path="/__services" component={ServicesPreview} />}
       <Route component={NotFound} />
     </Switch>
   );

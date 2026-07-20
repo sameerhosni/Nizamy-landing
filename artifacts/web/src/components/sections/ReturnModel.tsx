@@ -12,10 +12,10 @@ export function ReturnModel() {
   const content = {
     en: {
       eyebrow: "Return Model",
-      title: "Don't pay a subscription… ",
-      titleAccent: "invest in an asset that pays you back every month.",
+      title: "Because a subscription should… ",
+      titleAccent: "return value to you.",
       subhead:
-        "With Nizamy, the more your team's commitment improves and the less time they waste, the more of your subscription you automatically recover. And for the first time, you can measure the return on every riyal you spend managing your team's performance.",
+        "Less time on admin work. Higher team commitment. Better productivity. Faster decisions. That's the real return of an HR system — and with Nizamy, the more your team improves, the more of your subscription you recover automatically.",
       gainsTitle: "How the subscription turns into a gain",
       gains: [
         {
@@ -41,10 +41,10 @@ export function ReturnModel() {
     },
     ar: {
       eyebrow: "نموذج العائد",
-      title: "لا تدفع اشتراكًا… ",
-      titleAccent: "بل تستثمر في أصل يعود عليك كل شهر.",
+      title: "لأن الاشتراك المفروض… ",
+      titleAccent: "يرجّع لك قيمة.",
       subhead:
-        "في نظامي، كلما تحسن التزام فريقك وقل هدر وقتهم، استرددت جزءًا من اشتراكك تلقائيًا. ولأول مرة يمكنك قياس العائد على كل ريال تنفقه على إدارة أداء موظفيك.",
+        "وقت أقل في الأعمال الإدارية. التزام أعلى من الفريق. إنتاجية أفضل. قرارات أسرع. هذا هو العائد الحقيقي من نظام HR — وفي نظامي، كلما تحسن أداء فريقك استرددت جزءًا من اشتراكك تلقائيًا.",
       gainsTitle: "كيف يتحول الاشتراك إلى مكسب",
       gains: [
         {

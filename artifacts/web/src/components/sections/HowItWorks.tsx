@@ -12,7 +12,7 @@ export function HowItWorks() {
   const content = {
     en: {
       eyebrow: "How the Platform Works",
-      heading: "Three steps between data chaos and decisions that protect your profits.",
+      heading: "Three steps from daily attendance to smarter HR decisions.",
       subhead: "Nizamy is built to take you from manual follow-up to smart visibility in minutes — whatever your team size.",
       steps: [
         {
@@ -32,7 +32,7 @@ export function HowItWorks() {
     },
     ar: {
       eyebrow: "كيف تعمل المنصة؟",
-      heading: "ثلاث خطوات تفصل بين فوضى البيانات وقرارات تحمي أرباحك.",
+      heading: "ثلاث خطوات من الحضور اليومي إلى قرارات موارد بشرية أذكى.",
       subhead: "صُمم نظامي ليأخذك من المتابعة اليدوية إلى الرؤية الذكية في دقائق، مهما كان حجم فريقك.",
       steps: [
         {

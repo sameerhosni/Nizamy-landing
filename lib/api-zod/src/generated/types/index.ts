@@ -11,3 +11,7 @@ export * from './healthStatus';
 export * from './lead';
 export * from './leadInput';
 export * from './leadInputLanguage';
+export * from './openaiConversation';
+export * from './openaiConversationInput';
+export * from './openaiMessage';
+export * from './openaiMessageInput';

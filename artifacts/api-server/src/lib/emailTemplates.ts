@@ -384,7 +384,7 @@ export function getEmailHTML(
         <tr><td dir="${dir}" align="center" style="background:${colors.navy};padding:22px 40px">
           <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي اتش آر" : "Nizamy HR"} <span style="color:#93C5FD">· ${rtl ? "Nizamy HR" : "نظامي اتش آر"}</span></div>
           <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerSub)}</div>
-          <div style="margin-top:8px"><a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">www.nizamy.app</a></div>
+          <div style="margin-top:8px"><a href="https://nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">nizamy.app</a></div>
         </td></tr>
 
       </table>
@@ -491,9 +491,9 @@ export function getReturningEmailHTML(
           <div style="font-family:${heading};font-size:15px;font-weight:800;color:#FFFFFF">${rtl ? "نظامي اتش آر" : "Nizamy HR"} <span style="color:#93C5FD">· ${rtl ? "Nizamy HR" : "نظامي اتش آر"}</span></div>
           <div style="font-family:${fontStack};font-size:11px;color:#94A3B8;margin-top:5px">${escapeHtml(c.footerTag)}</div>
           <div style="margin-top:8px">
-            <a href="https://www.nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.website)}</a>
+            <a href="https://nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.website)}</a>
             <span style="font-family:${fontStack};font-size:12px;color:#475569">&nbsp;·&nbsp;</span>
-            <a href="mailto:sales@muntej.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.contact)}</a>
+            <a href="mailto:sales@nizamy.app" style="font-family:${fontStack};font-size:12px;color:#93C5FD;text-decoration:none">${escapeHtml(c.contact)}</a>
           </div>
           <div style="font-family:${fontStack};font-size:10px;color:#64748B;margin-top:12px">${escapeHtml(c.rights)}</div>
         </td></tr>
@@ -523,7 +523,7 @@ export function renderReturningLeadEmail(
     "",
     `${c.cta}: ${trialLink}`,
     "",
-    "نظامي اتش آر · Nizamy HR — www.nizamy.app",
+    "نظامي اتش آر · Nizamy HR — nizamy.app",
   ].join("\n");
   return { subject: c.subject, html, text };
 }
@@ -557,7 +557,7 @@ export function renderLeadEmail(
     "",
     `${splitCtaLabel(t.ctaLabel, lang)}: ${trialLink}`,
     "",
-    "نظامي اتش آر · Nizamy HR — www.nizamy.app",
+    "نظامي اتش آر · Nizamy HR — nizamy.app",
   ].join("\n");
   return { subject, html, text };
 }

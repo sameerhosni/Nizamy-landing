@@ -72,8 +72,8 @@
 }
 
 :root {
-  /* Premium Dark Editorial Aesthetic */
-  --background: 220 20% 98%;
+  /* Bright Sky Blue Aesthetic - AVAILO style */
+  --background: 0 0% 100%;
   --foreground: 222 47% 11%;
   
   --card: 0 0% 100%;
@@ -84,7 +84,8 @@
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 91%;
 
-  --primary: 221 83% 53%; /* #2563EB */
+  /* #2196F3 ish */
+  --primary: 207 90% 54%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 210 40% 96%;
@@ -93,22 +94,22 @@
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 214 100% 97%;
-  --accent-foreground: 221 83% 53%;
+  --accent: 207 90% 95%;
+  --accent-foreground: 207 90% 54%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 221 83% 53%;
+  --ring: 207 90% 54%;
 
   --app-font-sans: 'IBM Plex Sans Arabic', sans-serif;
   --app-font-heading: 'Tajawal', sans-serif;
-  --radius: 0.75rem;
+  --radius: 1rem;
 
-  --nizamy-blue: #2563EB;
-  --nizamy-blue-light: #60A5FA;
+  --nizamy-blue: #2196F3;
+  --nizamy-blue-light: #64B5F6;
 }
 
 [dir="rtl"] {
@@ -153,7 +154,7 @@
 }
 
 .shadow-glow {
-  box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.4), 0 0 0 1px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 10px 40px -10px rgba(33, 150, 243, 0.4), 0 0 0 1px rgba(33, 150, 243, 0.1);
 }
 
 .glassmorphic {
@@ -172,8 +173,8 @@ section {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.3);
-  color: white;
+  background: rgba(33, 150, 243, 0.3);
+  color: #0f172a;
 }
 
 .nav-link-underline {
@@ -210,4 +211,20 @@ section {
 }
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Custom scroll strip animation */
+@keyframes scroll-strip {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+[dir="rtl"] .animate-scroll-strip {
+  animation: scroll-strip-rtl 30s linear infinite;
+}
+.animate-scroll-strip {
+  animation: scroll-strip 30s linear infinite;
+}
+@keyframes scroll-strip-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
 }

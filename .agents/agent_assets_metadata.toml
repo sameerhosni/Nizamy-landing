@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "cMnxCAERi6HmKpZfAzf6E"
@@ -114,3 +113,51 @@ id = "-fZk1fJsBclorPx4KikNI"
 uri = "file://artifacts/web/public/images/features-ai-selfservice-v2.png"
 type = "image"
 title = "AI chatbot scene clean"
+
+[[generated]]
+id = "ye4uw3Yh3tASr_8RZK_U6"
+uri = "file://artifacts/web/public/images/services/attendance-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "HjbIz4W4BXhQQHBt-hXG2"
+uri = "file://artifacts/web/public/images/services/self-service-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "u-pL7vmRCzUQdnCM_1__f"
+uri = "file://artifacts/web/public/images/services/ai-assistant-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "UTaHVH4RNYljYqF1HgTga"
+uri = "file://artifacts/web/public/images/services/performance-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "uMDJMOsF5xvNmmA9C3507"
+uri = "file://artifacts/web/public/images/services/rewards-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "AHPJ32X1SD3aYA0YcOV4J"
+uri = "file://artifacts/web/public/images/services/reports-v3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "kZGzmWVS8ze54JqiQ5wZ2"
+uri = "file://artifacts/web/public/images/services/tasks-v3.png"
+type = "image"
+title = "generated_image"
+
+[[outputs]]
+id = "_r7cLEK3CcqlYOGWojIK_"
+uri = "file://artifacts/web/public/images/hero-bg.jpg"
+type = "image"
+title = "professional saudi arab modern office workplace dark cinematic lighting"

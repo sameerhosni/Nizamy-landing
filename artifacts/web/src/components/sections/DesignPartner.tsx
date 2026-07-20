@@ -4,7 +4,9 @@ import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Twitter, Linkedin, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { track, identifyLead } from "@/lib/analytics";
 
 interface DesignPartnerProps {
   snapshot: {
@@ -30,16 +32,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const content = {
     en: {
-      eyebrow: "Limited Early Access",
-      headingPart1: "Reserve your",
-      headingPart2: "spot.",
+      heading: "Contact Us",
       sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
-      valuePoints: [
-        "Fully free early access",
-        "Limited spots per industry",
-        "Be first to shape the product",
-        "No commitment — just a conversation",
-      ],
       labels: {
         name: "Full Name",
         company: "Company Name",
@@ -61,16 +55,8 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
       note: "No commitment · Just a conversation.",
     },
     ar: {
-      eyebrow: "وصول مبكر محدود",
-      headingPart1: "احجز",
-      headingPart2: "مقعدك.",
+      heading: "تواصــل معنا",
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
-      valuePoints: [
-        "وصول مبكر مجاني بالكامل",
-        "مقاعد محدودة لكل قطاع",
-        "كن أول من يشكّل المنتج",
-        "بدون التزام — مجرد محادثة",
-      ],
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
@@ -97,101 +83,136 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate({
-      data: {
-        ...formData,
-        ...snapshot,
-        language,
+    mutation.mutate(
+      {
+        data: {
+          ...formData,
+          ...snapshot,
+          language,
+        },
       },
-    });
+      {
+        onSuccess: () => {
+          identifyLead(formData.email, {
+            name: formData.name,
+            company: formData.company,
+            email: formData.email.trim().toLowerCase(),
+            whatsapp: formData.whatsapp,
+            language,
+          });
+          track("lead_submitted", {
+            company: formData.company,
+            language,
+            calculator_employees: snapshot.employees,
+            calculator_tier: snapshot.tier,
+            calculator_subscription: snapshot.subscription,
+            calculator_total_return: snapshot.totalReturn,
+          });
+        },
+        onError: () => {
+          track("lead_submit_failed", { language });
+        },
+      },
+    );
   };
 
   return (
     <section
       id="partner"
-      className="py-24 sm:py-32 scroll-mt-16 relative overflow-hidden bg-[#0a0a0a]"
+      className="py-24 sm:py-32 scroll-mt-16 relative overflow-hidden bg-[#0A1A3A]"
     >
-      {/* Glows */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/8 rounded-full blur-[120px] pointer-events-none" />
+      {/* Premium Dark Background Glows */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
 
-      <div className="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-
-          {/* Text column */}
-          <div className={`space-y-8 ${isRtl ? "md:order-2" : "md:order-1"}`}>
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          
+          {/* Text Side */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className={`space-y-10 text-white ${isRtl ? "lg:order-2" : "lg:order-1"}`}
+          >
             <div>
-              <span className="inline-block text-xs font-bold text-blue-400 bg-blue-950/60 border border-blue-800/50 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
-                {t.eyebrow}
-              </span>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.05]">
-                <span className="text-white">{t.headingPart1}</span>
-                <br />
-                <span className="text-blue-400">{t.headingPart2}</span>
+              <h2 className="text-[3.5rem] sm:text-6xl lg:text-[5rem] font-heading font-black leading-[1.1] mb-8 tracking-tight">
+                {t.heading}
               </h2>
+              <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-lg">
+                {t.sub}
+              </p>
             </div>
-            <p className="text-lg text-white/50 leading-relaxed font-medium">{t.sub}</p>
-            <ul className="space-y-4">
-              {t.valuePoints.map((point, idx) => (
-                <li key={idx} className="flex items-center gap-3 rtl:flex-row-reverse">
-                  <div className="w-6 h-6 rounded-full bg-blue-900/60 border border-blue-700/50 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="text-blue-400 w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-base text-white/70 font-medium">{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            
+            <div className="flex items-center gap-5 pt-6">
+              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="#" className="w-14 h-14 rounded-[16px] bg-white/5 border border-white/10 hover:bg-blue-600 hover:border-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 text-slate-300">
+                <MessageCircle className="w-6 h-6" />
+              </a>
+            </div>
+          </motion.div>
 
-          {/* Form column */}
-          <div className={`${isRtl ? "md:order-1" : "md:order-2"}`}>
+          {/* Form Side */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className={`${isRtl ? "lg:order-1" : "lg:order-2"}`}
+          >
             {mutation.isSuccess ? (
-              <div className="rounded-3xl bg-white/5 border border-white/10 p-10 sm:p-12 text-center flex flex-col items-center">
-                <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6">
-                  <CheckCircle2 className="text-green-400 w-10 h-10" />
+              <div className="rounded-[2.5rem] bg-white p-16 text-center flex flex-col items-center shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
+                <div className="w-24 h-24 rounded-[1.5rem] bg-green-50 text-green-500 flex items-center justify-center mb-8">
+                  <CheckCircle2 className="w-12 h-12" />
                 </div>
-                <h3 className="text-2xl font-heading font-black mb-3 text-white">{t.success.title}</h3>
-                <p className="text-white/50 text-base leading-relaxed">{t.success.desc}</p>
+                <h3 className="text-3xl font-heading font-black mb-4 text-slate-900">{t.success.title}</h3>
+                <p className="text-slate-500 text-lg font-medium leading-relaxed">{t.success.desc}</p>
               </div>
             ) : (
-              <div className="rounded-3xl bg-white p-8 sm:p-10 shadow-2xl">
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="rounded-[2.5rem] bg-white p-10 sm:p-14 shadow-[0_30px_60px_rgba(0,0,0,0.3)] relative">
+                <form onSubmit={handleSubmit} className="space-y-7">
                   {mutation.isError && (
-                    <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                    <div className="p-4 bg-red-50 text-red-600 rounded-xl text-[15px] font-bold border border-red-100">
                       {t.error}
                     </div>
                   )}
 
-                  <div className="space-y-1.5">
-                    <Label htmlFor="name" className="text-slate-600 font-semibold text-sm">
+                  <div className="space-y-3">
+                    <Label htmlFor="name" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.name}
                     </Label>
                     <Input
                       id="name"
                       required
                       placeholder={t.placeholders.name}
-                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
                       value={formData.name}
                       onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <Label htmlFor="company" className="text-slate-600 font-semibold text-sm">
+                  <div className="space-y-3">
+                    <Label htmlFor="company" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.company}
                     </Label>
                     <Input
                       id="company"
                       required
                       placeholder={t.placeholders.company}
-                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
                       value={formData.company}
                       onChange={(e) => setFormData((p) => ({ ...p, company: e.target.value }))}
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-slate-600 font-semibold text-sm">
+                  <div className="space-y-3">
+                    <Label htmlFor="email" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.email}
                     </Label>
                     <Input
@@ -199,14 +220,14 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       type="email"
                       required
                       placeholder={t.placeholders.email}
-                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
                       value={formData.email}
                       onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <Label htmlFor="whatsapp" className="text-slate-600 font-semibold text-sm">
+                  <div className="space-y-3">
+                    <Label htmlFor="whatsapp" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.whatsapp}
                     </Label>
                     <Input
@@ -214,7 +235,7 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
                       type="tel"
                       required
                       dir="ltr"
-                      className="h-12 rounded-xl border-slate-200 bg-slate-50 px-4 text-base text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:bg-white transition-all"
+                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData((p) => ({ ...p, whatsapp: e.target.value }))}
                     />
@@ -222,30 +243,30 @@ export function DesignPartner({ snapshot }: DesignPartnerProps) {
 
                   <Button
                     type="submit"
-                    className="w-full h-13 text-base font-bold rounded-xl border-0 bg-blue-600 hover:bg-blue-500 text-white shadow-glow transition-all group mt-2"
+                    className="w-full h-16 text-[17px] font-bold rounded-[1rem] border-0 bg-blue-600 hover:bg-blue-700 text-white shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_25px_rgba(37,99,235,0.35)] transition-all group mt-6"
                     disabled={mutation.isPending}
                   >
                     {mutation.isPending ? (
                       <>
-                        <Loader2 className="me-2 h-4 w-4 animate-spin" />
+                        <Loader2 className="me-2 h-5 w-5 animate-spin" />
                         {t.loading}
                       </>
                     ) : (
                       <>
                         {t.submit}
                         {isRtl ? (
-                          <ArrowLeft className="ms-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                          <ArrowLeft className="ms-2 h-5 w-5 group-hover:-translate-x-1.5 transition-transform" />
                         ) : (
-                          <ArrowRight className="ms-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="ms-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
                         )}
                       </>
                     )}
                   </Button>
-                  <p className="text-xs text-slate-400 text-center font-medium">{t.note}</p>
                 </form>
               </div>
             )}
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

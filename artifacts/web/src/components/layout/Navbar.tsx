@@ -3,6 +3,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = {
   en: [
@@ -26,7 +27,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -41,89 +42,108 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-400 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-sm"
-            : "bg-transparent border-b border-white/5"
+            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-[0_2px_10px_rgba(0,0,0,0.02)] py-3"
+            : "bg-white py-5 border-b border-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-2">
-          <Logo variant={scrolled ? "dark" : "light"} className="shrink" />
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Logo variant="dark" className="h-8 w-auto" />
+          </div>
 
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-10">
             {links.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className={`text-[14px] font-semibold transition-colors duration-300 ${
-                  scrolled
-                    ? "text-slate-600 hover:text-slate-900"
-                    : "text-white/80 hover:text-white"
-                }`}
+                className="text-[15px] font-bold text-slate-600 hover:text-blue-600 transition-colors duration-300 relative group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Actions */}
+          <div className="flex items-center gap-4 shrink-0">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className={`rounded-full font-bold px-3 sm:px-4 text-xs sm:text-sm transition-all ${
-                scrolled
-                  ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200"
-                  : "text-white/80 hover:text-white hover:bg-white/10 border border-white/20"
-              }`}
+              className="hidden sm:flex rounded-full font-bold px-5 text-[15px] text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-all duration-300"
             >
               {language === "en" ? "العربية" : "EN"}
             </Button>
             <Button
               size="sm"
-              className="rounded-full px-4 sm:px-6 text-xs sm:text-sm font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-500 text-white shadow-glow border-0 transition-all"
+              className="rounded-full px-7 text-[15px] font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_10px_rgba(37,99,235,0.2)] hover:shadow-[0_6px_15px_rgba(37,99,235,0.3)] transition-all h-11"
               onClick={() => scrollTo("partner")}
             >
-              {isRtl ? "وصول مبكر مجاني" : "Free Early Access"}
+              {isRtl ? "احصل على العرض المبكر" : "Get Early Access"}
             </Button>
             <button
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
-                scrolled ? "text-slate-700" : "text-white"
-              }`}
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </nav>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className={`absolute top-0 ${isRtl ? "left-0" : "right-0"} h-full w-72 bg-[#0a0a0a] border-${isRtl ? "r" : "l"} border-white/10 flex flex-col pt-24 px-6 gap-2`}>
-            {links.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className="text-white/80 hover:text-white text-lg font-semibold py-3 text-start border-b border-white/5 transition-colors"
+      <AnimatePresence>
+        {mobileOpen && (
+          <div className="fixed inset-0 z-40 lg:hidden pt-20">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" 
+              onClick={() => setMobileOpen(false)} 
+            />
+            <motion.div 
+              initial={{ x: isRtl ? "-100%" : "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: isRtl ? "-100%" : "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className={`absolute top-0 ${isRtl ? "left-0" : "right-0"} bottom-0 w-[80%] max-w-sm bg-white shadow-2xl flex flex-col pt-24 px-8 gap-4 ${isRtl ? "border-r" : "border-l"} border-slate-100`}
+            >
+              {links.map((link, idx) => (
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + idx * 0.05 }}
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className="text-slate-700 hover:text-blue-600 text-xl font-heading font-black py-4 text-start border-b border-slate-100 transition-colors"
+                >
+                  {link.label}
+                </motion.button>
+              ))}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-8 flex flex-col gap-4"
               >
-                {link.label}
-              </button>
-            ))}
-            <div className="mt-6">
-              <Button
-                className="w-full rounded-full font-bold bg-blue-600 hover:bg-blue-500 text-white h-12"
-                onClick={() => scrollTo("partner")}
-              >
-                {isRtl ? "وصول مبكر مجاني" : "Free Early Access"}
-              </Button>
-            </div>
+                <Button
+                  variant="outline"
+                  className="w-full rounded-2xl font-bold h-14 text-lg border-slate-200"
+                  onClick={() => { toggleLanguage(); setMobileOpen(false); }}
+                >
+                  {language === "en" ? "العربية" : "EN"}
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 }

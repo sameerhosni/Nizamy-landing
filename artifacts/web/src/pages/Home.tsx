@@ -5,6 +5,8 @@ import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { Features } from "@/components/sections/Features";
 import { Services } from "@/components/sections/Services";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { WhyNizamy } from "@/components/sections/WhyNizamy";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
 import { CaseStudies } from "@/components/sections/CaseStudies";
@@ -42,8 +44,10 @@ export function Home() {
         <Hero />
         <StatsBar />
         <Problem />
-        <Features />
         <Services />
+        <HowItWorks />
+        <Features />
+        <WhyNizamy />
         <ReturnModel />
         <Calculator
           employees={employees}

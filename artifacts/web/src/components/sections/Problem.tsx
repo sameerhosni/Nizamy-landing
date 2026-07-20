@@ -1,72 +1,122 @@
 import { useLanguage } from "@/lib/i18n";
-import { Clock, MessageSquare, EyeOff, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { EyeOff, Compass, Hourglass, TrendingDown, ArrowRight, ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
 
-const icons = [Clock, MessageSquare, EyeOff, Users];
+const icons = [EyeOff, Compass, Hourglass, TrendingDown];
 
 export function Problem() {
-  const { language } = useLanguage();
+  const { language, dir } = useLanguage();
+  const isRtl = dir === "rtl";
 
   const content = {
     en: {
       eyebrow: "The real cost of manual HR",
-      heading: "Your team runs on WhatsApp, spreadsheets, and guesswork.",
-      subhead: "Before you can think about performance, you're buried in attendance logs, leave requests, and chasing approvals — manually.",
       pains: [
-        { title: "Hours lost every week", desc: "Manual attendance reports eat 4–6 hours of HR time that could go anywhere else." },
-        { title: "Approvals live on WhatsApp", desc: "Leave requests, shift changes, early exits — no record, no history, no accountability." },
-        { title: "Zero visibility into performance", desc: "No way to know who's actually delivering without running a report yourself." },
-        { title: "HR is the middleman for everything", desc: "Employees can't do anything without going through HR first — every small request is a task." },
+        {
+          title: "No real-time visibility",
+          desc: "You only learn how your team performed at the end of the month — after the losses have already piled up.",
+        },
+        {
+          title: "Decisions built on gut feeling",
+          desc: "You judge commitment and delivery through impressions, not numbers.",
+        },
+        {
+          title: "Exhausting follow-up with no result",
+          desc: "You spend hours auditing and holding people accountable, with no real gain in productivity.",
+        },
+        {
+          title: "Hidden waste keeps growing",
+          desc: "Daily delays, stuck tasks, meetings with no outcomes… silent costs draining your profits.",
+        },
       ],
+      cta: "Discover how to stop the bleeding and take back control",
     },
     ar: {
       eyebrow: "التكلفة الحقيقية للموارد البشرية اليدوية",
-      heading: "فريقك يعمل بالواتساب والجداول والتخمين.",
-      subhead: "قبل أن تفكر في الأداء، أنت تغرق في سجلات الحضور وطلبات الإجازات ومتابعة الموافقات — يدوياً.",
       pains: [
-        { title: "ساعات تُهدر كل أسبوع", desc: "تقارير الحضور اليدوية تأكل 4–6 ساعات من وقت الموارد البشرية كل أسبوع." },
-        { title: "الموافقات تعيش على الواتساب", desc: "طلبات الإجازة وتبديل الشفتات والمغادرة المبكرة — لا سجل، لا تاريخ، لا محاسبة." },
-        { title: "لا رؤية فعلية للأداء", desc: "لا طريقة لمعرفة من يؤدي فعلاً — إلا بإعداد تقرير بنفسك." },
-        { title: "الموارد البشرية وسيطة في كل شيء", desc: "الموظفون لا يستطيعون إتمام أي طلب دون المرور بالموارد البشرية — كل طلب صغير يصبح مهمة." },
+        {
+          title: "غياب الرؤية اللحظية",
+          desc: "لا تعرف أداء فريقك إلا بعد نهاية الشهر، وحينها تكون الخسائر قد تراكمت.",
+        },
+        {
+          title: "قرارات مبنية على الحدس",
+          desc: "تحكم على الالتزام والإنجاز من خلال الانطباعات، لا من خلال الأرقام.",
+        },
+        {
+          title: "متابعة مرهقة بلا نتيجة",
+          desc: "تقضي ساعات في التدقيق والمحاسبة، دون تحسن حقيقي في الإنتاجية.",
+        },
+        {
+          title: "الهدر الخفي يتضخم",
+          desc: "تأخيرات يومية، مهام عالقة، واجتماعات بلا مخرجات… تكاليف صامتة تستنزف أرباحك.",
+        },
       ],
+      cta: "اكتشف كيف توقف هذا النزيف وتستعيد السيطرة",
     },
   };
 
   const t = content[language];
 
   return (
-    <section id="problem" className="py-24 sm:py-32 bg-white scroll-mt-16">
+    <section id="problem" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <span className="inline-block text-xs font-bold text-red-600 bg-red-50 border border-red-100 rounded-full px-4 py-1.5 mb-6 tracking-wider uppercase">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center mb-20"
+        >
+          <span className="inline-block text-[13px] font-bold text-red-600 bg-red-50 border border-red-100 rounded-full px-5 py-2 tracking-wider uppercase">
             {t.eyebrow}
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-[1.1] mb-6 text-slate-900">
-            {t.heading}
-          </h2>
-          <p className="text-lg sm:text-xl text-slate-500 leading-relaxed font-medium max-w-2xl mx-auto">
-            {t.subhead}
-          </p>
-        </div>
+        </motion.div>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {t.pains.map((pain, idx) => {
             const Icon = icons[idx];
             return (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={idx}
-                className="rounded-2xl bg-slate-50 border border-slate-100 p-7 sm:p-8 flex gap-5 rtl:flex-row-reverse group hover:border-slate-200 transition-all duration-300"
+                className="rounded-[2rem] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] border border-slate-100/60 p-10 flex flex-col sm:flex-row gap-6 group transition-all duration-400"
               >
-                <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:border-slate-300 transition-colors">
-                  <Icon size={20} className="text-slate-400" />
+                <div className="w-16 h-16 rounded-[1.25rem] bg-red-50 flex items-center justify-center shrink-0 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 text-red-500">
+                  <Icon size={28} />
                 </div>
-                <div className="rtl:text-right">
-                  <h3 className="text-base font-heading font-black text-slate-900 mb-1.5">{pain.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{pain.desc}</p>
+                <div>
+                  <h3 className="text-2xl font-heading font-black text-slate-900 mb-3">{pain.title}</h3>
+                  <p className="text-[17px] text-slate-500 leading-relaxed font-medium">{pain.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-20"
+        >
+          <Button
+            size="lg"
+            className="h-14 px-10 rounded-full text-[17px] font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] group transition-all duration-300"
+            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            {t.cta}
+            {isRtl ? (
+              <ArrowLeft className="ms-2 group-hover:-translate-x-1.5 transition-transform" />
+            ) : (
+              <ArrowRight className="ms-2 group-hover:translate-x-1.5 transition-transform" />
+            )}
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

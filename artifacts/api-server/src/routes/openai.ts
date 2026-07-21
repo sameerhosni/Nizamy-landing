@@ -189,7 +189,7 @@ router.post("/openai/conversations/:id/messages", async (req, res) => {
 
   try {
     const stream = await openai.chat.completions.create({
-      model: "gpt-5.6-luna",
+      model: process.env.OPENAI_MODEL || "gpt-5.6-luna",
       max_completion_tokens: 8192,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },

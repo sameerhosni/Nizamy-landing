@@ -2,7 +2,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import heroManPhones from "@assets/image_1784549897604.png";
+import heroManPhones from "@/assets/hero-man-phones.png";
 
 export function Hero() {
   const { language, dir } = useLanguage();

@@ -4,7 +4,6 @@ import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { Problem } from "@/components/sections/Problem";
 import { Features } from "@/components/sections/Features";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyNizamy } from "@/components/sections/WhyNizamy";
 import { ReturnModel } from "@/components/sections/ReturnModel";
 import { Calculator } from "@/components/sections/Calculator";
@@ -46,7 +45,6 @@ export function Home() {
         <StatsBar />
         <Problem />
         <Features />
-        <HowItWorks />
         <WhyNizamy />
         <ReturnModel />
         <Calculator

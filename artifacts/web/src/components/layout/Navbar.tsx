@@ -8,14 +8,12 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = {
   en: [
     { id: "features", label: "The System" },
-    { id: "how-it-works", label: "How It Works" },
     { id: "why-nizamy", label: "Why Nizamy" },
     { id: "return-model", label: "Return Model" },
     { id: "calculator", label: "Calculator" },
   ],
   ar: [
     { id: "features", label: "النظام" },
-    { id: "how-it-works", label: "كيف يعمل" },
     { id: "why-nizamy", label: "لماذا نظامي" },
     { id: "return-model", label: "نموذج العائد" },
     { id: "calculator", label: "الحاسبة" },

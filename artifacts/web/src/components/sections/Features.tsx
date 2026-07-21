@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { CheckCircle2, UserCheck, CalendarDays, Gift, BarChart3, Rocket } from "lucide-react";
+import { UserCheck, CalendarDays, Gift, BarChart3, Rocket, ShieldCheck, Users, Wallet } from "lucide-react";
 import { motion } from "framer-motion";
 import feature2 from "@/assets/availo/feature-2.png";
-import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual } from "./FeatureVisuals";
+import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual, ComplianceVisual, RecruitmentVisual, PayrollVisual } from "./FeatureVisuals";
 
 export function Features() {
   const { language } = useLanguage();
@@ -14,9 +14,33 @@ export function Features() {
       eyebrow: "A Complete HR System",
       titlePart1: "Everything HR needs, in one platform. ",
       titlePart2: "And it all works together, simply.",
+      badges: [
+        {
+          label: "Compliant with KSA Labor Regulations",
+          desc: "Policies, leave, and attendance rules aligned with Saudi labor law out of the box.",
+          icon: ShieldCheck,
+          soon: false,
+          visual: ComplianceVisual,
+        },
+        {
+          label: "Recruitment",
+          desc: "Attract, screen, and hire candidates through one streamlined pipeline.",
+          icon: Users,
+          soon: true,
+          visual: RecruitmentVisual,
+        },
+        {
+          label: "Payroll",
+          desc: "Salaries, deductions, and payslips calculated automatically end to end.",
+          icon: Wallet,
+          soon: true,
+          visual: PayrollVisual,
+        },
+      ],
+      soonLabel: "Coming soon",
       items: [
         {
-          title: "Smart Leave Requests",
+          title: "Smart Self-Services",
           desc: "Employees handle requests, documents, and approvals themselves through an AI assistant.",
           icon: CalendarDays,
           visual: LeaveChatVisual
@@ -51,9 +75,33 @@ export function Features() {
       eyebrow: "نظام موارد بشرية متكامل",
       titlePart1: "كل احتياجات الـ HR في منصة واحدة. ",
       titlePart2: "كل شيء يعمل معًا، ببساطة.",
+      badges: [
+        {
+          label: "متوافق مع أنظمة العمل السعودية",
+          desc: "سياسات وإجازات وقواعد حضور متوافقة مع نظام العمل السعودي من اليوم الأول.",
+          icon: ShieldCheck,
+          soon: false,
+          visual: ComplianceVisual,
+        },
+        {
+          label: "التوظيف",
+          desc: "استقطب المرشحين وقيّمهم ووظّفهم عبر مسار واحد منظم.",
+          icon: Users,
+          soon: true,
+          visual: RecruitmentVisual,
+        },
+        {
+          label: "الرواتب",
+          desc: "رواتب وخصومات وقسائم دفع تُحسب تلقائيًا من البداية للنهاية.",
+          icon: Wallet,
+          soon: true,
+          visual: PayrollVisual,
+        },
+      ],
+      soonLabel: "قريبًا",
       items: [
         {
-          title: "طلبات إجازة ذكية",
+          title: "خدمات ذاتية ذكية",
           desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي.",
           icon: CalendarDays,
           visual: LeaveChatVisual
@@ -107,85 +155,151 @@ export function Features() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
-          {/* Images Side */}
-          <motion.div 
-            initial={{ opacity: 0, x: language === 'en' ? -40 : 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative aspect-[4/5] lg:aspect-square flex items-center justify-center order-first"
-          >
-            <div className="absolute inset-0">
-              {t.items.map((item, idx) =>
-                "image" in item ? (
-                  <motion.img
-                    key={idx}
-                    src={item.image}
-                    alt={item.title}
-                    initial={false}
-                    animate={{ opacity: idx === activeIndex ? 1 : 0 }}
-                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="absolute inset-0 w-full h-full object-contain scale-[1.35] [mask-image:radial-gradient(ellipse_75%_75%_at_center,black_60%,transparent_98%)]"
-                  />
-                ) : (
-                  <motion.div
-                    key={idx}
-                    initial={false}
-                    animate={{ opacity: idx === activeIndex ? 1 : 0 }}
-                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
-                  >
-                    <item.visual language={language} />
-                  </motion.div>
-                ),
-              )}
-            </div>
-          </motion.div>
+        {(() => {
+          const allFeatures = [
+            ...t.items.map((item) => ({
+              title: item.title,
+              desc: item.desc,
+              icon: item.icon,
+              soon: false,
+              visual: "visual" in item ? item.visual : undefined,
+              image: "image" in item ? item.image : undefined,
+            })),
+            ...t.badges.map((badge) => ({
+              title: badge.label,
+              desc: badge.desc,
+              icon: badge.icon,
+              soon: badge.soon,
+              visual: badge.visual,
+              image: feature2,
+            })),
+          ];
+          const count = allFeatures.length;
 
-          {/* Checklist Side */}
-          <div className="flex flex-col gap-5 relative z-10">
-            {t.items.map((item, idx) => {
-              const Icon = item.icon;
-              const isActive = idx === activeIndex;
-              return (
-                <motion.button
+          const renderCenter = (sizeClass: string) => (
+            <div className={`relative rounded-full bg-gradient-to-br from-blue-50 to-white border-[10px] border-white shadow-[0_25px_60px_rgba(37,99,235,0.15)] overflow-hidden ${sizeClass}`}>
+              {allFeatures.map((f, idx) => (
+                <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`group text-start transition-all duration-400 rounded-[24px] p-6 md:p-8 flex items-start gap-6 border ${
-                    isActive
-                      ? "bg-white border-blue-200 shadow-[0_20px_40px_rgba(37,99,235,0.08)] scale-[1.02]"
-                      : "bg-transparent border-transparent hover:bg-white/60 hover:border-slate-200"
-                  }`}
+                  initial={false}
+                  animate={{ opacity: idx === activeIndex ? 1 : 0 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-400 ${
-                    isActive 
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20" 
-                      : "bg-white border border-slate-200 text-slate-500 group-hover:text-blue-600"
-                  }`}>
-                    <Icon size={26} />
-                  </div>
-                  <div>
-                    <h3 className={`text-2xl font-heading font-black mb-3 transition-colors ${
-                      isActive ? "text-blue-900" : "text-slate-700"
-                    }`}>
-                      {item.title}
-                    </h3>
-                    <p className={`text-[15px] font-medium leading-relaxed transition-colors ${
-                      isActive ? "text-slate-600" : "text-slate-500"
-                    }`}>
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
-        </div>
+                  {f.visual ? (
+                    <div className="absolute inset-0 scale-[0.55] origin-center">
+                      <f.visual language={language} />
+                    </div>
+                  ) : (
+                    <img src={f.image} alt={f.title} className="w-full h-full object-cover" />
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          );
+
+          return (
+            <>
+              {/* Circular infographic — desktop */}
+              <div className="hidden lg:block relative w-[1000px] h-[1000px] mx-auto">
+                {/* dashed orbit ring */}
+                <div className="absolute inset-[20%] rounded-full border-2 border-dashed border-blue-200" />
+
+                {/* center visual, crossfades with the selected feature */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  {renderCenter("w-[440px] h-[440px]")}
+                </motion.div>
+
+                {/* orbiting feature nodes */}
+                {allFeatures.map((f, i) => {
+                  const angle = ((-90 + (i * 360) / count) * Math.PI) / 180;
+                  const x = 50 + 33 * Math.cos(angle);
+                  const y = 50 + 33 * Math.sin(angle);
+                  const Icon = f.icon;
+                  const isActive = i === activeIndex;
+                  return (
+                    <motion.button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveIndex(i)}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.08 }}
+                      className="absolute w-52 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center gap-3 cursor-pointer group"
+                      style={{ left: `${x}%`, top: `${y}%` }}
+                    >
+                      <div className={`relative w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        isActive
+                          ? "bg-blue-600 text-white border border-blue-600 shadow-[0_15px_35px_rgba(37,99,235,0.35)] scale-110"
+                          : "bg-white text-blue-600 border border-slate-200 shadow-[0_10px_25px_rgba(15,23,42,0.08)] group-hover:border-blue-300"
+                      }`}>
+                        <Icon size={34} strokeWidth={1.8} />
+                        {f.soon && (
+                          <span className="absolute -top-1.5 -end-4 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
+                            {t.soonLabel}
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <p className={`text-[16px] font-heading font-black leading-snug mb-1.5 transition-colors ${isActive ? "text-blue-700" : "text-slate-800"}`}>
+                          {f.title}
+                        </p>
+                        <p className="text-[12.5px] font-medium text-slate-500 leading-relaxed">{f.desc}</p>
+                      </div>
+                    </motion.button>
+                  );
+                })}
+              </div>
+
+              {/* Compact list — mobile/tablet */}
+              <div className="lg:hidden max-w-xl mx-auto">
+                <div className="mx-auto mb-10 w-72 h-72">{renderCenter("w-72 h-72")}</div>
+                <div className="grid grid-cols-1 gap-4">
+                  {allFeatures.map((f, i) => {
+                    const Icon = f.icon;
+                    const isActive = i === activeIndex;
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setActiveIndex(i)}
+                        className={`text-start flex items-start gap-4 rounded-2xl px-4 py-4 border transition-all ${
+                          isActive
+                            ? "bg-white border-blue-200 shadow-[0_10px_25px_rgba(37,99,235,0.1)]"
+                            : "bg-white border-slate-200 shadow-[0_2px_8px_rgb(0,0,0,0.04)]"
+                        }`}
+                      >
+                        <span className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${
+                          isActive ? "bg-blue-600 text-white" : "bg-blue-50 border border-blue-100 text-blue-600"
+                        }`}>
+                          <Icon size={20} strokeWidth={2} />
+                        </span>
+                        <span>
+                          <span className="block text-[15px] font-bold text-slate-800 leading-snug">
+                            {f.title}
+                            {f.soon && (
+                              <span className="ms-2 inline-block text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 align-middle">
+                                {t.soonLabel}
+                              </span>
+                            )}
+                          </span>
+                          <span className="block text-[13px] font-medium text-slate-500 leading-relaxed mt-1">{f.desc}</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          );
+        })()}
       </div>
     </section>
   );

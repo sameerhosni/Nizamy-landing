@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { MessageCircle, Send, X } from "lucide-react";
+import { Send, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import shahadAvatar from "@/assets/shahad-avatar.png";
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
 
@@ -23,22 +24,22 @@ export function ChatWidget() {
 
   const t = {
     en: {
-      title: "Nizamy Assistant",
+      title: "Shahad",
       subtitle: "Ask anything about Nizamy HR",
       placeholder: "Type your question...",
       greeting:
-        "Hi! I'm the Nizamy assistant. Ask me anything about the HR system, pricing, or the return model.",
+        "Hi! I'm Shahad, the Nizamy assistant. Ask me anything about the HR system, pricing, or the return model.",
       error: "Something went wrong. Please try again.",
-      open: "Chat with us",
+      open: "Ask Shahad",
     },
     ar: {
-      title: "مساعد نظامي",
+      title: "شهد",
       subtitle: "اسأل أي شيء عن نظامي اتش آر",
       placeholder: "اكتب سؤالك...",
       greeting:
-        "أهلًا! أنا مساعد نظامي. اسألني عن النظام، الأسعار، أو نموذج العائد.",
+        "أهلًا! أنا شهد، مساعدة نظامي. اسألني عن النظام، الأسعار، أو نموذج العائد.",
       error: "حدث خطأ، حاول مرة أخرى.",
-      open: "تحدث معنا",
+      open: "اسأل شهد",
     },
   }[language];
 
@@ -128,7 +129,7 @@ export function ChatWidget() {
   }
 
   return (
-    <div dir={isRtl ? "rtl" : "ltr"} className="fixed bottom-5 end-5 z-50">
+    <div dir={isRtl ? "rtl" : "ltr"} className="fixed bottom-5 start-5 z-50">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -139,9 +140,16 @@ export function ChatWidget() {
             className="mb-3 w-[min(92vw,380px)] h-[520px] max-h-[70vh] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
           >
             <div className="bg-blue-600 text-white px-5 py-4 flex items-center justify-between">
-              <div>
-                <div className="font-bold">{t.title}</div>
-                <div className="text-xs text-blue-100">{t.subtitle}</div>
+              <div className="flex items-center gap-3">
+                <img
+                  src={shahadAvatar}
+                  alt={t.title}
+                  className="w-11 h-11 rounded-full border-2 border-white/60 object-cover bg-white"
+                />
+                <div>
+                  <div className="font-bold">{t.title}</div>
+                  <div className="text-xs text-blue-100">{t.subtitle}</div>
+                </div>
               </div>
               <button
                 onClick={() => setOpen(false)}
@@ -153,11 +161,17 @@ export function ChatWidget() {
             </div>
 
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-slate-50">
-              <div className="bg-white border border-slate-200 rounded-2xl rounded-ss-sm px-4 py-3 text-sm text-slate-700 max-w-[85%]">
-                {t.greeting}
+              <div className="flex items-end gap-2">
+                <img src={shahadAvatar} alt="" className="w-7 h-7 rounded-full object-cover shrink-0 border border-slate-200 bg-white" />
+                <div className="bg-white border border-slate-200 rounded-2xl rounded-ss-sm px-4 py-3 text-sm text-slate-700 max-w-[85%]">
+                  {t.greeting}
+                </div>
               </div>
               {chatMessages.map((m, i) => (
-                <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
+                <div key={i} className={m.role === "user" ? "flex justify-end" : "flex items-end gap-2 justify-start"}>
+                  {m.role === "assistant" && (
+                    <img src={shahadAvatar} alt="" className="w-7 h-7 rounded-full object-cover shrink-0 border border-slate-200 bg-white" />
+                  )}
                   <div
                     className={
                       m.role === "user"
@@ -206,9 +220,13 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={t.open}
-        className="ms-auto flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg shadow-blue-600/30 px-5 py-3.5 font-semibold text-sm transition-colors"
+        className="ms-auto flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg shadow-blue-600/30 ps-2 pe-5 py-2 font-semibold text-sm transition-colors"
       >
-        <MessageCircle className="w-5 h-5" />
+        <img
+          src={shahadAvatar}
+          alt=""
+          className="w-9 h-9 rounded-full border-2 border-white/70 object-cover bg-white"
+        />
         {!open && <span>{t.open}</span>}
       </button>
     </div>

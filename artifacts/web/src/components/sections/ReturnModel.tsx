@@ -1,6 +1,5 @@
 import { useLanguage } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowRight, ArrowLeft, Percent, PiggyBank, TrendingUp, BellRing } from "lucide-react";
+import { Percent, PiggyBank, TrendingUp, BellRing } from "lucide-react";
 import { motion } from "framer-motion";
 
 const gainIcons = [Percent, PiggyBank, TrendingUp, BellRing];
@@ -35,9 +34,6 @@ export function ReturnModel() {
           desc: "One early warning that saves a project from delay can prevent 50,000 SAR in penalties or lost clients.",
         },
       ],
-      clarifier:
-        "What does the 30% mean? A mix of system credit, funded rewards value for your team, and the value of time saved through better performance.",
-      cta: "Calculate your return now",
     },
     ar: {
       eyebrow: "نموذج العائد",
@@ -64,9 +60,6 @@ export function ReturnModel() {
           desc: "تنبيه مبكر يمنع تأخير مشروع قد يوفر 50 ألف ريال غرامات أو خسائر عملاء.",
         },
       ],
-      clarifier:
-        "وش يعني عائد حتى 30%؟ مزيج من رصيد في النظام، وقيمة مكافآت ممولة لفريقك، وقيمة الوقت المتوفر من تحسّن الأداء.",
-      cta: "احسب عائدك الآن",
     },
   };
 
@@ -131,41 +124,6 @@ export function ReturnModel() {
           </div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-20"
-        >
-          <Button
-            size="lg"
-            className="h-14 px-10 rounded-full text-[17px] font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_25px_rgba(37,99,235,0.35)] group transition-all duration-300"
-            onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            {t.cta}
-            {isRtl ? (
-              <ArrowLeft className="ms-2 group-hover:-translate-x-1.5 transition-transform" />
-            ) : (
-              <ArrowRight className="ms-2 group-hover:translate-x-1.5 transition-transform" />
-            )}
-          </Button>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="max-w-2xl mx-auto mt-20 pt-10 border-t border-slate-100"
-        >
-          <div className="flex items-start justify-center gap-4 bg-slate-50 p-6 rounded-2xl">
-            <CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0 mt-0.5" />
-            <p className="text-[15px] text-slate-600 leading-relaxed font-medium">
-              {t.clarifier}
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

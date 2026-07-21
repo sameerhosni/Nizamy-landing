@@ -1,6 +1,6 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
 import heroManPhones from "@/assets/hero-man-phones.png";
 
@@ -35,11 +35,6 @@ export function Hero() {
           desc: "The more committed and productive your team becomes on the platform, the lower your subscription cost — through our exclusive annual return model.",
         },
       ],
-      trustBar: [
-        "Starts at 3 SAR per employee/month",
-        "Ready in minutes",
-        "Annual return tied to your team's performance",
-      ],
     },
     ar: {
       eyebrow: "نظام موارد بشرية بالذكاء الاصطناعي",
@@ -66,11 +61,6 @@ export function Hero() {
           title: "استرجع حتى 30% من اشتراكك",
           desc: "كلما زاد التزام فريقك وتحسّن أداؤهم على المنصة، انخفضت تكلفة اشتراكك من خلال نموذج العائد السنوي الحصري.",
         },
-      ],
-      trustBar: [
-        "يبدأ من 3 ريالات للموظف شهريًا",
-        "جاهز خلال دقائق",
-        "قيمة مسترجعه مرتبطة بأداء فريقك",
       ],
     },
   };
@@ -170,21 +160,6 @@ export function Hero() {
               </div>
             );
           })}
-        </motion.div>
-
-        {/* Trust Bar */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
-        >
-          {t.trustBar.map((item, i) => (
-            <div key={i} className="flex items-center gap-2.5 text-[15px] font-semibold text-slate-600 bg-white/50 py-2 px-4 rounded-full border border-slate-200/50">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-              {item}
-            </div>
-          ))}
         </motion.div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Gift, Trophy, Medal, Coins, Sparkles, TrendingUp, Check, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { Gift, Trophy, Medal, Coins, Sparkles, TrendingUp, Check, ChevronLeft, ChevronRight, Zap, ShieldCheck, Search, Wallet } from "lucide-react";
 
 interface VisualProps {
   language: "en" | "ar";
@@ -345,6 +345,212 @@ export function LeaveChatVisual({ language }: VisualProps) {
             <Zap size={15} />
           </div>
           <span className="text-[12px] font-black text-slate-800">{ar ? "إجازات بضغطة زر" : "Leave in one tap"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ComplianceVisual({ language }: VisualProps) {
+  const ar = language === "ar";
+  const chips = [
+    { label: ar ? "العقود" : "Contracts", ok: true },
+    { label: ar ? "الإجازات" : "Leave", ok: true },
+    { label: ar ? "ساعات العمل" : "Working hours", ok: true },
+    { label: ar ? "الحضور" : "Attendance", ok: true },
+  ];
+  const R = 44;
+  const C = 2 * Math.PI * R;
+  return (
+    <div className="w-full h-full flex items-center justify-center p-6">
+      <div className="relative w-full max-w-md">
+        <Glow />
+        <div className="relative rounded-[28px] bg-white border border-slate-100 shadow-[0_30px_70px_rgba(15,23,42,0.14)] overflow-hidden">
+          <div className="bg-gradient-to-br from-green-600 to-emerald-500 px-6 py-4 text-white flex items-center gap-3 relative overflow-hidden">
+            <div className="absolute -top-8 -end-8 w-28 h-28 rounded-full bg-white/10" />
+            <div className="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center relative">
+              <ShieldCheck size={19} />
+            </div>
+            <div className="relative">
+              <div className="text-[14.5px] font-heading font-black">{ar ? "لوحة التوافق النظامي" : "Compliance Dashboard"}</div>
+              <div className="text-[11px] font-bold text-green-100 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                {ar ? "يُفحص تلقائيًا كل يوم" : "Auto-checked daily"}
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 flex items-center gap-6">
+            <div className="relative w-32 h-32 shrink-0">
+              <svg viewBox="0 0 112 112" className="w-full h-full -rotate-90">
+                <circle cx="56" cy="56" r={R} fill="none" stroke="#E2E8F0" strokeWidth="11" />
+                <circle cx="56" cy="56" r={R} fill="none" stroke="url(#complianceGrad)" strokeWidth="11" strokeLinecap="round" strokeDasharray={C} strokeDashoffset={0} />
+                <defs>
+                  <linearGradient id="complianceGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#16A34A" />
+                    <stop offset="100%" stopColor="#34D399" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-2xl font-heading font-black text-slate-900 leading-none">100%</span>
+                <span className="text-[10px] font-bold text-slate-400 mt-1">{ar ? "متوافق" : "compliant"}</span>
+              </div>
+            </div>
+            <div className="flex-1 space-y-2">
+              {chips.map((c, i) => (
+                <div key={i} className="flex items-center gap-2.5 rounded-xl bg-green-50/70 border border-green-100 px-3 py-2">
+                  <span className="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
+                    <Check size={11} strokeWidth={4} />
+                  </span>
+                  <span className="text-[12px] font-black text-slate-700">{c.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mx-6 mb-6 rounded-2xl bg-slate-900 text-white p-4 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-green-500 flex items-center justify-center shrink-0 shadow-md shadow-green-500/30">
+              <Zap size={15} />
+            </div>
+            <div className="text-[12px] font-bold text-slate-200 leading-relaxed">
+              {ar ? "أي تحديث في نظام العمل السعودي يُطبَّق تلقائيًا — بدون أي إجراء منك" : "Any KSA labor-law update is applied automatically — no action needed"}
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute -top-4 -end-4 rounded-2xl bg-white border border-green-200 shadow-[0_15px_35px_rgba(34,197,94,0.20)] px-4 py-3 flex items-center gap-2 rotate-2">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-[12px] font-black text-slate-800">{ar ? "متوافق من اليوم الأول" : "Compliant from day one"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function RecruitmentVisual({ language }: VisualProps) {
+  const ar = language === "ar";
+  const stages = [
+    { label: ar ? "المتقدمون" : "Applied", count: 36, width: 100, color: "from-blue-200 to-blue-100", text: "text-blue-600" },
+    { label: ar ? "فرز الذكاء الاصطناعي" : "AI screening", count: 12, width: 62, color: "from-blue-400 to-cyan-300", text: "text-blue-600" },
+    { label: ar ? "المقابلات" : "Interviews", count: 4, width: 34, color: "from-blue-600 to-cyan-400", text: "text-blue-700" },
+    { label: ar ? "العرض الوظيفي" : "Offer", count: 1, width: 16, color: "from-green-500 to-emerald-400", text: "text-green-600" },
+  ];
+  return (
+    <div className="w-full h-full flex items-center justify-center p-6">
+      <div className="relative w-full max-w-md">
+        <Glow />
+        <div className="relative rounded-[28px] bg-white border border-slate-100 shadow-[0_30px_70px_rgba(15,23,42,0.14)] overflow-hidden">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-500 px-6 py-4 text-white flex items-center justify-between relative overflow-hidden">
+            <div className="absolute -top-8 -end-8 w-28 h-28 rounded-full bg-white/10" />
+            <div className="flex items-center gap-3 relative">
+              <div className="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
+                <Search size={19} />
+              </div>
+              <div>
+                <div className="text-[14.5px] font-heading font-black">{ar ? "مسار التوظيف" : "Hiring Pipeline"}</div>
+                <div className="text-[11px] font-bold text-blue-100">{ar ? "وظيفة: محاسب أول" : "Role: Senior Accountant"}</div>
+              </div>
+            </div>
+            <span className="rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-3 py-1.5 shadow-lg shadow-amber-500/30 relative">{ar ? "قريبًا ✨" : "Soon ✨"}</span>
+          </div>
+
+          <div className="p-6 space-y-3">
+            {stages.map((s, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[12px] font-black text-slate-700">{s.label}</span>
+                    <span className={`text-[12px] font-heading font-black ${s.text}`}>{s.count}</span>
+                  </div>
+                  <div className="h-6 rounded-lg bg-slate-100 overflow-hidden">
+                    <div className={`h-full rounded-lg bg-gradient-to-r ${s.color}`} style={{ width: `${s.width}%` }} />
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <div className="!mt-5 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50/50 border border-blue-100 p-4 flex items-center gap-3">
+              <Avatar initials={ar ? "م" : "M"} from="from-blue-500" to="to-cyan-400" />
+              <div className="flex-1 min-w-0">
+                <div className="text-[13px] font-black text-slate-800 leading-tight">{ar ? "محمد العتيبي" : "Mohammed A."}</div>
+                <div className="text-[11px] font-bold text-slate-400">{ar ? "المرشح الأفضل — رشّحه الذكاء الاصطناعي" : "Top candidate — picked by AI"}</div>
+              </div>
+              <span className="rounded-full bg-blue-600 text-white text-[11px] font-black px-3 py-1.5 shadow-md shadow-blue-600/25">{ar ? "تطابق 94%" : "94% match"}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute -bottom-4 -start-4 rounded-2xl bg-white border border-blue-200 shadow-[0_15px_35px_rgba(37,99,235,0.20)] px-4 py-3 flex items-center gap-2.5 -rotate-2">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white flex items-center justify-center shadow-md">
+            <Sparkles size={15} />
+          </div>
+          <span className="text-[12px] font-black text-slate-800">{ar ? "من 36 متقدم إلى موظف واحد — تلقائيًا" : "36 applicants to 1 hire — automatically"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function PayrollVisual({ language }: VisualProps) {
+  const ar = language === "ar";
+  const rows = [
+    { label: ar ? "الراتب الأساسي" : "Base salary", val: ar ? "8,000 ر.س" : "SAR 8,000" },
+    { label: ar ? "بدل سكن ومواصلات" : "Housing & transport", val: ar ? "+2,200 ر.س" : "+SAR 2,200" },
+    { label: ar ? "خصم التأمينات (GOSI)" : "GOSI deduction", val: ar ? "-780 ر.س" : "-SAR 780", neg: true },
+  ];
+  return (
+    <div className="w-full h-full flex items-center justify-center p-6">
+      <div className="relative w-full max-w-md">
+        <Glow />
+        <div className="relative rounded-[28px] bg-white border border-slate-100 shadow-[0_30px_70px_rgba(15,23,42,0.14)] overflow-hidden">
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-6 pb-5 text-white relative overflow-hidden">
+            <div className="absolute -top-10 -end-10 w-36 h-36 rounded-full bg-blue-500/20" />
+            <div className="flex items-center justify-between relative">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/40">
+                  <Wallet size={22} />
+                </div>
+                <div>
+                  <div className="text-[16px] font-heading font-black">{ar ? "مسير الرواتب" : "Payroll Run"}</div>
+                  <div className="text-[12px] font-bold text-slate-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    {ar ? "يُحسب تلقائيًا…" : "Calculating automatically…"}
+                  </div>
+                </div>
+              </div>
+              <span className="rounded-full bg-green-400/15 border border-green-400/30 text-green-300 text-[12px] font-black px-3 py-1.5">
+                {ar ? "جاهز للتحويل" : "Ready to pay"}
+              </span>
+            </div>
+          </div>
+          <div className="p-5">
+            <div className="rounded-2xl border border-slate-100 bg-[#FAFAFA] p-4 space-y-3 mb-4">
+              {rows.map((r, i) => (
+                <div key={i} className="flex items-center justify-between">
+                  <span className="text-[12.5px] font-bold text-slate-500">{r.label}</span>
+                  <span className={`text-[13px] font-black ${"neg" in r && r.neg ? "text-rose-500" : "text-slate-800"}`}>{r.val}</span>
+                </div>
+              ))}
+              <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
+                <span className="text-[13px] font-black text-slate-800">{ar ? "صافي الراتب" : "Net salary"}</span>
+                <span className="text-lg font-heading font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                  {ar ? "9,420 ر.س" : "SAR 9,420"}
+                </span>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50/50 border border-blue-100 p-4 flex gap-3">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
+                <Zap size={15} />
+              </div>
+              <div className="text-[12.5px] font-bold text-slate-700 leading-relaxed">
+                {ar ? "قسائم الرواتب وملف حماية الأجور تُجهّز بضغطة واحدة" : "Payslips and WPS file generated in one click"}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute -top-4 -end-4 rounded-2xl bg-white border border-amber-200 shadow-[0_15px_35px_rgba(245,158,11,0.25)] px-4 py-3 flex items-center gap-2 rotate-2">
+          <span className="text-[12px] font-black text-slate-800">{ar ? "قريبًا ✨" : "Coming soon ✨"}</span>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export function ScrollButtons() {
     window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 
   return (
-    <div className="fixed bottom-24 end-5 z-40 flex flex-col gap-2.5">
+    <div className="fixed bottom-24 start-5 z-40 flex flex-col gap-2.5">
       <AnimatePresence>
         {showUp && (
           <motion.button

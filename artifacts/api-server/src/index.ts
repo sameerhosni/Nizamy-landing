@@ -24,8 +24,8 @@ app.listen(port, (err) => {
   logger.info({ port }, "Server listening");
 
   if (!process.env["DATABASE_URL"]) {
-    logger.error(
-      "DATABASE_URL is NOT set — lead form submissions will fail with 503. Set the DATABASE_URL environment variable and restart.",
+    logger.warn(
+      "DATABASE_URL is NOT set — leads will NOT be stored in a database; only the welcome email will be sent (lead details are logged).",
     );
   } else {
     logger.info("DATABASE_URL is set");

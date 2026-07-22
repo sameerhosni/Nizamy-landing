@@ -15,41 +15,64 @@ router.post("/lead", async (req, res) => {
   }
 
   const input = parsed.data;
+  const createdAt = new Date();
 
-  let lead: typeof leadsTable.$inferSelect;
-  let isReturning: boolean;
+  let lead = {
+    id: 0,
+    name: input.name,
+    company: input.company,
+    email: input.email,
+    whatsapp: input.whatsapp,
+    employees: input.employees ?? null,
+    tier: input.tier ?? null,
+    tierPrice: input.tierPrice ?? null,
+    subscription: input.subscription ?? null,
+    totalReturn: input.totalReturn ?? null,
+    createdAt,
+  };
+  let isReturning = false;
 
-  try {
-    const database = getDb();
+  if (process.env["DATABASE_URL"]) {
+    try {
+      const database = getDb();
 
-    [lead] = await database
-      .insert(leadsTable)
-      .values({
-        name: input.name,
-        company: input.company,
-        email: input.email,
-        whatsapp: input.whatsapp,
-        employees: input.employees ?? null,
-        tier: input.tier ?? null,
-        tierPrice: input.tierPrice ?? null,
-        subscription: input.subscription ?? null,
-        totalReturn: input.totalReturn ?? null,
-      })
-      .returning();
+      const [inserted] = await database
+        .insert(leadsTable)
+        .values({
+          name: input.name,
+          company: input.company,
+          email: input.email,
+          whatsapp: input.whatsapp,
+          employees: input.employees ?? null,
+          tier: input.tier ?? null,
+          tierPrice: input.tierPrice ?? null,
+          subscription: input.subscription ?? null,
+          totalReturn: input.totalReturn ?? null,
+        })
+        .returning();
 
-    const earlier = await database
-      .select({ id: leadsTable.id })
-      .from(leadsTable)
-      .where(
-        sql`lower(${leadsTable.email}) = lower(${lead.email}) and ${leadsTable.id} < ${lead.id}`,
-      )
-      .limit(1);
+      lead = inserted;
 
-    isReturning = earlier.length > 0;
-  } catch (err) {
-    req.log.error({ err }, "Database unavailable — lead not stored");
-    res.status(503).json({ error: "Service temporarily unavailable" });
-    return;
+      const earlier = await database
+        .select({ id: leadsTable.id })
+        .from(leadsTable)
+        .where(
+          sql`lower(${leadsTable.email}) = lower(${lead.email}) and ${leadsTable.id} < ${lead.id}`,
+        )
+        .limit(1);
+
+      isReturning = earlier.length > 0;
+    } catch (err) {
+      req.log.error(
+        { err, lead: input },
+        "Database error — lead NOT stored, continuing with email only",
+      );
+    }
+  } else {
+    req.log.warn(
+      { lead: input },
+      "DATABASE_URL not set — lead NOT stored, continuing with email only",
+    );
   }
 
   sendLeadConfirmation({

@@ -118,7 +118,7 @@ export function WhyNizamy() {
         >
           <Button
             size="lg"
-            className="h-14 px-10 rounded-full text-[17px] font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] group transition-all duration-300"
+            className="h-auto min-h-14 py-4 px-8 sm:px-10 max-w-full whitespace-normal rounded-full text-[16px] sm:text-[17px] font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] group transition-all duration-300"
             onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
           >
             {t.cta}

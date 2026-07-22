@@ -48,9 +48,9 @@ export function Navbar() {
             : "bg-white py-5 border-b border-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 max-w-7xl flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl flex items-center justify-between gap-2">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center min-w-0 flex-1 lg:flex-none">
             <Logo variant="dark" className="h-8 w-auto" />
           </div>
 
@@ -69,7 +69,7 @@ export function Navbar() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <Button
               variant="ghost"
               size="sm"
@@ -80,16 +80,16 @@ export function Navbar() {
             </Button>
             <Button
               size="sm"
-              className="rounded-full px-7 text-[15px] font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_10px_rgba(37,99,235,0.2)] hover:shadow-[0_6px_15px_rgba(37,99,235,0.3)] transition-all h-11"
+              className="rounded-full px-4 sm:px-7 text-[14px] sm:text-[15px] font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_10px_rgba(37,99,235,0.2)] hover:shadow-[0_6px_15px_rgba(37,99,235,0.3)] transition-all h-10 sm:h-11"
               onClick={() => scrollTo("partner")}
             >
               {isRtl ? "احصل على العرض المبكر" : "Get Early Access"}
-              <span className="ms-2 rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+              <span className="ms-2 hidden min-[430px]:inline-block rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
                 {isRtl ? "3 أشهر مجانًا" : "3 months free"}
               </span>
             </Button>
             <button
-              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+              className="lg:hidden p-1.5 sm:p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >

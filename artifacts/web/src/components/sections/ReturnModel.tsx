@@ -18,8 +18,8 @@ export function ReturnModel() {
       gainsTitle: "How the subscription turns into a gain",
       gains: [
         {
-          title: "90% commitment = 15% back",
-          desc: "Recover 15% of your subscription at 90% commitment — up to 30% at 100%.",
+          title: "More commitment = more back",
+          desc: "The more committed your team is, the more of your subscription you get back — rising all the way up to 30%.",
         },
         {
           title: "4x the subscription in savings",
@@ -44,8 +44,8 @@ export function ReturnModel() {
       gainsTitle: "كيف يتحول الاشتراك إلى مكسب",
       gains: [
         {
-          title: "التزام 90% = استرداد 15%",
-          desc: "نسبة التزام 90% تعني استرداد 15% من الاشتراك، وتصل حتى 30% عند 100%.",
+          title: "التزام أعلى = عائد أكبر",
+          desc: "كلما زاد التزام موظفيك، زاد ما تسترده من اشتراكك — ليصل حتى 30%.",
         },
         {
           title: "توفير يعادل 4 أضعاف الاشتراك",

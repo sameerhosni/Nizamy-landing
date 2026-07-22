@@ -1,4 +1,8 @@
 import { Gift, Trophy, Medal, Coins, Sparkles, TrendingUp, Check, ChevronLeft, ChevronRight, Zap, ShieldCheck, Search, Wallet } from "lucide-react";
+import noonLogo from "@/assets/brands/noon.png";
+import hungerstationLogo from "@/assets/brands/hungerstation.png";
+import amazonLogo from "@/assets/brands/amazon.png";
+import jarirLogo from "@/assets/brands/jarir.png";
 
 interface VisualProps {
   language: "en" | "ar";
@@ -24,9 +28,15 @@ function Avatar({ initials, from, to }: { initials: string; from: string; to: st
 export function RewardsVisual({ language }: VisualProps) {
   const ar = language === "ar";
   const rows = [
-    { initials: ar ? "س" : "S", from: "from-pink-500", to: "to-rose-400", name: ar ? "سارة" : "Sarah", sub: ar ? "التزام 98%" : "98% commitment", val: ar ? "🎁 بطاقة هدية" : "🎁 Gift card", bar: 98, icon: Trophy, iconBg: "bg-amber-400 text-slate-900" },
-    { initials: ar ? "خ" : "K", from: "from-blue-500", to: "to-cyan-400", name: ar ? "خالد" : "Khaled", sub: ar ? "إنجاز المهام" : "Tasks done", val: ar ? "💵 مكافأة" : "💵 Bonus", bar: 86, icon: Medal, iconBg: "bg-slate-200 text-slate-600" },
-    { initials: ar ? "ن" : "N", from: "from-violet-500", to: "to-purple-400", name: ar ? "نورة" : "Noura", sub: ar ? "حضور مبكر" : "Early check-ins", val: ar ? "⚡ نقاط ×2" : "⚡ 2× points", bar: 74, icon: Coins, iconBg: "bg-orange-100 text-orange-500" },
+    { initials: ar ? "س" : "S", from: "from-pink-500", to: "to-rose-400", name: ar ? "سارة" : "Sarah", sub: ar ? "التزام 98%" : "98% commitment", val: ar ? "🎁 قسيمة نون" : "🎁 noon voucher", bar: 98, icon: Trophy, iconBg: "bg-amber-400 text-slate-900" },
+    { initials: ar ? "خ" : "K", from: "from-blue-500", to: "to-cyan-400", name: ar ? "خالد" : "Khaled", sub: ar ? "إنجاز المهام" : "Tasks done", val: ar ? "🍔 هنقرستيشن" : "🍔 HungerStation", bar: 86, icon: Medal, iconBg: "bg-slate-200 text-slate-600" },
+    { initials: ar ? "ن" : "N", from: "from-violet-500", to: "to-purple-400", name: ar ? "نورة" : "Noura", sub: ar ? "حضور مبكر" : "Early check-ins", val: ar ? "🎁 بطاقة أمازون" : "🎁 Amazon card", bar: 74, icon: Coins, iconBg: "bg-orange-100 text-orange-500" },
+  ];
+  const brands = [
+    { logo: noonLogo, alt: "noon", cls: "bg-[#FEEE00] border-[#F0E200]", tilt: "-rotate-3", pad: "p-2" },
+    { logo: hungerstationLogo, alt: "HungerStation", cls: "bg-[#FFDD00] border-[#F2D100]", tilt: "rotate-2", pad: "p-1.5" },
+    { logo: amazonLogo, alt: "Amazon", cls: "bg-white border-slate-200", tilt: "-rotate-2", pad: "p-2" },
+    { logo: jarirLogo, alt: "Jarir", cls: "bg-white border-[#F8C9CC]", tilt: "rotate-3", pad: "p-1.5" },
   ];
   return (
     <div className="w-full h-full flex items-center justify-center p-6">
@@ -68,6 +78,20 @@ export function RewardsVisual({ language }: VisualProps) {
                 </div>
               </div>
             ))}
+
+            <div className="rounded-2xl border-2 border-amber-100 bg-gradient-to-br from-amber-50/60 to-white p-3.5">
+              <div className="flex items-center justify-between mb-2.5">
+                <span className="text-[11px] font-black text-slate-500">🎁 {ar ? "قسائم من علاماتهم المفضلة" : "Vouchers from their favorite brands"}</span>
+                <span className="text-[10.5px] font-black text-amber-500">+400</span>
+              </div>
+              <div className="grid grid-cols-4 gap-2">
+                {brands.map((b, i) => (
+                  <div key={i} className={`aspect-square rounded-xl border shadow-sm flex items-center justify-center ${b.pad} ${b.cls} ${b.tilt}`}>
+                    <img src={b.logo} alt={b.alt} className="w-full h-auto object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

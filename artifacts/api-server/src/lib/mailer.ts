@@ -14,10 +14,10 @@ const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT ?? "587");
 const smtpUser = process.env.SMTP_USERNAME;
 const smtpPass = process.env.SMTP_PASSWORD;
-const fromAddress = process.env.SMTP_FROM;
+const salesAddress = "sales@nizamy.app";
 
 export function isMailerConfigured(): boolean {
-  return Boolean(smtpHost && smtpUser && smtpPass && fromAddress);
+  return Boolean(smtpHost && smtpUser && smtpPass);
 }
 
 function createTransport() {
@@ -108,7 +108,8 @@ export async function sendLeadConfirmation(
 
   const transport = createTransport();
   await transport.sendMail({
-    from: `${senderName} <${fromAddress}>`,
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: salesAddress,
     to: lead.email,
     subject,
     text,

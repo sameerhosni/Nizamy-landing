@@ -1,8 +1,12 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw } from "lucide-react";
+import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw, Gift } from "lucide-react";
 import { motion } from "framer-motion";
 import heroManPhones from "@/assets/hero-man-phones.png";
+import noonLogo from "@/assets/brands/noon.png";
+import hungerstationLogo from "@/assets/brands/hungerstation.png";
+import amazonLogo from "@/assets/brands/amazon.png";
+import jarirLogo from "@/assets/brands/jarir.png";
 
 export function Hero() {
   const { language, dir } = useLanguage();
@@ -90,6 +94,50 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/70 to-transparent" />
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#FAFAFA]/90 to-transparent" />
       </div>
+
+      {/* Floating rewards card over the hero image */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="hidden lg:block absolute top-40 end-10 xl:end-24 z-20 w-[300px]"
+      >
+        <div className="relative rounded-3xl bg-white/95 backdrop-blur border-2 border-amber-200/70 shadow-[0_25px_60px_rgba(245,158,11,0.20)] p-5 rotate-2">
+          <span aria-hidden="true" className="absolute -top-3.5 -start-3 text-2xl rotate-[-12deg]">🎉</span>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-400 text-white flex items-center justify-center shadow-md shadow-amber-500/25">
+              <Gift size={18} />
+            </div>
+            <div>
+              <div className="text-[13.5px] font-heading font-black text-slate-900 leading-tight">
+                {isRtl ? "مكافآت حقيقية لفريقك" : "Real rewards for your team"}
+              </div>
+              <div className="text-[11px] font-bold text-slate-400">
+                {isRtl ? "قسائم من علاماتهم المفضلة" : "Vouchers from their favorite brands"}
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 gap-2.5">
+            <div className="aspect-square rounded-2xl bg-[#FEEE00] border border-[#F0E200] shadow-sm flex items-center justify-center p-2 -rotate-3">
+              <img src={noonLogo} alt="noon" className="w-full h-auto object-contain" />
+            </div>
+            <div className="aspect-square rounded-2xl bg-[#FFDD00] border border-[#F2D100] shadow-sm flex items-center justify-center p-1.5 rotate-2">
+              <img src={hungerstationLogo} alt="HungerStation" className="w-full h-auto object-contain" />
+            </div>
+            <div className="aspect-square rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-2 -rotate-2">
+              <img src={amazonLogo} alt="Amazon" className="w-full h-auto object-contain" />
+            </div>
+            <div className="aspect-square rounded-2xl bg-white border border-[#F8C9CC] shadow-sm flex items-center justify-center p-1.5 rotate-3">
+              <img src={jarirLogo} alt="Jarir" className="w-full h-auto object-contain" />
+            </div>
+          </div>
+          <div className="mt-3 flex items-center justify-between">
+            <span className="text-[10.5px] font-black text-slate-400">{isRtl ? "وأكثر من 400 علامة أخرى" : "and 400+ more brands"}</span>
+            <span className="rounded-full bg-gradient-to-r from-amber-400 to-orange-400 text-white text-[10.5px] font-black px-2.5 py-1 shadow-sm">✨ {isRtl ? "تلقائيًا" : "automatic"}</span>
+          </div>
+        </div>
+      </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="mb-16 lg:min-h-[520px] flex items-center">

@@ -174,8 +174,92 @@ uri = "file://artifacts/web/src/assets/availo/feature-onboarding.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "5fhstooCKan8oSP1HmO2I"
+uri = "file://artifacts/web/src/assets/shahad-avatar.png"
+type = "image"
+title = "Shahad AI assistant avatar"
+
+[[generated]]
+id = "lsaQhBQNqHI14kJPa1IZ5"
+uri = "file://artifacts/web/src/assets/badge-compliance.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "vQWP6sC5usTkC-cBVP6Pq"
+uri = "file://artifacts/web/src/assets/badge-recruitment.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "F0VqSUcOnWwiQhJRCQsBS"
+uri = "file://artifacts/web/src/assets/badge-payroll.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "_r7cLEK3CcqlYOGWojIK_"
 uri = "file://artifacts/web/public/images/hero-bg.jpg"
 type = "image"
 title = "professional saudi arab modern office workplace dark cinematic lighting"
+
+[[outputs]]
+id = "pCYav54Gl_vPEWGY4RpVE"
+uri = "file://attached_assets/stock_images/compliance_1.jpg"
+type = "image"
+title = "legal compliance documents contract shield business office"
+
+[[outputs]]
+id = "OBb3Sxt7vpvk6vVOZBMWL"
+uri = "file://attached_assets/stock_images/compliance_2.jpg"
+type = "image"
+title = "legal compliance documents contract shield business office"
+
+[[outputs]]
+id = "GKUoWU9QuNRo_HRESrq5q"
+uri = "file://attached_assets/stock_images/compliance_3.jpg"
+type = "image"
+title = "legal compliance documents contract shield business office"
+
+[[outputs]]
+id = "BGFrrHgvBHmpctEM7UQW5"
+uri = "file://attached_assets/stock_images/recruitment_1.jpg"
+type = "image"
+title = "job interview recruitment hiring handshake office professionals"
+
+[[outputs]]
+id = "1pLN0VDPa7y1M0FaVPMO-"
+uri = "file://attached_assets/stock_images/recruitment_2.jpg"
+type = "image"
+title = "job interview recruitment hiring handshake office professionals"
+
+[[outputs]]
+id = "pY5Aw7uhqUUhz7RMoYuzD"
+uri = "file://attached_assets/stock_images/recruitment_3.jpg"
+type = "image"
+title = "job interview recruitment hiring handshake office professionals"
+
+[[outputs]]
+id = "Hq1Fv4QVHCpTOKKMpsSz6"
+uri = "file://attached_assets/stock_images/payroll_1.jpg"
+type = "image"
+title = "payroll salary calculator money payslip finance"
+
+[[outputs]]
+id = "mv6jZDr3Ntkmgg-f5ME0C"
+uri = "file://attached_assets/stock_images/payroll_2.jpg"
+type = "image"
+title = "payroll salary calculator money payslip finance"
+
+[[outputs]]
+id = "riF5U1ouHTLWB3buXuaFJ"
+uri = "file://attached_assets/stock_images/payroll_3.jpg"
+type = "image"
+title = "payroll salary calculator money payslip finance"
+
+[[outputs]]
+id = "EE5UuU3XjWGzRSvrvvy1z"
+uri = "file://artifacts/api-server/assets/logo-mascot.png"
+type = "image"
+title = "Nizamy logo — upload as Google profile photo"

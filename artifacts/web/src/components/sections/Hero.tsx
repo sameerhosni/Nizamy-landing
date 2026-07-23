@@ -15,8 +15,8 @@ export function Hero() {
   const content = {
     en: {
       eyebrow: "AI-Powered HR · For Saudi SMEs",
-      headlinePart1: "An HR system that manages your team… ",
-      headlinePart2: "and saves you up to 30% of your subscription.",
+      headlinePart1: "All HR systems cost you… ",
+      headlinePart2: "Nizamy saves you up to 30% of your subscription.",
       subtitle:
         "Every hour you save. Every mistake you avoid. Every employee who commits more. It all comes back as real value for your business.",
       primaryCta: "Book a Demo",
@@ -42,8 +42,8 @@ export function Hero() {
     },
     ar: {
       eyebrow: "نظام موارد بشرية بالذكاء الاصطناعي",
-      headlinePart1: "نظام HR يدير فريقك… ",
-      headlinePart2: "ويوفر لك حتى 30% من اشتراكك.",
+      headlinePart1: "كل أنظمة الموارد البشرية تكلفك… ",
+      headlinePart2: "نظامي يوفر لك حتى 30% من اشتراكك.",
       subtitle:
         "كل ساعة توفرها. كل خطأ تتجنبه. كل موظف يلتزم أكثر. كلها ترجع كقيمة حقيقية لمنشأتك.",
       primaryCta: "احجز عرضًا توضيحيًا",

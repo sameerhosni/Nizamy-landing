@@ -111,71 +111,189 @@ export function RewardsVisual({ language }: VisualProps) {
   );
 }
 
+function CountUp({ to, suffix = "", duration = 1.1, start }: { to: number; suffix?: string; duration?: number; start: boolean }) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!start) { setVal(0); return; }
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (t: number) => {
+      const p = Math.min((t - t0) / (duration * 1000), 1);
+      setVal(Math.round(to * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, to, duration]);
+  return <>{val}{suffix}</>;
+}
+
 export function AiReportsVisual({ language }: VisualProps) {
   const ar = language === "ar";
   const bars = [42, 58, 50, 72, 64, 88, 96];
   const labels = ar ? ["س", "أ", "ث", "ر", "خ", "ج", "الآن"] : ["M", "T", "W", "T", "F", "S", "Now"];
+  const userMsg = ar ? "أعطني تقرير الحضور لهذا الشهر 📊" : "Give me this month's attendance report 📊";
+  const msgChars = Array.from(userMsg);
+
+  // 0: typing question, 1: sent + bot analyzing, 2: report card builds, 3: insight bubble, hold → loop
+  const [phase, setPhase] = useState(0);
+  const [typedLen, setTypedLen] = useState(0);
+
+  useEffect(() => {
+    if (phase === 0) {
+      if (typedLen < msgChars.length) {
+        const t = setTimeout(() => setTypedLen((l) => l + 1), 50);
+        return () => clearTimeout(t);
+      }
+      const t = setTimeout(() => setPhase(1), 450);
+      return () => clearTimeout(t);
+    }
+    const durations = [0, 1600, 2600, 3400];
+    const t = setTimeout(() => {
+      if (phase === 3) { setTypedLen(0); setPhase(0); }
+      else setPhase((p) => p + 1);
+    }, durations[phase]);
+    return () => clearTimeout(t);
+  }, [phase, typedLen, msgChars.length]);
+
   return (
     <div className="w-full h-full flex items-center justify-center p-6">
       <div className="relative w-full max-w-md">
         <Glow />
         <div className="relative rounded-[28px] bg-white border border-slate-100 shadow-[0_30px_70px_rgba(15,23,42,0.14)] overflow-hidden">
-          <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-6 pb-5 text-white relative overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 px-6 py-4 text-white relative overflow-hidden">
             <div className="absolute -top-10 -end-10 w-36 h-36 rounded-full bg-blue-500/20" />
             <div className="flex items-center justify-between relative">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/40">
-                  <Sparkles size={22} />
+                <div className="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/40">
+                  <Sparkles size={19} />
                 </div>
                 <div>
-                  <div className="text-[16px] font-heading font-black">{ar ? "تقرير الذكاء الاصطناعي" : "AI Report"}</div>
-                  <div className="text-[12px] font-bold text-slate-400 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    {ar ? "يتولّد الآن…" : "Generating live…"}
+                  <div className="text-[14.5px] font-heading font-black">{ar ? "محرك التقارير الذكي" : "AI Report Engine"}</div>
+                  <div className="text-[11px] font-bold text-slate-400 flex items-center gap-1.5">
+                    <span className={`w-1.5 h-1.5 rounded-full ${phase === 1 || phase === 2 ? "bg-cyan-400" : "bg-green-400"} animate-pulse`} />
+                    {phase === 1 ? (ar ? "يحلّل البيانات…" : "Analyzing data…") : phase === 2 ? (ar ? "يبني التقرير…" : "Building report…") : (ar ? "جاهز — اسأل أي شيء" : "Ready — ask anything")}
                   </div>
                 </div>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-green-400/15 border border-green-400/30 text-green-300 text-[12px] font-black px-3 py-1.5">
-                <TrendingUp size={13} />
-                +24%
-              </span>
+              <AnimatePresence>
+                {phase >= 2 && (
+                  <motion.span
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18, delay: 0.8 }}
+                    className="flex items-center gap-1.5 rounded-full bg-green-400/15 border border-green-400/30 text-green-300 text-[12px] font-black px-3 py-1.5"
+                  >
+                    <TrendingUp size={13} />
+                    +<CountUp to={24} suffix="%" start={phase >= 2} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
-          <div className="p-6">
-            <div className="flex items-end justify-between gap-2 h-32 mb-2 px-1">
-              {bars.map((h, i) => (
-                <div key={i} className="flex-1 flex flex-col justify-end h-full">
-                  <div
-                    className={`w-full rounded-t-lg ${i === bars.length - 1 ? "bg-gradient-to-t from-blue-600 to-cyan-400 shadow-[0_0_20px_rgba(37,99,235,0.4)]" : "bg-gradient-to-t from-blue-200 to-blue-100"}`}
-                    style={{ height: `${h}%` }}
-                  />
+          {/* Chat body */}
+          <div className="p-5 space-y-3 bg-[#FAFAFA] h-[400px] overflow-hidden flex flex-col justify-end">
+            {/* user question */}
+            {phase >= 1 && (
+              <motion.div {...bubbleIn} className="flex justify-end">
+                <div className="max-w-[85%] rounded-2xl rounded-ee-md bg-blue-600 text-white px-4 py-3 text-[13px] font-bold leading-relaxed shadow-md shadow-blue-600/15">
+                  {userMsg}
                 </div>
-              ))}
-            </div>
-            <div className="flex justify-between gap-2 px-1 mb-5">
-              {labels.map((l, i) => (
-                <span key={i} className={`flex-1 text-center text-[10px] font-black ${i === labels.length - 1 ? "text-blue-600" : "text-slate-300"}`}>{l}</span>
-              ))}
-            </div>
+              </motion.div>
+            )}
 
-            <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50/50 border border-blue-100 p-4 flex gap-3">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
-                <Zap size={15} />
+            {/* analyzing dots */}
+            {phase === 1 && <TypingDots />}
+
+            {/* report card */}
+            {phase >= 2 && (
+              <motion.div {...bubbleIn} className="flex justify-start">
+                <div className="w-[92%] rounded-2xl rounded-ss-md bg-white border border-slate-100 p-4 shadow-sm">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[11.5px] font-black text-slate-800">{ar ? "الحضور — آخر 7 أيام" : "Attendance — last 7 days"}</span>
+                    <span className="text-[10px] font-black text-blue-600 bg-blue-50 rounded-full px-2 py-0.5">
+                      <CountUp to={96} suffix="%" start={phase >= 2} />
+                    </span>
+                  </div>
+                  <div className="flex items-end justify-between gap-1.5 h-24 mb-1.5">
+                    {bars.map((h, i) => (
+                      <div key={i} className="flex-1 flex flex-col justify-end h-full">
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: `${h}%` }}
+                          transition={{ duration: 0.7, delay: 0.3 + i * 0.12, ease: [0.34, 1.4, 0.44, 1] }}
+                          className={`w-full rounded-t-md ${i === bars.length - 1 ? "bg-gradient-to-t from-blue-600 to-cyan-400 shadow-[0_0_16px_rgba(37,99,235,0.4)]" : "bg-gradient-to-t from-blue-200 to-blue-100"}`}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex justify-between gap-1.5">
+                    {labels.map((l, i) => (
+                      <span key={i} className={`flex-1 text-center text-[9.5px] font-black ${i === labels.length - 1 ? "text-blue-600" : "text-slate-300"}`}>{l}</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* insight bubble */}
+            {phase >= 3 && (
+              <motion.div {...bubbleIn} className="flex justify-start">
+                <div className="max-w-[92%] rounded-2xl rounded-ss-md bg-gradient-to-br from-blue-50 to-cyan-50/50 border border-blue-100 px-4 py-3 flex gap-3 shadow-sm">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
+                    <Zap size={15} />
+                  </div>
+                  <div className="text-[12.5px] font-bold text-slate-700 leading-relaxed">
+                    {ar
+                      ? "ارتفع الالتزام 24% بعد تفعيل المكافآت — الفريق الأعلى أداءً: المبيعات 🏆"
+                      : "Commitment rose 24% after rewards launch — top team: Sales 🏆"}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Input bar with live typing */}
+            <div className="mt-1 rounded-2xl bg-white border border-slate-200 px-4 py-3 flex items-center gap-3 shadow-sm">
+              <div className="flex-1 text-[12.5px] font-bold text-slate-700 min-h-[18px] truncate">
+                {phase === 0 ? (
+                  <>
+                    {msgChars.slice(0, typedLen).join("")}
+                    <motion.span
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{ duration: 0.8, repeat: Infinity }}
+                      className="inline-block w-[2px] h-[14px] bg-blue-600 align-middle ms-0.5"
+                    />
+                  </>
+                ) : (
+                  <span className="text-slate-300">{ar ? "اسأل عن أي تقرير…" : "Ask for any report…"}</span>
+                )}
               </div>
-              <div className="text-[12.5px] font-bold text-slate-700 leading-relaxed">
-                {ar
-                  ? "ارتفع الالتزام 24% بعد تفعيل المكافآت — الفريق الأعلى أداءً: المبيعات 🏆"
-                  : "Commitment rose 24% after rewards launch — top team: Sales 🏆"}
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-md ${phase === 0 && typedLen > 0 ? "bg-blue-600 shadow-blue-600/25" : "bg-slate-300"}`}>
+                <Sparkles size={15} />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="absolute -bottom-4 -start-4 rounded-2xl bg-white border border-slate-100 shadow-[0_15px_35px_rgba(15,23,42,0.15)] px-4 py-3 -rotate-2">
-          <div className="text-[11px] font-bold text-slate-400 mb-0.5">{ar ? "الحضور اليوم" : "Attendance today"}</div>
-          <div className="text-xl font-heading font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">96%</div>
-        </div>
+        {/* floating stat badge */}
+        <AnimatePresence>
+          {phase >= 3 && (
+            <motion.div
+              initial={{ opacity: 0, y: 12, rotate: -2 }}
+              animate={{ opacity: 1, y: 0, rotate: -2 }}
+              exit={{ opacity: 0, y: 8 }}
+              className="absolute -bottom-4 -start-4 rounded-2xl bg-white border border-slate-100 shadow-[0_15px_35px_rgba(15,23,42,0.15)] px-4 py-3"
+            >
+              <div className="text-[11px] font-bold text-slate-400 mb-0.5">{ar ? "الحضور اليوم" : "Attendance today"}</div>
+              <div className="text-xl font-heading font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                <CountUp to={96} suffix="%" start={phase >= 3} duration={0.9} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -490,10 +608,11 @@ export function LeaveChatVisual({ language }: VisualProps) {
   const [typedLen, setTypedLen] = useState(0);
 
   const userMsg = ar ? "أبغى إجازة يومين من 1 مارس 🙏" : "I need 2 days off starting March 1 🙏";
+  const msgChars = Array.from(userMsg);
 
   useEffect(() => {
     if (phase === 0) {
-      if (typedLen < userMsg.length) {
+      if (typedLen < msgChars.length) {
         const t = setTimeout(() => setTypedLen((l) => l + 1), 55);
         return () => clearTimeout(t);
       }
@@ -510,7 +629,7 @@ export function LeaveChatVisual({ language }: VisualProps) {
       }
     }, durations[phase]);
     return () => clearTimeout(t);
-  }, [phase, typedLen, userMsg.length]);
+  }, [phase, typedLen, msgChars.length]);
 
   return (
     <div className="w-full h-full flex items-center justify-center p-6">
@@ -622,7 +741,7 @@ export function LeaveChatVisual({ language }: VisualProps) {
               <div className="flex-1 text-[12.5px] font-bold text-slate-700 min-h-[18px] truncate">
                 {phase === 0 ? (
                   <>
-                    {userMsg.slice(0, typedLen)}
+                    {msgChars.slice(0, typedLen).join("")}
                     <motion.span
                       animate={{ opacity: [1, 0, 1] }}
                       transition={{ duration: 0.8, repeat: Infinity }}
@@ -634,7 +753,7 @@ export function LeaveChatVisual({ language }: VisualProps) {
                 )}
               </div>
               <motion.div
-                animate={phase === 0 && typedLen >= userMsg.length ? { scale: [1, 0.85, 1] } : { scale: 1 }}
+                animate={phase === 0 && typedLen >= msgChars.length ? { scale: [1, 0.85, 1] } : { scale: 1 }}
                 transition={{ duration: 0.4 }}
                 className={`w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-md ${phase === 0 && typedLen > 0 ? "bg-blue-600 shadow-blue-600/25" : "bg-slate-300"}`}
               >

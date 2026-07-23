@@ -15,3 +15,6 @@ description: How code gets pushed to the user's GitHub repo and why plain git pu
 - Jenkins multibranch on Bitbucket `t2pms/nizamy` main builds Docker via Kaniko and applies manifests from Bitbucket `t2pms/devops_repo` at `k8s-manifests/apps/prod-nizamy-cicd/` (namespace `prod-nizamy`, deployment `prod-nizamy-landingpage`, 1 replica).
 - Env vars for the pod live in that devops repo's deployment.yaml (SMTP_* added; SMTP_PASSWORD comes from k8s secret `nizamy-smtp` key `smtp-password`, marked optional so pods start without it). Keep the `<TAG>` image placeholder intact — Jenkins sed-replaces it.
 - To trigger a redeploy without code changes: push an empty commit (same tree, new parent) to the Bitbucket nizamy repo main.
+
+## Chat AI on self-hosted k8s
+- Replit AI Integrations proxy is a localhost sidecar (http://localhost:1106/...) — unreachable off-Replit. Self-hosted nizamy.app needs a real OPENAI_API_KEY (client.ts falls back to it). Key injected plaintext into devops_repo deployment.yaml env (user-approved low-security pattern, same as SMTP_PASSWORD).

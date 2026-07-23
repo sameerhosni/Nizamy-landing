@@ -9,7 +9,11 @@ import {
   resolveTemplateId,
   type EmailLang,
 } from "./emailTemplates";
-import { renderClientTicketEmail, renderTeamTicketEmail } from "./ticketEmails";
+import {
+  renderClientTicketEmail,
+  renderTeamTicketEmail,
+  renderTeamLeadEmail,
+} from "./ticketEmails";
 
 const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT ?? "587");
@@ -184,24 +188,63 @@ export async function sendLeadConfirmation(
   }
 
   const transport = createTransport();
+  try {
+    await transport.sendMail({
+      from: `${senderName} <${salesAddress}>`,
+      replyTo: salesAddress,
+      to: lead.email,
+      subject,
+      text,
+      html,
+      attachments,
+    });
+
+    logger.info(
+      {
+        template: isReturning ? "returning" : templateId,
+        lang,
+        name: lead.name,
+        email: lead.email,
+        company: lead.company,
+      },
+      "Lead confirmation email sent",
+    );
+  } catch (err) {
+    logger.error(
+      { err, email: lead.email },
+      "Failed to send lead confirmation email; still sending team notification",
+    );
+  }
+
+  const team = renderTeamLeadEmail({
+    name: lead.name,
+    company: lead.company,
+    email: lead.email,
+    whatsapp: lead.whatsapp,
+    employees: lead.employees,
+    tier: lead.tier,
+    tierPrice: lead.tierPrice,
+    subscription: lead.subscription,
+    totalReturn: lead.totalReturn,
+    language: lang,
+    isReturning,
+    createdAt: lead.createdAt,
+    hasLogo,
+  });
   await transport.sendMail({
     from: `${senderName} <${salesAddress}>`,
-    replyTo: salesAddress,
-    to: lead.email,
-    subject,
-    text,
-    html,
-    attachments,
+    replyTo: lead.email,
+    to: salesAddress,
+    subject: team.subject,
+    text: team.text,
+    html: team.html,
+    attachments: hasLogo && logoPath
+      ? [{ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" }]
+      : [],
   });
 
   logger.info(
-    {
-      template: isReturning ? "returning" : templateId,
-      lang,
-      name: lead.name,
-      email: lead.email,
-      company: lead.company,
-    },
-    "Lead confirmation email sent",
+    { name: lead.name, email: lead.email },
+    "Team lead notification email sent",
   );
 }

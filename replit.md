@@ -45,7 +45,7 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The chat widget's AI uses Replit's AI proxy on Replit, but that proxy is a localhost sidecar — unavailable in the self-hosted Docker/k8s deployment. There, set `OPENAI_API_KEY` (real OpenAI key; `client.ts` falls back to it). Optional `OPENAI_MODEL` overrides the default `gpt-5.6-luna`.
 
 ## Pointers
 

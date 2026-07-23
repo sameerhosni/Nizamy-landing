@@ -98,6 +98,92 @@ export function renderClientTicketEmail(params: {
   return { subject: emailSubject, html: shell("rtl", inner, hasLogo), text };
 }
 
+export function renderTeamLeadEmail(params: {
+  name: string;
+  company: string;
+  email: string;
+  whatsapp: string;
+  employees?: number | null;
+  tier?: string | null;
+  tierPrice?: number | null;
+  subscription?: number | null;
+  totalReturn?: number | null;
+  language: string;
+  isReturning: boolean;
+  createdAt: string;
+  hasLogo: boolean;
+}): { subject: string; html: string; text: string } {
+  const {
+    name,
+    company,
+    email,
+    whatsapp,
+    employees,
+    tier,
+    tierPrice,
+    subscription,
+    totalReturn,
+    language,
+    isReturning,
+    createdAt,
+    hasLogo,
+  } = params;
+
+  const row = (label: string, value: string) =>
+    `<tr><td style="padding:3px 12px 3px 0;font-family:${FONT};font-size:13px;color:#64748B;white-space:nowrap;vertical-align:top;">${label}</td><td style="padding:3px 0;font-family:${FONT};font-size:13px;color:${NAVY};font-weight:bold;">${value}</td></tr>`;
+
+  const num = (v: number | null | undefined) =>
+    v === null || v === undefined ? "—" : String(v);
+
+  const badge = isReturning
+    ? `<span style="background-color:#FEF9C3;color:#854D0E;border-radius:6px;padding:2px 8px;font-size:12px;">Returning lead</span>`
+    : `<span style="background-color:#DCFCE7;color:#166534;border-radius:6px;padding:2px 8px;font-size:12px;">New lead</span>`;
+
+  const inner = `
+<tr><td style="padding:20px 32px 0;">
+<h1 style="margin:0 0 8px;font-family:${FONT};font-size:20px;line-height:1.4;color:${NAVY};">New Design Partner request</h1>
+<p style="margin:0;font-family:${FONT};">${badge}</p>
+</td></tr>
+<tr><td style="padding:16px 32px 0;">
+<table role="presentation" cellpadding="0" cellspacing="0">
+${row("Name", escapeHtml(name))}
+${row("Company", escapeHtml(company))}
+${row("Email", `<a href="mailto:${escapeHtml(email)}" style="color:${BLUE};">${escapeHtml(email)}</a>`)}
+${row("WhatsApp", `<a href="https://wa.me/${escapeHtml(whatsapp.replace(/[^0-9]/g, ""))}" style="color:${BLUE};" dir="ltr">${escapeHtml(whatsapp)}</a>`)}
+${row("Employees", num(employees))}
+${row("Tier", tier ? escapeHtml(tier) : "—")}
+${row("Tier price", num(tierPrice))}
+${row("Subscription (SAR)", num(subscription))}
+${row("Est. return (SAR)", num(totalReturn))}
+${row("Language", language === "en" ? "English" : "Arabic")}
+${row("Submitted", escapeHtml(createdAt))}
+</table>
+</td></tr>
+<tr><td style="padding:18px 32px 26px;">
+<p style="margin:0;font-family:${FONT};font-size:13px;line-height:1.7;color:#64748B;">Reply to this email to contact the lead directly.</p>
+</td></tr>`;
+
+  const text = `New Design Partner request (${isReturning ? "returning" : "new"} lead)
+
+Name: ${name}
+Company: ${company}
+Email: ${email}
+WhatsApp: ${whatsapp}
+Employees: ${num(employees)}
+Tier: ${tier ?? "—"}
+Tier price: ${num(tierPrice)}
+Subscription (SAR): ${num(subscription)}
+Est. return (SAR): ${num(totalReturn)}
+Language: ${language === "en" ? "English" : "Arabic"}
+Submitted: ${createdAt}`;
+
+  return {
+    subject: `[Lead] ${name} — ${company}`,
+    html: shell("ltr", inner, hasLogo),
+    text,
+  };
+}
+
 export function renderTeamTicketEmail(params: {
   ticketNumber: string;
   subject: string;

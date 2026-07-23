@@ -176,39 +176,47 @@ export function Calculator({
           <p className="text-lg sm:text-xl text-slate-500 leading-relaxed font-medium max-w-2xl mx-auto">{t.subhead}</p>
         </motion.div>
 
+        {/* Employee slider — full width, always above the results panel */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-6xl mx-auto mb-8 lg:mb-10"
+        >
+          <div className="bg-white rounded-[24px] border border-slate-200/80 p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <div className="flex justify-between items-center mb-6 sm:mb-8">
+              <label className="text-[17px] font-bold text-slate-800">{t.empLabel}</label>
+              <span className="text-3xl sm:text-4xl font-heading font-black text-blue-600 tabular-nums bg-blue-50 px-4 py-2 rounded-xl">{employees}</span>
+            </div>
+            <Slider
+              value={[employees]}
+              onValueChange={(vals) => setEmployees(vals[0])}
+              onValueCommit={(vals) =>
+                track("calculator_used", { employees: vals[0], tier, language })
+              }
+              min={5}
+              max={500}
+              step={1}
+              dir={dir}
+              className="py-2"
+            />
+            <div className="flex justify-between text-sm text-slate-400 font-bold mt-4">
+              <span>5</span>
+              <span>500</span>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto items-start">
-          {/* Controls */}
+          {/* Packages — separate section, below results on mobile */}
           <motion.div 
             initial={{ opacity: 0, x: dir === 'rtl' ? 40 : -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 order-2 lg:order-1"
           >
-            {/* Employee slider */}
-            <div className="bg-white rounded-[24px] border border-slate-200/80 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-              <div className="flex justify-between items-center mb-8">
-                <label className="text-[17px] font-bold text-slate-800">{t.empLabel}</label>
-                <span className="text-4xl font-heading font-black text-blue-600 tabular-nums bg-blue-50 px-4 py-2 rounded-xl">{employees}</span>
-              </div>
-              <Slider
-                value={[employees]}
-                onValueChange={(vals) => setEmployees(vals[0])}
-                onValueCommit={(vals) =>
-                  track("calculator_used", { employees: vals[0], tier, language })
-                }
-                min={5}
-                max={500}
-                step={1}
-                dir={dir}
-                className="py-2"
-              />
-              <div className="flex justify-between text-sm text-slate-400 font-bold mt-4">
-                <span>5</span>
-                <span>500</span>
-              </div>
-            </div>
-
             {/* Tier selector */}
             <div className="bg-white rounded-[24px] border border-slate-200/80 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <label className="text-[17px] font-bold block text-slate-800 mb-6">{t.tierLabel}</label>
@@ -275,7 +283,7 @@ export function Calculator({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="sticky top-28"
+            className="order-1 lg:order-2 lg:sticky lg:top-28"
           >
             <div className="rounded-[32px] bg-[#0A1A3A] overflow-hidden shadow-[0_30px_60px_rgba(10,26,58,0.2)] border border-blue-900/50">
               <div className="p-8 sm:p-12 space-y-8 relative">

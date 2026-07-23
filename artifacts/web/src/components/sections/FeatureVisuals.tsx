@@ -461,8 +461,57 @@ export function BiometricScanVisual({ language }: VisualProps) {
   );
 }
 
+const TypingDots = () => (
+  <div className="flex justify-start">
+    <div className="rounded-2xl rounded-ss-md bg-white border border-slate-100 px-4 py-3 shadow-sm flex items-center gap-1.5">
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.15 }}
+          className="w-2 h-2 rounded-full bg-slate-400"
+        />
+      ))}
+    </div>
+  </div>
+);
+
+const bubbleIn = {
+  initial: { opacity: 0, y: 14, scale: 0.96 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  transition: { type: "spring" as const, stiffness: 300, damping: 24 },
+};
+
 export function LeaveChatVisual({ language }: VisualProps) {
   const ar = language === "ar";
+  // 0: typing in input, 1: user bubble sent + bot typing, 2: bot summary card,
+  // 3: bot typing again, 4: sent-to-manager, 5: approved badge, then loop
+  const [phase, setPhase] = useState(0);
+  const [typedLen, setTypedLen] = useState(0);
+
+  const userMsg = ar ? "أبغى إجازة يومين من 1 مارس 🙏" : "I need 2 days off starting March 1 🙏";
+
+  useEffect(() => {
+    if (phase === 0) {
+      if (typedLen < userMsg.length) {
+        const t = setTimeout(() => setTypedLen((l) => l + 1), 55);
+        return () => clearTimeout(t);
+      }
+      const t = setTimeout(() => setPhase(1), 500);
+      return () => clearTimeout(t);
+    }
+    const durations = [0, 1300, 1900, 1100, 1500, 2800];
+    const t = setTimeout(() => {
+      if (phase === 5) {
+        setTypedLen(0);
+        setPhase(0);
+      } else {
+        setPhase((p) => p + 1);
+      }
+    }, durations[phase]);
+    return () => clearTimeout(t);
+  }, [phase, typedLen, userMsg.length]);
+
   return (
     <div className="w-full h-full flex items-center justify-center p-6">
       <div className="relative w-full max-w-md">
@@ -484,47 +533,77 @@ export function LeaveChatVisual({ language }: VisualProps) {
           </div>
 
           {/* Chat body */}
-          <div className="p-5 space-y-3 bg-[#FAFAFA]">
-            <div className="flex justify-end">
-              <div className="max-w-[80%] rounded-2xl rounded-ee-md bg-blue-600 text-white px-4 py-3 text-[13px] font-bold leading-relaxed shadow-md shadow-blue-600/15">
-                {ar ? "أبغى إجازة يومين من 1 مارس 🙏" : "I need 2 days off starting March 1 🙏"}
-              </div>
-            </div>
+          <div className="p-5 space-y-3 bg-[#FAFAFA] h-[380px] overflow-hidden flex flex-col justify-end">
+            {/* user bubble */}
+            {phase >= 1 && (
+              <motion.div {...bubbleIn} className="flex justify-end">
+                <div className="max-w-[80%] rounded-2xl rounded-ee-md bg-blue-600 text-white px-4 py-3 text-[13px] font-bold leading-relaxed shadow-md shadow-blue-600/15">
+                  {userMsg}
+                </div>
+              </motion.div>
+            )}
 
-            <div className="flex justify-start">
-              <div className="max-w-[85%] rounded-2xl rounded-ss-md bg-white border border-slate-100 px-4 py-3 shadow-sm">
-                <div className="text-[13px] font-bold text-slate-700 leading-relaxed mb-3">
-                  {ar ? "تم! رصيدك يسمح ✅ هذا ملخص طلبك:" : "Done! You have enough balance ✅ Here's your request:"}
-                </div>
-                <div className="rounded-xl bg-slate-900 text-white p-3.5">
-                  <div className="text-[11px] font-bold text-slate-400 mb-1">{ar ? "إجازة اعتيادية — يومان" : "Regular leave — 2 days"}</div>
-                  <div className="flex items-center justify-between text-[12.5px] font-black">
-                    <span>{ar ? "1 مارس" : "Mar 1"}</span>
-                    <span className="text-slate-500">→</span>
-                    <span>{ar ? "2 مارس" : "Mar 2"}</span>
+            {/* bot typing → summary card */}
+            {phase === 1 && <TypingDots />}
+            {phase >= 2 && (
+              <motion.div {...bubbleIn} className="flex justify-start">
+                <div className="max-w-[85%] rounded-2xl rounded-ss-md bg-white border border-slate-100 px-4 py-3 shadow-sm">
+                  <div className="text-[13px] font-bold text-slate-700 leading-relaxed mb-3">
+                    {ar ? "تم! رصيدك يسمح ✅ هذا ملخص طلبك:" : "Done! You have enough balance ✅ Here's your request:"}
                   </div>
-                  <div className="mt-2 pt-2 border-t border-white/10 text-[11px] font-bold text-green-300">
-                    {ar ? "الرصيد المتبقي: 3 أيام و4 ساعات" : "Remaining balance: 3 days, 4 hours"}
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.35, type: "spring", stiffness: 260, damping: 20 }}
+                    className="rounded-xl bg-slate-900 text-white p-3.5"
+                  >
+                    <div className="text-[11px] font-bold text-slate-400 mb-1">{ar ? "إجازة اعتيادية — يومان" : "Regular leave — 2 days"}</div>
+                    <div className="flex items-center justify-between text-[12.5px] font-black">
+                      <span>{ar ? "1 مارس" : "Mar 1"}</span>
+                      <span className="text-slate-500">→</span>
+                      <span>{ar ? "2 مارس" : "Mar 2"}</span>
+                    </div>
+                    <div className="mt-2 pt-2 border-t border-white/10 text-[11px] font-bold text-green-300">
+                      {ar ? "الرصيد المتبقي: 3 أيام و4 ساعات" : "Remaining balance: 3 days, 4 hours"}
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            )}
 
-            <div className="flex justify-start">
-              <div className="max-w-[85%] rounded-2xl rounded-ss-md bg-white border border-slate-100 px-4 py-3 shadow-sm">
-                <div className="text-[13px] font-bold text-slate-700 leading-relaxed">
-                  {ar ? "أُرسل الطلب لمديرك للموافقة 📨" : "Sent to your manager for approval 📨"}
+            {/* bot typing → approval message */}
+            {phase === 3 && <TypingDots />}
+            {phase >= 4 && (
+              <motion.div {...bubbleIn} className="flex justify-start">
+                <div className="max-w-[85%] rounded-2xl rounded-ss-md bg-white border border-slate-100 px-4 py-3 shadow-sm">
+                  <div className="text-[13px] font-bold text-slate-700 leading-relaxed">
+                    {ar ? "أُرسل الطلب لمديرك للموافقة 📨" : "Sent to your manager for approval 📨"}
+                  </div>
+                  <div className="mt-2.5 flex gap-2 min-h-[30px]">
+                    {phase >= 5 && (
+                      <>
+                        <motion.span
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ type: "spring", stiffness: 320, damping: 16 }}
+                          className="rounded-full bg-green-500 text-white text-[11px] font-black px-3.5 py-1.5 shadow-md shadow-green-500/25"
+                        >
+                          {ar ? "تمت الموافقة ✓" : "Approved ✓"}
+                        </motion.span>
+                        <motion.span
+                          initial={{ opacity: 0, x: ar ? 8 : -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.25 }}
+                          className="rounded-full bg-slate-100 text-slate-400 text-[11px] font-black px-3.5 py-1.5"
+                        >
+                          {ar ? "خلال 4 دقائق" : "in 4 minutes"}
+                        </motion.span>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div className="mt-2.5 flex gap-2">
-                  <span className="rounded-full bg-green-500 text-white text-[11px] font-black px-3.5 py-1.5 shadow-md shadow-green-500/25">
-                    {ar ? "تمت الموافقة ✓" : "Approved ✓"}
-                  </span>
-                  <span className="rounded-full bg-slate-100 text-slate-400 text-[11px] font-black px-3.5 py-1.5">
-                    {ar ? "خلال 4 دقائق" : "in 4 minutes"}
-                  </span>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            )}
 
             {/* Quick actions */}
             <div className="pt-2 flex flex-wrap gap-2">
@@ -536,6 +615,31 @@ export function LeaveChatVisual({ language }: VisualProps) {
                   {chip}
                 </span>
               ))}
+            </div>
+
+            {/* Input bar with live typing */}
+            <div className="mt-1 rounded-2xl bg-white border border-slate-200 px-4 py-3 flex items-center gap-3 shadow-sm">
+              <div className="flex-1 text-[12.5px] font-bold text-slate-700 min-h-[18px] truncate">
+                {phase === 0 ? (
+                  <>
+                    {userMsg.slice(0, typedLen)}
+                    <motion.span
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{ duration: 0.8, repeat: Infinity }}
+                      className="inline-block w-[2px] h-[14px] bg-blue-600 align-middle ms-0.5"
+                    />
+                  </>
+                ) : (
+                  <span className="text-slate-300">{ar ? "اكتب رسالتك…" : "Type a message…"}</span>
+                )}
+              </div>
+              <motion.div
+                animate={phase === 0 && typedLen >= userMsg.length ? { scale: [1, 0.85, 1] } : { scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-md ${phase === 0 && typedLen > 0 ? "bg-blue-600 shadow-blue-600/25" : "bg-slate-300"}`}
+              >
+                <Zap size={15} />
+              </motion.div>
             </div>
           </div>
         </div>

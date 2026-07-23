@@ -1,4 +1,5 @@
 import { Router, type IRouter } from "express";
+import { randomUUID } from "node:crypto";
 import { asc, eq } from "drizzle-orm";
 import { CreateOpenaiConversationBody, SendOpenaiMessageBody } from "@workspace/api-zod";
 import { getDb, conversations, messages } from "@workspace/db";
@@ -30,6 +31,34 @@ function rateLimited(key: string, limit: { windowMs: number; max: number }): boo
     }
   }
   return bucket.count > limit.max;
+}
+
+// In-memory fallback store so the chat keeps working when no database is
+// configured (e.g. self-hosted deployments without DATABASE_URL).
+type MemMessage = { role: "user" | "assistant"; content: string; createdAt: Date };
+type MemConversation = { title: string; createdAt: Date; messages: MemMessage[] };
+const memConversations = new Map<string, MemConversation>();
+const MEM_MAX_CONVERSATIONS = 1000;
+const MEM_MAX_MESSAGES = 100;
+
+function memCreateConversation(title: string): { publicId: string; conv: MemConversation } {
+  if (memConversations.size >= MEM_MAX_CONVERSATIONS) {
+    const oldestKey = [...memConversations.entries()].sort(
+      (a, b) => a[1].createdAt.getTime() - b[1].createdAt.getTime(),
+    )[0]?.[0];
+    if (oldestKey) memConversations.delete(oldestKey);
+  }
+  const publicId = randomUUID();
+  const conv: MemConversation = { title, createdAt: new Date(), messages: [] };
+  memConversations.set(publicId, conv);
+  return { publicId, conv };
+}
+
+function memAppend(conv: MemConversation, role: "user" | "assistant", content: string): void {
+  conv.messages.push({ role, content, createdAt: new Date() });
+  if (conv.messages.length > MEM_MAX_MESSAGES) {
+    conv.messages.splice(0, conv.messages.length - MEM_MAX_MESSAGES);
+  }
 }
 
 const SYSTEM_PROMPT = `You are the friendly AI assistant for Nizamy HR (نظامي اتش آر), an AI-powered HR system built for Saudi small and medium businesses.
@@ -73,27 +102,54 @@ router.post("/openai/conversations", async (req, res) => {
     return;
   }
 
-  try {
-    const db = getDb();
-    const [conversation] = await db
-      .insert(conversations)
-      .values({ title: parsed.data.title.slice(0, 200) })
-      .returning();
-    res.status(201).json({
-      id: conversation.publicId,
-      title: conversation.title,
-      createdAt: conversation.createdAt.toISOString(),
-    });
-  } catch (err) {
-    req.log.error({ err }, "Failed to create conversation");
-    res.status(503).json({ error: "Service temporarily unavailable" });
+  const title = parsed.data.title.slice(0, 200);
+
+  if (process.env["DATABASE_URL"]) {
+    try {
+      const db = getDb();
+      const [conversation] = await db
+        .insert(conversations)
+        .values({ title })
+        .returning();
+      res.status(201).json({
+        id: conversation.publicId,
+        title: conversation.title,
+        createdAt: conversation.createdAt.toISOString(),
+      });
+      return;
+    } catch (err) {
+      req.log.error({ err }, "Database error — falling back to in-memory conversation");
+    }
+  } else {
+    req.log.warn("DATABASE_URL not set — using in-memory conversation");
   }
+
+  const { publicId, conv } = memCreateConversation(title);
+  res.status(201).json({
+    id: publicId,
+    title: conv.title,
+    createdAt: conv.createdAt.toISOString(),
+  });
 });
 
 router.get("/openai/conversations/:id/messages", async (req, res) => {
   const publicId = req.params.id;
   if (!UUID_RE.test(publicId)) {
     res.status(400).json({ error: "Invalid conversation id" });
+    return;
+  }
+
+  const memConv = memConversations.get(publicId);
+  if (memConv) {
+    res.json(
+      memConv.messages.map((m, i) => ({
+        id: i + 1,
+        conversationId: publicId,
+        role: m.role,
+        content: m.content,
+        createdAt: m.createdAt.toISOString(),
+      })),
+    );
     return;
   }
 
@@ -149,39 +205,45 @@ router.post("/openai/conversations/:id/messages", async (req, res) => {
     return;
   }
 
-  let conversationDbId: number;
+  let conversationDbId: number | null = null;
   let history: Array<{ role: string; content: string }>;
+  const memConv = memConversations.get(publicId);
 
-  try {
-    const db = getDb();
+  if (memConv) {
+    history = memConv.messages.map((m) => ({ role: m.role, content: m.content }));
+    memAppend(memConv, "user", parsed.data.content);
+  } else {
+    try {
+      const db = getDb();
 
-    const [conversation] = await db
-      .select()
-      .from(conversations)
-      .where(eq(conversations.publicId, publicId))
-      .limit(1);
+      const [conversation] = await db
+        .select()
+        .from(conversations)
+        .where(eq(conversations.publicId, publicId))
+        .limit(1);
 
-    if (!conversation) {
-      res.status(404).json({ error: "Conversation not found" });
+      if (!conversation) {
+        res.status(404).json({ error: "Conversation not found" });
+        return;
+      }
+      conversationDbId = conversation.id;
+
+      history = await db
+        .select()
+        .from(messages)
+        .where(eq(messages.conversationId, conversationDbId))
+        .orderBy(asc(messages.createdAt));
+
+      await db.insert(messages).values({
+        conversationId: conversationDbId,
+        role: "user",
+        content: parsed.data.content,
+      });
+    } catch (err) {
+      req.log.error({ err }, "Database unavailable — chat message not stored");
+      res.status(503).json({ error: "Service temporarily unavailable" });
       return;
     }
-    conversationDbId = conversation.id;
-
-    history = await db
-      .select()
-      .from(messages)
-      .where(eq(messages.conversationId, conversationDbId))
-      .orderBy(asc(messages.createdAt));
-
-    await db.insert(messages).values({
-      conversationId: conversationDbId,
-      role: "user",
-      content: parsed.data.content,
-    });
-  } catch (err) {
-    req.log.error({ err }, "Database unavailable — chat message not stored");
-    res.status(503).json({ error: "Service temporarily unavailable" });
-    return;
   }
 
   res.setHeader("Content-Type", "text/event-stream");
@@ -213,15 +275,19 @@ router.post("/openai/conversations/:id/messages", async (req, res) => {
     }
 
     if (fullResponse) {
-      try {
-        const db = getDb();
-        await db.insert(messages).values({
-          conversationId: conversationDbId,
-          role: "assistant",
-          content: fullResponse,
-        });
-      } catch (err) {
-        req.log.error({ err }, "Failed to persist assistant message");
+      if (memConv) {
+        memAppend(memConv, "assistant", fullResponse);
+      } else if (conversationDbId !== null) {
+        try {
+          const db = getDb();
+          await db.insert(messages).values({
+            conversationId: conversationDbId,
+            role: "assistant",
+            content: fullResponse,
+          });
+        } catch (err) {
+          req.log.error({ err }, "Failed to persist assistant message");
+        }
       }
     }
 

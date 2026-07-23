@@ -174,90 +174,99 @@ export function Features() {
               image: feature2,
             })),
           ];
-          const count = allFeatures.length;
-
-          const renderCenter = (sizeClass: string) => (
-            <div className={`relative flex items-center justify-center ${sizeClass}`}>
-              {/* soft glowing disc behind the card — decorative, not a mask */}
-              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-50 to-white border-[10px] border-white shadow-[0_25px_60px_rgba(37,99,235,0.15)]" />
-              {allFeatures.map((f, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={false}
-                  animate={{ opacity: idx === activeIndex ? 1 : 0, scale: idx === activeIndex ? 1 : 0.94 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className={`absolute inset-0 flex items-center justify-center ${idx === activeIndex ? "" : "pointer-events-none"}`}
-                >
-                  {f.visual ? (
-                    <div className="w-full h-full scale-[0.8] origin-center">
-                      <f.visual language={language} />
-                    </div>
-                  ) : (
-                    <img src={f.image} alt={f.title} className="w-[78%] h-[78%] object-cover rounded-[32px] shadow-[0_25px_60px_rgba(15,23,42,0.18)]" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          );
-
           return (
             <>
-              {/* Circular infographic — desktop */}
-              <div className="hidden lg:block relative w-[1000px] h-[1000px] mx-auto">
-                {/* dashed orbit ring */}
-                <div className="absolute inset-[20%] rounded-full border-2 border-dashed border-blue-200" />
+              {/* Desktop — feature tabs list + large visual stage */}
+              <div className="hidden lg:grid grid-cols-[380px_1fr] gap-10 items-stretch max-w-6xl mx-auto">
+                {/* Feature list */}
+                <div className="flex flex-col gap-2.5 self-center">
+                  {allFeatures.map((f, i) => {
+                    const Icon = f.icon;
+                    const isActive = i === activeIndex;
+                    return (
+                      <motion.button
+                        key={i}
+                        type="button"
+                        onClick={() => setActiveIndex(i)}
+                        initial={{ opacity: 0, x: language === "ar" ? 20 : -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: i * 0.05 }}
+                        className={`relative flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-start transition-all duration-300 cursor-pointer group ${
+                          isActive
+                            ? "bg-white border-blue-200 shadow-[0_15px_40px_rgba(37,99,235,0.14)]"
+                            : "bg-white/60 border-slate-200/80 hover:bg-white hover:border-blue-200/70"
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.span
+                            layoutId="feature-active-bar"
+                            className="absolute start-0 top-3 bottom-3 w-1 rounded-full bg-gradient-to-b from-blue-600 to-cyan-400"
+                          />
+                        )}
+                        <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          isActive
+                            ? "bg-blue-600 text-white shadow-[0_10px_22px_rgba(37,99,235,0.35)]"
+                            : "bg-blue-50 text-blue-600 group-hover:bg-blue-100"
+                        }`}>
+                          <Icon size={21} strokeWidth={2} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className={`text-[14.5px] font-heading font-black leading-snug flex items-center gap-2 ${isActive ? "text-blue-700" : "text-slate-800"}`}>
+                            <span className="truncate">{f.title}</span>
+                            {f.soon && (
+                              <span className="shrink-0 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
+                                {t.soonLabel}
+                              </span>
+                            )}
+                          </p>
+                          {isActive && (
+                            <motion.p
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              transition={{ duration: 0.3 }}
+                              className="text-[12.5px] font-medium text-slate-500 leading-relaxed mt-1 overflow-hidden"
+                            >
+                              {f.desc}
+                            </motion.p>
+                          )}
+                        </div>
+                      </motion.button>
+                    );
+                  })}
+                </div>
 
-                {/* center visual, crossfades with the selected feature */}
+                {/* Visual stage */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.7 }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  transition={{ duration: 0.6 }}
+                  className="relative rounded-[36px] bg-gradient-to-br from-blue-50 via-white to-cyan-50/40 border border-slate-200/70 shadow-[0_30px_80px_rgba(37,99,235,0.10)] overflow-hidden min-h-[640px]"
                 >
-                  {renderCenter("w-[520px] h-[520px]")}
-                </motion.div>
+                  {/* decorative background */}
+                  <div className="absolute -top-24 -end-24 w-72 h-72 rounded-full bg-blue-100/50 blur-2xl" />
+                  <div className="absolute -bottom-24 -start-24 w-72 h-72 rounded-full bg-cyan-100/50 blur-2xl" />
+                  <div className="absolute inset-10 rounded-full border-2 border-dashed border-blue-100" />
 
-                {/* orbiting feature nodes */}
-                {allFeatures.map((f, i) => {
-                  const angle = ((-90 + (i * 360) / count) * Math.PI) / 180;
-                  const x = 50 + 33 * Math.cos(angle);
-                  const y = 50 + 33 * Math.sin(angle);
-                  const Icon = f.icon;
-                  const isActive = i === activeIndex;
-                  return (
-                    <motion.button
-                      key={i}
-                      type="button"
-                      onClick={() => setActiveIndex(i)}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.08 }}
-                      className="absolute w-52 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center gap-3 cursor-pointer group"
-                      style={{ left: `${x}%`, top: `${y}%` }}
+                  {allFeatures.map((f, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={false}
+                      animate={{ opacity: idx === activeIndex ? 1 : 0, scale: idx === activeIndex ? 1 : 0.96 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className={`absolute inset-0 flex items-center justify-center ${idx === activeIndex ? "" : "pointer-events-none"}`}
                     >
-                      <div className={`relative w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? "bg-blue-600 text-white border border-blue-600 shadow-[0_15px_35px_rgba(37,99,235,0.35)] scale-110"
-                          : "bg-white text-blue-600 border border-slate-200 shadow-[0_10px_25px_rgba(15,23,42,0.08)] group-hover:border-blue-300"
-                      }`}>
-                        <Icon size={34} strokeWidth={1.8} />
-                        {f.soon && (
-                          <span className="absolute -top-1.5 -end-4 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
-                            {t.soonLabel}
-                          </span>
-                        )}
-                      </div>
-                      <div>
-                        <p className={`text-[16px] font-heading font-black leading-snug mb-1.5 transition-colors ${isActive ? "text-blue-700" : "text-slate-800"}`}>
-                          {f.title}
-                        </p>
-                        <p className="text-[12.5px] font-medium text-slate-500 leading-relaxed">{f.desc}</p>
-                      </div>
-                    </motion.button>
-                  );
-                })}
+                      {f.visual ? (
+                        <div className="w-full h-full scale-[0.92] origin-center">
+                          <f.visual language={language} />
+                        </div>
+                      ) : (
+                        <img src={f.image} alt={f.title} className="w-[72%] rounded-[28px] shadow-[0_25px_60px_rgba(15,23,42,0.18)]" />
+                      )}
+                    </motion.div>
+                  ))}
+                </motion.div>
               </div>
 
               {/* Mobile/tablet — chips + visual card + active description */}

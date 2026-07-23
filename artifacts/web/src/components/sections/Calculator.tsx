@@ -220,7 +220,7 @@ export function Calculator({
             {/* Tier selector */}
             <div className="bg-white rounded-[24px] border border-slate-200/80 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <label className="text-[17px] font-bold block text-slate-800 mb-6">{t.tierLabel}</label>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-3 sm:gap-5">
                 {(["Standard", "Growth", "Pro"] as const).map((tOption) => (
                   <button
                     key={tOption}
@@ -228,15 +228,15 @@ export function Calculator({
                       setTier(tOption);
                       track("calculator_tier_selected", { tier: tOption, employees, language });
                     }}
-                    className={`py-5 px-2 border-2 rounded-[16px] text-center transition-all duration-300 ${
+                    className={`py-3 sm:py-4 px-1.5 sm:px-2 border-2 rounded-[14px] text-center transition-all duration-300 ${
                       tier === tOption
                         ? "border-blue-600 bg-blue-50/50 text-blue-700 shadow-sm"
                         : "border-slate-100 text-slate-500 hover:border-slate-200 hover:bg-slate-50 bg-white"
                     }`}
                   >
-                    <div className="font-heading font-black text-[17px] mb-1.5">{t.tiers[tOption]}</div>
-                    <div className="text-[13px] font-bold opacity-80">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
-                    <div className="mt-2 inline-block rounded-full bg-amber-100 text-amber-800 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+                    <div className="font-heading font-black text-[14px] sm:text-[16px] mb-1">{t.tiers[tOption]}</div>
+                    <div className="text-[11px] sm:text-[12px] font-bold opacity-80">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
+                    <div className="mt-1.5 inline-block rounded-full bg-amber-100 text-amber-800 text-[9px] sm:text-[10px] font-black px-2 py-0.5 leading-none whitespace-nowrap">
                       {language === "ar" ? "وصول مبكر" : "Early access"}
                     </div>
                   </button>

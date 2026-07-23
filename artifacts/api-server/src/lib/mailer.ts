@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { logger } from "./logger";
@@ -127,6 +127,43 @@ export async function sendTicketEmails(ticket: TicketEmailData): Promise<void> {
   );
 }
 
+function escapeHtmlText(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function loadCustomWelcomeTemplate(
+  lang: EmailLang,
+  resolveAsset: (rel: string) => string | undefined,
+): {
+  subject: string;
+  html: string;
+  text: string;
+  attachments: { filename: string; path: string; cid: string }[];
+} | null {
+  const htmlPath = resolveAsset(`assets/email-custom/welcome-${lang}.html`);
+  const headerPath = resolveAsset(`assets/email-custom/welcome-${lang}-header.png`);
+  const footerPath = resolveAsset(`assets/email-custom/welcome-${lang}-footer.png`);
+  if (!htmlPath || !headerPath || !footerPath) return null;
+
+  const raw = readFileSync(htmlPath, "utf-8");
+  const subject =
+    /<title>([^<]+)<\/title>/.exec(raw)?.[1]?.trim() ??
+    (lang === "ar" ? "حياك في نظامي" : "Welcome to Nizamy");
+  return {
+    subject,
+    html: raw,
+    text: "",
+    attachments: [
+      { filename: "welcome-header.png", path: headerPath, cid: "nz-welcome-header" },
+      { filename: "welcome-footer.png", path: footerPath, cid: "nz-welcome-footer" },
+    ],
+  };
+}
+
 export async function sendLeadConfirmation(
   lead: LeadEmailData,
   isReturning = false,
@@ -173,17 +210,40 @@ export async function sendLeadConfirmation(
     );
   }
 
-  const { subject, html, text } = isReturning
-    ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo, hasTextImages)
-    : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo, hasTextImages);
+  const custom = isReturning ? null : loadCustomWelcomeTemplate(lang, resolveAsset);
 
-  const attachments: { filename: string; path: string; cid: string }[] = [];
-  if (hasLogo && logoPath) {
-    attachments.push({ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" });
-  }
-  if (hasTextImages) {
-    for (const img of textImages) {
-      attachments.push({ filename: img.file, path: img.path!, cid: img.cid });
+  let subject: string;
+  let html: string;
+  let text: string;
+  let attachments: { filename: string; path: string; cid: string }[] = [];
+
+  if (custom) {
+    subject = custom.subject;
+    html = custom.html
+      .replaceAll("{{first_name}}", escapeHtmlText(firstName))
+      .replaceAll("{{cta_url}}", trialLink)
+      .replaceAll("{{website_url}}", "https://nizamy.app")
+      .replaceAll(
+        "{{unsubscribe_url}}",
+        "mailto:sales@nizamy.app?subject=Unsubscribe",
+      );
+    text =
+      lang === "ar"
+        ? `حياك ${firstName}،\n\nسعداء بانضمامك إلى نظامي. ابدأ بإضافة أول عضو في فريقك:\n${trialLink}\n\nمع خالص التحية،\nفريق نظامي — nizamy.app`
+        : `Hi ${firstName},\n\nWelcome to Nizamy. Start by adding your first team member:\n${trialLink}\n\nBest regards,\nThe Nizamy team — nizamy.app`;
+    attachments = custom.attachments;
+  } else {
+    ({ subject, html, text } = isReturning
+      ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo, hasTextImages)
+      : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo, hasTextImages));
+
+    if (hasLogo && logoPath) {
+      attachments.push({ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" });
+    }
+    if (hasTextImages) {
+      for (const img of textImages) {
+        attachments.push({ filename: img.file, path: img.path!, cid: img.cid });
+      }
     }
   }
 
@@ -201,7 +261,7 @@ export async function sendLeadConfirmation(
 
     logger.info(
       {
-        template: isReturning ? "returning" : templateId,
+        template: isReturning ? "returning" : custom ? "custom" : templateId,
         lang,
         name: lead.name,
         email: lead.email,

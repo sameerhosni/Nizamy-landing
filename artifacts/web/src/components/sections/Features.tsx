@@ -258,10 +258,10 @@ export function Features() {
                 })}
               </div>
 
-              {/* Compact list — mobile/tablet */}
+              {/* Mobile/tablet — chips + visual card + active description */}
               <div className="lg:hidden max-w-xl mx-auto">
-                <div className="mx-auto mb-10 w-72 h-72">{renderCenter("w-72 h-72")}</div>
-                <div className="grid grid-cols-1 gap-4">
+                {/* Feature chips (horizontally scrollable) */}
+                <div dir={language === "ar" ? "rtl" : "ltr"} className="flex gap-2.5 overflow-x-auto pb-3 -mx-4 px-4 snap-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {allFeatures.map((f, i) => {
                     const Icon = f.icon;
                     const isActive = i === activeIndex;
@@ -269,32 +269,73 @@ export function Features() {
                       <button
                         key={i}
                         type="button"
+                        aria-pressed={isActive}
                         onClick={() => setActiveIndex(i)}
-                        className={`text-start flex items-start gap-4 rounded-2xl px-4 py-4 border transition-all ${
+                        className={`snap-start shrink-0 flex items-center gap-2 rounded-full border px-4 py-2.5 text-[13px] font-bold whitespace-nowrap transition-all ${
                           isActive
-                            ? "bg-white border-blue-200 shadow-[0_10px_25px_rgba(37,99,235,0.1)]"
-                            : "bg-white border-slate-200 shadow-[0_2px_8px_rgb(0,0,0,0.04)]"
+                            ? "bg-blue-600 border-blue-600 text-white shadow-[0_8px_20px_rgba(37,99,235,0.3)]"
+                            : "bg-white border-slate-200 text-slate-600"
                         }`}
                       >
-                        <span className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${
-                          isActive ? "bg-blue-600 text-white" : "bg-blue-50 border border-blue-100 text-blue-600"
-                        }`}>
-                          <Icon size={20} strokeWidth={2} />
-                        </span>
-                        <span>
-                          <span className="block text-[15px] font-bold text-slate-800 leading-snug">
-                            {f.title}
-                            {f.soon && (
-                              <span className="ms-2 inline-block text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 align-middle">
-                                {t.soonLabel}
-                              </span>
-                            )}
+                        <Icon size={16} strokeWidth={2.2} />
+                        {f.title}
+                        {f.soon && (
+                          <span className={`text-[9px] font-black rounded-full px-1.5 py-0.5 leading-none ${
+                            isActive ? "bg-white/20 text-white" : "bg-amber-50 text-amber-700 border border-amber-200"
+                          }`}>
+                            {t.soonLabel}
                           </span>
-                          <span className="block text-[13px] font-medium text-slate-500 leading-relaxed mt-1">{f.desc}</span>
-                        </span>
+                        )}
                       </button>
                     );
                   })}
+                </div>
+
+                {/* Active feature visual — full card, no cropping */}
+                <div className="mt-4 relative rounded-[28px] bg-gradient-to-br from-blue-50 via-white to-white border border-slate-200/80 shadow-[0_20px_50px_rgba(37,99,235,0.08)] overflow-hidden h-[430px] sm:h-[480px]">
+                  {allFeatures.map((f, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={false}
+                      animate={{ opacity: idx === activeIndex ? 1 : 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
+                    >
+                      {f.visual ? (
+                        <div className="absolute inset-0 scale-[0.8] sm:scale-[0.85] origin-center">
+                          <f.visual language={language} />
+                        </div>
+                      ) : (
+                        <img src={f.image} alt={f.title} className="w-full h-full object-cover" />
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Active feature text */}
+                <div className="mt-6 text-center px-2">
+                  <p className="text-[19px] font-heading font-black text-slate-900 leading-snug mb-2">
+                    {allFeatures[activeIndex].title}
+                  </p>
+                  <p className="text-[14px] font-medium text-slate-500 leading-relaxed max-w-sm mx-auto">
+                    {allFeatures[activeIndex].desc}
+                  </p>
+                </div>
+
+                {/* Dots */}
+                <div className="mt-5 flex justify-center gap-2">
+                  {allFeatures.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      aria-label={allFeatures[i].title}
+                      aria-pressed={i === activeIndex}
+                      onClick={() => setActiveIndex(i)}
+                      className={`h-2 rounded-full transition-all ${
+                        i === activeIndex ? "w-6 bg-blue-600" : "w-2 bg-slate-300"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </>

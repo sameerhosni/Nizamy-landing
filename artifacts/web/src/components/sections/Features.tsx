@@ -137,7 +137,7 @@ export function Features() {
   const t = content[language];
 
   return (
-    <section id="features" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16 overflow-hidden">
+    <section id="features" data-analytics-section="features" data-analytics-name="Features" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

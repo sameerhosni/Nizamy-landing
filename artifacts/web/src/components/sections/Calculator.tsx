@@ -156,7 +156,7 @@ export function Calculator({
   const t = content[language];
 
   return (
-    <section id="calculator" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
+    <section id="calculator" data-analytics-section="calculator" data-analytics-name="Calculator" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

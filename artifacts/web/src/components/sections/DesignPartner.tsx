@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Gift, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { dashboardTrackLead } from "@/lib/dashboardAnalytics";
 import { track, identifyLead } from "@/lib/analytics";
 
 interface DesignPartnerProps {
@@ -120,6 +121,12 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
             calculator_subscription: snapshot.subscription,
             calculator_total_return: snapshot.totalReturn,
           });
+          dashboardTrackLead({
+            company: formData.company,
+            language,
+            employees: snapshot.employees,
+            tier: snapshot.tier,
+          });
         },
         onError: () => {
           track("lead_submit_failed", { language });
@@ -131,6 +138,8 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
   return (
     <section
       id="partner"
+      data-analytics-section="partner"
+      data-analytics-name="Design Partner Form"
       className="py-24 sm:py-32 scroll-mt-16 relative overflow-hidden bg-[#0A1A3A]"
     >
       {/* Premium Dark Background Glows */}

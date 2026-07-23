@@ -125,7 +125,7 @@ export function CaseStudies() {
   const featuredMonthLabel = (i: number) => t.featuredMonths[i] ?? "";
 
   return (
-    <section id="use-cases" className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden">
+    <section id="use-cases" data-analytics-section="use-cases" data-analytics-name="Use Cases" className="py-24 sm:py-32 bg-white scroll-mt-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

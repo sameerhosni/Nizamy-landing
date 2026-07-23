@@ -1,0 +1,66 @@
+<!-- Analytics Tracker -->
+<script>
+(function() {
+  var ENDPOINT = 'https://709d27e4-fdf1-42ab-8064-ee41ee4591ed-00-3uo3vnwoy8xmj.pike.replit.dev/api/analytics/track';
+  var SESSION_KEY = '_a_sid';
+
+  function getSessionId() {
+    var sid = sessionStorage.getItem(SESSION_KEY);
+    if (!sid) {
+      sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      sessionStorage.setItem(SESSION_KEY, sid);
+    }
+    return sid;
+  }
+
+  function send(payload) {
+    var data = JSON.stringify(Object.assign(
+      { sessionId: getSessionId(), referrer: document.referrer || '', pageUrl: location.href },
+      payload
+    ));
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(ENDPOINT, data);
+      } else {
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, keepalive: true });
+      }
+    } catch(e) {}
+  }
+
+  // Track pageview on load
+  send({ eventType: 'pageview' });
+
+  // Track section views via IntersectionObserver
+  // Add data-analytics-section and data-analytics-name="Section Name" to your sections
+  if ('IntersectionObserver' in window) {
+    var viewed = {};
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        var id = e.target.id || e.target.dataset.analyticsSection;
+        if (e.isIntersecting && id && !viewed[id]) {
+          viewed[id] = true;
+          send({
+            eventType: 'section_view',
+            sectionId: id,
+            sectionName: e.target.dataset.analyticsName || id
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('[data-analytics-section]').forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+
+  // Call analytics.trackLead() when a user submits a lead form
+  // Call analytics.trackConversion() when a purchase or signup completes
+  window.analytics = {
+    trackLead: function(meta) {
+      send({ eventType: 'lead', metadata: JSON.stringify(meta || {}) });
+    },
+    trackConversion: function(meta) {
+      send({ eventType: 'conversion', metadata: JSON.stringify(meta || {}) });
+    }
+  };
+})();
+</script>

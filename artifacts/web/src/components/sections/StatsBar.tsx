@@ -23,7 +23,7 @@ export function StatsBar() {
   const t = stats[language];
 
   return (
-    <section className="bg-white py-16 border-b border-slate-100 relative z-20 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+    <section data-analytics-section="stats" data-analytics-name="Stats Bar" className="bg-white py-16 border-b border-slate-100 relative z-20 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-100 rtl:divide-x-reverse">
           {t.map((stat, idx) => {

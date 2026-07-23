@@ -12,6 +12,7 @@ import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import { ScrollButtons } from "@/components/ScrollButtons";
+import { initDashboardAnalytics } from "@/lib/dashboardAnalytics";
 
 export function Home() {
   const [employees, setEmployees] = useState(100);
@@ -19,6 +20,7 @@ export function Home() {
 
   useEffect(() => {
     document.title = "Nizamy HR — The HR system that pays you back";
+    initDashboardAnalytics();
   }, []);
 
   const tierPrice = tier === "Standard" ? 3 : tier === "Growth" ? 5 : 8;

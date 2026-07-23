@@ -56,7 +56,7 @@ export function Problem() {
   const t = content[language];
 
   return (
-    <section id="problem" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
+    <section id="problem" data-analytics-section="problem" data-analytics-name="Problem" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

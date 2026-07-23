@@ -47,7 +47,7 @@ export function WhyNizamy() {
   const t = content[language];
 
   return (
-    <section id="why-nizamy" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
+    <section id="why-nizamy" data-analytics-section="why-nizamy" data-analytics-name="Why Nizamy" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

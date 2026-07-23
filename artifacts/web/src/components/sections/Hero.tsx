@@ -73,7 +73,7 @@ export function Hero() {
   const highlightIcons = [TrendingDown, Award, BarChart3, RefreshCw];
 
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-[#FAFAFA]">
+    <section data-analytics-section="hero" data-analytics-name="Hero" className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-[#FAFAFA]">
       {/* Full-bleed hero background image with directional fade */}
       <div className="absolute inset-x-0 top-0 h-full max-h-[900px] pointer-events-none overflow-hidden">
         <img

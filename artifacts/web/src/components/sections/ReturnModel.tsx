@@ -68,6 +68,8 @@ export function ReturnModel() {
   return (
     <section
       id="return-model"
+      data-analytics-section="return-model"
+      data-analytics-name="Return Model"
       className="py-24 sm:py-32 bg-white scroll-mt-16 relative"
     >
       <div className="container mx-auto px-4 sm:px-6 relative z-10">

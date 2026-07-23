@@ -187,7 +187,7 @@ export function Features() {
                   className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
                 >
                   {f.visual ? (
-                    <div className="absolute inset-0 scale-[0.55] origin-center">
+                    <div className="absolute inset-0 scale-[0.72] origin-center">
                       <f.visual language={language} />
                     </div>
                   ) : (
@@ -213,7 +213,7 @@ export function Features() {
                   transition={{ duration: 0.7 }}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
-                  {renderCenter("w-[440px] h-[440px]")}
+                  {renderCenter("w-[520px] h-[520px]")}
                 </motion.div>
 
                 {/* orbiting feature nodes */}

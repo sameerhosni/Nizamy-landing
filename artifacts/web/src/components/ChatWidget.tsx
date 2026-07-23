@@ -5,10 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import shahadAvatar from "@/assets/shahad-avatar.png";
 
 const API_BASE = `${import.meta.env.BASE_URL}api`;
+const TICKET_MARKER = "[[OFFER_TICKET]]";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
+  offerTicket?: boolean;
+  ticketNumber?: string;
 };
 
 export function ChatWidget() {
@@ -20,6 +23,11 @@ export function ChatWidget() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [ticketFormOpen, setTicketFormOpen] = useState(false);
+  const [ticketName, setTicketName] = useState("");
+  const [ticketEmail, setTicketEmail] = useState("");
+  const [ticketBusy, setTicketBusy] = useState(false);
+  const [ticketError, setTicketError] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const t = {
@@ -31,6 +39,15 @@ export function ChatWidget() {
         "Hi! I'm Shahad, the Nizamy assistant. Ask me anything about the HR system, pricing, or the return model.",
       error: "Something went wrong. Please try again.",
       open: "Ask Shahad",
+      createTicket: "Create a support ticket",
+      ticketFormTitle: "We'll email you a ticket number and follow up.",
+      namePlaceholder: "Your name (optional)",
+      emailPlaceholder: "Your email",
+      submitTicket: "Submit ticket",
+      cancel: "Cancel",
+      ticketCreated: (num: string) =>
+        `Your support ticket has been created. Ticket number: ${num}. We've sent a confirmation to your email, and our team will follow up there soon.`,
+      ticketFailed: "Couldn't create the ticket. Please try again.",
     },
     ar: {
       title: "شهد",
@@ -40,6 +57,15 @@ export function ChatWidget() {
         "أهلًا! أنا شهد، مساعدة نظامي. اسألني عن النظام، الأسعار، أو نموذج العائد.",
       error: "حدث خطأ، حاول مرة أخرى.",
       open: "اسأل شهد",
+      createTicket: "إنشاء تذكرة دعم",
+      ticketFormTitle: "سنرسل لك رقم التذكرة على بريدك ونتابع معك.",
+      namePlaceholder: "اسمك (اختياري)",
+      emailPlaceholder: "بريدك الإلكتروني",
+      submitTicket: "إرسال التذكرة",
+      cancel: "إلغاء",
+      ticketCreated: (num: string) =>
+        `تم إنشاء تذكرة الدعم الخاصة بك. رقم التذكرة: ${num}. أرسلنا تأكيدًا إلى بريدك الإلكتروني وسيتابع معك فريقنا قريبًا.`,
+      ticketFailed: "تعذّر إنشاء التذكرة، حاول مرة أخرى.",
     },
   }[language];
 
@@ -102,9 +128,12 @@ export function ChatWidget() {
             setChatMessages((prev) => {
               const next = [...prev];
               const last = next[next.length - 1];
+              const raw = last.content + payload.content;
+              const offerTicket = last.offerTicket || raw.includes(TICKET_MARKER);
               next[next.length - 1] = {
                 ...last,
-                content: last.content + payload.content,
+                content: raw.replace(TICKET_MARKER, "").trimEnd(),
+                offerTicket,
               };
               return next;
             });
@@ -127,6 +156,51 @@ export function ChatWidget() {
       setBusy(false);
     }
   }
+
+  async function createTicket() {
+    const email = ticketEmail.trim();
+    if (!email || !email.includes("@") || ticketBusy) return;
+
+    setTicketBusy(true);
+    setTicketError(false);
+    try {
+      const transcript = chatMessages
+        .filter((m) => m.content && !m.ticketNumber)
+        .slice(-40)
+        .map((m) => ({ role: m.role, content: m.content.slice(0, 4000) }));
+
+      const res = await fetch(`${API_BASE}/ticket`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name: ticketName.trim() || null,
+          conversationId,
+          language,
+          transcript,
+        }),
+      });
+      if (!res.ok) throw new Error("Ticket request failed");
+      const data = await res.json();
+
+      setTicketFormOpen(false);
+      setChatMessages((prev) => [
+        ...prev.map((m) => ({ ...m, offerTicket: false })),
+        {
+          role: "assistant" as const,
+          content: t.ticketCreated(data.ticketNumber),
+          ticketNumber: data.ticketNumber,
+        },
+      ]);
+    } catch {
+      setTicketError(true);
+    } finally {
+      setTicketBusy(false);
+    }
+  }
+
+  const showTicketOffer =
+    !busy && chatMessages.some((m) => m.offerTicket) && !chatMessages.some((m) => m.ticketNumber);
 
   return (
     <div dir={isRtl ? "rtl" : "ltr"} className="fixed bottom-5 start-5 z-50">
@@ -189,6 +263,59 @@ export function ChatWidget() {
                   </div>
                 </div>
               ))}
+
+              {showTicketOffer && !ticketFormOpen && (
+                <div className="flex justify-start ps-9">
+                  <button
+                    onClick={() => setTicketFormOpen(true)}
+                    className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-full px-4 py-2 text-sm font-semibold transition-colors"
+                  >
+                    {t.createTicket}
+                  </button>
+                </div>
+              )}
+
+              {showTicketOffer && ticketFormOpen && (
+                <div className="ms-9 bg-white border border-slate-200 rounded-2xl p-4 space-y-2.5">
+                  <p className="text-xs text-slate-500">{t.ticketFormTitle}</p>
+                  <input
+                    value={ticketName}
+                    onChange={(e) => setTicketName(e.target.value)}
+                    placeholder={t.namePlaceholder}
+                    className="w-full bg-slate-100 rounded-xl px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <input
+                    value={ticketEmail}
+                    onChange={(e) => setTicketEmail(e.target.value)}
+                    type="email"
+                    dir="ltr"
+                    placeholder={t.emailPlaceholder}
+                    className={`w-full bg-slate-100 rounded-xl px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 ${isRtl ? "text-right placeholder:text-right" : ""}`}
+                  />
+                  {ticketError && (
+                    <p className="text-xs text-red-600">{t.ticketFailed}</p>
+                  )}
+                  <div className="flex items-center gap-2 pt-0.5">
+                    <button
+                      onClick={createTicket}
+                      disabled={ticketBusy || !ticketEmail.trim().includes("@")}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors"
+                    >
+                      {ticketBusy ? "..." : t.submitTicket}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setTicketFormOpen(false);
+                        setTicketError(false);
+                      }}
+                      disabled={ticketBusy}
+                      className="px-4 py-2.5 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                    >
+                      {t.cancel}
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="p-3 bg-white border-t border-slate-200 flex items-center gap-2">

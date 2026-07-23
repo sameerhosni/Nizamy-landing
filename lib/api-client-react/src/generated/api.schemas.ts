@@ -39,6 +39,55 @@ export interface Error {
   error: string;
 }
 
+export type TicketInputLanguage = typeof TicketInputLanguage[keyof typeof TicketInputLanguage];
+
+
+export const TicketInputLanguage = {
+  en: 'en',
+  ar: 'ar',
+} as const;
+
+export type TicketInputTranscriptItemRole = typeof TicketInputTranscriptItemRole[keyof typeof TicketInputTranscriptItemRole];
+
+
+export const TicketInputTranscriptItemRole = {
+  user: 'user',
+  assistant: 'assistant',
+} as const;
+
+export type TicketInputTranscriptItem = {
+  role: TicketInputTranscriptItemRole;
+  /** @maxLength 4000 */
+  content: string;
+};
+
+export interface TicketInput {
+  /**
+     * @minLength 3
+     * @maxLength 320
+     */
+  email: string;
+  /**
+     * @maxLength 200
+     * @nullable
+     */
+  name?: string | null;
+  /** @nullable */
+  conversationId?: string | null;
+  language?: TicketInputLanguage;
+  /**
+     * @minItems 1
+     * @maxItems 60
+     */
+  transcript: TicketInputTranscriptItem[];
+}
+
+export interface Ticket {
+  ticketNumber: string;
+  subject: string;
+  createdAt: string;
+}
+
 /**
  * Website language the visitor was using; the confirmation email is sent in this language
  */

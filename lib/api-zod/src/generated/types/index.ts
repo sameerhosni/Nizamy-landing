@@ -15,3 +15,8 @@ export * from './openaiConversation';
 export * from './openaiConversationInput';
 export * from './openaiMessage';
 export * from './openaiMessageInput';
+export * from './ticket';
+export * from './ticketInput';
+export * from './ticketInputLanguage';
+export * from './ticketInputTranscriptItem';
+export * from './ticketInputTranscriptItemRole';

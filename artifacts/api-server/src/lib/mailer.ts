@@ -9,6 +9,7 @@ import {
   resolveTemplateId,
   type EmailLang,
 } from "./emailTemplates";
+import { renderClientTicketEmail, renderTeamTicketEmail } from "./ticketEmails";
 
 const smtpHost = process.env.SMTP_HOST;
 const smtpPort = Number(process.env.SMTP_PORT ?? "587");
@@ -44,6 +45,82 @@ export interface LeadEmailData {
   totalReturn?: number | null;
   createdAt: string;
   language?: EmailLang;
+}
+
+export interface TicketEmailData {
+  ticketNumber: string;
+  subject: string;
+  summary: string;
+  email: string;
+  name: string | null;
+  language: EmailLang;
+  transcript: Array<{ role: string; content: string }>;
+  createdAt: string;
+}
+
+export async function sendTicketEmails(ticket: TicketEmailData): Promise<void> {
+  if (!isMailerConfigured()) {
+    logger.warn("SMTP not configured; skipping ticket emails");
+    return;
+  }
+
+  const senderName = process.env.SENDER_NAME || "نظامي اتش آر | Nizamy HR";
+
+  const moduleDir = dirname(fileURLToPath(import.meta.url));
+  const logoPath = [
+    resolve(moduleDir, "..", "assets/logo-mascot.png"),
+    resolve(process.cwd(), "assets/logo-mascot.png"),
+  ].find((p) => existsSync(p));
+  const hasLogo = logoPath !== undefined;
+  const attachments = hasLogo
+    ? [{ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" }]
+    : [];
+
+  const transport = createTransport();
+
+  const client = renderClientTicketEmail({
+    lang: ticket.language,
+    name: ticket.name,
+    ticketNumber: ticket.ticketNumber,
+    subject: ticket.subject,
+    summary: ticket.summary,
+    hasLogo,
+  });
+  await transport.sendMail({
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: salesAddress,
+    to: ticket.email,
+    subject: client.subject,
+    text: client.text,
+    html: client.html,
+    attachments,
+  });
+
+  const team = renderTeamTicketEmail({
+    ticketNumber: ticket.ticketNumber,
+    subject: ticket.subject,
+    summary: ticket.summary,
+    email: ticket.email,
+    name: ticket.name,
+    language: ticket.language,
+    transcript: ticket.transcript,
+    createdAt: ticket.createdAt,
+    hasLogo,
+  });
+  await transport.sendMail({
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: ticket.email,
+    to: salesAddress,
+    subject: team.subject,
+    text: team.text,
+    html: team.html,
+    attachments,
+  });
+
+  logger.info(
+    { ticketNumber: ticket.ticketNumber, email: ticket.email },
+    "Ticket emails sent (client + team)",
+  );
 }
 
 export async function sendLeadConfirmation(

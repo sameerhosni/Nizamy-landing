@@ -27,7 +27,9 @@ import type {
   OpenaiConversation,
   OpenaiConversationInput,
   OpenaiMessage,
-  OpenaiMessageInput
+  OpenaiMessageInput,
+  Ticket,
+  TicketInput
 } from './api.schemas';
 
 import { customFetch } from '../custom-fetch';
@@ -204,6 +206,77 @@ export const useCreateLead = <TError = ErrorType<Error>,
         TContext
       > => {
       return useMutation(getCreateLeadMutationOptions(options));
+    }
+
+export const getCreateTicketUrl = () => {
+
+
+
+
+  return `/api/ticket`
+}
+
+/**
+ * Summarizes the chat conversation, stores a ticket, and emails both the visitor and the Nizamy team
+ * @summary Create a support ticket from a chat conversation
+ */
+export const createTicket = async (ticketInput: TicketInput, options?: RequestInit): Promise<Ticket> => {
+
+  return customFetch<Ticket>(getCreateTicketUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(ticketInput)
+  }
+);}
+
+
+
+
+export const getCreateTicketMutationOptions = <TError = ErrorType<Error>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createTicket>>, TError,{data: BodyType<TicketInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createTicket>>, TError,{data: BodyType<TicketInput>}, TContext> => {
+
+const mutationKey = ['createTicket'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createTicket>>, {data: BodyType<TicketInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createTicket(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateTicketMutationResult = NonNullable<Awaited<ReturnType<typeof createTicket>>>
+    export type CreateTicketMutationBody = BodyType<TicketInput>
+    export type CreateTicketMutationError = ErrorType<Error>
+
+    /**
+ * @summary Create a support ticket from a chat conversation
+ */
+export const useCreateTicket = <TError = ErrorType<Error>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createTicket>>, TError,{data: BodyType<TicketInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createTicket>>,
+        TError,
+        {data: BodyType<TicketInput>},
+        TContext
+      > => {
+      return useMutation(getCreateTicketMutationOptions(options));
     }
 
 export const getCreateOpenaiConversationUrl = () => {

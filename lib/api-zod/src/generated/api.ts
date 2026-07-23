@@ -56,6 +56,40 @@ export const CreateLeadResponse = zod.object({
 
 
 /**
+ * Summarizes the chat conversation, stores a ticket, and emails both the visitor and the Nizamy team
+ * @summary Create a support ticket from a chat conversation
+ */
+export const createTicketBodyEmailMin = 3;
+export const createTicketBodyEmailMax = 320;
+
+export const createTicketBodyNameMax = 200;
+
+export const createTicketBodyLanguageDefault = `ar`;
+export const createTicketBodyTranscriptItemContentMax = 4000;
+
+export const createTicketBodyTranscriptMax = 60;
+
+
+
+export const CreateTicketBody = zod.object({
+  "email": zod.string().email().min(createTicketBodyEmailMin).max(createTicketBodyEmailMax),
+  "name": zod.string().max(createTicketBodyNameMax).nullish(),
+  "conversationId": zod.string().uuid().nullish(),
+  "language": zod.enum(['en', 'ar']).default(createTicketBodyLanguageDefault),
+  "transcript": zod.array(zod.object({
+  "role": zod.enum(['user', 'assistant']),
+  "content": zod.string().max(createTicketBodyTranscriptItemContentMax)
+})).min(1).max(createTicketBodyTranscriptMax)
+})
+
+export const CreateTicketResponse = zod.object({
+  "ticketNumber": zod.string(),
+  "subject": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
  * @summary Create a new conversation
  */
 export const CreateOpenaiConversationBody = zod.object({

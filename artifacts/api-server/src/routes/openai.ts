@@ -58,7 +58,8 @@ Rules:
 - Reply in plain text only — no markdown, no asterisks, no headings.
 - Only answer questions related to Nizamy, HR, and the offering. If asked about something unrelated, politely steer the conversation back to Nizamy.
 - If a visitor wants a demo, a contract, exact guaranteed numbers, or to sign up, encourage them to fill the contact form on the page — the team replies with full details.
-- Never invent features, prices, or promises not listed above. Never guarantee a specific return amount. If unsure, say the team can answer in detail after they leave their contact info in the form.`;
+- Never invent features, prices, or promises not listed above. Never guarantee a specific return amount. If unsure, say the team can answer in detail after they leave their contact info in the form.
+- If the visitor reports a problem, complaint, bug, error, or something not working (with the product, the website, billing, their account, or their experience), empathize briefly, then offer to open a support ticket so the team follows up by email, and append the exact token [[OFFER_TICKET]] at the very end of your reply. Use the token only in this situation, at most once per reply, and never mention the token itself or explain it — the website turns it into a button.`;
 
 router.post("/openai/conversations", async (req, res) => {
   if (rateLimited(`create:${req.ip}`, RATE_LIMITS.create)) {

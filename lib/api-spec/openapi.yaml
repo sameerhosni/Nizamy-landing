@@ -53,6 +53,31 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /ticket:
+    post:
+      operationId: createTicket
+      tags: [leads]
+      summary: Create a support ticket from a chat conversation
+      description: Summarizes the chat conversation, stores a ticket, and emails both the visitor and the Nizamy team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TicketInput"
+      responses:
+        "201":
+          description: Created ticket
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ticket"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /openai/conversations:
     post:
       operationId: createOpenaiConversation
@@ -182,6 +207,55 @@ components:
           type: string
       required:
         - error
+    TicketInput:
+      type: object
+      required:
+        - email
+        - transcript
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 3
+          maxLength: 320
+        name:
+          type: ["string", "null"]
+          maxLength: 200
+        conversationId:
+          type: ["string", "null"]
+          format: uuid
+        language:
+          type: string
+          enum: [en, ar]
+          default: ar
+        transcript:
+          type: array
+          minItems: 1
+          maxItems: 60
+          items:
+            type: object
+            required: [role, content]
+            properties:
+              role:
+                type: string
+                enum: [user, assistant]
+              content:
+                type: string
+                maxLength: 4000
+    Ticket:
+      type: object
+      required:
+        - ticketNumber
+        - subject
+        - createdAt
+      properties:
+        ticketNumber:
+          type: string
+        subject:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
     LeadInput:
       type: object
       required:

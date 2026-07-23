@@ -177,21 +177,23 @@ export function Features() {
           const count = allFeatures.length;
 
           const renderCenter = (sizeClass: string) => (
-            <div className={`relative rounded-full bg-gradient-to-br from-blue-50 to-white border-[10px] border-white shadow-[0_25px_60px_rgba(37,99,235,0.15)] overflow-hidden ${sizeClass}`}>
+            <div className={`relative flex items-center justify-center ${sizeClass}`}>
+              {/* soft glowing disc behind the card — decorative, not a mask */}
+              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-50 to-white border-[10px] border-white shadow-[0_25px_60px_rgba(37,99,235,0.15)]" />
               {allFeatures.map((f, idx) => (
                 <motion.div
                   key={idx}
                   initial={false}
-                  animate={{ opacity: idx === activeIndex ? 1 : 0 }}
+                  animate={{ opacity: idx === activeIndex ? 1 : 0, scale: idx === activeIndex ? 1 : 0.94 }}
                   transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className={`absolute inset-0 ${idx === activeIndex ? "" : "pointer-events-none"}`}
+                  className={`absolute inset-0 flex items-center justify-center ${idx === activeIndex ? "" : "pointer-events-none"}`}
                 >
                   {f.visual ? (
-                    <div className="absolute inset-0 scale-[0.72] origin-center">
+                    <div className="w-full h-full scale-[0.8] origin-center">
                       <f.visual language={language} />
                     </div>
                   ) : (
-                    <img src={f.image} alt={f.title} className="w-full h-full object-cover" />
+                    <img src={f.image} alt={f.title} className="w-[78%] h-[78%] object-cover rounded-[32px] shadow-[0_25px_60px_rgba(15,23,42,0.18)]" />
                   )}
                 </motion.div>
               ))}

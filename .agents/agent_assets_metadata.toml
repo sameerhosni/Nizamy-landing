@@ -198,6 +198,12 @@ uri = "file://artifacts/web/src/assets/badge-payroll.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "sIa5qlPA0LbwPSL7RuF8A"
+uri = "file://artifacts/web/src/assets/face-scan-selfie.png"
+type = "image"
+title = "saudi man selfie face"
+
 [[outputs]]
 id = "_r7cLEK3CcqlYOGWojIK_"
 uri = "file://artifacts/web/public/images/hero-bg.jpg"

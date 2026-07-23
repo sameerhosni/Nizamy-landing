@@ -1,8 +1,11 @@
-import { Gift, Trophy, Medal, Coins, Sparkles, TrendingUp, Check, ChevronLeft, ChevronRight, Zap, ShieldCheck, Search, Wallet } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Gift, Trophy, Medal, Coins, Sparkles, TrendingUp, Check, ChevronLeft, ChevronRight, Zap, ShieldCheck, Search, Wallet, ScanFace } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import noonLogo from "@/assets/brands/noon.png";
 import hungerstationLogo from "@/assets/brands/hungerstation.png";
 import amazonLogo from "@/assets/brands/amazon.png";
 import jarirLogo from "@/assets/brands/jarir.png";
+import faceScanSelfie from "@/assets/face-scan-selfie.png";
 
 interface VisualProps {
   language: "en" | "ar";
@@ -280,6 +283,179 @@ export function OnboardingVisual({ language }: VisualProps) {
             {ar ? <>متوسط وقت الإعداد<br /><span className="text-blue-600">أقل من 10 دقائق</span></> : <>Avg. setup time<br /><span className="text-blue-600">under 10 minutes</span></>}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function BiometricScanVisual({ language }: VisualProps) {
+  const ar = language === "ar";
+  // phase 0: framing, 1: scanning, 2: matched
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const durations = [1400, 2600, 2600];
+    const timer = setTimeout(() => setPhase((p) => (p + 1) % 3), durations[phase]);
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  const statusText = phase === 0
+    ? (ar ? "ثبّت وجهك داخل الإطار" : "Align your face in the frame")
+    : phase === 1
+      ? (ar ? "جاري مسح الوجه…" : "Scanning face…")
+      : (ar ? "تم تسجيل الحضور" : "Attendance recorded");
+
+  return (
+    <div className="w-full h-full flex items-center justify-center p-6">
+      <div className="relative w-full max-w-md flex items-center justify-center">
+        <Glow />
+
+        {/* Hand + phone */}
+        <motion.div
+          animate={{ y: [0, -7, 0], rotate: [-4, -2.5, -4] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+          className="relative"
+          style={{ transformOrigin: "50% 90%" }}
+        >
+          {/* Thumb holding the phone */}
+          <div className="absolute -bottom-5 -start-6 w-24 h-16 rounded-[50%] bg-gradient-to-br from-[#E8B792] to-[#D9A177] rotate-[38deg] shadow-[0_10px_25px_rgba(0,0,0,0.18)] z-20" />
+          <div className="absolute -bottom-10 start-2 w-32 h-24 rounded-[45%] bg-gradient-to-br from-[#E3AE87] to-[#CE9367] rotate-[15deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] z-10" />
+
+          {/* Phone frame */}
+          <div className="relative z-30 w-[230px] rounded-[36px] bg-slate-900 p-[10px] shadow-[0_35px_80px_rgba(15,23,42,0.45)] border border-slate-700/60">
+            <div className="relative rounded-[28px] overflow-hidden bg-black">
+              {/* Camera viewfinder */}
+              <div className="relative h-[360px]">
+                <img src={faceScanSelfie} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+                {/* viewfinder darkening with oval cutout */}
+                <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 42% 34% at 50% 42%, transparent 62%, rgba(2,6,23,0.72) 100%)" }} />
+
+                {/* top bar */}
+                <div className="absolute top-0 inset-x-0 flex items-center justify-between px-4 pt-3 text-white/90">
+                  <span className="text-[10px] font-black bg-white/15 backdrop-blur rounded-full px-2.5 py-1">{ar ? "تسجيل حضور" : "Check-in"}</span>
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                </div>
+
+                {/* face oval + corner brackets */}
+                <div className={`absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 w-[150px] h-[190px] rounded-[50%] border-2 transition-colors duration-500 ${phase === 2 ? "border-green-400" : "border-dashed border-cyan-300/80"}`} />
+
+                {/* scanning beam */}
+                <AnimatePresence>
+                  {phase === 1 && (
+                    <motion.div
+                      key="beam"
+                      initial={{ top: "18%", opacity: 0 }}
+                      animate={{ top: ["18%", "64%", "18%"], opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ top: { duration: 1.6, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 0.25 } }}
+                      className="absolute inset-x-6 h-[3px] rounded-full bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_18px_4px_rgba(34,211,238,0.55)]"
+                    />
+                  )}
+                </AnimatePresence>
+
+                {/* face-mesh landmark dots while scanning */}
+                {phase === 1 && (
+                  <div className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 w-[150px] h-[190px]">
+                    {[[30,32],[70,26],[50,45],[32,62],[68,60],[50,72],[40,85],[60,86],[22,48],[78,46]].map(([x,y], i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 1, 0.35, 1] }}
+                        transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.12 }}
+                        className="absolute w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_2px_rgba(34,211,238,0.6)]"
+                        style={{ left: `${x}%`, top: `${y}%` }}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* success flash + check */}
+                <AnimatePresence>
+                  {phase === 2 && (
+                    <>
+                      <motion.div
+                        key="flash"
+                        initial={{ opacity: 0.9 }}
+                        animate={{ opacity: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="absolute inset-0 bg-white"
+                      />
+                      <motion.div
+                        key="check"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.6, opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 16 }}
+                        className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-[0_0_40px_10px_rgba(34,197,94,0.45)]"
+                      >
+                        <Check size={34} strokeWidth={3.5} />
+                      </motion.div>
+                    </>
+                  )}
+                </AnimatePresence>
+
+                {/* status pill */}
+                <div className="absolute bottom-16 inset-x-0 flex justify-center">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={phase}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`text-[11px] font-black rounded-full px-4 py-2 backdrop-blur border ${
+                        phase === 2 ? "bg-green-500/90 text-white border-green-400" : "bg-slate-900/70 text-cyan-100 border-white/15"
+                      }`}
+                    >
+                      {statusText}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+
+                {/* shutter */}
+                <div className="absolute bottom-3 inset-x-0 flex justify-center">
+                  <div className={`w-11 h-11 rounded-full border-[3px] transition-colors duration-500 ${phase === 2 ? "border-green-400" : "border-white/80"} flex items-center justify-center`}>
+                    <motion.div
+                      animate={phase === 1 ? { scale: [1, 0.75, 1] } : { scale: 1 }}
+                      transition={{ duration: 1.2, repeat: phase === 1 ? Infinity : 0 }}
+                      className={`w-8 h-8 rounded-full ${phase === 2 ? "bg-green-400" : "bg-white"}`}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Match-result card */}
+          <AnimatePresence>
+            {phase === 2 && (
+              <motion.div
+                key="result"
+                initial={{ opacity: 0, y: 14, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                className="absolute -end-20 top-8 z-40 rounded-2xl bg-white border border-green-200 shadow-[0_15px_35px_rgba(34,197,94,0.25)] px-4 py-3"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-md">
+                    <ScanFace size={18} />
+                  </div>
+                  <div>
+                    <div className="text-[12px] font-black text-slate-800">{ar ? "تطابق الوجه 98.7%" : "Face match 98.7%"}</div>
+                    <div className="text-[10.5px] font-bold text-green-600">{ar ? "حضور ٨:٥٩ ص ✓" : "Checked in 8:59 AM ✓"}</div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* liveness badge */}
+          <div className="absolute -start-16 bottom-20 z-40 rounded-2xl bg-white border border-blue-200 shadow-[0_15px_35px_rgba(37,99,235,0.2)] px-3.5 py-2.5 -rotate-3 flex items-center gap-2">
+            <ShieldCheck size={15} className="text-blue-600" />
+            <span className="text-[11px] font-black text-slate-800">{ar ? "كشف الحيوية" : "Liveness check"}</span>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

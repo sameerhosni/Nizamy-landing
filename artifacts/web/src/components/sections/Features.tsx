@@ -3,7 +3,7 @@ import { useLanguage } from "@/lib/i18n";
 import { UserCheck, CalendarDays, Gift, BarChart3, Rocket, ShieldCheck, Users, Wallet } from "lucide-react";
 import { motion } from "framer-motion";
 import feature2 from "@/assets/availo/feature-2.png";
-import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual, ComplianceVisual, RecruitmentVisual, PayrollVisual } from "./FeatureVisuals";
+import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual, ComplianceVisual, RecruitmentVisual, PayrollVisual, BiometricScanVisual } from "./FeatureVisuals";
 
 export function Features() {
   const { language } = useLanguage();
@@ -49,7 +49,7 @@ export function Features() {
           title: "Biometric Check-in/out",
           desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate and fraud-proof.",
           icon: UserCheck,
-          image: feature2
+          visual: BiometricScanVisual
         },
         {
           title: "Employee Engagement via Rewards & Incentives",
@@ -110,7 +110,7 @@ export function Features() {
           title: "تسجيل حضور بيومتري",
           desc: "يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق ويصعب التلاعب به.",
           icon: UserCheck,
-          image: feature2
+          visual: BiometricScanVisual
         },
         {
           title: "تفاعل الموظفين عبر المكافآت والحوافز",
@@ -163,7 +163,7 @@ export function Features() {
               icon: item.icon,
               soon: false,
               visual: "visual" in item ? item.visual : undefined,
-              image: "image" in item ? item.image : undefined,
+              image: undefined as string | undefined,
             })),
             ...t.badges.map((badge) => ({
               title: badge.label,

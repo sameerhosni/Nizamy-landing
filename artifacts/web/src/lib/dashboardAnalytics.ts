@@ -1,5 +1,4 @@
-const ENDPOINT =
-  "https://709d27e4-fdf1-42ab-8064-ee41ee4591ed-00-3uo3vnwoy8xmj.pike.replit.dev/api/analytics/track";
+const ENDPOINT = "https://traffic-insights.replit.app/api/analytics/track";
 const SESSION_KEY = "_a_sid";
 
 function getSessionId(): string {

@@ -196,14 +196,14 @@ export function Calculator({
                 track("calculator_used", { employees: vals[0], tier, language })
               }
               min={5}
-              max={500}
+              max={200}
               step={1}
               dir={dir}
               className="py-2"
             />
             <div className="flex justify-between text-sm text-slate-400 font-bold mt-4">
               <span>5</span>
-              <span>500</span>
+              <span>200</span>
             </div>
           </div>
         </motion.div>

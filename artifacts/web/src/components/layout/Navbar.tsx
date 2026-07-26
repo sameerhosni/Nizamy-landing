@@ -83,10 +83,7 @@ export function Navbar() {
               className="rounded-full px-4 sm:px-7 text-[14px] sm:text-[15px] font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_10px_rgba(37,99,235,0.2)] hover:shadow-[0_6px_15px_rgba(37,99,235,0.3)] transition-all h-10 sm:h-11"
               onClick={() => scrollTo("partner")}
             >
-              {isRtl ? "احصل على العرض المبكر" : "Get Early Access"}
-              <span className="ms-2 hidden min-[430px]:inline-block rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
-                {isRtl ? "جرب مجانًا" : "Try for free"}
-              </span>
+              {isRtl ? "جرب مجانًا" : "Try for free"}
             </Button>
             <button
               className="lg:hidden p-1.5 sm:p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"

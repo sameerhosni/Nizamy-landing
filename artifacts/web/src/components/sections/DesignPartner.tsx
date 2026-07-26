@@ -4,7 +4,7 @@ import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Gift, Sparkles } from "lucide-react";
+import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Gift } from "lucide-react";
 import { motion } from "framer-motion";
 import { dashboardTrackLead } from "@/lib/dashboardAnalytics";
 import { track, identifyLead } from "@/lib/analytics";
@@ -178,14 +178,9 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
                   <Gift className="w-7 h-7" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 text-[13px] font-black uppercase tracking-wide text-slate-800/80">
-                    <Sparkles className="w-4 h-4" />
-                    {t.offerBadge}
-                  </div>
                   <div className="text-2xl sm:text-3xl font-heading font-black leading-tight">
                     {t.offerHighlight}
                   </div>
-                  <div className="text-[13px] font-bold text-slate-800/70">{t.offerNote}</div>
                 </div>
               </motion.div>
             </div>

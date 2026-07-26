@@ -83,7 +83,12 @@ export function Navbar() {
               className="rounded-full px-5 sm:px-8 text-[14px] sm:text-[15px] font-black whitespace-nowrap bg-gradient-to-r from-amber-400 via-amber-400 to-orange-400 hover:from-amber-300 hover:to-orange-400 text-slate-900 shadow-[0_6px_18px_rgba(251,146,60,0.45)] hover:shadow-[0_8px_24px_rgba(251,146,60,0.6)] hover:scale-[1.04] active:scale-[0.98] transition-all h-10 sm:h-11"
               onClick={() => scrollTo("partner")}
             >
-              {isRtl ? "جرب مجانًا" : "Try for free"}
+              <span className="flex flex-col items-center leading-tight py-1">
+                <span>{isRtl ? "جرب مجانًا" : "Try for free"}</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-slate-800/80 whitespace-nowrap">
+                  {isRtl ? "إلغاء الاشتراك في أي وقت بدون التزامات" : "Cancel anytime — no commitments"}
+                </span>
+              </span>
             </Button>
             <button
               className="lg:hidden p-1.5 sm:p-2 rounded-xl text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"

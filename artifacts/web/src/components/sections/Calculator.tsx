@@ -233,13 +233,20 @@ export function Calculator({
                   track("package_cta_clicked", { tier, employees, language });
                   document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="mt-6 w-full h-14 rounded-[16px] bg-blue-600 hover:bg-blue-700 text-white text-[16px] font-black flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all"
+                className="mt-6 w-full min-h-14 py-3 rounded-[16px] bg-blue-600 hover:bg-blue-700 text-white text-[16px] font-black flex flex-col items-center justify-center gap-1 shadow-[0_8px_20px_rgba(37,99,235,0.25)] transition-all"
               >
-                {language === "ar"
-                  ? `اطلب باقة ${t.tiers[tier]} الآن`
-                  : `Request the ${t.tiers[tier]} plan now`}
-                <span className="rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
-                  {language === "ar" ? "جرب مجانًا" : "Try for free"}
+                <span className="flex items-center justify-center gap-2">
+                  {language === "ar"
+                    ? `اطلب باقة ${t.tiers[tier]} الآن`
+                    : `Request the ${t.tiers[tier]} plan now`}
+                  <span className="rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
+                    {language === "ar" ? "جرب مجانًا" : "Try for free"}
+                  </span>
+                </span>
+                <span className="text-[11px] font-semibold text-blue-100">
+                  {language === "ar"
+                    ? "مع إمكانية إلغاء الاشتراك في أي وقت بدون أي التزامات"
+                    : "Cancel anytime — no commitments"}
                 </span>
               </button>
             </div>

@@ -39,7 +39,7 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
       sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
       offerBadge: "Early-partner gift",
       offerHighlight: "Try for free",
-      offerNote: "For the first 50 clients only",
+      offerNote: "Cancel anytime — no commitments",
       labels: {
         name: "Full Name",
         company: "Company Name",
@@ -67,7 +67,7 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
       offerBadge: "هدية الشركاء الأوائل",
       offerHighlight: "جرب مجانًا",
-      offerNote: "لأول 50 عميل",
+      offerNote: "مع إمكانية إلغاء الاشتراك في أي وقت بدون أي التزامات",
       labels: {
         name: "الاسم الكامل",
         company: "اسم الشركة",
@@ -180,6 +180,9 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
                 <div>
                   <div className="text-2xl sm:text-3xl font-heading font-black leading-tight">
                     {t.offerHighlight}
+                  </div>
+                  <div className="text-[12px] font-bold text-slate-800/70 mt-1">
+                    {t.offerNote}
                   </div>
                 </div>
               </motion.div>

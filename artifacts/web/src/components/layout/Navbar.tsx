@@ -85,7 +85,7 @@ export function Navbar() {
             >
               {isRtl ? "احصل على العرض المبكر" : "Get Early Access"}
               <span className="ms-2 hidden min-[430px]:inline-block rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
-                {isRtl ? "3 أشهر مجانًا" : "3 months free"}
+                {isRtl ? "جرب مجانًا" : "Try for free"}
               </span>
             </Button>
             <button

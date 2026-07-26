@@ -239,7 +239,7 @@ export function Calculator({
                   ? `اطلب باقة ${t.tiers[tier]} الآن`
                   : `Request the ${t.tiers[tier]} plan now`}
                 <span className="rounded-full bg-amber-400 text-slate-900 text-[11px] font-black px-2.5 py-1 leading-none whitespace-nowrap">
-                  {language === "ar" ? "3 أشهر مجانًا" : "3 months free"}
+                  {language === "ar" ? "جرب مجانًا" : "Try for free"}
                 </span>
               </button>
             </div>

@@ -38,7 +38,7 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
       heading: "Contact Us",
       sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
       offerBadge: "Early-partner gift",
-      offerHighlight: "3 months free",
+      offerHighlight: "Try for free",
       offerNote: "For the first 50 clients only",
       labels: {
         name: "Full Name",
@@ -66,7 +66,7 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
       heading: "تواصــل معنا",
       sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
       offerBadge: "هدية الشركاء الأوائل",
-      offerHighlight: "3 أشهر مجانًا",
+      offerHighlight: "جرب مجانًا",
       offerNote: "لأول 50 عميل",
       labels: {
         name: "الاسم الكامل",

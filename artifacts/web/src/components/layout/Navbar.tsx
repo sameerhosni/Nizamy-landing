@@ -80,7 +80,7 @@ export function Navbar() {
             </Button>
             <Button
               size="sm"
-              className="rounded-full px-4 sm:px-7 text-[14px] sm:text-[15px] font-bold whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_10px_rgba(37,99,235,0.2)] hover:shadow-[0_6px_15px_rgba(37,99,235,0.3)] transition-all h-10 sm:h-11"
+              className="rounded-full px-5 sm:px-8 text-[14px] sm:text-[15px] font-black whitespace-nowrap bg-gradient-to-r from-amber-400 via-amber-400 to-orange-400 hover:from-amber-300 hover:to-orange-400 text-slate-900 shadow-[0_6px_18px_rgba(251,146,60,0.45)] hover:shadow-[0_8px_24px_rgba(251,146,60,0.6)] hover:scale-[1.04] active:scale-[0.98] transition-all h-10 sm:h-11"
               onClick={() => scrollTo("partner")}
             >
               {isRtl ? "جرب مجانًا" : "Try for free"}

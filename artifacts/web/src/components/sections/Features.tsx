@@ -194,25 +194,25 @@ export function Features() {
                         transition={{ duration: 0.4, delay: i * 0.05 }}
                         className={`relative flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-start transition-all duration-300 cursor-pointer group ${
                           isActive
-                            ? "bg-white border-blue-200 shadow-[0_15px_40px_rgba(37,99,235,0.14)]"
+                            ? "bg-gradient-to-br from-blue-600 to-blue-500 border-blue-600 shadow-[0_18px_45px_rgba(37,99,235,0.35)] scale-[1.02]"
                             : "bg-white border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06)] hover:border-blue-300 hover:shadow-[0_10px_26px_rgba(37,99,235,0.14)] hover:-translate-y-0.5"
                         }`}
                       >
                         {isActive && (
                           <motion.span
                             layoutId="feature-active-bar"
-                            className="absolute start-0 top-3 bottom-3 w-1 rounded-full bg-gradient-to-b from-blue-600 to-cyan-400"
+                            className="absolute start-0 top-3 bottom-3 w-1 rounded-full bg-gradient-to-b from-white to-cyan-200"
                           />
                         )}
                         <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
                           isActive
-                            ? "bg-blue-600 text-white shadow-[0_10px_22px_rgba(37,99,235,0.35)]"
+                            ? "bg-white/20 text-white ring-1 ring-white/40"
                             : "bg-blue-50 text-blue-600 group-hover:bg-blue-100"
                         }`}>
                           <Icon size={21} strokeWidth={2} />
                         </div>
                         <div className="min-w-0">
-                          <p className={`text-[14.5px] font-heading font-black leading-snug flex items-center gap-2 ${isActive ? "text-blue-700" : "text-slate-800"}`}>
+                          <p className={`text-[14.5px] font-heading font-black leading-snug flex items-center gap-2 ${isActive ? "text-white" : "text-slate-800"}`}>
                             <span className="truncate">{f.title}</span>
                             {f.soon && (
                               <span className="shrink-0 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
@@ -225,7 +225,7 @@ export function Features() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               transition={{ duration: 0.3 }}
-                              className="text-[12.5px] font-medium text-slate-500 leading-relaxed mt-1 overflow-hidden"
+                              className="text-[12.5px] font-medium text-blue-100 leading-relaxed mt-1 overflow-hidden"
                             >
                               {f.desc}
                             </motion.p>

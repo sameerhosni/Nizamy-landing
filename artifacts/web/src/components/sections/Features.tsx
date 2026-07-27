@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { UserCheck, CalendarDays, Gift, BarChart3, Rocket, ShieldCheck, Users, Wallet } from "lucide-react";
+import { UserCheck, CalendarDays, Gift, BarChart3, Rocket, ShieldCheck, Users, Wallet, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import feature2 from "@/assets/availo/feature-2.png";
 import { RewardsVisual, AiReportsVisual, OnboardingVisual, LeaveChatVisual, ComplianceVisual, RecruitmentVisual, PayrollVisual, BiometricScanVisual } from "./FeatureVisuals";
@@ -195,7 +195,7 @@ export function Features() {
                         className={`relative flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-start transition-all duration-300 cursor-pointer group ${
                           isActive
                             ? "bg-white border-blue-200 shadow-[0_15px_40px_rgba(37,99,235,0.14)]"
-                            : "bg-white/60 border-slate-200/80 hover:bg-white hover:border-blue-200/70"
+                            : "bg-white border-slate-200 shadow-[0_2px_8px_rgba(15,23,42,0.06)] hover:border-blue-300 hover:shadow-[0_10px_26px_rgba(37,99,235,0.14)] hover:-translate-y-0.5"
                         }`}
                       >
                         {isActive && (
@@ -231,6 +231,11 @@ export function Features() {
                             </motion.p>
                           )}
                         </div>
+                        {!isActive && (
+                          <span className="ms-auto shrink-0 w-7 h-7 rounded-full border border-slate-200 bg-slate-50 text-slate-400 flex items-center justify-center transition-all duration-300 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white">
+                            {language === "ar" ? <ChevronLeft size={15} strokeWidth={2.5} /> : <ChevronRight size={15} strokeWidth={2.5} />}
+                          </span>
+                        )}
                       </motion.button>
                     );
                   })}

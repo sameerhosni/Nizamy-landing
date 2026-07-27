@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 import { logger } from "./logger";
 import {
   renderLeadEmail,
-  renderReturningLeadEmail,
   resolveTemplateId,
   type EmailLang,
 } from "./emailTemplates";
@@ -189,15 +188,12 @@ export async function sendLeadConfirmation(
     logger.warn("Logo asset not found; sending email without embedded logo");
   }
 
-  const textImageSpecs: { cid: string; file: string }[] = isReturning
-    ? [
-        { cid: "nz-headline", file: `returning-headline-${lang}.png` },
-        { cid: "nz-stat", file: `stat-${lang}.png` },
-      ]
-    : [
-        { cid: "nz-headline", file: `welcome-headline-${lang}.png` },
-        { cid: "nz-banner", file: `banner-${lang}.png` },
-      ];
+  // Always send the same confirmation email, no matter how many times the
+  // client submits the form.
+  const textImageSpecs: { cid: string; file: string }[] = [
+    { cid: "nz-headline", file: `welcome-headline-${lang}.png` },
+    { cid: "nz-banner", file: `banner-${lang}.png` },
+  ];
   const textImages = textImageSpecs.map((spec) => ({
     ...spec,
     path: resolveAsset(`assets/email-text/${spec.file}`),
@@ -210,7 +206,7 @@ export async function sendLeadConfirmation(
     );
   }
 
-  const custom = isReturning ? null : loadCustomWelcomeTemplate(lang, resolveAsset);
+  const custom = loadCustomWelcomeTemplate(lang, resolveAsset);
 
   let subject: string;
   let html: string;
@@ -233,9 +229,14 @@ export async function sendLeadConfirmation(
         : `Hi ${firstName},\n\nThanks for your interest in Nizamy — we've received your request.\nWe're putting the final touches on the product, and we'll contact you directly as soon as access is ready so you can be among the first users.\n\nNo action needed right now.\n\nThanks for your trust,\nThe Nizamy team — nizamy.app`;
     attachments = custom.attachments;
   } else {
-    ({ subject, html, text } = isReturning
-      ? renderReturningLeadEmail(firstName, trialLink, lang, hasLogo, hasTextImages)
-      : renderLeadEmail(templateId, firstName, trialLink, lang, hasLogo, hasTextImages));
+    ({ subject, html, text } = renderLeadEmail(
+      templateId,
+      firstName,
+      trialLink,
+      lang,
+      hasLogo,
+      hasTextImages,
+    ));
 
     if (hasLogo && logoPath) {
       attachments.push({ filename: "nizamy-logo.png", path: logoPath, cid: "nizamy-logo" });

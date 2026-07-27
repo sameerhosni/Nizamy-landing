@@ -146,6 +146,7 @@ function loadCustomWelcomeTemplate(
   const htmlPath = resolveAsset(`assets/email-custom/welcome-${lang}.html`);
   const headerPath = resolveAsset(`assets/email-custom/welcome-${lang}-header.png`);
   const footerPath = resolveAsset(`assets/email-custom/welcome-${lang}-footer.png`);
+  const headlinePath = resolveAsset(`assets/email-custom/welcome-${lang}-headline.png`);
   if (!htmlPath || !headerPath || !footerPath) return null;
 
   const raw = readFileSync(htmlPath, "utf-8");
@@ -159,6 +160,9 @@ function loadCustomWelcomeTemplate(
     attachments: [
       { filename: "welcome-header.png", path: headerPath, cid: "nz-welcome-header" },
       { filename: "welcome-footer.png", path: footerPath, cid: "nz-welcome-footer" },
+      ...(headlinePath
+        ? [{ filename: "welcome-headline.png", path: headlinePath, cid: "nz-welcome-headline" }]
+        : []),
     ],
   };
 }

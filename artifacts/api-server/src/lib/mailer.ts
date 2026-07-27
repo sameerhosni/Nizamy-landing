@@ -229,8 +229,8 @@ export async function sendLeadConfirmation(
       );
     text =
       lang === "ar"
-        ? `حياك ${firstName}،\n\nسعداء بانضمامك إلى نظامي. ابدأ بإضافة أول عضو في فريقك:\n${trialLink}\n\nمع خالص التحية،\nفريق نظامي — nizamy.app`
-        : `Hi ${firstName},\n\nWelcome to Nizamy. Start by adding your first team member:\n${trialLink}\n\nBest regards,\nThe Nizamy team — nizamy.app`;
+        ? `أهلًا،\n\nشكرًا لاهتمامك بنظامي، ويسعدنا نأكد لك إن طلبك وصلنا.\nحاليًا نعمل على اللمسات الأخيرة استعدادًا للإطلاق، وبمجرد جاهزية الوصول بنتواصل معك مباشرة حتى تكون من أول المستخدمين.\n\nما يحتاج تسوي أي شيء الآن — بنرسل لك تفاصيل الوصول والخطوات القادمة على نفس بريدك.\n\nشكرًا لثقتك،\nفريق نظامي — nizamy.app`
+        : `Hi ${firstName},\n\nThanks for your interest in Nizamy — we've received your request.\nWe're putting the final touches on the product, and we'll contact you directly as soon as access is ready so you can be among the first users.\n\nNo action needed right now.\n\nThanks for your trust,\nThe Nizamy team — nizamy.app`;
     attachments = custom.attachments;
   } else {
     ({ subject, html, text } = isReturning

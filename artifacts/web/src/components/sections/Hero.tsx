@@ -2,6 +2,7 @@ import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw, Gift } from "lucide-react";
 import { motion } from "framer-motion";
+import { AppStoreBadges } from "@/components/ui/AppStoreBadges";
 import heroManPhones from "@/assets/hero-man-phones.png";
 import noonLogo from "@/assets/brands/noon.png";
 import hungerstationLogo from "@/assets/brands/hungerstation.png";
@@ -183,6 +184,8 @@ export function Hero() {
               {t.secondaryCta}
             </Button>
           </div>
+
+          <AppStoreBadges className="pt-2" />
         </motion.div>
         </div>
 

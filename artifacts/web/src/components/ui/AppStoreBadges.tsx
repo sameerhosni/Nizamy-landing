@@ -69,9 +69,12 @@ function Badge({ store, url }: BadgeProps) {
   return (
     <div
       role="presentation"
-      className={`${base} relative bg-slate-900 text-white border-slate-900 opacity-95`}
+      className={`${base} relative bg-gradient-to-br from-blue-600 to-blue-500 text-white border-blue-600 shadow-[0_10px_28px_rgba(37,99,235,0.30)]`}
     >
       {inner}
+      <span className="absolute -top-2.5 start-3 bg-white text-blue-600 border border-blue-200 rounded-full px-2.5 py-0.5 text-[10px] font-black shadow-sm">
+        {isAr ? "قريبًا" : "Soon"}
+      </span>
     </div>
   );
 }
@@ -85,7 +88,7 @@ export function AppStoreBadges({ className = "" }: { className?: string }) {
         <Badge store="google-play" url={GOOGLE_PLAY_URL} />
       </div>
       {!APP_STORE_URL && !GOOGLE_PLAY_URL && (
-        <p className="text-[12px] font-bold text-slate-400">
+        <p className="text-[13px] font-bold text-blue-600/90">
           {language === "ar"
             ? "تطبيق نظامي في الطريق إليك — كل شيء يبدأ من جوالك 📱"
             : "The Nizamy app is on its way — everything starts from your phone 📱"}

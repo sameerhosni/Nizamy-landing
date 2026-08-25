@@ -2,3 +2,5 @@
 - [GitHub sync for this project](github-sync.md) — push via connector token; uncommitted files go up via git-data API, which makes local/remote SHAs diverge — sync via API, never force-push.
 - [Brand fonts in Gmail emails](email-brand-fonts-gmail.md) — Gmail strips web fonts; pre-render headlines as PNG via ImageMagick+Pango (resvg/node-canvas fail); watch fontconfig family-name weight quirk.
 - [Self-hosted Docker/Kubernetes](self-hosted-docker.md) — user also deploys from GitHub to their own cluster; no Replit-only env assumptions, lazy OpenAI clients, no @assets imports (dockerignored).
+- [Arabic App Store badge locale](arabic-app-store-badge.md) — Apple Marketing Tools uses `ar-ar`; common regional Arabic locales silently return English artwork.
+- [App Store mobile link testing](app-store-mobile-links.md) — mobile emulation may hand Apple universal links to the OS; keep standard anchors and verify semantics instead of forcing popups.

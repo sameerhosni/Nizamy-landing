@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { useCreateLead } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, CheckCircle2, ArrowRight, ArrowLeft, Gift } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { dashboardTrackLead } from "@/lib/dashboardAnalytics";
-import { track, identifyLead } from "@/lib/analytics";
+import { track } from "@/lib/analytics";
 
 interface DesignPartnerProps {
   snapshot: {
@@ -21,253 +19,331 @@ interface DesignPartnerProps {
   setTier: (val: "Standard" | "Growth" | "Pro") => void;
 }
 
-export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
+type Store = "ios" | "android";
+type FormStatus = "idle" | "submitting" | "success" | "error";
+type FormField = "name" | "email" | "whatsapp";
+type FormErrors = Partial<Record<FormField, string>>;
+
+const APP_STORE_URL = "https://apps.apple.com/sa/app/id6792693395";
+const GOOGLE_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=com.t2.nizamy";
+
+function getStoreOrder(): Store[] {
+  if (typeof navigator === "undefined" || typeof window === "undefined") {
+    return ["ios", "android"];
+  }
+
+  const isMobile = window.matchMedia("(max-width: 639px)").matches;
+  if (!isMobile) return ["ios", "android"];
+
+  if (/android/i.test(navigator.userAgent)) return ["android", "ios"];
+  if (
+    /iPad|iPhone|iPod/i.test(navigator.userAgent) ||
+    (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
+  ) {
+    return ["ios", "android"];
+  }
+
+  return ["ios", "android"];
+}
+
+function normalizeWhatsapp(value: string) {
+  const digits = value.replace(/\D/g, "");
+  const withoutCountryCode = digits.startsWith("966") ? digits.slice(3) : digits;
+  return withoutCountryCode.slice(0, 9);
+}
+
+export function DesignPartner(_props: DesignPartnerProps) {
   const { language, dir } = useLanguage();
   const isRtl = dir === "rtl";
-  const mutation = useCreateLead();
-
+  const [storeOrder] = useState<Store[]>(getStoreOrder);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
-    company: "",
     email: "",
-    whatsapp: "+966",
+    whatsapp: "",
   });
 
   const content = {
     en: {
-      heading: "Contact Us",
-      sub: "We're opening a limited number of early-access slots. Claim yours before they're gone.",
-      offerBadge: "Early-partner gift",
-      offerHighlight: "Try for free",
-      offerNote: "Cancel anytime — no commitments",
+      heading: "Ready to get started with Nizamy?",
+      sub: "Download the app for free and start managing your employees' attendance and commitment today.",
+      downloadTitle: "Download the app",
+      downloadNote: "Start for free · No credit card",
+      formTitle: "Want someone to help you get set up?",
+      formSub: "Leave your details and we'll get in touch.",
       labels: {
-        name: "Full Name",
-        company: "Company Name",
-        email: "Work Email",
-        whatsapp: "WhatsApp Number",
+        name: "Full name",
+        email: "Email address",
+        whatsapp: "WhatsApp number",
       },
       placeholders: {
         name: "e.g. Abdullah Al-Mohammed",
-        company: "Your company name",
         email: "name@company.com",
+        whatsapp: "5XXXXXXXX",
       },
-      packageLabel: "Which plan are you interested in?",
-      tiers: { Standard: "Standard", Growth: "Growth", Pro: "Pro" },
-      submit: "Request Early Access",
+      validation: {
+        name: "Please enter at least two characters.",
+        email: "Please enter a valid email address.",
+        whatsapp: "Enter a Saudi number in the format 5XXXXXXXX.",
+      },
+      submit: "Contact me",
       loading: "Sending...",
-      success: {
-        title: "Application Received",
-        desc: "We've sent you an email with all the details — check your inbox.",
-      },
+      success: "We received your details and will contact you soon.",
       error: "Something went wrong. Please try again.",
-      note: "No commitment · Just a conversation.",
     },
     ar: {
-      heading: "تواصــل معنا",
-      sub: "نفتح عدداً محدوداً من مقاعد الوصول المبكر. احجز مقعدك قبل أن تمتلئ.",
-      offerBadge: "هدية الشركاء الأوائل",
-      offerHighlight: "جرب مجانًا",
-      offerNote: "مع إمكانية إلغاء الاشتراك في أي وقت بدون أي التزامات",
+      heading: "جاهز تبدأ مع نظامي؟",
+      sub: "نزّل التطبيق مجاناً وابدأ إدارة حضور موظفيك والتزامهم من اليوم.",
+      downloadTitle: "حمّل التطبيق",
+      downloadNote: "ابدأ مجاناً · بدون بطاقة ائتمانية",
+      formTitle: "تبي أحد يساعدك؟",
+      formSub: "اترك بياناتك وبنتواصل معك.",
       labels: {
         name: "الاسم الكامل",
-        company: "اسم الشركة",
-        email: "البريد الإلكتروني للعمل",
+        email: "البريد الإلكتروني",
         whatsapp: "رقم الواتساب",
       },
       placeholders: {
         name: "مثال: عبدالله المحمد",
-        company: "اسم منشأتك",
         email: "name@company.com",
+        whatsapp: "5XXXXXXXX",
       },
-      packageLabel: "أي باقة تهمّك؟",
-      tiers: { Standard: "أساسي", Growth: "نمو", Pro: "احترافي" },
-      submit: "اطلب وصولاً مبكراً",
+      validation: {
+        name: "الاسم لازم يكون حرفين على الأقل.",
+        email: "أدخل بريداً إلكترونياً صحيحاً.",
+        whatsapp: "أدخل رقماً سعودياً بالصيغة 5XXXXXXXX.",
+      },
+      submit: "تواصلوا معي",
       loading: "جارٍ الإرسال...",
-      success: {
-        title: "تم استلام طلبك",
-        desc: "تم إرسال بريد إلكتروني بكل التفاصيل — تحقق من بريدك الوارد.",
-      },
-      error: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-      note: "بدون التزام · مجرد محادثة",
+      success: "وصلتنا بياناتك، وبنتواصل معك قريب.",
+      error: "صار خطأ، جرّب مرة ثانية",
     },
   };
 
   const t = content[language];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    mutation.mutate(
-      {
-        data: {
-          ...formData,
-          ...snapshot,
-          language,
-        },
-      },
-      {
-        onSuccess: () => {
-          identifyLead(formData.email, {
-            name: formData.name,
-            company: formData.company,
-            email: formData.email.trim().toLowerCase(),
-            whatsapp: formData.whatsapp,
-            language,
-          });
-          track("lead_submitted", {
-            company: formData.company,
-            language,
-            calculator_employees: snapshot.employees,
-            calculator_tier: snapshot.tier,
-            calculator_subscription: snapshot.subscription,
-            calculator_total_return: snapshot.totalReturn,
-          });
-          dashboardTrackLead({
-            company: formData.company,
-            language,
-            employees: snapshot.employees,
-            tier: snapshot.tier,
-          });
-        },
-        onError: () => {
-          track("lead_submit_failed", { language });
-        },
-      },
-    );
+  useEffect(() => {
+    const trackHeaderTryNow = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const button = target.closest("button");
+      const label = button?.textContent ?? "";
+      if (
+        /جرّبه الآن|جرب مجان|try it now|try now|try for free/i.test(label)
+      ) {
+        track("try_now_cta_click", { language });
+      }
+    };
+
+    document.addEventListener("click", trackHeaderTryNow);
+    return () => document.removeEventListener("click", trackHeaderTryNow);
+  }, [language]);
+
+  const storeDetails = {
+    ios: {
+      href: APP_STORE_URL,
+      image: `${import.meta.env.BASE_URL}store-badges/app-store-ar.svg`,
+      alt: isRtl ? "حمّل تطبيق نظامي من App Store" : "Download Nizamy on the App Store",
+      event: "store_click_ios",
+    },
+    android: {
+      href: GOOGLE_PLAY_URL,
+      image: `${import.meta.env.BASE_URL}store-badges/google-play-ar.png`,
+      alt: isRtl ? "حمّل تطبيق نظامي من Google Play" : "Get Nizamy on Google Play",
+      event: "store_click_android",
+    },
+  } as const;
+
+  const updateField = (field: FormField, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    setErrors((current) => ({ ...current, [field]: undefined }));
+    if (status === "error") setStatus("idle");
+  };
+
+  const validate = () => {
+    const nextErrors: FormErrors = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (formData.name.trim().length < 2) {
+      nextErrors.name = t.validation.name;
+    }
+    if (!emailPattern.test(formData.email.trim())) {
+      nextErrors.email = t.validation.email;
+    }
+    if (!/^5\d{8}$/.test(formData.whatsapp)) {
+      nextErrors.whatsapp = t.validation.whatsapp;
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!validate()) return;
+
+    setStatus("submitting");
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim().toLowerCase(),
+      whatsapp: `+966${formData.whatsapp}`,
+      timestamp: new Date().toISOString(),
+      page_source: window.location.href,
+    };
+
+    try {
+      const endpoint = (import.meta.env.LEAD_FORM_ENDPOINT ?? "").trim();
+      if (endpoint) {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) {
+          throw new Error(`Lead form request failed with ${response.status}`);
+        }
+      } else {
+        console.info("LEAD_FORM_ENDPOINT is empty. Lead payload:", payload);
+      }
+
+      track("assist_form_submit", {
+        language,
+        page_source: window.location.pathname,
+      });
+      setStatus("success");
+    } catch (error) {
+      console.error("Lead form submission failed:", error);
+      setStatus("error");
+    }
   };
 
   return (
     <section
       id="partner"
       data-analytics-section="partner"
-      data-analytics-name="Design Partner Form"
-      className="py-24 sm:py-32 scroll-mt-16 relative overflow-hidden bg-[#0A1A3A]"
+      data-analytics-name="Try Now Download and Assist"
+      className="py-16 sm:py-20 scroll-mt-24 relative z-[41] overflow-hidden bg-[#0A1A3A]"
     >
-      {/* Premium Dark Background Glows */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
 
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          
-          {/* Text Side */}
-          <motion.div 
+        <div className="grid gap-8" dir="ltr">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className={`space-y-10 text-white ${isRtl ? "lg:order-2" : "lg:order-1"}`}
+            transition={{ duration: 0.7 }}
+            className="relative overflow-hidden rounded-[2rem] bg-[#0B1D41] px-6 py-12 text-center shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:px-10 sm:py-14"
+            dir={dir}
           >
-            <div>
-              <h2 className="text-[3.5rem] sm:text-6xl lg:text-[5rem] font-heading font-black leading-[1.1] mb-8 tracking-tight">
+            <div className="pointer-events-none absolute -left-24 -top-32 h-72 w-72 rounded-full bg-blue-500/10" />
+            <div className="pointer-events-none absolute -right-20 -bottom-36 h-80 w-80 rounded-full bg-blue-400/10" />
+            <span
+              aria-hidden="true"
+              className="absolute right-5 top-4 flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-400/10 text-2xl leading-none text-yellow-300"
+            >
+              ✱
+            </span>
+
+            <div className="relative z-10 mx-auto max-w-3xl" dir={dir}>
+              <h2 className="text-3xl font-heading font-black leading-[1.15] tracking-tight text-white sm:text-5xl">
                 {t.heading}
               </h2>
-              <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-lg mb-8">
+              <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-300 sm:text-lg">
                 {t.sub}
               </p>
 
-              {/* Offer card */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative inline-flex items-center gap-5 rounded-[1.5rem] bg-gradient-to-br from-amber-400 via-amber-300 to-yellow-300 text-slate-900 px-7 py-5 shadow-[0_15px_40px_rgba(251,191,36,0.35)] overflow-hidden"
-              >
-                <div className="absolute -top-6 -end-6 w-24 h-24 rounded-full bg-white/30 blur-2xl pointer-events-none" />
-                <div className="w-14 h-14 rounded-[1rem] bg-slate-900 text-amber-300 flex items-center justify-center shrink-0">
-                  <Gift className="w-7 h-7" />
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-heading font-black leading-tight">
-                    {t.offerHighlight}
-                  </div>
-                  <div className="text-[12px] font-bold text-slate-800/70 mt-1">
-                    {t.offerNote}
-                  </div>
-                </div>
-              </motion.div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4" dir={dir}>
+                {storeOrder.map((store) => {
+                  const details = storeDetails[store];
+                  return (
+                    <a
+                      key={store}
+                      href={details.href}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={details.alt}
+                      onClick={() => track(details.event, { language })}
+                      className="flex h-[72px] items-center justify-center rounded-lg border border-white/20 bg-black/25 px-2 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+                    >
+                      <img
+                        src={details.image}
+                        alt={details.alt}
+                        className={`block w-auto max-w-full object-contain ${
+                          store === "ios" ? "h-[48px]" : "h-[72px]"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+
+              <p className="mt-5 text-sm font-medium text-slate-400">{t.downloadNote}</p>
             </div>
-            
           </motion.div>
 
-          {/* Form Side */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className={`${isRtl ? "lg:order-1" : "lg:order-2"}`}
+            transition={{ duration: 0.7 }}
+            className="mx-auto w-full max-w-5xl rounded-[2rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_12px_30px_rgba(0,0,0,0.14)] sm:p-8"
+            dir={dir}
           >
-            {mutation.isSuccess ? (
-              <div className="rounded-[2.5rem] bg-white p-16 text-center flex flex-col items-center shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
-                <div className="w-24 h-24 rounded-[1.5rem] bg-green-50 text-green-500 flex items-center justify-center mb-8">
-                  <CheckCircle2 className="w-12 h-12" />
+            {status === "success" ? (
+              <div className="min-h-[420px] text-center flex flex-col items-center justify-center">
+                <div className="w-20 h-20 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center mb-7">
+                  <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h3 className="text-3xl font-heading font-black mb-4 text-slate-900">{t.success.title}</h3>
-                <p className="text-slate-500 text-lg font-medium leading-relaxed">{t.success.desc}</p>
+                <p className="text-2xl sm:text-3xl font-heading font-black text-slate-900 leading-relaxed">
+                  {t.success}
+                </p>
               </div>
             ) : (
-              <div className="rounded-[2.5rem] bg-white p-10 sm:p-14 shadow-[0_30px_60px_rgba(0,0,0,0.3)] relative">
-                <form onSubmit={handleSubmit} className="space-y-7">
-                  {mutation.isError && (
-                    <div className="p-4 bg-red-50 text-red-600 rounded-xl text-[15px] font-bold border border-red-100">
+              <>
+                <h3 className="text-2xl sm:text-3xl font-heading font-black text-slate-900 mb-2">
+                  {t.formTitle}
+                </h3>
+                <p className="text-slate-500 font-medium mb-8">{t.formSub}</p>
+
+                <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                  {status === "error" && (
+                    <div
+                      role="alert"
+                      className="p-4 bg-red-50 text-red-600 rounded-xl text-[15px] font-bold border border-red-100"
+                    >
                       {t.error}
                     </div>
                   )}
 
-                  <div className="space-y-3">
-                    <Label className="text-slate-700 font-bold text-[15px]">{t.packageLabel}</Label>
-                    <div className="grid grid-cols-3 gap-3">
-                      {(["Standard", "Growth", "Pro"] as const).map((tOption) => (
-                        <button
-                          key={tOption}
-                          type="button"
-                          onClick={() => {
-                            setTier(tOption);
-                            track("form_package_selected", { tier: tOption, language });
-                          }}
-                          className={`py-3.5 px-2 border-2 rounded-[1rem] text-center transition-all duration-300 ${
-                            tier === tOption
-                              ? "border-blue-600 bg-blue-50/60 text-blue-700 shadow-sm"
-                              : "border-slate-100 text-slate-500 hover:border-slate-200 hover:bg-slate-50 bg-[#FAFAFA]"
-                          }`}
-                        >
-                          <div className="font-heading font-black text-[15px]">{t.tiers[tOption]}</div>
-                          <div className="text-[12px] font-bold opacity-75">SAR {tOption === "Standard" ? 3 : tOption === "Growth" ? 5 : 8}</div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <Label htmlFor="name" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.name}
                     </Label>
                     <Input
                       id="name"
                       required
+                      minLength={2}
+                      autoComplete="name"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "name-error" : undefined}
                       placeholder={t.placeholders.name}
-                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
+                      className="h-14 rounded-2xl border-slate-200 bg-[#FAFAFA] px-5 text-[15px] font-medium shadow-none focus-visible:ring-2 focus-visible:ring-blue-600"
                       value={formData.name}
-                      onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
+                      onChange={(event) => updateField("name", event.target.value)}
                     />
+                    {errors.name && (
+                      <p id="name-error" className="text-sm font-bold text-red-600">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
 
-                  <div className="space-y-3">
-                    <Label htmlFor="company" className="text-slate-700 font-bold text-[15px]">
-                      {t.labels.company}
-                    </Label>
-                    <Input
-                      id="company"
-                      required
-                      placeholder={t.placeholders.company}
-                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
-                      value={formData.company}
-                      onChange={(e) => setFormData((p) => ({ ...p, company: e.target.value }))}
-                    />
-                  </div>
-
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <Label htmlFor="email" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.email}
                     </Label>
@@ -275,54 +351,70 @@ export function DesignPartner({ snapshot, tier, setTier }: DesignPartnerProps) {
                       id="email"
                       type="email"
                       required
+                      autoComplete="email"
+                      dir="ltr"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "email-error" : undefined}
                       placeholder={t.placeholders.email}
-                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
+                      className="h-14 rounded-2xl border-slate-200 bg-[#FAFAFA] px-5 text-left text-[15px] font-medium shadow-none focus-visible:ring-2 focus-visible:ring-blue-600"
                       value={formData.email}
-                      onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                      onChange={(event) => updateField("email", event.target.value)}
                     />
+                    {errors.email && (
+                      <p id="email-error" className="text-sm font-bold text-red-600">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <Label htmlFor="whatsapp" className="text-slate-700 font-bold text-[15px]">
                       {t.labels.whatsapp}
                     </Label>
-                    <Input
-                      id="whatsapp"
-                      type="tel"
-                      required
-                      dir="ltr"
-                      className="h-16 rounded-[1rem] border-slate-200 bg-[#FAFAFA] px-6 text-[15px] font-medium text-left shadow-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:bg-white transition-all"
-                      value={formData.whatsapp}
-                      onChange={(e) => setFormData((p) => ({ ...p, whatsapp: e.target.value }))}
-                    />
+                    <div className="flex h-14 items-center rounded-2xl border border-slate-200 bg-[#FAFAFA] focus-within:ring-2 focus-within:ring-blue-600">
+                      <span className="border-r border-slate-200 px-4 font-bold text-slate-600" dir="ltr">
+                        +966
+                      </span>
+                      <Input
+                        id="whatsapp"
+                        type="tel"
+                        required
+                        inputMode="numeric"
+                        autoComplete="tel-national"
+                        maxLength={9}
+                        pattern="5[0-9]{8}"
+                        dir="ltr"
+                        aria-invalid={Boolean(errors.whatsapp)}
+                        aria-describedby={errors.whatsapp ? "whatsapp-error" : undefined}
+                        placeholder={t.placeholders.whatsapp}
+                        className="h-full rounded-2xl border-0 bg-transparent px-4 text-left text-[15px] font-medium shadow-none focus-visible:ring-0"
+                        value={formData.whatsapp}
+                        onChange={(event) =>
+                          updateField("whatsapp", normalizeWhatsapp(event.target.value))
+                        }
+                      />
+                    </div>
+                    {errors.whatsapp && (
+                      <p id="whatsapp-error" className="text-sm font-bold text-red-600">
+                        {errors.whatsapp}
+                      </p>
+                    )}
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full h-16 text-[17px] font-bold rounded-[1rem] border-0 bg-blue-600 hover:bg-blue-700 text-white shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_25px_rgba(37,99,235,0.35)] transition-all group mt-6"
-                    disabled={mutation.isPending}
+                    disabled={status === "submitting"}
+                    className="w-full h-14 text-[17px] font-bold rounded-2xl border border-blue-500 bg-blue-600/90 hover:bg-blue-700 text-white shadow-none disabled:opacity-70"
                   >
-                    {mutation.isPending ? (
-                      <>
-                        <Loader2 className="me-2 h-5 w-5 animate-spin" />
-                        {t.loading}
-                      </>
-                    ) : (
-                      <>
-                        {t.submit}
-                        {isRtl ? (
-                          <ArrowLeft className="ms-2 h-5 w-5 group-hover:-translate-x-1.5 transition-transform" />
-                        ) : (
-                          <ArrowRight className="ms-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
-                        )}
-                      </>
+                    {status === "submitting" && (
+                      <Loader2 className="me-2 h-5 w-5 animate-spin" />
                     )}
+                    {status === "submitting" ? t.loading : t.submit}
                   </Button>
                 </form>
-              </div>
+              </>
             )}
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 import { Logo } from "@/components/layout/Logo";
 import { useLanguage } from "@/lib/i18n";
 import { Mail } from "lucide-react";
-import { AppStoreBadges } from "@/components/ui/AppStoreBadges";
 
 export function Footer() {
   const { language, dir } = useLanguage();
@@ -48,10 +47,9 @@ export function Footer() {
             <div className="mb-5">
               <Logo />
             </div>
-            <p className="text-slate-500 font-medium leading-relaxed max-w-md mb-6 text-[16px]">
+            <p className="text-slate-500 font-medium leading-relaxed max-w-md text-[16px]">
               {t.tagline}
             </p>
-            <AppStoreBadges className="!items-start" />
           </div>
 
           {/* Links Col */}

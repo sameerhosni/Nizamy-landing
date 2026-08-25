@@ -1,0 +1,62 @@
+CONTEXT
+Continue working on the same «جرّبه الآن» section you just built.
+Visual and layout changes only. Do NOT change any copy, any link, any
+form field, any validation rule, or any tracking event. Do NOT touch
+any other section of the page.
+
+Tell me which file you are editing before you start.
+
+1. FIX THE ANCHOR OFFSET (bug — do this first)
+The section headline is currently hidden behind the sticky header when
+the CTA scrolls to it. Add scroll-margin-top to this section equal to
+the sticky header height (plus ~16px breathing room). Verify the full
+headline «جرّبه الآن» is visible after clicking the header CTA on both
+desktop and mobile.
+
+2. INVERT THE VISUAL HIERARCHY
+The download card must read as the primary action and the form as the
+secondary one.
+- Give the download card the elevated treatment: light/white surface or
+  a strong accent border and visible shadow, matching the page's existing
+  colour tokens. Do not introduce new colours.
+- Reduce the form card to a quieter surface: flatter, softer border,
+  less shadow than the download card.
+- Change the column split from 50/50 to roughly 60/40, download wider.
+- Keep both cards equal height and top-aligned.
+
+3. DOWNLOAD CARD — CONTENT AND SPACING
+- Remove the blue circular phone icon. Replace it with a download or
+  mobile-device icon from the icon set already in use, or remove it
+  entirely if no suitable icon exists. Do not add an icon library.
+- Left-align (RTL: right-align) the icon, title, and subline so they
+  share one alignment axis instead of mixing right-aligned icon with
+  centred text.
+- Close the large empty vertical gap between the title and the badges.
+- Under the badges add a single horizontal three-step row using the
+  existing body font, small size, muted colour:
+      حمّل  →  سجّل شركتك  →  أول تسجيل حضور
+  Stack it vertically on mobile.
+
+4. STORE BADGES
+- Use the Arabic version of BOTH official badges so they match. If the
+  Arabic App Store badge file is not in the assets folder, stop and tell
+  me — do not substitute a custom button.
+- Both badges must render at identical height, in identical containers,
+  with identical corner radius and padding.
+- Keep the current RTL order (App Store first).
+
+5. FORM CARD
+- Keep all three fields and the submit button exactly as they are.
+- Reduce the visual weight of the submit button slightly so it does not
+  compete with the download card as the page's loudest element.
+
+6. OVERLAP AND RESPONSIVE
+- The floating scroll chevrons on the right edge currently overlap the
+  form card. Adjust their offset or z-index so they never sit on top of
+  card content.
+- Verify at 375px, 768px, and 1440px: no clipped text, no overlapping
+  elements, no horizontal scroll, correct RTL throughout.
+
+7. REPORT
+List every file you changed and confirm points 1 and 6 with what you
+observed at each breakpoint.

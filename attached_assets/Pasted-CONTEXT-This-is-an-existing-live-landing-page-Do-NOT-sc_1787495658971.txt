@@ -1,0 +1,88 @@
+CONTEXT
+This is an existing live landing page. Do NOT scaffold a new project,
+do NOT restructure folders, and do NOT upgrade or add dependencies
+unless a change below cannot work without one.
+
+STEP 1 — LOCATE BEFORE EDITING
+Search the codebase for the section currently titled «تواصل معنا»
+(it contains a plan selector with SAR 3 / 5 / 8 and a button labelled
+«اطلب وصولاً مبكراً»). Tell me which file and line range you found it in.
+Make all edits inside that one component. If it appears in more than one
+file, stop and ask me which one is live.
+
+DO NOT MODIFY:
+- the header/nav, hero, الحاسبة, نموذج العائد, or footer
+- any routing, global CSS, theme, or font configuration
+- any other page or component
+
+STEP 2 — PURPOSE CHANGE
+This section becomes the destination for the header «جرّبه الآن» button.
+It is a download launcher with an optional assist form — not a
+contact/early-access request. Keep the existing section id/anchor so the
+header CTA still scrolls here. If no smooth scroll exists, add
+scroll-behavior: smooth to this section only.
+
+STEP 3 — COPY (Arabic, RTL — preserve existing fonts and colours)
+- Headline: «تواصل معنا» → «جرّبه الآن»
+- Subline: replace the current limited-seats text with:
+  «حمّل التطبيق وسجّل شركتك — أول تسجيل حضور خلال دقائق.
+   بدون أجهزة بصمة، وبدون تركيب.»
+- Delete the large yellow «جرب مجاناً» button inside this section only.
+  (Leave the header button alone.)
+- Remove every mention of "وصول مبكر" and limited seats from this section.
+
+STEP 4 — LEFT COLUMN: DOWNLOAD (primary action)
+- Small title: «حمّل التطبيق»
+- Two official store badges using the image files already in the assets
+  folder. Do not generate custom buttons and do not hotlink external
+  image URLs. If the badge files are missing, stop and tell me.
+  • App Store   → https://apps.apple.com/sa/app/id6792693395
+  • Google Play → https://play.google.com/store/apps/details?id=com.t2.nizamy
+- Side by side on desktop, stacked on mobile.
+- Both: target="_blank" rel="noopener"
+- On mobile, show the badge matching the visitor's OS first; keep the
+  other visible below it.
+- These links must always work. Never disable them and never gate them
+  behind the form.
+
+STEP 5 — RIGHT COLUMN: SHORTENED FORM
+Delete: the plan selector (أساسي / نمو / احترافي) and the «اسم الشركة» field.
+Keep exactly three required fields:
+  • الاسم الكامل      — text, min 2 characters
+  • البريد الإلكتروني  — email validation
+  • رقم الواتساب      — tel, keep the +966 prefix, accept 5XXXXXXXX
+- Form title: «تبي أحد يساعدك في التجهيز؟»
+- Form subline: «اترك بياناتك وبنتواصل معك.»
+- Submit button: «اطلب وصولاً مبكراً» → «تواصلوا معي»
+- Inline Arabic validation messages under each field.
+- Disable the submit button while the request is in flight.
+- Success: replace the form with «وصلتنا بياناتك، وبنتواصل معك قريب.»
+  and keep both store badges visible in that success state.
+- Failure: «صار خطأ، جرّب مرة ثانية» and preserve the entered values.
+- This form does NOT create an account. It only captures contact details.
+
+STEP 6 — SUBMISSION HANDLING
+- POST to a single endpoint read from an environment variable named
+  LEAD_FORM_ENDPOINT. Add it to .env with an empty placeholder value.
+- Payload: name, email, whatsapp, timestamp, page_source.
+- If LEAD_FORM_ENDPOINT is empty, log the payload to the console and
+  still show the success state, so the UI can be tested before the
+  endpoint is configured.
+- Do not create a database, table, or migration for this.
+
+STEP 7 — TRACKING
+Fire these events with no personal data in the payload:
+  try_now_cta_click, store_click_ios, store_click_android,
+  assist_form_submit (on success only)
+Use whatever analytics library is already installed. If none is
+installed, wrap the calls in a safe no-op helper — do not install one.
+
+STEP 8 — VERIFY AND REPORT
+Before finishing, confirm each of these and tell me the result:
+1. Header «جرّبه الآن» scrolls to this section on desktop and mobile.
+2. Both store links open the correct listings in a new tab.
+3. Store badges work with the form untouched and empty.
+4. Form rejects an invalid email and a malformed Saudi number.
+5. Section renders correctly RTL at 375px and 1440px width.
+6. List every file you changed. If you touched anything outside the
+   section component, say so explicitly.

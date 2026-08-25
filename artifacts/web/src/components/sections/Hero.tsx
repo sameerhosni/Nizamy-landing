@@ -1,8 +1,8 @@
 import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, TrendingDown, Award, BarChart3, RefreshCw, Gift } from "lucide-react";
+import { TrendingDown, Award, BarChart3, RefreshCw, Gift } from "lucide-react";
 import { motion } from "framer-motion";
-import { AppStoreBadges } from "@/components/ui/AppStoreBadges";
+import { track } from "@/lib/analytics";
 import heroManPhones from "@/assets/hero-man-phones.png";
 import noonLogo from "@/assets/brands/noon.png";
 import hungerstationLogo from "@/assets/brands/hungerstation.png";
@@ -18,10 +18,9 @@ export function Hero() {
       eyebrow: "AI-Powered HR · For Saudi SMEs",
       headlinePart1: "All HR systems cost you… ",
       headlinePart2: "Nizamy saves you up to 30% of your subscription.",
-      subtitle:
-        "Every hour you save. Every mistake you avoid. Every employee who commits more. It all comes back as real value for your business.",
-      primaryCta: "Book a Demo",
+      subtitle: "Track attendance from your phone — no fingerprint devices and no installation.",
       secondaryCta: "Calculate Your Expected Return",
+      storeCaption: "Available now on the App Store and Google Play",
       highlights: [
         {
           title: "Stop waste before it costs you",
@@ -45,10 +44,9 @@ export function Hero() {
       eyebrow: "نظام موارد بشرية بالذكاء الاصطناعي",
       headlinePart1: "كل أنظمة الموارد البشرية تكلفك… ",
       headlinePart2: "نظامي يوفر لك حتى 30% من اشتراكك.",
-      subtitle:
-        "كل ساعة توفرها. كل خطأ تتجنبه. كل موظف يلتزم أكثر. كلها ترجع كقيمة حقيقية لمنشأتك.",
-      primaryCta: "احجز عرضًا توضيحيًا",
+      subtitle: "سجّل الحضور من الجوال — بدون أجهزة بصمة، وبدون تركيب.",
       secondaryCta: "احسب العائد المتوقع لمنشأتك",
+      storeCaption: "متوفر الآن على App Store و Google Play",
       highlights: [
         {
           title: "أوقف الهدر قبل ما يكلّفك",
@@ -74,7 +72,7 @@ export function Hero() {
   const highlightIcons = [TrendingDown, Award, BarChart3, RefreshCw];
 
   return (
-    <section data-analytics-section="hero" data-analytics-name="Hero" className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-[#FAFAFA]">
+    <section data-analytics-section="hero" data-analytics-name="Hero" className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden bg-[#FAFAFA]">
       {/* Full-bleed hero background image with directional fade */}
       <div className="absolute inset-x-0 top-0 h-full max-h-[900px] pointer-events-none overflow-hidden">
         <img
@@ -93,7 +91,7 @@ export function Hero() {
         />
         {/* Fade out toward the bottom so cards sit on a clean surface */}
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/70 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#FAFAFA]/90 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#FAFAFA] from-60% via-[#FAFAFA]/95 via-80% to-transparent" />
       </div>
 
       {/* Floating rewards card over the hero image */}
@@ -102,7 +100,7 @@ export function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="hidden lg:block absolute top-40 end-10 xl:end-24 z-20 w-[300px]"
+        className="hidden lg:block absolute top-56 end-10 xl:end-24 z-20 w-[300px]"
       >
         <div className="relative rounded-3xl bg-white/95 backdrop-blur border-2 border-amber-200/70 shadow-[0_25px_60px_rgba(245,158,11,0.20)] p-5 rotate-2">
           <span aria-hidden="true" className="absolute -top-3.5 -start-3 text-2xl rotate-[-12deg]">🎉</span>
@@ -141,12 +139,12 @@ export function Hero() {
       </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="mb-16 lg:min-h-[520px] flex items-center">
+        <div className="mb-16 lg:min-h-[520px] flex items-start">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="space-y-8 text-center lg:text-start max-w-2xl mx-auto lg:mx-0"
+          className="flex w-full max-w-2xl flex-col items-center gap-10 text-center lg:items-start lg:text-start lg:mx-0"
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-slate-200/60 px-5 py-2 text-sm font-bold text-slate-700">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
@@ -158,34 +156,54 @@ export function Hero() {
             <span className="text-blue-600 block sm:inline mt-2 sm:mt-0">{t.headlinePart2}</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto lg:mx-0 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed font-medium">
             {t.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto h-14 px-10 rounded-full text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_25px_rgba(37,99,235,0.35)] group transition-all duration-300"
-              onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              {t.primaryCta}
-              {isRtl ? (
-                <ArrowLeft className="ms-2 group-hover:-translate-x-1.5 transition-transform" />
-              ) : (
-                <ArrowRight className="ms-2 group-hover:translate-x-1.5 transition-transform" />
-              )}
-            </Button>
+          <div className="flex w-full max-w-md flex-col items-center gap-4 lg:items-start">
+            <div className="flex w-full items-center justify-center gap-4 lg:justify-start" dir="rtl">
+              <a
+                href="https://apps.apple.com/sa/app/id6792693395"
+                target="_blank"
+                rel="noopener"
+                aria-label={isRtl ? "حمّل تطبيق نظامي من App Store" : "Download Nizamy on the App Store"}
+                onClick={() => track("store_click_ios", { language })}
+                className="flex h-14 items-center justify-center border-0 bg-transparent p-0 shadow-none rounded-xl transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}store-badges/app-store-ar.svg`}
+                  alt={isRtl ? "تنزيل من App Store" : "Download on the App Store"}
+                  className="block h-[48px] w-auto max-w-full object-contain"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.t2.nizamy"
+                target="_blank"
+                rel="noopener"
+                aria-label={isRtl ? "حمّل تطبيق نظامي من Google Play" : "Get Nizamy on Google Play"}
+                onClick={() => track("store_click_android", { language })}
+                className="flex h-14 items-center justify-center border-0 bg-transparent p-0 shadow-none rounded-xl transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}store-badges/google-play-ar.png`}
+                  alt={isRtl ? "احصل عليه من Google Play" : "Get it on Google Play"}
+                  className="block h-[72px] w-auto max-w-full object-contain"
+                />
+              </a>
+            </div>
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto h-14 px-10 rounded-full text-lg font-bold bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:text-blue-600 shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-300"
+              className="h-auto w-auto rounded-full border-slate-200 bg-white/70 px-6 py-2.5 text-base font-bold text-slate-600 shadow-none hover:bg-white hover:text-blue-600 transition-all duration-300"
               onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
             >
               {t.secondaryCta}
             </Button>
           </div>
 
-          <AppStoreBadges className="pt-2" />
+          <p className="text-sm font-bold text-slate-500">
+            {t.storeCaption}
+          </p>
         </motion.div>
         </div>
 

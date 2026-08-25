@@ -227,8 +227,8 @@ export function DesignPartner(_props: DesignPartnerProps) {
       data-analytics-name="Try Now Download and Assist"
       className="py-16 sm:py-20 scroll-mt-24 relative z-[41] overflow-hidden bg-[#0A1A3A]"
     >
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
+      <div className="absolute top-0 right-0 hidden h-[800px] w-[800px] -translate-y-1/3 translate-x-1/3 rounded-full bg-blue-500/10 blur-[150px] pointer-events-none sm:block" />
+      <div className="absolute bottom-0 left-0 hidden h-[600px] w-[600px] translate-y-1/3 -translate-x-1/3 rounded-full bg-blue-600/15 blur-[120px] pointer-events-none sm:block" />
 
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <div className="grid gap-8" dir="ltr">
@@ -237,23 +237,23 @@ export function DesignPartner(_props: DesignPartnerProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative overflow-hidden rounded-[2rem] bg-[#0B1D41] px-6 py-12 text-center shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:px-10 sm:py-14"
+            className="relative overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white px-6 py-12 text-center shadow-[0_18px_50px_rgba(15,23,42,0.10)] sm:px-10 sm:py-14"
             dir={dir}
           >
-            <div className="pointer-events-none absolute -left-24 -top-32 h-72 w-72 rounded-full bg-blue-500/10" />
-            <div className="pointer-events-none absolute -right-20 -bottom-36 h-80 w-80 rounded-full bg-blue-400/10" />
+            <div className="pointer-events-none absolute -left-24 -top-32 hidden h-72 w-72 rounded-full bg-blue-100/80 sm:block" />
+            <div className="pointer-events-none absolute -right-20 -bottom-36 hidden h-80 w-80 rounded-full bg-sky-100/80 sm:block" />
             <span
               aria-hidden="true"
-              className="absolute right-5 top-4 flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-400/10 text-2xl leading-none text-yellow-300"
+              className="absolute right-5 top-4 flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-100 text-2xl leading-none text-yellow-600"
             >
               ✱
             </span>
 
             <div className="relative z-10 mx-auto max-w-3xl" dir={dir}>
-              <h2 className="text-3xl font-heading font-black leading-[1.15] tracking-tight text-white sm:text-5xl">
+              <h2 className="text-3xl font-heading font-black leading-[1.15] tracking-tight text-slate-900 sm:text-5xl">
                 {t.heading}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-300 sm:text-lg">
+              <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-600 sm:text-lg">
                 {t.sub}
               </p>
 
@@ -268,7 +268,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
                       rel="noopener"
                       aria-label={details.alt}
                       onClick={() => track(details.event, { language })}
-                      className="flex h-[72px] items-center justify-center rounded-lg border border-white/20 bg-black/25 px-2 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+                      className="flex h-[72px] items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-2 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:bg-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
                     >
                       <img
                         src={details.image}
@@ -282,7 +282,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
                 })}
               </div>
 
-              <p className="mt-5 text-sm font-medium text-slate-400">{t.downloadNote}</p>
+              <p className="mt-5 text-sm font-medium text-slate-500">{t.downloadNote}</p>
             </div>
           </motion.div>
 
@@ -291,7 +291,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mx-auto w-full max-w-5xl rounded-[2rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_12px_30px_rgba(0,0,0,0.14)] sm:p-8"
+            className="hidden mx-auto w-full max-w-5xl rounded-[2rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_12px_30px_rgba(0,0,0,0.14)] sm:p-8"
             dir={dir}
           >
             {status === "success" ? (

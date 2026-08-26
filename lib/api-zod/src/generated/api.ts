@@ -56,6 +56,33 @@ export const CreateLeadResponse = zod.object({
 
 
 /**
+ * Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+ * @summary Claim landing-page incentive points
+ */
+export const createIncentiveSignupBodyEmailMax = 320;
+
+export const createIncentiveSignupBodyMobileMax = 32;
+
+
+
+export const CreateIncentiveSignupBody = zod.object({
+  "intent": zod.enum(['existing_hr', 'seeking_hr', 'exploring']),
+  "email": zod.string().max(createIncentiveSignupBodyEmailMax).nullable(),
+  "mobile": zod.string().max(createIncentiveSignupBodyMobileMax).nullable(),
+  "language": zod.enum(['en', 'ar'])
+})
+
+export const createIncentiveSignupResponsePointsAwardedMin = 0;
+
+
+
+export const CreateIncentiveSignupResponse = zod.object({
+  "status": zod.enum(['awarded', 'already_claimed']),
+  "pointsAwarded": zod.number().min(createIncentiveSignupResponsePointsAwardedMin)
+})
+
+
+/**
  * Summarizes the chat conversation, stores a ticket, and emails both the visitor and the Nizamy team
  * @summary Create a support ticket from a chat conversation
  */

@@ -12,6 +12,8 @@ tags:
     description: Health operations
   - name: leads
     description: Design partner lead capture
+  - name: incentives
+    description: Landing-page incentive claims
   - name: openai
     description: OpenAI AI chat operations
 paths:
@@ -49,6 +51,43 @@ paths:
                 $ref: "#/components/schemas/Lead"
         "400":
           description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /incentive-signup:
+    post:
+      operationId: createIncentiveSignup
+      tags: [incentives]
+      summary: Claim landing-page incentive points
+      description: Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IncentiveSignupInput"
+      responses:
+        "201":
+          description: Incentive entitlement awarded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IncentiveSignupResult"
+        "200":
+          description: Contact has already claimed an incentive entitlement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IncentiveSignupResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "503":
+          description: Incentive service unavailable
           content:
             application/json:
               schema:
@@ -256,6 +295,43 @@ components:
         createdAt:
           type: string
           format: date-time
+    IncentiveSignupInput:
+      type: object
+      required:
+        - intent
+        - email
+        - mobile
+        - language
+      properties:
+        intent:
+          type: string
+          enum:
+            - existing_hr
+            - seeking_hr
+            - exploring
+        email:
+          type: ["string", "null"]
+          maxLength: 320
+        mobile:
+          type: ["string", "null"]
+          maxLength: 32
+        language:
+          type: string
+          enum: [en, ar]
+    IncentiveSignupResult:
+      type: object
+      required:
+        - status
+        - pointsAwarded
+      properties:
+        status:
+          type: string
+          enum:
+            - awarded
+            - already_claimed
+        pointsAwarded:
+          type: integer
+          minimum: 0
     LeadInput:
       type: object
       required:

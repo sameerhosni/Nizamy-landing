@@ -22,6 +22,8 @@ import type {
 import type {
   Error,
   HealthStatus,
+  IncentiveSignupInput,
+  IncentiveSignupResult,
   Lead,
   LeadInput,
   OpenaiConversation,
@@ -206,6 +208,77 @@ export const useCreateLead = <TError = ErrorType<Error>,
         TContext
       > => {
       return useMutation(getCreateLeadMutationOptions(options));
+    }
+
+export const getCreateIncentiveSignupUrl = () => {
+
+
+
+
+  return `/api/incentive-signup`
+}
+
+/**
+ * Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+ * @summary Claim landing-page incentive points
+ */
+export const createIncentiveSignup = async (incentiveSignupInput: IncentiveSignupInput, options?: RequestInit): Promise<IncentiveSignupResult> => {
+
+  return customFetch<IncentiveSignupResult>(getCreateIncentiveSignupUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(incentiveSignupInput)
+  }
+);}
+
+
+
+
+export const getCreateIncentiveSignupMutationOptions = <TError = ErrorType<Error>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createIncentiveSignup>>, TError,{data: BodyType<IncentiveSignupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createIncentiveSignup>>, TError,{data: BodyType<IncentiveSignupInput>}, TContext> => {
+
+const mutationKey = ['createIncentiveSignup'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createIncentiveSignup>>, {data: BodyType<IncentiveSignupInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createIncentiveSignup(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateIncentiveSignupMutationResult = NonNullable<Awaited<ReturnType<typeof createIncentiveSignup>>>
+    export type CreateIncentiveSignupMutationBody = BodyType<IncentiveSignupInput>
+    export type CreateIncentiveSignupMutationError = ErrorType<Error>
+
+    /**
+ * @summary Claim landing-page incentive points
+ */
+export const useCreateIncentiveSignup = <TError = ErrorType<Error>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createIncentiveSignup>>, TError,{data: BodyType<IncentiveSignupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createIncentiveSignup>>,
+        TError,
+        {data: BodyType<IncentiveSignupInput>},
+        TContext
+      > => {
+      return useMutation(getCreateIncentiveSignupMutationOptions(options));
     }
 
 export const getCreateTicketUrl = () => {

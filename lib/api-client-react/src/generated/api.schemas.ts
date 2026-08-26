@@ -88,6 +88,52 @@ export interface Ticket {
   createdAt: string;
 }
 
+export type IncentiveSignupInputIntent = typeof IncentiveSignupInputIntent[keyof typeof IncentiveSignupInputIntent];
+
+
+export const IncentiveSignupInputIntent = {
+  existing_hr: 'existing_hr',
+  seeking_hr: 'seeking_hr',
+  exploring: 'exploring',
+} as const;
+
+export type IncentiveSignupInputLanguage = typeof IncentiveSignupInputLanguage[keyof typeof IncentiveSignupInputLanguage];
+
+
+export const IncentiveSignupInputLanguage = {
+  en: 'en',
+  ar: 'ar',
+} as const;
+
+export interface IncentiveSignupInput {
+  intent: IncentiveSignupInputIntent;
+  /**
+     * @maxLength 320
+     * @nullable
+     */
+  email: string | null;
+  /**
+     * @maxLength 32
+     * @nullable
+     */
+  mobile: string | null;
+  language: IncentiveSignupInputLanguage;
+}
+
+export type IncentiveSignupResultStatus = typeof IncentiveSignupResultStatus[keyof typeof IncentiveSignupResultStatus];
+
+
+export const IncentiveSignupResultStatus = {
+  awarded: 'awarded',
+  already_claimed: 'already_claimed',
+} as const;
+
+export interface IncentiveSignupResult {
+  status: IncentiveSignupResultStatus;
+  /** @minimum 0 */
+  pointsAwarded: number;
+}
+
 /**
  * Website language the visitor was using; the confirmation email is sent in this language
  */

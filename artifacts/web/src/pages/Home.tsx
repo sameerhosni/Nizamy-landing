@@ -12,6 +12,7 @@ import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import { ScrollButtons } from "@/components/ScrollButtons";
+import { IncentivePopup } from "@/components/IncentivePopup";
 import { initDashboardAnalytics } from "@/lib/dashboardAnalytics";
 
 export function Home() {
@@ -68,6 +69,7 @@ export function Home() {
       <Footer />
       <ChatWidget />
       <ScrollButtons />
+      <IncentivePopup />
     </div>
   );
 }

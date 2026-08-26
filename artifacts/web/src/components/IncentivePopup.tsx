@@ -246,7 +246,9 @@ export function IncentivePopup() {
     submit: isAr ? "إرسال" : "Send",
     cancel: isAr ? "لا، شكراً" : "No, thanks",
     successTitle: isAr ? "تم تسجيل الهدية!" : "Reward Claimed!",
-    successDesc: isAr ? "لقد أضفنا النقاط إلى حسابك المستقبلي. شكراً لاهتمامك." : "We've attached the points to your future account. Thank you!",
+    successDesc: isAr
+      ? "قم بتحميل التطبيق وتسجيل حساب منشأتك لاستلام الهدية"
+      : "Download the app and register your company account to receive your gift.",
     claimedTitle: isAr ? "تم تسجيلك مسبقاً" : "Already Claimed",
     claimedDesc: isAr ? "يبدو أنك قمت بالمطالبة بهذه الهدية من قبل. لا تقلق، نقاطك محفوظة." : "Looks like you've already claimed this reward. Don't worry, your points are safe.",
     errorTitle: isAr ? "حدث خطأ" : "Something went wrong",
@@ -282,7 +284,7 @@ export function IncentivePopup() {
         data-variant={isCompact ? "reminder" : "full"}
       >
         {resultState === "none" && isCompact && (
-          <div className="space-y-4" data-testid="incentive-reminder">
+          <div className="space-y-4 rounded-xl bg-gradient-to-br from-sky-50/90 via-white to-blue-50/70 p-1" data-testid="incentive-reminder">
             <DialogHeader
               className={`pe-6 ${
                 isAr
@@ -291,8 +293,8 @@ export function IncentivePopup() {
               }`}
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Gift className="h-4 w-4" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-blue-100 text-sky-600 shadow-sm ring-4 ring-white">
+                  <Gift className="h-5 w-5" />
                 </div>
                 <div className="space-y-1">
                   <DialogTitle className="text-base font-bold font-heading">
@@ -307,7 +309,7 @@ export function IncentivePopup() {
             <div className="flex gap-2">
               <Button
                 type="button"
-                className="flex-1"
+                className="h-10 flex-1 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 font-bold text-white shadow-md shadow-sky-500/20 hover:from-sky-600 hover:to-blue-700"
                 onClick={() => {
                   setIsCompact(false);
                   track("incentive_popup_expanded", { language });
@@ -320,6 +322,7 @@ export function IncentivePopup() {
                 type="button"
                 variant="ghost"
                 onClick={() => onOpenChange(false)}
+                className="h-10 rounded-xl border border-slate-200 bg-white px-4 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800"
                 data-testid="button-remind-later"
               >
                 {t.reminderLater}
@@ -454,49 +457,52 @@ export function IncentivePopup() {
         )}
 
         {resultState === "awarded" && (
-          <div className="py-6 text-center" data-testid="status-awarded">
-            <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-full flex items-center justify-center mb-6">
-              <CheckCircle2 className="w-8 h-8" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-awarded">
+            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-emerald-200/30 blur-3xl" aria-hidden="true" />
+            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-100 to-green-50 text-emerald-600 shadow-lg shadow-emerald-500/10 ring-8 ring-white">
+              <CheckCircle2 className="h-10 w-10" />
             </div>
-            <DialogTitle className="text-2xl font-bold font-heading mb-3">{t.successTitle}</DialogTitle>
-            <DialogDescription className="text-base text-muted-foreground mb-8">
+            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.successTitle}</DialogTitle>
+            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
               {t.successDesc}
             </DialogDescription>
-            <Button onClick={() => onOpenChange(false)} className="w-full sm:w-auto px-8" data-testid="button-close-awarded">
+            <Button onClick={() => onOpenChange(false)} className="relative h-11 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-8 font-bold text-white shadow-lg shadow-emerald-500/20 hover:from-emerald-600 hover:to-green-700 sm:w-auto" data-testid="button-close-awarded">
               {t.close}
             </Button>
           </div>
         )}
 
         {resultState === "already_claimed" && (
-          <div className="py-6 text-center" data-testid="status-already-claimed">
-            <div className="mx-auto w-16 h-16 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-full flex items-center justify-center mb-6">
-              <AlertCircle className="w-8 h-8" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-sky-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-already-claimed">
+            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-sky-200/30 blur-3xl" aria-hidden="true" />
+            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-100 to-blue-50 text-sky-600 shadow-lg shadow-sky-500/10 ring-8 ring-white">
+              <AlertCircle className="h-10 w-10" />
             </div>
-            <DialogTitle className="text-2xl font-bold font-heading mb-3">{t.claimedTitle}</DialogTitle>
-            <DialogDescription className="text-base text-muted-foreground mb-8">
+            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.claimedTitle}</DialogTitle>
+            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
               {t.claimedDesc}
             </DialogDescription>
-            <Button onClick={() => onOpenChange(false)} className="w-full sm:w-auto px-8" data-testid="button-close-claimed">
+            <Button onClick={() => onOpenChange(false)} className="relative h-11 w-full rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-8 font-bold text-white shadow-lg shadow-sky-500/20 hover:from-sky-600 hover:to-blue-700 sm:w-auto" data-testid="button-close-claimed">
               {t.close}
             </Button>
           </div>
         )}
 
         {resultState === "error" && (
-          <div className="py-6 text-center" data-testid="status-error">
-            <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mb-6">
-              <AlertCircle className="w-8 h-8" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-rose-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-error">
+            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-rose-200/30 blur-3xl" aria-hidden="true" />
+            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-rose-100 to-red-50 text-rose-600 shadow-lg shadow-rose-500/10 ring-8 ring-white">
+              <AlertCircle className="h-10 w-10" />
             </div>
-            <DialogTitle className="text-2xl font-bold font-heading mb-3">{t.errorTitle}</DialogTitle>
-            <DialogDescription className="text-base text-muted-foreground mb-8">
+            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.errorTitle}</DialogTitle>
+            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
               {t.errorDesc}
             </DialogDescription>
-            <div className="flex flex-col-reverse sm:flex-row sm:justify-center gap-2">
-              <Button variant="ghost" onClick={() => onOpenChange(false)} className="w-full sm:w-auto px-8" data-testid="button-close-error">
+            <div className="relative grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              <Button variant="ghost" onClick={() => onOpenChange(false)} className="h-11 w-full rounded-xl border border-slate-200 bg-white px-8 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800" data-testid="button-close-error">
                 {t.close}
               </Button>
-              <Button onClick={() => setResultState("none")} className="w-full sm:w-auto px-8" data-testid="button-retry-error">
+              <Button onClick={() => setResultState("none")} className="h-11 w-full rounded-xl bg-gradient-to-r from-rose-500 to-red-600 px-8 font-bold text-white shadow-lg shadow-rose-500/20 hover:from-rose-600 hover:to-red-700" data-testid="button-retry-error">
                 {t.errorRetry}
               </Button>
             </div>

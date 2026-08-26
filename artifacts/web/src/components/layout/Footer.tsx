@@ -13,7 +13,7 @@ export function Footer() {
       links: [
         { label: "Home", href: "#" },
         { label: "Features", href: "#features" },
-        { label: "Return Model", href: "#return-model" },
+        { label: "Services", href: "#features" },
       ],
       legal: [
         { label: "Privacy Policy", href: "https://api.nizamy.app/privacy_policy_en.html" },
@@ -26,7 +26,7 @@ export function Footer() {
       links: [
         { label: "الرئيسية", href: "#" },
         { label: "المميزات", href: "#features" },
-        { label: "نموذج العائد", href: "#return-model" },
+        { label: "خدماتنا", href: "#features" },
       ],
       legal: [
         { label: "سياسة الخصوصية", href: "https://api.nizamy.app/privacy_policy_ar.html" },

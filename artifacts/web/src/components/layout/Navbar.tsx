@@ -9,13 +9,13 @@ const navLinks = {
   en: [
     { id: "features", label: "The System" },
     { id: "why-nizamy", label: "Why Nizamy" },
-    { id: "return-model", label: "Return Model" },
+    { id: "features", label: "Services" },
     { id: "calculator", label: "Calculator" },
   ],
   ar: [
     { id: "features", label: "النظام" },
     { id: "why-nizamy", label: "لماذا نظامي" },
-    { id: "return-model", label: "نموذج العائد" },
+    { id: "features", label: "خدماتنا" },
     { id: "calculator", label: "الحاسبة" },
   ],
 };
@@ -58,7 +58,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-10">
             {links.map((link) => (
               <button
-                key={link.id}
+                key={`${link.id}-${link.label}`}
                 onClick={() => scrollTo(link.id)}
                 className="text-[15px] font-bold text-slate-600 hover:text-blue-600 transition-colors duration-300 relative group"
               >
@@ -124,7 +124,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + idx * 0.05 }}
-                  key={link.id}
+                  key={`${link.id}-${link.label}`}
                   onClick={() => scrollTo(link.id)}
                   className="text-slate-700 hover:text-blue-600 text-xl font-heading font-black py-4 text-start border-b border-slate-100 transition-colors"
                 >

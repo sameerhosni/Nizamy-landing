@@ -245,7 +245,7 @@ export function IncentivePopup() {
     contactPlaceholder: isAr ? "example@domain.com أو 05XXXXXXXX" : "example@domain.com or 05XXXXXXXX",
     submit: isAr ? "إرسال" : "Send",
     cancel: isAr ? "لا، شكراً" : "No, thanks",
-    successTitle: isAr ? "تم تسجيل الهدية!" : "Reward Claimed!",
+    successTitle: isAr ? "تم تسجيل طلبك بنجاح" : "Reward Claimed!",
     successDesc: isAr
       ? "قم بتحميل التطبيق وتسجيل حساب منشأتك لاستلام الهدية"
       : "Download the app and register your company account to receive your gift.",

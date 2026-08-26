@@ -243,7 +243,7 @@ export function IncentivePopup() {
     intentExplore: isAr ? "مجرد استكشاف" : "Just exploring",
     contactLabel: isAr ? "البريد الإلكتروني أو رقم الجوال" : "Email or Mobile Number",
     contactPlaceholder: isAr ? "example@domain.com أو 05XXXXXXXX" : "example@domain.com or 05XXXXXXXX",
-    submit: isAr ? "المطالبة بالهدية" : "Claim Reward",
+    submit: isAr ? "إرسال" : "Send",
     cancel: isAr ? "لا، شكراً" : "No, thanks",
     successTitle: isAr ? "تم تسجيل الهدية!" : "Reward Claimed!",
     successDesc: isAr ? "لقد أضفنا النقاط إلى حسابك المستقبلي. شكراً لاهتمامك." : "We've attached the points to your future account. Thank you!",
@@ -274,8 +274,8 @@ export function IncentivePopup() {
       <DialogContent
         className={
           isCompact && resultState === "none"
-            ? "max-w-[calc(100%-2rem)] sm:max-w-xs border-primary/10 p-4 shadow-glow"
-            : "sm:max-w-md border-primary/10 shadow-glow"
+            ? "max-w-[calc(100%_-_2rem)] overflow-hidden rounded-2xl border-sky-100/80 p-4 shadow-[0_20px_60px_-24px_rgba(15,23,42,0.45)] sm:max-w-xs"
+            : "overflow-hidden rounded-3xl border-sky-100/80 bg-background shadow-[0_28px_90px_-28px_rgba(15,23,42,0.5)] before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-gradient-to-r before:from-sky-400 before:via-blue-500 before:to-cyan-400 sm:max-w-md"
         }
         dir={dir}
         data-testid="incentive-popup"
@@ -324,51 +324,51 @@ export function IncentivePopup() {
 
         {resultState === "none" && !isCompact && (
           <>
-            <DialogHeader className="sm:text-left rtl:sm:text-right">
-              <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-primary rtl:mx-0 rtl:ml-auto">
-                <Gift className="w-6 h-6" />
+            <DialogHeader className="space-y-2.5 text-start pt-1">
+              <div className="mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-50 to-blue-100 text-sky-600 shadow-sm ring-8 ring-sky-50/70">
+                <Gift className="h-7 w-7" />
               </div>
-              <DialogTitle className="text-2xl font-bold font-heading" data-testid="incentive-title">
+              <DialogTitle className="text-2xl font-bold leading-tight font-heading text-slate-950" data-testid="incentive-title">
                 {t.title}
               </DialogTitle>
-              <DialogDescription className="text-base mt-2" data-testid="incentive-desc">
+              <DialogDescription className="text-[15px] leading-7 text-slate-500" data-testid="incentive-desc">
                 {t.desc}
               </DialogDescription>
             </DialogHeader>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} className="space-y-6 mt-2">
+              <form onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} className="mt-2 space-y-5">
                 <FormField
                   control={form.control}
                   name="intent"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="text-sm font-semibold">{t.intentLabel}</FormLabel>
+                      <FormLabel className="text-sm font-bold text-slate-800">{t.intentLabel}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
                           value={field.value ?? ""}
-                          className="flex flex-col space-y-1"
+                          className="flex flex-col gap-2.5"
                           dir={dir}
                           data-testid="input-intent"
                         >
-                          <FormItem className="flex items-center space-x-3 space-x-reverse space-y-0 p-3 rounded-lg border border-border/50 hover:bg-muted/50 cursor-pointer transition-colors">
+                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
                             <FormControl>
-                              <RadioGroupItem value="existing_hr" data-testid="intent-existing" />
+                              <RadioGroupItem value="existing_hr" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-existing" />
                             </FormControl>
-                            <FormLabel className="font-normal cursor-pointer w-full">{t.intentHr}</FormLabel>
+                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentHr}</FormLabel>
                           </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-x-reverse space-y-0 p-3 rounded-lg border border-border/50 hover:bg-muted/50 cursor-pointer transition-colors">
+                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
                             <FormControl>
-                              <RadioGroupItem value="seeking_hr" data-testid="intent-seeking" />
+                              <RadioGroupItem value="seeking_hr" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-seeking" />
                             </FormControl>
-                            <FormLabel className="font-normal cursor-pointer w-full">{t.intentSeek}</FormLabel>
+                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentSeek}</FormLabel>
                           </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-x-reverse space-y-0 p-3 rounded-lg border border-border/50 hover:bg-muted/50 cursor-pointer transition-colors">
+                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
                             <FormControl>
-                              <RadioGroupItem value="exploring" data-testid="intent-exploring" />
+                              <RadioGroupItem value="exploring" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-exploring" />
                             </FormControl>
-                            <FormLabel className="font-normal cursor-pointer w-full">{t.intentExplore}</FormLabel>
+                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentExplore}</FormLabel>
                           </FormItem>
                         </RadioGroup>
                       </FormControl>
@@ -388,14 +388,14 @@ export function IncentivePopup() {
                   control={form.control}
                   name="contact"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-sm font-semibold">{t.contactLabel}</FormLabel>
+                    <FormItem className="space-y-2.5">
+                      <FormLabel className="text-sm font-bold text-slate-800">{t.contactLabel}</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder={t.contactPlaceholder} 
                           {...field} 
                           dir="ltr"
-                          className={isAr ? "text-right" : "text-left"}
+                          className={`h-12 rounded-xl border-slate-200 bg-slate-50/70 px-4 text-[15px] shadow-sm transition-all placeholder:text-slate-400 hover:border-sky-300 focus-visible:border-sky-500 focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-sky-100 ${isAr ? "text-right" : "text-left"}`}
                           data-testid="input-contact"
                         />
                       </FormControl>
@@ -411,12 +411,12 @@ export function IncentivePopup() {
                   )}
                 />
 
-                <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 mt-6">
+                <div className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-2">
                   <Button 
                     type="button" 
                     variant="ghost" 
                     onClick={() => onOpenChange(false)}
-                    className="w-full sm:w-auto text-muted-foreground"
+                    className="h-11 w-full rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800"
                     data-testid="button-cancel"
                   >
                     {t.cancel}
@@ -424,7 +424,7 @@ export function IncentivePopup() {
                   <Button 
                     type="submit" 
                     disabled={isPending}
-                    className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="h-11 w-full rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 font-bold text-white shadow-lg shadow-sky-500/20 transition-all hover:-translate-y-0.5 hover:from-sky-600 hover:to-blue-700 hover:shadow-xl hover:shadow-sky-500/25"
                     data-testid="button-submit"
                   >
                     {isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin rtl:ml-2 rtl:mr-0" /> : null}

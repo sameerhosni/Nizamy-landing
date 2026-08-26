@@ -134,6 +134,65 @@ function escapeHtmlText(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+export interface IncentiveSignupEmailData {
+  intent: "existing_hr" | "seeking_hr" | "exploring";
+  email: string | null;
+  mobile: string | null;
+  language: "ar" | "en";
+  status: "awarded" | "already_claimed";
+  pointsAwarded: number;
+  createdAt: string;
+}
+
+export async function sendIncentiveSignupNotification(
+  signup: IncentiveSignupEmailData,
+): Promise<void> {
+  if (!isMailerConfigured()) {
+    logger.warn("SMTP not configured; skipping incentive signup notification");
+    return;
+  }
+
+  const senderName = process.env.SENDER_NAME || "نظامي اتش آر | Nizamy HR";
+  const intentLabels = {
+    existing_hr: "Already uses an HR system",
+    seeking_hr: "Looking for a new HR system",
+    exploring: "Just exploring",
+  } as const;
+  const statusLabel =
+    signup.status === "awarded" ? "New entitlement awarded" : "Already claimed";
+  const rows = [
+    ["Intent", intentLabels[signup.intent]],
+    ["Email", signup.email ?? "Not provided"],
+    ["Saudi mobile", signup.mobile ?? "Not provided"],
+    ["Language", signup.language === "ar" ? "Arabic" : "English"],
+    ["Claim result", statusLabel],
+    ["Points entitlement", String(signup.pointsAwarded)],
+    ["Submitted at", signup.createdAt],
+  ] as const;
+  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
+  const htmlRows = rows
+    .map(
+      ([label, value]) =>
+        `<tr><th align="left" style="padding:8px;border-bottom:1px solid #e5e7eb">${escapeHtmlText(label)}</th><td style="padding:8px;border-bottom:1px solid #e5e7eb">${escapeHtmlText(value)}</td></tr>`,
+    )
+    .join("");
+
+  const transport = createTransport();
+  await transport.sendMail({
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: signup.email ?? salesAddress,
+    to: salesAddress,
+    subject: `Landing incentive signup — ${statusLabel}`,
+    text,
+    html: `<div style="font-family:Arial,sans-serif;color:#0f172a"><h2>Landing incentive signup</h2><table style="border-collapse:collapse;width:100%;max-width:640px">${htmlRows}</table></div>`,
+  });
+
+  logger.info(
+    { status: signup.status, intent: signup.intent },
+    "Incentive signup notification email sent",
+  );
+}
+
 function loadCustomWelcomeTemplate(
   lang: EmailLang,
   resolveAsset: (rel: string) => string | undefined,

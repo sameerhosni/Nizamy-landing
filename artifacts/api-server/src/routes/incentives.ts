@@ -5,6 +5,7 @@ import {
   CreateIncentiveSignupResponse,
 } from "@workspace/api-zod";
 import { getDb, incentiveSignupsTable } from "@workspace/db";
+import { sendIncentiveSignupNotification } from "../lib/mailer";
 
 const router: IRouter = Router();
 const POINTS_AWARDED = 5000;
@@ -91,6 +92,23 @@ router.post(
       return;
     }
 
+    const notifySales = (status: "awarded" | "already_claimed") => {
+      sendIncentiveSignupNotification({
+        intent: parsed.data.intent,
+        email,
+        mobile,
+        language: parsed.data.language,
+        status,
+        pointsAwarded: POINTS_AWARDED,
+        createdAt: new Date().toISOString(),
+      }).catch((error) => {
+        req.log.error(
+          { err: error, status },
+          "Failed to send incentive signup notification",
+        );
+      });
+    };
+
     try {
       const database = getDb();
 
@@ -110,6 +128,7 @@ router.post(
         : [];
 
       if (emailClaim.length > 0 || mobileClaim.length > 0) {
+        notifySales("already_claimed");
         res.status(200).json(
           CreateIncentiveSignupResponse.parse({
             status: "already_claimed",
@@ -127,6 +146,7 @@ router.post(
         language: parsed.data.language,
       });
 
+      notifySales("awarded");
       res.status(201).json(
         CreateIncentiveSignupResponse.parse({
           status: "awarded",
@@ -135,6 +155,7 @@ router.post(
       );
     } catch (error) {
       if (isUniqueViolation(error)) {
+        notifySales("already_claimed");
         res.status(200).json(
           CreateIncentiveSignupResponse.parse({
             status: "already_claimed",

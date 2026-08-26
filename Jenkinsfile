@@ -77,6 +77,8 @@ spec:
 
         DEPLOYMENT = "prod-nizamy-landingpage"
         DEPLOYMENT_YAML = "deployment.yaml"
+        DB_CREDENTIAL_ID = "nizamy-database-url"
+        DB_SECRET = "nizamy-database"
     }
 
     stages {
@@ -122,7 +124,7 @@ spec:
             }
         }
 
-        stage('Deploy To Kubernetes') {
+        stage('Prepare Deployment') {
             steps {
                 container(name: 'jenkins-agent') {
                     script {
@@ -134,7 +136,98 @@ spec:
 
                         sh """
                             sed -i 's|<TAG>|${env.IMAGE_TAG}|g' ${env.YAML_DIR}/${env.DEPLOYMENT_YAML}
+                        """
+                    }
+                }
+            }
+        }
 
+        stage('Migrate Production Database') {
+            steps {
+                container(name: 'jenkins-agent') {
+                    withCredentials([
+                        string(
+                            credentialsId: env.DB_CREDENTIAL_ID,
+                            variable: 'NIZAMY_DATABASE_URL'
+                        )
+                    ]) {
+                        sh '''
+                            set +x
+                            kubectl create secret generic "$DB_SECRET" \
+                              -n "$K8S_NAMESPACE" \
+                              --from-literal=DATABASE_URL="$NIZAMY_DATABASE_URL" \
+                              --dry-run=client -o yaml | kubectl apply -f -
+
+                            MIGRATION_JOB="nizamy-db-migrate-$IMAGE_TAG"
+                            kubectl delete job "$MIGRATION_JOB" \
+                              -n "$K8S_NAMESPACE" \
+                              --ignore-not-found=true \
+                              --wait=true
+
+                            cat > /tmp/nizamy-db-migration-job.yaml <<EOF
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: $MIGRATION_JOB
+  namespace: $K8S_NAMESPACE
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 300
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: migrate
+          image: $ECR_URL/$APP_NAME:$IMAGE_TAG
+          command:
+            - node
+            - --enable-source-maps
+            - dist/migrate.mjs
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: $DB_SECRET
+                  key: DATABASE_URL
+EOF
+
+                            kubectl apply -f /tmp/nizamy-db-migration-job.yaml
+                            if ! kubectl wait \
+                              --for=condition=complete \
+                              "job/$MIGRATION_JOB" \
+                              -n "$K8S_NAMESPACE" \
+                              --timeout=300s; then
+                                kubectl logs \
+                                  "job/$MIGRATION_JOB" \
+                                  -n "$K8S_NAMESPACE" \
+                                  --all-containers=true || true
+                                exit 1
+                            fi
+                            kubectl logs \
+                              "job/$MIGRATION_JOB" \
+                              -n "$K8S_NAMESPACE" \
+                              --all-containers=true
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Deploy To Kubernetes') {
+            steps {
+                container(name: 'jenkins-agent') {
+                    script {
+                        sh """
+                            PATCHED_YAML=\$(mktemp)
+                            kubectl patch --local \
+                              -f ${env.YAML_DIR}/${env.DEPLOYMENT_YAML} \
+                              --type=strategic \
+                              -p '{"spec":{"template":{"spec":{"containers":[{"name":"${env.DEPLOYMENT}","env":[{"name":"DATABASE_URL","valueFrom":{"secretKeyRef":{"name":"${env.DB_SECRET}","key":"DATABASE_URL"}}}]}]}}}}' \
+                              -o yaml > "\$PATCHED_YAML"
+                            mv "\$PATCHED_YAML" ${env.YAML_DIR}/${env.DEPLOYMENT_YAML}
                             kubectl apply -n ${env.K8S_NAMESPACE} -f ${env.YAML_DIR}
 
                             kubectl rollout status deployment/${env.DEPLOYMENT} \

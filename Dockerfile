@@ -32,6 +32,7 @@ RUN npm init -y > /dev/null && npm install --omit=dev nodemailer@9.0.3
 
 COPY --from=build /repo/artifacts/api-server/dist ./dist
 COPY --from=build /repo/artifacts/api-server/assets ./assets
+COPY --from=build /repo/artifacts/api-server/migrations ./migrations
 COPY --from=build /repo/artifacts/web/dist/public ./public
 
 RUN chown -R node:node /app

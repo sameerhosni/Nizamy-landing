@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Gift, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-const HIDE_KEY = "nizamy_incentive_hidden";
+const STORAGE_KEY = "nizamy_incentive_state_v2";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const safeStorage = {
@@ -140,6 +140,7 @@ export function IncentivePopup() {
   const isAr = language === "ar";
   
   const [isOpen, setIsOpen] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   const [resultState, setResultState] = useState<"none" | "awarded" | "already_claimed" | "error">("none");
   const hasTrackedView = useRef(false);
   const languageRef = useRef(language);
@@ -152,15 +153,21 @@ export function IncentivePopup() {
   const { mutate: createSignup, isPending } = useCreateIncentiveSignup();
 
   useEffect(() => {
-    if (safeStorage.getItem(HIDE_KEY)) return;
+    const storedState = safeStorage.getItem(STORAGE_KEY);
+    if (storedState === "completed") return;
+    const shouldShowCompact = storedState === "reminder";
+    setIsCompact(shouldShowCompact);
 
     const timer = setTimeout(() => {
       setIsOpen(true);
       if (!hasTrackedView.current) {
-        track("incentive_popup_viewed", { language: languageRef.current });
+        track("incentive_popup_viewed", {
+          language: languageRef.current,
+          variant: shouldShowCompact ? "reminder" : "full",
+        });
         hasTrackedView.current = true;
       }
-    }, 5000); // 5 second delay
+    }, shouldShowCompact ? 1500 : 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -176,8 +183,11 @@ export function IncentivePopup() {
     if (!open) {
       // User is closing it (cancel or after completion)
       if (resultState === "none" || resultState === "error") {
-        track("incentive_popup_cancelled", { language });
-        safeStorage.setItem(HIDE_KEY, "true");
+        track("incentive_popup_cancelled", {
+          language,
+          variant: isCompact ? "reminder" : "full",
+        });
+        safeStorage.setItem(STORAGE_KEY, "reminder");
       }
       setIsOpen(false);
     } else {
@@ -208,7 +218,7 @@ export function IncentivePopup() {
             track("incentive_popup_duplicate", { language });
           }
           // Hide permanently
-          safeStorage.setItem(HIDE_KEY, "true");
+          safeStorage.setItem(STORAGE_KEY, "completed");
         },
         onError: () => {
           setResultState("error");
@@ -242,6 +252,12 @@ export function IncentivePopup() {
     errorTitle: isAr ? "حدث خطأ" : "Something went wrong",
     errorDesc: isAr ? "تعذر إكمال طلبك. يرجى المحاولة مرة أخرى لاحقاً." : "We couldn't complete your request. Please try again later.",
     errorRetry: isAr ? "حاول مرة أخرى" : "Try Again",
+    reminderTitle: isAr ? "لا تنسَ هديتك" : "Don't miss your reward",
+    reminderDesc: isAr
+      ? "أضف بياناتك لتسجيل هديتك."
+      : "Add your details to register your reward.",
+    reminderAction: isAr ? "أضف بياناتك" : "Add details",
+    reminderLater: isAr ? "لاحقاً" : "Later",
     close: isAr ? "إغلاق" : "Close"
   };
 
@@ -255,8 +271,58 @@ export function IncentivePopup() {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md border-primary/10 shadow-glow" dir={dir} data-testid="incentive-popup">
-        {resultState === "none" && (
+      <DialogContent
+        className={
+          isCompact && resultState === "none"
+            ? "max-w-[calc(100%-2rem)] sm:max-w-xs border-primary/10 p-4 shadow-glow"
+            : "sm:max-w-md border-primary/10 shadow-glow"
+        }
+        dir={dir}
+        data-testid="incentive-popup"
+        data-variant={isCompact ? "reminder" : "full"}
+      >
+        {resultState === "none" && isCompact && (
+          <div className="space-y-4" data-testid="incentive-reminder">
+            <DialogHeader className="pe-6 text-start">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Gift className="h-4 w-4" />
+                </div>
+                <div className="space-y-1">
+                  <DialogTitle className="text-base font-bold font-heading">
+                    {t.reminderTitle}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm">
+                    {t.reminderDesc}
+                  </DialogDescription>
+                </div>
+              </div>
+            </DialogHeader>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                className="flex-1"
+                onClick={() => {
+                  setIsCompact(false);
+                  track("incentive_popup_expanded", { language });
+                }}
+                data-testid="button-expand-incentive"
+              >
+                {t.reminderAction}
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => onOpenChange(false)}
+                data-testid="button-remind-later"
+              >
+                {t.reminderLater}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {resultState === "none" && !isCompact && (
           <>
             <DialogHeader className="sm:text-left rtl:sm:text-right">
               <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-primary rtl:mx-0 rtl:ml-auto">

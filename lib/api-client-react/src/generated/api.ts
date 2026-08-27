@@ -219,7 +219,7 @@ export const getCreateIncentiveSignupUrl = () => {
 }
 
 /**
- * Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+ * Records a one-time incentive entitlement for a normalized email address
  * @summary Claim landing-page incentive points
  */
 export const createIncentiveSignup = async (incentiveSignupInput: IncentiveSignupInput, options?: RequestInit): Promise<IncentiveSignupResult> => {

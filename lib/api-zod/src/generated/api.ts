@@ -56,19 +56,17 @@ export const CreateLeadResponse = zod.object({
 
 
 /**
- * Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+ * Records a one-time incentive entitlement for a normalized email address
  * @summary Claim landing-page incentive points
  */
+export const createIncentiveSignupBodyEmailMin = 3;
 export const createIncentiveSignupBodyEmailMax = 320;
-
-export const createIncentiveSignupBodyMobileMax = 32;
 
 
 
 export const CreateIncentiveSignupBody = zod.object({
   "intent": zod.enum(['existing_hr', 'seeking_hr', 'exploring']),
-  "email": zod.string().max(createIncentiveSignupBodyEmailMax).nullable(),
-  "mobile": zod.string().max(createIncentiveSignupBodyMobileMax).nullable(),
+  "email": zod.string().email().min(createIncentiveSignupBodyEmailMin).max(createIncentiveSignupBodyEmailMax),
   "language": zod.enum(['en', 'ar'])
 })
 

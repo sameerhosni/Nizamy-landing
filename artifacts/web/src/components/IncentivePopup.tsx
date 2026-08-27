@@ -45,62 +45,15 @@ const safeStorage = {
   }
 };
 
-function toLatinDigits(value: string): string {
-  return value
-    .replace(/[٠-٩]/g, (digit) =>
-      String(digit.charCodeAt(0) - "٠".charCodeAt(0)),
-    )
-    .replace(/[۰-۹]/g, (digit) =>
-      String(digit.charCodeAt(0) - "۰".charCodeAt(0)),
-    );
-}
-
-function normalizeSaudiMobile(value: string): string | null {
-  const trimmed = value.trim();
-  const plusCount = (trimmed.match(/\+/g) ?? []).length;
-
-  if (
-    !/^[+()\-\s0-9٠-٩۰-۹]+$/.test(trimmed) ||
-    plusCount > 1 ||
-    (plusCount === 1 && !trimmed.startsWith("+"))
-  ) {
-    return null;
-  }
-
-  let digits = toLatinDigits(trimmed).replace(/\D/g, "");
-
-  if (digits.startsWith("00966")) {
-    digits = digits.slice(5);
-  } else if (digits.startsWith("966")) {
-    digits = digits.slice(3);
-  } else if (digits.startsWith("0")) {
-    digits = digits.slice(1);
-  }
-
-  return /^5\d{8}$/.test(digits) ? `+966${digits}` : null;
-}
-
-function normalizeContact(value: string) {
-  const trimmed = value.trim();
-
-  if (EMAIL_PATTERN.test(trimmed)) {
-    return { email: trimmed.toLowerCase(), mobile: null };
-  }
-
-  return { email: null, mobile: normalizeSaudiMobile(trimmed) };
-}
-
 const formSchema = z
   .object({
     intent: z.enum(["existing_hr", "seeking_hr", "exploring"], {
       required_error: "INTENT_REQUIRED",
     }),
-    contact: z.string().min(1, { message: "CONTACT_REQUIRED" }),
+    contact: z.string().trim().min(1, { message: "CONTACT_REQUIRED" }),
   })
   .superRefine((data, ctx) => {
-    const normalized = normalizeContact(data.contact);
-
-    if (data.contact && !normalized.email && !normalized.mobile) {
+    if (data.contact && !EMAIL_PATTERN.test(data.contact)) {
       ctx.addIssue({
         path: ["contact"],
         code: z.ZodIssueCode.custom,
@@ -198,14 +151,11 @@ export function IncentivePopup() {
   const onSubmit = (values: FormValues) => {
     track("incentive_popup_submitted", { intent: values.intent, language });
 
-    const contact = normalizeContact(values.contact);
-    
     createSignup(
       {
         data: {
           intent: values.intent,
-          email: contact.email,
-          mobile: contact.mobile,
+          email: values.contact.trim().toLowerCase(),
           language,
         },
       },
@@ -241,8 +191,8 @@ export function IncentivePopup() {
     intentHr: isAr ? "أستخدم نظام موارد بشرية حالياً" : "I currently use an HR system",
     intentSeek: isAr ? "أبحث عن نظام موارد بشرية" : "I'm looking for an HR system",
     intentExplore: isAr ? "مجرد استكشاف" : "Just exploring",
-    contactLabel: isAr ? "البريد الإلكتروني أو رقم الجوال" : "Email or Mobile Number",
-    contactPlaceholder: isAr ? "example@domain.com أو 05XXXXXXXX" : "example@domain.com or 05XXXXXXXX",
+    contactLabel: isAr ? "البريد الإلكتروني" : "Email address",
+    contactPlaceholder: "name@company.com",
     submit: isAr ? "إرسال" : "Send",
     cancel: isAr ? "لا، شكراً" : "No, thanks",
     successTitle: isAr ? "تم تسجيل طلبك بنجاح" : "Reward Claimed!",
@@ -266,7 +216,7 @@ export function IncentivePopup() {
   const tErrors: Record<string, string> = {
     INTENT_REQUIRED: isAr ? "يرجى اختيار وضعك الحالي." : "Please select your current HR situation.",
     CONTACT_REQUIRED: isAr ? "معلومات الاتصال مطلوبة." : "Contact information is required.",
-    CONTACT_INVALID: isAr ? "يجب أن يكون بريداً إلكترونياً صحيحاً أو رقم جوال سعودي (مثل 05XXXXXXXX)." : "Must be a valid email or Saudi mobile number (e.g., 05XXXXXXXX).",
+    CONTACT_INVALID: isAr ? "يرجى إدخال بريد إلكتروني صحيح." : "Please enter a valid email address.",
   };
   const intentError = form.formState.errors.intent?.message;
   const contactError = form.formState.errors.contact?.message;
@@ -354,6 +304,7 @@ export function IncentivePopup() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)}
+                noValidate
                 className={`mt-2 space-y-5 ${
                   isAr ? "text-right" : "text-left"
                 }`}
@@ -412,6 +363,9 @@ export function IncentivePopup() {
                       <FormLabel className="text-sm font-bold text-slate-800">{t.contactLabel}</FormLabel>
                       <FormControl>
                         <Input 
+                          type="email"
+                          inputMode="email"
+                          autoComplete="email"
                           placeholder={t.contactPlaceholder} 
                           {...field} 
                           dir="ltr"

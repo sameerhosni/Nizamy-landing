@@ -136,8 +136,7 @@ function escapeHtmlText(s: string): string {
 
 export interface IncentiveSignupEmailData {
   intent: "existing_hr" | "seeking_hr" | "exploring";
-  email: string | null;
-  mobile: string | null;
+  email: string;
   language: "ar" | "en";
   status: "awarded" | "already_claimed";
   pointsAwarded: number;
@@ -162,8 +161,7 @@ export async function sendIncentiveSignupNotification(
     signup.status === "awarded" ? "New entitlement awarded" : "Already claimed";
   const rows = [
     ["Intent", intentLabels[signup.intent]],
-    ["Email", signup.email ?? "Not provided"],
-    ["Saudi mobile", signup.mobile ?? "Not provided"],
+    ["Email", signup.email],
     ["Language", signup.language === "ar" ? "Arabic" : "English"],
     ["Claim result", statusLabel],
     ["Points entitlement", String(signup.pointsAwarded)],

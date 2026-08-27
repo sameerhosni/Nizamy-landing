@@ -108,15 +108,10 @@ export const IncentiveSignupInputLanguage = {
 export interface IncentiveSignupInput {
   intent: IncentiveSignupInputIntent;
   /**
+     * @minLength 3
      * @maxLength 320
-     * @nullable
      */
-  email: string | null;
-  /**
-     * @maxLength 32
-     * @nullable
-     */
-  mobile: string | null;
+  email: string;
   language: IncentiveSignupInputLanguage;
 }
 

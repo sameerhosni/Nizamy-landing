@@ -60,7 +60,7 @@ paths:
       operationId: createIncentiveSignup
       tags: [incentives]
       summary: Claim landing-page incentive points
-      description: Records a one-time incentive entitlement for a normalized email address or Saudi mobile number
+      description: Records a one-time incentive entitlement for a normalized email address
       requestBody:
         required: true
         content:
@@ -75,7 +75,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/IncentiveSignupResult"
         "200":
-          description: Contact has already claimed an incentive entitlement
+          description: Email has already claimed an incentive entitlement
           content:
             application/json:
               schema:
@@ -300,7 +300,6 @@ components:
       required:
         - intent
         - email
-        - mobile
         - language
       properties:
         intent:
@@ -310,11 +309,10 @@ components:
             - seeking_hr
             - exploring
         email:
-          type: ["string", "null"]
+          type: string
+          format: email
+          minLength: 3
           maxLength: 320
-        mobile:
-          type: ["string", "null"]
-          maxLength: 32
         language:
           type: string
           enum: [en, ar]

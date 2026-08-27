@@ -11,45 +11,6 @@ const router: IRouter = Router();
 const POINTS_AWARDED = 5000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function toLatinDigits(value: string): string {
-  return value
-    .replace(/[٠-٩]/g, (digit) =>
-      String(digit.charCodeAt(0) - "٠".charCodeAt(0)),
-    )
-    .replace(/[۰-۹]/g, (digit) =>
-      String(digit.charCodeAt(0) - "۰".charCodeAt(0)),
-    );
-}
-
-function normalizeSaudiMobile(value: string): string | null {
-  const trimmed = value.trim();
-  const plusCount = (trimmed.match(/\+/g) ?? []).length;
-
-  if (
-    !/^[+()\-\s0-9٠-٩۰-۹]+$/.test(trimmed) ||
-    plusCount > 1 ||
-    (plusCount === 1 && !trimmed.startsWith("+"))
-  ) {
-    return null;
-  }
-
-  let digits = toLatinDigits(trimmed).replace(/\D/g, "");
-
-  if (digits.startsWith("00966")) {
-    digits = digits.slice(5);
-  } else if (digits.startsWith("966")) {
-    digits = digits.slice(3);
-  } else if (digits.startsWith("0")) {
-    digits = digits.slice(1);
-  }
-
-  if (!/^5\d{8}$/.test(digits)) {
-    return null;
-  }
-
-  return `+966${digits}`;
-}
-
 function isUniqueViolation(error: unknown): boolean {
   return (
     typeof error === "object" &&
@@ -70,18 +31,11 @@ router.post(
       return;
     }
 
-    const rawEmail = parsed.data.email?.trim() ?? "";
-    const email = rawEmail ? rawEmail.toLowerCase() : null;
-    const rawMobile = parsed.data.mobile?.trim() ?? "";
-    const mobile = rawMobile ? normalizeSaudiMobile(rawMobile) : null;
+    const email = parsed.data.email.trim().toLowerCase();
 
-    if (
-      (!email && !mobile) ||
-      (email !== null && !EMAIL_PATTERN.test(email)) ||
-      (rawMobile && mobile === null)
-    ) {
+    if (!EMAIL_PATTERN.test(email)) {
       res.status(400).json({
-        error: "Provide a valid email address or Saudi mobile number",
+        error: "Provide a valid email address",
       });
       return;
     }
@@ -96,7 +50,6 @@ router.post(
       sendIncentiveSignupNotification({
         intent: parsed.data.intent,
         email,
-        mobile,
         language: parsed.data.language,
         status,
         pointsAwarded: POINTS_AWARDED,
@@ -112,22 +65,13 @@ router.post(
     try {
       const database = getDb();
 
-      const emailClaim = email
-        ? await database
-            .select({ id: incentiveSignupsTable.id })
-            .from(incentiveSignupsTable)
-            .where(eq(incentiveSignupsTable.email, email))
-            .limit(1)
-        : [];
-      const mobileClaim = mobile
-        ? await database
-            .select({ id: incentiveSignupsTable.id })
-            .from(incentiveSignupsTable)
-            .where(eq(incentiveSignupsTable.mobile, mobile))
-            .limit(1)
-        : [];
+      const emailClaim = await database
+        .select({ id: incentiveSignupsTable.id })
+        .from(incentiveSignupsTable)
+        .where(eq(incentiveSignupsTable.email, email))
+        .limit(1);
 
-      if (emailClaim.length > 0 || mobileClaim.length > 0) {
+      if (emailClaim.length > 0) {
         notifySales("already_claimed");
         res.status(200).json(
           CreateIncentiveSignupResponse.parse({
@@ -141,7 +85,6 @@ router.post(
       await database.insert(incentiveSignupsTable).values({
         intent: parsed.data.intent,
         email,
-        mobile,
         pointsAwarded: POINTS_AWARDED,
         language: parsed.data.language,
       });

@@ -45,22 +45,18 @@ const safeStorage = {
   }
 };
 
-const formSchema = z
-  .object({
-    intent: z.enum(["existing_hr", "seeking_hr", "exploring"], {
-      required_error: "INTENT_REQUIRED",
+const formSchema = z.object({
+  intent: z.enum(["existing_hr", "seeking_hr", "exploring"], {
+    required_error: "INTENT_REQUIRED",
+  }),
+  contact: z
+    .string()
+    .trim()
+    .min(1, { message: "CONTACT_REQUIRED" })
+    .refine((value) => !value || EMAIL_PATTERN.test(value), {
+      message: "CONTACT_INVALID",
     }),
-    contact: z.string().trim().min(1, { message: "CONTACT_REQUIRED" }),
-  })
-  .superRefine((data, ctx) => {
-    if (data.contact && !EMAIL_PATTERN.test(data.contact)) {
-      ctx.addIssue({
-        path: ["contact"],
-        code: z.ZodIssueCode.custom,
-        message: "CONTACT_INVALID",
-      });
-    }
-  });
+});
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -127,6 +123,8 @@ export function IncentivePopup() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    mode: "onTouched",
+    reValidateMode: "onChange",
     defaultValues: {
       contact: "",
     },

@@ -1,0 +1,2824 @@
+{
+  "privacyPolicy": {
+    "path": "/privacy-policy",
+    "draft": true,
+    "en": {
+      "title": "Privacy Policy",
+      "description": "A document privacy policy for Nizamy, prepared for review. Not an approved policy; see the active policy link on the page.",
+      "eyebrow": "Privacy policy",
+      "intro": "Explore privacy and data information for Nizamy. Some legal and operational details need confirmation; the current approved policy is linked below.",
+      "sections": [
+        {
+          "id": "summary",
+          "title": "Privacy in one minute",
+          "paragraphs": [
+            "The source document opens with this short picture. It is a document statement for review, not an approved commitment."
+          ],
+          "items": [
+            {
+              "title": "Data for the service",
+              "text": "Data needed to provide Nizamy services and manage the account and business."
+            },
+            {
+              "title": "Purposes",
+              "text": "Running features, improving the service, protecting accounts and answering support requests."
+            },
+            {
+              "title": "No unrelated use",
+              "text": "Employee data is not meant to be used for purposes unrelated to the service, except under a legal basis or suitable consent."
+            },
+            {
+              "title": "Contact and rights",
+              "text": "People can ask about their data or exercise the rights available to them."
+            },
+            {
+              "title": "Technical providers",
+              "text": "Technical service providers may be used to run the platform; their responsibilities belong in the final legal version."
+            }
+          ]
+        },
+        {
+          "id": "who",
+          "title": "Who we are and who is responsible",
+          "paragraphs": [
+            "Nizamy is an HR program that helps businesses manage employee processes such as attendance, requests, reports and related services, according to the services in each plan.",
+            "The legal name of the owning or operating entity, its address, country and registration details are pending approval and are not stated here."
+          ]
+        },
+        {
+          "id": "data",
+          "title": "Data that may be collected",
+          "paragraphs": [
+            "Only data tied to a purpose and to how you use the service."
+          ],
+          "items": [
+            {
+              "title": "Account data",
+              "text": "Name, email, mobile number, sign-in details and contact details provided at sign-up or when contacting the team."
+            },
+            {
+              "title": "Business data",
+              "text": "Business name, administrator details, account settings, plan, and billing or contact details tied to them."
+            },
+            {
+              "title": "Employee data",
+              "text": "Data a business enters to manage employees and operations. The actual fields and the business's share of responsibility are pending."
+            },
+            {
+              "title": "Usage data",
+              "text": "How the site or app is used, pages or features used, and error and performance logs where actually collected."
+            },
+            {
+              "title": "Support data",
+              "text": "Request content, attachments, images, error messages and the record of contact with the team."
+            },
+            {
+              "title": "Attendance and verification data",
+              "text": "Attendance records, which may include face enrollment and liveness detection in the higher plan where enabled. Type, purpose, retention and controls are pending."
+            }
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "Why data is used",
+          "items": [
+            {
+              "title": "Account and service",
+              "text": "Creating the account, running the service and managing user permissions."
+            },
+            {
+              "title": "HR features",
+              "text": "Attendance, requests and reports according to the plan."
+            },
+            {
+              "title": "Support",
+              "text": "Handling support requests and answering questions."
+            },
+            {
+              "title": "Protection",
+              "text": "Protecting accounts and the platform from unauthorised use or harmful activity."
+            },
+            {
+              "title": "Improvement",
+              "text": "Improving performance and experience and understanding errors, where the data needed is collected."
+            },
+            {
+              "title": "Operational messages",
+              "text": "Important service updates and account-related alerts."
+            },
+            {
+              "title": "Marketing",
+              "text": "Only under the required legal basis or consent, with a clear way to unsubscribe."
+            }
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "Cookies and similar technologies",
+          "paragraphs": [
+            "Sites and apps may use cookies or similar technologies to run the service, remember preferences, understand usage and improve performance. The actual tools and settings are pending."
+          ],
+          "items": [
+            {
+              "title": "Essential",
+              "text": "Needed for sign-in and core functions."
+            },
+            {
+              "title": "Analytics",
+              "text": "To understand and improve use of the platform, after the tool and settings are confirmed."
+            },
+            {
+              "title": "Preferences",
+              "text": "To save user choices, if available."
+            },
+            {
+              "title": "Controls",
+              "text": "Consent or control options shown depending on the technology and the rules that apply."
+            }
+          ]
+        },
+        {
+          "id": "sharing",
+          "title": "Who data may be shared with",
+          "paragraphs": [
+            "Data is shared only when needed to provide the service, comply with a legal obligation or protect rights and users, according to actual practice. The actual recipients are pending."
+          ],
+          "items": [
+            {
+              "title": "Hosting and infrastructure",
+              "text": "Providers needed to run the platform."
+            },
+            {
+              "title": "Support and communication",
+              "text": "Providers, if actually used."
+            },
+            {
+              "title": "Payment and billing",
+              "text": "Providers when payments happen, if the service is available."
+            },
+            {
+              "title": "Professional advisers",
+              "text": "Where legally needed and to the extent necessary."
+            },
+            {
+              "title": "Official or judicial bodies",
+              "text": "When required by law or to protect rights and safety."
+            }
+          ]
+        },
+        {
+          "id": "protection",
+          "title": "How data is protected",
+          "paragraphs": [
+            "The document describes appropriate technical and organisational measures help protect against unauthorised access, loss, alteration or inappropriate disclosure. The actual controls are pending confirmation and no guarantee is given."
+          ],
+          "items": [
+            {
+              "title": "Permissions",
+              "text": "Managing permissions by user role."
+            },
+            {
+              "title": "Accounts",
+              "text": "Protecting accounts and sign-in details under available controls."
+            },
+            {
+              "title": "Access review",
+              "text": "Reviewing access to data when needed."
+            },
+            {
+              "title": "Incidents",
+              "text": "Handling security incidents under approved procedures."
+            },
+            {
+              "title": "Awareness",
+              "text": "Raising awareness of safe practice among users or business administrators where available."
+            }
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "Retention",
+          "paragraphs": [
+            "The document describes data is kept for the period needed for the stated purposes or required by law or agreement, then deleted or made unidentifiable under approved procedures. The actual periods are pending and not stated here."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "User and data-subject rights",
+          "paragraphs": [
+            "Depending on role, data type and applicable rules, a person may have rights regarding their data."
+          ],
+          "items": [
+            {
+              "title": "Access",
+              "text": "Ask what data is held and how it is used."
+            },
+            {
+              "title": "Correction",
+              "text": "Ask for inaccurate data to be corrected or updated."
+            },
+            {
+              "title": "Deletion or restriction",
+              "text": "Ask for deletion or restricted use where it applies."
+            },
+            {
+              "title": "Objection or withdrawal",
+              "text": "Object to some processing or withdraw consent where processing rests on consent."
+            },
+            {
+              "title": "Portability and others",
+              "text": "Ask for data transfer or other rights that apply."
+            }
+          ]
+        },
+        {
+          "id": "employer",
+          "title": "Employee data inside a business account",
+          "paragraphs": [
+            "When a business uses Nizamy to manage its employees' data, the business may be the party that decides the purposes and means of processing, while Nizamy provides the technical service under the agreement and approved practice.",
+            "The business should make sure its employees have suitable notices, use only the features it needs, and apply suitable permissions and retention."
+          ]
+        },
+        {
+          "id": "verification",
+          "title": "Face data and liveness detection in the higher plan",
+          "paragraphs": [
+            "Some higher-plan features may include face enrollment or liveness detection to check the reliability of attendance. This is sensitive data and needs precise explanation and consent or an appropriate legal basis. The questions below are open, not answered."
+          ],
+          "items": [
+            {
+              "title": "What is collected",
+              "text": "What type of data is really collected? Pending."
+            },
+            {
+              "title": "Image or template",
+              "text": "Is an image, a biometric template or only a result kept? Pending."
+            },
+            {
+              "title": "Why",
+              "text": "Why is it needed? Pending."
+            },
+            {
+              "title": "Access",
+              "text": "Who can access it? Pending."
+            },
+            {
+              "title": "Retention",
+              "text": "How long is it kept? Pending."
+            },
+            {
+              "title": "Requests",
+              "text": "How can deletion or questions be requested? Pending."
+            }
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Changes to this policy",
+          "paragraphs": [
+            "The document describes the policy may be updated from time to time to reflect service or legal changes, and that an update date will be stated when a significant change is made."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Contact about privacy",
+          "paragraphs": [
+            "No official privacy email, address, data protection officer or contact form has been confirmed for this document. Until then, use the official email on the Help page or the channels in the active approved policy above."
+          ]
+        },
+        {
+          "id": "pending",
+          "title": "Pending details for reviewers",
+          "paragraphs": [
+            "The source document had placeholders and drafting notes. They are removed here. Nothing below is confirmed; each question needs an answer from the responsible legal and technical reviewers before approval. Until then, rely on the active approved policy."
+          ],
+          "items": [
+            {
+              "title": "Legal entity and contact",
+              "text": "Full legal name, address, country and registration details of the operating entity; the official privacy email; whether a privacy or data protection officer exists; whether a contact form exists. Unconfirmed."
+            },
+            {
+              "title": "Effective date and scope",
+              "text": "The last-updated date, and whether the policy covers the website, the app and linked services. Unconfirmed."
+            },
+            {
+              "title": "Actual data fields",
+              "text": "Which employee fields are really collected, and the exact limits of the employer's responsibility. Unconfirmed."
+            },
+            {
+              "title": "Cookies and analytics",
+              "text": "Which cookie and analytics tools are used, their settings, and what consent controls are shown. Unconfirmed."
+            },
+            {
+              "title": "Sharing and providers",
+              "text": "Which hosting, support, communication and payment providers actually receive data. Unconfirmed."
+            },
+            {
+              "title": "Protections and retention",
+              "text": "The actual protection controls, retention periods and deletion or de-identification procedures. Unconfirmed."
+            },
+            {
+              "title": "Rights process",
+              "text": "How access, correction, deletion, restriction, objection and portability requests are made and answered. Unconfirmed."
+            },
+            {
+              "title": "Face data",
+              "text": "Whether an image, a biometric template or only a verification result is kept; who can access it; for how long; how deletion is requested; the legal basis or consent. Detail pending; see the active policy or contact the team."
+            }
+          ]
+        }
+      ]
+    },
+    "ar": {
+      "title": "سياسة الخصوصية",
+      "description": "معلومات سياسة خصوصية لنظامي أُعدّت للمراجعة. ليست سياسة معتمدة؛ راجع رابط السياسة النافذة في الصفحة.",
+      "eyebrow": "سياسة الخصوصية",
+      "intro": "تعرّف على معلومات الخصوصية والبيانات في نظامي. بعض التفاصيل القانونية والتشغيلية تحتاج إلى تأكيد، والسياسة المعتمدة الحالية متاحة من الروابط أدناه.",
+      "sections": [
+        {
+          "id": "summary",
+          "title": "الخصوصية في دقيقة",
+          "paragraphs": [
+            "تفتتح المستند المصدر بهذه الصورة المختصرة. وهي صياغة معلومات للمراجعة لا التزام معتمد."
+          ],
+          "items": [
+            {
+              "title": "بيانات للخدمة",
+              "text": "بيانات لازمة لتقديم خدمات نظامي وإدارة الحساب والمنشأة."
+            },
+            {
+              "title": "الأغراض",
+              "text": "تشغيل الميزات وتحسين الخدمة وحماية الحسابات والرد على طلبات الدعم."
+            },
+            {
+              "title": "لا استخدام غير مرتبط",
+              "text": "لا يُراد استخدام بيانات الموظفين لأغراض لا ترتبط بالخدمة إلا وفق أساس نظامي أو موافقة مناسبة."
+            },
+            {
+              "title": "التواصل والحقوق",
+              "text": "يمكن الاستفسار عن البيانات أو ممارسة الحقوق المتاحة."
+            },
+            {
+              "title": "مقدمو الخدمة التقنيون",
+              "text": "قد يُستعان بمقدمي خدمات تقنيين لتشغيل المنصة، وتُحدَّد مسؤولياتهم في النسخة القانونية النهائية."
+            }
+          ]
+        },
+        {
+          "id": "who",
+          "title": "من نحن ومن المسؤول عن البيانات",
+          "paragraphs": [
+            "نظامي برنامج موارد بشرية يساعد المنشآت على إدارة عمليات الموظفين مثل الحضور والانصراف والطلبات والتقارير والخدمات المرتبطة، وفق الخدمات المتاحة في كل باقة.",
+            "الاسم القانوني للجهة المالكة أو المشغّلة وعنوانها ودولتها وبيانات سجلها بانتظار الاعتماد ولا تُذكر هنا."
+          ]
+        },
+        {
+          "id": "data",
+          "title": "البيانات التي قد تُجمع",
+          "paragraphs": [
+            "فقط البيانات المرتبطة بغرض وبطريقة استخدامك للخدمة."
+          ],
+          "items": [
+            {
+              "title": "بيانات الحساب",
+              "text": "الاسم والبريد ورقم الجوال وبيانات الدخول وبيانات التواصل عند إنشاء الحساب أو مراسلة الفريق."
+            },
+            {
+              "title": "بيانات المنشأة",
+              "text": "اسم المنشأة وبيانات المسؤول وإعدادات الحساب والباقة وبيانات الفوترة أو التواصل المرتبطة."
+            },
+            {
+              "title": "بيانات الموظفين",
+              "text": "بيانات تدخلها المنشأة لإدارة الموظفين والعمليات. الحقول الفعلية وحدود مسؤولية المنشأة معلّقة."
+            },
+            {
+              "title": "بيانات الاستخدام",
+              "text": "طريقة استخدام الموقع أو التطبيق والصفحات أو الميزات المستخدمة وسجلات الأخطاء والأداء عند جمعها فعلاً."
+            },
+            {
+              "title": "بيانات الدعم",
+              "text": "محتوى الطلبات والمرفقات والصور ورسائل الخطأ وسجل التواصل مع الفريق."
+            },
+            {
+              "title": "بيانات الحضور والتحقق",
+              "text": "سجلات الحضور، وقد تشمل تسجيل الوجه وكشف الحيوية في الباقة الأعلى عند تفعيلها. النوع والغرض والاحتفاظ والضوابط معلّقة."
+            }
+          ]
+        },
+        {
+          "id": "purposes",
+          "title": "لماذا تُستخدم البيانات",
+          "items": [
+            {
+              "title": "الحساب والخدمة",
+              "text": "إنشاء الحساب وتشغيل الخدمة وإدارة صلاحيات المستخدمين."
+            },
+            {
+              "title": "ميزات HR",
+              "text": "الحضور والطلبات والتقارير وفق الباقة."
+            },
+            {
+              "title": "الدعم",
+              "text": "معالجة طلبات الدعم والرد على الاستفسارات."
+            },
+            {
+              "title": "الحماية",
+              "text": "حماية الحساب والمنصة من الاستخدام غير المصرح به أو الأنشطة الضارة."
+            },
+            {
+              "title": "التحسين",
+              "text": "تحسين الأداء والتجربة وفهم الأخطاء عند جمع البيانات اللازمة."
+            },
+            {
+              "title": "الرسائل التشغيلية",
+              "text": "تحديثات الخدمة المهمة والتنبيهات المرتبطة بالحساب."
+            },
+            {
+              "title": "التسويق",
+              "text": "فقط وفق الأساس النظامي أو الموافقة المطلوبة مع طريقة واضحة لإلغاء الاشتراك."
+            }
+          ]
+        },
+        {
+          "id": "cookies",
+          "title": "ملفات الارتباط والتقنيات المشابهة",
+          "paragraphs": [
+            "قد تستخدم المواقع والتطبيقات ملفات ارتباط أو تقنيات مشابهة لتشغيل الخدمة وتذكر التفضيلات وفهم الاستخدام وتحسين الأداء. الأدوات والإعدادات الفعلية معلّقة."
+          ],
+          "items": [
+            {
+              "title": "ضرورية",
+              "text": "لازمة لتسجيل الدخول والوظائف الأساسية."
+            },
+            {
+              "title": "تحليلية",
+              "text": "لفهم استخدام المنصة وتحسينها، بعد تأكيد الأداة والإعدادات."
+            },
+            {
+              "title": "تفضيلات",
+              "text": "لحفظ اختيارات المستخدم إن توفرت."
+            },
+            {
+              "title": "التحكم",
+              "text": "خيارات موافقة أو تحكم تظهر بحسب التقنية والمتطلبات المطبقة."
+            }
+          ]
+        },
+        {
+          "id": "sharing",
+          "title": "مع من قد تُشارك البيانات",
+          "paragraphs": [
+            "لا تُشارك البيانات إلا عند الضرورة لتقديم الخدمة أو الامتثال لالتزام نظامي أو حماية الحقوق والمستخدمين، بحسب الممارسة الفعلية. الجهات الفعلية معلّقة."
+          ],
+          "items": [
+            {
+              "title": "الاستضافة والبنية التقنية",
+              "text": "مزودون لازمون لتشغيل المنصة."
+            },
+            {
+              "title": "الدعم والتواصل",
+              "text": "مزودون عند استخدامهم فعلاً."
+            },
+            {
+              "title": "الدفع والفوترة",
+              "text": "مزودون عند إجراء الدفع إن كانت الخدمة متاحة."
+            },
+            {
+              "title": "مستشارون مهنيون",
+              "text": "عند الحاجة النظامية وبالحد الضروري."
+            },
+            {
+              "title": "جهات رسمية أو قضائية",
+              "text": "عندما يطلب النظام ذلك أو لحماية الحقوق والسلامة."
+            }
+          ]
+        },
+        {
+          "id": "protection",
+          "title": "كيف تُحمى البيانات",
+          "paragraphs": [
+            "تذكر المستند أن إجراءات تقنية وتنظيمية مناسبة تساعد على الحماية من الوصول غير المصرح به أو الفقد أو التغيير أو الإفصاح غير المناسب. الضوابط الفعلية بانتظار التأكيد ولا يُقدَّم أي ضمان."
+          ],
+          "items": [
+            {
+              "title": "الصلاحيات",
+              "text": "إدارة الصلاحيات وفق أدوار المستخدمين."
+            },
+            {
+              "title": "الحسابات",
+              "text": "حماية الحسابات وبيانات الدخول وفق الضوابط المتاحة."
+            },
+            {
+              "title": "مراجعة الوصول",
+              "text": "مراجعة الوصول إلى البيانات عند الحاجة."
+            },
+            {
+              "title": "الحوادث",
+              "text": "التعامل مع الحوادث الأمنية وفق الإجراءات المعتمدة."
+            },
+            {
+              "title": "التوعية",
+              "text": "توعية المستخدمين أو مسؤولي المنشأة بالممارسات الآمنة عند توفرها."
+            }
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "مدة الاحتفاظ",
+          "paragraphs": [
+            "تذكر المستند أن البيانات تُحفظ للمدة اللازمة للأغراض المذكورة أو التي يفرضها النظام أو الاتفاق، ثم تُحذف أو تُجعل غير قابلة للتعرّف وفق إجراءات معتمدة. المدد الفعلية معلّقة ولا تُذكر هنا."
+          ]
+        },
+        {
+          "id": "rights",
+          "title": "حقوق المستخدم وأصحاب البيانات",
+          "paragraphs": [
+            "بحسب الصفة ونوع البيانات والمتطلبات المطبقة، قد تتوفر للشخص حقوق تتعلق ببياناته."
+          ],
+          "items": [
+            {
+              "title": "الاطلاع",
+              "text": "طلب معرفة البيانات المحفوظة وطريقة استخدامها."
+            },
+            {
+              "title": "التصحيح",
+              "text": "طلب تصحيح أو تحديث البيانات غير الدقيقة."
+            },
+            {
+              "title": "الحذف أو التقييد",
+              "text": "طلب الحذف أو تقييد الاستخدام حيث ينطبق."
+            },
+            {
+              "title": "الاعتراض أو السحب",
+              "text": "الاعتراض على بعض أوجه المعالجة أو سحب الموافقة عندما تُبنى المعالجة عليها."
+            },
+            {
+              "title": "النقل وغيره",
+              "text": "طلب نقل البيانات أو أي حقوق أخرى منطبقة."
+            }
+          ]
+        },
+        {
+          "id": "employer",
+          "title": "بيانات الموظفين داخل حساب المنشأة",
+          "paragraphs": [
+            "عندما تستخدم منشأة نظامي لإدارة بيانات موظفيها، قد تكون هي الجهة التي تحدد أغراض المعالجة ووسائلها، بينما يقدم نظامي الخدمة التقنية وفق الاتفاق والممارسة المعتمدة.",
+            "على المنشأة التأكد من وجود إشعارات مناسبة لموظفيها، واستخدام الميزات التي تحتاجها فقط، وتطبيق الصلاحيات والاحتفاظ المناسبين."
+          ]
+        },
+        {
+          "id": "verification",
+          "title": "بيانات الوجه وكشف الحيوية في الباقة الأعلى",
+          "paragraphs": [
+            "قد تتضمن بعض ميزات الباقة الأعلى تسجيل الوجه أو كشف الحيوية للتحقق من موثوقية الحضور. هذه بيانات حساسة وتحتاج شرحاً دقيقاً وموافقة أو أساساً نظامياً مناسباً. الأسئلة التالية مفتوحة لا مجاب عنها."
+          ],
+          "items": [
+            {
+              "title": "ما يُجمع",
+              "text": "ما نوع البيانات التي تُجمع فعلاً؟ معلّق."
+            },
+            {
+              "title": "صورة أم قالب",
+              "text": "هل تُحفظ صورة أم قالب حيوي أم نتيجة فقط؟ معلّق."
+            },
+            {
+              "title": "الغرض",
+              "text": "لماذا تلزم؟ معلّق."
+            },
+            {
+              "title": "الوصول",
+              "text": "من يمكنه الوصول إليها؟ معلّق."
+            },
+            {
+              "title": "الاحتفاظ",
+              "text": "كم مدة الاحتفاظ؟ معلّق."
+            },
+            {
+              "title": "الطلبات",
+              "text": "كيف يُطلب الحذف أو الاستفسار؟ معلّق."
+            }
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "تحديثات السياسة",
+          "paragraphs": [
+            "تذكر المستند أن السياسة قد تُحدَّث من وقت لآخر لتعكس تغيرات الخدمة أو المتطلبات النظامية، وأن تاريخ التحديث سيُوضَّح عند أي تغيير مهم."
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "التواصل بشأن الخصوصية",
+          "paragraphs": [
+            "لم يُؤكَّد بعد بريد خصوصية رسمي أو عنوان أو مسؤول حماية بيانات أو نموذج تواصل لهذه المستند. وإلى حينه استخدم البريد الرسمي في صفحة المساعدة أو قنوات السياسة المعتمدة أعلاه."
+          ]
+        },
+        {
+          "id": "pending",
+          "title": "تفاصيل معلّقة للمراجعين",
+          "paragraphs": [
+            "تضمّن المستند المصدر عناصر مؤقتة وملاحظات صياغة، وقد أُزيلت هنا. لا شيء مما يلي مؤكد؛ كل سؤال يحتاج إجابة من المراجعين القانونيين والتقنيين المسؤولين قبل الاعتماد. وإلى حينه يُرجع إلى السياسة المعتمدة والنافذة."
+          ],
+          "items": [
+            {
+              "title": "الكيان القانوني وجهة التواصل",
+              "text": "الاسم القانوني الكامل والعنوان والدولة وبيانات السجل للجهة المشغّلة؛ البريد الرسمي للخصوصية؛ وجود مسؤول خصوصية أو حماية بيانات؛ وجود نموذج تواصل. غير مؤكد."
+            },
+            {
+              "title": "تاريخ السريان والنطاق",
+              "text": "تاريخ آخر تحديث، وهل تشمل السياسة الموقع والتطبيق والخدمات المرتبطة. غير مؤكد."
+            },
+            {
+              "title": "حقول البيانات الفعلية",
+              "text": "ما حقول الموظفين التي تُجمع فعلاً، وحدود مسؤولية المنشأة بدقة. غير مؤكد."
+            },
+            {
+              "title": "ملفات الارتباط والتحليلات",
+              "text": "أي أدوات ملفات ارتباط وتحليلات تُستخدم، وإعداداتها، وضوابط الموافقة الظاهرة. غير مؤكد."
+            },
+            {
+              "title": "المشاركة ومقدمو الخدمة",
+              "text": "أي مزودي استضافة ودعم وتواصل ودفع يستلمون البيانات فعلاً. غير مؤكد."
+            },
+            {
+              "title": "الحماية والاحتفاظ",
+              "text": "ضوابط الحماية الفعلية ومدد الاحتفاظ وإجراءات الحذف أو إزالة التعريف. غير مؤكد."
+            },
+            {
+              "title": "إجراء الحقوق",
+              "text": "كيف تُقدَّم وتُعالج طلبات الاطلاع والتصحيح والحذف والتقييد والاعتراض والنقل. غير مؤكد."
+            },
+            {
+              "title": "بيانات الوجه",
+              "text": "هل تُحفظ صورة أم قالب حيوي أم نتيجة تحقق فقط؛ من يصل إليها؛ لكم من الوقت؛ كيف يُطلب حذفها؛ الأساس النظامي أو الموافقة. التفاصيل معلّقة؛ راجع السياسة النافذة أو تواصل مع الفريق."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "biometricSecurity": {
+    "path": "/biometric-data-security",
+    "draft": true,
+    "en": {
+      "title": "Face Data and Security",
+      "description": "A document page about face verification and data security at Nizamy, prepared for review. Not an approved policy.",
+      "eyebrow": "Face data and security",
+      "intro": "Understand face-data concepts and attendance verification. Unconfirmed technical and operational details are identified on this page; refer to the current approved policy.",
+      "sections": [
+        {
+          "id": "summary",
+          "title": "Summary in one minute",
+          "paragraphs": [
+            "This document describes the intended use of face enrollment and liveness detection in the higher plan, pending product confirmation."
+          ],
+          "items": [
+            {
+              "title": "Purpose",
+              "text": "Help check that an attendance record belongs to the same employee."
+            },
+            {
+              "title": "Specific use",
+              "text": "Verification data is meant for running the feature and improving attendance reliability, under approved settings and basis."
+            },
+            {
+              "title": "No absolute claim",
+              "text": "Face verification does not mean every attempt to cheat is eliminated, or that the result is guaranteed in every case."
+            },
+            {
+              "title": "Business duty",
+              "text": "The business should explain the feature to its employees and apply suitable permissions and retention."
+            },
+            {
+              "title": "Questions",
+              "text": "Users or businesses can contact the team about data or rights that apply."
+            }
+          ]
+        },
+        {
+          "id": "purpose",
+          "title": "Why this data is used",
+          "paragraphs": [
+            "The feature supports attendance reliability for businesses that choose the higher plan."
+          ],
+          "items": [
+            {
+              "title": "Same employee",
+              "text": "Help tie an attendance record to the same employee."
+            },
+            {
+              "title": "Fewer proxy records",
+              "text": "Reduce attempts to record attendance for another employee."
+            },
+            {
+              "title": "Clearer signal",
+              "text": "Give the business a clearer signal when reviewing attendance."
+            },
+            {
+              "title": "Reports",
+              "text": "Support attendance reports and processes under available permissions."
+            },
+            {
+              "title": "Experience",
+              "text": "Improve verification when the feature is enabled and configured properly."
+            }
+          ]
+        },
+        {
+          "id": "definitions",
+          "title": "What face and liveness data mean",
+          "paragraphs": [
+            "Face data can mean information used to tell apart or compare facial characteristics. Liveness detection aims to check that the process is tied to a real person present during the interaction rather than a photo or non-live means, depending on the technology actually used."
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "The verification journey",
+          "paragraphs": [
+            "As described in the source document, subject to confirmation of how the product really works."
+          ],
+          "items": [
+            {
+              "title": "Start",
+              "text": "The employee starts attendance from the approved channel."
+            },
+            {
+              "title": "Input",
+              "text": "The system captures the inputs needed for verification under the feature settings."
+            },
+            {
+              "title": "Check",
+              "text": "Liveness detection or comparison runs in the way the product actually supports."
+            },
+            {
+              "title": "Result",
+              "text": "A verification result or attendance status appears."
+            },
+            {
+              "title": "Review",
+              "text": "An administrator can review the record under permissions and business policy."
+            },
+            {
+              "title": "Management",
+              "text": "Data is then managed under retention and approved procedures."
+            }
+          ]
+        },
+        {
+          "id": "stored",
+          "title": "Types of stored data: open questions",
+          "paragraphs": [
+            "The difference between an image, a biometric template and a verification result matters to users and legal review. These are questions, not statements."
+          ],
+          "items": [
+            {
+              "title": "Image",
+              "text": "Is a temporary image captured? Is it kept? For how long? Pending."
+            },
+            {
+              "title": "Biometric template",
+              "text": "Are facial features converted to a template? Any claim that it cannot rebuild the image must not be used unless technically confirmed. Pending."
+            },
+            {
+              "title": "Verification result",
+              "text": "Is a result such as passed, failed or needs review kept? Pending."
+            },
+            {
+              "title": "Attendance record",
+              "text": "Which data is linked: time, location, device, result or other? Pending."
+            }
+          ]
+        },
+        {
+          "id": "protection",
+          "title": "Protections, subject to confirmation",
+          "paragraphs": [
+            "The document describes appropriate technical and organisational controls help protect against unauthorised access, loss or inappropriate use, according to the real level of protection in the service. The real level is not confirmed here."
+          ],
+          "items": [
+            {
+              "title": "Role-based access",
+              "text": "Limit access by user role and permission."
+            },
+            {
+              "title": "Access review",
+              "text": "Review access to data when needed."
+            },
+            {
+              "title": "Account and admin protection",
+              "text": "Protect accounts and admin interfaces under available controls."
+            },
+            {
+              "title": "Incident response",
+              "text": "Handle security incidents under approved response procedures."
+            },
+            {
+              "title": "Admin awareness",
+              "text": "Raise awareness of permissions and proper use among business administrators."
+            }
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "Retention and deletion",
+          "paragraphs": [
+            "The document describes verification data is kept for the time needed for its purpose, or as required by law or agreement, then deleted or made unidentifiable under approved procedures. The actual period is pending."
+          ]
+        },
+        {
+          "id": "responsibilities",
+          "title": "Business and employee responsibilities",
+          "paragraphs": [
+            "Using verification data is a shared responsibility between Nizamy, the business and the user within approved roles."
+          ],
+          "items": [
+            {
+              "title": "Business: inform",
+              "text": "Tell employees the feature exists and why, before enabling it."
+            },
+            {
+              "title": "Business: purpose",
+              "text": "Use it for the stated purpose and grant no wider permissions than needed."
+            },
+            {
+              "title": "Business: update",
+              "text": "Keep employee data current and manage access when roles change."
+            },
+            {
+              "title": "Business: policy",
+              "text": "Follow its own privacy and request policies."
+            },
+            {
+              "title": "Employee: account",
+              "text": "Use your own account and do not share sign-in details."
+            },
+            {
+              "title": "Employee: report",
+              "text": "Follow recording instructions and report any problem or unexpected use."
+            },
+            {
+              "title": "Employee: ask",
+              "text": "Ask the business or Nizamy through the right channel about your data."
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "title": "Security is not an absolute guarantee",
+          "paragraphs": [
+            "Appropriate efforts are made to protect data, but no technical means can be described as completely free of risk. For that reason actual controls should be stated, and users and businesses are encouraged to protect accounts and permissions."
+          ]
+        },
+        {
+          "id": "incident",
+          "title": "If a problem or security incident happens",
+          "paragraphs": [
+            "If you suspect unauthorised access or unexpected use of data, report it through the official channel as soon as possible. The Help page shows the official email. Please include:"
+          ],
+          "items": [
+            {
+              "title": "What happened",
+              "text": "What happened or what you noticed."
+            },
+            {
+              "title": "When",
+              "text": "When it happened."
+            },
+            {
+              "title": "Affected account",
+              "text": "The account or business affected."
+            },
+            {
+              "title": "Evidence",
+              "text": "A screenshot or error message, if any."
+            },
+            {
+              "title": "Keep it minimal",
+              "text": "Do not send more sensitive data than needed to understand the report."
+            }
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "Contact",
+          "paragraphs": [
+            "No official privacy contact has been confirmed for this document. Use the official email on the Help page, and read the active approved policy above."
+          ]
+        },
+        {
+          "id": "pending",
+          "title": "Pending details for reviewers",
+          "paragraphs": [
+            "The source document asks several technical questions that are not answered. They are listed here as open items, not as statements. Nothing below is confirmed; until it is, rely on the active approved policy or contact the team."
+          ],
+          "items": [
+            {
+              "title": "What is stored",
+              "text": "Is a temporary image captured, and is it kept? Is a biometric template created, and may it be described as unable to rebuild the image? Is a result such as passed, failed or needs review kept? What is linked to the attendance record: time, location, device, result? Detail pending."
+            },
+            {
+              "title": "Liveness method",
+              "text": "Which liveness or comparison method the product really supports. Detail pending."
+            },
+            {
+              "title": "Protections",
+              "text": "The actual controls (access, account protection, encryption, review) and the incident response procedure. Detail pending; no guarantee is stated."
+            },
+            {
+              "title": "Retention and deletion",
+              "text": "Retention period for verification data and the deletion or de-identification procedure. Detail pending."
+            },
+            {
+              "title": "Access and support",
+              "text": "Whether support can see an image, template or result, when, and under what controls. Detail pending."
+            },
+            {
+              "title": "Switching off",
+              "text": "Whether and how the feature can be turned off, by plan and employer settings. Detail pending."
+            },
+            {
+              "title": "Other uses and basis",
+              "text": "Legal basis or consent, and confirmation that data is not used for other purposes. Detail pending."
+            }
+          ]
+        }
+      ]
+    },
+    "ar": {
+      "title": "بيانات الوجه والأمان",
+      "description": "معلومات صفحة عن التحقق بالوجه وأمان البيانات في نظامي أُعدّت للمراجعة. ليست سياسة معتمدة.",
+      "eyebrow": "بيانات الوجه والأمان",
+      "intro": "تعرّف على مفاهيم بيانات الوجه والتحقق من الحضور. التفاصيل التقنية والتشغيلية غير المؤكدة موضحة في الصفحة، ويجب الرجوع إلى السياسة المعتمدة الحالية.",
+      "sections": [
+        {
+          "id": "summary",
+          "title": "ملخص في دقيقة",
+          "paragraphs": [
+            "تصف هذه المستند الاستخدام المقصود لتسجيل الوجه وكشف الحيوية في الباقة الأعلى، بانتظار تأكيد تفاصيل المنتج."
+          ],
+          "items": [
+            {
+              "title": "الغرض",
+              "text": "المساعدة على التحقق من أن تسجيل الحضور مرتبط بالموظف نفسه."
+            },
+            {
+              "title": "استخدام محدد",
+              "text": "تُستخدم بيانات التحقق لتشغيل الميزة ورفع موثوقية الحضور، وفق الإعدادات والأساس المعتمد."
+            },
+            {
+              "title": "لا ادعاء مطلق",
+              "text": "لا يعني التحقق بالوجه إلغاء كل محاولات التحايل ولا ضمان النتيجة في كل حالة."
+            },
+            {
+              "title": "واجب المنشأة",
+              "text": "على المنشأة توضيح الميزة لموظفيها وتطبيق الصلاحيات والاحتفاظ المناسبين."
+            },
+            {
+              "title": "الاستفسار",
+              "text": "يمكن للمستخدم أو المنشأة التواصل مع الفريق بشأن البيانات أو الحقوق المنطبقة."
+            }
+          ]
+        },
+        {
+          "id": "purpose",
+          "title": "لماذا تُستخدم هذه البيانات",
+          "paragraphs": [
+            "تدعم الميزة موثوقية الحضور في المنشآت التي تختار الباقة الأعلى."
+          ],
+          "items": [
+            {
+              "title": "الموظف نفسه",
+              "text": "المساعدة على ربط تسجيل الحضور بالموظف نفسه."
+            },
+            {
+              "title": "تقليل التسجيل نيابة عن الغير",
+              "text": "تقليل محاولات تسجيل الحضور نيابة عن موظف آخر."
+            },
+            {
+              "title": "إشارة أوضح",
+              "text": "إعطاء المنشأة إشارة أوضح عند مراجعة الحضور."
+            },
+            {
+              "title": "التقارير",
+              "text": "دعم تقارير الحضور والعمليات وفق الصلاحيات."
+            },
+            {
+              "title": "التجربة",
+              "text": "تحسين التحقق عند تفعيل الميزة وتهيئتها بشكل صحيح."
+            }
+          ]
+        },
+        {
+          "id": "definitions",
+          "title": "ما المقصود ببيانات الوجه والحيوية",
+          "paragraphs": [
+            "قد تشير بيانات الوجه إلى معلومات تُستخدم لتمييز خصائص الوجه أو مقارنتها. أما كشف الحيوية فيهدف إلى التحقق من أن العملية مرتبطة بشخص حقيقي حاضر أثناء التفاعل لا بصورة أو وسيلة غير حية، بحسب التقنية المستخدمة فعلاً."
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "رحلة التحقق",
+          "paragraphs": [
+            "كما وردت في المستند المصدر، مع بقاء تأكيد طريقة عمل المنتج الفعلية."
+          ],
+          "items": [
+            {
+              "title": "البدء",
+              "text": "يبدأ الموظف تسجيل الحضور من القناة المعتمدة."
+            },
+            {
+              "title": "المدخلات",
+              "text": "يلتقط النظام المدخلات اللازمة للتحقق وفق إعدادات الميزة."
+            },
+            {
+              "title": "التحقق",
+              "text": "يعمل كشف الحيوية أو المقارنة بالطريقة التي يدعمها المنتج فعلاً."
+            },
+            {
+              "title": "النتيجة",
+              "text": "تظهر نتيجة التحقق أو حالة التسجيل."
+            },
+            {
+              "title": "المراجعة",
+              "text": "يمكن للمسؤول مراجعة السجل وفق الصلاحيات وسياسة المنشأة."
+            },
+            {
+              "title": "الإدارة",
+              "text": "تُدار البيانات بعد ذلك وفق الاحتفاظ والإجراءات المعتمدة."
+            }
+          ]
+        },
+        {
+          "id": "stored",
+          "title": "أنواع البيانات المحفوظة: أسئلة مفتوحة",
+          "paragraphs": [
+            "الفرق بين الصورة والقالب الحيوي ونتيجة التحقق مهم للمستخدم وللمراجعة القانونية. هذه أسئلة لا عبارات مقررة."
+          ],
+          "items": [
+            {
+              "title": "الصورة",
+              "text": "هل تُلتقط صورة مؤقتة؟ هل تُحفظ؟ لكم من الوقت؟ معلّق."
+            },
+            {
+              "title": "القالب الحيوي",
+              "text": "هل تُحوَّل خصائص الوجه إلى قالب؟ لا تُستخدم عبارة أنه لا يعيد بناء الصورة إلا إذا تأكدت تقنياً. معلّق."
+            },
+            {
+              "title": "نتيجة التحقق",
+              "text": "هل تُحفظ نتيجة مثل ناجح أو غير ناجح أو يحتاج مراجعة؟ معلّق."
+            },
+            {
+              "title": "سجل الحضور",
+              "text": "ما البيانات المرتبطة: الوقت أو الموقع أو الجهاز أو النتيجة أو غيرها؟ معلّق."
+            }
+          ]
+        },
+        {
+          "id": "protection",
+          "title": "الحماية، بانتظار التأكيد",
+          "paragraphs": [
+            "تذكر المستند أن ضوابط تقنية وتنظيمية مناسبة تساعد على الحماية من الوصول غير المصرح به أو الفقد أو الاستخدام غير المناسب وفق مستوى الحماية الفعلي في الخدمة. المستوى الفعلي غير مؤكد هنا."
+          ],
+          "items": [
+            {
+              "title": "الوصول حسب الدور",
+              "text": "تقييد الوصول بحسب أدوار المستخدمين وصلاحياتهم."
+            },
+            {
+              "title": "مراجعة الوصول",
+              "text": "مراجعة الوصول إلى البيانات عند الحاجة."
+            },
+            {
+              "title": "حماية الحسابات والإدارة",
+              "text": "حماية الحسابات وواجهات الإدارة وفق الضوابط المتاحة."
+            },
+            {
+              "title": "الاستجابة للحوادث",
+              "text": "التعامل مع الحوادث الأمنية وفق إجراءات الاستجابة المعتمدة."
+            },
+            {
+              "title": "توعية المسؤولين",
+              "text": "توعية مسؤولي المنشأة بأهمية الصلاحيات والاستخدام المناسب."
+            }
+          ]
+        },
+        {
+          "id": "retention",
+          "title": "الاحتفاظ والحذف",
+          "paragraphs": [
+            "تذكر المستند أن بيانات التحقق تُحفظ للمدة اللازمة للغرض أو التي يفرضها النظام أو الاتفاق، ثم تُحذف أو تُجعل غير قابلة للتعرّف وفق إجراءات معتمدة. المدة الفعلية معلّقة."
+          ]
+        },
+        {
+          "id": "responsibilities",
+          "title": "مسؤوليات المنشأة والموظف",
+          "paragraphs": [
+            "استخدام بيانات التحقق مسؤولية مشتركة بين نظامي والمنشأة والمستخدم ضمن الأدوار المعتمدة."
+          ],
+          "items": [
+            {
+              "title": "المنشأة: الإبلاغ",
+              "text": "إبلاغ الموظفين بوجود الميزة والغرض منها قبل تفعيلها."
+            },
+            {
+              "title": "المنشأة: الغرض",
+              "text": "استخدامها للغرض المعلن وعدم منح صلاحيات أوسع من الحاجة."
+            },
+            {
+              "title": "المنشأة: التحديث",
+              "text": "تحديث بيانات الموظفين وإدارة الوصول عند تغير الأدوار."
+            },
+            {
+              "title": "المنشأة: السياسة",
+              "text": "اتباع سياستها وإجراءاتها للخصوصية والطلبات."
+            },
+            {
+              "title": "الموظف: الحساب",
+              "text": "استخدام حسابه وعدم مشاركة بيانات الدخول."
+            },
+            {
+              "title": "الموظف: الإبلاغ",
+              "text": "اتباع تعليمات التسجيل والإبلاغ عن أي مشكلة أو استخدام غير متوقع."
+            },
+            {
+              "title": "الموظف: الاستفسار",
+              "text": "التواصل مع المنشأة أو نظامي عبر القناة المناسبة للاستفسار عن بياناته."
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "title": "الأمان لا يعني ضماناً مطلقاً",
+          "paragraphs": [
+            "تُبذل جهود مناسبة لحماية البيانات، لكن لا توجد وسيلة تقنية يمكن وصفها بأنها خالية من المخاطر تماماً. لذلك تُوضَّح الضوابط الفعلية، ويُشجَّع المستخدمون والمنشآت على حماية الحسابات والصلاحيات."
+          ]
+        },
+        {
+          "id": "incident",
+          "title": "عند حدوث مشكلة أو حادث أمني",
+          "paragraphs": [
+            "إذا اشتبهت في وصول غير مصرح به أو استخدام غير متوقع للبيانات، فأبلغ عبر القناة الرسمية بأسرع وقت. يظهر البريد الرسمي في صفحة المساعدة. يرجى ذكر:"
+          ],
+          "items": [
+            {
+              "title": "ما حدث",
+              "text": "ما الذي حدث أو لاحظته."
+            },
+            {
+              "title": "التوقيت",
+              "text": "متى حدثت المشكلة."
+            },
+            {
+              "title": "الحساب المتأثر",
+              "text": "الحساب أو المنشأة المتأثرة."
+            },
+            {
+              "title": "الدليل",
+              "text": "صورة شاشة أو رسالة خطأ إن وجدت."
+            },
+            {
+              "title": "الحد الأدنى",
+              "text": "لا ترسل بيانات حساسة أكثر مما يلزم لفهم البلاغ."
+            }
+          ]
+        },
+        {
+          "id": "contact",
+          "title": "التواصل",
+          "paragraphs": [
+            "لم تُؤكَّد جهة تواصل رسمية للخصوصية لهذه المستند. استخدم البريد الرسمي في صفحة المساعدة، واقرأ السياسة المعتمدة والنافذة أعلاه."
+          ]
+        },
+        {
+          "id": "pending",
+          "title": "تفاصيل معلّقة للمراجعين",
+          "paragraphs": [
+            "يطرح المستند المصدر أسئلة تقنية عدة دون إجابة. وهي مدرجة هنا كبنود مفتوحة لا كعبارات مقررة. لا شيء مما يلي مؤكد؛ وإلى حين التأكيد يُرجع إلى السياسة المعتمدة والنافذة أو يُتواصل مع الفريق."
+          ],
+          "items": [
+            {
+              "title": "ما الذي يُحفظ",
+              "text": "هل تُلتقط صورة مؤقتة وهل تُحفظ؟ هل يُنشأ قالب حيوي، وهل يجوز وصفه بأنه لا يعيد بناء الصورة؟ هل تُحفظ نتيجة مثل ناجح أو غير ناجح أو يحتاج مراجعة؟ وما الذي يُربط بسجل الحضور: الوقت أو الموقع أو الجهاز أو النتيجة؟ التفاصيل معلّقة."
+            },
+            {
+              "title": "طريقة كشف الحيوية",
+              "text": "أي طريقة كشف حيوية أو مقارنة يدعمها المنتج فعلاً. التفاصيل معلّقة."
+            },
+            {
+              "title": "الحماية",
+              "text": "الضوابط الفعلية (الوصول وحماية الحسابات والتشفير والمراجعة) وإجراء الاستجابة للحوادث. التفاصيل معلّقة؛ ولا يُذكر أي ضمان."
+            },
+            {
+              "title": "الاحتفاظ والحذف",
+              "text": "مدة الاحتفاظ ببيانات التحقق وإجراء الحذف أو إزالة التعريف. التفاصيل معلّقة."
+            },
+            {
+              "title": "الوصول والدعم",
+              "text": "هل يستطيع الدعم رؤية صورة أو قالب أو نتيجة، ومتى، وبأي ضوابط. التفاصيل معلّقة."
+            },
+            {
+              "title": "الإيقاف",
+              "text": "هل يمكن إيقاف الميزة وكيف، بحسب الباقة وإعدادات المنشأة. التفاصيل معلّقة."
+            },
+            {
+              "title": "الاستخدامات الأخرى والأساس",
+              "text": "الأساس النظامي أو الموافقة، وتأكيد عدم استخدام البيانات لأغراض أخرى. التفاصيل معلّقة."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "faq": {
+    "path": "/faq/ar",
+    "draft": false,
+    "en": {
+      "title": "Frequently Asked Questions",
+      "description": "Search answers about Nizamy: getting started, attendance, HR, plans, AI and reports, privacy and support.",
+      "eyebrow": "FAQ",
+      "intro": "Everything you want to know about Nizamy, in one place. Search or pick a topic.",
+      "sections": [
+        {
+          "id": "how",
+          "title": "How to use this page",
+          "paragraphs": [
+            "Type a word or pick a topic. Search ignores Arabic diacritics and alef variants. Try: plans, add employee, attendance, reports, AI or sign-in recovery."
+          ]
+        },
+        {
+          "id": "topics",
+          "title": "Topics covered",
+          "paragraphs": [
+            "Answers are gathered from the Nizamy source documents on the platform, setup, attendance, self-service, reports and AI, plans, privacy and face data, and support."
+          ],
+          "items": [
+            {
+              "title": "Plans",
+              "text": "Active plans and prices are on the homepage; answers here point there instead of repeating them."
+            },
+            {
+              "title": "Privacy and face data",
+              "text": "Unconfirmed technical details are marked as pending rather than answered."
+            },
+            {
+              "title": "Support",
+              "text": "No response time is promised."
+            }
+          ]
+        },
+        {
+          "id": "more",
+          "title": "Did not find your question?",
+          "paragraphs": [
+            "Open the Help page for guidance, or email the official address shown there. Describe what you were trying to do and avoid sending passwords."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "id": "about-what",
+          "category": "about",
+          "q": "What is Nizamy?",
+          "a": "Nizamy is an HR platform that helps businesses manage employees, attendance, requests, reports and rewards in one place, according to the capabilities available in each plan."
+        },
+        {
+          "id": "about-who",
+          "category": "about",
+          "q": "Who is Nizamy designed for?",
+          "a": "Small and medium businesses in Saudi Arabia, and teams that want to organise employee operations and reduce manual follow-up."
+        },
+        {
+          "id": "about-free",
+          "category": "about",
+          "q": "Can I try Nizamy for free?",
+          "a": "Yes. A Free plan exists for trying the basics. See the active plans on the homepage for what each plan currently includes."
+        },
+        {
+          "id": "about-technical",
+          "category": "about",
+          "q": "Do I need technical experience to start?",
+          "a": "No. Setup is designed to be clear and simple, and the Help page gives guidance when you need it."
+        },
+        {
+          "id": "about-small",
+          "category": "about",
+          "q": "Is Nizamy suitable for small businesses?",
+          "a": "Yes. You can start with the basics and expand to larger capabilities as your team or operations grow."
+        },
+        {
+          "id": "about-medium",
+          "category": "about",
+          "q": "Is Nizamy suitable for medium businesses?",
+          "a": "Yes, depending on the needs of the business and the capabilities required. Check the active plans or contact the team to discuss your needs."
+        },
+        {
+          "id": "about-onetool",
+          "category": "about",
+          "q": "Does Nizamy bring several processes together?",
+          "a": "Nizamy helps combine attendance, requests, reports and rewards in one experience, depending on the plan and available features."
+        },
+        {
+          "id": "about-replace",
+          "category": "about",
+          "q": "Does Nizamy replace the HR team?",
+          "a": "No. Nizamy helps HR teams reduce operational work and see clearer data, while management decisions stay with the responsible team."
+        },
+        {
+          "id": "start-how",
+          "category": "start",
+          "q": "How do I start using Nizamy?",
+          "a": "Create an account or sign in, add your business and team details, then choose the processes you want to start with."
+        },
+        {
+          "id": "start-first",
+          "category": "start",
+          "q": "What is the first step after creating an account?",
+          "a": "Review the business details, add employees, then confirm the basic settings before daily use begins."
+        },
+        {
+          "id": "start-later",
+          "category": "start",
+          "q": "Can I add employees later?",
+          "a": "You can add employees according to the permissions and settings available in your account."
+        },
+        {
+          "id": "start-help",
+          "category": "start",
+          "q": "Is there help during setup?",
+          "a": "Yes. Use the Help page for guidance, or contact the team through the official email."
+        },
+        {
+          "id": "start-login",
+          "category": "start",
+          "q": "What if I forget my sign-in details?",
+          "a": "Use the available sign-in recovery path, or contact the team if you cannot reach your account."
+        },
+        {
+          "id": "att-support",
+          "category": "attendance",
+          "q": "Does Nizamy support attendance management?",
+          "a": "Yes. Attendance management is part of Nizamy's current capabilities, with the feature level depending on the plan."
+        },
+        {
+          "id": "att-face",
+          "category": "attendance",
+          "q": "Can an employee's own presence be verified?",
+          "a": "Face verification with liveness detection is a capability of a higher plan; check the active plans for availability. It helps raise attendance reliability and reduce attempts to cheat."
+        },
+        {
+          "id": "att-cheat",
+          "category": "attendance",
+          "q": "Does face verification eliminate every attempt to cheat?",
+          "a": "No professional wording can guarantee complete elimination. Face verification and liveness detection help reduce attempts and raise attendance reliability."
+        },
+        {
+          "id": "att-records",
+          "category": "attendance",
+          "q": "Can I review attendance records?",
+          "a": "Yes, according to permissions and plan, attendance records can be reviewed and used in reports."
+        },
+        {
+          "id": "att-error",
+          "category": "attendance",
+          "q": "What if an attendance record is wrong?",
+          "a": "Check the record details first, then follow the request path or contact your administrator, according to your business's policy."
+        },
+        {
+          "id": "hr-self",
+          "category": "hr",
+          "q": "What does self-service mean?",
+          "a": "A space where employees send requests, follow their status and complete some procedures without relying on messages and manual follow-up."
+        },
+        {
+          "id": "hr-approval",
+          "category": "hr",
+          "q": "Do requests reach a manager for approval?",
+          "a": "Yes, depending on the request type, permission settings and the approval path set up in the business."
+        },
+        {
+          "id": "hr-manual",
+          "category": "hr",
+          "q": "Can manual HR work be reduced?",
+          "a": "Yes. Gathering requests, approvals and data in one clear path helps reduce manual follow-up and repeated errors."
+        },
+        {
+          "id": "price-plans",
+          "category": "pricing",
+          "q": "Which plans are available now?",
+          "a": "The active plans and prices are always shown on the homepage pricing section. The pricing document page on this site is a reference only and is not a live offer."
+        },
+        {
+          "id": "price-differ",
+          "category": "pricing",
+          "q": "Do features differ between plans?",
+          "a": "Yes. Plans differ in reports, AI, verification, rewards, records and support, according to the plan."
+        },
+        {
+          "id": "price-upgrade",
+          "category": "pricing",
+          "q": "Can I move to a higher plan later?",
+          "a": "You can start with what fits your current need, then contact the team when you need broader capabilities."
+        },
+        {
+          "id": "ai-reports",
+          "category": "ai",
+          "q": "What kind of reports does Nizamy provide?",
+          "a": "Reports vary by plan and cover areas such as attendance, employees, payroll and compliance as available in the plan."
+        },
+        {
+          "id": "ai-use",
+          "category": "ai",
+          "q": "Does Nizamy use artificial intelligence?",
+          "a": "AI capabilities are available in the suitable plan to help HR understand data, requests and reports faster. The decision stays with you."
+        },
+        {
+          "id": "sec-policy",
+          "category": "security",
+          "q": "Where can I read the approved privacy policy?",
+          "a": "The active, approved policy is published at the links on the Privacy page. The privacy and biometric pages on this site are documents for review and are not approved policies."
+        },
+        {
+          "id": "sec-biometric",
+          "category": "security",
+          "q": "How is face data stored and protected?",
+          "a": "Technical details on storage, retention and protection have not been confirmed for publication. Refer to the active privacy policy or contact the team."
+        },
+        {
+          "id": "sup-contact",
+          "category": "support",
+          "q": "How do I contact the team?",
+          "a": "Email the official address shown on the Help page. Please do not include passwords or sensitive personal data in your message."
+        },
+        {
+          "id": "sup-info",
+          "category": "support",
+          "q": "What should I include when asking for help?",
+          "a": "Describe what you were doing, what you expected, what happened, and the device or app version if known."
+        },
+        {
+          "id": "sec-purpose-face",
+          "category": "security",
+          "q": "Why does Nizamy use face verification?",
+          "a": "In the higher plan, face enrollment and liveness detection are meant to help tie attendance to the same employee, reduce attempts to record for another employee and raise reliability. The pages on face data here are documents for review."
+        },
+        {
+          "id": "sec-image",
+          "category": "security",
+          "q": "Does the system keep a photo of my face?",
+          "a": "Detail pending: whether an image, a biometric template or only a verification result is kept has not been confirmed for publication. See the active approved policy or contact the team."
+        },
+        {
+          "id": "sec-other-use",
+          "category": "security",
+          "q": "Is face data used for other purposes?",
+          "a": "The document describes verification data is meant for the stated purpose and not for others except under a legal basis or suitable consent. This is a document statement; detail pending, so see the active policy or the team."
+        },
+        {
+          "id": "sec-turnoff",
+          "category": "security",
+          "q": "Can the feature be switched off?",
+          "a": "It depends on the business settings, the plan and the approved policy. Detail pending; ask your employer or the team."
+        },
+        {
+          "id": "sec-support-access",
+          "category": "security",
+          "q": "Can the support team see my face data?",
+          "a": "Detail pending: whether support can reach an image, template or result, when, and under which controls, is not confirmed. See the active policy or contact the team."
+        },
+        {
+          "id": "sec-request-info",
+          "category": "security",
+          "q": "How do I ask for information about my data?",
+          "a": "Use the official privacy channel in the active policy, or ask your business administrator, depending on each party's role in managing the data. A confirmed privacy contact is pending."
+        },
+        {
+          "id": "sec-incident",
+          "category": "security",
+          "q": "What do I do if I suspect unauthorised access?",
+          "a": "Report it through the official channel as soon as possible: what happened, when, which account or business, and any screenshot or error. Do not send more sensitive data than needed."
+        },
+        {
+          "id": "sec-employer",
+          "category": "security",
+          "q": "Who is responsible for employee data in a business account?",
+          "a": "The business may decide the purposes and means of processing, while Nizamy provides the technical service. The business should give employees suitable notices and apply suitable permissions and retention."
+        },
+        {
+          "id": "sec-absolute",
+          "category": "security",
+          "q": "Is security a guarantee?",
+          "a": "No technical means is completely free of risk. Actual controls should be stated, and users and businesses should protect accounts and permissions."
+        },
+        {
+          "id": "sec-retention",
+          "category": "security",
+          "q": "How long is data kept?",
+          "a": "The document describes for the time needed for the stated purpose or as required by law or agreement, then deleted or made unidentifiable. Actual periods are pending; see the active policy."
+        },
+        {
+          "id": "sec-rights",
+          "category": "security",
+          "q": "What rights do I have over my data?",
+          "a": "Depending on role and applicable rules: access, correction, deletion or restriction, objection or withdrawal of consent, and portability. The request process is pending."
+        },
+        {
+          "id": "ai-decide",
+          "category": "ai",
+          "q": "Does AI make decisions in my place?",
+          "a": "No. AI helps understand data and reach an answer or recommendation faster; the final decision stays with management or HR."
+        },
+        {
+          "id": "ai-decision-reports",
+          "category": "ai",
+          "q": "Can I use the reports to make a decision?",
+          "a": "Yes. Reports and insights are designed to help management see priorities and decide on clearer data."
+        },
+        {
+          "id": "price-which",
+          "category": "pricing",
+          "q": "How do I know which plan fits me?",
+          "a": "Start from what you want to improve now. See the active plans on the homepage, or contact the team to discuss team size and the capabilities you need."
+        },
+        {
+          "id": "price-employees",
+          "category": "pricing",
+          "q": "Does the price cover all employees?",
+          "a": "Where a plan is priced per employee, cost depends on the employees included in the subscription. Check the active plan before subscribing."
+        },
+        {
+          "id": "price-document",
+          "category": "pricing",
+          "q": "What is the pricing page on this site?",
+          "a": "The available plans are Free and Starter. Starter costs 3 SAR per user per month, billed annually. See the homepage for the full comparison."
+        },
+        {
+          "id": "sup-setup",
+          "category": "support",
+          "q": "Can I ask for help setting up the system?",
+          "a": "Contact the team to learn which help options are available in your plan."
+        },
+        {
+          "id": "sup-reply",
+          "category": "support",
+          "q": "How long does a reply take?",
+          "a": "No response time is promised. Your request is handled according to your support channel and plan."
+        },
+        {
+          "id": "sup-technical",
+          "category": "support",
+          "q": "What do I send for a technical problem?",
+          "a": "A description, the steps before it, a screenshot if any, and the relevant account details such as the business name or linked email."
+        },
+        {
+          "id": "hr-saudi",
+          "category": "about",
+          "q": "Does Nizamy support the Saudi work environment?",
+          "a": "Nizamy is designed to fit the needs of businesses in Saudi Arabia."
+        },
+        {
+          "id": "hr-reduce-reports",
+          "category": "hr",
+          "q": "Can I manage attendance and requests from one place?",
+          "a": "Nizamy gathers core operations in one experience to reduce scatter and manual follow-up, depending on the plan."
+        }
+      ]
+    },
+    "ar": {
+      "title": "الأسئلة الشائعة",
+      "description": "ابحث عن إجابات حول نظامي: البدء، الحضور، الموارد البشرية، الباقات، الذكاء الاصطناعي والتقارير، الخصوصية والدعم.",
+      "eyebrow": "الأسئلة الشائعة",
+      "intro": "كل ما تريد معرفته عن نظامي… في مكان واحد. ابحث أو اختر الموضوع.",
+      "sections": [
+        {
+          "id": "how",
+          "title": "كيف تستخدم هذه الصفحة",
+          "paragraphs": [
+            "اكتب كلمة أو اختر موضوعاً. يتجاهل البحث التشكيل العربي وصيغ الألف. جرّب: الباقات، إضافة موظف، الحضور، التقارير، الذكاء الاصطناعي أو استعادة الدخول."
+          ]
+        },
+        {
+          "id": "topics",
+          "title": "المواضيع المغطاة",
+          "paragraphs": [
+            "جُمعت الإجابات من مستندات نظامي المصدر عن المنصة والإعداد والحضور والخدمات الذاتية والتقارير والذكاء الاصطناعي والباقات والخصوصية وبيانات الوجه والدعم."
+          ],
+          "items": [
+            {
+              "title": "الباقات",
+              "text": "الباقات والأسعار النافذة في الصفحة الرئيسية؛ وتشير الإجابات هنا إليها بدل تكرارها."
+            },
+            {
+              "title": "الخصوصية وبيانات الوجه",
+              "text": "التفاصيل التقنية غير المؤكدة موسومة بأنها معلّقة لا مجاب عنها."
+            },
+            {
+              "title": "الدعم",
+              "text": "لا يُعد بوقت رد."
+            }
+          ]
+        },
+        {
+          "id": "more",
+          "title": "لم تجد سؤالك؟",
+          "paragraphs": [
+            "افتح صفحة المساعدة للإرشاد أو راسل البريد الرسمي الظاهر فيها. صف ما كنت تحاول فعله وتجنب إرسال كلمات المرور."
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "id": "about-what",
+          "category": "about",
+          "q": "ما هو نظامي؟",
+          "a": "نظامي منصة للموارد البشرية تساعد المنشآت على إدارة الموظفين والحضور والطلبات والتقارير والمكافآت في مكان واحد، وفق القدرات المتاحة في كل باقة."
+        },
+        {
+          "id": "about-who",
+          "category": "about",
+          "q": "لمن صُمم نظامي؟",
+          "a": "صُمم للمنشآت الصغيرة والمتوسطة في السعودية، وللفرق التي تريد تنظيم عمليات الموظفين وتقليل المتابعة اليدوية."
+        },
+        {
+          "id": "about-free",
+          "category": "about",
+          "q": "هل أستطيع تجربة نظامي مجاناً؟",
+          "a": "نعم، تتوفر باقة مجانية لتجربة الأساسيات. راجع الباقات الحالية في الصفحة الرئيسية لمعرفة ما تتضمنه كل باقة."
+        },
+        {
+          "id": "about-technical",
+          "category": "about",
+          "q": "هل أحتاج إلى خبرة تقنية للبدء؟",
+          "a": "لا، صُممت خطوات الإعداد لتكون واضحة وبسيطة، وتوفر صفحة المساعدة إرشادات عندما تحتاج إليها."
+        },
+        {
+          "id": "about-small",
+          "category": "about",
+          "q": "هل نظامي مناسب للمنشآت الصغيرة؟",
+          "a": "نعم، يمكنك البدء بالأساسيات ثم التوسع إلى قدرات أكبر مع نمو فريقك أو عمليات منشأتك."
+        },
+        {
+          "id": "about-medium",
+          "category": "about",
+          "q": "هل نظامي مناسب للمنشآت المتوسطة؟",
+          "a": "نعم، بحسب احتياجات المنشأة والقدرات المطلوبة. راجع الباقات الحالية أو تواصل مع الفريق لمناقشة احتياجاتك."
+        },
+        {
+          "id": "about-onetool",
+          "category": "about",
+          "q": "هل يجمع نظامي عدة عمليات في منصة واحدة؟",
+          "a": "يساعد نظامي على جمع الحضور والطلبات والتقارير والمكافآت في تجربة واحدة، وفق الباقة والميزات المتاحة."
+        },
+        {
+          "id": "about-replace",
+          "category": "about",
+          "q": "هل يحل نظامي محل فريق الموارد البشرية؟",
+          "a": "لا، يساعد نظامي فريق الموارد البشرية على تقليل العمل التشغيلي وفهم البيانات بصورة أوضح، بينما تبقى القرارات الإدارية بيد الفريق المسؤول."
+        },
+        {
+          "id": "start-how",
+          "category": "start",
+          "q": "كيف أبدأ استخدام نظامي؟",
+          "a": "أنشئ حساباً أو سجّل الدخول، ثم أضف بيانات المنشأة والفريق وحدد العمليات التي تريد البدء بها."
+        },
+        {
+          "id": "start-first",
+          "category": "start",
+          "q": "ما أول خطوة بعد إنشاء الحساب؟",
+          "a": "راجع بيانات المنشأة، وأضف الموظفين، ثم تأكد من الإعدادات الأساسية قبل بدء الاستخدام اليومي."
+        },
+        {
+          "id": "start-later",
+          "category": "start",
+          "q": "هل يمكنني إضافة موظفين لاحقاً؟",
+          "a": "يمكنك إضافة الموظفين وفق الصلاحيات والإعدادات المتاحة في حسابك."
+        },
+        {
+          "id": "start-help",
+          "category": "start",
+          "q": "هل تتوفر مساعدة أثناء الإعداد؟",
+          "a": "نعم، يمكنك الرجوع إلى صفحة المساعدة للحصول على الإرشادات أو التواصل مع الفريق عبر البريد الرسمي."
+        },
+        {
+          "id": "start-login",
+          "category": "start",
+          "q": "ماذا أفعل إذا نسيت بيانات الدخول؟",
+          "a": "استخدم مسار استعادة الدخول المتاح، أو تواصل مع الفريق إذا لم تتمكن من الوصول إلى حسابك."
+        },
+        {
+          "id": "att-support",
+          "category": "attendance",
+          "q": "هل يدعم نظامي إدارة الحضور والانصراف؟",
+          "a": "نعم، إدارة الحضور من قدرات نظامي الحالية، ويختلف مستوى الميزات المتاحة بحسب الباقة."
+        },
+        {
+          "id": "att-face",
+          "category": "attendance",
+          "q": "هل يمكن التحقق من حضور الموظف نفسه؟",
+          "a": "التحقق بالوجه مع كشف الحيوية من قدرات إحدى الباقات الأعلى؛ راجع الباقات الحالية لمعرفة التوفر. يساعد ذلك على رفع موثوقية الحضور وتقليل محاولات التحايل."
+        },
+        {
+          "id": "att-cheat",
+          "category": "attendance",
+          "q": "هل يمنع التحقق بالوجه جميع محاولات التحايل؟",
+          "a": "لا يمكن تقديم ضمان بإلغاء جميع محاولات التحايل. يساعد التحقق بالوجه وكشف الحيوية على تقليل المحاولات وتحسين موثوقية الحضور."
+        },
+        {
+          "id": "att-records",
+          "category": "attendance",
+          "q": "هل أستطيع مراجعة سجلات الحضور؟",
+          "a": "نعم، يمكن مراجعة سجلات الحضور واستخدامها في التقارير وفق الصلاحيات والباقة المتاحة."
+        },
+        {
+          "id": "att-error",
+          "category": "attendance",
+          "q": "ماذا أفعل إذا كان سجل الحضور غير صحيح؟",
+          "a": "راجع تفاصيل السجل أولاً، ثم اتبع مسار الطلبات أو تواصل مع المسؤول في منشأتك وفق سياستها."
+        },
+        {
+          "id": "hr-self",
+          "category": "hr",
+          "q": "ما المقصود بالخدمات الذاتية؟",
+          "a": "هي مساحة تتيح للموظفين إرسال الطلبات ومتابعة حالتها وإنجاز بعض الإجراءات دون الاعتماد على الرسائل والمتابعة اليدوية."
+        },
+        {
+          "id": "hr-approval",
+          "category": "hr",
+          "q": "هل تصل الطلبات إلى المدير للموافقة؟",
+          "a": "نعم، بحسب نوع الطلب وإعدادات الصلاحيات ومسار الموافقات المعتمد في المنشأة."
+        },
+        {
+          "id": "hr-manual",
+          "category": "hr",
+          "q": "هل يمكن تقليل العمل اليدوي في الموارد البشرية؟",
+          "a": "نعم، يساعد جمع الطلبات والموافقات والبيانات في مسار واضح على تقليل المتابعة اليدوية والأخطاء المتكررة."
+        },
+        {
+          "id": "price-plans",
+          "category": "pricing",
+          "q": "ما الباقات المتاحة حالياً؟",
+          "a": "تظهر الباقات والأسعار السارية في قسم الأسعار بالصفحة الرئيسية. صفحة معلومات الأسعار المنفصلة مرجع فقط وليست عرضاً سارياً."
+        },
+        {
+          "id": "price-differ",
+          "category": "pricing",
+          "q": "هل تختلف الميزات بين الباقات؟",
+          "a": "نعم، تختلف الباقات في التقارير والذكاء الاصطناعي والتحقق والمكافآت والسجلات والدعم، وفق تفاصيل كل باقة."
+        },
+        {
+          "id": "price-upgrade",
+          "category": "pricing",
+          "q": "هل أستطيع الانتقال إلى باقة أعلى لاحقاً؟",
+          "a": "يمكنك البدء بما يناسب احتياجك الحالي، ثم التواصل مع الفريق عندما تحتاج إلى قدرات أوسع."
+        },
+        {
+          "id": "ai-reports",
+          "category": "ai",
+          "q": "ما أنواع التقارير التي يوفرها نظامي؟",
+          "a": "تختلف التقارير بحسب الباقة، وتشمل مجالات مثل الحضور والموظفين والرواتب والالتزام، وفق ما هو متاح في الباقة."
+        },
+        {
+          "id": "ai-use",
+          "category": "ai",
+          "q": "هل يستخدم نظامي الذكاء الاصطناعي؟",
+          "a": "تتوفر قدرات الذكاء الاصطناعي في الباقة المناسبة لمساعدة الموارد البشرية على فهم البيانات والطلبات والتقارير بسرعة أكبر، ويبقى القرار بيدك."
+        },
+        {
+          "id": "sec-policy",
+          "category": "security",
+          "q": "أين أجد سياسة الخصوصية المعتمدة؟",
+          "a": "السياسة المعتمدة الحالية متاحة من الروابط في صفحة الخصوصية. بعض تفاصيل صفحات الخصوصية وبيانات الوجه في هذا الموقع تحتاج إلى تأكيد، ولا تحل محل السياسة المعتمدة."
+        },
+        {
+          "id": "sec-biometric",
+          "category": "security",
+          "q": "كيف تُخزن بيانات الوجه وتُحمى؟",
+          "a": "لم تُؤكد بعد التفاصيل التقنية الخاصة بالتخزين والاحتفاظ والحماية للنشر. راجع سياسة الخصوصية السارية أو تواصل مع الفريق."
+        },
+        {
+          "id": "sup-contact",
+          "category": "support",
+          "q": "كيف أتواصل مع الفريق؟",
+          "a": "راسل البريد الرسمي الموضح في صفحة المساعدة، ولا تُدرج كلمات مرور أو بيانات شخصية حساسة في رسالتك."
+        },
+        {
+          "id": "sup-info",
+          "category": "support",
+          "q": "ما المعلومات التي أرفقها عند طلب المساعدة؟",
+          "a": "وضّح ما كنت تحاول فعله، والنتيجة المتوقعة، وما حدث فعلياً، ونوع الجهاز أو إصدار التطبيق إن كان معروفاً."
+        },
+        {
+          "id": "sec-purpose-face",
+          "category": "security",
+          "q": "لماذا يستخدم نظامي التحقق بالوجه؟",
+          "a": "في الباقة الأعلى يُراد بتسجيل الوجه وكشف الحيوية المساعدة على ربط الحضور بالموظف نفسه وتقليل محاولات التسجيل نيابة عن موظف آخر ورفع الموثوقية. الصفحات المتعلقة ببيانات الوجه هنا مسودات للمراجعة."
+        },
+        {
+          "id": "sec-image",
+          "category": "security",
+          "q": "هل يحفظ النظام صورة وجهي؟",
+          "a": "التفاصيل معلّقة: لم يُؤكَّد للنشر هل تُحفظ صورة أم قالب حيوي أم نتيجة تحقق فقط. راجع السياسة المعتمدة والنافذة أو تواصل مع الفريق."
+        },
+        {
+          "id": "sec-other-use",
+          "category": "security",
+          "q": "هل تُستخدم بيانات الوجه لأغراض أخرى؟",
+          "a": "تذكر المستند أن بيانات التحقق للغرض المذكور ولا تُستخدم لغيره إلا وفق أساس نظامي أو موافقة مناسبة. هذه عبارة معلومات؛ والتفاصيل معلّقة فراجع السياسة النافذة أو الفريق."
+        },
+        {
+          "id": "sec-turnoff",
+          "category": "security",
+          "q": "هل يمكن إيقاف الميزة؟",
+          "a": "يعتمد ذلك على إعدادات المنشأة والباقة والسياسة المعتمدة. التفاصيل معلّقة؛ اسأل جهة عملك أو الفريق."
+        },
+        {
+          "id": "sec-support-access",
+          "category": "security",
+          "q": "هل يستطيع فريق الدعم رؤية بيانات وجهي؟",
+          "a": "التفاصيل معلّقة: لم يُؤكَّد هل يصل الدعم إلى صورة أو قالب أو نتيجة ومتى وبأي ضوابط. راجع السياسة النافذة أو تواصل مع الفريق."
+        },
+        {
+          "id": "sec-request-info",
+          "category": "security",
+          "q": "كيف أطلب معلومات عن بياناتي؟",
+          "a": "استخدم قناة الخصوصية الرسمية في السياسة النافذة أو تواصل مع مسؤول المنشأة بحسب دور كل جهة في إدارة البيانات. جهة تواصل الخصوصية المؤكدة معلّقة."
+        },
+        {
+          "id": "sec-incident",
+          "category": "security",
+          "q": "ماذا أفعل إذا اشتبهت في وصول غير مصرح به؟",
+          "a": "أبلغ عبر القناة الرسمية بأسرع وقت: ما حدث ومتى وأي حساب أو منشأة وأي صورة شاشة أو خطأ. لا ترسل بيانات حساسة أكثر مما يلزم."
+        },
+        {
+          "id": "sec-employer",
+          "category": "security",
+          "q": "من المسؤول عن بيانات الموظفين داخل حساب المنشأة؟",
+          "a": "قد تحدد المنشأة أغراض المعالجة ووسائلها بينما يقدم نظامي الخدمة التقنية. وعلى المنشأة إعطاء موظفيها إشعارات مناسبة وتطبيق الصلاحيات والاحتفاظ المناسبين."
+        },
+        {
+          "id": "sec-absolute",
+          "category": "security",
+          "q": "هل الأمان ضمان مطلق؟",
+          "a": "لا توجد وسيلة تقنية خالية من المخاطر تماماً. ينبغي توضيح الضوابط الفعلية، وعلى المستخدمين والمنشآت حماية الحسابات والصلاحيات."
+        },
+        {
+          "id": "sec-retention",
+          "category": "security",
+          "q": "كم مدة الاحتفاظ بالبيانات؟",
+          "a": "تذكر المستند المدة اللازمة للغرض أو التي يفرضها النظام أو الاتفاق، ثم الحذف أو إزالة التعريف. المدد الفعلية معلّقة؛ راجع السياسة النافذة."
+        },
+        {
+          "id": "sec-rights",
+          "category": "security",
+          "q": "ما حقوقي على بياناتي؟",
+          "a": "بحسب الصفة والمتطلبات المطبقة: الاطلاع والتصحيح والحذف أو التقييد والاعتراض أو سحب الموافقة والنقل. إجراء الطلب معلّق."
+        },
+        {
+          "id": "ai-decide",
+          "category": "ai",
+          "q": "هل يقدم الذكاء الاصطناعي قرارات بدلاً مني؟",
+          "a": "لا. يساعد الذكاء الاصطناعي على فهم البيانات والوصول إلى إجابة أو توصية أسرع، ويبقى القرار النهائي بيد الإدارة أو فريق HR."
+        },
+        {
+          "id": "ai-decision-reports",
+          "category": "ai",
+          "q": "هل يمكنني استخدام التقارير لاتخاذ قرار؟",
+          "a": "نعم، صُممت التقارير والرؤى لمساعدة الإدارة على رؤية الأولويات واتخاذ قرارات مبنية على بيانات أوضح."
+        },
+        {
+          "id": "price-which",
+          "category": "pricing",
+          "q": "كيف أعرف الباقة المناسبة لي؟",
+          "a": "ابدأ مما تريد تحسينه الآن. راجع الباقات النافذة في الصفحة الرئيسية أو تواصل مع الفريق لمناقشة حجم الفريق والقدرات التي تحتاجها."
+        },
+        {
+          "id": "price-employees",
+          "category": "pricing",
+          "q": "هل السعر يشمل كل الموظفين؟",
+          "a": "حيث تُسعَّر الباقة لكل موظف، تعتمد التكلفة على الموظفين المشمولين في الاشتراك. راجع الباقة النافذة قبل الاشتراك."
+        },
+        {
+          "id": "price-document",
+          "category": "pricing",
+          "q": "ما صفحة الأسعار في هذا الموقع؟",
+          "a": "هي مرجع معلومات من مستند مصدر يضم Free وStandard وPro. ليست عرضاً حالياً. الباقات النافذة في الصفحة الرئيسية."
+        },
+        {
+          "id": "sup-setup",
+          "category": "support",
+          "q": "هل أستطيع طلب مساعدة في إعداد النظام؟",
+          "a": "تواصل معنا لمعرفة خيارات المساعدة المتاحة في باقتك."
+        },
+        {
+          "id": "sup-reply",
+          "category": "support",
+          "q": "كم يستغرق الرد؟",
+          "a": "لا يُعد بوقت رد. يُتعامل مع طلبك وفق قناة الدعم والباقة الخاصة بك."
+        },
+        {
+          "id": "sup-technical",
+          "category": "support",
+          "q": "ماذا أرسل عند وجود مشكلة تقنية؟",
+          "a": "وصفاً للمشكلة والخطوات التي سبقتها وصورة الشاشة إن وجدت وبيانات الحساب ذات الصلة مثل اسم المنشأة أو البريد المرتبط."
+        },
+        {
+          "id": "hr-saudi",
+          "category": "about",
+          "q": "هل يدعم نظامي بيئة العمل السعودية؟",
+          "a": "نظامي مصمم ليتناسب مع احتياجات المنشآت في السعودية."
+        },
+        {
+          "id": "hr-reduce-reports",
+          "category": "hr",
+          "q": "هل أستطيع إدارة الحضور والطلبات من مكان واحد؟",
+          "a": "يجمع نظامي العمليات الأساسية في تجربة واحدة لتقليل التشتت والمتابعة اليدوية، بحسب الباقة."
+        }
+      ]
+    }
+  },
+  "helpCenter": {
+    "path": "/help",
+    "draft": false,
+    "en": {
+      "title": "Help Center",
+      "description": "Guidance for getting started with Nizamy and reaching the team by the official email.",
+      "eyebrow": "Help",
+      "intro": "Pick a topic or type what you need. You will get practical guidance right here.",
+      "sections": [
+        {
+          "id": "topic-start",
+          "title": "I am starting for the first time",
+          "paragraphs": [
+            "Create an account, set up the business, add employees and begin with the basic processes."
+          ]
+        },
+        {
+          "id": "topic-employees",
+          "title": "I need to manage employees",
+          "paragraphs": [
+            "Help with employee data, requests, self-service and approvals."
+          ]
+        },
+        {
+          "id": "topic-attendance",
+          "title": "I want to organise attendance",
+          "paragraphs": [
+            "Guidance on recording attendance, reviewing records and understanding commitment status."
+          ]
+        },
+        {
+          "id": "topic-reports",
+          "title": "I want to read reports",
+          "paragraphs": [
+            "Understanding indicators and reports and how to reach the data you need. Availability depends on the plan."
+          ]
+        },
+        {
+          "id": "topic-plan",
+          "title": "I need help with plans",
+          "paragraphs": [
+            "Understanding what differs between plans and the right next step to upgrade or ask. The active plans are on the homepage pricing section."
+          ]
+        },
+        {
+          "id": "topic-technical",
+          "title": "I have a technical problem",
+          "paragraphs": [
+            "Send the details of the problem to the team by email, using the checklist below."
+          ]
+        },
+        {
+          "id": "onboarding",
+          "title": "Start with Nizamy: five steps",
+          "paragraphs": [
+            "Start simply. Begin with the basics, then add capabilities as your use grows."
+          ],
+          "items": [
+            {
+              "title": "Step 1",
+              "text": "Create your account or sign in."
+            },
+            {
+              "title": "Step 2",
+              "text": "Add the business and team details."
+            },
+            {
+              "title": "Step 3",
+              "text": "Choose the processes you want to start with."
+            },
+            {
+              "title": "Step 4",
+              "text": "Review settings before daily use."
+            },
+            {
+              "title": "Step 5",
+              "text": "Use this Help page when you need it."
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "What to include when you contact the team",
+          "paragraphs": [
+            "Send a clear description of the problem; it helps the team understand what happened the first time. If you forgot your sign-in details, use the available recovery path first."
+          ],
+          "items": [
+            {
+              "title": "Account",
+              "text": "Business name or the email linked to the account."
+            },
+            {
+              "title": "Goal",
+              "text": "A short description of what you were trying to do."
+            },
+            {
+              "title": "Steps",
+              "text": "The steps that led to the problem."
+            },
+            {
+              "title": "Evidence",
+              "text": "A screenshot or the error message, if any."
+            },
+            {
+              "title": "Context",
+              "text": "When it happened and the device or browser used, when needed."
+            }
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "How a support request goes",
+          "paragraphs": [
+            "This is the path as described in the source. No response time is promised here; handling depends on your support channel and plan."
+          ],
+          "items": [
+            {
+              "title": "Step 1",
+              "text": "Send the details of the problem."
+            },
+            {
+              "title": "Step 2",
+              "text": "The team reviews the request."
+            },
+            {
+              "title": "Step 3",
+              "text": "More information may be requested when needed."
+            },
+            {
+              "title": "Step 4",
+              "text": "You get guidance, a solution or a clear next step."
+            },
+            {
+              "title": "Step 5",
+              "text": "The case is closed after the solution is clear."
+            }
+          ]
+        }
+      ],
+      "faqs": []
+    },
+    "ar": {
+      "title": "مركز المساعدة",
+      "description": "إرشادات للبدء مع نظامي والتواصل مع الفريق عبر البريد الرسمي.",
+      "eyebrow": "المساعدة",
+      "intro": "اختر موضوعاً أو اكتب ما تحتاجه، وستجد إرشاداً عملياً هنا مباشرة.",
+      "sections": [
+        {
+          "id": "topic-start",
+          "title": "أبدأ لأول مرة",
+          "paragraphs": [
+            "خطوات إنشاء الحساب وإعداد المنشأة وإضافة الموظفين والبدء بالعمليات الأساسية."
+          ]
+        },
+        {
+          "id": "topic-employees",
+          "title": "أحتاج إلى إدارة الموظفين",
+          "paragraphs": [
+            "مساعدة في بيانات الموظفين والطلبات والخدمات الذاتية والموافقات."
+          ]
+        },
+        {
+          "id": "topic-attendance",
+          "title": "أريد تنظيم الحضور والانصراف",
+          "paragraphs": [
+            "إرشادات حول تسجيل الحضور ومراجعة السجلات وفهم حالات الالتزام."
+          ]
+        },
+        {
+          "id": "topic-reports",
+          "title": "أريد قراءة التقارير",
+          "paragraphs": [
+            "شرح المؤشرات والتقارير وكيفية الوصول إلى البيانات التي تحتاجها. يعتمد التوفر على الباقة."
+          ]
+        },
+        {
+          "id": "topic-plan",
+          "title": "أحتاج إلى مساعدة في الباقة",
+          "paragraphs": [
+            "توضيح الفروق بين الباقات والخطوة المناسبة للترقية أو الاستفسار. الباقات الحالية في قسم الأسعار بالصفحة الرئيسية."
+          ]
+        },
+        {
+          "id": "topic-technical",
+          "title": "لدي مشكلة تقنية",
+          "paragraphs": [
+            "أرسل تفاصيل المشكلة إلى الفريق بالبريد مستعيناً بقائمة التحقق أدناه."
+          ]
+        },
+        {
+          "id": "onboarding",
+          "title": "ابدأ مع نظامي: خمس خطوات",
+          "paragraphs": [
+            "ابدأ ببساطة. ابدأ بالأساسيات، ثم أضف القدرات عندما يكبر استخدامك."
+          ],
+          "items": [
+            {
+              "title": "الخطوة 1",
+              "text": "أنشئ حسابك أو سجّل الدخول."
+            },
+            {
+              "title": "الخطوة 2",
+              "text": "أضف بيانات المنشأة والفريق."
+            },
+            {
+              "title": "الخطوة 3",
+              "text": "اختر العمليات التي تريد البدء بها."
+            },
+            {
+              "title": "الخطوة 4",
+              "text": "راجع الإعدادات قبل الاستخدام اليومي."
+            },
+            {
+              "title": "الخطوة 5",
+              "text": "استخدم صفحة المساعدة عند الحاجة."
+            }
+          ]
+        },
+        {
+          "id": "checklist",
+          "title": "ما ترسله عند التواصل مع الفريق",
+          "paragraphs": [
+            "أرسل وصفاً واضحاً للمشكلة؛ يساعد الفريق على فهم ما حدث من أول مرة. وإذا نسيت بيانات الدخول فاستخدم مسار الاستعادة المتاح أولاً."
+          ],
+          "items": [
+            {
+              "title": "الحساب",
+              "text": "اسم المنشأة أو البريد المرتبط بالحساب."
+            },
+            {
+              "title": "الهدف",
+              "text": "وصف مختصر لما كنت تحاول فعله."
+            },
+            {
+              "title": "الخطوات",
+              "text": "الخطوات التي أدت إلى المشكلة."
+            },
+            {
+              "title": "الدليل",
+              "text": "صورة شاشة أو رسالة الخطأ إن وجدت."
+            },
+            {
+              "title": "السياق",
+              "text": "وقت حدوث المشكلة والجهاز أو المتصفح المستخدم عند الحاجة."
+            }
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "كيف يسير طلب الدعم",
+          "paragraphs": [
+            "هذا المسار كما ورد في المصدر. لا يُعد هنا بوقت رد؛ إذ يعتمد التعامل على قناة الدعم وباقتك."
+          ],
+          "items": [
+            {
+              "title": "الخطوة 1",
+              "text": "أرسل تفاصيل المشكلة."
+            },
+            {
+              "title": "الخطوة 2",
+              "text": "يراجع الفريق الطلب."
+            },
+            {
+              "title": "الخطوة 3",
+              "text": "قد تُطلب معلومات إضافية عند الحاجة."
+            },
+            {
+              "title": "الخطوة 4",
+              "text": "تحصل على إرشاد أو حل أو خطوة تالية واضحة."
+            },
+            {
+              "title": "الخطوة 5",
+              "text": "تُغلق الحالة بعد وضوح الحل."
+            }
+          ]
+        }
+      ],
+      "faqs": []
+    }
+  },
+  "hrSoftware": {
+    "path": "/small-business-hr-software-saudi-arabia",
+    "draft": false,
+    "en": {
+      "title": "HR Software for Small Businesses in Saudi Arabia",
+      "description": "Nizamy brings attendance, requests, reports and rewards together for small and medium businesses in Saudi Arabia.",
+      "eyebrow": "HR software",
+      "intro": "Nizamy gathers employee data, attendance, requests and reports in one experience, so your team spends less time following up manually.",
+      "sections": [
+        {
+          "id": "problem",
+          "title": "Still running employees on sheets, messages and daily chasing?",
+          "paragraphs": [
+            "As a team grows, small details become a daily burden: attendance that needs review, requests waiting for approval, and reports that do not show the full picture in time."
+          ],
+          "items": [
+            {
+              "title": "Fragmented processes",
+              "text": "Attendance, requests and reports spread across sheets, messages and different tools."
+            },
+            {
+              "title": "Lost admin time",
+              "text": "HR spends more time following up and compiling than on more important work."
+            },
+            {
+              "title": "Incomplete data",
+              "text": "Hard to know the level of commitment or what the team really needs."
+            },
+            {
+              "title": "Late decisions",
+              "text": "When information is late, approval, correction and action are late too."
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "title": "From managing employees to managing better",
+          "paragraphs": [
+            "HR software should do more than record data; it should help you understand what is happening in your team and act in time. Nizamy gathers employee operations in one experience, then turns daily data into a clearer picture and an easier next step."
+          ],
+          "items": [
+            {
+              "title": "Step 1",
+              "text": "Gather employee data in one place."
+            },
+            {
+              "title": "Step 2",
+              "text": "Organise attendance, requests and approvals."
+            },
+            {
+              "title": "Step 3",
+              "text": "Read reports and indicators clearly."
+            },
+            {
+              "title": "Step 4",
+              "text": "Get insights and recommendations that help you act."
+            },
+            {
+              "title": "Step 5",
+              "text": "Improve employee experience and management decisions."
+            }
+          ]
+        },
+        {
+          "id": "capabilities",
+          "title": "Everything to manage your team",
+          "paragraphs": [
+            "Built to ease daily operational work and give management and HR a clearer view of employees. Availability of each capability depends on the plan."
+          ],
+          "items": [
+            {
+              "title": "Attendance",
+              "text": "Follow attendance and commitment; face verification with liveness detection is a higher-plan capability that helps raise reliability and reduce attempts to cheat."
+            },
+            {
+              "title": "Employee self-service",
+              "text": "Make requests, documents and approvals easier for the employee and clearer for HR."
+            },
+            {
+              "title": "Reports and insights",
+              "text": "Turn daily data into reports that help you see priorities and decide faster."
+            },
+            {
+              "title": "Rewards and incentives",
+              "text": "Link commitment and achievement to recognition."
+            },
+            {
+              "title": "AI assistant",
+              "text": "Answers and help with tasks and reports when you need to understand data faster."
+            },
+            {
+              "title": "Self-setup and flexible growth",
+              "text": "Start simply, then widen use as your team and needs grow."
+            }
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "The employee journey inside Nizamy",
+          "paragraphs": [
+            "Each step is designed to reduce repeated messages and make clear what is done and what needs action."
+          ],
+          "items": [
+            {
+              "title": "Step 1",
+              "text": "The employee enters the self-service space."
+            },
+            {
+              "title": "Step 2",
+              "text": "Reviews data or sends a request."
+            },
+            {
+              "title": "Step 3",
+              "text": "Approval reaches the manager in a clear path."
+            },
+            {
+              "title": "Step 4",
+              "text": "Data and reports are kept in one place."
+            },
+            {
+              "title": "Step 5",
+              "text": "Management sees insights that help improve the experience."
+            }
+          ]
+        },
+        {
+          "id": "ai",
+          "title": "AI that helps HR, with human judgment",
+          "paragraphs": [
+            "Nizamy does more than show data. It helps you read the picture, understand priorities and reach an answer or a recommendation you can act on. The decision stays with you; AI helps you reach the information faster."
+          ],
+          "items": [
+            {
+              "title": "HR assistant",
+              "text": "Answers requests and repeated questions."
+            },
+            {
+              "title": "Clearer reports",
+              "text": "Help you see trends and priorities."
+            },
+            {
+              "title": "Insights and recommendations",
+              "text": "Help you act in time."
+            }
+          ]
+        },
+        {
+          "id": "impact",
+          "title": "Value beyond direct cost savings",
+          "paragraphs": [
+            "The value shows in saved time, fewer errors, a better employee experience and data that helps management decide faster. These are directions of value, not measured results or promised figures."
+          ],
+          "items": [
+            {
+              "title": "Less waste",
+              "text": "Reduce the cost of delay, errors and repeated follow-up."
+            },
+            {
+              "title": "Time saved",
+              "text": "Less manual work in attendance, requests and reports."
+            },
+            {
+              "title": "Commitment and experience",
+              "text": "More clarity for employee and management, and recognition tied to achievement."
+            },
+            {
+              "title": "Clearer management",
+              "text": "Central data reduces reliance on several tools."
+            }
+          ]
+        },
+        {
+          "id": "plans",
+          "title": "Plans",
+          "paragraphs": [
+            "Start with what you need today and move to larger capabilities as your team grows. Plans and prices change; the active ones are always on the homepage pricing section. Choose by what you need: a free start to try the basics, daily operations, or wider capabilities such as AI, advanced verification, rewards and wider reports, according to what each plan offers."
+          ]
+        }
+      ],
+      "faqs": []
+    },
+    "ar": {
+      "title": "برنامج موارد بشرية للمنشآت الصغيرة في السعودية",
+      "description": "يجمع نظامي الحضور والطلبات والتقارير والمكافآت للمنشآت الصغيرة والمتوسطة في السعودية.",
+      "eyebrow": "برنامج موارد بشرية",
+      "intro": "يجمع نظامي بيانات الموظفين والحضور والطلبات والتقارير في تجربة واحدة، ليقضي فريقك وقتاً أقل في المتابعة اليدوية.",
+      "sections": [
+        {
+          "id": "problem",
+          "title": "هل ما زالت إدارة موظفيك تعتمد على الجداول والرسائل والمتابعة اليومية؟",
+          "paragraphs": [
+            "مع نمو الفريق تصبح التفاصيل الصغيرة عبئاً يومياً: حضور يحتاج مراجعة، وطلبات تنتظر الموافقة، وتقارير لا تظهر الصورة كاملة في الوقت المناسب."
+          ],
+          "items": [
+            {
+              "title": "عمليات متفرقة",
+              "text": "الحضور والطلبات والتقارير موزعة بين جداول ورسائل وأدوات مختلفة."
+            },
+            {
+              "title": "وقت إداري ضائع",
+              "text": "فريق HR يقضي وقتاً أكبر في المتابعة والتجميع بدلاً من الأعمال الأهم."
+            },
+            {
+              "title": "بيانات غير مكتملة",
+              "text": "صعوبة في معرفة مستوى الالتزام أو ما يحتاجه الفريق فعلاً."
+            },
+            {
+              "title": "قرارات متأخرة",
+              "text": "عندما تتأخر المعلومة تتأخر معها الموافقة والتصحيح والإجراء المناسب."
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "title": "من إدارة الموظفين إلى إدارة أفضل",
+          "paragraphs": [
+            "برنامج الموارد البشرية لا يكتفي بتسجيل البيانات؛ بل يساعدك على فهم ما يحدث داخل فريقك والتصرف في الوقت المناسب. يجمع نظامي عمليات الموظفين في تجربة واحدة، ثم يحوّل البيانات اليومية إلى صورة أوضح وخطوة أسهل."
+          ],
+          "items": [
+            {
+              "title": "الخطوة 1",
+              "text": "اجمع بيانات الموظفين في مكان واحد."
+            },
+            {
+              "title": "الخطوة 2",
+              "text": "نظّم الحضور والطلبات والموافقات."
+            },
+            {
+              "title": "الخطوة 3",
+              "text": "اقرأ التقارير والمؤشرات بوضوح."
+            },
+            {
+              "title": "الخطوة 4",
+              "text": "احصل على رؤى وتوصيات تساعدك على الإجراء."
+            },
+            {
+              "title": "الخطوة 5",
+              "text": "حسّن تجربة الموظف وقرارات الإدارة."
+            }
+          ]
+        },
+        {
+          "id": "capabilities",
+          "title": "كل ما تحتاجه لإدارة فريقك",
+          "paragraphs": [
+            "صُمم لتخفيف العمل التشغيلي اليومي وإعطاء الإدارة وفريق HR صورة أوضح عن الموظفين. يعتمد توفر كل قدرة على الباقة."
+          ],
+          "items": [
+            {
+              "title": "الحضور والانصراف",
+              "text": "تابع الحضور والالتزام؛ والتحقق بالوجه وكشف الحيوية قدرة في الباقة الأعلى تساعد على رفع الموثوقية وتقليل محاولات التحايل."
+            },
+            {
+              "title": "الخدمات الذاتية للموظفين",
+              "text": "اجعل الطلبات والمستندات والموافقات أسهل للموظف وأوضح لفريق HR."
+            },
+            {
+              "title": "التقارير والرؤى",
+              "text": "حوّل البيانات اليومية إلى تقارير تساعدك على فهم الأولويات واتخاذ قرارات أسرع."
+            },
+            {
+              "title": "المكافآت والحوافز",
+              "text": "اربط الالتزام والإنجاز بتجربة تقدير."
+            },
+            {
+              "title": "مساعد الذكاء الاصطناعي",
+              "text": "إجابات ومساعدة في المهام والتقارير عندما تحتاج إلى فهم أسرع للبيانات."
+            },
+            {
+              "title": "تهيئة ذاتية ونمو مرن",
+              "text": "ابدأ ببساطة ثم وسّع الاستخدام عندما يكبر فريقك واحتياجك."
+            }
+          ]
+        },
+        {
+          "id": "journey",
+          "title": "رحلة الموظف داخل نظامي",
+          "paragraphs": [
+            "كل خطوة مصممة لتقليل الرسائل المتكررة وتوضيح ما تم وما يحتاج إلى إجراء."
+          ],
+          "items": [
+            {
+              "title": "الخطوة 1",
+              "text": "الموظف يدخل إلى مساحة الخدمة الذاتية."
+            },
+            {
+              "title": "الخطوة 2",
+              "text": "يراجع بياناته أو يرسل طلبه."
+            },
+            {
+              "title": "الخطوة 3",
+              "text": "تصل الموافقة إلى المسؤول في مسار واضح."
+            },
+            {
+              "title": "الخطوة 4",
+              "text": "تُحفظ البيانات والتقارير في مكان واحد."
+            },
+            {
+              "title": "الخطوة 5",
+              "text": "تظهر للإدارة رؤى تساعد على تحسين التجربة."
+            }
+          ]
+        },
+        {
+          "id": "ai",
+          "title": "ذكاء اصطناعي يساعد HR، والحكم للإنسان",
+          "paragraphs": [
+            "لا يكتفي نظامي بعرض البيانات. يساعدك على قراءة الصورة وفهم الأولويات والوصول إلى إجابة أو توصية قابلة للتنفيذ. يظل القرار بيدك؛ والذكاء الاصطناعي يساعدك على الوصول إلى المعلومة أسرع."
+          ],
+          "items": [
+            {
+              "title": "مساعد HR",
+              "text": "يجيب على الطلبات والأسئلة المتكررة."
+            },
+            {
+              "title": "تقارير أوضح",
+              "text": "تساعدك على رؤية الاتجاهات والأولويات."
+            },
+            {
+              "title": "رؤى وتوصيات",
+              "text": "تساعدك على اتخاذ إجراء في الوقت المناسب."
+            }
+          ]
+        },
+        {
+          "id": "impact",
+          "title": "قيمة تتجاوز التوفير المباشر",
+          "paragraphs": [
+            "تظهر القيمة في وقت موفّر وأخطاء أقل وتجربة موظف أفضل وبيانات تساعد الإدارة على قرارات أسرع. هذه اتجاهات للقيمة لا نتائج مقيسة ولا أرقام موعودة."
+          ],
+          "items": [
+            {
+              "title": "هدر أقل",
+              "text": "تقليل تكلفة التأخير والأخطاء والمتابعة المتكررة."
+            },
+            {
+              "title": "وقت موفّر",
+              "text": "أعمال يدوية أقل في الحضور والطلبات والتقارير."
+            },
+            {
+              "title": "التزام وتجربة",
+              "text": "وضوح أكبر للموظف والإدارة وتقدير مرتبط بالإنجاز."
+            },
+            {
+              "title": "إدارة أوضح",
+              "text": "بيانات مركزية تقلل الاعتماد على أكثر من أداة."
+            }
+          ]
+        },
+        {
+          "id": "plans",
+          "title": "الباقات",
+          "paragraphs": [
+            "ابدأ بما تحتاجه اليوم وانتقل إلى قدرات أكبر عندما يكبر فريقك. الباقات والأسعار قابلة للتغيير؛ والنافذة منها دائماً في قسم الأسعار بالصفحة الرئيسية. اختر بحسب حاجتك: بداية مجانية لتجربة الأساسيات، أو عمليات يومية، أو قدرات أوسع مثل الذكاء الاصطناعي والتحقق المتقدم والمكافآت والتقارير الأوسع، بحسب ما تقدمه كل باقة."
+          ]
+        }
+      ],
+      "faqs": []
+    }
+  },
+  "pricingPage": {
+    "path": "/pricing",
+    "draft": true,
+    "en": {
+      "title": "Pricing",
+      "description": "A document pricing reference for Nizamy. Not a live offer; see the homepage for active plans.",
+      "eyebrow": "Plans and pricing",
+      "intro": "This page preserves a pricing document from the source document as a reference. It is not a current offer and changes no plan. Active plans are on the homepage. The document states billing is monthly per employee; it says nothing about annual billing.",
+      "sections": [
+        {
+          "id": "intro",
+          "title": "A plan for today that grows with your team",
+          "paragraphs": [
+            "Start free, then move to the capabilities your business needs as operations grow. What a small business needs can differ from a team that expands every month, so the document plans start simply and give clearer options as you grow."
+          ],
+          "items": [
+            {
+              "title": "Simple start",
+              "text": "A simple experience for those who want to know the basics."
+            },
+            {
+              "title": "Daily operations",
+              "text": "A practical plan for running daily operations more clearly."
+            },
+            {
+              "title": "Advanced",
+              "text": "Advanced capabilities for teams that want AI, reports, verification and rewards at a wider level."
+            }
+          ]
+        },
+        {
+          "id": "plans",
+          "title": "document plans and prices",
+          "paragraphs": [
+            "As written in the source document. Not current offers."
+          ],
+          "items": [
+            {
+              "title": "Free: free",
+              "text": "For trying the basics and getting to know Nizamy. A simple start; getting to know the attendance experience; a space to assess your need before expanding."
+            },
+            {
+              "title": "Starter: 3 SAR per employee per month",
+              "text": "For clearer daily work and basic operations: attendance management, clearer team reports, smart self-service. As employees grow, compute cost on the actual headcount before subscribing."
+            }
+          ]
+        },
+        {
+          "id": "choose",
+          "title": "How to choose",
+          "paragraphs": [
+            "There is no single plan for every business. Start with the main question: what do you want to improve now?"
+          ],
+          "items": [
+            {
+              "title": "Choose Free if",
+              "text": "you want to learn the basics and try Nizamy before deciding."
+            },
+            {
+              "title": "Choose Starter if",
+              "text": "you need attendance management, clearer reports and employee self-service in daily work."
+            }
+          ]
+        },
+        {
+          "id": "benefits",
+          "title": "Value with any plan",
+          "paragraphs": [
+            "Price is not the only value. Value shows in the time you save, the clarity you get and the effort you cut in managing your team."
+          ],
+          "items": [
+            {
+              "title": "Less manual follow-up",
+              "text": "Less time chasing."
+            },
+            {
+              "title": "Clearer operations",
+              "text": "A clearer picture of employee operations."
+            },
+            {
+              "title": "Organised requests and reports",
+              "text": "More organised requests and reports."
+            },
+            {
+              "title": "Better experience",
+              "text": "A better experience for employee and HR."
+            },
+            {
+              "title": "Room to grow",
+              "text": "A clear path to expand as needs grow."
+            }
+          ]
+        },
+        {
+          "id": "compare",
+          "title": "Short comparison",
+          "paragraphs": [
+            "Free: a simple start and trying the basics. Starter: attendance management, clearer reports and smart self-service. See the comparison table and calculator below."
+          ]
+        },
+        {
+          "id": "cta",
+          "title": "Three clear paths",
+          "paragraphs": [
+            "Pick the path that fits you. This page takes no payment."
+          ],
+          "items": [
+            {
+              "title": "Try it",
+              "text": "Start free and see how Nizamy can organise employee operations: download the app below."
+            },
+            {
+              "title": "Compare",
+              "text": "Compare the document plans in the table below and pick the level that fits your team and need."
+            },
+            {
+              "title": "Go wider",
+              "text": "Talk to the Nizamy team about your needs and which wider capabilities fit. Use the enquiry form below or the official email."
+            }
+          ]
+        }
+      ],
+      "faqs": []
+    },
+    "ar": {
+      "title": "الأسعار",
+      "description": "مرجع معلومات أسعار لنظامي. ليس عرضاً حالياً؛ راجع الصفحة الرئيسية للباقات النافذة.",
+      "eyebrow": "الباقات والأسعار",
+      "intro": "تحفظ هذه الصفحة معلومات أسعار من المستند المصدر للمرجعية فقط. ليست عرضاً حالياً ولا تغيّر أي باقة. الباقات النافذة في الصفحة الرئيسية. تذكر المستند أن الفوترة شهرية لكل موظف، ولا تذكر شيئاً عن الفوترة السنوية.",
+      "sections": [
+        {
+          "id": "intro",
+          "title": "خطة تناسب احتياجك اليوم وتكبر مع فريقك",
+          "paragraphs": [
+            "ابدأ مجاناً ثم انتقل إلى القدرات التي تحتاجها منشأتك عندما تكبر عملياتك. ما تحتاجه منشأة صغيرة قد يختلف عن فريق يتوسع كل شهر، لذلك تبدأ باقات المستند ببساطة وتمنح خيارات أوضح مع النمو."
+          ],
+          "items": [
+            {
+              "title": "بداية بسيطة",
+              "text": "تجربة بسيطة لمن يريد التعرف على الأساسيات."
+            },
+            {
+              "title": "عمليات يومية",
+              "text": "خطة عملية لإدارة العمليات اليومية بوضوح أكبر."
+            },
+            {
+              "title": "متقدمة",
+              "text": "قدرات متقدمة للفرق التي تريد الذكاء والتقارير والتحقق والمكافآت في مستوى أوسع."
+            }
+          ]
+        },
+        {
+          "id": "plans",
+          "title": "باقات وأسعار المستند",
+          "paragraphs": [
+            "كما وردت في المستند المصدر. ليست عروضاً حالية."
+          ],
+          "items": [
+            {
+              "title": "Free: مجاني",
+              "text": "لمن يريد تجربة الأساسيات والتعرف على نظامي. بداية بسيطة؛ التعرف على تجربة الحضور؛ مساحة لتقييم احتياجك قبل التوسع."
+            },
+            {
+              "title": "Starter: 3 ريال لكل موظف شهرياً",
+              "text": "للعمل اليومي الأوضح وإدارة العمليات الأساسية: إدارة الحضور والانصراف وتقارير أوضح وخدمات ذاتية ذكية. كلما زاد عدد الموظفين احسب التكلفة وفق العدد الفعلي قبل الاشتراك."
+            }
+          ]
+        },
+        {
+          "id": "choose",
+          "title": "كيف تختار الباقة المناسبة",
+          "paragraphs": [
+            "لا توجد باقة واحدة تناسب كل منشأة. ابدأ من السؤال الأهم: ما الذي تريد تحسينه الآن؟"
+          ],
+          "items": [
+            {
+              "title": "اختر Free إذا",
+              "text": "كنت تريد التعرف على الأساسيات وتجربة نظامي قبل القرار."
+            },
+            {
+              "title": "اختر Starter إذا",
+              "text": "كنت تحتاج إدارة الحضور والانصراف وتقارير أوضح وخدمات ذاتية للموظفين في عملك اليومي."
+            }
+          ]
+        },
+        {
+          "id": "benefits",
+          "title": "القيمة مع أي باقة",
+          "paragraphs": [
+            "السعر ليس القيمة الوحيدة. تظهر القيمة في الوقت الذي توفره والوضوح الذي تحصل عليه والجهد الذي تقلله في إدارة فريقك."
+          ],
+          "items": [
+            {
+              "title": "متابعة يدوية أقل",
+              "text": "وقت أقل في المتابعة."
+            },
+            {
+              "title": "عمليات أوضح",
+              "text": "صورة أوضح عن عمليات الموظفين."
+            },
+            {
+              "title": "طلبات وتقارير منظمة",
+              "text": "طلبات وتقارير أكثر تنظيماً."
+            },
+            {
+              "title": "تجربة أفضل",
+              "text": "تجربة أفضل للموظف وفريق HR."
+            },
+            {
+              "title": "مجال للنمو",
+              "text": "مسار واضح للتوسع عندما يكبر احتياجك."
+            }
+          ]
+        },
+        {
+          "id": "compare",
+          "title": "مقارنة مختصرة",
+          "paragraphs": [
+            "Free: بداية بسيطة وتجربة الأساسيات. Starter: إدارة الحضور وتقارير أوضح وخدمات ذاتية ذكية. راجع جدول المقارنة والحاسبة أدناه."
+          ]
+        },
+        {
+          "id": "cta",
+          "title": "ثلاثة مسارات واضحة",
+          "paragraphs": [
+            "اختر المسار المناسب. لا تتم أي عملية دفع في هذه الصفحة."
+          ],
+          "items": [
+            {
+              "title": "جرّب",
+              "text": "ابدأ مجاناً واكتشف كيف ينظم نظامي عمليات الموظفين: حمّل التطبيق أدناه."
+            },
+            {
+              "title": "قارن",
+              "text": "قارن باقات المستند في الجدول أدناه واختر المستوى المناسب لفريقك واحتياجك."
+            },
+            {
+              "title": "توسّع",
+              "text": "تحدث مع فريق نظامي عن احتياجك والقدرات الأوسع المناسبة. استخدم نموذج الاستفسار أدناه أو البريد الرسمي."
+            }
+          ]
+        }
+      ],
+      "faqs": []
+    }
+  }
+}

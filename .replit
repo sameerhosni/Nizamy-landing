@@ -22,7 +22,7 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
-packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "pkg-config", "tcl", "tk", "xsimd", "zlib"]
+packages = ["freetype", "gumbo", "harfbuzz", "jbig2dec", "lcms2", "libimagequant", "libjpeg", "libjpeg_turbo", "libtiff", "libwebp", "libxcrypt", "mupdf", "openjpeg", "pkg-config", "swig", "tcl", "tk", "xcbuild", "xsimd", "zlib", "pgbouncer"]
 
 [userenv]
 
@@ -33,6 +33,7 @@ SMTP_FROM = "sales@muntej.app"
 ACTIVE_TEMPLATE = "01"
 TRIAL_LINK = "https://nizamy.app"
 LEAD_FORM_ENDPOINT = ""
+HUBSPOT_MARKETING_SUBSCRIPTION_TYPE_ID = "3672270952"
 
 [[ports]]
 localPort = 8080
@@ -40,12 +41,8 @@ externalPort = 8080
 
 [[ports]]
 localPort = 8081
-externalPort = 8081
-
-[[ports]]
-localPort = 8082
-externalPort = 3000
+externalPort = 80
 
 [[ports]]
 localPort = 22333
-externalPort = 80
+externalPort = 3000

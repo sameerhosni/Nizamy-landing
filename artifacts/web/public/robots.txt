@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://nizamy.app/sitemap.xml
+Sitemap: https://nizamy.app/sitemap-blog.xml

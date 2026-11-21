@@ -1,0 +1,490 @@
+{
+  "en": {
+    "title": "AI HR Software in Saudi Arabia: Employee Attendance, Performance, and Management in One App",
+    "dek": "A practical guide to using AI-powered HR software and a mobile app in Saudi Arabia—while keeping internal HR workflows distinct from Qiwa and preserving human judgment.",
+    "heroAlt": "Saudi HR colleagues reviewing employee information together on a laptop",
+    "intro": [
+      "Managing employees in Saudi Arabia requires more than keeping digital personnel files. As a business grows, HR teams must coordinate attendance, leave requests, employee documents, approvals, payroll-related reports, performance information, and day-to-day questions. When these processes depend on spreadsheets, chat messages, and manual follow-ups, managers lose visibility and employees wait longer for answers.",
+      "The challenge becomes more important when a business must organize its internal HR processes while also using official channels for employment-related services and documentation. This is why business owners and HR managers search for specific solutions such as Saudi HR management software, mobile attendance apps for employees in Saudi Arabia, and employee management systems for small businesses.",
+      "AI in human resources management is not about replacing HR professionals. It helps them reduce repetitive administration, identify patterns in workforce data, answer routine employee questions, and make decisions based on clearer operational indicators. This guide explains how Saudi businesses can use AI-powered HR software and a mobile app while understanding the separate roles of internal HR systems, Qiwa, and Saudi labor regulations."
+    ],
+    "sections": [
+      {
+        "heading": "What Is AI in Human Resources Management in Saudi Arabia?",
+        "paragraphs": [
+          "AI in HR refers to software that can organize workforce data, understand selected employee requests, identify trends, automate defined steps, and provide useful alerts or recommendations. Examples include an intelligent assistant that answers internal policy questions, a dashboard that highlights attendance changes, and a workflow that routes a leave request to the right approver.",
+          "Three concepts should be separated. Digitization converts paper records into electronic files. Automation performs a repetitive action according to predefined rules, such as sending a reminder or notifying a manager. Artificial intelligence adds the ability to analyze information, recognize patterns, interpret requests, and support recommendations.",
+          "AI should support HR judgment rather than replace it. Its results depend on the quality of the data, the rules used to configure the system, and the way managers interpret the output. Decisions involving employment status, compensation, contracts, or other sensitive matters require appropriate human review."
+        ]
+      },
+      {
+        "heading": "The Difference Between an Internal HR System and Qiwa",
+        "paragraphs": [
+          "An internal HR management system organizes a company’s daily operations. It can manage attendance, employee requests, leave workflows, internal documents, reports, and employee self-service. Qiwa is an official Saudi platform that provides services related to the labor market and the employment relationship, including employment contract management and documentation.",
+          "The Ministry of Human Resources and Social Development’s Contract Management service allows an establishment to create an employment contract electronically, after which the employee can approve, reject, or request an amendment through the Qiwa Individuals account. When both parties agree, the contract is documented through the official process.",
+          "HR software should therefore not be presented as a replacement for Qiwa or as a substitute for understanding Saudi Labor Law. The internal system helps a business organize operations and prepare information, while official government platforms remain the appropriate channel for services that require formal documentation or government action."
+        ],
+        "citations": { "1": "contract" }
+      },
+      {
+        "heading": "How AI Supports HR Professionals",
+        "paragraphs": [
+          "An AI assistant can handle routine questions, summarize operational data, suggest the next workflow step, or alert a manager to an unusual change. These capabilities can reduce administrative pressure, but the HR team remains responsible for reviewing context and applying company policies and official requirements correctly.",
+          "Any recommendation or alert needs human review when it concerns a contract, financial entitlement, performance evaluation, or a decision that could affect the employment relationship."
+        ]
+      },
+      {
+        "heading": "Key Uses of an Employee Management System in Saudi Arabia",
+        "subsections": [
+          {
+            "heading": "Employee Records and Document Management",
+            "paragraphs": [
+              "HR teams need quick access to employee profiles, job titles, joining dates, leave records, attendance history, internal requests, and relevant documents. When information is distributed across spreadsheets and email conversations, updates become inconsistent and searching takes too long.",
+              "A smart HR system can centralize internal records, apply role-based access, and remind administrators about items that require attention. Formal employment contracts and government procedures must still be managed through the relevant official channels, including Qiwa when applicable."
+            ]
+          },
+          {
+            "heading": "Mobile Attendance and Time Tracking",
+            "paragraphs": [
+              "Many business owners search for a mobile attendance app for employees in Saudi Arabia because they want to avoid installing fingerprint devices in every location. A mobile system can record attendance, show check-in and check-out information, and provide reports about commitment, lateness, absence, and overtime according to company policy.",
+              "Nizamy provides mobile attendance tracking without requiring traditional fingerprint devices. It also gives managers current visibility into attendance, employee commitment, and productivity. This can help a manager identify a recurring issue earlier instead of waiting until month-end to review spreadsheets.",
+              "Attendance data should support a constructive management process. A recurring delay may indicate unclear schedules, transportation challenges, workload pressure, or a policy that needs clarification. The data should start a review, not automatically become a negative judgment about an employee."
+            ]
+          },
+          {
+            "heading": "Leave and Working-Hours Management",
+            "paragraphs": [
+              "Leave requests become difficult to manage when employees send them through chat messages or email without a consistent approval path. An HR system can let employees submit a request, route it to the appropriate manager, record the decision, and display the current status.",
+              "Working hours and leave rules should be configured according to company policies and applicable Saudi requirements. When a situation requires legal interpretation or confirmation, businesses should consult Saudi Labor Law resources published by the Ministry of Human Resources rather than relying solely on an automated suggestion."
+            ],
+            "citations": { "1": "laborLaw" }
+          },
+          {
+            "heading": "Performance and Employee Commitment Analysis",
+            "paragraphs": [
+              "Attendance alone does not measure performance. Managers also need to understand task completion, quality, progress, employee commitment, and recurring obstacles. AI can bring relevant indicators together and present trends that are easier to review than several disconnected files.",
+              "Performance data must be interpreted in context. A decline in output may be caused by workload, unclear objectives, insufficient resources, or a change in responsibilities. AI should help managers ask better questions and provide better feedback, not make an unexplained automatic decision about an employee."
+            ]
+          },
+          {
+            "heading": "Recruitment and Employment Contract Workflows",
+            "paragraphs": [
+              "AI can assist recruitment teams by organizing applications, extracting skills, scheduling interviews, and preparing consistent screening questions. It can reduce coordination time when a company receives many applications.",
+              "Recruitment is a sensitive use case, so human review remains important. Historical data may contain bias, and an opaque automated rejection can create fairness and compliance concerns. Businesses should use consistent criteria, monitor outcomes, and keep qualified reviewers involved.",
+              "After a candidate is selected, the internal HR system can organize onboarding steps and employee information. Employment contract creation and documentation should then follow the applicable official process through Qiwa and Ministry services. This distinction prevents confusion between managing an internal workflow and officially documenting a contract."
+            ]
+          },
+          {
+            "heading": "HR Reporting and Analytics",
+            "paragraphs": [
+              "Automated reports can answer practical questions: What is the attendance rate? Which department needs attention? How long does an employee request take to approve? Did commitment improve after a new policy was introduced?",
+              "Analytics can also support employee development. An OECD report published on the Ministry of Human Resources and Social Development’s website surveys how behavioral insights have been applied to employment policies in G20 countries, including support for job seekers and participation in employment programs. This is policy research, not evidence that a particular HR app improves career outcomes. Internal HR data can also be used to help employees discuss progress and development, rather than only to monitor them."
+            ],
+            "citations": { "1": "behavioralInsights" }
+          },
+          {
+            "heading": "Employee Requests and Self-Service Automation",
+            "paragraphs": [
+              "An AI assistant can guide employees to the correct form, answer routine questions about internal policies, show request status, and send reminders. Examples include leave requests, document submissions, approvals, and internal HR inquiries.",
+              "Self-service can reduce interruptions for HR staff and give employees a clearer experience. Employees should know when they are receiving an automated answer, when human review is required, and how to request clarification or correction."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "How Does HR Software Work Alongside Qiwa and Saudi Labor Law?",
+        "paragraphs": [
+          "Working alongside Qiwa does not always mean that every HR application has a direct technical integration with a government platform. In many cases, it means that the internal system keeps company data, approvals, and workflows organized so the business can complete official steps accurately.",
+          "An internal HR system can help a business with:"
+        ],
+        "list": [
+          "Managing employee profiles and internal records.",
+          "Tracking attendance, leave, and employee requests.",
+          "Preparing information needed before an official procedure.",
+          "Producing operational reports for management.",
+          "Recording internal approvals and workflow history."
+        ],
+        "closingParagraphs": [
+          "Qiwa and other official services remain the appropriate channels for government procedures such as employment contract management and documentation when required. Businesses should check official sources regularly because procedures and requirements may change."
+        ]
+      },
+      {
+        "heading": "Benefits of AI-Powered HR Software for Saudi Businesses",
+        "paragraphs": [
+          "The strongest results come from connecting technology to a specific local business problem, such as scattered employee records, delayed attendance reports, or a high volume of daily HR questions. Potential benefits include:"
+        ],
+        "list": [
+          "Less time spent preparing attendance and commitment reports.",
+          "Clearer leave requests and internal approval workflows.",
+          "Faster employee service through a mobile app.",
+          "Earlier visibility into attendance or operational issues.",
+          "Fewer repeated data-entry tasks and manual follow-ups.",
+          "Better information for performance and training discussions.",
+          "A clearer separation between internal HR operations and official government procedures.",
+          "More consistent processes across branches or work locations."
+        ],
+        "closingParagraphs": [
+          "Success should be measured by operational outcomes, not by the number of AI features. Useful measures include request-processing time, record completeness, manual follow-ups, attendance-report preparation time, and employee adoption."
+        ]
+      },
+      {
+        "heading": "Risks and Compliance Considerations",
+        "paragraphs": [
+          "The first risk is employee data privacy. HR records can include personal and employment information, so businesses should define access permissions, retention periods, and legitimate operational purposes. They should also review the security and access controls provided by the software vendor.",
+          "The second risk is poor data quality. Incomplete or outdated records can produce misleading reports. Data should be reviewed and standardized before a company relies on AI-generated insights.",
+          "The third risk is bias. Recruitment and performance tools should be tested, monitored, and reviewed by qualified people. An AI recommendation should not automatically become a final decision in a sensitive employment matter.",
+          "Businesses should not present an internal HR application as a legal compliance solution by itself. The system can help organize information and follow internal processes, but companies must consult Saudi Labor Law and official Ministry services when a matter requires formal or legal confirmation. Employees should understand how attendance and performance data are used, and monitoring should stay within a legitimate operational purpose."
+        ]
+      },
+      {
+        "heading": "How SMEs in Saudi Arabia Can Benefit",
+        "paragraphs": [
+          "Small and medium-sized businesses do not need to implement every HR feature at once. They can start with a specific need such as a mobile attendance system for small businesses in Saudi Arabia, employee requests, or document reminders.",
+          "Mobile applications can reduce the cost of installing and maintaining physical attendance devices, especially for field teams or businesses with multiple locations. Cloud-based HR tools can also provide useful reporting without requiring a large internal technology department.",
+          "Before subscribing, define two or three baseline measures. These might include attendance-report preparation time, the number of weekly manual follow-ups, request-processing time, or employee-record completeness. After a trial period, compare the results and expand only when the initial workflow is reliable."
+        ]
+      },
+      {
+        "heading": "How Can Your Company Start Using AI in HR Management?",
+        "subsections": [
+          {
+            "heading": "1. Start with a Saudi Business Problem",
+            "paragraphs": [
+              "Do you need mobile attendance? Are leave requests being lost in chat messages? Is it difficult to prepare accurate information before managing employment contracts through Qiwa? Define the problem before selecting a platform."
+            ]
+          },
+          {
+            "heading": "2. Choose a Measurable Use Case",
+            "paragraphs": [
+              "Start with attendance, employee requests, reminders, or HR reporting. Define one clear success measure and avoid implementing every feature at the same time."
+            ]
+          },
+          {
+            "heading": "3. Separate Internal Operations from Official Compliance",
+            "paragraphs": [
+              "Use the internal HR system for daily operations and employee workflows. Use Qiwa and Ministry services for official government procedures and documentation. Consult applicable Saudi Labor Law resources when a situation requires legal interpretation."
+            ]
+          },
+          {
+            "heading": "4. Review Data Access and Permissions",
+            "paragraphs": [
+              "Decide who can view attendance, approve leave, edit employee records, or access reports. Train administrators not to share sensitive information outside approved channels."
+            ]
+          },
+          {
+            "heading": "5. Train the Team and Review Outcomes",
+            "paragraphs": [
+              "Explain how employees will use the app, what the system measures, and when human review is available. Monitor the results and adjust the workflow when data reveals a process problem."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Frequently Asked Questions About HR Software in Saudi Arabia",
+        "faqs": [
+          {
+            "question": "Does HR software replace Qiwa?",
+            "answer": "No. HR software organizes internal operations such as attendance, leave, employee requests, records, and reporting. Qiwa is used for official labor-market and employment services, including employment contract management and documentation where applicable."
+          },
+          {
+            "question": "Can a company use a mobile attendance app in Saudi Arabia?",
+            "answer": "A business can use a mobile application to organize internal attendance and time-tracking processes, provided its policies and implementation are appropriate for the business. Companies should consult official sources when a specific regulatory requirement applies."
+          },
+          {
+            "question": "Is Nizamy a mobile app or desktop HR software?",
+            "answer": "Nizamy is an HR platform with a mobile app for attendance tracking, employee self-service, and operational visibility related to attendance, commitment, and productivity. The Nizamy website states that the app is available through the App Store and Google Play."
+          },
+          {
+            "question": "Is AI-powered HR software suitable for small businesses?",
+            "answer": "Yes. A small business can begin with attendance, employee requests, or document reminders and add reporting and other services gradually. A mobile-first platform can reduce the need for physical devices and a large internal technology team."
+          },
+          {
+            "question": "Can AI make decisions about termination or employee rejection?",
+            "answer": "AI should not be the sole decision-maker for sensitive employment actions. It may highlight indicators or organize information, but the final process requires human review, company policy, and consideration of applicable legal requirements."
+          },
+          {
+            "question": "How can I start managing my employees from a mobile app?",
+            "answer": "Begin by identifying your main operational need, then download the Nizamy mobile app from the App Store or Google Play, register your business, and activate the services you need. Start with a limited group, review the results, and expand gradually."
+          }
+        ]
+      },
+      {
+        "heading": "Download the Nizamy Mobile App",
+        "paragraphs": [
+          "If you are searching for a Saudi HR app for attendance and employee management, Nizamy can help you start from your mobile phone. The platform supports mobile attendance without traditional fingerprint devices, employee self-service, and operational visibility that helps managers follow attendance, commitment, and productivity.",
+          "Visit Nizamy and download the app for free. The app is available on the App Store and Google Play, and the website states that businesses can get started without a credit card."
+        ],
+        "cta": true
+      },
+      {
+        "heading": "Conclusion",
+        "paragraphs": [
+          "Saudi businesses need a practical connection between internal HR organization and official employment procedures. AI can help HR teams manage attendance, requests, records, and reporting more efficiently. Qiwa and Ministry services remain important for official procedures, while Saudi Labor Law remains the basis for understanding applicable employment obligations.",
+          "Rather than choosing a generic HR solution, begin with a real search need: a mobile attendance app for employees in Saudi Arabia, HR software for small businesses, or employee management from a mobile app. Measure the result, improve the workflow, and expand gradually.",
+          "Download the Nizamy mobile app and start managing employee attendance and commitment from your phone."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "contract",
+        "label": "Ministry of Human Resources and Social Development — Contract Management (Qiwa)",
+        "url": "https://www.hrsd.gov.sa/en/ministry-services/services/%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D9%82%D9%88%D8%AF"
+      },
+      {
+        "id": "laborLaw",
+        "label": "Ministry of Human Resources and Social Development — Saudi Labor Law",
+        "url": "https://www.hrsd.gov.sa/en/knowledge-centre/%D9%86%D8%B8%D8%A7%D9%85-%D8%A7%D9%84%D8%B9%D9%85%D9%84"
+      },
+      {
+        "id": "behavioralInsights",
+        "label": "OECD / G20 — A stocktake of applications of behavioural insights to employment policies in G20 countries (PDF, hosted by the Ministry)",
+        "url": "https://www.hrsd.gov.sa/sites/default/files/2024-03/G20%20stocktaking%20report%20on%20BI_OECD_Final.pdf"
+      }
+    ]
+  },
+  "ar": {
+    "title": "الذكاء الاصطناعي في إدارة الموارد البشرية في السعودية: الحضور والأداء وإدارة الموظفين في تطبيق واحد",
+    "dek": "دليل عملي للاستفادة من أنظمة الموارد البشرية الذكية وتطبيقات الجوال في السعودية، مع التمييز بين الإجراءات الداخلية ومنصة قوى والحفاظ على دور المراجعة البشرية.",
+    "heroAlt": "زميلان في فريق الموارد البشرية بالسعودية يراجعان معلومات الموظفين على حاسوب محمول",
+    "intro": [
+      "تحتاج الشركات السعودية إلى إدارة يومية دقيقة للموظفين، وليس إلى ملفات إلكترونية متفرقة فقط. فمع نمو المنشأة، تتعدد طلبات الإجازة وسجلات الحضور والانصراف والوثائق والموافقات وتقارير الرواتب ومعلومات الأداء والأسئلة اليومية. وعندما تعتمد هذه العمليات على جداول Excel والرسائل والمتابعة اليدوية، يصعب على المدير معرفة ما يحدث في الوقت المناسب، وقد ينتظر الموظف وقتاً أطول للحصول على إجابة.",
+      "تزداد أهمية تنظيم العمليات الداخلية عندما تحتاج المنشأة أيضاً إلى استخدام القنوات الرسمية للخدمات والوثائق المتعلقة بعلاقة العمل. لذلك يبحث أصحاب المنشآت ومديرو الموارد البشرية عن حلول محددة، مثل أفضل برنامج موارد بشرية للشركات السعودية، وتطبيق حضور وانصراف للموظفين في السعودية، وبرنامج لإدارة الموظفين في المنشآت الصغيرة.",
+      "لا يهدف الذكاء الاصطناعي في إدارة الموارد البشرية إلى استبدال مسؤول الموارد البشرية. بل يساعده على تقليل الأعمال المتكررة، واكتشاف الأنماط في بيانات الفريق، والرد على الأسئلة المتكررة، واتخاذ قرارات تستند إلى مؤشرات تشغيلية أوضح. يوضح هذا الدليل كيف تستفيد الشركات السعودية من برنامج موارد بشرية ذكي وتطبيق جوال، مع فهم الأدوار المختلفة للنظام الداخلي ومنصة قوى واللوائح السعودية."
+    ],
+    "sections": [
+      {
+        "heading": "ما المقصود بالذكاء الاصطناعي في إدارة الموارد البشرية السعودية؟",
+        "paragraphs": [
+          "الذكاء الاصطناعي في الموارد البشرية هو استخدام برنامج يستطيع تنظيم بيانات العمل وفهم بعض طلبات الموظفين واكتشاف الأنماط وتنفيذ خطوات محددة وتقديم تنبيهات أو توصيات مفيدة. وقد يظهر ذلك في مساعد ذكي يجيب عن سؤال حول سياسة داخلية، أو لوحة معلومات تعرض تغيرات الحضور، أو مسار عمل يوجه طلب إجازة إلى المسؤول المختص.",
+          "من المهم التمييز بين ثلاثة مفاهيم. الرقمنة تعني تحويل الملفات الورقية إلى سجلات إلكترونية. والأتمتة تعني تنفيذ إجراء متكرر وفق قواعد محددة مسبقاً، مثل إرسال تذكير أو إشعار للمدير. أما الذكاء الاصطناعي فيضيف تحليل المعلومات واكتشاف الأنماط وفهم الطلبات ودعم التوصيات.",
+          "ينبغي أن يدعم الذكاء الاصطناعي حكم مسؤول الموارد البشرية لا أن يحل محله. وتعتمد النتائج على جودة البيانات وقواعد إعداد النظام وطريقة تفسير المدير للمخرجات. أما القرارات المتعلقة بحالة العمل أو التعويضات أو العقود أو غيرها من المسائل الحساسة فتتطلب مراجعة بشرية مناسبة."
+        ]
+      },
+      {
+        "heading": "الفرق بين نظام الموارد البشرية الداخلي ومنصة قوى",
+        "paragraphs": [
+          "ينظم نظام الموارد البشرية الداخلي العمليات اليومية داخل المنشأة، مثل الحضور والانصراف وطلبات الموظفين ومسارات الإجازات والوثائق الداخلية والتقارير والخدمة الذاتية. أما منصة قوى فهي منصة سعودية رسمية تقدم خدمات مرتبطة بسوق العمل وعلاقة المنشأة بالموظف، ومنها إدارة عقود العمل وتوثيقها.",
+          "تتيح خدمة إدارة العقود التابعة لوزارة الموارد البشرية والتنمية الاجتماعية للمنشأة إنشاء عقد العمل إلكترونياً، ثم يستطيع الموظف عبر حساب قوى أفراد الموافقة أو الرفض أو طلب التعديل. وعند اتفاق الطرفين، يوثق العقد عبر الإجراء الرسمي.",
+          "لذلك لا ينبغي تقديم برنامج الموارد البشرية على أنه بديل عن قوى أو عن فهم نظام العمل السعودي. يساعد النظام الداخلي المنشأة على تنظيم عملياتها وتجهيز المعلومات، بينما تظل المنصات الحكومية الرسمية القناة المناسبة للخدمات التي تتطلب توثيقاً رسمياً أو إجراءً حكومياً."
+        ],
+        "citations": { "1": "contract" }
+      },
+      {
+        "heading": "كيف يدعم الذكاء الاصطناعي مسؤول الموارد البشرية؟",
+        "paragraphs": [
+          "يمكن للمساعد الذكي التعامل مع الأسئلة المتكررة، وتلخيص البيانات التشغيلية، واقتراح الخطوة التالية في مسار العمل، أو تنبيه المدير إلى تغير غير معتاد. قد تقلل هذه الإمكانات الضغط الإداري، لكن فريق الموارد البشرية يظل مسؤولاً عن مراجعة السياق وتطبيق سياسات المنشأة والمتطلبات الرسمية بصورة صحيحة.",
+          "يحتاج أي تنبيه أو توصية إلى مراجعة بشرية عندما يتعلق الأمر بعقد أو مستحق مالي أو تقييم أداء أو قرار قد يؤثر على علاقة العمل."
+        ]
+      },
+      {
+        "heading": "أهم استخدامات برنامج إدارة الموظفين في السعودية",
+        "subsections": [
+          {
+            "heading": "إدارة بيانات الموظفين والوثائق",
+            "paragraphs": [
+              "يحتاج مسؤول الموارد البشرية إلى الوصول السريع إلى ملفات الموظفين والمسميات الوظيفية وتواريخ الانضمام وسجلات الإجازات والحضور والطلبات الداخلية والوثائق ذات الصلة. وعندما تتوزع المعلومات بين جداول Excel ورسائل البريد، تصبح التحديثات غير متسقة ويستغرق البحث وقتاً طويلاً.",
+              "يمكن لنظام موارد بشرية ذكي جمع السجلات الداخلية وتحديد صلاحيات الوصول بحسب دور المستخدم وإرسال تذكيرات بما يحتاج إلى متابعة. أما عقود العمل والإجراءات الحكومية الرسمية فيجب تنفيذها عبر القنوات المعتمدة، ومنها قوى عند الاقتضاء."
+            ]
+          },
+          {
+            "heading": "الحضور والانصراف وتتبع الوقت من الجوال",
+            "paragraphs": [
+              "يبحث كثير من أصحاب المنشآت عن تطبيق حضور وانصراف للموظفين في السعودية من الجوال لتجنب تركيب أجهزة بصمة في كل موقع. يستطيع النظام الجوال تسجيل الحضور وعرض بيانات تسجيل الدخول والخروج وإعداد تقارير عن الالتزام والتأخر والغياب والعمل الإضافي وفق سياسة المنشأة.",
+              "يتيح نظامي متابعة الحضور من الجوال دون الحاجة إلى أجهزة البصمة التقليدية، كما يمنح المديرين رؤية أحدث للحضور والتزام الموظفين وإنتاجيتهم. وقد يساعد ذلك على اكتشاف مشكلة متكررة مبكراً بدلاً من انتظار نهاية الشهر لمراجعة الجداول.",
+              "ينبغي أن تدعم بيانات الحضور إدارة بناءة. فقد يعكس التأخر المتكرر جداول غير واضحة أو صعوبات في التنقل أو ضغط العمل أو سياسة تحتاج إلى توضيح. يجب أن تكون البيانات بداية للمراجعة، لا حكماً سلبياً تلقائياً على الموظف."
+            ]
+          },
+          {
+            "heading": "متابعة الإجازات وساعات العمل",
+            "paragraphs": [
+              "تصبح إدارة الإجازات صعبة عندما يرسل الموظفون الطلبات عبر المحادثات أو البريد دون مسار اعتماد واضح. يتيح نظام الموارد البشرية للموظف تقديم الطلب وتوجيهه إلى المدير المختص وتسجيل القرار وإظهار الحالة الحالية.",
+              "ينبغي ضبط قواعد ساعات العمل والإجازات وفق سياسة المنشأة والمتطلبات السعودية المعمول بها. وعندما تتطلب الحالة تفسيراً قانونياً أو تحققاً رسمياً، يجب الرجوع إلى موارد نظام العمل السعودي المنشورة من وزارة الموارد البشرية، بدلاً من الاعتماد على اقتراح آلي وحده."
+            ],
+            "citations": { "1": "laborLaw" }
+          },
+          {
+            "heading": "تحليل أداء الموظفين والالتزام",
+            "paragraphs": [
+              "لا يساوي الحضور وحده الأداء الجيد. يحتاج المدير أيضاً إلى فهم إنجاز المهام وجودتها والتقدم والتزام الموظف والعوائق المتكررة. ويمكن للذكاء الاصطناعي جمع المؤشرات ذات الصلة وعرض الاتجاهات بصورة أسهل للمراجعة من ملفات متفرقة.",
+              "يجب تفسير بيانات الأداء في سياقها. فقد ينتج انخفاض الإنجاز عن ضغط العمل أو غموض الأهداف أو نقص الموارد أو تغير المسؤوليات. ينبغي أن تساعد التقنية المدير على طرح أسئلة أفضل وتقديم ملاحظات أفضل، لا أن تصدر قراراً آلياً غير مفسر بشأن الموظف."
+            ]
+          },
+          {
+            "heading": "التوظيف ومسارات عقود العمل",
+            "paragraphs": [
+              "يمكن للذكاء الاصطناعي مساعدة فرق التوظيف في تنظيم طلبات التقديم واستخراج المهارات وجدولة المقابلات وإعداد أسئلة موحدة للفرز الأولي، مما يقلل وقت التنسيق عندما تتلقى المنشأة عدداً كبيراً من الطلبات.",
+              "التوظيف استخدام حساس، ولذلك تظل المراجعة البشرية مهمة. فقد تتضمن البيانات التاريخية تحيزاً، وقد يؤدي الرفض الآلي غير الواضح إلى مخاوف تتعلق بالعدالة والامتثال. ينبغي استخدام معايير متسقة ومتابعة النتائج وإشراك مراجعين مؤهلين.",
+              "بعد اختيار المرشح، يمكن للنظام الداخلي تنظيم خطوات التهيئة ومعلومات الموظف. أما إنشاء عقد العمل وتوثيقه فينبغي أن يتبع الإجراء الرسمي المعمول به عبر قوى وخدمات الوزارة. يوضح هذا الفصل الفرق بين إدارة العملية داخلياً والتوثيق الرسمي للعقد."
+            ]
+          },
+          {
+            "heading": "تقارير الموارد البشرية وتحليل البيانات",
+            "paragraphs": [
+              "تساعد التقارير الآلية على الإجابة عن أسئلة عملية: ما نسبة الالتزام بالحضور؟ أي قسم يحتاج إلى متابعة؟ كم يستغرق اعتماد طلب الموظف؟ وهل تحسن الالتزام بعد تطبيق سياسة جديدة؟",
+              "يمكن أن تدعم التحليلات تطوير الموظف أيضاً. يستعرض تقرير لمنظمة التعاون الاقتصادي والتنمية منشور على موقع وزارة الموارد البشرية والتنمية الاجتماعية تطبيقات الرؤى السلوكية في سياسات التوظيف بدول مجموعة العشرين، ومنها دعم الباحثين عن عمل والمشاركة في برامج التوظيف. هذا بحث عن السياسات، وليس دليلاً على أن تطبيقاً بعينه يحسن المسار المهني. ويمكن كذلك استخدام بيانات الموارد البشرية الداخلية لمساعدة الموظفين على مناقشة تقدمهم وتطويرهم، لا لمراقبتهم فقط."
+            ],
+            "citations": { "1": "behavioralInsights" }
+          },
+          {
+            "heading": "أتمتة طلبات الموظفين والخدمات الذاتية",
+            "paragraphs": [
+              "يمكن للمساعد الذكي توجيه الموظف إلى النموذج الصحيح والإجابة عن الأسئلة المتكررة حول السياسات الداخلية وإظهار حالة الطلب وإرسال التذكيرات. وتشمل الأمثلة طلبات الإجازة والمستندات والموافقات والاستفسارات الداخلية للموارد البشرية.",
+              "قد تقلل الخدمة الذاتية المقاطعات لفريق الموارد البشرية وتمنح الموظفين تجربة أوضح. لكن ينبغي أن يعرف الموظف متى يتلقى إجابة آلية ومتى تتطلب المسألة مراجعة بشرية وكيف يطلب توضيحاً أو تصحيحاً."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "كيف يعمل برنامج الموارد البشرية إلى جانب قوى ونظام العمل السعودي؟",
+        "paragraphs": [
+          "لا يعني العمل إلى جانب قوى بالضرورة وجود ربط تقني مباشر بين كل تطبيق موارد بشرية ومنصة حكومية. ففي كثير من الحالات، يعني ذلك أن النظام الداخلي يحافظ على تنظيم بيانات المنشأة وموافقاتها ومسارات العمل حتى تنفذ الإجراءات الرسمية بدقة.",
+          "يمكن للمنشأة استخدام نظام الموارد البشرية الداخلي من أجل:"
+        ],
+        "list": [
+          "إدارة ملفات الموظفين والسجلات الداخلية.",
+          "متابعة الحضور والإجازات وطلبات الموظفين.",
+          "تجهيز المعلومات المطلوبة قبل تنفيذ إجراء رسمي.",
+          "إصدار تقارير تشغيلية للإدارة.",
+          "توثيق الموافقات الداخلية ومسار الطلب."
+        ],
+        "closingParagraphs": [
+          "في المقابل، تستخدم المنشأة قوى والخدمات الرسمية للإجراءات الحكومية، مثل إدارة عقود العمل وتوثيقها عند الاقتضاء. وينبغي مراجعة المصادر الرسمية باستمرار لأن الإجراءات والمتطلبات قد تتغير."
+        ]
+      },
+      {
+        "heading": "فوائد استخدام الذكاء الاصطناعي في الموارد البشرية للشركات السعودية",
+        "paragraphs": [
+          "تظهر أفضل النتائج عندما ترتبط التقنية بمشكلة محلية محددة، مثل تشتت بيانات الموظفين أو تأخر تقارير الحضور أو كثرة الاستفسارات اليومية. ومن الفوائد المحتملة:"
+        ],
+        "list": [
+          "تقليل الوقت اللازم لإعداد تقارير الحضور والالتزام.",
+          "زيادة وضوح طلبات الإجازة والموافقات الداخلية.",
+          "تقديم خدمة أسرع للموظفين عبر تطبيق الجوال.",
+          "إتاحة مؤشرات مبكرة عن مشكلات الحضور أو التشغيل.",
+          "تقليل إدخال البيانات المتكرر والمتابعات اليدوية.",
+          "توفير معلومات أفضل لمناقشات الأداء والتدريب.",
+          "الفصل بوضوح بين عمليات الموارد البشرية الداخلية والإجراءات الحكومية الرسمية.",
+          "توحيد الإجراءات بين الفروع ومواقع العمل."
+        ],
+        "closingParagraphs": [
+          "ينبغي قياس النجاح بالنتائج التشغيلية لا بعدد خصائص الذكاء الاصطناعي. ومن المقاييس المفيدة زمن معالجة الطلبات واكتمال السجلات وعدد المتابعات اليدوية ووقت إعداد تقرير الحضور ومدى استخدام الموظفين للنظام."
+        ]
+      },
+      {
+        "heading": "التحديات ومخاطر الامتثال قبل التطبيق",
+        "paragraphs": [
+          "أول المخاطر خصوصية بيانات الموظفين. فقد تتضمن سجلات الموارد البشرية معلومات شخصية ووظيفية، لذلك ينبغي تحديد صلاحيات الوصول وفترات الاحتفاظ والغرض التشغيلي المشروع، ومراجعة ضوابط الأمن والوصول التي يوفرها مزود البرنامج.",
+          "الخطر الثاني هو ضعف جودة البيانات. قد تؤدي السجلات الناقصة أو القديمة إلى تقارير مضللة، لذا ينبغي مراجعة البيانات وتوحيدها قبل الاعتماد على الرؤى الناتجة عن الذكاء الاصطناعي.",
+          "الخطر الثالث هو التحيز. يجب اختبار أدوات التوظيف والأداء ومتابعتها ومراجعتها من أشخاص مؤهلين. ولا ينبغي أن تتحول توصية الذكاء الاصطناعي تلقائياً إلى قرار نهائي في مسألة وظيفية حساسة.",
+          "كما يجب عدم تقديم تطبيق الموارد البشرية الداخلي على أنه حل للامتثال القانوني بمفرده. يساعد النظام على تنظيم المعلومات والعمليات الداخلية، لكن ينبغي الرجوع إلى نظام العمل السعودي والخدمات الرسمية للوزارة عندما تتطلب الحالة تأكيداً رسمياً أو قانونياً. وينبغي توضيح كيفية استخدام بيانات الحضور والأداء للموظفين، وحصر المراقبة في الغرض التشغيلي المشروع."
+        ]
+      },
+      {
+        "heading": "كيف تستفيد المنشآت الصغيرة والمتوسطة في السعودية؟",
+        "paragraphs": [
+          "لا تحتاج المنشآت الصغيرة والمتوسطة إلى تطبيق جميع خصائص الموارد البشرية دفعة واحدة. يمكنها البدء باحتياج محدد، مثل برنامج حضور وانصراف للمنشآت الصغيرة في السعودية، أو طلبات الموظفين، أو تذكيرات الوثائق.",
+          "تساعد تطبيقات الجوال على تقليل تكلفة تركيب أجهزة الحضور المادية وصيانتها، خصوصاً للفرق الميدانية أو المنشآت متعددة المواقع. كما تتيح الأدوات السحابية تقارير مفيدة دون الحاجة إلى إنشاء فريق تقني داخلي كبير.",
+          "قبل الاشتراك، حدد مقياسين أو ثلاثة لقياس الوضع الحالي، مثل وقت إعداد تقرير الحضور، وعدد المتابعات اليدوية أسبوعياً، ومدة معالجة الطلبات، أو نسبة اكتمال ملفات الموظفين. وبعد فترة تجريبية، قارن النتائج ولا تتوسع إلا عندما يستقر مسار العمل الأول."
+        ]
+      },
+      {
+        "heading": "كيف تبدأ شركتك استخدام الذكاء الاصطناعي في إدارة الموارد البشرية؟",
+        "subsections": [
+          {
+            "heading": "١. ابدأ من مشكلة سعودية محددة",
+            "paragraphs": [
+              "هل تحتاج إلى حضور من الجوال؟ هل تضيع طلبات الإجازة في المحادثات؟ هل يصعب تجهيز المعلومات الدقيقة قبل إدارة عقود العمل عبر قوى؟ حدد المشكلة قبل اختيار المنصة."
+            ]
+          },
+          {
+            "heading": "٢. اختر حالة استخدام قابلة للقياس",
+            "paragraphs": [
+              "ابدأ بالحضور أو طلبات الموظفين أو التذكيرات أو تقارير الموارد البشرية. وحدد مقياس نجاح واضحاً واحداً، ولا تطبق جميع الخصائص في الوقت نفسه."
+            ]
+          },
+          {
+            "heading": "٣. افصل بين العمليات الداخلية والامتثال الرسمي",
+            "paragraphs": [
+              "استخدم نظام الموارد البشرية الداخلي للعمليات اليومية ومسارات الموظفين، واستخدم قوى وخدمات الوزارة للإجراءات والتوثيق الحكومي الرسمي. وارجع إلى موارد نظام العمل السعودي المناسبة عندما تتطلب الحالة تفسيراً قانونياً."
+            ]
+          },
+          {
+            "heading": "٤. راجع صلاحيات الوصول إلى البيانات",
+            "paragraphs": [
+              "حدد من يستطيع الاطلاع على الحضور واعتماد الإجازة وتعديل ملفات الموظفين والوصول إلى التقارير. ودرّب المسؤولين على عدم مشاركة البيانات الحساسة خارج القنوات المعتمدة."
+            ]
+          },
+          {
+            "heading": "٥. درّب الفريق وراجع النتائج",
+            "paragraphs": [
+              "اشرح للموظفين طريقة استخدام التطبيق وما يقيسه النظام ومتى تتوفر المراجعة البشرية. تابع النتائج وعدّل مسار العمل عندما تكشف البيانات عن مشكلة في الإجراء."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "أسئلة شائعة عن برامج الموارد البشرية في السعودية",
+        "faqs": [
+          {
+            "question": "هل يغني برنامج الموارد البشرية عن منصة قوى؟",
+            "answer": "لا. ينظم برنامج الموارد البشرية العمليات الداخلية مثل الحضور والإجازات وطلبات الموظفين والسجلات والتقارير. أما قوى فتستخدم للخدمات الرسمية المرتبطة بسوق العمل والتوظيف، ومنها إدارة عقود العمل وتوثيقها عند الاقتضاء."
+          },
+          {
+            "question": "هل يمكن استخدام تطبيق حضور وانصراف من الجوال في السعودية؟",
+            "answer": "يمكن للمنشأة استخدام تطبيق جوال لتنظيم الحضور وتتبع الوقت داخلياً، بشرط ملاءمة السياسات وطريقة التطبيق للمنشأة. وينبغي الرجوع إلى المصادر الرسمية عندما ينطبق متطلب تنظيمي محدد."
+          },
+          {
+            "question": "هل نظامي تطبيق جوال أم برنامج موارد بشرية للكمبيوتر؟",
+            "answer": "نظامي منصة موارد بشرية تتضمن تطبيقاً للجوال لمتابعة الحضور والخدمات الذاتية للموظفين والرؤية التشغيلية المتعلقة بالحضور والالتزام والإنتاجية. ويذكر موقع نظامي أن التطبيق متوفر عبر App Store وGoogle Play."
+          },
+          {
+            "question": "هل يناسب برنامج الموارد البشرية المدعوم بالذكاء الاصطناعي المنشآت الصغيرة؟",
+            "answer": "نعم. يمكن للمنشأة الصغيرة البدء بالحضور أو طلبات الموظفين أو تذكيرات الوثائق، ثم إضافة التقارير والخدمات الأخرى تدريجياً. وقد تقلل المنصة المصممة للجوال الحاجة إلى الأجهزة المادية وفريق تقني داخلي كبير."
+          },
+          {
+            "question": "هل يمكن للذكاء الاصطناعي اتخاذ قرار بفصل موظف أو رفضه؟",
+            "answer": "لا ينبغي أن يكون الذكاء الاصطناعي صاحب القرار الوحيد في الإجراءات الوظيفية الحساسة. يمكنه عرض مؤشرات أو تنظيم المعلومات، لكن القرار النهائي يتطلب مراجعة بشرية وتطبيق سياسة المنشأة ومراعاة المتطلبات النظامية ذات الصلة."
+          },
+          {
+            "question": "كيف أبدأ إدارة موظفي شركتي من تطبيق جوال؟",
+            "answer": "ابدأ بتحديد احتياجك التشغيلي، ثم حمّل تطبيق نظامي من App Store أو Google Play وسجّل منشأتك وفعّل الخدمات التي تحتاجها. ابدأ بمجموعة محدودة، وراجع النتائج، ثم توسع تدريجياً."
+          }
+        ]
+      },
+      {
+        "heading": "حمّل تطبيق نظامي وابدأ إدارة موظفيك من الجوال",
+        "paragraphs": [
+          "إذا كنت تبحث عن تطبيق موارد بشرية سعودي لتسجيل الحضور وإدارة الموظفين، يمكن أن يساعدك نظامي على البدء من الجوال. تدعم المنصة تسجيل الحضور دون أجهزة البصمة التقليدية والخدمات الذاتية للموظفين والرؤية التشغيلية التي تساعد المديرين على متابعة الحضور والالتزام والإنتاجية.",
+          "تعرّف على نظامي وحمّل التطبيق مجاناً من App Store أو Google Play. ويذكر الموقع أن بإمكان المنشآت البدء دون بطاقة ائتمانية."
+        ],
+        "cta": true
+      },
+      {
+        "heading": "الخاتمة",
+        "paragraphs": [
+          "تحتاج الشركات السعودية إلى الجمع بين التنظيم الداخلي والإجراءات الرسمية المتعلقة بالعمل. يساعد الذكاء الاصطناعي فرق الموارد البشرية على إدارة الحضور والطلبات والسجلات والتقارير بكفاءة أكبر. وتظل قوى وخدمات الوزارة مهمة للإجراءات الرسمية، بينما يبقى نظام العمل السعودي أساس فهم الالتزامات الوظيفية المعمول بها.",
+          "بدلاً من اختيار نظام عام، ابدأ باحتياج فعلي: تطبيق حضور وانصراف للموظفين في السعودية، أو برنامج موارد بشرية للمنشآت الصغيرة، أو إدارة الموظفين من الجوال. قِس النتيجة وحسّن مسار العمل ثم توسع تدريجياً.",
+          "حمّل تطبيق نظامي وابدأ إدارة حضور موظفيك والتزامهم من هاتفك."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "contract",
+        "label": "وزارة الموارد البشرية والتنمية الاجتماعية — إدارة العقود (قوى)",
+        "url": "https://www.hrsd.gov.sa/ministry-services/services/%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D9%82%D9%88%D8%AF"
+      },
+      {
+        "id": "laborLaw",
+        "label": "وزارة الموارد البشرية والتنمية الاجتماعية — نظام العمل السعودي",
+        "url": "https://www.hrsd.gov.sa/knowledge-centre/%D9%86%D8%B8%D8%A7%D9%85-%D8%A7%D9%84%D8%B9%D9%85%D9%84"
+      },
+      {
+        "id": "behavioralInsights",
+        "label": "منظمة التعاون الاقتصادي والتنمية / مجموعة العشرين — تقرير تطبيقات الرؤى السلوكية في سياسات التوظيف (PDF، مستضاف على موقع الوزارة)",
+        "url": "https://www.hrsd.gov.sa/sites/default/files/2024-03/G20%20stocktaking%20report%20on%20BI_OECD_Final.pdf"
+      }
+    ]
+  }
+}

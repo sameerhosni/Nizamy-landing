@@ -1,0 +1,21 @@
+import assert from "node:assert/strict";
+import { effectiveGapState, isGapSourceEligible, sourceFingerprint } from "./supportGaps";
+
+const item = {source:"chat",source_id:"conversation:42",title:"Points",question:"رصيدي ثابت",context:"user: رصيدي ثابت\nassistant: Please contact support",relevance:"related",status:"new"};
+const confirmed = {state:"confirmed",source_fingerprint:sourceFingerprint(item)};
+assert.equal(isGapSourceEligible(item),true);
+assert.equal(effectiveGapState(confirmed,item),"confirmed");
+assert.equal(effectiveGapState({...confirmed,state:"suggested"},item),"suggested");
+assert.equal(effectiveGapState(confirmed,{...item,context:item.context+"\nassistant: Here are the steps"}),"suggested");
+assert.equal(effectiveGapState(confirmed,{...item,relevance:"excluded"}),"suggested");
+assert.equal(effectiveGapState(confirmed,{...item,relevance:"pending"}),"suggested");
+assert.equal(effectiveGapState(confirmed,{...item,status:"resolved"} as typeof item),"confirmed", "Inbox review completion must not resolve gaps");
+assert.equal(effectiveGapState({...confirmed,state:"resolved"},{...item,context:"changed"}),"resolved");
+assert.equal(effectiveGapState({...confirmed,state:"dismissed"},item),"dismissed");
+assert.equal(isGapSourceEligible({...item,source_id:"chat:1"}),false,"Legacy individual messages cannot count as occurrences");
+assert.equal(isGapSourceEligible({...item,source:"email",source_id:"classification:x",title:"[classification]"}),false);
+assert.equal(isGapSourceEligible({...item,source:"email",source_id:"email-thread:x",title:"[excluded]"}),false);
+assert.equal(isGapSourceEligible({...item,source:"email",source_id:"email-thread:x"}),true);
+assert.equal(sourceFingerprint(item),sourceFingerprint({...item,status:"reviewed"} as typeof item));
+assert.notEqual(sourceFingerprint(item),sourceFingerprint({...item,question:"Another objective"}));
+console.log("Support gap evidence invariants passed");

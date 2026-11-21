@@ -1,10 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import { useLanguage } from "@/lib/i18n";
-import { useCreateIncentiveSignup } from "@workspace/api-client-react";
-import { track } from "@/lib/analytics";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useRef, useState } from "react";
+import { Gift } from "lucide-react";
+import { HubSpotForm } from "@/components/HubSpotForm";
 import {
   Dialog,
   DialogContent,
@@ -12,454 +8,100 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  useFormField,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Gift, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-const STORAGE_KEY = "nizamy_incentive_state_v2";
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const safeStorage = {
-  getItem: (key: string) => {
-    try {
-      return localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  },
-  setItem: (key: string, value: string) => {
-    try {
-      localStorage.setItem(key, value);
-    } catch {
-      // ignore
-    }
-  }
-};
-
-const formSchema = z.object({
-  intent: z.enum(["existing_hr", "seeking_hr", "exploring"], {
-    required_error: "INTENT_REQUIRED",
-  }),
-  contact: z
-    .string()
-    .trim()
-    .min(1, { message: "CONTACT_REQUIRED" })
-    .refine((value) => !value || EMAIL_PATTERN.test(value), {
-      message: "CONTACT_INVALID",
-    }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
-function LocalizedFormMessage({
-  message,
-  testId,
-}: {
-  message?: string;
-  testId: string;
-}) {
-  const { formMessageId } = useFormField();
-
-  if (!message) {
-    return null;
-  }
-
-  return (
-    <p
-      id={formMessageId}
-      className="text-[0.8rem] font-medium text-destructive"
-      data-testid={testId}
-    >
-      {message}
-    </p>
-  );
-}
+import { track } from "@/lib/analytics";
+import { useLanguage } from "@/lib/i18n";
+import { hasSeenWelcome, markWelcomeSeen } from "@/lib/welcomePopup";
 
 export function IncentivePopup() {
   const { language, dir } = useLanguage();
   const isAr = language === "ar";
-  
-  const [isOpen, setIsOpen] = useState(false);
-  const [isCompact, setIsCompact] = useState(false);
-  const [resultState, setResultState] = useState<"none" | "awarded" | "already_claimed" | "error">("none");
+  const [isOpen, setIsOpen] = useState(() => !isAr || !hasSeenWelcome());
   const hasTrackedView = useRef(false);
-  const languageRef = useRef(language);
 
-  // Keep ref up to date for the timeout without re-triggering it
   useEffect(() => {
-    languageRef.current = language;
+    if (!isAr) setIsOpen(true);
   }, [language]);
 
-  const { mutate: createSignup, isPending } = useCreateIncentiveSignup();
-
   useEffect(() => {
-    const storedState = safeStorage.getItem(STORAGE_KEY);
-    if (storedState === "completed") return;
-    const shouldShowCompact = storedState === "reminder";
-    setIsCompact(shouldShowCompact);
+    if (!isOpen || hasTrackedView.current) return;
+    if (isAr) markWelcomeSeen();
+    track("incentive_popup_viewed", { language, variant: "full" });
+    hasTrackedView.current = true;
+  }, [language, isOpen, isAr]);
 
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      if (!hasTrackedView.current) {
-        track("incentive_popup_viewed", {
-          language: languageRef.current,
-          variant: shouldShowCompact ? "reminder" : "full",
-        });
-        hasTrackedView.current = true;
-      }
-    }, shouldShowCompact ? 1500 : 5000);
+  const copy = {
+    badge: isAr ? "نظامي" : "Welcome Gift",
+    titleHighlight: isAr ? "" : "5,000",
+    titleRest: isAr ? "أهلًا فيك في نظامي" : "Free Loyalty Points",
+    description: isAr
+      ? "HR يشتغل عنك: حضور، طلبات، تقارير، ومكافآت — في تطبيق واحد."
+      : "Download the Nizamy app and register your company to receive this gift.",
+    formHeading: isAr
+      ? "عندك سؤال؟ اكتب لنا هنا"
+      : "For inquiries, contact us using the form below",
+    formError: isAr
+      ? "ما قدرنا نرسل النموذج. تأكد من اتصالك وجرّب مرة ثانية."
+      : "The form could not be submitted. Check your connection and try again.",
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    mode: "onTouched",
-    reValidateMode: "onChange",
-    defaultValues: {
-      contact: "",
-    },
-  });
-
-  const onOpenChange = (open: boolean) => {
+  const handleOpenChange = (open: boolean) => {
     if (!open) {
-      // User is closing it (cancel or after completion)
-      if (resultState === "none" || resultState === "error") {
-        track("incentive_popup_cancelled", {
-          language,
-          variant: isCompact ? "reminder" : "full",
-        });
-        safeStorage.setItem(STORAGE_KEY, "reminder");
-      }
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
+      track("incentive_popup_cancelled", { language, variant: "full" });
     }
+    setIsOpen(open);
   };
-
-  const onSubmit = (values: FormValues) => {
-    track("incentive_popup_submitted", { intent: values.intent, language });
-
-    createSignup(
-      {
-        data: {
-          intent: values.intent,
-          email: values.contact.trim().toLowerCase(),
-          language,
-        },
-      },
-      {
-        onSuccess: (res) => {
-          setResultState(res.status);
-          if (res.status === "awarded") {
-            track("incentive_popup_awarded", { language });
-          } else {
-            track("incentive_popup_duplicate", { language });
-          }
-          // Hide permanently
-          safeStorage.setItem(STORAGE_KEY, "completed");
-        },
-        onError: () => {
-          setResultState("error");
-          track("incentive_popup_error", { language });
-        }
-      }
-    );
-  };
-
-  const onInvalidSubmit = () => {
-    track("incentive_popup_validation_failed", { language });
-  };
-
-  const t = {
-    title: isAr ? "هدية خاصة لزوارنا" : "A Special Gift For You",
-    desc: isAr 
-      ? "احصل على نقاط ولاء إضافية عند انضمامك إلينا مستقبلاً. سجل اهتمامك الآن."
-      : "Claim bonus loyalty points for when you join us. Register your interest now.",
-    intentLabel: isAr ? "ما هو وضعك الحالي؟" : "What best describes you?",
-    intentHr: isAr ? "أستخدم نظام موارد بشرية حالياً" : "I currently use an HR system",
-    intentSeek: isAr ? "أبحث عن نظام موارد بشرية" : "I'm looking for an HR system",
-    intentExplore: isAr ? "مجرد استكشاف" : "Just exploring",
-    contactLabel: isAr ? "البريد الإلكتروني" : "Email address",
-    contactPlaceholder: "name@company.com",
-    submit: isAr ? "إرسال" : "Send",
-    cancel: isAr ? "لا، شكراً" : "No, thanks",
-    successTitle: isAr ? "تم تسجيل طلبك بنجاح" : "Reward Claimed!",
-    successDesc: isAr
-      ? "قم بتحميل التطبيق وتسجيل حساب منشأتك لاستلام الهدية"
-      : "Download the app and register your company account to receive your gift.",
-    claimedTitle: isAr ? "تم تسجيلك مسبقاً" : "Already Claimed",
-    claimedDesc: isAr ? "يبدو أنك قمت بالمطالبة بهذه الهدية من قبل. لا تقلق، نقاطك محفوظة." : "Looks like you've already claimed this reward. Don't worry, your points are safe.",
-    errorTitle: isAr ? "حدث خطأ" : "Something went wrong",
-    errorDesc: isAr ? "تعذر إكمال طلبك. يرجى المحاولة مرة أخرى لاحقاً." : "We couldn't complete your request. Please try again later.",
-    errorRetry: isAr ? "حاول مرة أخرى" : "Try Again",
-    reminderTitle: isAr ? "لا تنسَ هديتك" : "Don't miss your reward",
-    reminderDesc: isAr
-      ? "أضف بياناتك لتسجيل هديتك."
-      : "Add your details to register your reward.",
-    reminderAction: isAr ? "أضف بياناتك" : "Add details",
-    reminderLater: isAr ? "لاحقاً" : "Later",
-    close: isAr ? "إغلاق" : "Close"
-  };
-
-  const tErrors: Record<string, string> = {
-    INTENT_REQUIRED: isAr ? "يرجى اختيار وضعك الحالي." : "Please select your current HR situation.",
-    CONTACT_REQUIRED: isAr ? "معلومات الاتصال مطلوبة." : "Contact information is required.",
-    CONTACT_INVALID: isAr ? "يرجى إدخال بريد إلكتروني صحيح." : "Please enter a valid email address.",
-  };
-  const intentError = form.formState.errors.intent?.message;
-  const contactError = form.formState.errors.contact?.message;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent
-        className={
-          isCompact && resultState === "none"
-            ? "max-w-[calc(100%_-_2rem)] overflow-hidden rounded-2xl border-sky-100/80 p-4 shadow-[0_20px_60px_-24px_rgba(15,23,42,0.45)] sm:max-w-xs"
-            : "overflow-hidden rounded-3xl border-sky-100/80 bg-background shadow-[0_28px_90px_-28px_rgba(15,23,42,0.5)] before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-gradient-to-r before:from-sky-400 before:via-blue-500 before:to-cyan-400 sm:max-w-md"
-        }
+        className="max-h-[calc(100dvh-1rem)] max-w-[calc(100%_-_1rem)] overflow-y-auto rounded-3xl border-sky-100/80 bg-background p-4 shadow-[0_28px_90px_-28px_rgba(15,23,42,0.5)] [scrollbar-width:none] before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:bg-gradient-to-r before:from-sky-400 before:via-blue-500 before:to-cyan-400 [&::-webkit-scrollbar]:hidden sm:max-w-lg sm:p-6"
         dir={dir}
         data-testid="incentive-popup"
-        data-variant={isCompact ? "reminder" : "full"}
+        data-variant="full"
       >
-        {resultState === "none" && isCompact && (
-          <div className="space-y-4 rounded-xl bg-gradient-to-br from-sky-50/90 via-white to-blue-50/70 p-1" data-testid="incentive-reminder">
-            <DialogHeader
-              className={`pe-6 ${
-                isAr
-                  ? "items-end text-right sm:text-right"
-                  : "items-start text-left sm:text-left"
-              }`}
+        <div className="space-y-2 sm:space-y-4">
+          <DialogHeader className={`flex flex-col pe-6 ${isAr ? "text-right sm:text-right" : "text-left sm:text-left"}`}>
+            <div className={`mb-1.5 inline-flex items-center gap-1.5 self-start rounded-full bg-sky-50 px-2.5 py-1 border border-sky-100/50 ${isAr ? "mr-7" : ""}`}>
+              <Gift className="h-3.5 w-3.5 text-sky-600" aria-hidden="true" />
+              <span className="text-xs font-bold tracking-wide text-sky-800 uppercase">
+                {copy.badge}
+              </span>
+            </div>
+
+            <DialogTitle
+              className="font-heading text-2xl sm:text-[26px] font-extrabold text-slate-900 leading-tight mb-1"
+              data-testid="incentive-title"
             >
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-blue-100 text-sky-600 shadow-sm ring-4 ring-white">
-                  <Gift className="h-5 w-5" />
-                </div>
-                <div className="space-y-1">
-                  <DialogTitle className="text-base font-bold font-heading">
-                    {t.reminderTitle}
-                  </DialogTitle>
-                  <DialogDescription className="text-sm">
-                    {t.reminderDesc}
-                  </DialogDescription>
-                </div>
-              </div>
-            </DialogHeader>
-            <div className="flex gap-2">
-              <Button
-                type="button"
-                className="h-10 flex-1 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 font-bold text-white shadow-md shadow-sky-500/20 hover:from-sky-600 hover:to-blue-700"
-                onClick={() => {
-                  setIsCompact(false);
-                  track("incentive_popup_expanded", { language });
-                }}
-                data-testid="button-expand-incentive"
-              >
-                {t.reminderAction}
-              </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                onClick={() => onOpenChange(false)}
-                className="h-10 rounded-xl border border-slate-200 bg-white px-4 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800"
-                data-testid="button-remind-later"
-              >
-                {t.reminderLater}
-              </Button>
-            </div>
-          </div>
-        )}
+              <span className="text-sky-600">{copy.titleHighlight}</span> {copy.titleRest}
+            </DialogTitle>
 
-        {resultState === "none" && !isCompact && (
-          <>
-            <DialogHeader
-              className={`space-y-2.5 pt-1 ${
-                isAr
-                  ? "items-end text-right sm:text-right"
-                  : "items-start text-left sm:text-left"
-              }`}
+            <DialogDescription
+              className="text-[14px] sm:text-[15px] font-medium text-slate-600 leading-snug"
+              data-testid="incentive-desc"
             >
-              <div className="mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-50 to-blue-100 text-sky-600 shadow-sm ring-8 ring-sky-50/70">
-                <Gift className="h-7 w-7" />
-              </div>
-              <DialogTitle className="w-full text-2xl font-bold leading-tight font-heading text-slate-950" data-testid="incentive-title">
-                {t.title}
-              </DialogTitle>
-              <DialogDescription className="w-full text-[15px] leading-7 text-slate-500" data-testid="incentive-desc">
-                {t.desc}
-              </DialogDescription>
-            </DialogHeader>
-
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)}
-                noValidate
-                className={`mt-2 space-y-5 ${
-                  isAr ? "text-right" : "text-left"
-                }`}
-              >
-                <FormField
-                  control={form.control}
-                  name="intent"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="text-sm font-bold text-slate-800">{t.intentLabel}</FormLabel>
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          value={field.value ?? ""}
-                          className="flex flex-col gap-2.5"
-                          dir={dir}
-                          data-testid="input-intent"
-                        >
-                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
-                            <FormControl>
-                              <RadioGroupItem value="existing_hr" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-existing" />
-                            </FormControl>
-                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentHr}</FormLabel>
-                          </FormItem>
-                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
-                            <FormControl>
-                              <RadioGroupItem value="seeking_hr" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-seeking" />
-                            </FormControl>
-                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentSeek}</FormLabel>
-                          </FormItem>
-                          <FormItem className="flex cursor-pointer items-center gap-3.5 space-y-0 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50/50 hover:shadow-md has-[[data-state=checked]]:border-sky-500 has-[[data-state=checked]]:bg-sky-50 has-[[data-state=checked]]:ring-2 has-[[data-state=checked]]:ring-sky-100">
-                            <FormControl>
-                              <RadioGroupItem value="exploring" className="h-5 w-5 shrink-0 border-sky-400 text-sky-600" data-testid="intent-exploring" />
-                            </FormControl>
-                            <FormLabel className="w-full cursor-pointer text-[15px] font-medium leading-6 text-slate-700">{t.intentExplore}</FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <LocalizedFormMessage
-                        message={
-                          intentError
-                            ? tErrors[intentError] || intentError
-                            : undefined
-                        }
-                        testId="error-intent"
-                      />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="contact"
-                  render={({ field }) => (
-                    <FormItem className="space-y-2.5">
-                      <FormLabel className="text-sm font-bold text-slate-800">{t.contactLabel}</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="email"
-                          inputMode="email"
-                          autoComplete="email"
-                          placeholder={t.contactPlaceholder} 
-                          {...field} 
-                          dir="ltr"
-                          className={`h-12 rounded-xl border-slate-200 bg-slate-50/70 px-4 text-[15px] shadow-sm transition-all placeholder:text-slate-400 hover:border-sky-300 focus-visible:border-sky-500 focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-sky-100 ${isAr ? "text-right" : "text-left"}`}
-                          data-testid="input-contact"
-                        />
-                      </FormControl>
-                      <LocalizedFormMessage
-                        message={
-                          contactError
-                            ? tErrors[contactError] || contactError
-                            : undefined
-                        }
-                        testId="error-contact"
-                      />
-                    </FormItem>
-                  )}
-                />
-
-                <div className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-2">
-                  <Button 
-                    type="button" 
-                    variant="ghost" 
-                    onClick={() => onOpenChange(false)}
-                    className="h-11 w-full rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800"
-                    data-testid="button-cancel"
-                  >
-                    {t.cancel}
-                  </Button>
-                  <Button 
-                    type="submit" 
-                    disabled={isPending}
-                    className="h-11 w-full rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 font-bold text-white shadow-lg shadow-sky-500/20 transition-all hover:-translate-y-0.5 hover:from-sky-600 hover:to-blue-700 hover:shadow-xl hover:shadow-sky-500/25"
-                    data-testid="button-submit"
-                  >
-                    {isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin rtl:ml-2 rtl:mr-0" /> : null}
-                    {t.submit}
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </>
-        )}
-
-        {resultState === "awarded" && (
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-awarded">
-            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-emerald-200/30 blur-3xl" aria-hidden="true" />
-            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-100 to-green-50 text-emerald-600 shadow-lg shadow-emerald-500/10 ring-8 ring-white">
-              <CheckCircle2 className="h-10 w-10" />
-            </div>
-            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.successTitle}</DialogTitle>
-            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
-              {t.successDesc}
+              {copy.description}
             </DialogDescription>
-            <Button onClick={() => onOpenChange(false)} className="relative h-11 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-8 font-bold text-white shadow-lg shadow-emerald-500/20 hover:from-emerald-600 hover:to-green-700 sm:w-auto" data-testid="button-close-awarded">
-              {t.close}
-            </Button>
-          </div>
-        )}
 
-        {resultState === "already_claimed" && (
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-sky-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-already-claimed">
-            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-sky-200/30 blur-3xl" aria-hidden="true" />
-            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-100 to-blue-50 text-sky-600 shadow-lg shadow-sky-500/10 ring-8 ring-white">
-              <AlertCircle className="h-10 w-10" />
+            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-100">
+              <p className="text-[13px] sm:text-sm font-semibold text-slate-800">
+                {copy.formHeading}
+              </p>
             </div>
-            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.claimedTitle}</DialogTitle>
-            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
-              {t.claimedDesc}
-            </DialogDescription>
-            <Button onClick={() => onOpenChange(false)} className="relative h-11 w-full rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-8 font-bold text-white shadow-lg shadow-sky-500/20 hover:from-sky-600 hover:to-blue-700 sm:w-auto" data-testid="button-close-claimed">
-              {t.close}
-            </Button>
-          </div>
-        )}
+          </DialogHeader>
 
-        {resultState === "error" && (
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-rose-50/90 via-white to-white px-5 py-9 text-center" data-testid="status-error">
-            <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-rose-200/30 blur-3xl" aria-hidden="true" />
-            <div className="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-rose-100 to-red-50 text-rose-600 shadow-lg shadow-rose-500/10 ring-8 ring-white">
-              <AlertCircle className="h-10 w-10" />
-            </div>
-            <DialogTitle className="relative mb-3 text-2xl font-bold font-heading text-slate-950">{t.errorTitle}</DialogTitle>
-            <DialogDescription className="relative mx-auto mb-8 max-w-sm text-[15px] leading-7 text-slate-500">
-              {t.errorDesc}
-            </DialogDescription>
-            <div className="relative grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-              <Button variant="ghost" onClick={() => onOpenChange(false)} className="h-11 w-full rounded-xl border border-slate-200 bg-white px-8 text-slate-500 shadow-sm hover:bg-slate-50 hover:text-slate-800" data-testid="button-close-error">
-                {t.close}
-              </Button>
-              <Button onClick={() => setResultState("none")} className="h-11 w-full rounded-xl bg-gradient-to-r from-rose-500 to-red-600 px-8 font-bold text-white shadow-lg shadow-rose-500/20 hover:from-rose-600 hover:to-red-700" data-testid="button-retry-error">
-                {t.errorRetry}
-              </Button>
-            </div>
-          </div>
-        )}
+          <HubSpotForm
+            includeSector
+            locale={language}
+            errorMessage={copy.formError}
+            onClose={() => handleOpenChange(false)}
+            onSubmitted={() => {
+              track("incentive_popup_submitted", { language });
+            }}
+            testId="hubspot-incentive-form"
+            copyOverrides={isAr ? { submit: "ابدأ مجانًا", close: "مو الحين" } : undefined}
+            closeAsText={isAr}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );

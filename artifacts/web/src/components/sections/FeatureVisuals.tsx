@@ -32,7 +32,7 @@ export function RewardsVisual({ language }: VisualProps) {
   const ar = language === "ar";
   const rows = [
     { initials: ar ? "س" : "S", from: "from-pink-500", to: "to-rose-400", name: ar ? "سارة" : "Sarah", sub: ar ? "التزام 98%" : "98% commitment", val: ar ? "🎁 قسيمة نون" : "🎁 noon voucher", bar: 98, icon: Trophy, iconBg: "bg-amber-400 text-slate-900" },
-    { initials: ar ? "خ" : "K", from: "from-blue-500", to: "to-cyan-400", name: ar ? "خالد" : "Khaled", sub: ar ? "إنجاز المهام" : "Tasks done", val: ar ? "🍔 هنقرستيشن" : "🍔 HungerStation", bar: 86, icon: Medal, iconBg: "bg-slate-200 text-slate-600" },
+    { initials: ar ? "خ" : "K", from: "from-blue-500", to: "to-cyan-400", name: ar ? "خالد" : "Khaled", sub: ar ? "تقدير الأداء" : "Performance recognition", val: ar ? "🍔 هنقرستيشن" : "🍔 HungerStation", bar: 86, icon: Medal, iconBg: "bg-slate-200 text-slate-600" },
     { initials: ar ? "ن" : "N", from: "from-violet-500", to: "to-purple-400", name: ar ? "نورة" : "Noura", sub: ar ? "حضور مبكر" : "Early check-ins", val: ar ? "🎁 بطاقة أمازون" : "🎁 Amazon card", bar: 74, icon: Coins, iconBg: "bg-orange-100 text-orange-500" },
   ];
   const brands = [
@@ -935,7 +935,7 @@ export function PayrollVisual({ language }: VisualProps) {
                   <Wallet size={22} />
                 </div>
                 <div>
-                  <div className="text-[16px] font-heading font-black">{ar ? "مسير الرواتب" : "Payroll Run"}</div>
+                  <div className="text-[16px] font-heading font-black">{ar ? "الرواتب" : "Payroll Run"}</div>
                   <div className="text-[12px] font-bold text-slate-400 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     {ar ? "يُحسب تلقائيًا…" : "Calculating automatically…"}
@@ -971,9 +971,6 @@ export function PayrollVisual({ language }: VisualProps) {
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute -top-4 -end-4 rounded-2xl bg-white border border-amber-200 shadow-[0_15px_35px_rgba(245,158,11,0.25)] px-4 py-3 flex items-center gap-2 rotate-2">
-          <span className="text-[12px] font-black text-slate-800">{ar ? "قريبًا ✨" : "Coming soon ✨"}</span>
         </div>
       </div>
     </div>

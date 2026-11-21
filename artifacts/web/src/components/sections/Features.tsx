@@ -12,8 +12,9 @@ export function Features() {
   const content = {
     en: {
       eyebrow: "A Complete HR System",
-      titlePart1: "Everything HR needs, in one platform. ",
-      titlePart2: "And it all works together, simply.",
+      titlePart1: "Do more with Nizamy. ",
+      titlePart2: "Not a bigger HR team.",
+      subtitle: "Nizamy simplifies attendance tracking, employee requests and payroll reporting, so your team can handle daily HR administration with less manual follow-up.",
       badges: [
         {
           label: "Compliant with KSA Labor Regulations",
@@ -30,36 +31,36 @@ export function Features() {
           visual: RecruitmentVisual,
         },
         {
-          label: "Payroll",
-          desc: "Salaries, deductions, and payslips calculated automatically end to end.",
+          label: "Payroll reports",
+          desc: "Prepare payroll reports from organized records to support your payroll process.",
           icon: Wallet,
-          soon: true,
+          soon: false,
           visual: PayrollVisual,
         },
       ],
       soonLabel: "Coming soon",
       items: [
         {
-          title: "Smart Self-Services",
-          desc: "Employees handle requests, documents, and approvals themselves through an AI assistant.",
+          title: "Leave and employee requests",
+          desc: "Employees submit leave and HR requests through an AI assistant, with approvals managed by your team.",
           icon: CalendarDays,
           visual: LeaveChatVisual
         },
         {
-          title: "Biometric Check-in/out",
-          desc: "One tap, zero doubt. Employees check in with fingerprint, face, or voice — accurate and fraud-proof.",
+          title: "Attendance from your phone",
+          desc: "Employees record attendance from their phones. Face verification with liveness detection is available on Starter.",
           icon: UserCheck,
           visual: BiometricScanVisual
         },
         {
-          title: "Employee Engagement via Rewards & Incentives",
+          title: "Employee rewards and discount coupons",
           desc: "Smart rewards and incentives that keep your team committed and turn daily performance into motivation.",
           icon: Gift,
           visual: RewardsVisual
         },
         {
-          title: "AI Report Engine",
-          desc: "Deep AI-generated reports that surface insights spreadsheets can't show you — instantly.",
+          title: "Attendance and HR reports",
+          desc: "Review attendance and HR data with AI-assisted reports to support your decisions.",
           icon: BarChart3,
           visual: AiReportsVisual
         },
@@ -73,8 +74,9 @@ export function Features() {
     },
     ar: {
       eyebrow: "نظام موارد بشرية متكامل",
-      titlePart1: "كل احتياجات الـ HR في منصة واحدة. ",
-      titlePart2: "كل شيء يعمل معًا، ببساطة.",
+      titlePart1: "مع نظامي، تدير شؤون موظفينك. ",
+      titlePart2: "بدون فريق موارد بشرية كبير.",
+      subtitle: "نظامي يسهّل متابعة الحضور وطلبات الموظفين وتجهيز تقارير الرواتب، عشان فريقك ينجز إجراءات الموارد البشرية اليومية بمتابعة يدوية أقل.",
       badges: [
         {
           label: "متوافق مع أنظمة العمل السعودية",
@@ -91,42 +93,42 @@ export function Features() {
           visual: RecruitmentVisual,
         },
         {
-          label: "الرواتب",
-          desc: "رواتب وخصومات وقسائم دفع تُحسب تلقائيًا من البداية للنهاية.",
+          label: "تقارير الرواتب",
+          desc: "رتّب بياناتك وجهّز تقارير الرواتب اللي تساعدك في مراجعتك الشهرية.",
           icon: Wallet,
-          soon: true,
+          soon: false,
           visual: PayrollVisual,
         },
       ],
       soonLabel: "قريبًا",
       items: [
         {
-          title: "خدمات ذاتية ذكية",
-          desc: "طلبات الموظف ومستنداته وموافقاته تُنجز فوراً عبر مساعد ذكاء اصطناعي.",
+          title: "الإجازات وطلبات الموظفين",
+          desc: "موظفينك يرسلون طلبات الإجازة والموارد البشرية عبر مساعد ذكي، وأنت تدير الموافقات.",
           icon: CalendarDays,
           visual: LeaveChatVisual
         },
         {
-          title: "تسجيل حضور بيومتري",
-          desc: "يسجّل الموظف حضوره بالبصمة أو الوجه أو الصوت — دقيق ويصعب التلاعب به.",
+          title: "حضور وانصراف من الجوال",
+          desc: "موظفينك يسجّلون حضورهم من الجوال. ومع Starter، يتوفر التحقق بالوجه مع كشف الحيوية.",
           icon: UserCheck,
           visual: BiometricScanVisual
         },
         {
-          title: "تفاعل الموظفين عبر المكافآت والحوافز",
-          desc: "مكافآت وحوافز ذكية تحافظ على التزام فريقك وتحوّل الأداء اليومي إلى دافع حقيقي.",
+          title: "مكافآت الموظفين وقسائم الخصم",
+          desc: "شجّع فريقك بالمكافآت والحوافز، وخلّ تقدير جهودهم جزء من شغلك اليومي.",
           icon: Gift,
           visual: RewardsVisual
         },
         {
-          title: "محرك تقارير بالذكاء الاصطناعي",
-          desc: "تقارير عميقة يولّدها الذكاء الاصطناعي تكشف لك ما لا تظهره الجداول — فوراً.",
+          title: "تقارير الحضور والموارد البشرية",
+          desc: "اطّلع على بيانات الحضور والموارد البشرية في تقارير مدعومة بالذكاء الاصطناعي تساعدك تقرّر بوضوح.",
           icon: BarChart3,
           visual: AiReportsVisual
         },
         {
           title: "تهيئة ذاتية بدون أي خبرة تقنية",
-          desc: "فريقك يبدأ بنفسه من اليوم الأول — بدون تدريب وبدون أي خلفية تقنية.",
+          desc: "ابدأ إعداد حسابك بنفسك، بدون ما تحتاج خبرة تقنية.",
           icon: Rocket,
           visual: OnboardingVisual
         }
@@ -153,6 +155,9 @@ export function Features() {
             <span className="text-slate-900">{t.titlePart1}</span>
             <span className="text-blue-600">{t.titlePart2}</span>
           </h2>
+          <p className="mt-6 text-lg sm:text-xl text-slate-500 leading-relaxed font-medium">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {(() => {
@@ -165,7 +170,7 @@ export function Features() {
               visual: "visual" in item ? item.visual : undefined,
               image: undefined as string | undefined,
             })),
-            ...t.badges.map((badge) => ({
+            ...t.badges.filter((badge) => !badge.soon).map((badge) => ({
               title: badge.label,
               desc: badge.desc,
               icon: badge.icon,

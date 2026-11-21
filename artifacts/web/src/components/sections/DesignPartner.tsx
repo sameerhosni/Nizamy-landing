@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { track } from "@/lib/analytics";
+import type { Tier } from "@/lib/plans";
+import { AppStoreLinks, appPointsCopy } from "@/components/ui/AppStoreLinks";
 
 interface DesignPartnerProps {
   snapshot: {
@@ -15,8 +17,8 @@ interface DesignPartnerProps {
     subscription: number;
     totalReturn: number;
   };
-  tier: "Standard" | "Growth" | "Pro";
-  setTier: (val: "Standard" | "Growth" | "Pro") => void;
+  tier: Tier;
+  setTier: (val: Tier) => void;
 }
 
 type Store = "ios" | "android";
@@ -72,7 +74,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
       downloadTitle: "Download the app",
       downloadNote: "Start for free · No credit card",
       formTitle: "Want someone to help you get set up?",
-      formSub: "Leave your details and we'll get in touch.",
+      formSub: "Share your details, then download Nizamy and get started in the app.",
       labels: {
         name: "Full name",
         email: "Email address",
@@ -90,7 +92,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
       },
       submit: "Contact me",
       loading: "Sending...",
-      success: "We received your details and will contact you soon.",
+      success: `We received your details. ${appPointsCopy.en}`,
       error: "Something went wrong. Please try again.",
     },
     ar: {
@@ -98,8 +100,8 @@ export function DesignPartner(_props: DesignPartnerProps) {
       sub: "نزّل التطبيق مجاناً وابدأ إدارة حضور موظفيك والتزامهم من اليوم.",
       downloadTitle: "حمّل التطبيق",
       downloadNote: "ابدأ مجاناً · بدون بطاقة ائتمانية",
-      formTitle: "تبي أحد يساعدك؟",
-      formSub: "اترك بياناتك وبنتواصل معك.",
+      formTitle: "تحتاج مساعدة؟",
+      formSub: "اترك بياناتك هنا، وحمّل نظامي عشان تبدأ من التطبيق.",
       labels: {
         name: "الاسم الكامل",
         email: "البريد الإلكتروني",
@@ -112,12 +114,12 @@ export function DesignPartner(_props: DesignPartnerProps) {
       },
       validation: {
         name: "الاسم لازم يكون حرفين على الأقل.",
-        email: "أدخل بريداً إلكترونياً صحيحاً.",
-        whatsapp: "أدخل رقماً سعودياً بالصيغة 5XXXXXXXX.",
+        email: "تأكد إن البريد الإلكتروني صحيح.",
+        whatsapp: "اكتب رقم جوالك السعودي بهالصيغة: 5XXXXXXXX.",
       },
       submit: "تواصلوا معي",
       loading: "جارٍ الإرسال...",
-      success: "وصلتنا بياناتك، وبنتواصل معك قريب.",
+      success: `وصلتنا بياناتك. ${appPointsCopy.ar}`,
       error: "صار خطأ، جرّب مرة ثانية",
     },
   };
@@ -302,6 +304,7 @@ export function DesignPartner(_props: DesignPartnerProps) {
                 <p className="text-2xl sm:text-3xl font-heading font-black text-slate-900 leading-relaxed">
                   {t.success}
                 </p>
+                <AppStoreLinks language={language === "ar" ? "ar" : "en"} source="design_partner_success" className="mt-6" />
               </div>
             ) : (
               <>

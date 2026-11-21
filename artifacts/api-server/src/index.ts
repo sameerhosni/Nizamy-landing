@@ -1,5 +1,7 @@
 import app from "./app";
+import { startSupportImportWorker } from "./lib/supportImport";
 import { logger } from "./lib/logger";
+import { startChatNotificationWorker } from "./lib/chatNotifications";
 
 const rawPort = process.env["PORT"];
 
@@ -22,6 +24,8 @@ app.listen(port, (err) => {
   }
 
   logger.info({ port }, "Server listening");
+  if (process.env.DATABASE_URL) startChatNotificationWorker();
+  if(process.env.DATABASE_URL)startSupportImportWorker(err=>logger.error({err},"Support email import failed; manual cases remain available"));
 
   if (!process.env["DATABASE_URL"]) {
     logger.warn(

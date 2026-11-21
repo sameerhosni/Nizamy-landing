@@ -1,9 +1,13 @@
+import { conversationDigest, tokenDigest } from "../lib/staffReplies";
+import { ticketLinkDecision } from "../lib/staffReplyCore";
 import { Router, type IRouter } from "express";
 import { eq } from "drizzle-orm";
 import { CreateTicketBody } from "@workspace/api-zod";
 import { getDb, ticketsTable } from "@workspace/db";
 import { openai } from "@workspace/integrations-openai-ai-server";
 import { sendTicketEmails } from "../lib/mailer";
+import { ticketScreenshots } from "../lib/ticketScreenshots";
+import { acquisitionText } from "../lib/attribution";
 
 const router: IRouter = Router();
 
@@ -81,12 +85,36 @@ router.post("/ticket", async (req, res) => {
   }
 
   const input = parsed.data;
+  if ((!input.email && !input.whatsapp) || (input.whatsapp && input.contactConsent !== true)) {
+    res.status(400).json({ error: "Provide an email or WhatsApp number and consent to follow-up." });
+    return;
+  }
+  let screenshots: ReturnType<typeof ticketScreenshots>;
+  try { screenshots=ticketScreenshots(req.body.screenshots); }
+  catch { res.status(400).json({error:"Invalid screenshots: maximum three PNG, JPEG or WebP files, 2MB each"}); return; }
   const language = input.language === "en" ? ("en" as const) : ("ar" as const);
   const transcript = input.transcript.map((m) => ({
     role: m.role,
     content: m.content,
   }));
+  if (input.whatsapp) transcript.push({ role: "user", content: `Follow-up contact — WhatsApp: ${input.whatsapp}. Consent to follow up on this request: yes.` });
   const createdAt = new Date();
+
+  // Link to a chat only when the caller proves ownership with the chat capability token.
+  // Unverified or absent links never block the ticket; it is stored unlinked.
+  let linkedConversationId: string | null = null;
+  if (input.conversationId && process.env["DATABASE_URL"]) {
+    try {
+      const stored = await conversationDigest(String(input.conversationId));
+      if (ticketLinkDecision(String(input.conversationId), stored, tokenDigest(req.get("X-Chat-Token"))) === "link") {
+        linkedConversationId = String(input.conversationId);
+      } else {
+        req.log.warn("Ticket conversation link not verified — storing ticket unlinked");
+      }
+    } catch (err) {
+      req.log.error({ err }, "Ticket conversation link could not be verified — storing ticket unlinked");
+    }
+  }
 
   const { subject, summary } = await summarize(transcript, language);
 
@@ -100,12 +128,12 @@ router.post("/ticket", async (req, res) => {
         .values({
           ticketNumber,
           name: input.name ?? null,
-          email: input.email,
+          email: input.email ?? "",
           subject,
-          summary,
+          summary: summary + acquisitionText(),
           transcript: JSON.stringify(transcript),
           language,
-          conversationPublicId: input.conversationId ?? null,
+          conversationPublicId: linkedConversationId,
         })
         .returning();
       ticketNumber = `NZ-${100000 + row.id}`;
@@ -116,21 +144,23 @@ router.post("/ticket", async (req, res) => {
     } catch (err) {
       req.log.error(
         { err, ticketNumber, email: input.email },
-        "Database error — ticket NOT stored, continuing with emails only",
+        "Database error — ticket NOT stored",
       );
+      res.status(503).json({ error: "Unable to save your request. Please try again." });
+      return;
     }
   } else {
-    req.log.warn(
-      { ticketNumber, email: input.email, subject, summary },
-      "DATABASE_URL not set — ticket NOT stored, continuing with emails only",
-    );
+    req.log.error("DATABASE_URL not set — ticket NOT stored");
+    res.status(503).json({ error: "Unable to save your request. Please try again." });
+    return;
   }
 
   sendTicketEmails({
+    screenshots,
     ticketNumber,
     subject,
     summary,
-    email: input.email,
+    email: input.email ?? "",
     name: input.name ?? null,
     language,
     transcript,

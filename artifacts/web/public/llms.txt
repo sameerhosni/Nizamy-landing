@@ -1,0 +1,53 @@
+# Nizamy HR
+
+> Nizamy HR is a bilingual Arabic and English HR platform for teams in Saudi Arabia. It combines attendance, performance management, employee recognition, rewards, and practical HR automation.
+
+## Canonical pages
+
+- [Home](https://nizamy.app/): Product overview, features, plans, calculator, and results.
+- [HR insights](https://nizamy.app/blog): Educational previews about Saudi HR technology, AI, compliance, attendance, performance, and workplace culture.
+- [HR blog (سالفة اتش آر)](https://nizamy.app/hr-blog): Short reads on AI in HR, face-data security and HR software for small businesses; one short, designed article per topic.
+- [Face attendance system for Saudi businesses](https://nizamy.app/hr-blog/face-attendance-system-saudi-arabia): Face check-in from the phone with liveness detection and location checks, instead of fingerprint devices.
+- [AI HR assistant for employee requests](https://nizamy.app/hr-blog/ai-hr-assistant-employee-requests): An assistant for repeated HR requests, with decisions staying with people.
+- [Replace Excel and WhatsApp for HR](https://nizamy.app/hr-blog/replace-excel-whatsapp-hr-management): Attendance, requests, reports and employees in one place for small businesses.
+- [Payroll that's ready before you need it](https://nizamy.app/hr-blog/payroll-readiness-checklist-saudi): Two days before month-end: what should you double-check? A short list that takes the rush out and keeps approval calm.
+- [Ramadan hours, without the mix-ups](https://nizamy.app/hr-blog/ramadan-working-hours-saudi-attendance): Working hours change in Ramadan, and attendance has to change with them. Try how many hours and days fit the legal limit.
+- [Your annual leave: how many days?](https://nizamy.app/hr-blog/annual-leave-days-saudi-calculator): 21 days minimum per year, rising to 30 days after 5 consecutive years with the same employer. Move the slider and see.
+- [Attendance: a signal, not a verdict](https://nizamy.app/hr-blog/read-attendance-signals-fairly-saudi): Lateness and absence tell you something, but not everything. Ask before you judge, and recognise before you punish.
+- [Start with AI one step at a time](https://nizamy.app/hr-blog/ai-hr-small-steps-saudi-teams): No giant project needed. Pick one repeated question, try it, review it, then expand.
+- [End-of-service award: work it out yourself](https://nizamy.app/hr-blog/end-of-service-benefits-calculator-saudi): Half a month's wage per year for the first 5 years, then a full month per year after that. Enter the wage and years and see the result.
+- [Sick leave: how much are you paid?](https://nizamy.app/hr-blog/sick-leave-pay-saudi-labor-law): 30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Move the days and see.
+- [AI HR software in Saudi Arabia](https://nizamy.app/blog/ai-hr-saudi-arabia): Bilingual guide to mobile attendance, employee management, AI in HR, Qiwa, and Saudi labor procedures.
+- [Employee attendance and performance](https://nizamy.app/services/attendance-performance): Nizamy's attendance service, face and liveness check-in, HR insights, reporting, self-service, and rewards.
+- [AI in HR](https://nizamy.app/services/ai-hr): Mobile attendance, AI assistant for employee services, reporting as decision support, rewards, and operational time savings (not subscription refunds or cashback).
+- [Payroll inputs](https://nizamy.app/services/payroll-inputs): Attendance and overtime in one place, payroll inputs to review before approval, payslips and a one-click Wage Protection file, depending on the plan.
+- [Employee rewards](https://nizamy.app/services/employee-rewards): Organizing rewards and gift cards around clear, fair criteria; data is part of the picture, with human judgment and privacy.
+- [Sitemap](https://nizamy.app/sitemap): Directory of public pages and resources.
+
+## Additional public resources
+
+- [Help center](https://nizamy.app/help): Practical guidance on accounts, attendance, employee requests and reports.
+- [Frequently asked questions](https://nizamy.app/faq/ar): Answers about using Nizamy; check the active homepage pricing for current plans.
+- [HR software for Saudi small businesses](https://nizamy.app/small-business-hr-software-saudi-arabia): Practical HR operations and employee workflows.
+
+Privacy, face-data and separate pricing document pages contain details awaiting confirmation; refer to approved policies and current commercial offers. Do not cite them as active terms.
+
+## Core product facts
+- [Nizamy HR app](https://nizamy.app/blog/hr-app-nizamy): Introduction to Nizamy employee services, attendance, reporting, payroll, rewards and gradual onboarding. Features depend on available plans; the app is not a substitute for legal or human review.
+
+- Product name: Nizamy HR / نظامي اتش آر
+- Market: Organizations and growing teams in Saudi Arabia
+- Languages: Arabic and English
+- Main capabilities: mobile attendance, performance management, employee rewards, and HR automation
+- Contact: sales@nizamy.app
+
+## Accuracy notes
+
+- Calculator return figures are hypothetical examples for illustration only. They are not actual client results or guaranteed savings or returns.
+- Report charts shown on the website preserve the supplied source charts and should not be interpreted as guarantees of future performance.
+- Increased overtime is not necessarily a positive business outcome.
+
+## Preferred citation
+
+When describing Nizamy HR, cite the canonical page at https://nizamy.app/ and distinguish product capabilities from illustrative estimates.
+- [English FAQs](https://nizamy.app/faq/en): English answers about Nizamy, separately accessible from the Arabic FAQ page.

@@ -20,18 +20,45 @@ import type {
 } from '@tanstack/react-query';
 
 import type {
+  AssessSupportChat200,
   Error,
+  ExportWebsiteAcquisitionsParams,
+  GetIntercomActivityParams,
+  GetIntercomContactsParams,
+  GetSupportChatRelevanceHistory200,
+  GetSupportInbox200,
+  GetSupportInboxParams,
+  GetSupportObjectives200,
+  GetSupportVisitorsParams,
   HealthStatus,
+  HubspotFormError,
+  HubspotFormInput,
+  HubspotFormResult,
   IncentiveSignupInput,
   IncentiveSignupResult,
+  IntercomActivity,
+  IntercomContactPage,
   Lead,
   LeadInput,
+  LinkSupportObjectiveGuidance200,
   OpenaiConversation,
   OpenaiConversationInput,
   OpenaiMessage,
   OpenaiMessageInput,
+  ReviewSupportChat200,
+  SaveSupportGap200,
+  SuggestSupportObjective200,
+  SupportGapInput,
+  SupportObjectiveGuidanceInput,
+  SupportObjectiveSuggestionInput,
+  SupportPreview,
+  SupportPreviewInput,
+  SupportRelevanceDecision,
+  SupportReviewVersion,
   Ticket,
-  TicketInput
+  TicketInput,
+  VisitorDetail,
+  VisitorList
 } from './api.schemas';
 
 import { customFetch } from '../custom-fetch';
@@ -60,6 +87,1087 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getExportWebsiteAcquisitionsUrl = (params?: ExportWebsiteAcquisitionsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/support/acquisitions.csv?${stringifiedParams}` : `/api/support/acquisitions.csv`
+}
+
+/**
+ * @summary Staff-only website form first and last visit attribution export
+ */
+export const exportWebsiteAcquisitions = async (params?: ExportWebsiteAcquisitionsParams, options?: RequestInit): Promise<string> => {
+
+  return customFetch<string>(getExportWebsiteAcquisitionsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getExportWebsiteAcquisitionsQueryKey = (params?: ExportWebsiteAcquisitionsParams,) => {
+    return [
+    `/api/support/acquisitions.csv`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getExportWebsiteAcquisitionsQueryOptions = <TData = Awaited<ReturnType<typeof exportWebsiteAcquisitions>>, TError = ErrorType<void>>(params?: ExportWebsiteAcquisitionsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof exportWebsiteAcquisitions>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getExportWebsiteAcquisitionsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof exportWebsiteAcquisitions>>> = ({ signal }) => exportWebsiteAcquisitions(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof exportWebsiteAcquisitions>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ExportWebsiteAcquisitionsQueryResult = NonNullable<Awaited<ReturnType<typeof exportWebsiteAcquisitions>>>
+export type ExportWebsiteAcquisitionsQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only website form first and last visit attribution export
+ */
+
+export function useExportWebsiteAcquisitions<TData = Awaited<ReturnType<typeof exportWebsiteAcquisitions>>, TError = ErrorType<void>>(
+ params?: ExportWebsiteAcquisitionsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof exportWebsiteAcquisitions>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getExportWebsiteAcquisitionsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getPreviewSupportReplyUrl = () => {
+
+
+
+
+  return `/api/support/preview`
+}
+
+/**
+ * @summary Staff-only read-only reply preview with unsaved guidance
+ */
+export const previewSupportReply = async (supportPreviewInput: SupportPreviewInput, options?: RequestInit): Promise<SupportPreview> => {
+
+  return customFetch<SupportPreview>(getPreviewSupportReplyUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportPreviewInput)
+  }
+);}
+
+
+
+
+export const getPreviewSupportReplyMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof previewSupportReply>>, TError,{data: BodyType<SupportPreviewInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof previewSupportReply>>, TError,{data: BodyType<SupportPreviewInput>}, TContext> => {
+
+const mutationKey = ['previewSupportReply'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof previewSupportReply>>, {data: BodyType<SupportPreviewInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  previewSupportReply(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PreviewSupportReplyMutationResult = NonNullable<Awaited<ReturnType<typeof previewSupportReply>>>
+    export type PreviewSupportReplyMutationBody = BodyType<SupportPreviewInput>
+    export type PreviewSupportReplyMutationError = ErrorType<void>
+
+    /**
+ * @summary Staff-only read-only reply preview with unsaved guidance
+ */
+export const usePreviewSupportReply = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof previewSupportReply>>, TError,{data: BodyType<SupportPreviewInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof previewSupportReply>>,
+        TError,
+        {data: BodyType<SupportPreviewInput>},
+        TContext
+      > => {
+      return useMutation(getPreviewSupportReplyMutationOptions(options));
+    }
+
+export const getGetSupportObjectivesUrl = () => {
+
+
+
+
+  return `/api/support/objectives`
+}
+
+/**
+ * @summary Staff-only intent groups with evidence; stale confirmations appear as suggestions
+ */
+export const getSupportObjectives = async ( options?: RequestInit): Promise<GetSupportObjectives200> => {
+
+  return customFetch<GetSupportObjectives200>(getGetSupportObjectivesUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupportObjectivesQueryKey = () => {
+    return [
+    `/api/support/objectives`
+    ] as const;
+    }
+
+
+export const getGetSupportObjectivesQueryOptions = <TData = Awaited<ReturnType<typeof getSupportObjectives>>, TError = ErrorType<void>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportObjectives>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupportObjectivesQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupportObjectives>>> = ({ signal }) => getSupportObjectives({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupportObjectives>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupportObjectivesQueryResult = NonNullable<Awaited<ReturnType<typeof getSupportObjectives>>>
+export type GetSupportObjectivesQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only intent groups with evidence; stale confirmations appear as suggestions
+ */
+
+export function useGetSupportObjectives<TData = Awaited<ReturnType<typeof getSupportObjectives>>, TError = ErrorType<void>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportObjectives>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupportObjectivesQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getSuggestSupportObjectiveUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/inbox/${id}/objective-suggestions`
+}
+
+/**
+ * @summary Meaning-based suggestions only, never proof that a question is unresolved
+ */
+export const suggestSupportObjective = async (id: string,
+    supportObjectiveSuggestionInput: SupportObjectiveSuggestionInput, options?: RequestInit): Promise<SuggestSupportObjective200> => {
+
+  return customFetch<SuggestSupportObjective200>(getSuggestSupportObjectiveUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportObjectiveSuggestionInput)
+  }
+);}
+
+
+
+
+export const getSuggestSupportObjectiveMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof suggestSupportObjective>>, TError,{id: string;data: BodyType<SupportObjectiveSuggestionInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof suggestSupportObjective>>, TError,{id: string;data: BodyType<SupportObjectiveSuggestionInput>}, TContext> => {
+
+const mutationKey = ['suggestSupportObjective'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof suggestSupportObjective>>, {id: string;data: BodyType<SupportObjectiveSuggestionInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  suggestSupportObjective(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SuggestSupportObjectiveMutationResult = NonNullable<Awaited<ReturnType<typeof suggestSupportObjective>>>
+    export type SuggestSupportObjectiveMutationBody = BodyType<SupportObjectiveSuggestionInput>
+    export type SuggestSupportObjectiveMutationError = ErrorType<void>
+
+    /**
+ * @summary Meaning-based suggestions only, never proof that a question is unresolved
+ */
+export const useSuggestSupportObjective = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof suggestSupportObjective>>, TError,{id: string;data: BodyType<SupportObjectiveSuggestionInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof suggestSupportObjective>>,
+        TError,
+        {id: string;data: BodyType<SupportObjectiveSuggestionInput>},
+        TContext
+      > => {
+      return useMutation(getSuggestSupportObjectiveMutationOptions(options));
+    }
+
+export const getSaveSupportGapUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/inbox/${id}/gaps`
+}
+
+/**
+ * @summary Record explicit staff evidence separately from inbox review and relevance
+ */
+export const saveSupportGap = async (id: string,
+    supportGapInput: SupportGapInput, options?: RequestInit): Promise<SaveSupportGap200> => {
+
+  return customFetch<SaveSupportGap200>(getSaveSupportGapUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportGapInput)
+  }
+);}
+
+
+
+
+export const getSaveSupportGapMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof saveSupportGap>>, TError,{id: string;data: BodyType<SupportGapInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof saveSupportGap>>, TError,{id: string;data: BodyType<SupportGapInput>}, TContext> => {
+
+const mutationKey = ['saveSupportGap'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof saveSupportGap>>, {id: string;data: BodyType<SupportGapInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  saveSupportGap(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SaveSupportGapMutationResult = NonNullable<Awaited<ReturnType<typeof saveSupportGap>>>
+    export type SaveSupportGapMutationBody = BodyType<SupportGapInput>
+    export type SaveSupportGapMutationError = ErrorType<void>
+
+    /**
+ * @summary Record explicit staff evidence separately from inbox review and relevance
+ */
+export const useSaveSupportGap = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof saveSupportGap>>, TError,{id: string;data: BodyType<SupportGapInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof saveSupportGap>>,
+        TError,
+        {id: string;data: BodyType<SupportGapInput>},
+        TContext
+      > => {
+      return useMutation(getSaveSupportGapMutationOptions(options));
+    }
+
+export const getLinkSupportObjectiveGuidanceUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/objectives/${id}/guidance`
+}
+
+/**
+ * @summary Open shared guidance or create a blank draft, or link existing approved guidance
+ */
+export const linkSupportObjectiveGuidance = async (id: string,
+    supportObjectiveGuidanceInput?: SupportObjectiveGuidanceInput, options?: RequestInit): Promise<LinkSupportObjectiveGuidance200> => {
+
+  return customFetch<LinkSupportObjectiveGuidance200>(getLinkSupportObjectiveGuidanceUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportObjectiveGuidanceInput)
+  }
+);}
+
+
+
+
+export const getLinkSupportObjectiveGuidanceMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>, TError,{id: string;data?: BodyType<SupportObjectiveGuidanceInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>, TError,{id: string;data?: BodyType<SupportObjectiveGuidanceInput>}, TContext> => {
+
+const mutationKey = ['linkSupportObjectiveGuidance'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>, {id: string;data?: BodyType<SupportObjectiveGuidanceInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  linkSupportObjectiveGuidance(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type LinkSupportObjectiveGuidanceMutationResult = NonNullable<Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>>
+    export type LinkSupportObjectiveGuidanceMutationBody = BodyType<SupportObjectiveGuidanceInput> | undefined
+    export type LinkSupportObjectiveGuidanceMutationError = ErrorType<void>
+
+    /**
+ * @summary Open shared guidance or create a blank draft, or link existing approved guidance
+ */
+export const useLinkSupportObjectiveGuidance = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>, TError,{id: string;data?: BodyType<SupportObjectiveGuidanceInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof linkSupportObjectiveGuidance>>,
+        TError,
+        {id: string;data?: BodyType<SupportObjectiveGuidanceInput>},
+        TContext
+      > => {
+      return useMutation(getLinkSupportObjectiveGuidanceMutationOptions(options));
+    }
+
+export const getGetIntercomContactsUrl = (params?: GetIntercomContactsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/support/visitors/intercom?${stringifiedParams}` : `/api/support/visitors/intercom`
+}
+
+/**
+ * @summary Staff-only live Intercom contacts, separate from website profiles
+ */
+export const getIntercomContacts = async (params?: GetIntercomContactsParams, options?: RequestInit): Promise<IntercomContactPage> => {
+
+  return customFetch<IntercomContactPage>(getGetIntercomContactsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetIntercomContactsQueryKey = (params?: GetIntercomContactsParams,) => {
+    return [
+    `/api/support/visitors/intercom`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetIntercomContactsQueryOptions = <TData = Awaited<ReturnType<typeof getIntercomContacts>>, TError = ErrorType<void>>(params?: GetIntercomContactsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getIntercomContacts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetIntercomContactsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getIntercomContacts>>> = ({ signal }) => getIntercomContacts(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getIntercomContacts>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetIntercomContactsQueryResult = NonNullable<Awaited<ReturnType<typeof getIntercomContacts>>>
+export type GetIntercomContactsQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only live Intercom contacts, separate from website profiles
+ */
+
+export function useGetIntercomContacts<TData = Awaited<ReturnType<typeof getIntercomContacts>>, TError = ErrorType<void>>(
+ params?: GetIntercomContactsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getIntercomContacts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetIntercomContactsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetIntercomActivityUrl = (params: GetIntercomActivityParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/support/visitors/intercom/activity?${stringifiedParams}` : `/api/support/visitors/intercom/activity`
+}
+
+/**
+ * @summary Staff-only conversation metadata and unverified website identity candidates
+ */
+export const getIntercomActivity = async (params: GetIntercomActivityParams, options?: RequestInit): Promise<IntercomActivity> => {
+
+  return customFetch<IntercomActivity>(getGetIntercomActivityUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetIntercomActivityQueryKey = (params?: GetIntercomActivityParams,) => {
+    return [
+    `/api/support/visitors/intercom/activity`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetIntercomActivityQueryOptions = <TData = Awaited<ReturnType<typeof getIntercomActivity>>, TError = ErrorType<void>>(params: GetIntercomActivityParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getIntercomActivity>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetIntercomActivityQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getIntercomActivity>>> = ({ signal }) => getIntercomActivity(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getIntercomActivity>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetIntercomActivityQueryResult = NonNullable<Awaited<ReturnType<typeof getIntercomActivity>>>
+export type GetIntercomActivityQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only conversation metadata and unverified website identity candidates
+ */
+
+export function useGetIntercomActivity<TData = Awaited<ReturnType<typeof getIntercomActivity>>, TError = ErrorType<void>>(
+ params: GetIntercomActivityParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getIntercomActivity>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetIntercomActivityQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetSupportVisitorsUrl = (params?: GetSupportVisitorsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/support/visitors?${stringifiedParams}` : `/api/support/visitors`
+}
+
+/**
+ * @summary Staff-only deduplicated visitor profiles
+ */
+export const getSupportVisitors = async (params?: GetSupportVisitorsParams, options?: RequestInit): Promise<VisitorList> => {
+
+  return customFetch<VisitorList>(getGetSupportVisitorsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupportVisitorsQueryKey = (params?: GetSupportVisitorsParams,) => {
+    return [
+    `/api/support/visitors`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetSupportVisitorsQueryOptions = <TData = Awaited<ReturnType<typeof getSupportVisitors>>, TError = ErrorType<unknown>>(params?: GetSupportVisitorsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitors>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupportVisitorsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupportVisitors>>> = ({ signal }) => getSupportVisitors(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitors>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupportVisitorsQueryResult = NonNullable<Awaited<ReturnType<typeof getSupportVisitors>>>
+export type GetSupportVisitorsQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Staff-only deduplicated visitor profiles
+ */
+
+export function useGetSupportVisitors<TData = Awaited<ReturnType<typeof getSupportVisitors>>, TError = ErrorType<unknown>>(
+ params?: GetSupportVisitorsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitors>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupportVisitorsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetSupportVisitorUrl = (id: string,
+    page: number,) => {
+
+
+
+
+  return `/api/support/visitors/${id}/pages/${page}`
+}
+
+/**
+ * @summary Staff-only visitor activity timeline
+ */
+export const getSupportVisitor = async (id: string,
+    page: number, options?: RequestInit): Promise<VisitorDetail> => {
+
+  return customFetch<VisitorDetail>(getGetSupportVisitorUrl(id,page),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupportVisitorQueryKey = (id: string,
+    page: number,) => {
+    return [
+    `/api/support/visitors/${id}/pages/${page}`
+    ] as const;
+    }
+
+
+export const getGetSupportVisitorQueryOptions = <TData = Awaited<ReturnType<typeof getSupportVisitor>>, TError = ErrorType<unknown>>(id: string,
+    page: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitor>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupportVisitorQueryKey(id,page);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupportVisitor>>> = ({ signal }) => getSupportVisitor(id,page, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined && page !== null && page !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitor>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupportVisitorQueryResult = NonNullable<Awaited<ReturnType<typeof getSupportVisitor>>>
+export type GetSupportVisitorQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Staff-only visitor activity timeline
+ */
+
+export function useGetSupportVisitor<TData = Awaited<ReturnType<typeof getSupportVisitor>>, TError = ErrorType<unknown>>(
+ id: string,
+    page: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportVisitor>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupportVisitorQueryOptions(id,page,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetSupportInboxUrl = (params?: GetSupportInboxParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/support/inbox?${stringifiedParams}` : `/api/support/inbox`
+}
+
+/**
+ * @summary Staff-only teaching inbox with reversible chat relevance filters
+ */
+export const getSupportInbox = async (params?: GetSupportInboxParams, options?: RequestInit): Promise<GetSupportInbox200> => {
+
+  return customFetch<GetSupportInbox200>(getGetSupportInboxUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupportInboxQueryKey = (params?: GetSupportInboxParams,) => {
+    return [
+    `/api/support/inbox`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetSupportInboxQueryOptions = <TData = Awaited<ReturnType<typeof getSupportInbox>>, TError = ErrorType<void>>(params?: GetSupportInboxParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportInbox>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupportInboxQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupportInbox>>> = ({ signal }) => getSupportInbox(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupportInbox>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupportInboxQueryResult = NonNullable<Awaited<ReturnType<typeof getSupportInbox>>>
+export type GetSupportInboxQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only teaching inbox with reversible chat relevance filters
+ */
+
+export function useGetSupportInbox<TData = Awaited<ReturnType<typeof getSupportInbox>>, TError = ErrorType<void>>(
+ params?: GetSupportInboxParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportInbox>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupportInboxQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getAssessSupportChatUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/inbox/${id}/assess`
+}
+
+/**
+ * @summary Suggest whole-conversation relevance without changing visibility
+ */
+export const assessSupportChat = async (id: string,
+    supportReviewVersion: SupportReviewVersion, options?: RequestInit): Promise<AssessSupportChat200> => {
+
+  return customFetch<AssessSupportChat200>(getAssessSupportChatUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportReviewVersion)
+  }
+);}
+
+
+
+
+export const getAssessSupportChatMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof assessSupportChat>>, TError,{id: string;data: BodyType<SupportReviewVersion>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof assessSupportChat>>, TError,{id: string;data: BodyType<SupportReviewVersion>}, TContext> => {
+
+const mutationKey = ['assessSupportChat'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof assessSupportChat>>, {id: string;data: BodyType<SupportReviewVersion>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  assessSupportChat(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type AssessSupportChatMutationResult = NonNullable<Awaited<ReturnType<typeof assessSupportChat>>>
+    export type AssessSupportChatMutationBody = BodyType<SupportReviewVersion>
+    export type AssessSupportChatMutationError = ErrorType<void>
+
+    /**
+ * @summary Suggest whole-conversation relevance without changing visibility
+ */
+export const useAssessSupportChat = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof assessSupportChat>>, TError,{id: string;data: BodyType<SupportReviewVersion>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof assessSupportChat>>,
+        TError,
+        {id: string;data: BodyType<SupportReviewVersion>},
+        TContext
+      > => {
+      return useMutation(getAssessSupportChatMutationOptions(options));
+    }
+
+export const getReviewSupportChatUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/inbox/${id}/relevance`
+}
+
+/**
+ * @summary Staff decision to keep, exclude, or restore a chat; never deletes source messages or guidance
+ */
+export const reviewSupportChat = async (id: string,
+    supportRelevanceDecision: SupportRelevanceDecision, options?: RequestInit): Promise<ReviewSupportChat200> => {
+
+  return customFetch<ReviewSupportChat200>(getReviewSupportChatUrl(id),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supportRelevanceDecision)
+  }
+);}
+
+
+
+
+export const getReviewSupportChatMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof reviewSupportChat>>, TError,{id: string;data: BodyType<SupportRelevanceDecision>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof reviewSupportChat>>, TError,{id: string;data: BodyType<SupportRelevanceDecision>}, TContext> => {
+
+const mutationKey = ['reviewSupportChat'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof reviewSupportChat>>, {id: string;data: BodyType<SupportRelevanceDecision>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  reviewSupportChat(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ReviewSupportChatMutationResult = NonNullable<Awaited<ReturnType<typeof reviewSupportChat>>>
+    export type ReviewSupportChatMutationBody = BodyType<SupportRelevanceDecision>
+    export type ReviewSupportChatMutationError = ErrorType<void>
+
+    /**
+ * @summary Staff decision to keep, exclude, or restore a chat; never deletes source messages or guidance
+ */
+export const useReviewSupportChat = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof reviewSupportChat>>, TError,{id: string;data: BodyType<SupportRelevanceDecision>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof reviewSupportChat>>,
+        TError,
+        {id: string;data: BodyType<SupportRelevanceDecision>},
+        TContext
+      > => {
+      return useMutation(getReviewSupportChatMutationOptions(options));
+    }
+
+export const getGetSupportChatRelevanceHistoryUrl = (id: string,) => {
+
+
+
+
+  return `/api/support/inbox/${id}/relevance-history`
+}
+
+/**
+ * @summary Staff-only history of relevance decisions
+ */
+export const getSupportChatRelevanceHistory = async (id: string, options?: RequestInit): Promise<GetSupportChatRelevanceHistory200> => {
+
+  return customFetch<GetSupportChatRelevanceHistory200>(getGetSupportChatRelevanceHistoryUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupportChatRelevanceHistoryQueryKey = (id: string,) => {
+    return [
+    `/api/support/inbox/${id}/relevance-history`
+    ] as const;
+    }
+
+
+export const getGetSupportChatRelevanceHistoryQueryOptions = <TData = Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>, TError = ErrorType<void>>(id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupportChatRelevanceHistoryQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>> = ({ signal }) => getSupportChatRelevanceHistory(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupportChatRelevanceHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>>
+export type GetSupportChatRelevanceHistoryQueryError = ErrorType<void>
+
+
+/**
+ * @summary Staff-only history of relevance decisions
+ */
+
+export function useGetSupportChatRelevanceHistory<TData = Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>, TError = ErrorType<void>>(
+ id: string, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupportChatRelevanceHistory>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupportChatRelevanceHistoryQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getHealthCheckUrl = () => {
 
@@ -279,6 +1387,77 @@ export const useCreateIncentiveSignup = <TError = ErrorType<Error>,
         TContext
       > => {
       return useMutation(getCreateIncentiveSignupMutationOptions(options));
+    }
+
+export const getSubmitHubspotFormUrl = () => {
+
+
+
+
+  return `/api/hubspot-form`
+}
+
+/**
+ * Submits a fixed English or Arabic form to HubSpot and emails a copy to the Nizamy sales inbox
+ * @summary Submit the bilingual website contact form
+ */
+export const submitHubspotForm = async (hubspotFormInput: HubspotFormInput, options?: RequestInit): Promise<HubspotFormResult> => {
+
+  return customFetch<HubspotFormResult>(getSubmitHubspotFormUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(hubspotFormInput)
+  }
+);}
+
+
+
+
+export const getSubmitHubspotFormMutationOptions = <TError = ErrorType<Error | HubspotFormError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitHubspotForm>>, TError,{data: BodyType<HubspotFormInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof submitHubspotForm>>, TError,{data: BodyType<HubspotFormInput>}, TContext> => {
+
+const mutationKey = ['submitHubspotForm'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof submitHubspotForm>>, {data: BodyType<HubspotFormInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  submitHubspotForm(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SubmitHubspotFormMutationResult = NonNullable<Awaited<ReturnType<typeof submitHubspotForm>>>
+    export type SubmitHubspotFormMutationBody = BodyType<HubspotFormInput>
+    export type SubmitHubspotFormMutationError = ErrorType<Error | HubspotFormError>
+
+    /**
+ * @summary Submit the bilingual website contact form
+ */
+export const useSubmitHubspotForm = <TError = ErrorType<Error | HubspotFormError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitHubspotForm>>, TError,{data: BodyType<HubspotFormInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof submitHubspotForm>>,
+        TError,
+        {data: BodyType<HubspotFormInput>},
+        TContext
+      > => {
+      return useMutation(getSubmitHubspotFormMutationOptions(options));
     }
 
 export const getCreateTicketUrl = () => {

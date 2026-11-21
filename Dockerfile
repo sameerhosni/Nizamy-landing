@@ -27,8 +27,8 @@ ENV NODE_ENV=production \
 
 WORKDIR /app
 
-# nodemailer is externalized from the server bundle, so install it here
-RUN npm init -y > /dev/null && npm install --omit=dev nodemailer@9.0.3
+# Mail libraries load internal CommonJS modules and must remain external.
+RUN npm init -y > /dev/null && npm install --omit=dev nodemailer@9.0.3 imapflow@2.11.0 mailparser@3.14.2
 
 COPY --from=build /repo/artifacts/api-server/dist ./dist
 COPY --from=build /repo/artifacts/api-server/assets ./assets
@@ -43,4 +43,4 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s \
   CMD node -e "fetch('http://127.0.0.1:'+process.env.PORT+'/api/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
-CMD ["node", "--enable-source-maps", "dist/index.mjs"]
+CMD ["sh", "-c", "node --enable-source-maps dist/migrate.mjs && exec node --enable-source-maps dist/index.mjs"]

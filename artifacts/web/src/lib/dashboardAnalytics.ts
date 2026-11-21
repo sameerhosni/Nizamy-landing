@@ -1,3 +1,4 @@
+import { trackingDisabled } from "./visitorTracking";
 const ENDPOINT = "https://traffic-insights.replit.app/api/analytics/track";
 const SESSION_KEY = "_a_sid";
 
@@ -11,6 +12,7 @@ function getSessionId(): string {
 }
 
 function send(payload: Record<string, string>) {
+  if (trackingDisabled()) return;
   const data = JSON.stringify({
     sessionId: getSessionId(),
     referrer: document.referrer || "",

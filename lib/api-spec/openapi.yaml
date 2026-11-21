@@ -14,9 +14,368 @@ tags:
     description: Design partner lead capture
   - name: incentives
     description: Landing-page incentive claims
+  - name: forms
+    description: Website form submissions
   - name: openai
     description: OpenAI AI chat operations
 paths:
+  /support/acquisitions.csv:
+    get:
+      operationId: exportWebsiteAcquisitions
+      summary: Staff-only website form first and last visit attribution export
+      parameters:
+        - in: query
+          name: days
+          schema: { type: integer, enum: [0, 1, 7, 30], default: 0 }
+      responses:
+        "200":
+          description: All attributed website form submissions in the selected period
+          content:
+            text/csv:
+              schema: { type: string }
+        "400":
+          description: Invalid date range
+        "401":
+          description: Staff authentication required
+  /support/preview:
+    post:
+      operationId: previewSupportReply
+      summary: Staff-only read-only reply preview with unsaved guidance
+      parameters:
+        - in: header
+          name: X-Support-Request
+          required: true
+          schema: { type: string, enum: ["1"] }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/SupportPreviewInput" }
+      responses:
+        "200":
+          description: Temporary preview; no records or notifications created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SupportPreview" }
+        "400": { description: Invalid or oversized input }
+        "401": { description: Staff session required }
+        "403": { description: Invalid request header }
+        "503": { description: Preview unavailable }
+  /support/objectives:
+    get:
+      operationId: getSupportObjectives
+      summary: Staff-only intent groups with evidence; stale confirmations appear as suggestions
+      responses:
+        "200":
+          description: Groups ordered by confirmed distinct-conversation occurrences
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [objectives]
+                properties:
+                  objectives:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SupportObjective"
+        "401": { description: Staff session required }
+  /support/inbox/{id}/objective-suggestions:
+    post:
+      operationId: suggestSupportObjective
+      summary: Meaning-based suggestions only, never proof that a question is unresolved
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+        - $ref: "#/components/parameters/SupportRequestHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportObjectiveSuggestionInput"
+      responses:
+        "200":
+          description: Current source fingerprint and semantic suggestions
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [fingerprint, context, objectives, guidance]
+                properties:
+                  fingerprint: { type: string }
+                  context: { type: string }
+                  matchingError: { type: string }
+                  objectives:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SupportIntentReference"
+                  guidance:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SupportIntentReference"
+        "400": { description: Invalid input }
+        "401": { description: Staff session required }
+        "409": { description: Confirm product relevance first }
+  /support/inbox/{id}/gaps:
+    post:
+      operationId: saveSupportGap
+      summary: Record explicit staff evidence separately from inbox review and relevance
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+        - $ref: "#/components/parameters/SupportRequestHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportGapInput"
+      responses:
+        "200":
+          description: Evidence and immutable audit entry saved, original conversation untouched
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, objectiveId]
+                properties:
+                  ok: { type: boolean }
+                  objectiveId: { type: integer }
+        "400": { description: Missing evidence or invalid input }
+        "401": { description: Staff session required }
+        "409": { description: Source changed or relevance no longer confirmed }
+  /support/objectives/{id}/guidance:
+    post:
+      operationId: linkSupportObjectiveGuidance
+      summary: Open shared guidance or create a blank draft, or link existing approved guidance
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+        - $ref: "#/components/parameters/SupportRequestHeader"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportObjectiveGuidanceInput"
+      responses:
+        "200":
+          description: Shared guidance; linking never resolves gaps
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [case]
+                properties:
+                  case:
+                    type: object
+                    required: [id, title, keywords, diagnosticQuestions, resolution, status, source, updatedAt]
+                    properties:
+                      id: { type: integer }
+                      title: { type: string }
+                      keywords: { type: string }
+                      diagnosticQuestions: { type: string }
+                      resolution: { type: string }
+                      status: { type: string, enum: [draft, approved, disabled] }
+                      source: { type: string, enum: [manual, email] }
+                      sourceId: { type: [string, "null"] }
+                      updatedAt: { type: string }
+        "401": { description: Staff session required }
+        "409": { description: Guidance is not approved }
+  /support/visitors/intercom:
+    get:
+      operationId: getIntercomContacts
+      summary: Staff-only live Intercom contacts, separate from website profiles
+      parameters:
+        - { in: query, name: email, schema: { type: string, maxLength: 254 } }
+        - { in: query, name: cursor, schema: { type: string, maxLength: 2048 } }
+      responses:
+        "200":
+          description: Contact metadata only
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/IntercomContactPage" }
+        "400": { description: Invalid filters }
+        "401": { description: Staff session required }
+        "429": { description: Intercom rate limit }
+        "502": { description: Intercom response unavailable or invalid }
+        "503": { description: Intercom not configured or access denied }
+        "504": { description: Intercom timed out }
+  /support/visitors/intercom/activity:
+    get:
+      operationId: getIntercomActivity
+      summary: Staff-only conversation metadata and unverified website identity candidates
+      parameters:
+        - { in: query, name: contactId, required: true, schema: { type: string, pattern: "^[a-zA-Z0-9_-]{1,128}$" } }
+        - { in: query, name: cursor, schema: { type: string, maxLength: 2048 } }
+      responses:
+        "200":
+          description: Activity metadata without message content
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/IntercomActivity" }
+        "400": { description: Invalid contact or cursor }
+        "401": { description: Staff session required }
+        "404": { description: Intercom contact no longer exists }
+        "429": { description: Intercom rate limit }
+        "502": { description: Intercom response unavailable or invalid }
+        "503": { description: Intercom not configured or access denied }
+        "504": { description: Intercom timed out }
+  /support/visitors:
+    get:
+      operationId: getSupportVisitors
+      summary: Staff-only deduplicated visitor profiles
+      parameters:
+        - { in: query, name: search, schema: { type: string } }
+        - { in: query, name: page, schema: { type: integer, minimum: 1 } }
+        - { in: query, name: days, schema: { type: integer, enum: [0, 1, 7, 30, 90] } }
+      responses:
+        "200":
+          description: Visitor profiles
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorList"
+  /support/visitors/{id}/pages/{page}:
+    get:
+      operationId: getSupportVisitor
+      summary: Staff-only visitor activity timeline
+      parameters:
+        - { in: path, name: id, required: true, schema: { type: string } }
+        - { in: path, name: page, required: true, schema: { type: integer, minimum: 1 } }
+      responses:
+        "200":
+          description: Visitor detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorDetail"
+  /support/inbox:
+    get:
+      operationId: getSupportInbox
+      summary: Staff-only teaching inbox with reversible chat relevance filters
+      parameters:
+        - in: query
+          name: view
+          schema:
+            type: string
+            enum: [active, review, excluded]
+            default: active
+      responses:
+        "200":
+          description: Teaching conversations; chats appear in the default active view only after staff confirm product relevance. Pending chats remain in the review view, and excluded chats in the excluded view.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SupportInboxItem"
+        "400":
+          description: Invalid view
+        "401":
+          description: Staff session required
+  /support/inbox/{id}/assess:
+    post:
+      operationId: assessSupportChat
+      summary: Suggest whole-conversation relevance without changing visibility
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+        - $ref: "#/components/parameters/SupportRequestHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportReviewVersion"
+      responses:
+        "200":
+          description: Suggestion saved; not a staff decision
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [assessment]
+                properties:
+                  assessment:
+                    $ref: "#/components/schemas/ChatScopeAssessment"
+        "400":
+          description: Invalid version
+        "401":
+          description: Staff session required
+        "403":
+          description: Required request header missing
+        "404":
+          description: Chat not found
+        "409":
+          description: Conversation or review changed; refresh before retrying
+        "503":
+          description: Classifier or database unavailable; visibility unchanged
+  /support/inbox/{id}/relevance:
+    patch:
+      operationId: reviewSupportChat
+      summary: Staff decision to keep, exclude, or restore a chat; never deletes source messages or guidance
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+        - $ref: "#/components/parameters/SupportRequestHeader"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupportRelevanceDecision"
+      responses:
+        "200":
+          description: Decision and audit entry committed atomically
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok]
+                properties:
+                  ok:
+                    type: boolean
+        "400":
+          description: Invalid decision, reason, or version
+        "401":
+          description: Staff session required
+        "403":
+          description: Required request header missing
+        "409":
+          description: Chat or review changed; refresh before retrying
+        "503":
+          description: Database unavailable
+  /support/inbox/{id}/relevance-history:
+    get:
+      operationId: getSupportChatRelevanceHistory
+      summary: Staff-only history of relevance decisions
+      parameters:
+        - $ref: "#/components/parameters/SupportInboxId"
+      responses:
+        "200":
+          description: Most recent decisions first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [history]
+                properties:
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      required: [decision, reason, reviewedAt]
+                      properties:
+                        decision:
+                          $ref: "#/components/schemas/ChatRelevance"
+                        reason:
+                          type: string
+                        reviewedAt:
+                          type: string
+                          format: date-time
+        "400":
+          description: Invalid chat id
+        "401":
+          description: Staff session required
   /healthz:
     get:
       operationId: healthCheck
@@ -92,6 +451,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /hubspot-form:
+    post:
+      operationId: submitHubspotForm
+      tags: [forms]
+      summary: Submit the bilingual website contact form
+      description: Submits a fixed English or Arabic form to HubSpot and emails a copy to the Nizamy sales inbox
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HubspotFormInput"
+      responses:
+        "200":
+          description: HubSpot accepted the submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HubspotFormResult"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Email or phone was submitted previously, or request identifier was reused
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HubspotFormError"
+        "503":
+          description: Duplicate check or form submission service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HubspotFormError"
   /ticket:
     post:
       operationId: createTicket
@@ -179,7 +581,275 @@ paths:
           content:
             text/event-stream: {}
 components:
+  parameters:
+    SupportInboxId:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        pattern: '^\d+$'
+    SupportRequestHeader:
+      in: header
+      name: X-Support-Request
+      required: true
+      schema:
+        type: string
+        enum: ["1"]
   schemas:
+    SupportPreviewInput:
+      type: object
+      required: [question, draft]
+      properties:
+        question: { type: string, minLength: 1, maxLength: 4000 }
+        caseId: { type: string, pattern: '^[1-9]\d{0,18}$' }
+        draft: { $ref: "#/components/schemas/SupportPreviewDraft" }
+    SupportPreviewDraft:
+      type: object
+      required: [title, keywords, diagnosticQuestions, resolution]
+      properties:
+        title: { type: string, minLength: 1, maxLength: 200 }
+        keywords: { type: string, maxLength: 10000 }
+        diagnosticQuestions: { type: string, maxLength: 10000 }
+        resolution: { type: string, minLength: 1, maxLength: 10000 }
+    SupportPreview:
+      type: object
+      required: [preview, reply, matches]
+      properties:
+        preview: { type: boolean, enum: [true] }
+        reply: { type: string }
+        matches:
+          type: array
+          items: { $ref: "#/components/schemas/SupportPreviewMatch" }
+    SupportPreviewMatch:
+      type: object
+      required: [id, title, source]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        source: { type: string, enum: [draft, approved] }
+    SupportObjectiveSuggestionInput:
+      type: object
+      required: [question]
+      properties:
+        question: { type: string, minLength: 1, maxLength: 4000 }
+    SupportGapInput:
+      type: object
+      required: [question, evidence, state, fingerprint]
+      properties:
+        objectiveId: { type: integer }
+        title: { type: string, minLength: 1, maxLength: 200, description: Required if objectiveId is omitted }
+        question: { type: string, minLength: 1, maxLength: 4000 }
+        evidence: { type: string, minLength: 1, maxLength: 4000 }
+        fingerprint: { type: string }
+        state: { type: string, enum: [suggested, confirmed, resolved, dismissed] }
+    SupportObjectiveGuidanceInput:
+      type: object
+      properties:
+        caseId: { type: integer, description: Existing approved case; omit to open or create the objective's draft }
+    SupportIntentReference:
+      type: object
+      required: [id, title]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+    SupportObjective:
+      type: object
+      required: [id, title, caseId, guidanceTitle, guidanceStatus, confirmedCount, suggestedCount, gaps]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        caseId: { type: [integer, "null"] }
+        guidanceTitle: { type: [string, "null"] }
+        guidanceStatus: { type: [string, "null"], enum: [draft, approved, disabled, null] }
+        confirmedCount: { type: integer }
+        suggestedCount: { type: integer }
+        gaps:
+          type: array
+          items:
+            type: object
+            required: [id, inboxId, objectiveId, question, evidence, state, recordedState, stale, reviewedAt, source, sourceId, context, fingerprint, eligible]
+            properties:
+              id: { type: integer }
+              inboxId: { type: integer }
+              objectiveId: { type: integer }
+              question: { type: string }
+              evidence: { type: string }
+              state: { type: string, enum: [suggested, confirmed, resolved, dismissed] }
+              recordedState: { type: string, enum: [suggested, confirmed, resolved, dismissed] }
+              stale: { type: boolean }
+              reviewedAt: { type: string }
+              source: { type: string }
+              sourceId: { type: [string, "null"] }
+              context: { type: string }
+              fingerprint: { type: string }
+              eligible: { type: boolean }
+    IntercomContact:
+      type: object
+      required: [id, source, name, email, role, createdAt, updatedAt, lastSeenAt]
+      properties:
+        id: { type: string }
+        source: { type: string, enum: [intercom] }
+        name: { type: [string, "null"] }
+        email: { type: [string, "null"] }
+        role: { type: [string, "null"] }
+        createdAt: { type: [string, "null"] }
+        updatedAt: { type: [string, "null"] }
+        lastSeenAt: { type: [string, "null"] }
+    IntercomContactPage:
+      type: object
+      required: [items, nextCursor, fetchedAt]
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/IntercomContact" } }
+        nextCursor: { type: [string, "null"] }
+        fetchedAt: { type: string }
+    IntercomConversation:
+      type: object
+      required: [id, source, state, createdAt, updatedAt]
+      properties:
+        id: { type: string }
+        source: { type: string, enum: [intercom] }
+        state: { type: [string, "null"] }
+        createdAt: { type: [string, "null"] }
+        updatedAt: { type: [string, "null"] }
+    IntercomIdentityCandidate:
+      type: object
+      required: [profileId, basis]
+      properties:
+        profileId: { type: string }
+        basis: { type: string, enum: [exact_email_unverified] }
+    IntercomActivity:
+      type: object
+      required: [contact, conversations, nextCursor, candidates, fetchedAt]
+      properties:
+        contact: { $ref: "#/components/schemas/IntercomContact" }
+        conversations: { type: array, items: { $ref: "#/components/schemas/IntercomConversation" } }
+        nextCursor: { type: [string, "null"] }
+        candidates: { type: array, items: { $ref: "#/components/schemas/IntercomIdentityCandidate" } }
+        fetchedAt: { type: string }
+    VisitorProfile:
+      type: object
+      required: [id, name, emails, phones, first_seen, last_seen, devices, countries, sources, packages, downloads, event_count]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        emails: { type: array, items: { type: string } }
+        phones: { type: array, items: { type: string } }
+        first_seen: { type: string }
+        last_seen: { type: string }
+        devices: { type: array, items: { type: string } }
+        countries: { type: array, items: { type: string } }
+        sources: { type: array, items: { type: string } }
+        packages: { type: array, items: { type: string } }
+        downloads: { type: integer }
+        event_count: { type: integer }
+    VisitorEvent:
+      type: object
+      required: [event_id, event, created_at, location, target, source, campaign, device, browser, country, session_id]
+      properties:
+        event_id: { type: string }
+        event: { type: string }
+        created_at: { type: string }
+        location: { type: string }
+        target: { type: string }
+        source: { type: string }
+        campaign: { type: string }
+        device: { type: string }
+        browser: { type: string }
+        country: { type: string }
+        session_id: { type: string }
+    VisitorList:
+      type: object
+      required: [items, total, page, pageSize]
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/VisitorProfile" } }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+    VisitorDetail:
+      type: object
+      required: [profile, events, total, page, pageSize]
+      properties:
+        profile: { $ref: "#/components/schemas/VisitorProfile" }
+        events: { type: array, items: { $ref: "#/components/schemas/VisitorEvent" } }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+    ChatRelevance:
+      type: string
+      enum: [pending, related, excluded]
+    SupportReviewVersion:
+      type: object
+      required: [version]
+      properties:
+        version:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+    SupportRelevanceDecision:
+      type: object
+      required: [version, decision, reason]
+      properties:
+        version:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        decision:
+          $ref: "#/components/schemas/ChatRelevance"
+        reason:
+          type: string
+          minLength: 1
+          maxLength: 1000
+    ChatScopeAssessment:
+      type: object
+      required: [scope, confidence, reason]
+      properties:
+        scope:
+          type: string
+          enum: [related, greeting, unrelated, uncertain]
+        confidence:
+          type: string
+          enum: [high, low]
+        reason:
+          type: string
+          minLength: 1
+          maxLength: 1000
+    SupportInboxItem:
+      type: object
+      required: [id, source, sourceId, title, question, context, status, caseId, createdAt, relevance, relevanceVersion, relevanceReviewedAt, scopeAssessment]
+      properties:
+        id:
+          type: integer
+        source:
+          type: string
+          enum: [chat, ticket, email, manual]
+        sourceId:
+          type: [string, "null"]
+        title:
+          type: string
+        question:
+          type: string
+        context:
+          type: string
+        status:
+          type: string
+          enum: [new, reviewed, resolved]
+        caseId:
+          type: [integer, "null"]
+        createdAt:
+          type: string
+          format: date-time
+        relevance:
+          $ref: "#/components/schemas/ChatRelevance"
+        relevanceVersion:
+          type: integer
+        relevanceReviewedAt:
+          type: [string, "null"]
+          format: date-time
+        scopeAssessment:
+          anyOf:
+            - $ref: "#/components/schemas/ChatScopeAssessment"
+            - type: "null"
     OpenaiConversation:
       type: object
       properties:
@@ -249,9 +919,13 @@ components:
     TicketInput:
       type: object
       required:
-        - email
         - transcript
       properties:
+        whatsapp:
+          type: string
+          pattern: '^\+[1-9][0-9]{7,14}$'
+        contactConsent:
+          type: boolean
         email:
           type: string
           format: email
@@ -330,6 +1004,105 @@ components:
         pointsAwarded:
           type: integer
           minimum: 0
+    HubspotFormInput:
+      type: object
+      required:
+        - requestId
+        - language
+        - email
+        - phone
+        - pageUri
+        - pageName
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        language:
+          type: string
+          enum: [en, ar]
+        intent:
+          type: string
+          enum: [existing_hr, exploring, seeking_hr]
+        intents:
+          type: array
+          minItems: 1
+          maxItems: 3
+          uniqueItems: true
+          items:
+            type: string
+            enum: [existing_hr, exploring, seeking_hr]
+        marketingOptIn:
+          type: boolean
+          description: Optional explicit permission for marketing emails; omission never grants consent.
+        consentToProcess:
+          type: boolean
+          description: Processing flag supplied when the inquiry is submitted; not evidence of a separate explicit disclosure.
+        firstname:
+          type: string
+          maxLength: 100
+        lastname:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          minLength: 3
+          maxLength: 320
+        phone:
+          type: string
+          minLength: 1
+          pattern: '\S'
+          maxLength: 50
+        message:
+          type: string
+          maxLength: 4000
+        pageUri:
+          type: string
+          format: uri
+          maxLength: 2048
+        pageName:
+          type: string
+          maxLength: 300
+        hutk:
+          type: string
+          maxLength: 200
+    HubspotFormResult:
+      type: object
+      required:
+        - hubspotSubmitted
+        - notificationEmailSent
+      properties:
+        hubspotSubmitted:
+          type: boolean
+          const: true
+        notificationEmailSent:
+          type: boolean
+    HubspotFormError:
+      type: object
+      required:
+        - error
+        - reason
+      properties:
+        error:
+          type: string
+        reason:
+          type: string
+          enum:
+            - duplicate_contact
+            - request_id_reused
+            - submission_pending
+            - deduplication_unavailable
+            - marketing_consent_unavailable
+        fields:
+          type: object
+          required:
+            - email
+            - phone
+          properties:
+            email:
+              type: boolean
+            phone:
+              type: boolean
     LeadInput:
       type: object
       required:

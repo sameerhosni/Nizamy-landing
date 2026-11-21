@@ -16,53 +16,53 @@ export function Hero() {
   const content = {
     en: {
       eyebrow: "AI-Powered HR · For Saudi SMEs",
-      headlinePart1: "All HR systems cost you… ",
-      headlinePart2: "Nizamy saves you up to 30% of your subscription.",
-      subtitle: "Track attendance from your phone — no fingerprint devices and no installation.",
-      secondaryCta: "Calculate Your Expected Return",
+      headlinePart1: "Attendance, employee requests and payroll reports. ",
+      headlinePart2: "Less admin work. More time for your business.",
+      subtitle: "Nizamy brings mobile attendance, AI-assisted employee requests, payroll reports and rewards into one HR system for Saudi businesses. Start without fingerprint devices or complex installation.",
+      secondaryCta: "Estimate the time you could save",
       storeCaption: "Available now on the App Store and Google Play",
       highlights: [
         {
-          title: "Stop waste before it costs you",
-          desc: "Spot where your team's time and effort leak away before they compound into financial loss.",
+          title: "Attendance from your phone",
+          desc: "Record check-ins and check-outs and review attendance without separate fingerprint devices.",
         },
         {
-          title: "Motivated team, higher performance",
-          desc: "A flexible rewards system links commitment to achievement, turning daily behavior into measurable results.",
+          title: "Employee requests, without chasing",
+          desc: "Manage leave and HR requests with AI assistance, instead of scattered messages and manual follow-up.",
         },
         {
-          title: "Decide with numbers, not guesses",
-          desc: "Real-time data on attendance, commitment, and productivity gives you full operational visibility.",
+          title: "Payroll reports in one place",
+          desc: "Prepare payroll reports using organized attendance records and reduce manual data gathering.",
         },
         {
-          title: "Get back up to 30% of your subscription",
-          desc: "The more committed and productive your team becomes on the platform, the lower your subscription cost — through our exclusive annual return model.",
+          title: "More value from your HR budget",
+          desc: "Reduce manual attendance follow-up and payroll preparation. Measure the time saved against your subscription cost to understand the value for your business.",
         },
       ],
     },
     ar: {
       eyebrow: "نظام موارد بشرية بالذكاء الاصطناعي",
-      headlinePart1: "كل أنظمة الموارد البشرية تكلفك… ",
-      headlinePart2: "نظامي يوفر لك حتى 30% من اشتراكك.",
-      subtitle: "سجّل الحضور من الجوال — بدون أجهزة بصمة، وبدون تركيب.",
-      secondaryCta: "احسب العائد المتوقع لمنشأتك",
+      headlinePart1: "شؤون موظفينك في مكان واحد. ",
+      headlinePart2: "ووقت أكثر لشغلك.",
+      subtitle: "حضور من الجوال، وطلبات موظفين بمساعدة الذكاء الاصطناعي، وتقارير رواتب في مكان واحد. مع نظامي، تقلّ المتابعة اليدوية وتتفرّغ لشغلك.",
+      secondaryCta: "قدّر الوقت الذي يمكنك توفيره",
       storeCaption: "متوفر الآن على App Store و Google Play",
       highlights: [
         {
-          title: "أوقف الهدر قبل ما يكلّفك",
-          desc: "ارصد أين يضيع وقت فريقك وجُهده قبل أن يتحول إلى خسارة مالية تراكمية.",
+          title: "حضور وانصراف من الجوال",
+          desc: "موظفينك يسجّلون حضورهم وانصرافهم من الجوال، وأنت تتابع سجلاتهم من مكان واحد.",
         },
         {
-          title: "فريق محفّز… أداء أعلى",
-          desc: "نظام مكافآت مرن يربط الالتزام بالإنجاز، فيتحول السلوك اليومي إلى نتائج قابلة للقياس.",
+          title: "طلبات الموظفين بدون ملاحقة",
+          desc: "خلّ طلبات الإجازة والموارد البشرية في مكان واحد، بمساعدة الذكاء الاصطناعي، بدل الرسائل المتفرقة.",
         },
         {
-          title: "قراراتك بالأرقام، لا بالتخمين",
-          desc: "بيانات لحظية عن الحضور والالتزام والإنتاجية تمنحك رؤية تشغيلية كاملة لشركتك.",
+          title: "تقارير الرواتب في مكان واحد",
+          desc: "جهّز تقارير الرواتب من سجلات حضور منظّمة، ووفّر وقت تجميع البيانات يدويّاً.",
         },
         {
-          title: "استرجع حتى 30% من اشتراكك",
-          desc: "كلما زاد التزام فريقك وتحسّن أداؤهم على المنصة، انخفضت تكلفة اشتراكك من خلال نموذج العائد السنوي الحصري.",
+          title: "عائد أوضح على ميزانية الموارد البشرية",
+          desc: "قلّل وقت متابعة الحضور وتجهيز تقارير الرواتب يدويّاً. وقارن قيمة الوقت اللي وفّرته بتكلفة الاشتراك عشان تعرف العائد على منشأتك.",
         },
       ],
     },
@@ -195,9 +195,9 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="h-auto w-auto rounded-full border-slate-200 bg-white/70 px-6 py-2.5 text-base font-bold text-slate-600 shadow-none hover:bg-white hover:text-blue-600 transition-all duration-300"
-              onClick={() => document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
             >
-              {t.secondaryCta}
+              {isRtl ? "عرض الباقات" : "View plans"}
             </Button>
           </div>
 

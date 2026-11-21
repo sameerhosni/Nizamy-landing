@@ -50,7 +50,8 @@ export function renderClientTicketEmail(params: {
 <h1 style="margin:0;font-family:${FONT};font-size:22px;line-height:1.4;color:${NAVY};text-align:left;">${safeName ? `Hi ${safeName}, we` : "We"} received your request</h1>
 </td></tr>
 <tr><td style="padding:16px 32px 0;">
-<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.7;color:#334155;text-align:left;">Your support ticket has been created. Our team will review it and get back to you at this email address.</p>
+<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.7;color:#334155;text-align:left;">Your support ticket has been created. Download Nizamy now and sign in to find your points in the app.</p>
+<p><a href="https://apps.apple.com/sa/app/id6792693395">App Store</a> · <a href="https://play.google.com/store/apps/details?id=com.t2.nizamy">Google Play</a></p>
 </td></tr>
 <tr><td style="padding:20px 32px 0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#EFF6FF;border-radius:12px;">
@@ -67,7 +68,7 @@ export function renderClientTicketEmail(params: {
 <tr><td style="padding:20px 32px 26px;">
 <p style="margin:0;font-family:${FONT};font-size:14px;line-height:1.7;color:#334155;text-align:left;">Please keep the ticket number for reference. You can reply to this email to add more details.</p>
 </td></tr>`;
-    const text = `${safeName ? `Hi ${safeName},` : "Hello,"}\n\nYour support ticket has been created.\n\nTicket number: ${ticketNumber}\nTopic: ${subject}\nSummary: ${summary}\n\nOur team will get back to you at this email address. You can reply to this email to add more details.\n\nNizamy HR — nizamy.app`;
+    const text = `${safeName ? `Hi ${safeName},` : "Hello,"}\n\nYour support ticket has been created.\n\nTicket number: ${ticketNumber}\nTopic: ${subject}\nSummary: ${summary}\n\nDownload Nizamy and sign in to find your points in the app.\nApp Store: https://apps.apple.com/sa/app/id6792693395\nGoogle Play: https://play.google.com/store/apps/details?id=com.t2.nizamy\n\nYou can reply to this email to add more details.\n\nNizamy HR — nizamy.app`;
     return { subject: emailSubject, html: shell("ltr", inner, hasLogo), text };
   }
 
@@ -77,7 +78,8 @@ export function renderClientTicketEmail(params: {
 <h1 style="margin:0;font-family:${FONT};font-size:22px;line-height:1.5;color:${NAVY};text-align:right;">${safeName ? `أهلًا ${safeName}، ` : ""}استلمنا طلبك</h1>
 </td></tr>
 <tr><td style="padding:16px 32px 0;">
-<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.8;color:#334155;text-align:right;">تم إنشاء تذكرة الدعم الخاصة بك، وسيراجعها فريقنا ويتواصل معك على هذا البريد الإلكتروني.</p>
+<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.8;color:#334155;text-align:right;">تم إنشاء تذكرة الدعم الخاصة بك. حمّل تطبيق نظامي الآن وسجّل الدخول لتجد نقاطك داخل التطبيق.</p>
+<p><a href="https://apps.apple.com/sa/app/id6792693395">App Store</a> · <a href="https://play.google.com/store/apps/details?id=com.t2.nizamy">Google Play</a></p>
 </td></tr>
 <tr><td style="padding:20px 32px 0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#EFF6FF;border-radius:12px;">
@@ -94,7 +96,7 @@ export function renderClientTicketEmail(params: {
 <tr><td style="padding:20px 32px 26px;">
 <p style="margin:0;font-family:${FONT};font-size:14px;line-height:1.8;color:#334155;text-align:right;">احتفظ برقم التذكرة للمراجعة، ويمكنك الرد على هذا البريد لإضافة أي تفاصيل.</p>
 </td></tr>`;
-  const text = `${safeName ? `أهلًا ${safeName}،` : "أهلًا،"}\n\nتم إنشاء تذكرة الدعم الخاصة بك.\n\nرقم التذكرة: ${ticketNumber}\nالموضوع: ${subject}\nالملخص: ${summary}\n\nسيتواصل معك فريقنا على هذا البريد الإلكتروني. يمكنك الرد على هذا البريد لإضافة أي تفاصيل.\n\nنظامي اتش آر — nizamy.app`;
+  const text = `${safeName ? `أهلًا ${safeName}،` : "أهلًا،"}\n\nتم إنشاء تذكرة الدعم الخاصة بك.\n\nرقم التذكرة: ${ticketNumber}\nالموضوع: ${subject}\nالملخص: ${summary}\n\nحمّل تطبيق نظامي وسجّل الدخول لتجد نقاطك داخل التطبيق.\nApp Store: https://apps.apple.com/sa/app/id6792693395\nGoogle Play: https://play.google.com/store/apps/details?id=com.t2.nizamy\n\nيمكنك الرد على هذا البريد لإضافة أي تفاصيل.\n\nنظامي اتش آر — nizamy.app`;
   return { subject: emailSubject, html: shell("rtl", inner, hasLogo), text };
 }
 

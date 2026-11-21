@@ -1,134 +1,90 @@
 import { useLanguage } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, X, Check } from "lucide-react";
+import { Bot, ScanFace, Settings2, Gift, Wallet, ListChecks, Fingerprint, Archive } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function WhyNizamy() {
-  const { language, dir } = useLanguage();
-  const isRtl = dir === "rtl";
+  const { language } = useLanguage();
+  const benefitIcons = [Bot, ScanFace, Settings2, Gift, Wallet, ListChecks, Fingerprint, Archive];
 
   const content = {
     en: {
       eyebrow: "Why Nizamy?",
-      heading: "More than just an HR system.",
+      heading: "Less admin. More time for your team.",
       subhead:
-        "Any system can organize employee data. Nizamy helps you put it to work — because the goal isn't managing HR, it's improving how your business performs.",
-      colTraditional: "Traditional solutions",
-      colNizamy: "Nizamy",
+        "Bring AI self-service, secure attendance, employee rewards, and real-time reports together — with payroll and management tools that grow with your team.",
+      titles: ["AI self-service", "Verified attendance", "Effortless setup", "Rewards that motivate", "Simpler payroll", "HR administration and performance", "Flexible check-ins", "Secure records"],
       rows: [
-        { traditional: "Clock-in / clock-out logging", nizamy: "Commitment turned into profit" },
-        { traditional: "Periodic reports telling you what happened", nizamy: "Instant recommendations telling you what to do" },
-        { traditional: "Employees as numbers", nizamy: "Employees as an investment with a return" },
-        { traditional: "You always pay the full subscription", nizamy: "You recover part as commitment rises" },
-        { traditional: "Motivation is your job alone", nizamy: "A built-in smart rewards system" },
-        { traditional: "Data that needs analysis", nizamy: "Ready-to-act insights tied to profit" },
+        { traditional: "Leave and employee requests scattered across messages", nizamy: "An AI agent handles self-service requests, with real-time reports in the manager dashboard.", plan: "Free", tier: "free" },
+        { traditional: "Attendance records that need stronger verification", nizamy: "3D facial verification and liveness detection help identify photo-based attendance fraud.", plan: "Starter", tier: "starter" },
+        { traditional: "Time spent learning account and shift settings", nizamy: "An AI assistant helps configure your organization and shifts without training.", plan: "Starter", tier: "starter" },
+        { traditional: "Employee recognition that takes extra coordination", nizamy: "Discount codes, exclusive offers, gift cards, and varied rewards from local and international brands.", tier: "starter" },
+        { traditional: "Payroll work spread across separate processes", nizamy: "Payroll tools that scale up to full payroll management.", tier: "growth" },
+        { traditional: "HR administration and employee reviews that need manual follow-up", nizamy: "AI assistance for HR administration, with unlimited use and employee performance evaluations available.", tier: "growth" },
+        { traditional: "Attendance needs beyond a standard check-in", nizamy: "Phone-based biometrics, with voice and offline attendance options.", tier: "growth" },
+        { traditional: "Keeping records accessible as your team grows", nizamy: "Secure records for up to 12 months, with free early access to new features.", tier: "growth" },
       ],
-      cta: "See the difference yourself in a personalized demo",
     },
     ar: {
-      eyebrow: "لماذا نظامي؟",
-      heading: "أكثر من مجرد نظام HR.",
-      subhead:
-        "أي نظام يقدر ينظم بيانات الموظفين، لكن نظامي يساعدك تستفيد منها. لأن الهدف مو إدارة الموارد البشرية… الهدف هو تحسين أداء العمل.",
-      colTraditional: "الحلول التقليدية",
-      colNizamy: "نظامي",
+      eyebrow: "ليش نظامي؟",
+      subhead: "كل الأنظمة تعطيك سجل حضور. نظامي يغيّر الحضور نفسه.",
+      titles: ["جاهز من أول يوم", "يغيّر السلوك، مو بس يسجّله", "مساعد يعرف شركتك", "للتحفيز، مو للعقاب"],
       rows: [
-        { traditional: "تسجيل الحضور والانصراف", nizamy: "تحويل الالتزام إلى أرباح" },
-        { traditional: "تقارير دورية تخبرك بما حدث", nizamy: "توصيات فورية تخبرك بما يجب فعله" },
-        { traditional: "الموظفون كأرقام", nizamy: "الموظفون كاستثمار له عائد" },
-        { traditional: "تدفع كامل الاشتراك دائمًا", nizamy: "تسترد جزءًا مع ارتفاع الالتزام" },
-        { traditional: "التحفيز مسؤوليتك وحدك", nizamy: "نظام مكافآت ذكي مدمج" },
-        { traditional: "بيانات تحتاج تحليل", nizamy: "رؤى جاهزة للتنفيذ مرتبطة بالأرباح" },
+        { nizamy: "بدون أجهزة، بدون تركيب، وبدون مشروع تطبيق يطول شهور. تسجّل، تدعو فريقك، وتشوف أول يوم حضور." },
+        { nizamy: "الحضور بوقته يكسب نقاط تتحول لمكافآت حقيقية، فالالتزام يصير له قيمة عند الموظف." },
+        { nizamy: "مساعد HR ذكي بالعربي، يرد على أسئلتك وأسئلة موظفينك من بيانات شركتك أنت." },
+        { nizamy: "نظامي مصمم يكافئ الملتزم، مو يدوّر على الخصم." },
       ],
-      cta: "شاهد الفرق بنفسك في عرض توضيحي مخصص",
+      closing: "وكل هذا بالعربي أولًا، ومصمم للشركات السعودية.",
     },
   };
 
   const t = content[language];
+  const closing = "closing" in t ? t.closing : null;
 
   return (
-    <section id="why-nizamy" data-analytics-section="why-nizamy" data-analytics-name="Why Nizamy" className="py-24 sm:py-32 bg-[#FAFAFA] scroll-mt-16">
+    <section id="why-nizamy" data-analytics-section="why-nizamy" data-analytics-name="Why Nizamy" dir={language === "ar" ? "rtl" : "ltr"} className="py-10 sm:py-12 bg-white scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto text-center mb-20"
+          className="max-w-4xl mx-auto text-center mb-6"
         >
-          <span className="inline-block text-[13px] font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-5 py-2 mb-6 uppercase tracking-wider">
+          <h2 className="text-3xl sm:text-4xl font-heading font-black leading-tight mb-3 text-neutral-900 tracking-tight">
             {t.eyebrow}
-          </span>
-          <h2 className="text-4xl sm:text-5xl md:text-[3.5rem] font-heading font-black leading-[1.15] mb-6 text-slate-900 tracking-tight">
-            {t.heading}
           </h2>
-          <p className="text-lg sm:text-xl text-slate-500 leading-relaxed font-medium max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-medium max-w-3xl mx-auto">
             {t.subhead}
           </p>
         </motion.div>
 
-        {/* Comparison table */}
+        {/* Benefit cards */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.05)] bg-white"
+          className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
         >
-          <div className="grid grid-cols-2">
-            <div className="bg-slate-50 px-6 py-6 text-center border-b border-slate-200">
-              <span className="text-[17px] sm:text-xl font-heading font-black text-slate-600">
-                {t.colTraditional}
-              </span>
-            </div>
-            <div className="bg-blue-600 px-6 py-6 text-center border-b border-blue-600">
-              <span className="text-[17px] sm:text-xl font-heading font-black text-white">
-                {t.colNizamy}
-              </span>
-            </div>
-          </div>
-          {t.rows.map((row, idx) => (
-            <div key={idx} className={`grid grid-cols-2 ${idx % 2 === 1 ? "bg-[#FAFAFA]" : "bg-white"}`}>
-              <div className="px-6 sm:px-10 py-6 flex items-start gap-4 border-t border-slate-100/60">
-                <span className="w-7 h-7 rounded-full bg-slate-200/60 text-slate-500 flex items-center justify-center shrink-0 mt-0.5">
-                  <X size={16} strokeWidth={2.5} />
+          {t.rows.map((row, idx) => {
+            const Icon = benefitIcons[idx];
+            return (
+            <article key={idx} className="bg-white border border-neutral-100 rounded-sm p-5 sm:p-6 shadow-[0_8px_28px_rgba(0,0,0,0.045)] flex items-start gap-4 text-start">
+                <span className="flex h-10 w-10 text-neutral-800 items-center justify-center shrink-0">
+                  <Icon aria-hidden="true" size={30} strokeWidth={1.5} />
                 </span>
-                <span className="text-[15px] sm:text-[17px] text-slate-500 font-medium leading-relaxed">
-                  {row.traditional}
-                </span>
-              </div>
-              <div className="px-6 sm:px-10 py-6 flex items-start gap-4 border-t border-blue-100 bg-blue-50/40">
-                <span className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm shadow-blue-600/20">
-                  <Check size={16} strokeWidth={2.5} />
-                </span>
-                <span className="text-[15px] sm:text-[17px] text-blue-950 font-bold leading-relaxed">
-                  {row.nizamy}
-                </span>
-              </div>
-            </div>
-          ))}
+                <div className="min-w-0">
+                  <h3 className="text-base font-heading font-bold text-neutral-900 mb-2">{t.titles[idx]}</h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{row.nizamy}</p>
+                </div>
+            </article>
+          );})}
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-20"
-        >
-          <Button
-            size="lg"
-            className="h-auto min-h-14 py-4 px-8 sm:px-10 max-w-full whitespace-normal rounded-full text-[16px] sm:text-[17px] font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.15)] hover:shadow-[0_12px_25px_rgba(15,23,42,0.25)] group transition-all duration-300"
-            onClick={() => document.getElementById("partner")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            {t.cta}
-            {isRtl ? (
-              <ArrowLeft className="ms-2 group-hover:-translate-x-1.5 transition-transform" />
-            ) : (
-              <ArrowRight className="ms-2 group-hover:translate-x-1.5 transition-transform" />
-            )}
-          </Button>
-        </motion.div>
+        {closing && (
+          <p className="max-w-3xl mx-auto mt-6 text-center text-sm text-neutral-500 font-medium">{closing}</p>
+        )}
       </div>
     </section>
   );

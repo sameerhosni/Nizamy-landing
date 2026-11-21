@@ -1,69 +1,45 @@
 import { useLanguage } from "@/lib/i18n";
 import { Percent, PiggyBank, TrendingUp, BellRing } from "lucide-react";
 import { motion } from "framer-motion";
+import { goToStart } from "@/components/home/homeActions";
+import { ReturnEvidence } from "@/components/sections/ReturnEvidence";
 
 const gainIcons = [Percent, PiggyBank, TrendingUp, BellRing];
 
 export function ReturnModel() {
   const { language, dir } = useLanguage();
-  const isRtl = dir === "rtl";
+  void dir;
 
   const content = {
     en: {
-      eyebrow: "Return Model",
-      title: "Because a subscription should… ",
-      titleAccent: "return value to you.",
-      subhead:
-        "Less time on admin work. Higher team commitment. Better productivity. Faster decisions. That's the real return of an HR system — and with Nizamy, the more your team improves, the more of your subscription you recover automatically.",
-      gainsTitle: "How the subscription turns into a gain",
+      eyebrow: "Return on investment in HR", title: "Less manual HR administration. ", titleAccent: "More value for your business.",
+      subhead: "The return from Nizamy starts with time saved on attendance, employee requests and payroll reports. Less manual follow-up can reduce HR administration costs and give your team more time for your business.",
+      measurement: "Measure the difference: compare the hours spent on these HR processes before and after Nizamy. Multiply the hours saved by your team's hourly cost, then compare that estimated time value with the subscription cost. Time saved is not a guaranteed cash saving or subscription refund.",
+      gainsTitle: "Where the savings come from",
       gains: [
-        {
-          title: "More commitment = more back",
-          desc: "The more committed your team is, the more of your subscription you get back — rising all the way up to 30%.",
-        },
-        {
-          title: "4x the subscription in savings",
-          desc: "A client with 50 employees saved 120,000 SAR a year in eliminated waste — four times their subscription.",
-        },
-        {
-          title: "+20% productivity, zero new hires",
-          desc: "A 20% productivity increase adds thousands of riyals in revenue without hiring anyone new.",
-        },
-        {
-          title: "Early alerts prevent losses",
-          desc: "One early warning that saves a project from delay can prevent 50,000 SAR in penalties or lost clients.",
-        },
+        {title: "Less attendance administration", desc: "Bring check-in records together instead of collecting them from separate files and devices."},
+        {title: "Fewer scattered requests", desc: "Manage employee requests in one place with AI assistance, reducing repeated messages and follow-up."},
+        {title: "Faster payroll preparation", desc: "Use organized attendance records and payroll reports to reduce manual preparation and review."},
+        {title: "A clearer view of your team", desc: "Review attendance and use rewards to encourage commitment. Evaluate improvements against your own starting point."},
       ],
     },
     ar: {
-      eyebrow: "نموذج العائد",
-      title: "لأن الاشتراك المفروض… ",
-      titleAccent: "يرجّع لك قيمة.",
-      subhead:
-        "وقت أقل في الأعمال الإدارية. التزام أعلى من الفريق. إنتاجية أفضل. قرارات أسرع. هذا هو العائد الحقيقي من نظام HR — وفي نظامي، كلما تحسن أداء فريقك استرددت جزءًا من اشتراكك تلقائيًا.",
-      gainsTitle: "كيف يتحول الاشتراك إلى مكسب",
+      eyebrow: "", title: "لا تصدقنا… خلّ الأرقام تتكلم.", titleAccent: "",
+      subhead: "نظامي يحسب لك العائد بالريال داخل التطبيق، من بيانات شركتك أنت.",
+      measurement: "أول ١٥ يوم، نظامي يقيس نقطة البداية تلقائيًا. بعدها تشوف الفرق بالريال.",
+      gainsTitle: "",
       gains: [
-        {
-          title: "التزام أعلى = عائد أكبر",
-          desc: "كلما زاد التزام موظفيك، زاد ما تسترده من اشتراكك — ليصل حتى 30%.",
-        },
-        {
-          title: "توفير يعادل 4 أضعاف الاشتراك",
-          desc: "عميل بـ50 موظفًا وفر 120 ألف ريال سنويًا من الهدر، ما يعادل 4 أضعاف اشتراكه.",
-        },
-        {
-          title: "إنتاجية أعلى دون توظيف جديد",
-          desc: "زيادة الإنتاجية بـ20% تضيف آلاف الريالات إيرادات دون توظيف جديد.",
-        },
-        {
-          title: "تنبيه مبكر يمنع الخسائر",
-          desc: "تنبيه مبكر يمنع تأخير مشروع قد يوفر 50 ألف ريال غرامات أو خسائر عملاء.",
-        },
+        {title: "تحسّن الأداء", desc: "كيف تغيّر التزام فريقك بالحضور من أول ما بدأت."},
+        {title: "الولاء والتفاعل", desc: "كم موظف صار يتفاعل، يكسب، ويستبدل."},
+        {title: "الوقت والتكلفة", desc: "كم ساعة ومجهود وفّرت على الإدارة."},
       ],
+      cta: "ابدأ مجانًا وشوف العائد بنفسك",
     },
   };
 
   const t = content[language];
+  const isAr = language === "ar";
+  const cta = "cta" in t ? t.cta : null;
 
   return (
     <section
@@ -80,9 +56,9 @@ export function ReturnModel() {
           transition={{ duration: 0.7 }}
           className="max-w-4xl mx-auto text-center mb-20"
         >
-          <span className="inline-block text-[13px] font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-5 py-2 mb-6 uppercase tracking-wider">
+          {t.eyebrow && <span className="inline-block text-[13px] font-bold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-5 py-2 mb-6 uppercase tracking-wider">
             {t.eyebrow}
-          </span>
+          </span>}
           <h2 className="text-4xl sm:text-5xl md:text-[3.5rem] font-heading font-black leading-[1.2] mb-6 tracking-tight">
             <span className="text-slate-900">{t.title}</span>
             <span className="text-blue-600">{t.titleAccent}</span>
@@ -92,16 +68,18 @@ export function ReturnModel() {
           </p>
         </motion.div>
 
+        {isAr && <ReturnEvidence />}
+
         <div className="max-w-5xl mx-auto">
-          <motion.h3 
+          {t.gainsTitle && <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-2xl sm:text-3xl font-heading font-black text-slate-900 text-center mb-12 tracking-tight"
           >
             {t.gainsTitle}
-          </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          </motion.h3>}
+          {!isAr && <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {t.gains.map((gain, idx) => {
               const Icon = gainIcons[idx];
               return (
@@ -123,7 +101,17 @@ export function ReturnModel() {
                 </motion.div>
               );
             })}
-          </div>
+          </div>}
+          {!isAr && <p className="mt-10 text-base text-slate-600 leading-relaxed text-center max-w-3xl mx-auto">
+            {t.measurement}
+          </p>}
+          {cta && (
+            <div className="mt-8 flex justify-center">
+              <button type="button" onClick={goToStart} className="rounded-full bg-blue-600 px-8 py-4 text-[17px] font-bold text-white hover:bg-blue-700 transition-colors">
+                {cta}
+              </button>
+            </div>
+          )}
         </div>
 
       </div>

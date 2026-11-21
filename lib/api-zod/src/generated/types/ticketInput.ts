@@ -9,11 +9,14 @@ import type { TicketInputLanguage } from './ticketInputLanguage';
 import type { TicketInputTranscriptItem } from './ticketInputTranscriptItem';
 
 export interface TicketInput {
+  /** @pattern ^\+[1-9][0-9]{7,14}$ */
+  whatsapp?: string;
+  contactConsent?: boolean;
   /**
      * @minLength 3
      * @maxLength 320
      */
-  email: string;
+  email?: string;
   /**
      * @maxLength 200
      * @nullable

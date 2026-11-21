@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@500;700;800&display=swap');
+
+.nc-stage {
+  --nc-blue: #1689e5;
+  --nc-deep: #0868b5;
+  --nc-ink: #183c59;
+  --nc-muted: #647e92;
+  --nc-line: #dce9f2;
+  --nc-paper: #fff;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  background: #edf5fb;
+  color: var(--nc-ink);
+  font: 14px/1.75 'IBM Plex Sans Arabic', sans-serif;
+  padding: 38px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.nc-stage *, .nc-stage *::before, .nc-stage *::after { box-sizing: border-box; }
+.nc-stage button, .nc-stage input { font: inherit; }
+.nc-stage button { cursor: pointer; }
+.nc-stage button:focus-visible, .nc-stage input:focus-visible { outline: 3px solid #143e6a; outline-offset: 4px; }
+.nc-stage button:disabled { cursor: default; opacity: .4; }
+.nc-caption { margin-bottom: 29px; }
+.nc-eyebrow { font-size: 11px; font-weight: 600; color: var(--nc-deep); letter-spacing: .3px; display: flex; align-items: center; gap: 9px; }
+.nc-eyebrow::before { content: ''; width: 21px; height: 2px; background: var(--nc-blue); }
+.nc-caption h1 { font: 800 27px/1.45 'Tajawal', sans-serif; margin: 10px 0 3px; color: var(--nc-ink); }
+.nc-caption p { font-size: 12px; color: var(--nc-muted); margin: 0; }
+.nc-window { background: var(--nc-paper); width: 100%; max-width: 400px; border-radius: 23px; border: 1px solid #d4e6f3; box-shadow: 0 16px 42px -21px #426d8e66, 0 3px 7px #254c6907; overflow: hidden; display: flex; flex-direction: column; height: 522px; animation: nc-enter .24s ease-out; }
+.nc-header { background: var(--nc-blue); padding: 19px 20px 16px; color: #fff; display: flex; align-items: center; gap: 12px; }
+.nc-mark { font: 800 28px/1 'Tajawal', sans-serif; display: grid; place-items: center; height: 43px; width: 43px; border: 1px solid #ffffff52; border-radius: 14px; background: #ffffff16; flex-shrink: 0; padding-top: 3px; }
+.nc-header-copy { flex: 1; }
+.nc-header h2 { font: 800 20px/1.3 'Tajawal', sans-serif; margin: 0 0 3px; color: inherit; }
+.nc-header-copy p { font-size: 11px; color: #e4f2ff; margin: 0; }
+.nc-icon-button { border: 0; background: transparent; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; color: inherit; padding: 0; }
+.nc-icon-button:hover { background: #ffffff25; }
+.nc-demo { display: flex; gap: 6px; align-items: center; justify-content: center; padding: 8px; color: #5b758a; font-size: 10px; border-bottom: 1px solid #e7eff5; background: #f7fbfe; }
+.nc-conversation { overflow-y: auto; flex: 1; padding: 17px 19px 12px; scrollbar-width: thin; scrollbar-color: #cbdeed transparent; overscroll-behavior: contain; }
+.nc-today { color: #8297a8; font-size: 10px; text-align: center; margin-bottom: 14px; }
+.nc-welcome-title { margin: 0 0 3px; font-size: 19px; font-family: 'Tajawal', sans-serif; font-weight: 800; }
+.nc-welcome-text { color: var(--nc-muted); margin: 0; font-size: 12px; line-height: 1.9; }
+.nc-quick-label { font-size: 10px; color: var(--nc-muted); margin: 16px 0 7px; }
+.nc-topics { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 15px; }
+.nc-topic { border: 1px solid #d6e8f6; border-radius: 11px; padding: 9px 11px; color: #2072b0; font-size: 11px !important; background: #f5faff; display: flex; align-items: center; gap: 7px; text-align: right; transition: transform .15s ease; }
+.nc-topic:hover { background: #e6f3fe; transform: translateY(-2px); }
+.nc-topic svg { flex-shrink: 0; }
+.nc-bubble { padding: 10px 13px; border-radius: 13px 3px 13px 13px; font-size: 12px; line-height: 1.9; max-width: 92%; margin: 9px 0; background: #eff5f9; color: #36566f; animation: nc-enter .2s ease-out; }
+.nc-bubble.is-user { background: #e1f0ff; color: #155887; margin-right: auto; border-radius: 3px 13px 13px 13px; width: fit-content; }
+.nc-reply-label { font-size: 9px; display: block; font-weight: 600; color: #6a879e; margin-bottom: 3px; }
+.nc-composer-area { padding: 12px 16px 9px; border-top: 1px solid #e6eef5; background: #fff; }
+.nc-composer { border: 1px solid #d7e5ef; border-radius: 13px; padding: 6px 7px 6px 11px; display: flex; align-items: center; gap: 5px; background: #fbfdff; }
+.nc-composer:focus-within { border-color: var(--nc-blue); }
+.nc-composer input { border: 0; width: 100%; min-width: 0; background: transparent; color: var(--nc-ink); padding: 5px 3px; font-size: 12px; outline: none; }
+.nc-composer input:focus-visible { outline: none; }
+.nc-composer input::placeholder { color: #8198aa; }
+.nc-send { width: 32px; height: 32px; flex-shrink: 0; border: 0; background: var(--nc-blue); color: #fff; border-radius: 9px; display: grid; place-items: center; }
+.nc-send:hover:not(:disabled) { background: var(--nc-deep); }
+.nc-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 7px; font-size: 9px; color: #8ba0b0; }
+.nc-reset { padding: 0; background: none; border: 0; color: #638399; font-size: 9px !important; }
+.nc-reset:hover { color: var(--nc-deep); text-decoration: underline; }
+.nc-bottom-note { color: #758fa3; font-size: 10px; display: flex; align-items: center; gap: 6px; padding: 17px 7px 0; }
+.nc-minimized { flex: 1; min-height: 440px; display: flex; width: 100%; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
+.nc-launcher { display: flex; align-items: center; gap: 11px; padding: 13px 17px; border: 0; background: var(--nc-blue); color: #fff; border-radius: 19px 19px 5px 19px; box-shadow: 0 8px 24px #1689e530; font-weight: 600 !important; animation: nc-enter .2s ease-out; }
+.nc-launcher:hover { background: var(--nc-deep); }
+.nc-minimized p { font-size: 11px; color: var(--nc-muted); padding-right: 4px; }
+@keyframes nc-enter { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 420px) { .nc-stage { padding: 25px 17px 20px; } .nc-caption { margin-bottom: 20px; } .nc-caption h1 { font-size: 24px; } .nc-window { height: 520px; } .nc-header { padding: 17px; } .nc-conversation { padding-inline: 16px; } }
+@media (max-height: 690px) { .nc-stage { padding-top: 18px; } .nc-caption { margin-bottom: 16px; } .nc-window { height: 490px; max-height: calc(100dvh - 148px); min-height: 330px; } .nc-bottom-note { padding-top: 8px; } }
+@media (prefers-reduced-motion: reduce) { .nc-stage * { animation: none !important; transition: none !important; } }

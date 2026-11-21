@@ -1,0 +1,1514 @@
+{
+  "face-attendance-system-saudi-arabia": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sections": [
+        {
+          "h": "لماذا تترك نظام البصمة التقليدي؟",
+          "p": "أجهزة البصمة تُشترى وتُركَّب وتحتاج صيانة لكل فرع، ولا تخدم الموظف الميداني الذي لا يستطيع التسجيل أصلًا، وبياناتها تصل غالبًا في ملف إكسل آخر الشهر، فتعرف المشكلة بعد أن انتهت. الحضور عبر الجوال يزيل الحاجة إلى جهاز في كل موقع، ويجعل التسجيل متاحًا أينما كان العمل."
+        },
+        {
+          "h": "كيف يتحقق نظامي من الحضور؟",
+          "p": "يعتمد نظامي على تسجيل الوجه مع كشف الحيوية للتحقق من أن عملية التسجيل مرتبطة بالموظف نفسه، ويتحقق من الموقع ليُسجَّل الحضور من الفرع لا من مكان آخر. هذا يرفع موثوقية الحضور ويقلل محاولات التحايل، ولا توجد وسيلة تقنية تلغيها في كل الظروف. التحقق بالوجه وكشف الحيوية قدرة تتوفر في الباقة الأعلى."
+        },
+        {
+          "h": "ماذا يحدث بعد التسجيل؟",
+          "p": "تتحول بيانات الحضور والالتزام إلى تقارير تساعدك على متابعة التأخير والغياب أولًا بأول، وإلى توصيات تساعدك على اتخاذ الإجراء المناسب في وقته. ويمكن ربط الالتزام بنقاط ومكافآت تجعل الحضور في وقته أمرًا يُقدَّر."
+        },
+        {
+          "h": "لمن تناسب هذه الخدمة؟",
+          "p": "للمنشآت الصغيرة والمتوسطة ذات الفروع والورديات المتعددة: المطاعم والمقاهي، والمحلات، والعيادات والصالونات، والفرق الميدانية التي تعمل خارج المكتب."
+        },
+        {
+          "h": "كيف تبدأ بالحضور من الجوال؟",
+          "p": "أضف موظفيك وفروعك، ثم اشرح لهم طريقة التسجيل من الجوال، وابدأ بفريق أو فرع واحد قبل أن تتوسع. لا تحتاج إلى تركيب أجهزة، ولا إلى خبرة تقنية بفضل التهيئة الذاتية، وتستطيع أن تبدأ مجانًا وتنتقل إلى قدرات أكبر عندما يكبر فريقك."
+        },
+        {
+          "h": "ماذا تراجع أسبوعيًا؟",
+          "p": "راجع التأخير المتكرر، والغياب المفاجئ، وأنماط الحضور بين الفروع والورديات. اقرأ هذه الإشارات بعدل: اسأل أولًا ثم قرر. وتجد في مدونتنا دليلًا عن قراءة الحضور كإشارة لا كحكم."
+        },
+        {
+          "h": "كيف تشرح التحقق بالوجه لفريقك؟",
+          "p": "اشرح الغرض بوضوح: التأكد من أن عملية التسجيل مرتبطة بالموظف نفسه. وتأكد من أن إعداد هذه الضوابط وشرحها للموظفين يتوافق مع سياسات منشأتك والمتطلبات المعمول بها."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل أحتاج إلى جهاز بصمة؟",
+          "a": "لا. يسجّل الموظفون حضورهم من هواتفهم، دون الحاجة إلى تركيب أجهزة بصمة في كل فرع."
+        },
+        {
+          "q": "هل يمكن التحايل بصورة الموظف؟",
+          "a": "يستخدم نظامي كشف الحيوية لتقليل محاولات التحايل، لكن لا توجد وسيلة تقنية تلغيها في جميع الظروف، ولذلك يُنصح بمراجعة الحالات غير المعتادة."
+        },
+        {
+          "q": "هل نظامي متوافق مع أنظمة العمل السعودية؟",
+          "a": "نعم. نظامي متوافق مع أنظمة العمل السعودية، وهو مصمم لبيئة العمل في المملكة."
+        },
+        {
+          "q": "هل أحتاج إلى خبرة تقنية للبدء؟",
+          "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية."
+        },
+        {
+          "q": "هل يعمل الحضور من الجوال للفرق الميدانية؟",
+          "a": "نعم. يسجّل الموظفون حضورهم من هواتفهم، ويتحقق نظامي من الموقع ليُسجَّل الحضور من موقع العمل."
+        },
+        {
+          "q": "كم يستغرق البدء؟",
+          "a": "التهيئة الذاتية في نظامي مصممة لتبدأ بسرعة ودون خبرة تقنية، وتستطيع أن تبدأ بفريق واحد ثم توسّع."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "الحضور بالوجه من الجوال يغنيك عن جهاز البصمة في كل فرع: الموظف يسجّل بوجهه، ويتحقق نظامي من الموقع، وتتحول البيانات إلى تقارير تتابعها أولًا بأول. التحقق بالوجه وكشف الحيوية بحسب الباقة.",
+      "related": [
+        "ramadan-working-hours-saudi-attendance",
+        "read-attendance-signals-fairly-saudi",
+        "payroll-readiness-checklist-saudi"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sections": [
+        {
+          "h": "Why move on from traditional fingerprint devices?",
+          "p": "Fingerprint devices have to be bought, installed and maintained at every branch, they don't serve field employees who can't clock in at all, and their data often arrives as a month-end spreadsheet, so you learn about problems after they're over. Mobile attendance removes the need for a device at every site and makes check-in available wherever the work happens."
+        },
+        {
+          "h": "How does Nizamy verify attendance?",
+          "p": "Nizamy relies on face recognition with liveness detection to verify that a check-in is tied to the employee themselves, and checks location so attendance is recorded from the branch, not from somewhere else. This raises attendance reliability and reduces misuse attempts; no technology removes them in every situation. Face verification with liveness detection is available in the higher plan."
+        },
+        {
+          "h": "What happens after check-in?",
+          "p": "Attendance and commitment data turns into reports that help you follow lateness and absence as they happen, and into recommendations that help you act in time. Commitment can also be linked to points and rewards that make showing up on time something worth recognising."
+        },
+        {
+          "h": "Who is it for?",
+          "p": "Small and medium businesses with several branches and shifts: restaurants and cafés, shops, clinics and salons, and field teams that work outside the office."
+        },
+        {
+          "h": "How do you start with mobile attendance?",
+          "p": "Add your employees and branches, explain how to check in from the phone, and begin with one team or branch before expanding. There are no devices to install and no technical experience needed thanks to self-guided setup, and you can start free and move to larger capabilities as your team grows."
+        },
+        {
+          "h": "What should you review weekly?",
+          "p": "Review repeated lateness, sudden absence, and attendance patterns across branches and shifts. Read these signals fairly: ask first, then decide. Our blog has a guide on reading attendance as a signal, not a verdict."
+        },
+        {
+          "h": "How do you explain face verification to your team?",
+          "p": "Explain the purpose clearly: making sure a check-in is tied to the employee themselves. And make sure that configuring and explaining these controls to employees fits your company policies and applicable requirements."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do I need a fingerprint device?",
+          "a": "No. Employees check in from their own phones, with no fingerprint devices to install at every branch."
+        },
+        {
+          "q": "Can someone cheat with a photo of the employee?",
+          "a": "Nizamy uses liveness detection to reduce misuse attempts, but no technology removes them in every situation, so unusual cases should still be reviewed."
+        },
+        {
+          "q": "Is Nizamy compliant with Saudi labor regulations?",
+          "a": "Yes. Nizamy is compliant with Saudi labor regulations and designed for the Saudi work environment."
+        },
+        {
+          "q": "Do I need technical experience to start?",
+          "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience."
+        },
+        {
+          "q": "Does mobile attendance work for field teams?",
+          "a": "Yes. Employees check in from their phones, and Nizamy checks location so attendance is recorded from the work site."
+        },
+        {
+          "q": "How long does it take to start?",
+          "a": "Nizamy's self-guided setup is designed so you can start quickly and without technical experience, and you can begin with one team and expand."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Mobile face attendance replaces the fingerprint device at every branch: the employee checks in with their face, Nizamy checks the location, and the data turns into reports you can follow as it happens. Face verification and liveness detection depend on the plan.",
+      "related": [
+        "ramadan-working-hours-saudi-attendance",
+        "read-attendance-signals-fairly-saudi",
+        "payroll-readiness-checklist-saudi"
+      ]
+    }
+  },
+  "ai-hr-assistant-employee-requests": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sections": [
+        {
+          "h": "ما الذي يتولاه مساعد الموارد البشرية الذكي؟",
+          "p": "يرد المساعد الذكي في نظامي على طلبات الموارد البشرية والأسئلة المتكررة، ويمكن للموظفين متابعة المستندات والطلبات والموافقات عبر الخدمة الذاتية. النتيجة مسار أوضح للحصول على المعلومة، ومتابعات يدوية أقل على فريق الموارد البشرية."
+        },
+        {
+          "h": "أين يبقى الإنسان؟",
+          "p": "الهدف ليس استبدال الحكم الإنساني في القرارات المتعلقة بالأشخاص، بل تقليل الأعمال الإدارية القابلة للتفادي ومساعدة المديرين على التركيز على التوجيه والتخطيط ودعم فرقهم. تظل سياساتك وموظفوك وقراراتك في صميم العملية، ويُنصح بمراجعة مخرجات الذكاء الاصطناعي وفق سياسات المنشأة."
+        },
+        {
+          "h": "من الإجابة إلى التقرير",
+          "p": "تجمع التقارير بيانات الحضور والالتزام في صورة أوضح، لتلاحظ الأنماط وتطرح أسئلة أفضل وتتابع في الوقت المناسب. تبقى هذه البيانات أداة مساندة للقرار، وليست بديلًا عن فهم السياق والإدارة العادلة والتقدير الإنساني."
+        },
+        {
+          "h": "كيف تبدأ؟",
+          "p": "أضف فريقك، واجعل تسجيل الحضور سهلًا، ووفّر للموظفين مكانًا واضحًا لمتابعة طلباتهم المعتادة. بعد ذلك استخدم التقارير لملاحظة ما يتحسن وتحديد ما يحتاج إلى اهتمام."
+        },
+        {
+          "h": "ما الذي يمكن تفويضه للمساعد؟",
+          "p": "الأسئلة الروتينية عن الطلبات والمستندات والموافقات، ومتابعة حالة الطلب. أما القرارات المتعلقة بالأشخاص فتبقى بيد فريقك."
+        },
+        {
+          "h": "كيف تقيس الفائدة؟",
+          "p": "راقب عدد الأسئلة المتكررة التي تصلك، وسرعة ردّك على الموظفين، والوقت الذي يقضيه فريقك في المتابعة قبل البدء وبعده. هذه مؤشرات تشغيلية تختلف من منشأة لأخرى، وليست أرقامًا موعودة."
+        },
+        {
+          "h": "كيف تراجع مخرجات الذكاء الاصطناعي؟",
+          "p": "قارن الإجابات بسياسة منشأتك، وحدّد من يراجع الحالات الحساسة، واحتفظ بالقرار النهائي لدى مسؤول بشري."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل يستبدل المساعد فريق الموارد البشرية؟",
+          "a": "لا. يقلل المساعد الأعمال الإدارية المتكررة ليتفرغ الفريق للمواقف التي تحتاج إلى خبرة وتعاطف، والقرار يبقى بيد الإنسان."
+        },
+        {
+          "q": "هل يقدم نظامي استرداد قيمة الاشتراك؟",
+          "a": "لا يقدم نظامي استرداد قيمة الاشتراك أو عائدًا نقديًا مضمونًا. التوفير ناتج عن تقليل العمل اليدوي وتحسين متابعة الحضور والطلبات والتقارير، وتختلف النتائج حسب حجم الفريق والاستخدام."
+        },
+        {
+          "q": "هل يمكنني البدء مجانًا؟",
+          "a": "نعم. يمكنك البدء مجانًا دون بطاقة ائتمانية، ثم الانتقال إلى قدرات أكبر عندما يكبر فريقك."
+        },
+        {
+          "q": "هل المساعد يتحدث العربية؟",
+          "a": "نعم. يقدّم نظامي مساعد موارد بشرية ذكيًا يتحدث العربية."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "المساعد الذكي في نظامي يتولى طلبات الموارد البشرية والأسئلة المتكررة، فيتفرغ فريقك للمواقف التي تحتاج إنسانًا، ويبقى القرار بيدك.",
+      "related": [
+        "ai-hr-small-steps-saudi-teams",
+        "read-attendance-signals-fairly-saudi",
+        "replace-excel-whatsapp-hr-management"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sections": [
+        {
+          "h": "What does the AI HR assistant take on?",
+          "p": "Nizamy's AI assistant responds to HR requests and repeated questions, while employees can follow documents, requests and approvals through self-service. The result is a clearer route to information and less manual follow-up for the HR team."
+        },
+        {
+          "h": "Where do humans stay in charge?",
+          "p": "The goal is not to replace human judgment in decisions about people. It is to reduce avoidable admin and help managers focus on guidance, planning and supporting their teams. Your policies, your people and your decisions stay at the heart of the process, and AI-generated output should be reviewed in line with your organization's policies."
+        },
+        {
+          "h": "From answers to reports",
+          "p": "Reports bring attendance and commitment data into a clearer picture so you can notice patterns, ask better questions and follow up in time. This data is decision support, not a replacement for context, fair management and human recognition."
+        },
+        {
+          "h": "How do you start?",
+          "p": "Invite your team, make attendance easy to record, and give employees a clear place to manage their common requests. Then use reports to notice what is improving and what needs attention."
+        },
+        {
+          "h": "What can you hand to the assistant?",
+          "p": "Routine questions about requests, documents and approvals, and following a request's status. Decisions about people stay with your team."
+        },
+        {
+          "h": "How do you measure the benefit?",
+          "p": "Watch how many repeated questions reach you, how quickly you reply to employees, and how much time your team spends following up, before and after you start. These are operational indicators that vary by company, not promised figures."
+        },
+        {
+          "h": "How do you review AI output?",
+          "p": "Compare answers with your company policy, decide who reviews sensitive cases, and keep the final decision with a human owner."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Does the assistant replace the HR team?",
+          "a": "No. It reduces repeated admin so the team can focus on situations that need experience and empathy, and decisions stay with people."
+        },
+        {
+          "q": "Does Nizamy offer subscription refunds?",
+          "a": "Nizamy does not offer subscription refunds or guaranteed cash returns. Savings come from reducing manual work and improving attendance, request and reporting workflows, and outcomes vary with team size and usage."
+        },
+        {
+          "q": "Can I start for free?",
+          "a": "Yes. You can start free with no credit card, then move to larger capabilities as your team grows."
+        },
+        {
+          "q": "Does the assistant speak Arabic?",
+          "a": "Yes. Nizamy provides a smart HR assistant that speaks Arabic."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Nizamy's AI assistant handles HR requests and repeated questions so your team can focus on situations that need a human, and the decision stays with you.",
+      "related": [
+        "ai-hr-small-steps-saudi-teams",
+        "read-attendance-signals-fairly-saudi",
+        "replace-excel-whatsapp-hr-management"
+      ]
+    }
+  },
+  "replace-excel-whatsapp-hr-management": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sections": [
+        {
+          "h": "متى تتحول الجداول والرسائل إلى عبء؟",
+          "p": "مع نمو الفريق تصبح التفاصيل الصغيرة عبئًا يوميًا: حضور يحتاج مراجعة، وطلبات تنتظر الموافقة، وتقارير لا تظهر الصورة كاملة في الوقت المناسب. وعندما تتفرق العمليات بين جداول ورسائل وأدوات مختلفة، يضيع الوقت وتتأخر القرارات."
+        },
+        {
+          "h": "ماذا يجمع نظامي في مكان واحد؟",
+          "p": "يجمع نظامي الحضور والانصراف، والخدمات الذاتية للموظفين، والتقارير والرؤى، والمكافآت والحوافز، ومساعد الذكاء الاصطناعي، مع تهيئة ذاتية ونمو مرن. يعتمد توفر كل قدرة على الباقة."
+        },
+        {
+          "h": "كيف تبدو رحلة الموظف؟",
+          "p": "يدخل الموظف إلى مساحة الخدمة الذاتية، ويراجع بياناته أو يرسل طلبه، فتصل الموافقة إلى المسؤول في مسار واضح، وتُحفظ البيانات والتقارير في مكان واحد، لتظهر للإدارة رؤى تساعد على تحسين التجربة."
+        },
+        {
+          "h": "ما القيمة المتوقعة؟",
+          "p": "تظهر القيمة في وقت موفّر وأخطاء أقل وتجربة موظف أفضل وبيانات مركزية تساعد الإدارة على قرارات أسرع. هذه اتجاهات للقيمة وليست نتائج مقيسة أو أرقامًا موعودة."
+        },
+        {
+          "h": "علامات أن الجداول لم تعد تكفي",
+          "p": "تتأخر الموافقات، وتختلف النسخ بين الملفات، ويصعب أن تعرف من حضر ومتى، وتحتاج إلى ساعات لتجميع تقرير واحد."
+        },
+        {
+          "h": "كيف تنتقل تدريجيًا؟",
+          "p": "ابدأ بالحضور، ثم الطلبات والموافقات، ثم التقارير. لا تحتاج إلى نقل كل شيء دفعة واحدة؛ يمكنك أن توسّع الاستخدام عندما يكبر فريقك واحتياجك."
+        },
+        {
+          "h": "ما الذي تُبقيه خارج النظام؟",
+          "p": "قد تحتفظ ببعض العقود والمستندات الداعمة في أماكنها المعتادة. المهم أن تكون العمليات اليومية في مكان واحد واضح يعرفه الجميع."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل يناسب نظامي المنشآت الصغيرة؟",
+          "a": "نعم. صُمم نظامي للمنشآت الصغيرة والمتوسطة في السعودية، ويمكنك أن تبدأ بما تحتاجه اليوم وتوسّع الاستخدام عندما يكبر فريقك."
+        },
+        {
+          "q": "هل كل القدرات متاحة في كل الباقات؟",
+          "a": "لا. يعتمد توفر كل قدرة على الباقة، والباقات والأسعار الحالية موجودة دائمًا في قسم الأسعار بالصفحة الرئيسية."
+        },
+        {
+          "q": "هل أحتاج إلى خبرة تقنية؟",
+          "a": "لا. التهيئة الذاتية مصممة لتبدأ ببساطة دون أي خبرة تقنية."
+        },
+        {
+          "q": "هل يناسب نظامي فريقًا صغيرًا جدًا؟",
+          "a": "نعم. صُمم نظامي للمنشآت الصغيرة والمتوسطة، ويمكنك أن تبدأ مجانًا."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "عندما تتفرق بيانات الحضور والطلبات والتقارير بين الإكسل والواتساب يضيع الوقت وتتأخر القرارات. نظامي يجمعها في تجربة واحدة تبدأ بها مجانًا وتكبّرها مع فريقك.",
+      "related": [
+        "payroll-readiness-checklist-saudi",
+        "face-attendance-system-saudi-arabia",
+        "ai-hr-small-steps-saudi-teams",
+        "ai-hr-assistant-employee-requests"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sections": [
+        {
+          "h": "When do sheets and messages become a burden?",
+          "p": "As a team grows, small details become a daily burden: attendance that needs review, requests waiting for approval, and reports that don't show the full picture in time. When processes are scattered across sheets, messages and different tools, time is lost and decisions are late."
+        },
+        {
+          "h": "What does Nizamy bring together in one place?",
+          "p": "Nizamy brings together attendance, employee self-service, reports and insights, rewards and incentives, and an AI assistant, with self-setup and flexible growth. Availability of each capability depends on the plan."
+        },
+        {
+          "h": "What does the employee journey look like?",
+          "p": "The employee enters the self-service space, reviews their data or sends a request, and the approval reaches the manager in a clear path. Data and reports are kept in one place, so management sees insights that help improve the experience."
+        },
+        {
+          "h": "What value should you expect?",
+          "p": "The value shows in saved time, fewer errors, a better employee experience and central data that helps management decide faster. These are directions of value, not measured results or promised figures."
+        },
+        {
+          "h": "Signs sheets are no longer enough",
+          "p": "Approvals are late, versions differ between files, it is hard to know who was present and when, and one report takes hours to put together."
+        },
+        {
+          "h": "How do you move over gradually?",
+          "p": "Start with attendance, then requests and approvals, then reports. You don't need to move everything at once; you can expand usage as your team and needs grow."
+        },
+        {
+          "h": "What do you leave outside the system?",
+          "p": "You may keep some contracts and supporting documents where they are today. What matters is that day-to-day operations sit in one clear place everyone knows."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is Nizamy suitable for small businesses?",
+          "a": "Yes. Nizamy is designed for small and medium businesses in Saudi Arabia. Start with what you need today and expand usage as your team grows."
+        },
+        {
+          "q": "Are all capabilities available in every plan?",
+          "a": "No. Availability of each capability depends on the plan, and the active plans and prices are always in the Pricing section of the homepage."
+        },
+        {
+          "q": "Do I need technical experience?",
+          "a": "No. Self-guided setup is designed so you can start simply, with no technical experience."
+        },
+        {
+          "q": "Is Nizamy suitable for a very small team?",
+          "a": "Yes. Nizamy is designed for small and medium businesses, and you can start free."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "When attendance, requests and reports are scattered across Excel and WhatsApp, time is lost and decisions are late. Nizamy brings them into one experience that you can start free and grow with your team.",
+      "related": [
+        "payroll-readiness-checklist-saudi",
+        "face-attendance-system-saudi-arabia",
+        "ai-hr-small-steps-saudi-teams",
+        "ai-hr-assistant-employee-requests"
+      ]
+    }
+  },
+  "payroll-readiness-checklist-saudi": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sections": [
+        {
+          "h": "ليش آخر الشهر دايمًا زحمة؟",
+          "p": "لأن بيانات الحضور والإضافي والخصومات تُجمع في اللحظة الأخيرة من أماكن متفرقة. وكل ما تأخر الجمع زاد الضغط وزادت احتمالات الخطأ، والرواتب من أكثر عمليات الموارد البشرية حساسية لأن أي خطأ فيها يؤثر مباشرة على الموظف وثقة الفريق."
+        },
+        {
+          "h": "ماذا تراجع قبل الاعتماد؟",
+          "p": "ابدأ بسجلات الحضور والغياب، ثم الإضافي، ثم الخصومات والبدلات، وبعدها القسائم. يجمع نظامي الحضور والإضافي في مكان واحد، وتُجهَّز مدخلات الرواتب لتراجعها قبل الاعتماد."
+        },
+        {
+          "h": "وماذا عن حماية الأجور؟",
+          "p": "يتابع برنامج حماية الأجور صرف أجور القطاع الخاص في المملكة، ولذلك يفيدك أن تكون بياناتك مرتبة قبل إعداد الملف. يوفر نظامي أدوات لإعداد ملف حماية الأجور بضغطة واحدة بحسب الباقة. وتأكد دائمًا من المتطلبات والمواعيد من المصادر الرسمية."
+        },
+        {
+          "h": "جدول مقترح لآخر الشهر",
+          "p": "قبل خمسة أيام راجع الحضور والغياب. قبل ثلاثة أيام راجع الإضافي والخصومات والبدلات. قبل يومين جهّز القسائم والملف. وقبل الاعتماد أجرِ مراجعة أخيرة. هذا ترتيب مقترح للتوضيح وليس متطلبًا رسميًا."
+        },
+        {
+          "h": "ماذا لو اكتشفت خطأ؟",
+          "p": "صحّح الخطأ قبل الاعتماد، وسجّل سببه، وأبلغ الموظف المعني، واحتفظ بسجل واضح للتغييرات. وكلما كانت بياناتك مجمّعة في مكان واحد كان اكتشاف الخطأ أسهل."
+        },
+        {
+          "h": "لماذا تراجع الحضور قبل الرواتب؟",
+          "p": "لأن الحضور والإضافي أساس كثير من بنود المسير، وأي خطأ فيهما ينتقل مباشرة إلى الراتب. ومراجعتهما مبكرًا أرخص من تصحيحهما بعد الصرف."
+        },
+        {
+          "h": "ماذا توثّق؟",
+          "p": "وثّق الموافقات على الإضافي والخصومات، وأسباب أي تعديل، وتاريخ المراجعة، ومن اعتمد المسير. هذا يسهّل الرجوع إليه عند أي استفسار."
+        },
+        {
+          "h": "قائمة مراجعة الحضور بالتفصيل",
+          "p": "راجع الغياب المبرر وغير المبرر، والتأخيرات، والإجازات المعتمدة، والعمل الإضافي المعتمد. تأكد من أن كل بند له سجل واضح، وأن الاستثناءات موافق عليها، قبل أن تنتقل إلى الخطوة التالية."
+        },
+        {
+          "h": "مراجعة الإضافي والخصومات",
+          "p": "لكل ساعة إضافية موافقة موثقة، ولكل خصم سبب وسياسة واضحة. وراجع الأرقام مرة ثانية بعين مختلفة، فالأخطاء الصغيرة في هذه البنود هي الأكثر تكرارًا وتأثيرًا على ثقة الموظف."
+        },
+        {
+          "h": "قبل إعداد ملف حماية الأجور",
+          "p": "تأكد من اكتمال بيانات الموظفين وسلامتها، وأن أرقام المسير تطابق ما اعتمدته. ثم جهّز الملف وراجعه مرة أخيرة. يوفر نظامي أدوات لإعداد الملف بضغطة واحدة بحسب الباقة، وتبقى المتطلبات والمواعيد من المصادر الرسمية."
+        },
+        {
+          "h": "بعد الاعتماد",
+          "p": "احتفظ بنسخة من المسير والملف، وأبلغ الفريق بما يلزم، وسجّل أي ملاحظات تفيدك في الشهر القادم. المراجعة الخفيفة بعد كل دورة تجعل الدورة التالية أسهل."
+        },
+        {
+          "h": "أخطاء تتكرر كل شهر",
+          "p": "انتظار اليوم الأخير لتجميع البيانات، والتعديلات الشفهية بلا توثيق، وتعدد الملفات التي تحمل أرقامًا مختلفة. وأفضل علاج لها بيانات في مكان واحد ومراجعة مبكرة ومتكررة."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل هذه القائمة متطلبات رسمية؟",
+          "a": "لا. هي قائمة عامة للتوضيح. المتطلبات والمواعيد الرسمية تؤخذ من وزارة الموارد البشرية والتنمية الاجتماعية ومنصة مدد."
+        },
+        {
+          "q": "هل تتوفر ميزات الرواتب في كل الباقات؟",
+          "a": "تتوفر ميزات الرواتب بحسب الباقة. الباقات والأسعار الحالية في قسم الأسعار بالصفحة الرئيسية."
+        },
+        {
+          "q": "هل أحتاج إلى خبرة تقنية للبدء؟",
+          "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية."
+        },
+        {
+          "q": "متى أبدأ تجهيز المسير؟",
+          "a": "ابدأ مبكرًا بمراجعة الحضور أسبوعيًا بدل انتظار آخر الشهر. كلما تراكمت التفاصيل زادت احتمالات الخطأ."
+        },
+        {
+          "q": "ما الفرق بين مدخلات الرواتب والمسير الكامل؟",
+          "a": "مدخلات الرواتب هي بيانات الحضور والإضافي التي تُراجع قبل الاعتماد. وأدوات الرواتب في نظامي تتوسع لتشمل إدارة الرواتب بالكامل، وتتوفر بحسب الباقة."
+        },
+        {
+          "q": "ما أهم شيء أراجعه قبل الاعتماد؟",
+          "a": "الحضور والإضافي والخصومات، لأنها أكثر ما يتغير شهريًا وأكثر ما يؤثر على الراتب. ثم القسائم وملف حماية الأجور."
+        },
+        {
+          "q": "هل أراجع الخصومات مع الموظف؟",
+          "a": "من الجيد أن تكون الخصومات موثّقة ومفهومة للموظف وفق سياسة منشأتك، فالوضوح يقلل الأسئلة ويحفظ الثقة."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "جهّز مسير الرواتب قبل نهاية الشهر بمراجعة الحضور والإضافي والخصومات والقسائم وملف حماية الأجور، ثم اعتمد. الأدوات متاحة في نظامي بحسب الباقة.",
+      "related": [
+        "end-of-service-benefits-calculator-saudi",
+        "ramadan-working-hours-saudi-attendance",
+        "annual-leave-days-saudi-calculator"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sections": [
+        {
+          "h": "Why is month-end always a rush?",
+          "p": "Because attendance, overtime and deductions get gathered at the last minute from scattered places. The later the gathering, the more pressure and the more room for error, and payroll is among the most sensitive HR processes because any mistake directly affects the employee and the team's trust."
+        },
+        {
+          "h": "What should you review before approval?",
+          "p": "Start with attendance and absence records, then overtime, then deductions and allowances, and finally payslips. Nizamy brings attendance and overtime together in one place, and payroll inputs are prepared for you to review before approval."
+        },
+        {
+          "h": "And Wage Protection?",
+          "p": "The Wage Protection Program follows how private-sector wages are paid in the Kingdom, so it helps to have your data in order before preparing the file. Nizamy provides tools to produce a Wage Protection file in one click, depending on the plan. Always confirm requirements and deadlines from the official sources."
+        },
+        {
+          "h": "A suggested month-end timeline",
+          "p": "Five days before, review attendance and absence. Three days before, review overtime, deductions and allowances. Two days before, prepare the payslips and the file. And before approval, do a final review. This is a suggested order for illustration, not an official requirement."
+        },
+        {
+          "h": "What if you find a mistake?",
+          "p": "Fix it before approval, record the reason, tell the employee concerned, and keep a clear record of changes. The more your data sits in one place, the easier mistakes are to spot."
+        },
+        {
+          "h": "Why review attendance before payroll?",
+          "p": "Because attendance and overtime underpin many payroll lines, and any error in them goes straight into pay. Reviewing them early is cheaper than correcting them after payment."
+        },
+        {
+          "h": "What should you document?",
+          "p": "Document approvals for overtime and deductions, the reason for any adjustment, the review date, and who approved the run. That makes it easy to go back to when questions come up."
+        },
+        {
+          "h": "The attendance review in detail",
+          "p": "Review excused and unexcused absence, lateness, approved leave and approved overtime. Make sure each item has a clear record and that exceptions are approved before you move to the next step."
+        },
+        {
+          "h": "Reviewing overtime and deductions",
+          "p": "Every overtime hour has a documented approval, and every deduction has a clear reason and policy. Check the numbers a second time with fresh eyes, since small errors in these lines are the most frequent and the most damaging to employee trust."
+        },
+        {
+          "h": "Before you prepare the Wage Protection file",
+          "p": "Make sure employee data is complete and correct and that the run's figures match what you approved. Then prepare the file and review it one last time. Nizamy provides tools to produce the file in one click depending on the plan, and requirements and deadlines stay with the official sources."
+        },
+        {
+          "h": "After approval",
+          "p": "Keep a copy of the run and the file, tell the team what they need to know, and note anything that will help next month. A light review after each cycle makes the next one easier."
+        },
+        {
+          "h": "Mistakes that repeat every month",
+          "p": "Waiting for the last day to gather data, verbal changes with no record, and several files carrying different numbers. The best cure is data in one place and early, repeated review."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is this checklist an official requirement?",
+          "a": "No. It is a general illustration. Official requirements and deadlines come from the Ministry of Human Resources and Social Development and Mudad."
+        },
+        {
+          "q": "Are payroll features available in every plan?",
+          "a": "Payroll features are available according to the plan. The current plans and prices are in the Pricing section of the homepage."
+        },
+        {
+          "q": "Do I need technical experience to start?",
+          "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience."
+        },
+        {
+          "q": "When should I start preparing payroll?",
+          "a": "Start early by reviewing attendance weekly instead of waiting for month-end. The more details pile up, the more likely errors become."
+        },
+        {
+          "q": "What is the difference between payroll inputs and the full payroll run?",
+          "a": "Payroll inputs are the attendance and overtime data you review before approval. Nizamy's payroll tools are expanding to cover full payroll management, available according to the plan."
+        },
+        {
+          "q": "What matters most to review before approval?",
+          "a": "Attendance, overtime and deductions, since they change most each month and affect pay the most. Then payslips and the Wage Protection file."
+        },
+        {
+          "q": "Should I review deductions with the employee?",
+          "a": "It is good for deductions to be documented and understandable to the employee under your company policy. Clarity reduces questions and protects trust."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Get payroll ready before month-end by reviewing attendance, overtime, deductions, payslips and the Wage Protection file, then approve. The tools are available in Nizamy depending on the plan.",
+      "related": [
+        "end-of-service-benefits-calculator-saudi",
+        "ramadan-working-hours-saudi-attendance",
+        "annual-leave-days-saudi-calculator"
+      ]
+    }
+  },
+  "ramadan-working-hours-saudi-attendance": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "وزارة الموارد البشرية: ساعات العمل الفعلية",
+          "url": "https://www.hrsd.gov.sa/en/knowledge-centre/articles/312"
+        },
+        {
+          "label": "وزارة الموارد البشرية: دليل التوعية بحقوق وواجبات صاحب العمل والعامل",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "كم ساعة في رمضان؟",
+          "p": "بحسب نظام العمل السعودي (المادة ٩٨) تُخفَّض ساعات العمل الفعلية في رمضان للموظفين المسلمين بحيث لا تتجاوز ٦ ساعات يوميًا أو ٣٦ ساعة أسبوعيًا، بينما الحد المعتاد ٨ ساعات يوميًا و٤٨ ساعة أسبوعيًا. راجع النص الرسمي لأي تفصيل."
+        },
+        {
+          "h": "أمثلة على جداول رمضان",
+          "p": "جدول ٦ أيام × ٦ ساعات = ٣٦ ساعة، وهو ضمن الحدين اليومي والأسبوعي. جدول ٥ أيام × ٧ ساعات = ٣٥ ساعة: ضمن الحد الأسبوعي لكنه يتجاوز الحد اليومي (٦ ساعات)، لذلك يجب مراجعة الحدين معًا. جدول ٥ أيام × ٦ ساعات = ٣٠ ساعة، ضمن الحدين. هذه أمثلة توضيحية للموظفين المسلمين."
+        },
+        {
+          "h": "ليش يربك رمضان الحضور؟",
+          "p": "تتغير الجداول والورديات، وتختلف الساعات بين الموظفين المسلمين وغيرهم، وتزيد الأسئلة اليومية. وعندما تعتمد المتابعة على جداول ورسائل متفرقة يصعب أن تعرف من حضر ومتى."
+        },
+        {
+          "h": "كيف يساعدك نظامي؟",
+          "p": "يسجّل الموظفون حضورهم من الجوال دون جهاز بصمة، ويتحقق نظامي من الموقع، وتتحول بيانات الحضور إلى تقارير تساعدك على متابعة الالتزام. أنت تحدد جداول رمضان وفق سياسة منشأتك والنظام، ونظامي يساعدك على متابعة الحضور فيها."
+        },
+        {
+          "h": "كيف تخطط جدول الدوام في رمضان؟",
+          "p": "ابدأ بتحديد ساعات العمل الفعلية لكل فئة من الموظفين، ثم وزّع الورديات بحيث لا يتجاوز مجموع كل موظف الحد اليومي والأسبوعي المطبَّق عليه. أبلغ الفريق بالجدول مبكرًا، ووحّد طريقة تسجيل الحضور حتى تكون البيانات قابلة للمقارنة بين الفروع والورديات."
+        },
+        {
+          "h": "أخطاء شائعة في رمضان",
+          "p": "من الأخطاء المتكررة تطبيق جدول واحد على جميع الموظفين دون مراعاة اختلاف الحد بين المسلمين وغيرهم، أو ترك الجداول في رسائل متفرقة، أو انتظار نهاية الشهر لمراجعة الحضور والإضافي. المتابعة اليومية أسهل من التصحيح المتأخر."
+        },
+        {
+          "h": "قائمة تجهيز قبل رمضان",
+          "p": "حدّد ساعات كل فئة من الموظفين، وأعدّ الجداول والورديات، وأبلغ الفريق مبكرًا، وتأكد من أن طريقة تسجيل الحضور موحدة بين الفروع، وراجع كيف ستحتسب الإضافي وفق النظام وسياستك."
+        },
+        {
+          "h": "الموظفون المسلمون وغير المسلمين",
+          "p": "الحد المخفّض في رمضان يخص الموظفين المسلمين، لذلك قد تحتاج إلى جدولين مختلفين داخل الفريق الواحد. صنّف الجداول بوضوح، وأبلغ كل فئة بجدولها، وتأكد من تطبيق الحد الصحيح على كل موظف."
+        },
+        {
+          "h": "كيف تتابع الحضور خلال الشهر؟",
+          "p": "راجع الحضور أسبوعيًا بدل انتظار نهاية الشهر: قارن الجدول المخطَّط بالحضور الفعلي، وانظر إلى أنماط التأخير، وتحقق من الإضافي قبل أن يتراكم. وتتحول بيانات الحضور في نظامي إلى تقارير تساعدك على هذه المتابعة."
+        },
+        {
+          "h": "كيف تتواصل مع الفريق؟",
+          "p": "أعلن الجدول مبكرًا وبوضوح، وحدّد أين يسأل الموظف عن أي تغيير، واجعل الطلبات والموافقات تمر عبر قناة واحدة بدل الرسائل المتفرقة. فالوضوح المبكر يوفّر عليك أسئلة كثيرة خلال الشهر."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل ينطبق الحد المخفّض على الجميع؟",
+          "a": "ينص النظام على تخفيض ساعات العمل الفعلية في رمضان للموظفين المسلمين. راجع النص الرسمي لأي حالة أخرى."
+        },
+        {
+          "q": "هل يغيّر نظامي ساعات الدوام تلقائيًا؟",
+          "a": "ساعات الدوام والجداول تحددها منشأتك وفق النظام، ويساعدك نظامي على متابعة الحضور والالتزام بها."
+        },
+        {
+          "q": "هل أحتاج إلى جهاز بصمة؟",
+          "a": "لا. يسجّل الموظفون حضورهم من هواتفهم، دون الحاجة إلى تركيب أجهزة بصمة في كل فرع."
+        },
+        {
+          "q": "كيف أتابع الإضافي في رمضان؟",
+          "a": "يجمع نظامي الحضور والإضافي في مكان واحد لتراجعه قبل الاعتماد، وطريقة احتساب الأجر الإضافي تتبع النظام وسياسة منشأتك."
+        },
+        {
+          "q": "هل تختلف ساعات رمضان بين الفروع؟",
+          "a": "يحدد النظام الحد الأقصى، وجداول فروعك تحددها سياستك بما لا يتجاوز هذا الحد. ويساعدك نظامي على متابعة الحضور في كل فرع."
+        },
+        {
+          "q": "هل أخبر الموظفين بجدول رمضان مسبقًا؟",
+          "a": "يُفضَّل ذلك، فالجدول الواضح والمبكر يقلل الأسئلة والأخطاء ويجعل متابعة الحضور أسهل."
+        },
+        {
+          "q": "ماذا يحدث بعد رمضان؟",
+          "a": "بعد رمضان يعود الحد المعتاد ٨ ساعات يوميًا و٤٨ ساعة أسبوعيًا بحسب النظام. حدّث جداولك مبكرًا حتى لا يتأخر الرجوع إليها."
+        },
+        {
+          "q": "كيف أحسب المجموع الأسبوعي؟",
+          "a": "اضرب أيام الدوام في ساعات اليوم، ثم قارن النتيجة بالحدين اليومي والأسبوعي معًا، كما في الحاسبة أعلاه."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "في رمضان لا تتجاوز ساعات العمل الفعلية للموظفين المسلمين ٦ ساعات يوميًا و٣٦ ساعة أسبوعيًا، مقابل ٨ و٤٨ خارج رمضان (المادة ٩٨). رتّب الجدول مبكرًا وتابع الحضور يوميًا.",
+      "related": [
+        "annual-leave-days-saudi-calculator",
+        "payroll-readiness-checklist-saudi",
+        "face-attendance-system-saudi-arabia"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "HRSD: Actual working hours",
+          "url": "https://www.hrsd.gov.sa/en/knowledge-centre/articles/312"
+        },
+        {
+          "label": "HRSD: Awareness guide on the rights and duties of employers and workers",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "How many hours in Ramadan?",
+          "p": "Under the Saudi Labor Law (Article 98), actual working hours in Ramadan are reduced for Muslim employees so they do not exceed 6 hours a day or 36 hours a week, while the usual limit is 8 hours a day and 48 hours a week. Check the official text for any detail."
+        },
+        {
+          "h": "Examples of Ramadan schedules",
+          "p": "6 days × 6 hours = 36 hours, within both the daily and weekly limits. 5 days × 7 hours = 35 hours: within the weekly limit but over the daily limit (6 hours), so check both limits together. 5 days × 6 hours = 30 hours, within both. These are illustrative examples for Muslim employees."
+        },
+        {
+          "h": "Why does Ramadan confuse attendance?",
+          "p": "Schedules and shifts change, hours differ between Muslim and non-Muslim employees, and daily questions increase. When follow-up relies on scattered sheets and messages, it is hard to know who was present and when."
+        },
+        {
+          "h": "How does Nizamy help?",
+          "p": "Employees check in from their phones without a fingerprint device, Nizamy checks location, and attendance data turns into reports that help you follow commitment. You set the Ramadan schedules according to your company policy and the law, and Nizamy helps you follow attendance against them."
+        },
+        {
+          "h": "How do you plan the Ramadan schedule?",
+          "p": "Start by setting the actual working hours for each group of employees, then spread shifts so each employee's total stays within the daily and weekly limit that applies to them. Tell the team the schedule early, and use one way of recording attendance so data is comparable across branches and shifts."
+        },
+        {
+          "h": "Common Ramadan mistakes",
+          "p": "Frequent mistakes include applying one schedule to everyone without allowing for the different limit between Muslim and non-Muslim employees, leaving schedules in scattered messages, or waiting until month-end to review attendance and overtime. Daily follow-up is easier than late correction."
+        },
+        {
+          "h": "A pre-Ramadan checklist",
+          "p": "Set hours for each group of employees, prepare schedules and shifts, tell the team early, make sure attendance is recorded the same way across branches, and review how overtime will be calculated under the law and your policy."
+        },
+        {
+          "h": "Muslim and non-Muslim employees",
+          "p": "The reduced Ramadan limit applies to Muslim employees, so you may need two different schedules within one team. Label schedules clearly, tell each group about theirs, and make sure the right limit is applied to each employee."
+        },
+        {
+          "h": "How do you follow attendance through the month?",
+          "p": "Review attendance weekly instead of waiting for month-end: compare the planned schedule with actual attendance, look at lateness patterns, and check overtime before it piles up. Attendance data in Nizamy turns into reports that help with this follow-up."
+        },
+        {
+          "h": "How do you communicate with the team?",
+          "p": "Announce the schedule early and clearly, say where employees should ask about any change, and run requests and approvals through one channel instead of scattered messages. Early clarity saves many questions during the month."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Does the reduced limit apply to everyone?",
+          "a": "The law reduces actual working hours in Ramadan for Muslim employees. Check the official text for any other case."
+        },
+        {
+          "q": "Does Nizamy change working hours automatically?",
+          "a": "Working hours and schedules are set by your company in line with the law, and Nizamy helps you follow attendance and commitment against them."
+        },
+        {
+          "q": "Do I need a fingerprint device?",
+          "a": "No. Employees check in from their own phones, with no fingerprint devices to install at every branch."
+        },
+        {
+          "q": "How do I follow overtime in Ramadan?",
+          "a": "Nizamy brings attendance and overtime together in one place for you to review before approval, and how overtime pay is calculated follows the law and your company policy."
+        },
+        {
+          "q": "Do Ramadan hours differ between branches?",
+          "a": "The law sets the maximum, and your branches' schedules are set by your policy within that limit. Nizamy helps you follow attendance at each branch."
+        },
+        {
+          "q": "Should I tell employees the Ramadan schedule in advance?",
+          "a": "It is better to, because a clear and early schedule cuts questions and mistakes and makes attendance easier to follow."
+        },
+        {
+          "q": "What happens after Ramadan?",
+          "a": "After Ramadan the usual limit of 8 hours a day and 48 hours a week returns under the law. Update your schedules early so the switch back is not late."
+        },
+        {
+          "q": "How do I work out the weekly total?",
+          "a": "Multiply working days by daily hours, then compare the result with both the daily and the weekly limit, as in the calculator above."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "In Ramadan, actual working hours for Muslim employees must not exceed 6 hours a day and 36 a week, against 8 and 48 outside Ramadan (Article 98). Plan the schedule early and follow attendance daily.",
+      "related": [
+        "annual-leave-days-saudi-calculator",
+        "payroll-readiness-checklist-saudi",
+        "face-attendance-system-saudi-arabia"
+      ]
+    }
+  },
+  "annual-leave-days-saudi-calculator": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "وزارة الموارد البشرية: دليل التوعية بحقوق وواجبات صاحب العمل والعامل",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "كم الحد الأدنى؟",
+          "p": "بحسب نظام العمل (المادة ١٠٩) لا تقل الإجازة السنوية عن ٢١ يومًا لكل سنة، وتزيد إلى ٣٠ يومًا على الأقل إذا أتم الموظف خمس سنوات متصلة لدى نفس صاحب العمل. وقد تمنح المنشأة أكثر من ذلك في العقد أو السياسة."
+        },
+        {
+          "h": "أمثلة سريعة",
+          "p": "موظف خدمته ٣ سنوات متصلة: الحد الأدنى ٢١ يومًا للسنة. موظف أتم ٥ سنوات متصلة لدى نفس صاحب العمل: الحد الأدنى ٣٠ يومًا. موظف انتقل بين جهات أو انقطعت خدمته: راجع النص الرسمي لتحديد الخدمة المتصلة في حالته. وقد تمنح منشأتك أكثر من الحد الأدنى في العقد أو السياسة."
+        },
+        {
+          "h": "ليش تتعب إدارة الإجازات؟",
+          "p": "الطلبات والموافقات والأرصدة عندما تُدار بالرسائل والجداول تضيع بسهولة، ويطول انتظار الموظف للرد، ويصعب على الفريق أن يعرف ما تم وما ينتظر."
+        },
+        {
+          "h": "كيف يساعدك نظامي؟",
+          "p": "يمكن للموظفين متابعة المستندات والطلبات والموافقات عبر الخدمة الذاتية، فيصير المسار أوضح لهم ولفريق الموارد البشرية."
+        },
+        {
+          "h": "وأنواع الإجازات الأخرى؟",
+          "p": "للنظام أنواع أخرى من الإجازات، منها الإجازة المرضية، وتختلف شروطها وأجرها عن الإجازة السنوية. راجع النص الرسمي، وتجد في المدونة دليلنا التوضيحي للإجازة المرضية."
+        },
+        {
+          "h": "كيف تدير طلبات الإجازة بلا فوضى؟",
+          "p": "اجعل لكل طلب مسارًا واضحًا: من يقدّم، ومن يوافق، وكم المدة المتوقعة للرد، وأين يرى الموظف حالة طلبه. وكلما قلّت الرسائل المتفرقة قلّت الأخطاء وزادت الثقة."
+        },
+        {
+          "h": "كيف تحسب سنوات الخدمة المتصلة؟",
+          "p": "الأمر يرتبط بالخدمة المتصلة لدى نفس صاحب العمل. إن كان لديك انقطاع أو انتقال بين جهات، فراجع النص الرسمي لحالتك."
+        },
+        {
+          "h": "ما الذي تحدده في سياسة الإجازات؟",
+          "p": "من يقدّم الطلب، ومن يوافق، وكم مدة الرد المتوقعة، وكيف يُسلَّم العمل قبل الإجازة. وضوح هذه الخطوات يقلل الخلافات ويجعل الجميع يعرف ما ينتظره."
+        },
+        {
+          "h": "كيف تخطط الإجازات على مستوى الفريق؟",
+          "p": "وزّع الإجازات على أشهر السنة بدل تجميعها في موسم واحد، وحدّد فترات الذروة التي يصعب فيها الغياب، ونسّق بين الفرق حتى لا يغيب من يغطي بعضهم بعضًا في الوقت نفسه. التخطيط المبكر يقلل الاعتراضات وضغط آخر لحظة."
+        },
+        {
+          "h": "قائمة تسليم قبل الإجازة",
+          "p": "حدّد المهام الجارية، ومن ينوب عن الموظف، وما يحتاجه النائب من معلومات ووصول، وجهة تواصل للأمور الطارئة. تسليم واضح يجعل الإجازة راحة حقيقية للموظف واستمرارًا سلسًا للعمل."
+        },
+        {
+          "h": "ماذا توثّق في كل طلب؟",
+          "p": "وثّق تاريخ الطلب والموافقة، والأيام المطلوبة والمستخدمة والمتبقية، وأي ملاحظات. السجل الواضح يمنع الخلاف حول الأرصدة ويسهّل المراجعة عند الحاجة."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل الحد الأدنى نفسه لكل الموظفين؟",
+          "a": "يعتمد على سنوات الخدمة المتصلة مع نفس صاحب العمل وعلى عقدك وسياسة المنشأة. راجع النص الرسمي لحالتك."
+        },
+        {
+          "q": "هل يمكن تأجيل الإجازة أو استبدالها بمبلغ؟",
+          "a": "للنظام أحكام خاصة بإشعار الإجازة وتأجيلها وبدل الإجازة. راجع النص الرسمي في وزارة الموارد البشرية والتنمية الاجتماعية."
+        },
+        {
+          "q": "هل أحتاج إلى خبرة تقنية للبدء؟",
+          "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية."
+        },
+        {
+          "q": "أين أتابع طلبات الإجازة في نظامي؟",
+          "a": "عبر الخدمة الذاتية، حيث يمكن للموظفين متابعة الطلبات والمستندات والموافقات."
+        },
+        {
+          "q": "كيف أضع سياسة إجازات واضحة؟",
+          "a": "اكتب خطوات الطلب والموافقة والتسليم، واشرحها للفريق، واربطها بالحد الأدنى النظامي وما تمنحه منشأتك زيادة عليه."
+        },
+        {
+          "q": "هل أحتاج إلى سجل أرصدة للإجازات؟",
+          "a": "السجل الواضح يقلل الخلافات ويسهّل المراجعة. وتساعد الخدمة الذاتية في نظامي الموظفين على متابعة الطلبات والموافقات."
+        },
+        {
+          "q": "من يحدد موعد الإجازة؟",
+          "a": "للنظام أحكام خاصة بتحديد موعد الإجازة وإشعار الموظف بها. راجع النص الرسمي وسياسة منشأتك."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "الحد الأدنى للإجازة السنوية ٢١ يومًا لكل سنة، ويصير ٣٠ يومًا بعد خمس سنوات متصلة لدى نفس صاحب العمل (المادة ١٠٩). وقد تمنح المنشأة أكثر في العقد أو السياسة.",
+      "related": [
+        "sick-leave-pay-saudi-labor-law",
+        "ramadan-working-hours-saudi-attendance",
+        "end-of-service-benefits-calculator-saudi"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "HRSD: Awareness guide on the rights and duties of employers and workers",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "What is the minimum?",
+          "p": "Under the Saudi Labor Law (Article 109), annual leave is not less than 21 days per year, rising to at least 30 days once the employee has completed five consecutive years with the same employer. A company may grant more in the contract or policy."
+        },
+        {
+          "h": "Quick examples",
+          "p": "An employee with 3 continuous years: a minimum of 21 days for the year. An employee who has completed 5 continuous years with the same employer: a minimum of 30 days. An employee who moved between entities or had a break in service: check the official text to see how continuous service applies. And your company may grant more than the minimum in the contract or policy."
+        },
+        {
+          "h": "Why is leave management tiring?",
+          "p": "When requests, approvals and balances are handled through messages and sheets, they get lost easily, employees wait longer for answers, and the team struggles to see what is done and what is pending."
+        },
+        {
+          "h": "How does Nizamy help?",
+          "p": "Employees can follow documents, requests and approvals through self-service, so the path is clearer for them and for the HR team."
+        },
+        {
+          "h": "And other types of leave?",
+          "p": "The law has other types of leave, including sick leave, whose conditions and pay differ from annual leave. Check the official text, and see our illustrative sick-leave guide in the blog."
+        },
+        {
+          "h": "How do you manage leave requests without chaos?",
+          "p": "Give every request a clear path: who submits it, who approves it, how long a reply should take, and where the employee sees its status. The fewer scattered messages, the fewer errors and the more trust."
+        },
+        {
+          "h": "How do you count continuous years of service?",
+          "p": "It relates to continuous service with the same employer. If you have a break or a move between entities, check the official text for your case."
+        },
+        {
+          "h": "What belongs in a leave policy?",
+          "p": "Who submits a request, who approves it, how long a reply should take, and how work is handed over before leave. Clear steps reduce disputes and let everyone know what to expect."
+        },
+        {
+          "h": "How do you plan leave across the team?",
+          "p": "Spread leave across the months instead of bunching it into one season, mark peak periods when absence is hard, and coordinate between teams so people who cover for each other are not away at once. Early planning cuts objections and last-minute pressure."
+        },
+        {
+          "h": "A handover checklist before leave",
+          "p": "Name the tasks in progress, who covers, what information and access the cover needs, and a contact for emergencies. A clear handover makes leave a real break for the employee and keeps work running smoothly."
+        },
+        {
+          "h": "What do you document on each request?",
+          "p": "Document the request and approval dates, the days requested, used and remaining, and any notes. A clear record prevents disputes over balances and makes review easy when needed."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the minimum the same for every employee?",
+          "a": "It depends on years of continuous service with the same employer, your contract and your company policy. Check the official text for your case."
+        },
+        {
+          "q": "Can leave be postponed or paid out instead?",
+          "a": "The law has specific rules on leave notice, postponement and leave pay. Check the official text from the Ministry of Human Resources and Social Development."
+        },
+        {
+          "q": "Do I need technical experience to start?",
+          "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience."
+        },
+        {
+          "q": "Where do I follow leave requests in Nizamy?",
+          "a": "Through self-service, where employees can follow requests, documents and approvals."
+        },
+        {
+          "q": "How do I write a clear leave policy?",
+          "a": "Write the steps for requesting, approving and handing over, explain them to the team, and link them to the statutory minimum and whatever your company grants on top."
+        },
+        {
+          "q": "Do I need a leave balance record?",
+          "a": "A clear record reduces disputes and makes review easier. Nizamy's self-service helps employees follow requests and approvals."
+        },
+        {
+          "q": "Who decides when leave is taken?",
+          "a": "The law has specific provisions on setting the date of leave and notifying the employee. Check the official text and your company policy."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "The minimum annual leave is 21 days per year, rising to 30 days after five consecutive years with the same employer (Article 109). A company may grant more in the contract or policy.",
+      "related": [
+        "sick-leave-pay-saudi-labor-law",
+        "ramadan-working-hours-saudi-attendance",
+        "end-of-service-benefits-calculator-saudi"
+      ]
+    }
+  },
+  "read-attendance-signals-fairly-saudi": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "Ipsos: GCC People Pulse (الربع الثاني 2026)",
+          "url": "https://www.ipsos.com/en-ae/node/1079246"
+        }
+      ],
+      "sections": [
+        {
+          "h": "ماذا يقول لك الحضور؟",
+          "p": "يعطيك الحضور والالتزام صورة عن الأنماط: من يتأخر كثيرًا، ومن غاب فجأة، ومن التزامه ثابت. لكنه لا يقول لك «ليش». هنا يجي دور الحوار والسياق."
+        },
+        {
+          "h": "ليش الإنصاف يهم؟",
+          "p": "بحسب استطلاع Ipsos «GCC People Pulse» للربع الثاني من 2026 (١٬٥٠٠ موظف في الإمارات والسعودية والكويت وقطر) قال ٥٤٪ إنهم يشعرون بضغط مستمر في العمل. هذا استطلاع إقليمي وليس مقياسًا لمنشأتك، لكنه يذكّرنا أن قراءة الأرقام بعدل تهم."
+        },
+        {
+          "h": "التقدير جزء من الحل",
+          "p": "يساعد نظام المكافآت المرن على ربط الالتزام اليومي بالتقدير المناسب. ضع معايير واضحة، واشرحها للفريق، واجعل التقدير متسقًا مع ثقافة العمل."
+        },
+        {
+          "h": "أسئلة تسألها قبل أي إجراء",
+          "p": "هل تواصلت مع الموظف؟ وما الظروف؟ هل الجدول أو الوردية مناسبان؟ هل تكررت الإشارة أم هي حالة واحدة؟ هذه الأسئلة تحوّل الرقم إلى فهم."
+        },
+        {
+          "h": "متى يصبح الإجراء الرسمي مناسبًا؟",
+          "p": "عندما تتكرر الإشارة وتستمر بعد الحوار، يصبح التوثيق والإجراء وفق سياسة المنشأة والنظام مناسبًا. ويبقى السياق والعدالة جزءًا من القرار."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل يكشف نظامي الإرهاق؟",
+          "a": "لا. يعطيك نظامي بيانات حضور والتزام تساعدك على الحوار والمتابعة، ولا يقيس الإرهاق ولا يحكم على الموظفين."
+        },
+        {
+          "q": "هل تكفي تقارير الحضور لاتخاذ إجراء عقابي؟",
+          "a": "لا. التقارير أداة مساندة للقرار، والقرار يحتاج سياقًا وسياسة وحوارًا."
+        },
+        {
+          "q": "هل يدعم نظامي المكافآت؟",
+          "a": "نعم. يدعم نظامي مكافآت ذكية وبطاقات هدايا لربط الالتزام بالتقدير، وتتوفر الميزات بحسب الباقة."
+        },
+        {
+          "q": "كيف أبدأ الحوار مع موظف يتأخر كثيرًا؟",
+          "a": "ابدأ بسؤال مفتوح وهادئ عن الظروف، وراجع الجدول والوردية، ثم اتفقا على خطوة واضحة وموعد للمتابعة."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "التأخير والغياب إشارات تحتاج حوارًا قبل القرار. اسأل أولًا عن الظروف، ثم اتخذ خطوة عادلة، وقدّر الالتزام الثابت. التقارير أداة مساندة وليست حكمًا.",
+      "related": [
+        "face-attendance-system-saudi-arabia",
+        "sick-leave-pay-saudi-labor-law",
+        "ramadan-working-hours-saudi-attendance",
+        "ai-hr-assistant-employee-requests"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "Ipsos: GCC People Pulse (Q2 2026)",
+          "url": "https://www.ipsos.com/en-ae/node/1079246"
+        }
+      ],
+      "sections": [
+        {
+          "h": "What does attendance tell you?",
+          "p": "Attendance and commitment data shows you patterns: who is often late, who was suddenly absent, and whose commitment is steady. But it doesn't tell you why. That is where conversation and context come in."
+        },
+        {
+          "h": "Why does fairness matter?",
+          "p": "In Ipsos's GCC People Pulse for Q2 2026 (1,500 employees in the UAE, Saudi Arabia, Kuwait and Qatar), 54% said they feel under constant strain at work. That is a regional survey, not a measure of your company, but it reminds us that reading numbers fairly matters."
+        },
+        {
+          "h": "Recognition is part of the answer",
+          "p": "A flexible rewards approach helps connect everyday commitment with meaningful recognition. Set clear criteria, explain them to the team, and keep recognition consistent with your culture."
+        },
+        {
+          "h": "Questions to ask before any action",
+          "p": "Have you reached out to the employee? What are the circumstances? Are the schedule or shift right for them? Is it a repeated signal or a one-off? These questions turn a number into understanding."
+        },
+        {
+          "h": "When does formal action become appropriate?",
+          "p": "When the signal repeats and continues after the conversation, documentation and action under company policy and the law become appropriate. Context and fairness remain part of the decision."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Does Nizamy detect burnout?",
+          "a": "No. Nizamy gives you attendance and commitment data to support conversation and follow-up. It does not measure burnout or judge employees."
+        },
+        {
+          "q": "Are attendance reports enough to take disciplinary action?",
+          "a": "No. Reports are decision support; a decision needs context, policy and conversation."
+        },
+        {
+          "q": "Does Nizamy support rewards?",
+          "a": "Yes. Nizamy supports smart rewards and gift cards to link commitment with recognition, with features available according to the plan."
+        },
+        {
+          "q": "How do I start the conversation with an employee who is often late?",
+          "a": "Start with a calm, open question about circumstances, review the schedule and shift, then agree a clear step and a date to follow up."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Lateness and absence are signals that need a conversation before a decision. Ask about circumstances first, then take a fair step, and recognise steady commitment. Reports are decision support, not a verdict.",
+      "related": [
+        "face-attendance-system-saudi-arabia",
+        "sick-leave-pay-saudi-labor-law",
+        "ramadan-working-hours-saudi-attendance",
+        "ai-hr-assistant-employee-requests"
+      ]
+    }
+  },
+  "ai-hr-small-steps-saudi-teams": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "People Matters: فجوة جاهزية الذكاء الاصطناعي لدى قادة الموارد البشرية في الخليج",
+          "url": "https://me.peoplemattersglobal.com/news/strategic-hr/gulf-hr-leaders-face-ai-readiness-gap-93percent-explore-ai-but-only-1percent-are-ready-to-scale-51688"
+        }
+      ],
+      "sections": [
+        {
+          "h": "ليش يتعثر الذكاء الاصطناعي؟",
+          "p": "تشير تقارير إقليمية إلى أن معظم المنظمات في الخليج تستكشف الذكاء الاصطناعي في الموارد البشرية، بينما أقل منها بكثير جاهزة للتوسع فيه. والفرق بين التجربة والاستخدام اليومي غالبًا يكون في الوضوح: ماذا نجرّب؟ من يراجع؟ ومتى نوسّع؟"
+        },
+        {
+          "h": "كيف تبدأ بدون تعقيد؟",
+          "p": "اختر سؤالًا متكررًا واحدًا، وجرّب، وراجع، وحدّد المسؤول، ثم وسّع. يضيف نظامي مساعدًا ذكيًا إلى خدمات الموظفين ليرد على طلبات الموارد البشرية والأسئلة المتكررة."
+        },
+        {
+          "h": "أين يبقى الإنسان؟",
+          "p": "الهدف ليس استبدال الحكم الإنساني في القرارات المتعلقة بالأشخاص، بل تقليل الأعمال الإدارية القابلة للتفادي. تظل سياساتك وموظفوك وقراراتك في صميم العملية، ويُنصح بمراجعة مخرجات الذكاء الاصطناعي وفق سياسات المنشأة."
+        },
+        {
+          "h": "كيف تختار أول سؤال؟",
+          "p": "اختر سؤالًا يتكرر كثيرًا، وإجابته واضحة في سياسة منشأتك، ولا يتضمن قرارًا حساسًا. بهذا تجرّب بأمان وتتعلم بسرعة."
+        },
+        {
+          "h": "علامات أنك جاهز للتوسع",
+          "p": "تتطابق الإجابات مع سياستك، ويرتاح الفريق لمراجعتها، ويقل الوقت الذي تقضيه في المتابعة المتكررة. عندها أضف نوعًا آخر من الطلبات."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل أحتاج إلى فريق تقني؟",
+          "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية."
+        },
+        {
+          "q": "هل يستبدل المساعد فريق الموارد البشرية؟",
+          "a": "لا. يقلل المساعد الأعمال المتكررة ليتفرغ الفريق للمواقف التي تحتاج إلى خبرة وتعاطف، والقرار يبقى بيد الإنسان."
+        },
+        {
+          "q": "هل يمكنني البدء مجانًا؟",
+          "a": "نعم. يمكنك البدء مجانًا دون بطاقة ائتمانية، ثم الانتقال إلى قدرات أكبر عندما يكبر فريقك."
+        },
+        {
+          "q": "ما أول شيء أجرّبه مع المساعد الذكي؟",
+          "a": "ابدأ بسؤال متكرر وبسيط عن الطلبات أو المستندات، ثم راجع الإجابات قبل أن تعتمد عليها."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "ابدأ بالذكاء الاصطناعي بسؤال متكرر واحد، جرّبه، راجع الإجابات، حدّد المسؤول، ثم وسّع تدريجيًا. القرار في الأمور المتعلقة بالأشخاص يبقى للإنسان.",
+      "related": [
+        "ai-hr-assistant-employee-requests",
+        "replace-excel-whatsapp-hr-management",
+        "read-attendance-signals-fairly-saudi"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "People Matters: Gulf HR leaders face an AI readiness gap",
+          "url": "https://me.peoplemattersglobal.com/news/strategic-hr/gulf-hr-leaders-face-ai-readiness-gap-93percent-explore-ai-but-only-1percent-are-ready-to-scale-51688"
+        }
+      ],
+      "sections": [
+        {
+          "h": "Why does AI stall?",
+          "p": "Regional reports suggest most organisations in the Gulf are exploring AI in HR, while far fewer are ready to scale it. The gap between a trial and daily use is often clarity: what do we try, who reviews, and when do we expand?"
+        },
+        {
+          "h": "How do you start without the fuss?",
+          "p": "Pick one repeated question, try it, review it, name an owner, then expand. Nizamy adds an AI assistant to employee services to respond to HR requests and repeated questions."
+        },
+        {
+          "h": "Where do humans stay in charge?",
+          "p": "The goal is not to replace human judgment in decisions about people, but to reduce avoidable admin. Your policies, your people and your decisions stay at the heart of the process, and AI-generated output should be reviewed in line with your organization's policies."
+        },
+        {
+          "h": "How do you pick the first question?",
+          "p": "Pick a question that comes up often, whose answer is clear in your company policy, and that doesn't involve a sensitive decision. That way you try things safely and learn fast."
+        },
+        {
+          "h": "Signs you are ready to expand",
+          "p": "Answers match your policy, the team is comfortable reviewing them, and the time you spend on repeated follow-up falls. Then add another type of request."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do I need a technical team?",
+          "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience."
+        },
+        {
+          "q": "Does the assistant replace the HR team?",
+          "a": "No. It reduces repeated admin so the team can focus on situations that need experience and empathy, and decisions stay with people."
+        },
+        {
+          "q": "Can I start for free?",
+          "a": "Yes. You can start free with no credit card, then move to larger capabilities as your team grows."
+        },
+        {
+          "q": "What should I try first with the AI assistant?",
+          "a": "Start with a simple repeated question about requests or documents, then review the answers before relying on them."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Start with AI using one repeated question, try it, review the answers, name an owner, then expand gradually. Decisions about people stay with humans.",
+      "related": [
+        "ai-hr-assistant-employee-requests",
+        "replace-excel-whatsapp-hr-management",
+        "read-attendance-signals-fairly-saudi"
+      ]
+    }
+  },
+  "end-of-service-benefits-calculator-saudi": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "وزارة الموارد البشرية: دليل التوعية بحقوق وواجبات صاحب العمل والعامل",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "كيف تُحسب المكافأة؟",
+          "p": "تُوصف مكافأة نهاية الخدمة في نظام العمل (المادة ٨٤) بأنها نصف شهر من الأجر عن كل سنة من السنوات الخمس الأولى، وشهر كامل عن كل سنة بعدها، مع احتساب أجزاء السنة بالتناسب. وتُحسب على آخر أجر تقاضاه الموظف."
+        },
+        {
+          "h": "مثال محسوب",
+          "p": "أجر ٨٬٠٠٠ ريال وخدمة ٦ سنوات عند الإنهاء من صاحب العمل: ٥ سنوات × نصف شهر = ٢٠٬٠٠٠ ريال، وسنة × شهر كامل = ٨٬٠٠٠ ريال، فالمجموع ٢٨٬٠٠٠ ريال. ولو كانت الحالة استقالة بعد ٦ سنوات فالمستحق ثلثان من هذا الرقم تقريبًا (١٨٬٦٦٧ ريال). مثال توضيحي لا يغني عن المراجعة النظامية."
+        },
+        {
+          "h": "خطوات الحساب خطوة بخطوة",
+          "p": "أولًا حدّد تاريخ المباشرة وتاريخ انتهاء الخدمة. ثانيًا احسب مدة الخدمة بالسنوات مع أجزائها. ثالثًا حدّد آخر أجر شهري بحسب تعريف الأجر في عقدك. رابعًا طبّق نصف شهر عن كل سنة من أول خمس سنوات وشهرًا كاملًا عن كل سنة بعدها. خامسًا طبّق نسبة الاستقالة إن كانت الحالة استقالة. وأخيرًا قارن الناتج بنص النظام وعقدك قبل اعتماده."
+        },
+        {
+          "h": "مثال ثانٍ: خدمة أقل من خمس سنوات",
+          "p": "أجر شهري ٦٬٠٠٠ ريال وخدمة ٣ سنوات. عند الإنهاء من صاحب العمل: ٣ سنوات × نصف شهر = ٩٬٠٠٠ ريال. أما لو استقال الموظف بعد ٣ سنوات فالمستحق ثلث هذا الرقم، أي ٣٬٠٠٠ ريال. مثال توضيحي للحد الأدنى بحسب ما يصفه النظام."
+        },
+        {
+          "h": "مثال ثالث: خدمة ١٢ سنة",
+          "p": "أجر شهري ١٠٬٠٠٠ ريال وخدمة ١٢ سنة. أول خمس سنوات: ٥ × نصف شهر = ٢٥٬٠٠٠ ريال. السبع سنوات التالية: ٧ × شهر كامل = ٧٠٬٠٠٠ ريال. المجموع ٩٥٬٠٠٠ ريال، وفي الاستقالة بعد عشر سنوات فأكثر تكون المكافأة كاملة بحسب ما يصفه النظام."
+        },
+        {
+          "h": "ماذا يتغير عند الاستقالة؟",
+          "p": "عند استقالة الموظف تُخفَّض المكافأة بحسب مدة الخدمة (المادة ٨٥): لا شيء إن قلّت عن سنتين، وثلث المكافأة من سنتين إلى أقل من خمس، وثلثاها من خمس إلى أقل من عشر، وكاملة بعد عشر سنوات فأكثر. وللنظام حالات يستحق فيها الموظف المكافأة كاملة، فراجع النص الرسمي لحالتك."
+        },
+        {
+          "h": "على أي أجر تُحسب؟",
+          "p": "تختلف الحاسبات في اعتبار البدلات جزءًا من الأجر أو الاكتفاء بالأساسي. المرجع هو تعريف الأجر في نظام العمل وعقدك، لذلك استخدم الحاسبة تقديرًا أوليًا ثم تحقّق."
+        },
+        {
+          "h": "كيف يساعدك نظامي؟",
+          "p": "يجمع نظامي بيانات الموظفين والحضور والرواتب في مكان واحد، فتكون بياناتك مرتبة عند الحاجة لحساب المستحقات. الحاسبة في هذه الصفحة توضيحية ولا تغني عن المراجعة النظامية."
+        },
+        {
+          "h": "أخطاء شائعة",
+          "p": "تجاهل أجزاء السنة، أو اعتماد أجر قديم بدل آخر أجر، أو الخلط بين الإنهاء من صاحب العمل والاستقالة، أو إهمال تعريف الأجر في العقد."
+        },
+        {
+          "h": "ماذا تجهّز قبل إنهاء أي عقد؟",
+          "p": "جهّز تاريخ المباشرة وصورة العقد وآخر أجر وتعريفه، وسجل الحضور والإجازات، وسبب الإنهاء، وأي مستحقات أخرى مرتبطة بالموظف. وكلما كانت هذه البيانات مرتبة في مكان واحد كان الحساب أسرع وأقل عرضة للخطأ."
+        },
+        {
+          "h": "كيف تتجنب الخلافات؟",
+          "p": "وثّق خطوات الحساب والأرقام المستخدمة، وشاركها مع الموظف بوضوح، واحتفظ بنسخة من السجلات. الشفافية في الحساب تقلل الأسئلة والخلافات وتحفظ الثقة."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل هذه الحاسبة مرجع رسمي؟",
+          "a": "لا. هي تقدير توضيحي للحد الأدنى. المرجع هو نص نظام العمل لدى وزارة الموارد البشرية والتنمية الاجتماعية."
+        },
+        {
+          "q": "هل تدخل البدلات في الحساب؟",
+          "a": "يختلف ذلك بحسب تعريف الأجر في النظام والعقد. راجع النص الرسمي وعقدك قبل اعتماد الرقم."
+        },
+        {
+          "q": "هل يستحق الموظف المكافأة عند الاستقالة؟",
+          "a": "يعتمد ذلك على مدة الخدمة بحسب النظام، وقد تُخفَّض أو لا تُستحق في بعض الحالات. راجع النص الرسمي."
+        },
+        {
+          "q": "كيف تُحتسب أجزاء السنة؟",
+          "a": "تُحتسب بالتناسب بحسب ما يصفه النظام. راجع النص الرسمي لحالتك."
+        },
+        {
+          "q": "هل تتغير المكافأة إذا انتهى العقد المحدد المدة؟",
+          "a": "بحسب ما يصفه النظام، فإن إنهاء العقد من صاحب العمل أو انتهاء مدته يُحتسب فيه المكافأة كاملة. راجع النص الرسمي لحالتك."
+        },
+        {
+          "q": "متى أجهّز بيانات الحساب؟",
+          "a": "قبل نهاية العقد بوقت كافٍ، حتى تكون مدة الخدمة والأجر موثّقتين وجاهزتين للمراجعة."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "مكافأة نهاية الخدمة: نصف شهر عن كل سنة من أول خمس سنوات، وشهر كامل عن كل سنة بعدها (المادة ٨٤)، وتُخفَّض عند الاستقالة بحسب مدة الخدمة (المادة ٨٥). الحاسبة هنا توضيحية.",
+      "related": [
+        "sick-leave-pay-saudi-labor-law",
+        "annual-leave-days-saudi-calculator",
+        "payroll-readiness-checklist-saudi"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "HRSD: Awareness guide on the rights and duties of employers and workers",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "How is the award calculated?",
+          "p": "The Labor Law (Article 84) describes the end-of-service award as half a month's wage for each of the first five years and a full month's wage for each year after that, with part-years prorated. It is calculated on the last wage the employee received."
+        },
+        {
+          "h": "A worked example",
+          "p": "A wage of 8,000 SAR and 6 years of service, ended by the employer: 5 years × half a month = 20,000 SAR, plus 1 year × a full month = 8,000 SAR, for a total of 28,000 SAR. If it were a resignation after 6 years, two thirds of that figure would be due (about 18,667 SAR). An illustrative example that does not replace a proper legal check."
+        },
+        {
+          "h": "The calculation, step by step",
+          "p": "First, set the start date and the end of service. Second, work out the length of service in years including part-years. Third, take the last monthly wage as your contract defines it. Fourth, apply half a month per year for the first five years and a full month per year after that. Fifth, apply the resignation share if it is a resignation. Finally, compare the result with the law's text and your contract before approving it."
+        },
+        {
+          "h": "A second example: under five years",
+          "p": "A monthly wage of 6,000 SAR and 3 years of service. Ended by the employer: 3 years × half a month = 9,000 SAR. If the employee resigned after 3 years, one third of that is due, or 3,000 SAR. An illustrative example of the minimum as the law describes it."
+        },
+        {
+          "h": "A third example: 12 years of service",
+          "p": "A monthly wage of 10,000 SAR and 12 years of service. The first five years: 5 × half a month = 25,000 SAR. The next seven years: 7 × a full month = 70,000 SAR. The total is 95,000 SAR, and on resignation after ten years or more the award is in full as the law describes it."
+        },
+        {
+          "h": "What changes on resignation?",
+          "p": "When an employee resigns, the award is reduced by length of service (Article 85): nothing under two years, one third from two to under five years, two thirds from five to under ten years, and in full from ten years. The law also has cases where the full award is due, so check the official text for your case."
+        },
+        {
+          "h": "Which wage is it based on?",
+          "p": "Calculators differ on whether allowances count as part of the wage or only the basic pay. The reference is the definition of wage in the Labor Law and your contract, so use the calculator as a first estimate and then verify."
+        },
+        {
+          "h": "How does Nizamy help?",
+          "p": "Nizamy brings employee data, attendance and payroll into one place, so your data is in order when you need to work out entitlements. The calculator on this page is illustrative and does not replace a proper legal check."
+        },
+        {
+          "h": "Common mistakes",
+          "p": "Ignoring part-years, using an old wage instead of the last wage, mixing up termination by the employer with resignation, or overlooking how the contract defines wage."
+        },
+        {
+          "h": "What to prepare before ending any contract",
+          "p": "Prepare the start date, a copy of the contract, the last wage and its definition, attendance and leave records, the reason for ending, and any other entitlements linked to the employee. The more this data sits in one place, the faster and less error-prone the calculation."
+        },
+        {
+          "h": "How do you avoid disputes?",
+          "p": "Document the calculation steps and the numbers used, share them clearly with the employee, and keep a copy of the records. Transparency in the calculation reduces questions and disputes and protects trust."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is this calculator an official reference?",
+          "a": "No. It is an illustrative estimate of the minimum. The reference is the Labor Law text at the Ministry of Human Resources and Social Development."
+        },
+        {
+          "q": "Are allowances included?",
+          "a": "That depends on how wage is defined in the law and in the contract. Check the official text and your contract before relying on the figure."
+        },
+        {
+          "q": "Is the award due when an employee resigns?",
+          "a": "It depends on length of service under the law, and it may be reduced or not due in some cases. Check the official text."
+        },
+        {
+          "q": "How are part-years counted?",
+          "a": "They are prorated as the law describes. Check the official text for your case."
+        },
+        {
+          "q": "Does the award change if a fixed-term contract expires?",
+          "a": "As the law describes it, when the employer ends the contract or its term expires, the award is calculated in full. Check the official text for your case."
+        },
+        {
+          "q": "When should I prepare the calculation data?",
+          "a": "Well before the contract ends, so that length of service and wage are documented and ready for review."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "The end-of-service award is half a month's wage per year for the first five years and a full month per year after that (Article 84), reduced on resignation by length of service (Article 85). The calculator here is illustrative.",
+      "related": [
+        "sick-leave-pay-saudi-labor-law",
+        "annual-leave-days-saudi-calculator",
+        "payroll-readiness-checklist-saudi"
+      ]
+    }
+  },
+  "sick-leave-pay-saudi-labor-law": {
+    "ar": {
+      "kicker": "التفاصيل",
+      "sources": [
+        {
+          "label": "وزارة الموارد البشرية: دليل التوعية بحقوق وواجبات صاحب العمل والعامل",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "كيف تُدفع الإجازة المرضية؟",
+          "p": "بحسب نظام العمل (المادة ١١٧) تُقسَّم الإجازة المرضية خلال السنة إلى ثلاث شرائح: ٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر. راجع النص الرسمي لشروط الاستحقاق وطريقة احتساب السنة."
+        },
+        {
+          "h": "مثال محسوب",
+          "p": "٤٥ يومًا مرضية: ٣٠ يومًا بأجر كامل، و١٥ يومًا بثلاثة أرباع الأجر، أي ما يعادل ٤١٫٢٥ يومًا من الأجر الكامل. هذا توضيح للفكرة وليس مرجعًا رسميًا."
+        },
+        {
+          "h": "أمثلة على الشرائح",
+          "p": "١٠ أيام مرضية = ١٠ أيام بأجر كامل. ٦٠ يومًا = ٣٠ يومًا بأجر كامل + ٣٠ يومًا بثلاثة أرباع الأجر، أي ما يعادل ٥٢٫٥ يومًا من الأجر الكامل. ١٠٠ يوم = ٣٠ بأجر كامل + ٦٠ بثلاثة أرباع الأجر (ما يعادل ٤٥ يومًا) + ١٠ أيام بدون أجر، أي ما يعادل ٧٥ يومًا من الأجر الكامل. أمثلة توضيحية بحسب ما يصفه النظام."
+        },
+        {
+          "h": "كيف تُنظّم الطلبات؟",
+          "p": "اجعل لكل طلب مسارًا واضحًا: من يقدّم الطلب، ومن يوافق، وأين يرى الموظف حالته. عندما تُدار الطلبات بالرسائل المتفرقة يصعب أن تعرف ما تم وما ينتظر."
+        },
+        {
+          "h": "افصل بين الغياب والإجازة المرضية",
+          "p": "من المفيد أن تُسجَّل الإجازة المرضية بوضوح في سجلاتك، حتى لا تُقرأ كغياب غير مبرر عند مراجعة الأنماط. وهكذا تبقى قراءة الحضور عادلة."
+        },
+        {
+          "h": "كيف يساعدك نظامي؟",
+          "p": "يمكن للموظفين متابعة المستندات والطلبات والموافقات عبر الخدمة الذاتية، وتجتمع بيانات الحضور في تقارير تساعدك على المتابعة. الحاسبة هنا توضيحية فقط."
+        },
+        {
+          "h": "الفرق بين المرضية والسنوية",
+          "p": "تختلف الإجازة المرضية عن السنوية في شروطها وأجرها. لذلك فصلهما في السجلات يجعل قراءة الحضور والرواتب أدق وأعدل."
+        },
+        {
+          "h": "ماذا توثّق في الإجازة المرضية؟",
+          "p": "وثّق تاريخ البداية والنهاية وعدد الأيام، واحتفظ بالمستندات الداعمة بحسب سياسة منشأتك والنظام. وصنّفها في سجلاتك بوضوح كإجازة مرضية، منفصلة عن الغياب وعن الإجازة السنوية."
+        },
+        {
+          "h": "كيف تقرأ الإجازات المرضية في التقارير؟",
+          "p": "لا تعامل الإجازة المرضية كغياب غير مبرر عند مراجعة الأنماط. افصل بين الأنواع في تقاريرك حتى تبقى قراءة الحضور عادلة، ثم اسأل قبل أن تحكم عند ظهور نمط مقلق. وتجد في مدونتنا دليلًا عن قراءة الحضور كإشارة لا كحكم."
+        },
+        {
+          "h": "الجانب الإنساني",
+          "p": "الموظف المريض يحتاج إلى مرونة وتواصل داعم. خطوة بسيطة كالسؤال عن حاله وتوضيح خطوات العودة تحفظ الثقة وتقلل التوتر حول الإجازة."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "هل الأيام ٣٠ و٦٠ و٣٠ خلال سنة واحدة؟",
+          "a": "بحسب نظام العمل تُحتسب هذه الشرائح خلال السنة. راجع النص الرسمي لتفاصيل بداية السنة وشروط الاستحقاق."
+        },
+        {
+          "q": "هل هذه الحاسبة مرجع رسمي؟",
+          "a": "لا. هي توضيح للشرائح، والمرجع هو نص نظام العمل لدى وزارة الموارد البشرية والتنمية الاجتماعية."
+        },
+        {
+          "q": "هل أحتاج إلى خبرة تقنية للبدء مع نظامي؟",
+          "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية."
+        },
+        {
+          "q": "ماذا يحدث بعد انتهاء الشرائح الثلاث؟",
+          "a": "تنتهي الشرائح الثلاث خلال السنة بحسب النظام. راجع النص الرسمي لما يترتب بعد ذلك."
+        },
+        {
+          "q": "كيف أسجّل الإجازة المرضية بدقة؟",
+          "a": "سجّلها بتاريخ بداية ونهاية وعدد أيام واضح، وصنّفها منفصلة عن الغياب والإجازة السنوية، واحتفظ بالمستندات الداعمة."
+        },
+        {
+          "q": "هل تؤثر الإجازة المرضية على قراءة الحضور؟",
+          "a": "افصلها عن الغياب في تقاريرك حتى لا تُقرأ كغياب غير مبرر. فالتقارير أداة مساندة للقرار وليست حكمًا."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "الإجازة المرضية خلال السنة: ٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر (المادة ١١٧). الحاسبة هنا توضيحية.",
+      "related": [
+        "annual-leave-days-saudi-calculator",
+        "read-attendance-signals-fairly-saudi",
+        "end-of-service-benefits-calculator-saudi"
+      ]
+    },
+    "en": {
+      "kicker": "In detail",
+      "sources": [
+        {
+          "label": "HRSD: Awareness guide on the rights and duties of employers and workers",
+          "url": "https://www.hrsd.gov.sa/sites/default/files/2025-12/awareness-guide-on-the-rights-and-duties-of-employers-and-workers---1-.pdf"
+        }
+      ],
+      "sections": [
+        {
+          "h": "How is sick leave paid?",
+          "p": "Under the Labor Law (Article 117), sick leave within a year is split into three tiers: 30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Check the official text for eligibility conditions and how the year is counted."
+        },
+        {
+          "h": "A worked example",
+          "p": "45 sick-leave days: 30 days on full pay and 15 days at three quarters of pay, which equals 41.25 days of full pay. This illustrates the idea and is not an official reference."
+        },
+        {
+          "h": "Examples of the tiers",
+          "p": "10 sick days = 10 days on full pay. 60 days = 30 days on full pay + 30 days at three quarters of pay, equal to 52.5 days of full pay. 100 days = 30 on full pay + 60 at three quarters of pay (equal to 45 days) + 10 unpaid days, equal to 75 days of full pay. Illustrative examples as the law describes the tiers."
+        },
+        {
+          "h": "How do you organise requests?",
+          "p": "Give every request a clear path: who submits it, who approves it, and where the employee sees its status. When requests run through scattered messages, it is hard to know what is done and what is pending."
+        },
+        {
+          "h": "Keep absence and sick leave separate",
+          "p": "It helps to record sick leave clearly in your records, so it is not read as unexplained absence when you review patterns. That keeps the reading of attendance fair."
+        },
+        {
+          "h": "How does Nizamy help?",
+          "p": "Employees can follow documents, requests and approvals through self-service, and attendance data comes together in reports that help you follow up. The calculator here is illustrative only."
+        },
+        {
+          "h": "Sick leave versus annual leave",
+          "p": "Sick leave differs from annual leave in conditions and pay. Keeping them separate in your records makes the reading of attendance and payroll more accurate and fair."
+        },
+        {
+          "h": "What do you document for sick leave?",
+          "p": "Document the start and end dates and the number of days, and keep supporting documents according to your company policy and the law. Label it clearly in your records as sick leave, separate from absence and from annual leave."
+        },
+        {
+          "h": "How do you read sick leave in reports?",
+          "p": "Do not treat sick leave as unexplained absence when you review patterns. Separate the types in your reports so the reading of attendance stays fair, then ask before you judge when a worrying pattern appears. Our blog has a guide on reading attendance as a signal, not a verdict."
+        },
+        {
+          "h": "The human side",
+          "p": "A sick employee needs flexibility and supportive contact. A simple step like asking how they are and explaining the return steps preserves trust and eases tension around leave."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Are the 30, 60 and 30 days within one year?",
+          "a": "Under the Labor Law these tiers are counted within the year. Check the official text for when the year starts and eligibility conditions."
+        },
+        {
+          "q": "Is this calculator an official reference?",
+          "a": "No. It illustrates the tiers. The reference is the Labor Law text at the Ministry of Human Resources and Social Development."
+        },
+        {
+          "q": "Do I need technical experience to start with Nizamy?",
+          "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience."
+        },
+        {
+          "q": "What happens after the three tiers end?",
+          "a": "The three tiers run within the year under the law. Check the official text for what follows."
+        },
+        {
+          "q": "How do I record sick leave accurately?",
+          "a": "Record it with clear start and end dates and the number of days, label it separately from absence and annual leave, and keep supporting documents."
+        },
+        {
+          "q": "Does sick leave affect how attendance is read?",
+          "a": "Keep it separate from absence in your reports so it is not read as unexplained absence. Reports are decision support, not a verdict."
+        }
+      ],
+      "updated": "2026-11-19",
+      "tldr": "Sick leave within a year: 30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid (Article 117). The calculator here is illustrative.",
+      "related": [
+        "annual-leave-days-saudi-calculator",
+        "read-attendance-signals-fairly-saudi",
+        "end-of-service-benefits-calculator-saudi"
+      ]
+    }
+  }
+}

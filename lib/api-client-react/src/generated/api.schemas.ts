@@ -5,6 +5,379 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export interface SupportPreviewDraft {
+  /**
+     * @minLength 1
+     * @maxLength 200
+     */
+  title: string;
+  /** @maxLength 10000 */
+  keywords: string;
+  /** @maxLength 10000 */
+  diagnosticQuestions: string;
+  /**
+     * @minLength 1
+     * @maxLength 10000
+     */
+  resolution: string;
+}
+
+export interface SupportPreviewInput {
+  /**
+     * @minLength 1
+     * @maxLength 4000
+     */
+  question: string;
+  /** @pattern ^[1-9]\d{0,18}$ */
+  caseId?: string;
+  draft: SupportPreviewDraft;
+}
+
+export type SupportPreviewMatchSource = typeof SupportPreviewMatchSource[keyof typeof SupportPreviewMatchSource];
+
+
+export const SupportPreviewMatchSource = {
+  draft: 'draft',
+  approved: 'approved',
+} as const;
+
+export interface SupportPreviewMatch {
+  id: string;
+  title: string;
+  source: SupportPreviewMatchSource;
+}
+
+export interface SupportPreview {
+  preview: true;
+  reply: string;
+  matches: SupportPreviewMatch[];
+}
+
+export interface SupportObjectiveSuggestionInput {
+  /**
+     * @minLength 1
+     * @maxLength 4000
+     */
+  question: string;
+}
+
+export type SupportGapInputState = typeof SupportGapInputState[keyof typeof SupportGapInputState];
+
+
+export const SupportGapInputState = {
+  suggested: 'suggested',
+  confirmed: 'confirmed',
+  resolved: 'resolved',
+  dismissed: 'dismissed',
+} as const;
+
+export interface SupportGapInput {
+  objectiveId?: number;
+  /**
+     * Required if objectiveId is omitted
+     * @minLength 1
+     * @maxLength 200
+     */
+  title?: string;
+  /**
+     * @minLength 1
+     * @maxLength 4000
+     */
+  question: string;
+  /**
+     * @minLength 1
+     * @maxLength 4000
+     */
+  evidence: string;
+  fingerprint: string;
+  state: SupportGapInputState;
+}
+
+export interface SupportObjectiveGuidanceInput {
+  /** Existing approved case; omit to open or create the objective's draft */
+  caseId?: number;
+}
+
+export interface SupportIntentReference {
+  id: number;
+  title: string;
+}
+
+/**
+ * @nullable
+ */
+export type SupportObjectiveGuidanceStatus = typeof SupportObjectiveGuidanceStatus[keyof typeof SupportObjectiveGuidanceStatus] | null;
+
+
+export const SupportObjectiveGuidanceStatus = {
+  draft: 'draft',
+  approved: 'approved',
+  disabled: 'disabled',
+} as const;
+
+export type SupportObjectiveGapsItemState = typeof SupportObjectiveGapsItemState[keyof typeof SupportObjectiveGapsItemState];
+
+
+export const SupportObjectiveGapsItemState = {
+  suggested: 'suggested',
+  confirmed: 'confirmed',
+  resolved: 'resolved',
+  dismissed: 'dismissed',
+} as const;
+
+export type SupportObjectiveGapsItemRecordedState = typeof SupportObjectiveGapsItemRecordedState[keyof typeof SupportObjectiveGapsItemRecordedState];
+
+
+export const SupportObjectiveGapsItemRecordedState = {
+  suggested: 'suggested',
+  confirmed: 'confirmed',
+  resolved: 'resolved',
+  dismissed: 'dismissed',
+} as const;
+
+export type SupportObjectiveGapsItem = {
+  id: number;
+  inboxId: number;
+  objectiveId: number;
+  question: string;
+  evidence: string;
+  state: SupportObjectiveGapsItemState;
+  recordedState: SupportObjectiveGapsItemRecordedState;
+  stale: boolean;
+  reviewedAt: string;
+  source: string;
+  /** @nullable */
+  sourceId: string | null;
+  context: string;
+  fingerprint: string;
+  eligible: boolean;
+};
+
+export interface SupportObjective {
+  id: number;
+  title: string;
+  /** @nullable */
+  caseId: number | null;
+  /** @nullable */
+  guidanceTitle: string | null;
+  /** @nullable */
+  guidanceStatus: SupportObjectiveGuidanceStatus;
+  confirmedCount: number;
+  suggestedCount: number;
+  gaps: SupportObjectiveGapsItem[];
+}
+
+export type IntercomContactSource = typeof IntercomContactSource[keyof typeof IntercomContactSource];
+
+
+export const IntercomContactSource = {
+  intercom: 'intercom',
+} as const;
+
+export interface IntercomContact {
+  id: string;
+  source: IntercomContactSource;
+  /** @nullable */
+  name: string | null;
+  /** @nullable */
+  email: string | null;
+  /** @nullable */
+  role: string | null;
+  /** @nullable */
+  createdAt: string | null;
+  /** @nullable */
+  updatedAt: string | null;
+  /** @nullable */
+  lastSeenAt: string | null;
+}
+
+export interface IntercomContactPage {
+  items: IntercomContact[];
+  /** @nullable */
+  nextCursor: string | null;
+  fetchedAt: string;
+}
+
+export type IntercomConversationSource = typeof IntercomConversationSource[keyof typeof IntercomConversationSource];
+
+
+export const IntercomConversationSource = {
+  intercom: 'intercom',
+} as const;
+
+export interface IntercomConversation {
+  id: string;
+  source: IntercomConversationSource;
+  /** @nullable */
+  state: string | null;
+  /** @nullable */
+  createdAt: string | null;
+  /** @nullable */
+  updatedAt: string | null;
+}
+
+export type IntercomIdentityCandidateBasis = typeof IntercomIdentityCandidateBasis[keyof typeof IntercomIdentityCandidateBasis];
+
+
+export const IntercomIdentityCandidateBasis = {
+  exact_email_unverified: 'exact_email_unverified',
+} as const;
+
+export interface IntercomIdentityCandidate {
+  profileId: string;
+  basis: IntercomIdentityCandidateBasis;
+}
+
+export interface IntercomActivity {
+  contact: IntercomContact;
+  conversations: IntercomConversation[];
+  /** @nullable */
+  nextCursor: string | null;
+  candidates: IntercomIdentityCandidate[];
+  fetchedAt: string;
+}
+
+export interface VisitorProfile {
+  id: string;
+  name: string;
+  emails: string[];
+  phones: string[];
+  first_seen: string;
+  last_seen: string;
+  devices: string[];
+  countries: string[];
+  sources: string[];
+  packages: string[];
+  downloads: number;
+  event_count: number;
+}
+
+export interface VisitorEvent {
+  event_id: string;
+  event: string;
+  created_at: string;
+  location: string;
+  target: string;
+  source: string;
+  campaign: string;
+  device: string;
+  browser: string;
+  country: string;
+  session_id: string;
+}
+
+export interface VisitorList {
+  items: VisitorProfile[];
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+export interface VisitorDetail {
+  profile: VisitorProfile;
+  events: VisitorEvent[];
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+export type ChatRelevance = typeof ChatRelevance[keyof typeof ChatRelevance];
+
+
+export const ChatRelevance = {
+  pending: 'pending',
+  related: 'related',
+  excluded: 'excluded',
+} as const;
+
+export interface SupportReviewVersion {
+  /**
+     * @minimum 0
+     * @maximum 2147483647
+     */
+  version: number;
+}
+
+export interface SupportRelevanceDecision {
+  /**
+     * @minimum 0
+     * @maximum 2147483647
+     */
+  version: number;
+  decision: ChatRelevance;
+  /**
+     * @minLength 1
+     * @maxLength 1000
+     */
+  reason: string;
+}
+
+export type ChatScopeAssessmentScope = typeof ChatScopeAssessmentScope[keyof typeof ChatScopeAssessmentScope];
+
+
+export const ChatScopeAssessmentScope = {
+  related: 'related',
+  greeting: 'greeting',
+  unrelated: 'unrelated',
+  uncertain: 'uncertain',
+} as const;
+
+export type ChatScopeAssessmentConfidence = typeof ChatScopeAssessmentConfidence[keyof typeof ChatScopeAssessmentConfidence];
+
+
+export const ChatScopeAssessmentConfidence = {
+  high: 'high',
+  low: 'low',
+} as const;
+
+export interface ChatScopeAssessment {
+  scope: ChatScopeAssessmentScope;
+  confidence: ChatScopeAssessmentConfidence;
+  /**
+     * @minLength 1
+     * @maxLength 1000
+     */
+  reason: string;
+}
+
+export type SupportInboxItemSource = typeof SupportInboxItemSource[keyof typeof SupportInboxItemSource];
+
+
+export const SupportInboxItemSource = {
+  chat: 'chat',
+  ticket: 'ticket',
+  email: 'email',
+  manual: 'manual',
+} as const;
+
+export type SupportInboxItemStatus = typeof SupportInboxItemStatus[keyof typeof SupportInboxItemStatus];
+
+
+export const SupportInboxItemStatus = {
+  new: 'new',
+  reviewed: 'reviewed',
+  resolved: 'resolved',
+} as const;
+
+export interface SupportInboxItem {
+  id: number;
+  source: SupportInboxItemSource;
+  /** @nullable */
+  sourceId: string | null;
+  title: string;
+  question: string;
+  context: string;
+  status: SupportInboxItemStatus;
+  /** @nullable */
+  caseId: number | null;
+  createdAt: string;
+  relevance: ChatRelevance;
+  relevanceVersion: number;
+  /** @nullable */
+  relevanceReviewedAt: string | null;
+  scopeAssessment: ChatScopeAssessment | null;
+}
+
 export interface OpenaiConversation {
   id: string;
   title: string;
@@ -62,11 +435,14 @@ export type TicketInputTranscriptItem = {
 };
 
 export interface TicketInput {
+  /** @pattern ^\+[1-9][0-9]{7,14}$ */
+  whatsapp?: string;
+  contactConsent?: boolean;
   /**
      * @minLength 3
      * @maxLength 320
      */
-  email: string;
+  email?: string;
   /**
      * @maxLength 200
      * @nullable
@@ -129,6 +505,97 @@ export interface IncentiveSignupResult {
   pointsAwarded: number;
 }
 
+export type HubspotFormInputLanguage = typeof HubspotFormInputLanguage[keyof typeof HubspotFormInputLanguage];
+
+
+export const HubspotFormInputLanguage = {
+  en: 'en',
+  ar: 'ar',
+} as const;
+
+export type HubspotFormInputIntent = typeof HubspotFormInputIntent[keyof typeof HubspotFormInputIntent];
+
+
+export const HubspotFormInputIntent = {
+  existing_hr: 'existing_hr',
+  exploring: 'exploring',
+  seeking_hr: 'seeking_hr',
+} as const;
+
+export type HubspotFormInputIntentsItem = typeof HubspotFormInputIntentsItem[keyof typeof HubspotFormInputIntentsItem];
+
+
+export const HubspotFormInputIntentsItem = {
+  existing_hr: 'existing_hr',
+  exploring: 'exploring',
+  seeking_hr: 'seeking_hr',
+} as const;
+
+export interface HubspotFormInput {
+  requestId: string;
+  language: HubspotFormInputLanguage;
+  intent?: HubspotFormInputIntent;
+  /**
+     * @minItems 1
+     * @maxItems 3
+     */
+  intents?: HubspotFormInputIntentsItem[];
+  /** Optional explicit permission for marketing emails; omission never grants consent. */
+  marketingOptIn?: boolean;
+  /** Processing flag supplied when the inquiry is submitted; not evidence of a separate explicit disclosure. */
+  consentToProcess?: boolean;
+  /** @maxLength 100 */
+  firstname?: string;
+  /** @maxLength 100 */
+  lastname?: string;
+  /**
+     * @minLength 3
+     * @maxLength 320
+     */
+  email: string;
+  /**
+     * @minLength 1
+     * @maxLength 50
+     * @pattern \S
+     */
+  phone: string;
+  /** @maxLength 4000 */
+  message?: string;
+  /** @maxLength 2048 */
+  pageUri: string;
+  /** @maxLength 300 */
+  pageName: string;
+  /** @maxLength 200 */
+  hutk?: string;
+}
+
+export interface HubspotFormResult {
+  hubspotSubmitted: true;
+  notificationEmailSent: boolean;
+}
+
+export type HubspotFormErrorReason = typeof HubspotFormErrorReason[keyof typeof HubspotFormErrorReason];
+
+
+export const HubspotFormErrorReason = {
+  duplicate_contact: 'duplicate_contact',
+  request_id_reused: 'request_id_reused',
+  submission_pending: 'submission_pending',
+  deduplication_unavailable: 'deduplication_unavailable',
+  marketing_consent_unavailable: 'marketing_consent_unavailable',
+} as const;
+
+export type HubspotFormErrorFields = {
+  email: boolean;
+  phone: boolean;
+};
+
+export interface HubspotFormError {
+  error: string;
+  reason: HubspotFormErrorReason;
+  fields?: HubspotFormErrorFields;
+}
+
 /**
  * Website language the visitor was using; the confirmation email is sent in this language
  */
@@ -181,4 +648,153 @@ export interface Lead {
   totalReturn?: number | null;
   createdAt: string;
 }
+
+export type SupportRequestHeaderParameter = typeof SupportRequestHeaderParameter[keyof typeof SupportRequestHeaderParameter];
+
+
+export const SupportRequestHeaderParameter = {
+  NUMBER_1: '1',
+} as const;
+
+export type ExportWebsiteAcquisitionsParams = {
+days?: ExportWebsiteAcquisitionsDays;
+};
+
+export type ExportWebsiteAcquisitionsDays = typeof ExportWebsiteAcquisitionsDays[keyof typeof ExportWebsiteAcquisitionsDays];
+
+
+export const ExportWebsiteAcquisitionsDays = {
+  NUMBER_0: 0,
+  NUMBER_1: 1,
+  NUMBER_7: 7,
+  NUMBER_30: 30,
+} as const;
+
+export type GetSupportObjectives200 = {
+  objectives: SupportObjective[];
+};
+
+export type SuggestSupportObjective200 = {
+  fingerprint: string;
+  context: string;
+  matchingError?: string;
+  objectives: SupportIntentReference[];
+  guidance: SupportIntentReference[];
+};
+
+export type SaveSupportGap200 = {
+  ok: boolean;
+  objectiveId: number;
+};
+
+export type LinkSupportObjectiveGuidance200CaseStatus = typeof LinkSupportObjectiveGuidance200CaseStatus[keyof typeof LinkSupportObjectiveGuidance200CaseStatus];
+
+
+export const LinkSupportObjectiveGuidance200CaseStatus = {
+  draft: 'draft',
+  approved: 'approved',
+  disabled: 'disabled',
+} as const;
+
+export type LinkSupportObjectiveGuidance200CaseSource = typeof LinkSupportObjectiveGuidance200CaseSource[keyof typeof LinkSupportObjectiveGuidance200CaseSource];
+
+
+export const LinkSupportObjectiveGuidance200CaseSource = {
+  manual: 'manual',
+  email: 'email',
+} as const;
+
+export type LinkSupportObjectiveGuidance200Case = {
+  id: number;
+  title: string;
+  keywords: string;
+  diagnosticQuestions: string;
+  resolution: string;
+  status: LinkSupportObjectiveGuidance200CaseStatus;
+  source: LinkSupportObjectiveGuidance200CaseSource;
+  /** @nullable */
+  sourceId?: string | null;
+  updatedAt: string;
+};
+
+export type LinkSupportObjectiveGuidance200 = {
+  case: LinkSupportObjectiveGuidance200Case;
+};
+
+export type GetIntercomContactsParams = {
+/**
+ * @maxLength 254
+ */
+email?: string;
+/**
+ * @maxLength 2048
+ */
+cursor?: string;
+};
+
+export type GetIntercomActivityParams = {
+/**
+ * @pattern ^[a-zA-Z0-9_-]{1,128}$
+ */
+contactId: string;
+/**
+ * @maxLength 2048
+ */
+cursor?: string;
+};
+
+export type GetSupportVisitorsParams = {
+search?: string;
+/**
+ * @minimum 1
+ */
+page?: number;
+days?: GetSupportVisitorsDays;
+};
+
+export type GetSupportVisitorsDays = typeof GetSupportVisitorsDays[keyof typeof GetSupportVisitorsDays];
+
+
+export const GetSupportVisitorsDays = {
+  NUMBER_0: 0,
+  NUMBER_1: 1,
+  NUMBER_7: 7,
+  NUMBER_30: 30,
+  NUMBER_90: 90,
+} as const;
+
+export type GetSupportInboxParams = {
+view?: GetSupportInboxView;
+};
+
+export type GetSupportInboxView = typeof GetSupportInboxView[keyof typeof GetSupportInboxView];
+
+
+export const GetSupportInboxView = {
+  active: 'active',
+  review: 'review',
+  excluded: 'excluded',
+} as const;
+
+export type GetSupportInbox200 = {
+  items: SupportInboxItem[];
+};
+
+export type AssessSupportChat200 = {
+  assessment: ChatScopeAssessment;
+};
+
+export type ReviewSupportChat200 = {
+  ok: boolean;
+};
+
+export type GetSupportChatRelevanceHistory200HistoryItem = {
+  decision: ChatRelevance;
+  reason: string;
+  reviewedAt: string;
+};
+
+export type GetSupportChatRelevanceHistory200 = {
+  history: GetSupportChatRelevanceHistory200HistoryItem[];
+};
 

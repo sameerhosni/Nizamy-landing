@@ -6,6 +6,8 @@
   "scripts": {
     "hello": "tsx ./src/hello.ts",
     "generate-email-text-images": "tsx ./src/generate-email-text-images.ts",
+    "check-blog-sources": "tsx ./src/check-blog-sources.ts",
+    "test:blog-sources": "tsx --test ./src/check-blog-sources.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {

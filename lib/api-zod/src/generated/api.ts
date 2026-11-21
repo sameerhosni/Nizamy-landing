@@ -9,6 +9,470 @@ import * as zod from 'zod';
 
 
 /**
+ * @summary Staff-only website form first and last visit attribution export
+ */
+export const exportWebsiteAcquisitionsQueryDaysDefault = 0;
+
+export const ExportWebsiteAcquisitionsQueryParams = zod.object({
+  "days": zod.union([zod.literal(0),zod.literal(1),zod.literal(7),zod.literal(30)]).default(exportWebsiteAcquisitionsQueryDaysDefault)
+})
+
+export const ExportWebsiteAcquisitionsResponse = zod.unknown()
+
+
+/**
+ * @summary Staff-only read-only reply preview with unsaved guidance
+ */
+export const PreviewSupportReplyHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const previewSupportReplyBodyQuestionMax = 4000;
+
+export const previewSupportReplyBodyCaseIdRegExp = new RegExp('^[1-9]\\d{0,18}$');
+export const previewSupportReplyBodyDraftTitleMax = 200;
+
+export const previewSupportReplyBodyDraftKeywordsMax = 10000;
+
+export const previewSupportReplyBodyDraftDiagnosticQuestionsMax = 10000;
+
+export const previewSupportReplyBodyDraftResolutionMax = 10000;
+
+
+
+export const PreviewSupportReplyBody = zod.object({
+  "question": zod.string().min(1).max(previewSupportReplyBodyQuestionMax),
+  "caseId": zod.string().regex(previewSupportReplyBodyCaseIdRegExp).optional(),
+  "draft": zod.object({
+  "title": zod.string().min(1).max(previewSupportReplyBodyDraftTitleMax),
+  "keywords": zod.string().max(previewSupportReplyBodyDraftKeywordsMax),
+  "diagnosticQuestions": zod.string().max(previewSupportReplyBodyDraftDiagnosticQuestionsMax),
+  "resolution": zod.string().min(1).max(previewSupportReplyBodyDraftResolutionMax)
+})
+})
+
+export const PreviewSupportReplyResponse = zod.object({
+  "preview": zod.literal(true),
+  "reply": zod.string(),
+  "matches": zod.array(zod.object({
+  "id": zod.string(),
+  "title": zod.string(),
+  "source": zod.enum(['draft', 'approved'])
+}))
+})
+
+
+/**
+ * @summary Staff-only intent groups with evidence; stale confirmations appear as suggestions
+ */
+export const GetSupportObjectivesResponse = zod.object({
+  "objectives": zod.array(zod.object({
+  "id": zod.number(),
+  "title": zod.string(),
+  "caseId": zod.number().nullable(),
+  "guidanceTitle": zod.string().nullable(),
+  "guidanceStatus": zod.union([zod.literal('draft'),zod.literal('approved'),zod.literal('disabled'),zod.literal(null)]).nullable(),
+  "confirmedCount": zod.number(),
+  "suggestedCount": zod.number(),
+  "gaps": zod.array(zod.object({
+  "id": zod.number(),
+  "inboxId": zod.number(),
+  "objectiveId": zod.number(),
+  "question": zod.string(),
+  "evidence": zod.string(),
+  "state": zod.enum(['suggested', 'confirmed', 'resolved', 'dismissed']),
+  "recordedState": zod.enum(['suggested', 'confirmed', 'resolved', 'dismissed']),
+  "stale": zod.boolean(),
+  "reviewedAt": zod.string(),
+  "source": zod.string(),
+  "sourceId": zod.string().nullable(),
+  "context": zod.string(),
+  "fingerprint": zod.string(),
+  "eligible": zod.boolean()
+}))
+}))
+})
+
+
+/**
+ * @summary Meaning-based suggestions only, never proof that a question is unresolved
+ */
+export const suggestSupportObjectivePathIdRegExp = new RegExp('^\\d+$');
+
+
+export const SuggestSupportObjectiveParams = zod.object({
+  "id": zod.coerce.string().regex(suggestSupportObjectivePathIdRegExp)
+})
+
+export const SuggestSupportObjectiveHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const suggestSupportObjectiveBodyQuestionMax = 4000;
+
+
+
+export const SuggestSupportObjectiveBody = zod.object({
+  "question": zod.string().min(1).max(suggestSupportObjectiveBodyQuestionMax)
+})
+
+export const SuggestSupportObjectiveResponse = zod.object({
+  "fingerprint": zod.string(),
+  "context": zod.string(),
+  "matchingError": zod.string().optional(),
+  "objectives": zod.array(zod.object({
+  "id": zod.number(),
+  "title": zod.string()
+})),
+  "guidance": zod.array(zod.object({
+  "id": zod.number(),
+  "title": zod.string()
+}))
+})
+
+
+/**
+ * @summary Record explicit staff evidence separately from inbox review and relevance
+ */
+export const saveSupportGapPathIdRegExp = new RegExp('^\\d+$');
+
+
+export const SaveSupportGapParams = zod.object({
+  "id": zod.coerce.string().regex(saveSupportGapPathIdRegExp)
+})
+
+export const SaveSupportGapHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const saveSupportGapBodyTitleMax = 200;
+
+export const saveSupportGapBodyQuestionMax = 4000;
+
+export const saveSupportGapBodyEvidenceMax = 4000;
+
+
+
+export const SaveSupportGapBody = zod.object({
+  "objectiveId": zod.number().optional(),
+  "title": zod.string().min(1).max(saveSupportGapBodyTitleMax).optional().describe('Required if objectiveId is omitted'),
+  "question": zod.string().min(1).max(saveSupportGapBodyQuestionMax),
+  "evidence": zod.string().min(1).max(saveSupportGapBodyEvidenceMax),
+  "fingerprint": zod.string(),
+  "state": zod.enum(['suggested', 'confirmed', 'resolved', 'dismissed'])
+})
+
+export const SaveSupportGapResponse = zod.object({
+  "ok": zod.boolean(),
+  "objectiveId": zod.number()
+})
+
+
+/**
+ * @summary Open shared guidance or create a blank draft, or link existing approved guidance
+ */
+export const linkSupportObjectiveGuidancePathIdRegExp = new RegExp('^\\d+$');
+
+
+export const LinkSupportObjectiveGuidanceParams = zod.object({
+  "id": zod.coerce.string().regex(linkSupportObjectiveGuidancePathIdRegExp)
+})
+
+export const LinkSupportObjectiveGuidanceHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const LinkSupportObjectiveGuidanceBody = zod.object({
+  "caseId": zod.number().optional().describe('Existing approved case; omit to open or create the objective\'s draft')
+})
+
+export const LinkSupportObjectiveGuidanceResponse = zod.object({
+  "case": zod.object({
+  "id": zod.number(),
+  "title": zod.string(),
+  "keywords": zod.string(),
+  "diagnosticQuestions": zod.string(),
+  "resolution": zod.string(),
+  "status": zod.enum(['draft', 'approved', 'disabled']),
+  "source": zod.enum(['manual', 'email']),
+  "sourceId": zod.string().nullish(),
+  "updatedAt": zod.string()
+})
+})
+
+
+/**
+ * @summary Staff-only live Intercom contacts, separate from website profiles
+ */
+export const getIntercomContactsQueryEmailMax = 254;
+
+export const getIntercomContactsQueryCursorMax = 2048;
+
+
+
+export const GetIntercomContactsQueryParams = zod.object({
+  "email": zod.coerce.string().max(getIntercomContactsQueryEmailMax).optional(),
+  "cursor": zod.coerce.string().max(getIntercomContactsQueryCursorMax).optional()
+})
+
+export const GetIntercomContactsResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['intercom']),
+  "name": zod.string().nullable(),
+  "email": zod.string().nullable(),
+  "role": zod.string().nullable(),
+  "createdAt": zod.string().nullable(),
+  "updatedAt": zod.string().nullable(),
+  "lastSeenAt": zod.string().nullable()
+})),
+  "nextCursor": zod.string().nullable(),
+  "fetchedAt": zod.string()
+})
+
+
+/**
+ * @summary Staff-only conversation metadata and unverified website identity candidates
+ */
+export const getIntercomActivityQueryContactIdRegExp = new RegExp('^[a-zA-Z0-9_-]{1,128}$');
+export const getIntercomActivityQueryCursorMax = 2048;
+
+
+
+export const GetIntercomActivityQueryParams = zod.object({
+  "contactId": zod.coerce.string().regex(getIntercomActivityQueryContactIdRegExp),
+  "cursor": zod.coerce.string().max(getIntercomActivityQueryCursorMax).optional()
+})
+
+export const GetIntercomActivityResponse = zod.object({
+  "contact": zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['intercom']),
+  "name": zod.string().nullable(),
+  "email": zod.string().nullable(),
+  "role": zod.string().nullable(),
+  "createdAt": zod.string().nullable(),
+  "updatedAt": zod.string().nullable(),
+  "lastSeenAt": zod.string().nullable()
+}),
+  "conversations": zod.array(zod.object({
+  "id": zod.string(),
+  "source": zod.enum(['intercom']),
+  "state": zod.string().nullable(),
+  "createdAt": zod.string().nullable(),
+  "updatedAt": zod.string().nullable()
+})),
+  "nextCursor": zod.string().nullable(),
+  "candidates": zod.array(zod.object({
+  "profileId": zod.string(),
+  "basis": zod.enum(['exact_email_unverified'])
+})),
+  "fetchedAt": zod.string()
+})
+
+
+/**
+ * @summary Staff-only deduplicated visitor profiles
+ */
+
+
+
+export const GetSupportVisitorsQueryParams = zod.object({
+  "search": zod.coerce.string().optional(),
+  "page": zod.coerce.number().min(1).optional(),
+  "days": zod.union([zod.literal(0),zod.literal(1),zod.literal(7),zod.literal(30),zod.literal(90)]).optional()
+})
+
+export const GetSupportVisitorsResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "emails": zod.array(zod.string()),
+  "phones": zod.array(zod.string()),
+  "first_seen": zod.string(),
+  "last_seen": zod.string(),
+  "devices": zod.array(zod.string()),
+  "countries": zod.array(zod.string()),
+  "sources": zod.array(zod.string()),
+  "packages": zod.array(zod.string()),
+  "downloads": zod.number(),
+  "event_count": zod.number()
+})),
+  "total": zod.number(),
+  "page": zod.number(),
+  "pageSize": zod.number()
+})
+
+
+/**
+ * @summary Staff-only visitor activity timeline
+ */
+
+
+
+export const GetSupportVisitorParams = zod.object({
+  "id": zod.coerce.string(),
+  "page": zod.coerce.number().min(1)
+})
+
+export const GetSupportVisitorResponse = zod.object({
+  "profile": zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "emails": zod.array(zod.string()),
+  "phones": zod.array(zod.string()),
+  "first_seen": zod.string(),
+  "last_seen": zod.string(),
+  "devices": zod.array(zod.string()),
+  "countries": zod.array(zod.string()),
+  "sources": zod.array(zod.string()),
+  "packages": zod.array(zod.string()),
+  "downloads": zod.number(),
+  "event_count": zod.number()
+}),
+  "events": zod.array(zod.object({
+  "event_id": zod.string(),
+  "event": zod.string(),
+  "created_at": zod.string(),
+  "location": zod.string(),
+  "target": zod.string(),
+  "source": zod.string(),
+  "campaign": zod.string(),
+  "device": zod.string(),
+  "browser": zod.string(),
+  "country": zod.string(),
+  "session_id": zod.string()
+})),
+  "total": zod.number(),
+  "page": zod.number(),
+  "pageSize": zod.number()
+})
+
+
+/**
+ * @summary Staff-only teaching inbox with reversible chat relevance filters
+ */
+export const getSupportInboxQueryViewDefault = `active`;
+
+export const GetSupportInboxQueryParams = zod.object({
+  "view": zod.enum(['active', 'review', 'excluded']).default(getSupportInboxQueryViewDefault)
+})
+
+export const getSupportInboxResponseItemsItemScopeAssessmentOneReasonMax = 1000;
+
+
+
+export const GetSupportInboxResponse = zod.object({
+  "items": zod.array(zod.object({
+  "id": zod.number(),
+  "source": zod.enum(['chat', 'ticket', 'email', 'manual']),
+  "sourceId": zod.string().nullable(),
+  "title": zod.string(),
+  "question": zod.string(),
+  "context": zod.string(),
+  "status": zod.enum(['new', 'reviewed', 'resolved']),
+  "caseId": zod.number().nullable(),
+  "createdAt": zod.coerce.date(),
+  "relevance": zod.enum(['pending', 'related', 'excluded']),
+  "relevanceVersion": zod.number(),
+  "relevanceReviewedAt": zod.coerce.date().nullable(),
+  "scopeAssessment": zod.union([zod.object({
+  "scope": zod.enum(['related', 'greeting', 'unrelated', 'uncertain']),
+  "confidence": zod.enum(['high', 'low']),
+  "reason": zod.string().min(1).max(getSupportInboxResponseItemsItemScopeAssessmentOneReasonMax)
+}),zod.null()])
+}))
+})
+
+
+/**
+ * @summary Suggest whole-conversation relevance without changing visibility
+ */
+export const assessSupportChatPathIdRegExp = new RegExp('^\\d+$');
+
+
+export const AssessSupportChatParams = zod.object({
+  "id": zod.coerce.string().regex(assessSupportChatPathIdRegExp)
+})
+
+export const AssessSupportChatHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const assessSupportChatBodyVersionMin = 0;
+export const assessSupportChatBodyVersionMax = 2147483647;
+
+
+
+export const AssessSupportChatBody = zod.object({
+  "version": zod.number().min(assessSupportChatBodyVersionMin).max(assessSupportChatBodyVersionMax)
+})
+
+export const assessSupportChatResponseAssessmentReasonMax = 1000;
+
+
+
+export const AssessSupportChatResponse = zod.object({
+  "assessment": zod.object({
+  "scope": zod.enum(['related', 'greeting', 'unrelated', 'uncertain']),
+  "confidence": zod.enum(['high', 'low']),
+  "reason": zod.string().min(1).max(assessSupportChatResponseAssessmentReasonMax)
+})
+})
+
+
+/**
+ * @summary Staff decision to keep, exclude, or restore a chat; never deletes source messages or guidance
+ */
+export const reviewSupportChatPathIdRegExp = new RegExp('^\\d+$');
+
+
+export const ReviewSupportChatParams = zod.object({
+  "id": zod.coerce.string().regex(reviewSupportChatPathIdRegExp)
+})
+
+export const ReviewSupportChatHeader = zod.object({
+  "X-Support-Request": zod.enum(['1'])
+})
+
+export const reviewSupportChatBodyVersionMin = 0;
+export const reviewSupportChatBodyVersionMax = 2147483647;
+
+export const reviewSupportChatBodyReasonMax = 1000;
+
+
+
+export const ReviewSupportChatBody = zod.object({
+  "version": zod.number().min(reviewSupportChatBodyVersionMin).max(reviewSupportChatBodyVersionMax),
+  "decision": zod.enum(['pending', 'related', 'excluded']),
+  "reason": zod.string().min(1).max(reviewSupportChatBodyReasonMax)
+})
+
+export const ReviewSupportChatResponse = zod.object({
+  "ok": zod.boolean()
+})
+
+
+/**
+ * @summary Staff-only history of relevance decisions
+ */
+export const getSupportChatRelevanceHistoryPathIdRegExp = new RegExp('^\\d+$');
+
+
+export const GetSupportChatRelevanceHistoryParams = zod.object({
+  "id": zod.coerce.string().regex(getSupportChatRelevanceHistoryPathIdRegExp)
+})
+
+export const GetSupportChatRelevanceHistoryResponse = zod.object({
+  "history": zod.array(zod.object({
+  "decision": zod.enum(['pending', 'related', 'excluded']),
+  "reason": zod.string(),
+  "reviewedAt": zod.coerce.date()
+}))
+})
+
+
+/**
  * Returns server health status
  * @summary Health check
  */
@@ -81,9 +545,60 @@ export const CreateIncentiveSignupResponse = zod.object({
 
 
 /**
+ * Submits a fixed English or Arabic form to HubSpot and emails a copy to the Nizamy sales inbox
+ * @summary Submit the bilingual website contact form
+ */
+export const submitHubspotFormBodyIntentsMax = 3;
+
+export const submitHubspotFormBodyFirstnameMax = 100;
+
+export const submitHubspotFormBodyLastnameMax = 100;
+
+export const submitHubspotFormBodyEmailMin = 3;
+export const submitHubspotFormBodyEmailMax = 320;
+
+export const submitHubspotFormBodyPhoneMax = 50;
+
+
+export const submitHubspotFormBodyPhoneRegExp = new RegExp('\\S');
+export const submitHubspotFormBodyMessageMax = 4000;
+
+export const submitHubspotFormBodyPageUriMax = 2048;
+
+export const submitHubspotFormBodyPageNameMax = 300;
+
+export const submitHubspotFormBodyHutkMax = 200;
+
+
+
+export const SubmitHubspotFormBody = zod.object({
+  "requestId": zod.string().uuid(),
+  "language": zod.enum(['en', 'ar']),
+  "intent": zod.enum(['existing_hr', 'exploring', 'seeking_hr']).optional(),
+  "intents": zod.array(zod.enum(['existing_hr', 'exploring', 'seeking_hr'])).min(1).max(submitHubspotFormBodyIntentsMax).optional(),
+  "marketingOptIn": zod.boolean().optional().describe('Optional explicit permission for marketing emails; omission never grants consent.'),
+  "consentToProcess": zod.boolean().optional().describe('Processing flag supplied when the inquiry is submitted; not evidence of a separate explicit disclosure.'),
+  "firstname": zod.string().max(submitHubspotFormBodyFirstnameMax).optional(),
+  "lastname": zod.string().max(submitHubspotFormBodyLastnameMax).optional(),
+  "email": zod.string().email().min(submitHubspotFormBodyEmailMin).max(submitHubspotFormBodyEmailMax),
+  "phone": zod.string().min(1).max(submitHubspotFormBodyPhoneMax).regex(submitHubspotFormBodyPhoneRegExp),
+  "message": zod.string().max(submitHubspotFormBodyMessageMax).optional(),
+  "pageUri": zod.string().url().max(submitHubspotFormBodyPageUriMax),
+  "pageName": zod.string().max(submitHubspotFormBodyPageNameMax),
+  "hutk": zod.string().max(submitHubspotFormBodyHutkMax).optional()
+})
+
+export const SubmitHubspotFormResponse = zod.object({
+  "hubspotSubmitted": zod.boolean(),
+  "notificationEmailSent": zod.boolean()
+})
+
+
+/**
  * Summarizes the chat conversation, stores a ticket, and emails both the visitor and the Nizamy team
  * @summary Create a support ticket from a chat conversation
  */
+export const createTicketBodyWhatsappRegExp = new RegExp('^\\+[1-9][0-9]{7,14}$');
 export const createTicketBodyEmailMin = 3;
 export const createTicketBodyEmailMax = 320;
 
@@ -97,7 +612,9 @@ export const createTicketBodyTranscriptMax = 60;
 
 
 export const CreateTicketBody = zod.object({
-  "email": zod.string().email().min(createTicketBodyEmailMin).max(createTicketBodyEmailMax),
+  "whatsapp": zod.string().regex(createTicketBodyWhatsappRegExp).optional(),
+  "contactConsent": zod.boolean().optional(),
+  "email": zod.string().email().min(createTicketBodyEmailMin).max(createTicketBodyEmailMax).optional(),
   "name": zod.string().max(createTicketBodyNameMax).nullish(),
   "conversationId": zod.string().uuid().nullish(),
   "language": zod.enum(['en', 'ar']).default(createTicketBodyLanguageDefault),

@@ -1,8 +1,11 @@
 import nodemailer from "nodemailer";
+import { acquisitionText } from "./attribution";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { logger } from "./logger";
+import { appDownloadConfirmation } from "./appDownloadConfirmation";
+import { requestContacts } from "./requestContacts";
 import {
   renderLeadEmail,
   resolveTemplateId,
@@ -19,13 +22,40 @@ const smtpPort = Number(process.env.SMTP_PORT ?? "587");
 const smtpUser = process.env.SMTP_USERNAME;
 const smtpPass = process.env.SMTP_PASSWORD;
 const salesAddress = "sales@nizamy.app";
+const formNotificationBcc = [
+  "149373460@bcc.eu1.hubspot.com",
+  "149373460@forward.eu1.hubspot.com",
+];
 
 export function isMailerConfigured(): boolean {
   return Boolean(smtpHost && smtpUser && smtpPass);
 }
 
+export async function sendNewChatNotification(id: string, message: string, createdAt: string, contactMessages: string[] = [message], savedEmail?: string | null): Promise<void> {
+  if (!isMailerConfigured()) throw new Error("SMTP not configured");
+  const contacts = requestContacts(contactMessages, savedEmail);
+  await createTransport().sendMail({
+    from: `Nizamy Support <${salesAddress}>`,
+    to: salesAddress,
+    replyTo: contacts.replyTo,
+    subject: `New Nizamy chat ticket — ${id}`,
+    messageId: `<chat-${id}@nizamy.app>`,
+    text: `New Nizamy product inquiry\n\nChat reference: ${id}\nReceived: ${createdAt}\n\n${contacts.text}\n\nVisitor message:\n${message}\n\nOpen the staff support workspace to review the conversation. Contact details reflect what was available when this alert was sent.`,
+  });
+}
+
+export async function sendStaffLoginCode(email: string, code: string): Promise<void> {
+  if (!isMailerConfigured()) throw new Error("SMTP not configured");
+  await createTransport().sendMail({
+    from: `Nizamy Support <${salesAddress}>`,
+    to: email,
+    subject: "Nizamy staff sign-in code | رمز دخول فريق نظامي",
+    text: `Your sign-in code is ${code}. It expires in 10 minutes. Do not share it.\nرمز الدخول: ${code}. صالح لمدة ١٠ دقائق. لا تشاركه مع أحد.`,
+  });
+}
+
 function createTransport() {
-  return nodemailer.createTransport({
+  const transport = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
     secure: smtpPort === 465,
@@ -34,6 +64,15 @@ function createTransport() {
       pass: smtpPass,
     },
   });
+  transport.use("compile", (mail, done) => {
+    const source = acquisitionText();
+    if (mail.data.to === salesAddress && source) {
+      if (typeof mail.data.text === "string") mail.data.text += source;
+      if (typeof mail.data.html === "string") mail.data.html += `<pre>${escapeHtmlText(source)}</pre>`;
+    }
+    done();
+  });
+  return transport;
 }
 
 export interface LeadEmailData {
@@ -51,6 +90,7 @@ export interface LeadEmailData {
 }
 
 export interface TicketEmailData {
+  screenshots?: Array<{filename:string;content:Buffer;contentType:string}>;
   ticketNumber: string;
   subject: string;
   summary: string;
@@ -89,7 +129,7 @@ export async function sendTicketEmails(ticket: TicketEmailData): Promise<void> {
     summary: ticket.summary,
     hasLogo,
   });
-  await transport.sendMail({
+  if (ticket.email) await transport.sendMail({
     from: `${senderName} <${salesAddress}>`,
     replyTo: salesAddress,
     to: ticket.email,
@@ -110,14 +150,16 @@ export async function sendTicketEmails(ticket: TicketEmailData): Promise<void> {
     createdAt: ticket.createdAt,
     hasLogo,
   });
+  const contacts = requestContacts(ticket.transcript.filter(m => m.role === "user").map(m => m.content), ticket.email);
   await transport.sendMail({
     from: `${senderName} <${salesAddress}>`,
-    replyTo: ticket.email,
+    replyTo: ticket.email || undefined,
     to: salesAddress,
+    bcc: formNotificationBcc,
     subject: team.subject,
-    text: team.text,
-    html: team.html,
-    attachments,
+    text: `${team.text}\n\n${contacts.text}`,
+    html: `${team.html}<pre>${escapeHtmlText(contacts.text)}</pre>`,
+    attachments: [...attachments,...(ticket.screenshots??[])],
   });
 
   logger.info(
@@ -180,6 +222,7 @@ export async function sendIncentiveSignupNotification(
     from: `${senderName} <${salesAddress}>`,
     replyTo: signup.email ?? salesAddress,
     to: salesAddress,
+    bcc: formNotificationBcc,
     subject: `Landing incentive signup — ${statusLabel}`,
     text,
     html: `<div style="font-family:Arial,sans-serif;color:#0f172a"><h2>Landing incentive signup</h2><table style="border-collapse:collapse;width:100%;max-width:640px">${htmlRows}</table></div>`,
@@ -188,6 +231,89 @@ export async function sendIncentiveSignupNotification(
   logger.info(
     { status: signup.status, intent: signup.intent },
     "Incentive signup notification email sent",
+  );
+}
+
+export interface WebsiteFormEmailData {
+  language: "ar" | "en";
+  intent?: "existing_hr" | "exploring" | "seeking_hr";
+  intents?: ("existing_hr" | "exploring" | "seeking_hr")[];
+  firstname?: string;
+  lastname?: string;
+  email: string;
+  phone?: string;
+  message?: string;
+  pageUri: string;
+  submittedAt: string;
+}
+
+export function renderWebsiteFormNotification(submission: WebsiteFormEmailData): {
+  subject: string;
+  text: string;
+  html: string;
+} {
+  const intentLabels = {
+    existing_hr: "Already using HR system",
+    exploring: "Just exploring",
+    seeking_hr: "Looking for HR system",
+  } as const;
+  const fullName =
+    ([submission.firstname, submission.lastname]
+      .filter(Boolean)
+      .join(" ")
+      .replace(/[\r\n]+/g, " ")
+      .trim() || "—");
+  const rows = [
+    ["Source", "Nizamy landing page"],
+    ["Reason", [...new Set(submission.intents ?? (submission.intent ? [submission.intent] : []))].map(reason => intentLabels[reason]).join("; ") || "—"],
+    ["Name", fullName],
+    ["Email", submission.email],
+    ["Phone", submission.phone || "—"],
+    ["Message", submission.message || "—"],
+    ["Language", submission.language === "ar" ? "Arabic" : "English"],
+    ["Page", submission.pageUri],
+    ["Submitted at", submission.submittedAt],
+  ] as const;
+  const heading = "New lead from Nizamy landing page";
+  const intro = "A visitor submitted their details on the Nizamy landing page. Reply to this email to contact them.";
+  const text = `${heading}\n\n${intro}\n\n${rows.map(([label, value]) => `${label}: ${value}`).join("\n")}`;
+  const htmlRows = rows
+    .map(
+      ([label, value]) =>
+        `<tr><th align="left" style="padding:8px;border-bottom:1px solid #e5e7eb;vertical-align:top">${escapeHtmlText(label)}</th><td style="padding:8px;border-bottom:1px solid #e5e7eb;white-space:pre-wrap">${escapeHtmlText(value)}</td></tr>`,
+    )
+    .join("");
+
+  return {
+    subject: `${heading} — ${fullName === "—" ? submission.email : fullName}`,
+    text,
+    html: `<div style="font-family:Arial,sans-serif;color:#0f172a;max-width:640px"><h2 style="font-size:22px;color:#0284c7">${heading}</h2><p style="font-size:14px;line-height:1.6">${intro}</p><table style="border-collapse:collapse;width:100%">${htmlRows}</table></div>`,
+  };
+}
+
+export async function sendWebsiteFormNotification(
+  submission: WebsiteFormEmailData,
+): Promise<void> {
+  if (!isMailerConfigured()) {
+    throw new Error("SMTP is not configured");
+  }
+
+  const senderName = process.env.SENDER_NAME || "نظامي اتش آر | Nizamy HR";
+  const rendered = renderWebsiteFormNotification(submission);
+
+  await createTransport().sendMail({
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: submission.email,
+    to: salesAddress,
+    bcc: formNotificationBcc,
+    subject: rendered.subject,
+    text: rendered.text,
+    html: rendered.html,
+  });
+
+  logger.info(
+    { language: submission.language },
+    "Website form notification email sent",
   );
 }
 
@@ -222,6 +348,15 @@ function loadCustomWelcomeTemplate(
         : []),
     ],
   };
+}
+
+export async function sendWebsiteWelcome(email: string, lang: "en" | "ar"): Promise<void> {
+  if (!isMailerConfigured()) throw new Error("Welcome email delivery is unavailable");
+  const { subject, html, text } = appDownloadConfirmation(lang);
+  await createTransport().sendMail({
+    from: `Nizamy <${salesAddress}>`, replyTo: salesAddress,
+    to: email, subject, html, text,
+  });
 }
 
 export async function sendLeadConfirmation(
@@ -309,6 +444,9 @@ export async function sendLeadConfirmation(
     }
   }
 
+  // All welcome-template variants lead to the app, never a waiting list or callback.
+  ({ subject, html, text } = appDownloadConfirmation(lang));
+  attachments = [];
   const transport = createTransport();
   try {
     await transport.sendMail({
@@ -358,6 +496,7 @@ export async function sendLeadConfirmation(
     replyTo: lead.email,
     to: salesAddress,
     subject: team.subject,
+    bcc: formNotificationBcc,
     text: team.text,
     html: team.html,
     attachments: hasLogo && logoPath
@@ -369,4 +508,31 @@ export async function sendLeadConfirmation(
     { name: lead.name, email: lead.email },
     "Team lead notification email sent",
   );
+}
+
+export interface StaffReplyEmailData {
+  to: string;
+  body: string;
+  idempotencyKey: string;
+  ticketNumber?: string | null;
+}
+
+/** Sends one staff reply. The Message-ID is derived from the idempotency key so a resend is recognisable. */
+export async function sendStaffReplyEmail(reply: StaffReplyEmailData): Promise<void> {
+  if (!isMailerConfigured()) throw new Error("SMTP not configured");
+  const ar = /[\u0600-\u06ff]/.test(reply.body);
+  const senderName = process.env.SENDER_NAME || "نظامي اتش آر | Nizamy HR";
+  const ref = reply.ticketNumber ? ` ${reply.ticketNumber}` : "";
+  const subject = ar ? `رد من فريق نظامي${ref}` : `A reply from the Nizamy team${ref}`;
+  const footer = ar
+    ? "يمكنك الرد على هذا البريد، أو متابعة المحادثة من نافذة الدردشة على موقع نظامي من نفس المتصفح."
+    : "You can reply to this email, or continue the conversation in the chat on the Nizamy website from the same browser.";
+  await createTransport().sendMail({
+    from: `${senderName} <${salesAddress}>`,
+    replyTo: salesAddress,
+    to: reply.to,
+    subject,
+    messageId: `<staff-reply-${reply.idempotencyKey}@nizamy.app>`,
+    text: `${reply.body}\n\n—\n${footer}`,
+  });
 }

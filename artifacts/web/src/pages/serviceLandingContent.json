@@ -1,0 +1,178 @@
+{
+  "aiHrService": {
+    "image": "/images/attendance-app-screen.webp",
+    "en": {
+      "eyebrow": "AI in HR",
+      "title": "AI in HR that makes every workday count.",
+      "intro": "AI in HR that helps your people work better, and gives your business clearer signals to act on.",
+      "body": [
+        "Nizamy brings attendance, employee services and performance insight together in one practical HR platform. Give your team a straightforward way to record attendance from a mobile phone, handle routine requests and stay aligned, while managers get a clearer view of what is happening across the business.",
+        "Spend less time chasing information. Make decisions with more context. Build the conditions for a more consistent, productive workplace."
+      ],
+      "primary": "Start free, no credit card required",
+      "secondary": "Talk to our team",
+      "storeNote": "Available on the App Store and Google Play.",
+      "imageAlt": "Nizamy mobile app attendance screen",
+      "sections": [
+        { "id": "operations", "kind": "text", "heading": "HR operations, with less friction", "paragraphs": ["HR systems should make work easier, not add another layer of administration. Nizamy brings everyday workforce workflows into one place, so employees can complete routine tasks and managers can spend less time piecing together updates from messages, spreadsheets and manual checks."] },
+        { "id": "capabilities", "kind": "cards", "heading": "What Nizamy brings together", "items": [
+          { "title": "Mobile attendance that fits the workday", "text": "Employees can record attendance from their phones, without installing fingerprint devices. A mobile-first experience makes it easier to get started across teams and locations. Face verification with liveness detection is available to support attendance integrity; organizations should configure and communicate these controls in line with their policies and applicable requirements." },
+          { "title": "Employee services, made easier", "text": "Routine questions and requests need not interrupt the whole day. Nizamy's AI assistant can respond to HR requests, while employees can handle documents, requests and approvals through self-service workflows. Give people a clear route to the information they need and help HR teams reduce repetitive follow-up." },
+          { "title": "A clearer view of attendance and performance", "text": "Bring attendance, punctuality and workforce activity into more accessible reports. Instead of relying only on end-of-month reviews or informal impressions, managers can use available data to identify patterns, ask better questions and follow up sooner. Use the insights as decision support, not as a replacement for context, fair management or human judgment." },
+          { "title": "Recognition that reinforces good work", "text": "A flexible rewards approach can help connect everyday commitment with meaningful recognition. Nizamy supports smart rewards and gift cards to help organizations encourage the behaviours and contributions they value. Set clear criteria, communicate them to employees and keep recognition consistent with your culture." }
+        ] },
+        { "id": "ai-promise", "kind": "text", "heading": "The practical promise of AI in HR", "paragraphs": [
+          "AI in HR should do more than sound innovative. It should help employees find answers, simplify recurring work and give HR teams more room for the conversations that require empathy and judgment. Nizamy brings an AI assistant into employee services, helping people access support without turning every routine request into a manual exchange.",
+          "The goal is not to automate people out of people decisions. It is to reduce avoidable admin, make useful information easier to reach and help managers focus on coaching, planning and supporting their teams. Your policies, people and decisions remain at the centre."
+        ], "emphasis": true },
+        { "id": "value", "kind": "callout", "heading": "A subscription designed around value", "paragraphs": ["Savings come from reducing manual work and improving attendance, request and reporting workflows. Nizamy does not offer subscription refunds or guaranteed cash returns; results depend on usage and business conditions."], "plans": "Current plans: Free, Starter and Growth." },
+        { "id": "start", "kind": "text", "heading": "See what a better-managed workday could look like", "paragraphs": ["Start with the essentials: invite your team, make attendance easy to record and give employees a clear place to manage common requests. Then use reporting to understand what is improving and where a manager's attention could make a difference. A measured rollout helps your organization learn what works before expanding adoption."] }
+      ],
+      "faqTitle": "Frequently asked questions",
+      "faqs": [
+        { "q": "Do employees need fingerprint devices to record attendance?", "a": "No. Employees can record attendance from their phones without installing fingerprint devices. Face verification with liveness detection is available to support attendance integrity, and organizations should configure and communicate these controls in line with their policies and applicable requirements." },
+        { "q": "Does AI replace HR or management decisions?", "a": "No. The goal is not to replace human judgment in decisions about people. It is to reduce avoidable admin and make useful information easier to reach. Insights are decision support, not a replacement for context or fair management." },
+        { "q": "Do savings mean a subscription refund?", "a": "Savings come from reducing manual work and improving attendance, request and reporting workflows. Nizamy does not offer subscription refunds or guaranteed cash returns; results depend on usage and business conditions." },
+        { "q": "How should we start?", "a": "Invite your team, make attendance easy to record and give employees a clear place to manage common requests. Then use reporting to see what is improving. A measured rollout helps you learn before expanding adoption." }
+      ],
+      "closing": { "title": "Ready to spend less time on HR follow-up and more time on meaningful work?", "primary": "Download Nizamy and start free", "secondary": "Leave your details and our team will contact you" },
+      "disclaimer": "Any savings or return examples are illustrative, not guarantees. Actual outcomes vary according to workforce size, engagement, adoption and operating conditions. AI-generated assistance should be reviewed in line with your organization's policies."
+    },
+    "ar": {
+      "eyebrow": "الذكاء الاصطناعي في الموارد البشرية",
+      "title": "الذكاء الاصطناعي في الموارد البشرية يجعل كل يوم عمل أكثر قيمة",
+      "intro": "ذكاء اصطناعي في الموارد البشرية يساعد فريقك على العمل بكفاءة أكبر، ويمنحك رؤية أوضح لما يحتاج إلى اهتمامك.",
+      "body": [
+        "يجمع نظامي الحضور وخدمات الموظفين ومؤشرات الأداء في منصة عملية واحدة. امنح فريقك طريقة سهلة لتسجيل الحضور عبر الجوال، وإنجاز الطلبات المتكررة، ومتابعة ما يحتاج إليه، مع رؤية أوضح للمديرين حول سير العمل داخل الشركة.",
+        "وقت أقل في متابعة التفاصيل. معلومات أوضح لاتخاذ القرار. وبيئة عمل تساعد الفريق على الالتزام والإنجاز."
+      ],
+      "primary": "ابدأ مجاناً، دون بطاقة ائتمانية",
+      "secondary": "تواصل مع فريقنا",
+      "storeNote": "متوفر على App Store وGoogle Play.",
+      "imageAlt": "شاشة تسجيل الحضور في تطبيق نظامي",
+      "sections": [
+        { "id": "operations", "kind": "text", "heading": "عمليات موارد بشرية أسهل، دون تعقيد إضافي", "paragraphs": ["يفترض أن تجعل أنظمة الموارد البشرية العمل أسهل، لا أن تضيف عبئاً إدارياً جديداً. يجمع نظامي الإجراءات اليومية في مساحة واحدة، ليتمكن الموظفون من إنجاز المهام المعتادة، ويقضي المسؤولون وقتاً أقل في جمع التحديثات من الرسائل والجداول والمراجعات اليدوية."] },
+        { "id": "capabilities", "kind": "cards", "heading": "ما الذي يجمعه نظامي", "items": [
+          { "title": "حضور عبر الجوال يناسب يوم العمل", "text": "يستطيع الموظفون تسجيل الحضور باستخدام هواتفهم، دون الحاجة إلى تركيب أجهزة بصمة. وتسهّل التجربة المصممة للجوال بدء الاستخدام بين الفرق والمواقع المختلفة. كما يتوفر التحقق بالوجه مع كشف الحيوية لدعم موثوقية التسجيل. ويُستحسن إعداد هذه الضوابط وشرحها بما يتوافق مع سياسات المنشأة والمتطلبات المعمول بها." },
+          { "title": "خدمات الموظفين في متناولهم", "text": "لا ينبغي أن يوقف السؤال أو الطلب الروتيني سير العمل. يساعد المساعد الذكي في نظامي على الرد على طلبات الموارد البشرية، ويمكن للموظفين متابعة المستندات والطلبات والموافقات عبر الخدمة الذاتية. النتيجة: مسار أوضح للحصول على المعلومة، ومتابعات متكررة أقل على فريق الموارد البشرية." },
+          { "title": "رؤية أوضح للحضور والأداء", "text": "اجمع بيانات الحضور والالتزام ونشاط القوى العاملة في تقارير أكثر سهولة. وبدلاً من انتظار مراجعة نهاية الشهر أو الاعتماد على الانطباعات وحدها، يمكن للمديرين ملاحظة الأنماط، وطرح أسئلة أفضل، والمتابعة في الوقت المناسب. تبقى البيانات أداة مساندة للقرار، وليست بديلاً عن فهم السياق أو الإدارة العادلة أو التقدير الإنساني." },
+          { "title": "تقدير يعزز السلوك الإيجابي", "text": "يساعد نظام المكافآت المرن على ربط الالتزام اليومي بالتقدير المناسب. ويدعم نظامي المكافآت الذكية وبطاقات الهدايا لمساندة المنشآت في تشجيع المساهمات والسلوكيات التي تقدرها. ضع معايير واضحة، واشرحها للفريق، واجعل التقدير متسقاً مع ثقافة العمل." }
+        ] },
+        { "id": "ai-promise", "kind": "text", "heading": "المعنى العملي للذكاء الاصطناعي في الموارد البشرية", "paragraphs": [
+          "لا تكمن قيمة الذكاء الاصطناعي في الموارد البشرية في حداثة المصطلح، بل في قدرته على تسهيل الوصول إلى الإجابات، وتبسيط المهام المتكررة، وإتاحة وقت أكبر للمواقف التي تحتاج إلى التعاطف والخبرة. يضيف نظامي مساعداً ذكياً إلى خدمات الموظفين، ليساعدهم على الوصول إلى الدعم دون تحويل كل طلب معتاد إلى سلسلة من المراسلات اليدوية.",
+          "الهدف ليس استبدال الحكم الإنساني في القرارات المتعلقة بالأشخاص؛ بل تقليل الأعمال الإدارية القابلة للتفادي، وتقريب المعلومة، ومساعدة المديرين على التركيز على التوجيه والتخطيط ودعم فرقهم. تظل سياساتك وموظفوك وقراراتك في صميم العملية."
+        ], "emphasis": true },
+        { "id": "value", "kind": "callout", "heading": "اشتراك يربط التكلفة بالقيمة", "paragraphs": ["التوفير ناتج عن تقليل العمل اليدوي وتحسين كفاءة متابعة الحضور والطلبات والتقارير. لا يقدم نظامي استرداداً لقيمة الاشتراك أو عائداً نقدياً مضموناً؛ تختلف النتائج بحسب الاستخدام وظروف المنشأة."], "plans": "الباقات الحالية: Free وStarter وGrowth." },
+        { "id": "start", "kind": "text", "heading": "ابدأ بخطوة واضحة", "paragraphs": ["ابدأ بالأساسيات: أضف فريقك، واجعل تسجيل الحضور سهلاً، ووفّر للموظفين مكاناً واضحاً لمتابعة طلباتهم المعتادة. بعد ذلك، استخدم التقارير لملاحظة ما يتحسن وتحديد المواضع التي تستفيد من متابعة المدير. يساعدك التطبيق التدريجي على معرفة ما يناسب منشأتك قبل توسيع الاستخدام."] }
+      ],
+      "faqTitle": "الأسئلة الشائعة",
+      "faqs": [
+        { "q": "هل يحتاج الموظفون إلى أجهزة بصمة لتسجيل الحضور؟", "a": "لا. يستطيع الموظفون تسجيل الحضور باستخدام هواتفهم دون تركيب أجهزة بصمة. ويتوفر التحقق بالوجه مع كشف الحيوية لدعم موثوقية التسجيل، ويُستحسن إعداد هذه الضوابط وشرحها بما يتوافق مع سياسات المنشأة والمتطلبات المعمول بها." },
+        { "q": "هل يستبدل الذكاء الاصطناعي قرارات الموارد البشرية أو الإدارة؟", "a": "لا. الهدف ليس استبدال الحكم الإنساني في القرارات المتعلقة بالأشخاص، بل تقليل الأعمال الإدارية القابلة للتفادي وتقريب المعلومة. تبقى الرؤى أداة مساندة للقرار وليست بديلاً عن فهم السياق أو الإدارة العادلة." },
+        { "q": "هل التوفير يعني استرداد قيمة الاشتراك؟", "a": "التوفير ناتج عن تقليل العمل اليدوي وتحسين كفاءة متابعة الحضور والطلبات والتقارير. لا يقدم نظامي استرداداً لقيمة الاشتراك أو عائداً نقدياً مضموناً؛ تختلف النتائج بحسب الاستخدام وظروف المنشأة." },
+        { "q": "كيف نبدأ؟", "a": "أضف فريقك، واجعل تسجيل الحضور سهلاً، ووفّر للموظفين مكاناً واضحاً لمتابعة طلباتهم المعتادة، ثم استخدم التقارير لملاحظة ما يتحسن. يساعدك التطبيق التدريجي على معرفة ما يناسب منشأتك قبل توسيع الاستخدام." }
+      ],
+      "closing": { "title": "هل تريد وقتاً أقل في المتابعة الإدارية ووقتاً أكبر للعمل الذي يصنع فرقاً؟", "primary": "حمّل نظامي وابدأ مجاناً", "secondary": "اترك بياناتك ليتواصل معك فريقنا" },
+      "disclaimer": "أي أمثلة للتوفير أو العائد توضيحية وليست ضماناً. تختلف النتائج الفعلية باختلاف حجم القوى العاملة والتفاعل ومستوى الاستخدام وظروف التشغيل. يُنصح بمراجعة المخرجات التي يقدمها الذكاء الاصطناعي وفق سياسات المنشأة."
+    }
+  },
+  "employeeRewardsService": {
+    "image": "/images/rewards-marketplace.png",
+    "en": {
+      "eyebrow": "Employee rewards",
+      "title": "Employee rewards, organized. Make recognition part of the everyday.",
+      "intro": "A meaningful reward is more than a gift. It is a clear signal that a contribution has been noticed and valued.",
+      "body": [
+        "But when criteria are unclear, or reward administration depends on scattered reminders and manual tracking, recognition can feel inconsistent, and employees may not know what it takes to earn it.",
+        "Nizamy helps you organize rewards around commitment and performance, so recognition can move from occasional gestures to a clearer, more manageable practice. Build a rewards experience that is easier to administer, easier for employees to understand and better aligned with the culture you want to create."
+      ],
+      "primary": "Start free with Nizamy",
+      "secondary": "Talk to our team",
+      "storeNote": "Available on the App Store and Google Play.",
+      "imageAlt": "Nizamy rewards screen in the mobile app",
+      "sections": [
+        { "id": "criteria", "kind": "text", "heading": "Replace guesswork with understandable criteria", "paragraphs": [
+          "When people do not know how rewards are decided, recognition can feel uneven, even when managers have good intentions. Start with clarity: define the contribution or behaviour you want to encourage, then explain how recognition relates to those criteria.",
+          "Relevant criteria might include attendance commitment, contribution to completed work or progress toward specific goals. The right measures depend on each organization, so choose indicators that fit the role and the work. Keep them understandable and practical. The purpose is not to reward every action or turn work into a constant contest. It is to make valuable contributions visible and encourage progress that benefits the team."
+        ] },
+        { "id": "connect", "kind": "text", "heading": "Connect commitment, contribution and recognition", "paragraphs": [
+          "Nizamy supports a flexible rewards approach that helps connect everyday commitment with recognition. When employees understand what is valued and why, appreciation can feel more specific and more closely tied to the behaviours an organization wants to reinforce. Available workforce information can also help managers make follow-up more informed than relying on general impressions alone.",
+          "Smart rewards and gift cards offer a practical way to recognize people. Select an approach that fits your team, budget and workplace policies. Explain eligibility, award details and how recognition is approved. A reward's value comes not only from what it is, but also from its meaning, timing and fair application."
+        ] },
+        { "id": "why", "kind": "text", "heading": "Why organize employee rewards?", "paragraphs": ["Shared criteria reduce uncertainty and help managers apply recognition consistently while accounting for different roles. Timely appreciation can reinforce positive contributions, and digital tools make rewards easier to manage than scattered reminders and unstructured reviews."] },
+        { "id": "fairness", "kind": "text", "heading": "Make recognition fair and meaningful", "paragraphs": [
+          "A good rewards program starts with a straightforward, communicated policy. Define who can nominate or approve a reward, which indicators are considered and when awards are reviewed. Make sure the criteria relate to factors employees can influence. Revisit the approach when work changes or when you notice unintended effects.",
+          "Use attendance and performance information as part of the picture, not as the whole picture. Role differences, working conditions and unequal opportunities may affect recorded indicators. Combine data with managers' knowledge of context, allow for professional judgment and provide a route for review. Fair recognition is not a number acting alone; it is the result of understandable standards and responsible application."
+        ], "emphasis": true },
+        { "id": "steps", "kind": "steps", "heading": "A practical way to get started", "items": [
+          { "title": "Choose a clear goal", "text": "What behaviour or outcome would you like to support?" },
+          { "title": "Set understandable criteria", "text": "Keep eligibility relevant and workable for the roles involved." },
+          { "title": "Explain the process", "text": "Tell employees what the reward is, how to qualify and who approves it." },
+          { "title": "Use tools that fit", "text": "Organize rewards and gift cards through a consistent workspace where possible." },
+          { "title": "Review the impact", "text": "Check whether the approach supports the intended behaviour, listen to employee feedback and refine what needs attention." }
+        ] },
+        { "id": "value", "kind": "callout", "heading": "Turn appreciation into a repeatable practice with Nizamy", "paragraphs": [
+          "Nizamy brings HR tools together in one experience and supports a flexible rewards system that can help organizations connect commitment, performance and recognition. With options such as smart gift cards, rewards become part of a more organized workforce experience rather than a separate process that is difficult to keep track of.",
+          "Savings come from reducing manual work and improving attendance, request and reporting workflows. Nizamy does not offer subscription refunds or guaranteed cash returns; results depend on usage and business conditions."
+        ], "plans": "Current plans: Free, Starter and Growth." }
+      ],
+      "faqTitle": "Frequently asked questions",
+      "faqs": [
+        { "q": "Which criteria can a rewards policy use?", "a": "Relevant criteria might include attendance commitment, contribution to completed work or progress toward specific goals. The right measures depend on each organization, so choose indicators that fit the role and the work." },
+        { "q": "Should attendance and performance data decide rewards on their own?", "a": "No. Use them as part of the picture, not the whole picture. Combine data with managers' knowledge of context, allow for professional judgment and provide a route for review." },
+        { "q": "Do savings mean a subscription refund?", "a": "Savings come from reducing manual work and improving attendance, request and reporting workflows. Nizamy does not offer subscription refunds or guaranteed cash returns; results depend on usage and business conditions." },
+        { "q": "How do we begin?", "a": "Choose a clear goal, set understandable criteria, explain the process, organize rewards and gift cards in a consistent workspace, and review the impact with employee feedback." }
+      ],
+      "closing": { "title": "Make recognition clearer. Organize rewards around the contributions that move your team forward.", "primary": "Download Nizamy and start free", "secondary": "Leave your details and our team will contact you" },
+      "disclaimer": "Rewards are subject to your organization's policies and program terms. Any reference to returns or recovery is illustrative, subject to terms and actual performance, and is not guaranteed. Review indicators with context, fairness and privacy in mind."
+    },
+    "ar": {
+      "eyebrow": "مكافآت الموظفين",
+      "title": "نظّم مكافآت الموظفين. واجعل التقدير جزءاً من العمل اليومي.",
+      "intro": "المكافأة المؤثرة ليست مجرد هدية؛ إنها رسالة واضحة تقول للموظف: نرى مساهمتك ونقدّر أثرها.",
+      "body": [
+        "لكن حين تغيب المعايير أو تصبح متابعة المكافآت عملاً يدوياً، يفقد التقدير اتساقه ويصعب على الفريق فهم ما يستحق التقدير.",
+        "يساعدك نظامي على تنظيم المكافآت وربطها بمؤشرات الالتزام والإنجاز، لتنتقل من المبادرات المتفرقة إلى أسلوب أوضح في تحفيز فريقك. أنشئ تجربة تقدير أسهل للإدارة، وأكثر وضوحاً للموظفين، وأقرب إلى ما تريد ترسيخه في ثقافة شركتك."
+      ],
+      "primary": "ابدأ مجاناً مع نظامي",
+      "secondary": "تواصل مع فريقنا لمعرفة المزيد",
+      "storeNote": "متوفر على App Store وGoogle Play.",
+      "imageAlt": "شاشة المكافآت في تطبيق نظامي",
+      "sections": [
+        { "id": "criteria", "kind": "text", "heading": "من التقدير العشوائي إلى معايير مفهومة", "paragraphs": [
+          "عندما لا يعرف الموظف كيف تُمنح المكافآت، قد يبدو التقدير غير متوازن حتى لو كانت النية جيدة. تساعدك الخطوة الأولى على تجنب ذلك: وضّح السلوك أو الإنجاز الذي تريد تشجيعه، ثم اشرح للفريق كيف يرتبط التقدير بهذه المعايير.",
+          "يمكن أن تشمل المعايير جوانب مثل الالتزام بالحضور، أو الإسهام في إنجاز العمل، أو تحقيق أهداف محددة. وتختلف المؤشرات المناسبة من شركة إلى أخرى؛ لذلك اختر ما يتصل بطبيعة عمل فريقك، واجعل المعايير قابلة للفهم والتطبيق. الهدف ليس مكافأة كل حركة أو تحويل يوم العمل إلى منافسة دائمة، بل إبراز المساهمات التي تساعد الفريق والمنشأة على التقدم."
+        ] },
+        { "id": "connect", "kind": "text", "heading": "مكافآت تربط الالتزام بالإنجاز", "paragraphs": [
+          "يدعم نظامي نهجاً مرناً للمكافآت يساعد على ربط الالتزام اليومي بالتقدير. وعندما يعرف الموظفون ما الذي يُقدّر ولماذا، يصبح التقدير أوضح وأقرب إلى السلوك الذي تريد المنشأة تعزيزه. ويساعد هذا النهج المديرين على الانتقال من الانطباعات العامة إلى متابعة أكثر ارتباطاً بالبيانات المتاحة.",
+          "يمكن أن تساعد المكافآت وبطاقات الهدايا الذكية على تقديم التقدير بطريقة عملية. اختر أسلوباً يناسب فريقك وميزانيتك وسياسات منشأتك، ووضّح شروط الاستحقاق وطريقة الحصول على المكافأة. تبقى قيمة المكافأة في معناها وتوقيتها وعدالة تطبيقها، لا في شكلها وحده."
+        ] },
+        { "id": "why", "kind": "text", "heading": "لماذا يهمّ تنظيم المكافآت؟", "paragraphs": ["تساعد المعايير الواضحة على تقليل الالتباس، وتدعم اتساق التطبيق بين المديرين مع مراعاة اختلاف الأدوار. كما يمكن للتقدير المناسب أن يعزز المساهمات الإيجابية، فيما تسهّل الأدوات الرقمية إدارة المكافآت بدلاً من التذكيرات والمراجعات المتفرقة."] },
+        { "id": "fairness", "kind": "text", "heading": "اجعل التقدير عادلاً وذا معنى", "paragraphs": [
+          "تبدأ منظومة المكافآت الجيدة بسياسة بسيطة ومعلنة. حدّد من يستطيع الترشيح أو اعتماد المكافأة، وما المؤشرات التي تُستخدم، ومتى تتم المراجعة. تأكد من أن المعايير مرتبطة بما يستطيع الموظف التأثير فيه، وراجعها إذا تغيّرت طبيعة العمل أو ظهرت آثار غير مقصودة.",
+          "استخدم بيانات الحضور والأداء باعتبارها جزءاً من الصورة، لا الصورة كلها. فقد تؤثر طبيعة الدور، أو ظروف العمل، أو اختلاف الفرص في المؤشرات المسجلة. اجمع بين البيانات وفهم المدير للسياق، واترك مساحة للتقدير المهني والمراجعة. فالمكافأة العادلة لا تعتمد على رقم وحده؛ إنها نتيجة معايير مفهومة وتطبيق مسؤول."
+        ], "emphasis": true },
+        { "id": "steps", "kind": "steps", "heading": "كيف تبدأ؟", "items": [
+          { "title": "اختر هدفاً واضحاً", "text": "ما السلوك أو النتيجة التي تريد دعمها في فريقك؟" },
+          { "title": "ضع معايير مفهومة", "text": "اجعل الاستحقاق واضحاً وقابلاً للتطبيق على الأدوار المعنية." },
+          { "title": "اشرح الآلية", "text": "أخبر الموظفين بنوع المكافأة، وشروطها، وطريقة اعتمادها." },
+          { "title": "استخدم الأدوات المناسبة", "text": "نظّم المكافآت وبطاقات الهدايا من خلال مساحة عمل موحدة قدر الإمكان." },
+          { "title": "راجع الأثر", "text": "لاحظ ما إذا كان النهج يعزز السلوك المقصود، واستمع إلى ملاحظات الفريق، وعدّل ما يحتاج إلى تحسين." }
+        ] },
+        { "id": "value", "kind": "callout", "heading": "نظامي يساعدك على تحويل التقدير إلى ممارسة", "paragraphs": [
+          "يجمع نظامي أدوات الموارد البشرية في تجربة واحدة، ويدعم نظام مكافآت مرناً يمكن أن يساعد المنشآت على ربط الالتزام بالأداء والتقدير. ومع خيارات مثل بطاقات الهدايا الذكية، يصبح تقديم المكافأة جزءاً من تجربة تنظيمية أسهل، بدلاً من أن يبقى إجراءً منفصلاً يصعب تتبعه.",
+          "التوفير ناتج عن تقليل العمل اليدوي وتحسين كفاءة متابعة الحضور والطلبات والتقارير. لا يقدم نظامي استرداداً لقيمة الاشتراك أو عائداً نقدياً مضموناً؛ تختلف النتائج بحسب الاستخدام وظروف المنشأة."
+        ], "plans": "الباقات الحالية: Free وStarter وGrowth." }
+      ],
+      "faqTitle": "الأسئلة الشائعة",
+      "faqs": [
+        { "q": "ما المعايير التي يمكن أن تعتمد عليها سياسة المكافآت؟", "a": "يمكن أن تشمل المعايير الالتزام بالحضور، أو الإسهام في إنجاز العمل، أو تحقيق أهداف محددة. وتختلف المؤشرات المناسبة من شركة إلى أخرى، لذلك اختر ما يتصل بطبيعة الدور والعمل." },
+        { "q": "هل تكفي بيانات الحضور والأداء وحدها لتحديد المكافآت؟", "a": "لا. استخدمها باعتبارها جزءاً من الصورة لا الصورة كلها. اجمع بين البيانات وفهم المدير للسياق، واترك مساحة للتقدير المهني والمراجعة." },
+        { "q": "هل التوفير يعني استرداد قيمة الاشتراك؟", "a": "التوفير ناتج عن تقليل العمل اليدوي وتحسين كفاءة متابعة الحضور والطلبات والتقارير. لا يقدم نظامي استرداداً لقيمة الاشتراك أو عائداً نقدياً مضموناً؛ تختلف النتائج بحسب الاستخدام وظروف المنشأة." },
+        { "q": "كيف نبدأ؟", "a": "اختر هدفاً واضحاً، وضع معايير مفهومة، واشرح الآلية للموظفين، ونظّم المكافآت وبطاقات الهدايا في مساحة عمل موحدة، ثم راجع الأثر مع ملاحظات الفريق." }
+      ],
+      "closing": { "title": "اجعل تقدير فريقك أوضح، ونظّم المكافآت بطريقة تدعم ما تريد تحقيقه.", "primary": "حمّل نظامي وابدأ مجاناً", "secondary": "اترك بياناتك ليتواصل معك فريقنا" },
+      "disclaimer": "تُمنح المكافآت وفق سياسات المنشأة وشروط البرنامج. أي ذكر للعائد أو الاسترداد توضيحي وخاضع للشروط والأداء الفعلي، ولا يمثل ضماناً. راجع المؤشرات مع مراعاة السياق والإنصاف والخصوصية."
+    }
+  }
+}

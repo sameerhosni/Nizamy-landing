@@ -6,6 +6,7 @@ import {
 } from "@workspace/api-zod";
 import { getDb, incentiveSignupsTable } from "@workspace/db";
 import { sendIncentiveSignupNotification } from "../lib/mailer";
+import { upsertHubspotIncentiveContact } from "../lib/hubspotIncentiveContact";
 
 const router: IRouter = Router();
 const POINTS_AWARDED = 5000;
@@ -46,63 +47,92 @@ router.post(
       return;
     }
 
-    const notifySales = (status: "awarded" | "already_claimed") => {
-      sendIncentiveSignupNotification({
+    const syncContactAndNotifySales = async (
+      status: "awarded" | "already_claimed",
+      pointsAwarded: number,
+    ) => {
+      const signup = {
         intent: parsed.data.intent,
         email,
         language: parsed.data.language,
         status,
-        pointsAwarded: POINTS_AWARDED,
+        pointsAwarded,
         createdAt: new Date().toISOString(),
-      }).catch((error) => {
+      } as const;
+
+      sendIncentiveSignupNotification(signup).catch((error) => {
         req.log.error(
           { err: error, status },
           "Failed to send incentive signup notification",
         );
       });
+
+      try {
+        await upsertHubspotIncentiveContact(signup);
+      } catch (error) {
+        req.log.error(
+          { err: error, status, email },
+          "Failed to sync incentive signup contact to HubSpot",
+        );
+      }
     };
 
     try {
       const database = getDb();
 
       const emailClaim = await database
-        .select({ id: incentiveSignupsTable.id })
+        .select({
+          id: incentiveSignupsTable.id,
+          pointsAwarded: incentiveSignupsTable.pointsAwarded,
+        })
         .from(incentiveSignupsTable)
         .where(eq(incentiveSignupsTable.email, email))
         .limit(1);
 
       if (emailClaim.length > 0) {
-        notifySales("already_claimed");
+        const pointsAwarded = emailClaim[0]!.pointsAwarded;
+        await syncContactAndNotifySales("already_claimed", pointsAwarded);
         res.status(200).json(
           CreateIncentiveSignupResponse.parse({
             status: "already_claimed",
-            pointsAwarded: POINTS_AWARDED,
+            pointsAwarded,
           }),
         );
         return;
       }
 
-      await database.insert(incentiveSignupsTable).values({
-        intent: parsed.data.intent,
-        email,
-        pointsAwarded: POINTS_AWARDED,
-        language: parsed.data.language,
-      });
+      const [createdSignup] = await database
+        .insert(incentiveSignupsTable)
+        .values({
+          intent: parsed.data.intent,
+          email,
+          pointsAwarded: POINTS_AWARDED,
+          language: parsed.data.language,
+        })
+        .returning({ pointsAwarded: incentiveSignupsTable.pointsAwarded });
 
-      notifySales("awarded");
+      const pointsAwarded = createdSignup?.pointsAwarded ?? POINTS_AWARDED;
+      await syncContactAndNotifySales("awarded", pointsAwarded);
       res.status(201).json(
         CreateIncentiveSignupResponse.parse({
           status: "awarded",
-          pointsAwarded: POINTS_AWARDED,
+          pointsAwarded,
         }),
       );
     } catch (error) {
       if (isUniqueViolation(error)) {
-        notifySales("already_claimed");
+        const [existingSignup] = await getDb()
+          .select({ pointsAwarded: incentiveSignupsTable.pointsAwarded })
+          .from(incentiveSignupsTable)
+          .where(eq(incentiveSignupsTable.email, email))
+          .limit(1);
+        const pointsAwarded =
+          existingSignup?.pointsAwarded ?? POINTS_AWARDED;
+        await syncContactAndNotifySales("already_claimed", pointsAwarded);
         res.status(200).json(
           CreateIncentiveSignupResponse.parse({
             status: "already_claimed",
-            pointsAwarded: POINTS_AWARDED,
+            pointsAwarded,
           }),
         );
         return;

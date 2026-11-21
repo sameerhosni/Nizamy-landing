@@ -1,0 +1,9 @@
+# Saudi HR article source check
+
+The scheduled GitHub Actions workflow runs Mondays at 07:15 UTC against the **default branch of the GitHub mirror**. It can also be started manually in Actions → Check Saudi HR article sources → Run workflow. Keep the mirror current with the primary repository so it checks the published citations. This workflow is independent of Jenkins deployment/build and does not run on pull requests.
+
+Run locally with `pnpm --filter @workspace/scripts run check-blog-sources`; test the checker without calling the Ministry with `pnpm --filter @workspace/scripts run test:blog-sources`.
+
+The output and Actions run summary list each EN/AR source ID, its URL, section heading, and an excerpt of the paragraph that cites it. **BROKEN** fails the scheduled run for 404/410, a wrong/redirected destination, a title/H1 without the cited topic, or a PDF URL that serves non-PDF content. **UNAVAILABLE** reports timeouts, 403/429, and other server/access errors without failing, because the Ministry may block automation or experience temporary outages. Retry these from a browser; a green workflow with UNAVAILABLE entries does **not** mean those links were verified. If every source is unavailable, check all links manually rather than treating the run as proof they work.
+
+For a moved source, verify that the replacement supports the *specific cited paragraph* before updating `artifacts/web/src/pages/blogArticleContent.json`. Keep source IDs and paragraph citations aligned in both languages. Then update the independent expected destination and topic markers in `scripts/src/check-blog-sources.ts` (do not just replace the URL with a generic Ministry homepage), run the local tests, and manually dispatch the workflow. PDF links must still serve PDF bytes. If a Ministry page changes wording without changing its meaning, adjust the topic markers only after inspecting the page.

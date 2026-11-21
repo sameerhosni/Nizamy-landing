@@ -7,16 +7,16 @@ export function StatsBar() {
 
   const stats = {
     en: [
-      { icon: AlertCircle, value: "0", label: "Fines — a motivation-based system" },
-      { icon: DollarSign, value: "SAR 3", label: "Starting price / employee / month" },
+      { icon: AlertCircle, value: "No fines", label: "A motivation-based system" },
+      { icon: DollarSign, value: "SAR 3", label: "Paid plans start here / employee / month" },
       { icon: Clock, value: "1 min", label: "To your first verified check-in" },
-      { icon: TrendingUp, value: "30%", label: "Max annual subscription return" },
+      { icon: TrendingUp, value: "Less admin", label: "More time for your business" },
     ],
     ar: [
-      { icon: AlertCircle, value: "٠", label: "نظام تحفيزي بدون غرامات" },
-      { icon: DollarSign, value: "٣ ر.س", label: "يبدأ من ٣ ريال شهرياً للموظف" },
+      { icon: AlertCircle, value: "بدون غرامات", label: "نظام تحفيزي" },
+      { icon: DollarSign, value: "٣ ر.س", label: "الباقات المدفوعة تبدأ من ٣ ريال شهرياً للموظف" },
       { icon: Clock, value: "دقيقة واحدة", label: "حتى أول حضور وانصراف موثّق" },
-      { icon: TrendingUp, value: "30%", label: "توفير سنوي حتى 30% من قيمة الاشتراك السنوي" },
+      { icon: TrendingUp, value: "إدارة أسهل", label: "وقت أكثر لأعمالك" },
     ],
   };
 

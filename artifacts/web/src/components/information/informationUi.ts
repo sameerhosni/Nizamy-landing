@@ -1,0 +1,36 @@
+export type Lang = "ar" | "en";
+export const ui = {
+  ar: {
+    activePolicy: "السياسة المعتمدة والنافذة", activePolicyText: "للاطلاع على سياسة الخصوصية المعتمدة حالياً، افتح النسخة العربية أو الإنجليزية.",
+    openAr: "السياسة بالعربية", openEn: "السياسة بالإنجليزية", jump: "انتقل إلى",
+    activePlans: "اطلع على الباقات الحالية",
+    searchLabel: "ابحث عن إجابة…", all: "الكل", results: (n: number) => `${n} نتيجة`, clear: "مسح البحث",
+    noResults: "لم نجد نتيجة مطابقة.", noResultsHelp: "جرّب كلمات أخرى أو افتح صفحة المساعدة.", helpCta: "اذهب إلى مركز المساعدة",
+    tryLine: "جرّب: الباقات، إضافة موظف، تسجيل الحضور، التقارير، الذكاء الاصطناعي، أو استعادة الدخول.",
+    cats: { about: "عن نظامي", start: "البدء وإعداد الحساب", hr: "الموظفون والموارد البشرية", attendance: "الحضور والانصراف", pricing: "الباقات والأسعار", ai: "الذكاء الاصطناعي والتقارير", security: "الأمان والخصوصية", support: "الدعم الفني" } as Record<string, string>,
+    helpSearch: "ابحث في المواضيع", helpTopics: "مواضيع المساعدة", contactTitle: "تواصل مع الفريق", contactText: "راسل البريد الرسمي. لا تُدرج كلمات مرور أو بيانات حساسة.", contactBtn: "راسلنا", noTopic: "لا يوجد موضوع مطابق.",
+    hrPick: "اختر ما تريد تحسينه", hrEnquiry: "اطلب التواصل", hrContext: "سياق الطلب", hrErr: "تعذر إرسال النموذج. حاول مرة أخرى.",
+    caps: [["attendance", "الحضور والانصراف", "تابع حضور الموظفين والتزامهم."], ["selfservice", "الخدمات الذاتية", "اجعل الطلبات والموافقات أسهل للموظف وأوضح لفريق HR."], ["reports", "التقارير والرؤى", "حوّل البيانات اليومية إلى صورة أوضح."], ["rewards", "المكافآت", "اربط الالتزام والإنجاز بتجربة تقدير."], ["ai", "مساعد الذكاء الاصطناعي", "مساعدة في المهام والتقارير. يعتمد التوفر على الباقة."]] as string[][],
+    capNote: "تختلف القدرات المتاحة بحسب الباقة؛ راجع الباقات الحالية.",
+    compare: "مقارنة الباقات", calc: "حاسبة تقديرية", employees: "عدد الموظفين", est: "التكلفة الشهرية التقديرية", sar: "ريال", calcNote: "تقدير إرشادي مبني على المستند المرفق: 3 ريال لكل موظف شهرياً؛ الفوترة في المصدر شهرية وليست سنوية. ليس عرضاً ولا فاتورة، ولا يوجد دفع.",
+    cols: ["الباقة", "السعر", "المزايا"],
+    rows: [["Free", "مجاني", "تجربة الأساسيات والتعرف على الحضور"], ["Starter", "3 ريال / موظف شهرياً", "الحضور والانصراف، تقارير أوضح، خدمات ذاتية"]] as string[][],
+  },
+  en: {
+    activePolicy: "Active approved policy", activePolicyText: "To read the privacy policy currently in force, open the Arabic or English version.",
+    openAr: "Policy in Arabic", openEn: "Policy in English", jump: "Jump to",
+    activePlans: "See the current plans",
+    searchLabel: "Search for an answer…", all: "All", results: (n: number) => `${n} result${n === 1 ? "" : "s"}`, clear: "Clear search",
+    noResults: "No matching answer found.", noResultsHelp: "Try other words or open the Help page.", helpCta: "Go to the Help Center",
+    tryLine: "Try: plans, add employee, attendance, reports, AI, or sign-in recovery.",
+    cats: { about: "About Nizamy", start: "Getting started", hr: "Employees and HR", attendance: "Attendance", pricing: "Plans and pricing", ai: "AI and reports", security: "Security and privacy", support: "Support" } as Record<string, string>,
+    helpSearch: "Search topics", helpTopics: "Help topics", contactTitle: "Contact the team", contactText: "Email the official address. Do not include passwords or sensitive data.", contactBtn: "Email us", noTopic: "No matching topic.",
+    hrPick: "Choose what you want to improve", hrEnquiry: "Request a conversation", hrContext: "Request context", hrErr: "We could not send the form. Please try again.",
+    caps: [["attendance", "Attendance", "Follow employee attendance and commitment."], ["selfservice", "Self-service", "Make requests and approvals easier for employees and clearer for HR."], ["reports", "Reports and insights", "Turn daily data into a clearer picture."], ["rewards", "Rewards", "Connect commitment and achievement to recognition."], ["ai", "AI assistant", "Help with tasks and reports. Availability depends on the plan."]] as string[][],
+    capNote: "Capabilities differ by plan; see the current plans.",
+    compare: "Plan comparison", calc: "Indicative calculator", employees: "Number of employees", est: "Indicative monthly cost", sar: "SAR", calcNote: "Indicative only, based on the supplied document: 3 SAR per employee per month; the source bills monthly, not annually. Not an offer or invoice; no payment.",
+    cols: ["Plan", "Price", "Features"],
+    rows: [["Free", "Free", "Try the basics and the attendance experience"], ["Starter", "3 SAR / employee / month", "Attendance, clearer reports, self-service"]] as string[][],
+  },
+};
+export const norm = (s: string) => s.toLowerCase().normalize("NFKD").replace(/[\u064B-\u065F\u0670\u0640]/g, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/\s+/g, " ").trim();

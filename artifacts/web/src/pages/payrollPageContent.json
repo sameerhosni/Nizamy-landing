@@ -1,0 +1,78 @@
+{
+  "ar": {
+    "kicker": "مدخلات الرواتب",
+    "title": "من الحضور إلى",
+    "hot": "مسير الرواتب",
+    "sub": "الحضور والإضافي يتجمعون في مكان واحد، فتجهّز مدخلات الرواتب وتراجعها قبل الاعتماد، بدل جمعها من ملفات متفرقة.",
+    "points": ["الحضور والإضافي في مكان واحد", "مراجعة قبل الاعتماد", "تقارير رواتب بنقرة واحدة"],
+    "cta": "جرّب مجانًا",
+    "demoKicker": "جرّب بنفسك",
+    "demoTitle": "كيف يؤثر الحضور على المسير؟",
+    "demoIntro": "غيّر عدد أيام الغياب وشاهد المدخلات تتغير. مثال ببيانات تجريبية لموظف تجريبي، وليس راتبًا حقيقيًا.",
+    "labels": {
+      "title": "مسير رواتب مارس",
+      "base": "الراتب الأساسي",
+      "housing": "بدل سكن",
+      "absence": "خصم الغياب",
+      "net": "الصافي",
+      "days": "أيام الغياب",
+      "status": "بانتظار المراجعة · لم يُصرف",
+      "currency": "ريال",
+      "sample": "بيانات تجريبية"
+    },
+    "sections": [
+      { "h": "لماذا تتعب الرواتب مع الملفات المتفرقة؟", "p": "الرواتب من أكثر عمليات الموارد البشرية حساسية، لأن أي خطأ فيها قد يؤثر مباشرة على الموظف وثقة الفريق. وعندما تُجمع بيانات الحضور والإضافي من ملفات ورسائل متفرقة، يزداد الوقت المطلوب وتزداد احتمالات الخطأ." },
+      { "h": "كيف يساعدك نظامي؟", "p": "يربط نظامي الحضور بتجهيز الرواتب: تظهر بيانات الحضور والإضافي في مكان واحد، وتُجهَّز مدخلات الرواتب لتراجعها قبل الاعتماد. وتتوفر أدوات تساعد على تنظيم بيانات الرواتب وتجهيز قسائم الرواتب وإعداد ملف حماية الأجور بضغطة واحدة." },
+      { "h": "ماذا عن إدارة الرواتب الكاملة؟", "p": "أدوات الرواتب في نظامي تتوسع لتشمل إدارة الرواتب بالكامل. وتتوفر ميزات الرواتب بحسب الباقة، والباقات والأسعار الحالية موجودة دائمًا في قسم الأسعار بالصفحة الرئيسية." }
+    ],
+    "faqs": [
+      { "q": "هل يجهّز نظامي ملف حماية الأجور؟", "a": "نعم، يوفر نظامي أدوات لإعداد ملف حماية الأجور بضغطة واحدة، وتتوفر ميزات الرواتب بحسب الباقة." },
+      { "q": "هل تتوفر ميزات الرواتب في كل الباقات؟", "a": "تتوفر ميزات الرواتب بحسب الباقة. الباقات والأسعار الحالية موجودة في قسم الأسعار بالصفحة الرئيسية." },
+      { "q": "هل الأرقام في المثال حقيقية؟", "a": "لا. المثال ببيانات تجريبية لموظف تجريبي لتوضيح الفكرة فقط." },
+      { "q": "هل أحتاج إلى خبرة تقنية للبدء؟", "a": "لا. التهيئة الذاتية في نظامي مصممة لتبدأ دون أي خبرة تقنية." }
+    ],
+    "faqTitle": "أسئلة شائعة",
+    "ctaTitle": "جهّز مسير الرواتب من الحضور مباشرة",
+    "ctaSub": "ابدأ مجانًا، وتفعّل ميزات الرواتب بحسب الباقة.",
+    "ctaBtn": "ابدأ مجانًا",
+    "note": "الأرقام والرسوم توضيحية ببيانات تجريبية. ميزات الرواتب بحسب الباقة."
+  },
+  "en": {
+    "kicker": "Payroll inputs",
+    "title": "From attendance to",
+    "hot": "payroll inputs",
+    "sub": "Attendance and overtime come together in one place, so you prepare payroll inputs and review them before approval instead of gathering them from scattered files.",
+    "points": ["Attendance and overtime in one place", "Review before approval", "One-click payroll reports"],
+    "cta": "Try it free",
+    "demoKicker": "Try it yourself",
+    "demoTitle": "How does attendance affect the payroll run?",
+    "demoIntro": "Change the number of absence days and watch the inputs change. A sample with test data for a test employee, not a real salary.",
+    "labels": {
+      "title": "March payroll run",
+      "base": "Basic salary",
+      "housing": "Housing allowance",
+      "absence": "Absence deduction",
+      "net": "Net",
+      "days": "Absence days",
+      "status": "Awaiting review · not paid",
+      "currency": "SAR",
+      "sample": "Test data"
+    },
+    "sections": [
+      { "h": "Why does payroll suffer with scattered files?", "p": "Payroll is among the most sensitive HR processes, since any error can directly affect the employee and the team's trust. When attendance and overtime are gathered from scattered files and messages, it takes longer and errors become more likely." },
+      { "h": "How does Nizamy help?", "p": "Nizamy connects attendance to payroll preparation: attendance and overtime data appear in one place, and payroll inputs are prepared for you to review before approval. Tools are available to help organize payroll data, prepare payslips and produce a Wage Protection System file in one click." },
+      { "h": "What about full payroll management?", "p": "Nizamy's payroll tools are expanding to cover full payroll management. Payroll features are available according to the plan, and the current plans and prices are always in the Pricing section of the homepage." }
+    ],
+    "faqs": [
+      { "q": "Does Nizamy prepare the Wage Protection System file?", "a": "Yes. Nizamy provides tools to produce a Wage Protection System file in one click, with payroll features available according to the plan." },
+      { "q": "Are payroll features available in every plan?", "a": "Payroll features are available according to the plan. The current plans and prices are in the Pricing section of the homepage." },
+      { "q": "Are the numbers in the example real?", "a": "No. The example uses test data for a test employee, only to illustrate the idea." },
+      { "q": "Do I need technical experience to start?", "a": "No. Nizamy's self-guided setup is designed so you can start without any technical experience." }
+    ],
+    "faqTitle": "FAQ",
+    "ctaTitle": "Prepare payroll straight from attendance",
+    "ctaSub": "Start free, and unlock payroll features according to your plan.",
+    "ctaBtn": "Start free",
+    "note": "Numbers and graphics are illustrative, with test data. Payroll features are available according to the plan."
+  }
+}

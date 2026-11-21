@@ -6,31 +6,40 @@ import { Problem } from "@/components/sections/Problem";
 import { Features } from "@/components/sections/Features";
 import { WhyNizamy } from "@/components/sections/WhyNizamy";
 import { ReturnModel } from "@/components/sections/ReturnModel";
-import { Calculator } from "@/components/sections/Calculator";
+import { Pricing } from "@/components/sections/Pricing";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { DesignPartner } from "@/components/sections/DesignPartner";
 import { Footer } from "@/components/layout/Footer";
-import { ChatWidget } from "@/components/ChatWidget";
+import { PublicChat } from "@/components/PublicChat";
 import { ScrollButtons } from "@/components/ScrollButtons";
 import { IncentivePopup } from "@/components/IncentivePopup";
 import { initDashboardAnalytics } from "@/lib/dashboardAnalytics";
+import { SeoHead } from "@/components/SeoHead";
+import { HubSpotContact } from "@/components/sections/HubSpotContact";
+import { useLanguage } from "@/lib/i18n";
+import { HomeHero } from "@/components/home/HomeHero";
+import { PainSection, SolutionSection, HowSection, BeforeAfterSection, HomePricing, HomeFaq } from "@/components/home/HomeSections";
+import { annualTotal, tierPrice as priceFor, Tier } from "@/lib/plans";
 
 export function Home() {
-  const [employees, setEmployees] = useState(100);
-  const [tier, setTier] = useState<"Standard" | "Growth" | "Pro">("Growth");
+  const { language } = useLanguage();
+  const employees = 100;
+  const hoursSaved = 0.5;
+  const hourlyValue = 30;
+  const [tier, setTier] = useState<Tier>("Growth");
 
   useEffect(() => {
-    document.title = "Nizamy HR — The HR system that pays you back";
     initDashboardAnalytics();
+    const target = window.location.hash.slice(1);
+    if (target) {
+      requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView());
+    }
   }, []);
 
-  const tierPrice = tier === "Standard" ? 3 : tier === "Growth" ? 5 : 8;
-  const subscription = employees * tierPrice * 12;
-  const layer1 = subscription * 0.15;
-  const layer2 = subscription * 0.10;
-  const layer3 = subscription * 0.05;
-  const totalReturn = layer1 + layer2 + layer3;
-  const effectiveCost = subscription - totalReturn;
+  const tierPrice = priceFor(tier);
+  const subscription = annualTotal(tier, employees);
+  // User-adjustable scenario, not measured savings or subscription cashback.
+  const totalReturn = employees * hoursSaved * hourlyValue * 12;
 
   const snapshot = {
     employees,
@@ -42,34 +51,39 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-blue-600 selection:text-white flex flex-col">
+      <SeoHead page="home" />
       <Navbar />
       <main className="flex-1">
-        <Hero />
-        <StatsBar />
-        <Problem />
-        <Features />
-        <WhyNizamy />
-        <ReturnModel />
-        <Calculator
-          employees={employees}
-          setEmployees={setEmployees}
-          tier={tier}
-          setTier={setTier}
-          tierPrice={tierPrice}
-          subscription={subscription}
-          totalReturn={totalReturn}
-          layer1={layer1}
-          layer2={layer2}
-          layer3={layer3}
-          effectiveCost={effectiveCost}
-        />
+        {language === "ar" ? (
+          <>
+            <HomeHero />
+            <PainSection />
+            <SolutionSection />
+            <HowSection />
+            <BeforeAfterSection />
+            <HomePricing />
+            <ReturnModel />
+          </>
+        ) : (
+          <>
+            <Hero />
+            <StatsBar />
+            <Features />
+            <Problem />
+            <WhyNizamy />
+            <ReturnModel />
+            <Pricing employees={employees} tier={tier} setTier={setTier} />
+          </>
+        )}
         <CaseStudies />
         <DesignPartner snapshot={snapshot} tier={tier} setTier={setTier} />
+        <HubSpotContact />
+        {language === "ar" && <HomeFaq />}
       </main>
-      <Footer />
-      <ChatWidget />
+      <Footer showCreator />
+      <PublicChat />
       <ScrollButtons />
-      <IncentivePopup />
+      <IncentivePopup key={language} />
     </div>
   );
 }

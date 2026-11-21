@@ -5,13 +5,16 @@ type Language = "en" | "ar";
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
+  setLanguage: (language: Language) => void;
   dir: "ltr" | "rtl";
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("ar");
+  const [language, setLanguage] = useState<Language>(() =>
+    typeof window !== "undefined" && /^\/en(\/|$)/.test(window.location.pathname) ? "en" : "ar",
+  );
 
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "en" ? "ar" : "en"));
@@ -25,7 +28,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [dir, language]);
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, dir }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, dir }}>
       {children}
     </LanguageContext.Provider>
   );

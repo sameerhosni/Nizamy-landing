@@ -1,0 +1,646 @@
+{
+  "payroll-readiness-checklist-saudi": {
+    "ar": {
+      "kicker": "الرواتب",
+      "title": "مسير الرواتب",
+      "hot": "جاهز قبل لا تحتاجه",
+      "sub": "قبل نهاية الشهر بيومين: وش لازم تتأكد منه؟ قائمة قصيرة تريّحك من الزحمة وتخلّي الاعتماد هادي.",
+      "points": [
+        "الحضور مراجَع",
+        "الإضافي والخصومات واضحة",
+        "القسائم وملف حماية الأجور بحسب الباقة"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "🧾",
+        "orbit": [
+          "📅",
+          "⏱️",
+          "✅",
+          "💳"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "عدّاد الجاهزية",
+      "demoIntro": "علّم على كل خطوة خلصتها وشف الدائرة تكتمل. قائمة عامة للتوضيح وليست متطلبات رسمية.",
+      "widget": {
+        "items": [
+          "راجعت الحضور والغياب",
+          "حسبت الإضافي",
+          "راجعت الخصومات والبدلات",
+          "جهّزت قسائم الرواتب",
+          "جهّزت ملف حماية الأجور",
+          "راجعت المسير قبل الاعتماد"
+        ],
+        "states": [
+          "ابدأ بأول خطوة",
+          "ماشي صح، كمّل",
+          "قريب تخلص",
+          "جاهز للاعتماد 🎉"
+        ],
+        "footnote": "مثال توضيحي، ولا يتم أي صرف هنا."
+      },
+      "ctaTitle": "خلّ آخر الشهر هادي",
+      "ctaSub": "ابدأ مجانًا، وتفعّل ميزات الرواتب بحسب الباقة.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "القائمة عامة للتوضيح وليست متطلبات رسمية. ميزات الرواتب بحسب الباقة. تأكد من متطلبات ومواعيد حماية الأجور من وزارة الموارد البشرية والتنمية الاجتماعية ومنصة مدد."
+    },
+    "en": {
+      "kicker": "Payroll",
+      "title": "Payroll that's",
+      "hot": "ready before you need it",
+      "sub": "Two days before month-end: what should you double-check? A short list that takes the rush out and keeps approval calm.",
+      "points": [
+        "Attendance reviewed",
+        "Overtime and deductions are clear",
+        "Payslips and Wage Protection file, by plan"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "🧾",
+        "orbit": [
+          "📅",
+          "⏱️",
+          "✅",
+          "💳"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "The readiness meter",
+      "demoIntro": "Tick each step you've finished and watch the ring complete. A general illustration, not official requirements.",
+      "widget": {
+        "items": [
+          "Reviewed attendance and absence",
+          "Calculated overtime",
+          "Reviewed deductions and allowances",
+          "Prepared payslips",
+          "Prepared the Wage Protection file",
+          "Reviewed the run before approval"
+        ],
+        "states": [
+          "Start with the first step",
+          "Going well, keep going",
+          "Almost there",
+          "Ready for approval 🎉"
+        ],
+        "footnote": "An illustration only; no payment is made here."
+      },
+      "ctaTitle": "Make month-end calm",
+      "ctaSub": "Start free, and unlock payroll features according to your plan.",
+      "ctaBtn": "Start free",
+      "note": "The list is a general illustration, not official requirements. Payroll features are available according to the plan. Confirm Wage Protection requirements and deadlines with the Ministry of Human Resources and Social Development and Mudad."
+    }
+  },
+  "ramadan-working-hours-saudi-attendance": {
+    "ar": {
+      "kicker": "رمضان",
+      "title": "دوام رمضان",
+      "hot": "بدون لخبطة",
+      "sub": "ساعات العمل تتغير في رمضان، والحضور لازم يتغير معها. جرّب كم ساعة وكم يوم يناسب الحد النظامي.",
+      "points": [
+        "ساعات مخفّضة للموظفين المسلمين",
+        "جداول وورديات واضحة",
+        "حضور من الجوال"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "🌙",
+        "orbit": [
+          "⏰",
+          "🕌",
+          "📅",
+          "🍽️"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "حاسبة ساعات الأسبوع",
+      "demoIntro": "اختر الوضع وعدد أيام الدوام وساعات اليوم، وشف المجموع مقابل الحد. للتوضيح فقط، والنص الرسمي هو المرجع.",
+      "widget": {
+        "normal": "خارج رمضان",
+        "ramadan": "رمضان (للموظفين المسلمين)",
+        "days": "أيام الدوام في الأسبوع",
+        "hours": "ساعات العمل في اليوم",
+        "weekly": "المجموع الأسبوعي",
+        "cap": "الحد",
+        "perDay": "ساعة/يوم",
+        "perWeek": "ساعة/أسبوع",
+        "within": "ضمن الحد ✅",
+        "over": "فوق الحد ⚠️",
+        "note": "الحد المخفّض يخص الموظفين المسلمين فقط."
+      },
+      "ctaTitle": "رتّب جدول الدوام من الحين",
+      "ctaSub": "حضور من الجوال وتقارير واضحة لفريقك.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "بحسب نظام العمل السعودي (المادة ٩٨): ٨ ساعات يوميًا و٤٨ أسبوعيًا، وفي رمضان ٦ ساعات يوميًا و٣٦ أسبوعيًا للموظفين المسلمين. الحاسبة توضيحية، فراجع النص الرسمي وسياسة منشأتك."
+    },
+    "en": {
+      "kicker": "Ramadan",
+      "title": "Ramadan hours,",
+      "hot": "without the mix-ups",
+      "sub": "Working hours change in Ramadan, and attendance has to change with them. Try how many hours and days fit the legal limit.",
+      "points": [
+        "Reduced hours for Muslim employees",
+        "Clear schedules and shifts",
+        "Attendance from the phone"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "🌙",
+        "orbit": [
+          "⏰",
+          "🕌",
+          "📅",
+          "🍽️"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "The weekly hours calculator",
+      "demoIntro": "Pick the mode, working days and daily hours, and see the total against the limit. For illustration only; the official text is the reference.",
+      "widget": {
+        "normal": "Outside Ramadan",
+        "ramadan": "Ramadan (Muslim employees)",
+        "days": "Working days per week",
+        "hours": "Working hours per day",
+        "weekly": "Weekly total",
+        "cap": "Limit",
+        "perDay": "h/day",
+        "perWeek": "h/week",
+        "within": "Within the limit ✅",
+        "over": "Over the limit ⚠️",
+        "note": "The reduced limit applies to Muslim employees only."
+      },
+      "ctaTitle": "Sort the schedule early",
+      "ctaSub": "Attendance from the phone and clear reports for your team.",
+      "ctaBtn": "Start free",
+      "note": "Under the Saudi Labor Law (Article 98): 8 hours a day and 48 a week, and in Ramadan 6 a day and 36 a week for Muslim employees. The calculator is illustrative, so check the official text and your company policy."
+    }
+  },
+  "annual-leave-days-saudi-calculator": {
+    "ar": {
+      "kicker": "الإجازات",
+      "title": "إجازتك السنوية",
+      "hot": "كم يومًا؟",
+      "sub": "٢١ يومًا كحد أدنى لكل سنة، وتصير ٣٠ يومًا بعد ٥ سنوات متصلة مع نفس صاحب العمل. حرّك الشريط وشف.",
+      "points": [
+        "حد أدنى نظامي",
+        "طلبات وموافقات عبر الخدمة الذاتية",
+        "أقل رسائل متفرقة"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "🏖️",
+        "orbit": [
+          "📅",
+          "✅",
+          "✈️",
+          "🕓"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "حاسبة الحد الأدنى للإجازة",
+      "demoIntro": "حرّك سنوات الخدمة المتصلة مع نفس صاحب العمل وشف الحد الأدنى لإجازة السنة.",
+      "widget": {
+        "years": "سنوات الخدمة المتصلة",
+        "unit": "سنة",
+        "result": "الحد الأدنى للإجازة السنوية",
+        "days": "يومًا",
+        "rule21": "أقل من ٥ سنوات: ٢١ يومًا",
+        "rule30": "٥ سنوات متصلة فأكثر: ٣٠ يومًا",
+        "note": "قد تمنح المنشأة أكثر من الحد الأدنى في العقد أو السياسة."
+      },
+      "ctaTitle": "خلّ طلبات الإجازة ما تضيع بين الرسائل",
+      "ctaSub": "الطلبات والموافقات عبر الخدمة الذاتية في نظامي.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "بحسب نظام العمل السعودي (المادة ١٠٩) الحد الأدنى ٢١ يومًا لكل سنة، ويزيد إلى ٣٠ يومًا بعد خمس سنوات متصلة مع نفس صاحب العمل. الحاسبة توضيحية، فراجع النص الرسمي وعقدك وسياسة منشأتك."
+    },
+    "en": {
+      "kicker": "Leave",
+      "title": "Your annual leave:",
+      "hot": "how many days?",
+      "sub": "21 days minimum per year, rising to 30 days after 5 consecutive years with the same employer. Move the slider and see.",
+      "points": [
+        "A statutory minimum",
+        "Requests and approvals via self-service",
+        "Fewer scattered messages"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "🏖️",
+        "orbit": [
+          "📅",
+          "✅",
+          "✈️",
+          "🕓"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "The minimum leave calculator",
+      "demoIntro": "Move the years of continuous service with the same employer and see the minimum annual leave.",
+      "widget": {
+        "years": "Years of continuous service",
+        "unit": "yrs",
+        "result": "Minimum annual leave",
+        "days": "days",
+        "rule21": "Under 5 years: 21 days",
+        "rule30": "5 consecutive years or more: 30 days",
+        "note": "A company may grant more than the minimum in the contract or policy."
+      },
+      "ctaTitle": "Keep leave requests from getting lost in messages",
+      "ctaSub": "Requests and approvals through self-service in Nizamy.",
+      "ctaBtn": "Start free",
+      "note": "Under the Saudi Labor Law (Article 109) the minimum is 21 days per year, rising to 30 days after five consecutive years with the same employer. The calculator is illustrative, so check the official text, your contract and your company policy."
+    }
+  },
+  "read-attendance-signals-fairly-saudi": {
+    "ar": {
+      "kicker": "الفريق",
+      "title": "الحضور",
+      "hot": "إشارة مو حكم",
+      "sub": "التأخير والغياب يقولون لك شي، لكن مو كل شي. اسأل قبل ما تحكم، وقدّر قبل ما تعاقب.",
+      "points": [
+        "قرارات أعدل",
+        "حوار قبل إجراء",
+        "تقدير للالتزام"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "💓",
+        "orbit": [
+          "🤝",
+          "🗣️",
+          "🎁",
+          "📊"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "اقرأ الإشارة",
+      "demoIntro": "اختر إشارة من الحضور وشف كيف تتصرف: أسئلة تسألها أولًا، وخطوة مقترحة.",
+      "widget": {
+        "signals": [
+          {
+            "id": "late",
+            "label": "تأخير متكرر",
+            "ask": [
+              "وش الظروف؟ مواصلات؟ جدول؟",
+              "هل الوردية مناسبة له؟"
+            ],
+            "do": "سالفة هادئة مع الموظف قبل أي إجراء، وراجع الجدول."
+          },
+          {
+            "id": "absent",
+            "label": "غياب مفاجئ",
+            "ask": [
+              "هل تواصلت معه؟",
+              "هل في ظرف طارئ؟"
+            ],
+            "do": "تواصل أولًا ولا تفترض النية، وبعدها طبّق السياسة."
+          },
+          {
+            "id": "steady",
+            "label": "التزام ثابت",
+            "ask": [
+              "من يستاهل التقدير هالفترة؟"
+            ],
+            "do": "قدّر وأشكر، واربط الالتزام بنقاط ومكافآت."
+          }
+        ],
+        "askTitle": "اسأل أولًا",
+        "doTitle": "الخطوة المقترحة",
+        "note": "تقارير الحضور أداة مساندة للقرار، وليست بديلًا عن فهم السياق والإدارة العادلة."
+      },
+      "ctaTitle": "حضور واضح، وقرارات أعدل",
+      "ctaSub": "تقارير تساعدك تلاحظ الأنماط، وتقدير يربط الالتزام بالإنجاز.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "الأمثلة توضيحية. نظامي لا يقيس الإرهاق ولا يحكم على الموظفين؛ هو يعطيك بيانات حضور والتزام تساعدك على الحوار والمتابعة."
+    },
+    "en": {
+      "kicker": "People",
+      "title": "Attendance:",
+      "hot": "a signal, not a verdict",
+      "sub": "Lateness and absence tell you something, but not everything. Ask before you judge, and recognise before you punish.",
+      "points": [
+        "Fairer decisions",
+        "Talk before action",
+        "Recognition for commitment"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "💓",
+        "orbit": [
+          "🤝",
+          "🗣️",
+          "🎁",
+          "📊"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "Read the signal",
+      "demoIntro": "Pick a signal from attendance and see how to respond: questions to ask first, and a suggested step.",
+      "widget": {
+        "signals": [
+          {
+            "id": "late",
+            "label": "Repeated lateness",
+            "ask": [
+              "What are the circumstances? Commute? Schedule?",
+              "Is the shift right for them?"
+            ],
+            "do": "Have a calm conversation before any action, and review the schedule."
+          },
+          {
+            "id": "absent",
+            "label": "Sudden absence",
+            "ask": [
+              "Have you reached out?",
+              "Is there an emergency?"
+            ],
+            "do": "Reach out first and don't assume intent, then apply the policy."
+          },
+          {
+            "id": "steady",
+            "label": "Steady commitment",
+            "ask": [
+              "Who deserves recognition this period?"
+            ],
+            "do": "Recognise and thank them, and link commitment to points and rewards."
+          }
+        ],
+        "askTitle": "Ask first",
+        "doTitle": "Suggested step",
+        "note": "Attendance reports are decision support, not a replacement for understanding context and managing fairly."
+      },
+      "ctaTitle": "Clear attendance, fairer decisions",
+      "ctaSub": "Reports that help you notice patterns, and recognition that links commitment to achievement.",
+      "ctaBtn": "Start free",
+      "note": "Examples are illustrative. Nizamy does not measure burnout or judge employees; it gives you attendance and commitment data to support conversation and follow-up."
+    }
+  },
+  "ai-hr-small-steps-saudi-teams": {
+    "ar": {
+      "kicker": "الذكاء الاصطناعي",
+      "title": "ابدأ بالذكاء الاصطناعي",
+      "hot": "خطوة خطوة",
+      "sub": "مو لازم مشروع ضخم. اختر سؤالًا متكررًا واحدًا، جرّبه، راجعه، وبعدها وسّع.",
+      "points": [
+        "ابدأ بشي واحد",
+        "راجع المخرجات",
+        "القرار للإنسان"
+      ],
+      "cta": "ابدأ مجانًا",
+      "art": {
+        "center": "🪜",
+        "orbit": [
+          "🤖",
+          "🧠",
+          "✅",
+          "📈"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "سلّم البداية",
+      "demoIntro": "اضغط على أي درجة وشف وش تسوي فيها. من أول تجربة إلى استخدام يومي بثقة.",
+      "widget": {
+        "steps": [
+          {
+            "t": "جرّب",
+            "d": "اختر سؤالًا واحدًا يتكرر كثيرًا على الموارد البشرية، وابدأ فيه."
+          },
+          {
+            "t": "راجع",
+            "d": "قارن إجابات المساعد بسياسة منشأتك قبل ما تعتمد عليها."
+          },
+          {
+            "t": "حدّد المسؤول",
+            "d": "من يراجع ويعدّل ويقرر عند الحاجة؟ اتفقوا عليها بوضوح."
+          },
+          {
+            "t": "وسّع",
+            "d": "أضف طلبات أخرى تدريجيًا بعد ما تطمّن."
+          }
+        ],
+        "step": "الدرجة"
+      },
+      "ctaTitle": "خلّ الذكاء الاصطناعي يشيل عنك التكرار",
+      "ctaSub": "ابدأ مجانًا، بدون بطاقة ائتمان.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "الأمثلة توضيحية وليست ضمانًا، وتختلف النتائج حسب حجم الفريق والاستخدام. يُنصح بمراجعة مخرجات الذكاء الاصطناعي وفق سياسات المنشأة."
+    },
+    "en": {
+      "kicker": "AI in HR",
+      "title": "Start with AI",
+      "hot": "one step at a time",
+      "sub": "No giant project needed. Pick one repeated question, try it, review it, then expand.",
+      "points": [
+        "Start with one thing",
+        "Review the output",
+        "Humans decide"
+      ],
+      "cta": "Start free",
+      "art": {
+        "center": "🪜",
+        "orbit": [
+          "🤖",
+          "🧠",
+          "✅",
+          "📈"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "The starter ladder",
+      "demoIntro": "Tap any rung and see what to do there. From a first trial to confident daily use.",
+      "widget": {
+        "steps": [
+          {
+            "t": "Try",
+            "d": "Pick one question HR gets again and again, and start there."
+          },
+          {
+            "t": "Review",
+            "d": "Compare the assistant's answers with your company policy before relying on them."
+          },
+          {
+            "t": "Name an owner",
+            "d": "Who reviews, edits and decides when needed? Agree it clearly."
+          },
+          {
+            "t": "Expand",
+            "d": "Add other requests gradually once you're comfortable."
+          }
+        ],
+        "step": "Rung"
+      },
+      "ctaTitle": "Let AI carry the repetitive stuff",
+      "ctaSub": "Start free, no credit card required.",
+      "ctaBtn": "Start free",
+      "note": "Examples are illustrative, not guarantees, and outcomes vary with team size and usage. Review AI-generated output in line with your organization's policies."
+    }
+  },
+  "end-of-service-benefits-calculator-saudi": {
+    "ar": {
+      "kicker": "نهاية الخدمة",
+      "title": "مكافأة نهاية الخدمة",
+      "hot": "احسبها بنفسك",
+      "sub": "نصف شهر عن كل سنة من أول ٥ سنوات، ثم شهر كامل عن كل سنة بعدها. أدخل الراتب والسنوات وشف الناتج.",
+      "points": [
+        "الحد الأدنى النظامي",
+        "الإنهاء والاستقالة",
+        "بدون مفاجآت"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "🏁",
+        "orbit": [
+          "💼",
+          "📅",
+          "🧮",
+          "✅"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "حاسبة مكافأة نهاية الخدمة",
+      "demoIntro": "اختر الحالة، وأدخل آخر أجر وسنوات الخدمة، وشف الحد الأدنى النظامي. حاسبة توضيحية وليست مرجعًا رسميًا.",
+      "widget": {
+        "reason": "الحالة",
+        "employer": "إنهاء من صاحب العمل أو انتهاء العقد",
+        "resign": "استقالة الموظف",
+        "wage": "آخر أجر شهري (ريال)",
+        "years": "سنوات الخدمة",
+        "unit": "سنة",
+        "result": "المكافأة التقديرية (الحد الأدنى)",
+        "currency": "ريال",
+        "base": "قبل أي تخفيض",
+        "share": "المستحق منها",
+        "full": "كاملة",
+        "none": "لا شيء",
+        "twoThirds": "ثلثان",
+        "oneThird": "ثلث",
+        "note": "تقدير توضيحي للحد الأدنى. قد تختلف النتيجة بحسب تعريف الأجر في عقدك وحالات خاصة في النظام."
+      },
+      "ctaTitle": "رتّب بيانات موظفيك قبل ما تحتاجها",
+      "ctaSub": "الحضور والرواتب والطلبات في مكان واحد، وتبدأ مجانًا.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "الحاسبة توضيحية وليست استشارة قانونية ولا مرجعًا رسميًا. راجع نص نظام العمل في وزارة الموارد البشرية والتنمية الاجتماعية أو مختصًا قبل أي قرار."
+    },
+    "en": {
+      "kicker": "End of service",
+      "title": "End-of-service award:",
+      "hot": "work it out yourself",
+      "sub": "Half a month's wage per year for the first 5 years, then a full month per year after that. Enter the wage and years and see the result.",
+      "points": [
+        "The statutory minimum",
+        "Termination and resignation",
+        "No surprises"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "🏁",
+        "orbit": [
+          "💼",
+          "📅",
+          "🧮",
+          "✅"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "The end-of-service award calculator",
+      "demoIntro": "Pick the case, enter the last wage and years of service, and see the statutory minimum. An illustrative calculator, not an official reference.",
+      "widget": {
+        "reason": "Case",
+        "employer": "Ended by the employer or contract expiry",
+        "resign": "Employee resignation",
+        "wage": "Last monthly wage (SAR)",
+        "years": "Years of service",
+        "unit": "yrs",
+        "result": "Estimated award (minimum)",
+        "currency": "SAR",
+        "base": "Before any reduction",
+        "share": "Share payable",
+        "full": "Full",
+        "none": "None",
+        "twoThirds": "Two thirds",
+        "oneThird": "One third",
+        "note": "An illustrative estimate of the minimum. Results can differ with how the wage is defined in your contract and with special cases in the law."
+      },
+      "ctaTitle": "Get your employee data in order before you need it",
+      "ctaSub": "Attendance, payroll and requests in one place, and you can start free.",
+      "ctaBtn": "Start free",
+      "note": "The calculator is illustrative and is not legal advice or an official reference. Check the Labor Law text at the Ministry of Human Resources and Social Development or a specialist before any decision."
+    }
+  },
+  "sick-leave-pay-saudi-labor-law": {
+    "ar": {
+      "kicker": "الإجازة المرضية",
+      "title": "الإجازة المرضية",
+      "hot": "كم يُدفع لك؟",
+      "sub": "٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر. حرّك الأيام وشف.",
+      "points": [
+        "ثلاث شرائح واضحة",
+        "حاسبة سريعة",
+        "سجلات أعدل"
+      ],
+      "cta": "جرّب مجانًا",
+      "art": {
+        "center": "🩺",
+        "orbit": [
+          "📅",
+          "💊",
+          "🏥",
+          "✅"
+        ]
+      },
+      "demoKicker": "جرّب بنفسك",
+      "demoTitle": "كم يعادل الأجر؟",
+      "demoIntro": "حرّك عدد أيام الإجازة المرضية وشف كم يعادل من أيام الأجر الكامل. للتوضيح فقط.",
+      "widget": {
+        "days": "أيام الإجازة المرضية",
+        "result": "ما يعادل أيام أجر كامل",
+        "unitFull": "يوم",
+        "tier1": "أول ٣٠ يومًا: أجر كامل",
+        "tier2": "الـ ٦٠ يومًا التالية: ٧٥٪ من الأجر",
+        "tier3": "آخر ٣٠ يومًا: بدون أجر",
+        "note": "الشرائح كما يصفها نظام العمل (المادة ١١٧) خلال السنة. راجع النص الرسمي لتفاصيل الاحتساب وشروط الاستحقاق."
+      },
+      "ctaTitle": "خلّ طلبات الإجازة واضحة للجميع",
+      "ctaSub": "الطلبات والموافقات عبر الخدمة الذاتية في نظامي.",
+      "ctaBtn": "ابدأ مجانًا",
+      "note": "الحاسبة توضيحية وليست استشارة قانونية. راجع نص نظام العمل في وزارة الموارد البشرية والتنمية الاجتماعية لتفاصيل الاستحقاق."
+    },
+    "en": {
+      "kicker": "Sick leave",
+      "title": "Sick leave:",
+      "hot": "how much are you paid?",
+      "sub": "30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Move the days and see.",
+      "points": [
+        "Three clear tiers",
+        "A quick calculator",
+        "Fairer records"
+      ],
+      "cta": "Try it free",
+      "art": {
+        "center": "🩺",
+        "orbit": [
+          "📅",
+          "💊",
+          "🏥",
+          "✅"
+        ]
+      },
+      "demoKicker": "Try it yourself",
+      "demoTitle": "What does it equal in pay?",
+      "demoIntro": "Move the number of sick-leave days and see how many days of full pay it equals. For illustration only.",
+      "widget": {
+        "days": "Sick-leave days",
+        "result": "Equivalent days of full pay",
+        "unitFull": "days",
+        "tier1": "First 30 days: full pay",
+        "tier2": "Next 60 days: 75% of pay",
+        "tier3": "Last 30 days: unpaid",
+        "note": "Tiers as the Labor Law (Article 117) describes them within a year. Check the official text for how it is calculated and who is eligible."
+      },
+      "ctaTitle": "Keep leave requests clear for everyone",
+      "ctaSub": "Requests and approvals through self-service in Nizamy.",
+      "ctaBtn": "Start free",
+      "note": "The calculator is illustrative and is not legal advice. Check the Labor Law text at the Ministry of Human Resources and Social Development for eligibility details."
+    }
+  }
+}

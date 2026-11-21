@@ -1,0 +1,932 @@
+{
+  "site": {
+    "name": "Nizamy HR",
+    "nameArabic": "نظامي اتش آر",
+    "url": "https://nizamy.app",
+    "image": "https://nizamy.app/opengraph.jpg",
+    "imageAlt": {
+      "ar": "نظامي اتش آر لإدارة الموارد البشرية في السعودية",
+      "en": "Nizamy HR for human resources management in Saudi Arabia"
+    },
+    "email": "sales@nizamy.app"
+  },
+  "metadataTemplates": {
+    "website": {
+      "ogType": "website",
+      "twitterCard": "summary_large_image"
+    },
+    "article": {
+      "ogType": "article",
+      "twitterCard": "summary_large_image"
+    }
+  },
+  "pages": {
+    "hrBlog": {
+      "path": "/hr-blog",
+      "type": "CollectionPage",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "سالفة اتش آر: الحضور والذكاء الاصطناعي وإدارة الموارد البشرية | نظامي",
+        "description": "سالفة اتش آر من نظامي: مقالات قصيرة ومرتبة عن الحضور بالوجه، ومساعد الموارد البشرية الذكي، وبديل إكسل وواتساب للمنشآت الصغيرة في السعودية.",
+        "heading": "سالفة اتش آر",
+        "summary": "اقرأ بسهولة: مقالات قصيرة ومرتبة عن الحضور والذكاء الاصطناعي وأدوات المنشآت الصغيرة.",
+        "sections": [
+          "الحضور بالوجه من الجوال",
+          "مساعد الموارد البشرية الذكي",
+          "بديل إكسل وواتساب"
+        ]
+      },
+      "hubItems": [
+        {
+          "key": "hrBlogAttendance",
+          "path": "/hr-blog/face-attendance-system-saudi-arabia",
+          "ar": {
+            "title": "حضور تثق فيه",
+            "summary": "الوجه يثبت من الذي سجّل، والموقع يثبت أين. تعرف أن الحاضر هو الموظف نفسه."
+          },
+          "en": {
+            "title": "Check-ins you can trust",
+            "summary": "The face proves who checked in, the location proves where. You know the person present is the employee."
+          }
+        },
+        {
+          "key": "hrBlogAi",
+          "path": "/hr-blog/ai-hr-assistant-employee-requests",
+          "ar": {
+            "title": "وقت أكثر للناس",
+            "summary": "المساعد يتولى الأسئلة والطلبات المتكررة، وأنت تتفرغ للمواقف التي تحتاج إنسانًا."
+          },
+          "en": {
+            "title": "More time for people",
+            "summary": "The assistant takes the repeated questions and requests, so you can focus on moments that need a human."
+          }
+        },
+        {
+          "key": "hrBlogSmallBiz",
+          "path": "/hr-blog/replace-excel-whatsapp-hr-management",
+          "ar": {
+            "title": "كل شي بمكان واحد",
+            "summary": "الحضور والطلبات والتقارير والموظفين في تجربة واحدة، بدل جداول ورسائل وأوراق متفرقة."
+          },
+          "en": {
+            "title": "Everything in one place",
+            "summary": "Attendance, requests, reports and employees in one experience, instead of scattered sheets, chats and papers."
+          }
+        },
+        {
+          "key": "hrBlogPayroll",
+          "path": "/hr-blog/payroll-readiness-checklist-saudi",
+          "ar": {
+            "title": "مسير الرواتب جاهز قبل لا تحتاجه",
+            "summary": "قبل نهاية الشهر بيومين: وش لازم تتأكد منه؟ قائمة قصيرة تريّحك من الزحمة وتخلّي الاعتماد هادي."
+          },
+          "en": {
+            "title": "Payroll that's ready before you need it",
+            "summary": "Two days before month-end: what should you double-check? A short list that takes the rush out and keeps approval calm."
+          }
+        },
+        {
+          "key": "hrBlogRamadan",
+          "path": "/hr-blog/ramadan-working-hours-saudi-attendance",
+          "ar": {
+            "title": "دوام رمضان بدون لخبطة",
+            "summary": "ساعات العمل تتغير في رمضان، والحضور لازم يتغير معها. جرّب كم ساعة وكم يوم يناسب الحد النظامي."
+          },
+          "en": {
+            "title": "Ramadan hours, without the mix-ups",
+            "summary": "Working hours change in Ramadan, and attendance has to change with them. Try how many hours and days fit the legal limit."
+          }
+        },
+        {
+          "key": "hrBlogLeave",
+          "path": "/hr-blog/annual-leave-days-saudi-calculator",
+          "ar": {
+            "title": "إجازتك السنوية كم يومًا؟",
+            "summary": "٢١ يومًا كحد أدنى لكل سنة، وتصير ٣٠ يومًا بعد ٥ سنوات متصلة مع نفس صاحب العمل. حرّك الشريط وشف."
+          },
+          "en": {
+            "title": "Your annual leave: how many days?",
+            "summary": "21 days minimum per year, rising to 30 days after 5 consecutive years with the same employer. Move the slider and see."
+          }
+        },
+        {
+          "key": "hrBlogSignals",
+          "path": "/hr-blog/read-attendance-signals-fairly-saudi",
+          "ar": {
+            "title": "الحضور إشارة مو حكم",
+            "summary": "التأخير والغياب يقولون لك شي، لكن مو كل شي. اسأل قبل ما تحكم، وقدّر قبل ما تعاقب."
+          },
+          "en": {
+            "title": "Attendance: a signal, not a verdict",
+            "summary": "Lateness and absence tell you something, but not everything. Ask before you judge, and recognise before you punish."
+          }
+        },
+        {
+          "key": "hrBlogAiSteps",
+          "path": "/hr-blog/ai-hr-small-steps-saudi-teams",
+          "ar": {
+            "title": "ابدأ بالذكاء الاصطناعي خطوة خطوة",
+            "summary": "مو لازم مشروع ضخم. اختر سؤالًا متكررًا واحدًا، جرّبه، راجعه، وبعدها وسّع."
+          },
+          "en": {
+            "title": "Start with AI one step at a time",
+            "summary": "No giant project needed. Pick one repeated question, try it, review it, then expand."
+          }
+        },
+        {
+          "key": "hrBlogEosb",
+          "path": "/hr-blog/end-of-service-benefits-calculator-saudi",
+          "ar": {
+            "title": "مكافأة نهاية الخدمة احسبها بنفسك",
+            "summary": "نصف شهر عن كل سنة من أول ٥ سنوات، ثم شهر كامل عن كل سنة بعدها. أدخل الراتب والسنوات وشف الناتج."
+          },
+          "en": {
+            "title": "End-of-service award: work it out yourself",
+            "summary": "Half a month's wage per year for the first 5 years, then a full month per year after that. Enter the wage and years and see the result."
+          }
+        },
+        {
+          "key": "hrBlogSick",
+          "path": "/hr-blog/sick-leave-pay-saudi-labor-law",
+          "ar": {
+            "title": "الإجازة المرضية كم يُدفع لك؟",
+            "summary": "٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر. حرّك الأيام وشف."
+          },
+          "en": {
+            "title": "Sick leave: how much are you paid?",
+            "summary": "30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Move the days and see."
+          }
+        }
+      ],
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog",
+        "en": "/en/hr-blog",
+        "x-default": "/hr-blog"
+      }
+    },
+    "hrBlogAttendance": {
+      "path": "/hr-blog/face-attendance-system-saudi-arabia",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "نظام حضور بالوجه من الجوال للمنشآت في السعودية | نظامي",
+        "description": "حضور تثق فيه: بصمة وجه من الجوال مع كشف الحيوية وتحقق من الموقع، بدل أجهزة البصمة في كل فرع. تعرّف كيف يعمل وكيف يقلل محاولات التحايل.",
+        "heading": "حضور تثق فيه",
+        "summary": "الوجه يثبت من الذي سجّل، والموقع يثبت أين. تعرف أن الحاضر هو الموظف نفسه.",
+        "sections": [
+          "لماذا تترك نظام البصمة التقليدي؟",
+          "كيف يتحقق نظامي من الحضور؟",
+          "ماذا يحدث بعد التسجيل؟",
+          "لمن تناسب هذه الخدمة؟",
+          "كيف تبدأ بالحضور من الجوال؟",
+          "ماذا تراجع أسبوعيًا؟",
+          "كيف تشرح التحقق بالوجه لفريقك؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/face-attendance-system-saudi-arabia",
+        "en": "/en/hr-blog/face-attendance-system-saudi-arabia",
+        "x-default": "/hr-blog/face-attendance-system-saudi-arabia"
+      }
+    },
+    "hrBlogAi": {
+      "path": "/hr-blog/ai-hr-assistant-employee-requests",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "مساعد موارد بشرية ذكي لطلبات الموظفين في السعودية | نظامي",
+        "description": "وقت أكثر للناس: مساعد ذكاء اصطناعي يتولى الأسئلة والطلبات المتكررة في الموارد البشرية، بينما يبقى القرار بيد الإنسان. ابدأ مجانًا.",
+        "heading": "وقت أكثر للناس",
+        "summary": "المساعد يتولى الأسئلة والطلبات المتكررة، وأنت تتفرغ للمواقف التي تحتاج إنسانًا.",
+        "sections": [
+          "ما الذي يتولاه مساعد الموارد البشرية الذكي؟",
+          "أين يبقى الإنسان؟",
+          "من الإجابة إلى التقرير",
+          "كيف تبدأ؟",
+          "ما الذي يمكن تفويضه للمساعد؟",
+          "كيف تقيس الفائدة؟",
+          "كيف تراجع مخرجات الذكاء الاصطناعي؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/ai-hr-assistant-employee-requests",
+        "en": "/en/hr-blog/ai-hr-assistant-employee-requests",
+        "x-default": "/hr-blog/ai-hr-assistant-employee-requests"
+      }
+    },
+    "hrBlogSmallBiz": {
+      "path": "/hr-blog/replace-excel-whatsapp-hr-management",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "بديل إكسل وواتساب لإدارة الموارد البشرية في المنشآت الصغيرة | نظامي",
+        "description": "كل شي بمكان واحد: الحضور والطلبات والتقارير والموظفين في تجربة واحدة بدل الجداول والرسائل المتفرقة، للمنشآت الصغيرة في السعودية.",
+        "heading": "كل شي بمكان واحد",
+        "summary": "الحضور والطلبات والتقارير والموظفين في تجربة واحدة، بدل جداول ورسائل وأوراق متفرقة.",
+        "sections": [
+          "متى تتحول الجداول والرسائل إلى عبء؟",
+          "ماذا يجمع نظامي في مكان واحد؟",
+          "كيف تبدو رحلة الموظف؟",
+          "ما القيمة المتوقعة؟",
+          "علامات أن الجداول لم تعد تكفي",
+          "كيف تنتقل تدريجيًا؟",
+          "ما الذي تُبقيه خارج النظام؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/replace-excel-whatsapp-hr-management",
+        "en": "/en/hr-blog/replace-excel-whatsapp-hr-management",
+        "x-default": "/hr-blog/replace-excel-whatsapp-hr-management"
+      }
+    },
+    "hrBlogPayroll": {
+      "path": "/hr-blog/payroll-readiness-checklist-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "قائمة جاهزية مسير الرواتب وحماية الأجور للمنشآت الصغيرة | نظامي",
+        "description": "قائمة قصيرة تجهّز بها مسير الرواتب قبل الاعتماد: الحضور والإضافي والخصومات والقسائم وملف حماية الأجور، مع عدّاد جاهزية تفاعلي.",
+        "heading": "مسير الرواتب جاهز قبل لا تحتاجه",
+        "summary": "قبل نهاية الشهر بيومين: وش لازم تتأكد منه؟ قائمة قصيرة تريّحك من الزحمة وتخلّي الاعتماد هادي.",
+        "sections": [
+          "ليش آخر الشهر دايمًا زحمة؟",
+          "ماذا تراجع قبل الاعتماد؟",
+          "وماذا عن حماية الأجور؟",
+          "جدول مقترح لآخر الشهر",
+          "ماذا لو اكتشفت خطأ؟",
+          "لماذا تراجع الحضور قبل الرواتب؟",
+          "ماذا توثّق؟",
+          "قائمة مراجعة الحضور بالتفصيل",
+          "مراجعة الإضافي والخصومات",
+          "قبل إعداد ملف حماية الأجور",
+          "بعد الاعتماد",
+          "أخطاء تتكرر كل شهر"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/payroll-readiness-checklist-saudi",
+        "en": "/en/hr-blog/payroll-readiness-checklist-saudi",
+        "x-default": "/hr-blog/payroll-readiness-checklist-saudi"
+      }
+    },
+    "hrBlogRamadan": {
+      "path": "/hr-blog/ramadan-working-hours-saudi-attendance",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "ساعات العمل في رمضان في السعودية وحاسبة الدوام | نظامي",
+        "description": "كم ساعة يعمل الموظف المسلم في رمضان بحسب نظام العمل السعودي؟ جرّب حاسبة ساعات الأسبوع وتعرّف كيف تتابع الحضور في رمضان.",
+        "heading": "دوام رمضان بدون لخبطة",
+        "summary": "ساعات العمل تتغير في رمضان، والحضور لازم يتغير معها. جرّب كم ساعة وكم يوم يناسب الحد النظامي.",
+        "sections": [
+          "كم ساعة في رمضان؟",
+          "أمثلة على جداول رمضان",
+          "ليش يربك رمضان الحضور؟",
+          "كيف يساعدك نظامي؟",
+          "كيف تخطط جدول الدوام في رمضان؟",
+          "أخطاء شائعة في رمضان",
+          "قائمة تجهيز قبل رمضان",
+          "الموظفون المسلمون وغير المسلمين",
+          "كيف تتابع الحضور خلال الشهر؟",
+          "كيف تتواصل مع الفريق؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/ramadan-working-hours-saudi-attendance",
+        "en": "/en/hr-blog/ramadan-working-hours-saudi-attendance",
+        "x-default": "/hr-blog/ramadan-working-hours-saudi-attendance"
+      }
+    },
+    "hrBlogLeave": {
+      "path": "/hr-blog/annual-leave-days-saudi-calculator",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "الإجازة السنوية في السعودية: كم يومًا؟ حاسبة الحد الأدنى | نظامي",
+        "description": "٢١ يومًا كحد أدنى لكل سنة وتصير ٣٠ يومًا بعد خمس سنوات متصلة بحسب نظام العمل. جرّب الحاسبة وتعرّف كيف تدير الطلبات والموافقات.",
+        "heading": "إجازتك السنوية كم يومًا؟",
+        "summary": "٢١ يومًا كحد أدنى لكل سنة، وتصير ٣٠ يومًا بعد ٥ سنوات متصلة مع نفس صاحب العمل. حرّك الشريط وشف.",
+        "sections": [
+          "كم الحد الأدنى؟",
+          "أمثلة سريعة",
+          "ليش تتعب إدارة الإجازات؟",
+          "كيف يساعدك نظامي؟",
+          "وأنواع الإجازات الأخرى؟",
+          "كيف تدير طلبات الإجازة بلا فوضى؟",
+          "كيف تحسب سنوات الخدمة المتصلة؟",
+          "ما الذي تحدده في سياسة الإجازات؟",
+          "كيف تخطط الإجازات على مستوى الفريق؟",
+          "قائمة تسليم قبل الإجازة",
+          "ماذا توثّق في كل طلب؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/annual-leave-days-saudi-calculator",
+        "en": "/en/hr-blog/annual-leave-days-saudi-calculator",
+        "x-default": "/hr-blog/annual-leave-days-saudi-calculator"
+      }
+    },
+    "hrBlogSignals": {
+      "path": "/hr-blog/read-attendance-signals-fairly-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "كيف تقرأ التأخير والغياب بعدل: الحضور إشارة لا حكم | نظامي",
+        "description": "التأخير والغياب إشارات تحتاج حوارًا قبل القرار. تعلّم أسئلة تسألها أولًا وخطوات عادلة، مع تقدير الالتزام.",
+        "heading": "الحضور إشارة مو حكم",
+        "summary": "التأخير والغياب يقولون لك شي، لكن مو كل شي. اسأل قبل ما تحكم، وقدّر قبل ما تعاقب.",
+        "sections": [
+          "ماذا يقول لك الحضور؟",
+          "ليش الإنصاف يهم؟",
+          "التقدير جزء من الحل",
+          "أسئلة تسألها قبل أي إجراء",
+          "متى يصبح الإجراء الرسمي مناسبًا؟"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/read-attendance-signals-fairly-saudi",
+        "en": "/en/hr-blog/read-attendance-signals-fairly-saudi",
+        "x-default": "/hr-blog/read-attendance-signals-fairly-saudi"
+      }
+    },
+    "hrBlogAiSteps": {
+      "path": "/hr-blog/ai-hr-small-steps-saudi-teams",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "ar": {
+        "title": "كيف تبدأ بالذكاء الاصطناعي في الموارد البشرية خطوة خطوة | نظامي",
+        "description": "لا تحتاج مشروعًا ضخمًا: اختر سؤالًا متكررًا واحدًا، جرّبه، راجعه، وحدّد المسؤول ثم وسّع. دليل بسيط للفرق الصغيرة.",
+        "heading": "ابدأ بالذكاء الاصطناعي خطوة خطوة",
+        "summary": "مو لازم مشروع ضخم. اختر سؤالًا متكررًا واحدًا، جرّبه، راجعه، وبعدها وسّع.",
+        "sections": [
+          "ليش يتعثر الذكاء الاصطناعي؟",
+          "كيف تبدأ بدون تعقيد؟",
+          "أين يبقى الإنسان؟",
+          "كيف تختار أول سؤال؟",
+          "علامات أنك جاهز للتوسع"
+        ]
+      },
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/ai-hr-small-steps-saudi-teams",
+        "en": "/en/hr-blog/ai-hr-small-steps-saudi-teams",
+        "x-default": "/hr-blog/ai-hr-small-steps-saudi-teams"
+      }
+    },
+    "hrBlogEn": {
+      "path": "/en/hr-blog",
+      "type": "CollectionPage",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "HR Blog: Attendance, AI and HR Management for Small Teams | Nizamy",
+        "description": "The Nizamy HR blog: short, well-organised reads on face attendance, the AI HR assistant, and replacing Excel and WhatsApp for small businesses in Saudi Arabia.",
+        "heading": "HR blog",
+        "summary": "Short, well-organised reads on attendance, AI and tools for small businesses.",
+        "sections": [
+          "Face attendance from the phone",
+          "The AI HR assistant",
+          "Replacing Excel and WhatsApp"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog",
+        "en": "/en/hr-blog",
+        "x-default": "/hr-blog"
+      },
+      "hubItems": [
+        {
+          "key": "hrBlogAttendanceEn",
+          "path": "/en/hr-blog/face-attendance-system-saudi-arabia",
+          "ar": {
+            "title": "حضور تثق فيه",
+            "summary": "الوجه يثبت من الذي سجّل، والموقع يثبت أين. تعرف أن الحاضر هو الموظف نفسه."
+          },
+          "en": {
+            "title": "Check-ins you can trust",
+            "summary": "The face proves who checked in, the location proves where. You know the person present is the employee."
+          }
+        },
+        {
+          "key": "hrBlogAiEn",
+          "path": "/en/hr-blog/ai-hr-assistant-employee-requests",
+          "ar": {
+            "title": "وقت أكثر للناس",
+            "summary": "المساعد يتولى الأسئلة والطلبات المتكررة، وأنت تتفرغ للمواقف التي تحتاج إنسانًا."
+          },
+          "en": {
+            "title": "More time for people",
+            "summary": "The assistant takes the repeated questions and requests, so you can focus on moments that need a human."
+          }
+        },
+        {
+          "key": "hrBlogSmallBizEn",
+          "path": "/en/hr-blog/replace-excel-whatsapp-hr-management",
+          "ar": {
+            "title": "كل شي بمكان واحد",
+            "summary": "الحضور والطلبات والتقارير والموظفين في تجربة واحدة، بدل جداول ورسائل وأوراق متفرقة."
+          },
+          "en": {
+            "title": "Everything in one place",
+            "summary": "Attendance, requests, reports and employees in one experience, instead of scattered sheets, chats and papers."
+          }
+        },
+        {
+          "key": "hrBlogPayrollEn",
+          "path": "/en/hr-blog/payroll-readiness-checklist-saudi",
+          "ar": {
+            "title": "مسير الرواتب جاهز قبل لا تحتاجه",
+            "summary": "قبل نهاية الشهر بيومين: وش لازم تتأكد منه؟ قائمة قصيرة تريّحك من الزحمة وتخلّي الاعتماد هادي."
+          },
+          "en": {
+            "title": "Payroll that's ready before you need it",
+            "summary": "Two days before month-end: what should you double-check? A short list that takes the rush out and keeps approval calm."
+          }
+        },
+        {
+          "key": "hrBlogRamadanEn",
+          "path": "/en/hr-blog/ramadan-working-hours-saudi-attendance",
+          "ar": {
+            "title": "دوام رمضان بدون لخبطة",
+            "summary": "ساعات العمل تتغير في رمضان، والحضور لازم يتغير معها. جرّب كم ساعة وكم يوم يناسب الحد النظامي."
+          },
+          "en": {
+            "title": "Ramadan hours, without the mix-ups",
+            "summary": "Working hours change in Ramadan, and attendance has to change with them. Try how many hours and days fit the legal limit."
+          }
+        },
+        {
+          "key": "hrBlogLeaveEn",
+          "path": "/en/hr-blog/annual-leave-days-saudi-calculator",
+          "ar": {
+            "title": "إجازتك السنوية كم يومًا؟",
+            "summary": "٢١ يومًا كحد أدنى لكل سنة، وتصير ٣٠ يومًا بعد ٥ سنوات متصلة مع نفس صاحب العمل. حرّك الشريط وشف."
+          },
+          "en": {
+            "title": "Your annual leave: how many days?",
+            "summary": "21 days minimum per year, rising to 30 days after 5 consecutive years with the same employer. Move the slider and see."
+          }
+        },
+        {
+          "key": "hrBlogSignalsEn",
+          "path": "/en/hr-blog/read-attendance-signals-fairly-saudi",
+          "ar": {
+            "title": "الحضور إشارة مو حكم",
+            "summary": "التأخير والغياب يقولون لك شي، لكن مو كل شي. اسأل قبل ما تحكم، وقدّر قبل ما تعاقب."
+          },
+          "en": {
+            "title": "Attendance: a signal, not a verdict",
+            "summary": "Lateness and absence tell you something, but not everything. Ask before you judge, and recognise before you punish."
+          }
+        },
+        {
+          "key": "hrBlogAiStepsEn",
+          "path": "/en/hr-blog/ai-hr-small-steps-saudi-teams",
+          "ar": {
+            "title": "ابدأ بالذكاء الاصطناعي خطوة خطوة",
+            "summary": "مو لازم مشروع ضخم. اختر سؤالًا متكررًا واحدًا، جرّبه، راجعه، وبعدها وسّع."
+          },
+          "en": {
+            "title": "Start with AI one step at a time",
+            "summary": "No giant project needed. Pick one repeated question, try it, review it, then expand."
+          }
+        },
+        {
+          "key": "hrBlogEosbEn",
+          "path": "/en/hr-blog/end-of-service-benefits-calculator-saudi",
+          "ar": {
+            "title": "مكافأة نهاية الخدمة احسبها بنفسك",
+            "summary": "نصف شهر عن كل سنة من أول ٥ سنوات، ثم شهر كامل عن كل سنة بعدها. أدخل الراتب والسنوات وشف الناتج."
+          },
+          "en": {
+            "title": "End-of-service award: work it out yourself",
+            "summary": "Half a month's wage per year for the first 5 years, then a full month per year after that. Enter the wage and years and see the result."
+          }
+        },
+        {
+          "key": "hrBlogSickEn",
+          "path": "/en/hr-blog/sick-leave-pay-saudi-labor-law",
+          "ar": {
+            "title": "الإجازة المرضية كم يُدفع لك؟",
+            "summary": "٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر. حرّك الأيام وشف."
+          },
+          "en": {
+            "title": "Sick leave: how much are you paid?",
+            "summary": "30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Move the days and see."
+          }
+        }
+      ]
+    },
+    "hrBlogAttendanceEn": {
+      "path": "/en/hr-blog/face-attendance-system-saudi-arabia",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Face Attendance System from the Phone for Saudi Businesses | Nizamy",
+        "description": "Check-ins you can trust: face check-in from the phone with liveness detection and location checks, instead of a fingerprint device at every branch.",
+        "heading": "Check-ins you can trust",
+        "summary": "The face proves who checked in, the location proves where. You know the person present is the employee.",
+        "sections": [
+          "Why move on from traditional fingerprint devices?",
+          "How does Nizamy verify attendance?",
+          "What happens after check-in?",
+          "Who is it for?",
+          "How do you start with mobile attendance?",
+          "What should you review weekly?",
+          "How do you explain face verification to your team?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/face-attendance-system-saudi-arabia",
+        "en": "/en/hr-blog/face-attendance-system-saudi-arabia",
+        "x-default": "/hr-blog/face-attendance-system-saudi-arabia"
+      }
+    },
+    "hrBlogAiEn": {
+      "path": "/en/hr-blog/ai-hr-assistant-employee-requests",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "AI HR Assistant for Employee Requests in Saudi Arabia | Nizamy",
+        "description": "More time for people: an AI assistant that takes repeated HR questions and requests while decisions stay with humans. Start free.",
+        "heading": "More time for people",
+        "summary": "The assistant takes the repeated questions and requests, so you can focus on moments that need a human.",
+        "sections": [
+          "What does the AI HR assistant take on?",
+          "Where do humans stay in charge?",
+          "From answers to reports",
+          "How do you start?",
+          "What can you hand to the assistant?",
+          "How do you measure the benefit?",
+          "How do you review AI output?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/ai-hr-assistant-employee-requests",
+        "en": "/en/hr-blog/ai-hr-assistant-employee-requests",
+        "x-default": "/hr-blog/ai-hr-assistant-employee-requests"
+      }
+    },
+    "hrBlogSmallBizEn": {
+      "path": "/en/hr-blog/replace-excel-whatsapp-hr-management",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Replace Excel and WhatsApp for HR in Small Businesses | Nizamy",
+        "description": "Everything in one place: attendance, requests, reports and employees in one experience instead of scattered sheets and chats, for small businesses in Saudi Arabia.",
+        "heading": "Everything in one place",
+        "summary": "Attendance, requests, reports and employees in one experience, instead of scattered sheets, chats and papers.",
+        "sections": [
+          "When do sheets and messages become a burden?",
+          "What does Nizamy bring together in one place?",
+          "What does the employee journey look like?",
+          "What value should you expect?",
+          "Signs sheets are no longer enough",
+          "How do you move over gradually?",
+          "What do you leave outside the system?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/replace-excel-whatsapp-hr-management",
+        "en": "/en/hr-blog/replace-excel-whatsapp-hr-management",
+        "x-default": "/hr-blog/replace-excel-whatsapp-hr-management"
+      }
+    },
+    "hrBlogPayrollEn": {
+      "path": "/en/hr-blog/payroll-readiness-checklist-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Payroll Readiness Checklist and Wage Protection | Nizamy",
+        "description": "A short checklist to get payroll ready before approval: attendance, overtime, deductions, payslips and the Wage Protection file, with an interactive readiness meter.",
+        "heading": "Payroll that's ready before you need it",
+        "summary": "Two days before month-end: what should you double-check? A short list that takes the rush out and keeps approval calm.",
+        "sections": [
+          "Why is month-end always a rush?",
+          "What should you review before approval?",
+          "And Wage Protection?",
+          "A suggested month-end timeline",
+          "What if you find a mistake?",
+          "Why review attendance before payroll?",
+          "What should you document?",
+          "The attendance review in detail",
+          "Reviewing overtime and deductions",
+          "Before you prepare the Wage Protection file",
+          "After approval",
+          "Mistakes that repeat every month"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/payroll-readiness-checklist-saudi",
+        "en": "/en/hr-blog/payroll-readiness-checklist-saudi",
+        "x-default": "/hr-blog/payroll-readiness-checklist-saudi"
+      }
+    },
+    "hrBlogRamadanEn": {
+      "path": "/en/hr-blog/ramadan-working-hours-saudi-attendance",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Ramadan Working Hours in Saudi Arabia: Calculator | Nizamy",
+        "description": "How many hours do Muslim employees work in Ramadan under Saudi labor law? Try the weekly hours calculator and see how to follow attendance in Ramadan.",
+        "heading": "Ramadan hours, without the mix-ups",
+        "summary": "Working hours change in Ramadan, and attendance has to change with them. Try how many hours and days fit the legal limit.",
+        "sections": [
+          "How many hours in Ramadan?",
+          "Examples of Ramadan schedules",
+          "Why does Ramadan confuse attendance?",
+          "How does Nizamy help?",
+          "How do you plan the Ramadan schedule?",
+          "Common Ramadan mistakes",
+          "A pre-Ramadan checklist",
+          "Muslim and non-Muslim employees",
+          "How do you follow attendance through the month?",
+          "How do you communicate with the team?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/ramadan-working-hours-saudi-attendance",
+        "en": "/en/hr-blog/ramadan-working-hours-saudi-attendance",
+        "x-default": "/hr-blog/ramadan-working-hours-saudi-attendance"
+      }
+    },
+    "hrBlogLeaveEn": {
+      "path": "/en/hr-blog/annual-leave-days-saudi-calculator",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Annual Leave in Saudi Arabia: How Many Days? | Nizamy",
+        "description": "21 days minimum per year, rising to 30 after five consecutive years under the labor law. Try the calculator and see how to manage requests and approvals.",
+        "heading": "Your annual leave: how many days?",
+        "summary": "21 days minimum per year, rising to 30 days after 5 consecutive years with the same employer. Move the slider and see.",
+        "sections": [
+          "What is the minimum?",
+          "Quick examples",
+          "Why is leave management tiring?",
+          "How does Nizamy help?",
+          "And other types of leave?",
+          "How do you manage leave requests without chaos?",
+          "How do you count continuous years of service?",
+          "What belongs in a leave policy?",
+          "How do you plan leave across the team?",
+          "A handover checklist before leave",
+          "What do you document on each request?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/annual-leave-days-saudi-calculator",
+        "en": "/en/hr-blog/annual-leave-days-saudi-calculator",
+        "x-default": "/hr-blog/annual-leave-days-saudi-calculator"
+      }
+    },
+    "hrBlogSignalsEn": {
+      "path": "/en/hr-blog/read-attendance-signals-fairly-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Reading Lateness and Absence Fairly | Nizamy",
+        "description": "Lateness and absence are signals that need a conversation before a decision. Learn the questions to ask first and fair next steps, with recognition for commitment.",
+        "heading": "Attendance: a signal, not a verdict",
+        "summary": "Lateness and absence tell you something, but not everything. Ask before you judge, and recognise before you punish.",
+        "sections": [
+          "What does attendance tell you?",
+          "Why does fairness matter?",
+          "Recognition is part of the answer",
+          "Questions to ask before any action",
+          "When does formal action become appropriate?"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/read-attendance-signals-fairly-saudi",
+        "en": "/en/hr-blog/read-attendance-signals-fairly-saudi",
+        "x-default": "/hr-blog/read-attendance-signals-fairly-saudi"
+      }
+    },
+    "hrBlogAiStepsEn": {
+      "path": "/en/hr-blog/ai-hr-small-steps-saudi-teams",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "en": {
+        "title": "Starting with AI in HR One Step at a Time for Small Teams | Nizamy",
+        "description": "No giant project needed: pick one repeated question, try it, review it, name an owner, then expand. A simple guide for small teams.",
+        "heading": "Start with AI one step at a time",
+        "summary": "No giant project needed. Pick one repeated question, try it, review it, then expand.",
+        "sections": [
+          "Why does AI stall?",
+          "How do you start without the fuss?",
+          "Where do humans stay in charge?",
+          "How do you pick the first question?",
+          "Signs you are ready to expand"
+        ]
+      },
+      "languageAlternates": {
+        "ar": "/hr-blog/ai-hr-small-steps-saudi-teams",
+        "en": "/en/hr-blog/ai-hr-small-steps-saudi-teams",
+        "x-default": "/hr-blog/ai-hr-small-steps-saudi-teams"
+      }
+    },
+    "hrBlogEosb": {
+      "path": "/hr-blog/end-of-service-benefits-calculator-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/end-of-service-benefits-calculator-saudi",
+        "en": "/en/hr-blog/end-of-service-benefits-calculator-saudi",
+        "x-default": "/hr-blog/end-of-service-benefits-calculator-saudi"
+      },
+      "ar": {
+        "title": "حاسبة مكافأة نهاية الخدمة في السعودية للموظف وصاحب العمل | نظامي",
+        "description": "احسب تقديريًا مكافأة نهاية الخدمة بحسب نظام العمل السعودي: نصف شهر عن كل سنة من أول خمس سنوات وشهر عن كل سنة بعدها، مع حالة الاستقالة. حاسبة توضيحية.",
+        "heading": "مكافأة نهاية الخدمة احسبها بنفسك",
+        "summary": "نصف شهر عن كل سنة من أول ٥ سنوات، ثم شهر كامل عن كل سنة بعدها. أدخل الراتب والسنوات وشف الناتج.",
+        "sections": [
+          "كيف تُحسب المكافأة؟",
+          "مثال محسوب",
+          "خطوات الحساب خطوة بخطوة",
+          "مثال ثانٍ: خدمة أقل من خمس سنوات",
+          "مثال ثالث: خدمة ١٢ سنة",
+          "ماذا يتغير عند الاستقالة؟",
+          "على أي أجر تُحسب؟",
+          "كيف يساعدك نظامي؟",
+          "أخطاء شائعة",
+          "ماذا تجهّز قبل إنهاء أي عقد؟",
+          "كيف تتجنب الخلافات؟"
+        ]
+      }
+    },
+    "hrBlogEosbEn": {
+      "path": "/en/hr-blog/end-of-service-benefits-calculator-saudi",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "languageAlternates": {
+        "ar": "/hr-blog/end-of-service-benefits-calculator-saudi",
+        "en": "/en/hr-blog/end-of-service-benefits-calculator-saudi",
+        "x-default": "/hr-blog/end-of-service-benefits-calculator-saudi"
+      },
+      "en": {
+        "title": "End-of-Service Benefits Calculator in Saudi Arabia | Nizamy",
+        "description": "Estimate the end-of-service award under Saudi labor law: half a month's wage per year for 5 years, then a full month, with the resignation case.",
+        "heading": "End-of-service award: work it out yourself",
+        "summary": "Half a month's wage per year for the first 5 years, then a full month per year after that. Enter the wage and years and see the result.",
+        "sections": [
+          "How is the award calculated?",
+          "A worked example",
+          "The calculation, step by step",
+          "A second example: under five years",
+          "A third example: 12 years of service",
+          "What changes on resignation?",
+          "Which wage is it based on?",
+          "How does Nizamy help?",
+          "Common mistakes",
+          "What to prepare before ending any contract",
+          "How do you avoid disputes?"
+        ]
+      }
+    },
+    "hrBlogSick": {
+      "path": "/hr-blog/sick-leave-pay-saudi-labor-law",
+      "type": "BlogPosting",
+      "parent": "hrBlog",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "ar",
+      "languageAlternates": {
+        "ar": "/hr-blog/sick-leave-pay-saudi-labor-law",
+        "en": "/en/hr-blog/sick-leave-pay-saudi-labor-law",
+        "x-default": "/hr-blog/sick-leave-pay-saudi-labor-law"
+      },
+      "ar": {
+        "title": "الإجازة المرضية في نظام العمل السعودي: كم يُدفع؟ | نظامي",
+        "description": "٣٠ يومًا بأجر كامل ثم ٦٠ يومًا بثلاثة أرباع الأجر ثم ٣٠ يومًا بدون أجر بحسب نظام العمل. جرّب الحاسبة وتعرّف كيف تنظّم الطلبات.",
+        "heading": "الإجازة المرضية كم يُدفع لك؟",
+        "summary": "٣٠ يومًا بأجر كامل، ثم ٦٠ يومًا بثلاثة أرباع الأجر، ثم ٣٠ يومًا بدون أجر. حرّك الأيام وشف.",
+        "sections": [
+          "كيف تُدفع الإجازة المرضية؟",
+          "مثال محسوب",
+          "أمثلة على الشرائح",
+          "كيف تُنظّم الطلبات؟",
+          "افصل بين الغياب والإجازة المرضية",
+          "كيف يساعدك نظامي؟",
+          "الفرق بين المرضية والسنوية",
+          "ماذا توثّق في الإجازة المرضية؟",
+          "كيف تقرأ الإجازات المرضية في التقارير؟",
+          "الجانب الإنساني"
+        ]
+      }
+    },
+    "hrBlogSickEn": {
+      "path": "/en/hr-blog/sick-leave-pay-saudi-labor-law",
+      "type": "BlogPosting",
+      "parent": "hrBlogEn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "language": "en",
+      "languageAlternates": {
+        "ar": "/hr-blog/sick-leave-pay-saudi-labor-law",
+        "en": "/en/hr-blog/sick-leave-pay-saudi-labor-law",
+        "x-default": "/hr-blog/sick-leave-pay-saudi-labor-law"
+      },
+      "en": {
+        "title": "Sick Leave Pay Under Saudi Labor Law: How Much Is Paid? | Nizamy",
+        "description": "30 days on full pay, then 60 days at three quarters, then 30 days unpaid under the labor law. Try the calculator and see how to organise requests.",
+        "heading": "Sick leave: how much are you paid?",
+        "summary": "30 days on full pay, then 60 days at three quarters of pay, then 30 days unpaid. Move the days and see.",
+        "sections": [
+          "How is sick leave paid?",
+          "A worked example",
+          "Examples of the tiers",
+          "How do you organise requests?",
+          "Keep absence and sick leave separate",
+          "How does Nizamy help?",
+          "Sick leave versus annual leave",
+          "What do you document for sick leave?",
+          "How do you read sick leave in reports?",
+          "The human side"
+        ]
+      }
+    },
+    "home": {
+      "path": "/",
+      "type": "WebPage",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "en": {
+        "title": "AI-Powered HR System for Saudi Teams | Nizamy HR",
+        "description": "Manage attendance, performance, rewards, and HR operations with Nizamy HR, an AI-powered bilingual HR platform built for growing Saudi teams.",
+        "heading": "Attendance, employee requests and payroll reports. Less admin work. More time for your business.",
+        "summary": "Nizamy HR brings attendance, performance management, employee rewards, and practical HR automation together in one bilingual platform.",
+        "sections": [
+          "Mobile attendance without dedicated biometric hardware",
+          "Employee performance tracking and recognition",
+          "Bilingual Arabic and English HR workflows",
+          "Plans for growing teams in Saudi Arabia"
+        ]
+      },
+      "ar": {
+        "title": "نظامي HR — نظام موارد بشرية بالذكاء الاصطناعي",
+        "description": "حضور من الجوال، مساعد HR ذكي، ومكافآت للموظفين في تطبيق واحد. ابدأ مجانًا.",
+        "heading": "خلّ الحضور على نظامي… وأنت تتفرغ للأمور الأهم.",
+        "summary": "جهاز البصمة، قروب الواتساب، ملف الإكسل، و\"يعطيك العافية\"… استبدلهم كلهم بتطبيق واحد.",
+        "sections": [
+          "الحضور والانصراف",
+          "المساعد الذكي",
+          "النقاط والمكافآت",
+          "التقارير",
+          "مدخلات الرواتب"
+        ]
+      }
+    },
+    "notFound": {
+      "path": "/404",
+      "type": "WebPage",
+      "robots": "noindex, nofollow",
+      "en": {
+        "title": "Page Not Found | Nizamy HR",
+        "description": "The requested page could not be found.",
+        "heading": "Page not found",
+        "summary": "The requested page does not exist or may have moved.",
+        "sections": []
+      },
+      "ar": {
+        "title": "الصفحة غير موجودة | نظامي اتش آر",
+        "description": "تعذر العثور على الصفحة المطلوبة.",
+        "heading": "الصفحة غير موجودة",
+        "summary": "الصفحة المطلوبة غير موجودة أو ربما تم نقلها.",
+        "sections": []
+      }
+    }
+  }
+}
